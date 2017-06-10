@@ -1,0 +1,72 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300);
+.field {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+label {
+    display: block;
+    font-size: 0.8rem;
+    line-height: 1.4rem;
+    font-weight: 600;
+    color: #9a9a9a;
+}
+
+input:not([type="radio"]):not([type="checkbox"]), textarea {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 1px solid #CDCDCD;
+    font-size: 1rem;
+    padding: 0.5rem;
+    min-width: 20rem;
+}
+input:not([type="radio"]):not([type="checkbox"]):focus, textarea:focus {
+    outline: 2px solid #1695A3;
+}
+
+input[type="radio"], input[type="checkbox"] {
+    margin-right: 0.5rem;
+}
+
+button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 1rem 2rem;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    background: #1695A3;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    margin: 0.5rem 0;
+}
+button:hover {
+    opacity: 0.8;
+}
+button + button {
+    margin-left: 1rem;
+}
+button.secondary {
+    color: #1695A3;
+    background: transparent;
+    border: 1px solid #1695A3;
+}
+
+*, *:before, *:after {
+    box-sizing: border-box;
+    position: relative;
+}
+
+body {
+    font-family: Lato, Helvetica, sans-serif;
+    padding: 1rem;
+}
+
+body, html {
+    font-size: 16px;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
