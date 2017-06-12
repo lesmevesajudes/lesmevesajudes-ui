@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { Control, Form } from 'react-redux-form';
 import "./subject.css";
+import makeSimulation from '../app/api';
 
 class SubjectForm extends Component {
     static handleSubmit(val) {
+        makeSimulation(val);
         console.log(val);
     }
 
