@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Control, Form } from 'react-redux-form';
-import "./subject.css";
-import makeSimulation from '../app/api';
+import "./SubjectForm.css";
+import makeSimulation from '../app/Api';
 
 class SubjectForm extends Component {
     static handleSubmit(val) {

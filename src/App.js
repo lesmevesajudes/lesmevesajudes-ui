@@ -3,7 +3,7 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { combineForms } from 'react-redux-form';
 
-import SubjectForm from './subject/subject';
+import SubjectForm from './subject/SubjectForm';
 
 import logo from './logo.svg';
 import './App.css';
