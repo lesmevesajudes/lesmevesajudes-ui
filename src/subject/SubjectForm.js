@@ -12,13 +12,14 @@ class SubjectForm extends Component {
                     <label>Your name?</label>
                     <Control.text model=".name" placeholder="First Name"/>
                 </div>
-                <div className="field">
-                    <label>Your income?</label>
-                    <Control.text model=".income" placeholder="1000"/>
-                </div>
                 <button>
                     <Link to="/children/">
-                        Add children to your family
+                        Add children information
+                    </Link>
+                </button>
+                <button>
+                    <Link to="/financial/">
+                        Add financial data
                     </Link>
                 </button>
                 <button>

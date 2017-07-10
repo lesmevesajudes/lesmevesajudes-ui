@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ChildrenViewer from './ChildrenViewer';
+import { Link } from 'react-router-dom';
 
 class ChildrenPage extends Component {
     render() {
@@ -7,6 +8,11 @@ class ChildrenPage extends Component {
             <div>
                 <h1>Family children list</h1>
                 <ChildrenViewer/>
+                <button>
+                    <Link to="/subject/">
+                        back
+                    </Link>
+                </button>
             </div>
         );
     }

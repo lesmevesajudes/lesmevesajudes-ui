@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
-import {LocalForm, Control} from 'react-redux-form';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { LocalForm, Control } from 'react-redux-form';
+import { connect } from 'react-redux';
 import { browserHistory } from 'react-router-dom';
-import {addChild} from './ChildrenActions';
-import * as UUID from './UUID';
+import { addChild } from './ChildrenActions';
+import * as UUID from '../shared/UUID';
 
 class ChildrenAdder extends Component {
     handleSubmit(values) {

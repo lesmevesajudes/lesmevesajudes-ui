@@ -8,8 +8,8 @@ class ChildrenUpdater extends Component {
     render() {
         return (
             <div>
-                <h1>QQ</h1>
-                <Form model={track("user.children[]", (children) => children.id === this.props.childID)}>
+                <h1>Update Child information</h1>
+                <Form model={track("user.children[]", (children) => children.id === this.props.childId)}>
                     <ChildrenFields/>
                     <Link to="/children">
                         <button>
@@ -23,7 +23,7 @@ class ChildrenUpdater extends Component {
 
 
 function mapStateToProps(state, ownProps) {
-    return {childID: ownProps.match.params.id};
+    return {childId: ownProps.match.params.id};
 }
 
 export default connect(mapStateToProps, null)(ChildrenUpdater);

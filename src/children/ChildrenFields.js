@@ -11,7 +11,7 @@ const ChildrenFields = (props) => (
             />
         </div>
         <div className="field">
-            <label>Children name</label>
+            <label>Child name</label>
             <Control.text
                 model='.name'
                 placeholder='First Name'/>
