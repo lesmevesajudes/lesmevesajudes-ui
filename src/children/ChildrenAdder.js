@@ -2,9 +2,7 @@
 import React, { Component } from 'react';
 import { LocalForm } from 'react-redux-form';
 import ChildrenFields from './ChildrenFields';
-
 import { connect } from 'react-redux';
-import { browserHistory } from 'react-router-dom';
 import { addChild } from './ChildrenActions';
 import type {Child} from './ChildrenTypes';
 import * as UUID from '../shared/UUID';
