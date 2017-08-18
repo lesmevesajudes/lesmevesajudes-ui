@@ -1,13 +1,15 @@
+//@flow
 import React, { Component } from 'react';
-import { LocalForm, Control } from 'react-redux-form';
+import { LocalForm, Control, Field } from 'react-redux-form';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router-dom';
 import { addChild } from './ChildrenActions';
+import type {Child} from './ChildrenTypes';
 import * as UUID from '../shared/UUID';
 
 class ChildrenAdder extends Component {
-    handleSubmit(values) {
-        this.props.addChild({...values, 'id': UUID.create()});
+    handleSubmit(formValues: Child) {
+        this.props.addChild({...formValues, 'id': UUID.create()});
         this.props.history.push('/children');
     }
 
@@ -20,13 +22,6 @@ class ChildrenAdder extends Component {
                 >
                     <div>
                         <div className="field">
-                            <Control.text
-                                model=".id"
-                                type="hidden"
-                                value={UUID.create()}
-                            />
-                        </div>
-                        <div className="field">
                             <label>Child name</label>
                             <Control.text
                                 model=".name"
@@ -35,8 +30,23 @@ class ChildrenAdder extends Component {
                         <div className="field">
                             <label>Date born</label>
                             <Control.text
-                                model=".born"
-                                placeholder="10-10-2005"/>
+                                model=".dateBorn"
+                                placeholder="2005-10-10"/>
+                        </div>
+
+                        <div className="field">
+                            <label>City</label>
+                            <Field model='.city' dynamic={false}>
+                                <select>
+                                    <option default value="select one">Select one ....</option>l
+                                    <option value="Barcelona">Barcelona</option>
+                                    <option value="L'Hospitalet">L'Hospitalet</option>
+                                    <option value="Cornellà">Cornellà</option>
+                                </select>
+                            </Field>
+                        </div>
+                        <div className="field">
+                            <label><Control.checkbox model=".social_services_user" /> I am a social services user</label>
                         </div>
                     </div>
                     <button type="submit">

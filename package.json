@@ -6,6 +6,7 @@
     "axios": "^0.16.2",
     "immutable": "^3.8.1",
     "react": "^15.5.4",
+    "react-dates": "^12.4.0",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.5",
     "react-redux-form": "^1.12.1",
@@ -15,8 +16,8 @@
   },
   "devDependencies": {
     "flow-bin": "^0.47.0",
-    "react-scripts": "1.0.7",
-    "jest": "latest"
+    "jest": "latest",
+    "react-scripts": "1.0.7"
   },
   "scripts": {
     "flow": "flow",

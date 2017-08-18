@@ -6,7 +6,7 @@ import fetchSimulation from './FetchSimulationAction';
 class ResultsPage extends React.Component {
     componentDidMount() {
         console.log(this.props.simulationData);
-        this.props.fetchSimulation(this.props.simulationData.income);
+        this.props.fetchSimulation(this.props.simulationData);
     }
 
     render() {
@@ -36,7 +36,7 @@ class ResultsPage extends React.Component {
 }
 function mapStateToProps(state) {
     return {
-        simulationData: state.user,
+        simulationData: state,
         resultsData: state.results
     };
 }

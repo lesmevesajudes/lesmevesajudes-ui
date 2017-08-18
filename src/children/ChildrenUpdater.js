@@ -1,5 +1,6 @@
+//@flow
 import React, {Component} from 'react';
-import {Form, track} from 'react-redux-form';
+import {LocalForm} from 'react-redux-form';
 import ChildrenFields from './ChildrenFields';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
@@ -9,21 +10,25 @@ class ChildrenUpdater extends Component {
         return (
             <div>
                 <h1>Update Child information</h1>
-                <Form model={track("user.children[]", (children) => children.id === this.props.childId)}>
-                    <ChildrenFields/>
+                <LocalForm model="children">
+                    <ChildrenFields {...this.props.child} />
                     <Link to="/children">
                         <button>
                         Update
                         </button>
                     </Link>
-                </Form>
+                </LocalForm>
             </div>);
     }
 }
 
 
 function mapStateToProps(state, ownProps) {
-    return {childId: ownProps.match.params.id};
+    console.log("state: "+JSON.stringify(state));
+    console.log("match: "+JSON.stringify(ownProps.match));
+    console.log("id: "+ ownProps.match.params.id);
+    console.log("child: "+JSON.stringify(state.children.get(ownProps.match.params.id)));
+    return {child: state.children.get(ownProps.match.params.id)};
 }
 
 export default connect(mapStateToProps, null)(ChildrenUpdater);

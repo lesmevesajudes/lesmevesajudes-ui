@@ -27,13 +27,13 @@ class FinancialDataAdder extends Component {
                             />
                         </div>
                         <div className="field">
-                            <label>FinancialData name</label>
+                            <label>Description</label>
                             <Control.text
                                 model=".description"
                                 placeholder='Wage'/>
                         </div>
                         <div className="field">
-                            <label>Date born</label>
+                            <label>Amount</label>
                             <Control.text
                                 model=".amount"
                                 placeholder="100"/>

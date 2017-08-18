@@ -33,7 +33,7 @@ function isDevelopment() {
 }
 
 if (isDevelopment()) {
-
+    //module.hot.accept();
     console.log("Environment: " + process.env.NODE_ENV);
 }
 
