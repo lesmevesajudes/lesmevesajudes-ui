@@ -1,6 +1,8 @@
 //@flow
 import React, { Component } from 'react';
-import { LocalForm, Control, Field } from 'react-redux-form';
+import { LocalForm } from 'react-redux-form';
+import ChildrenFields from './ChildrenFields';
+
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router-dom';
 import { addChild } from './ChildrenActions';
@@ -13,6 +15,7 @@ class ChildrenAdder extends Component {
         this.props.history.push('/children');
     }
 
+    componentWillMount() {}
     render() {
         return (
             <div>
@@ -20,35 +23,7 @@ class ChildrenAdder extends Component {
                 <LocalForm model="children"
                            onSubmit={(values) => this.handleSubmit(values)}
                 >
-                    <div>
-                        <div className="field">
-                            <label>Child name</label>
-                            <Control.text
-                                model=".name"
-                                placeholder='First Name'/>
-                        </div>
-                        <div className="field">
-                            <label>Date born</label>
-                            <Control.text
-                                model=".dateBorn"
-                                placeholder="2005-10-10"/>
-                        </div>
-
-                        <div className="field">
-                            <label>City</label>
-                            <Field model='.city' dynamic={false}>
-                                <select>
-                                    <option default value="select one">Select one ....</option>l
-                                    <option value="Barcelona">Barcelona</option>
-                                    <option value="L'Hospitalet">L'Hospitalet</option>
-                                    <option value="Cornellà">Cornellà</option>
-                                </select>
-                            </Field>
-                        </div>
-                        <div className="field">
-                            <label><Control.checkbox model=".social_services_user" /> I am a social services user</label>
-                        </div>
-                    </div>
+                    <ChildrenFields {...this.props.child} />
                     <button type="submit">
                         Add
                     </button>
