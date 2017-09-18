@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {LocalForm, Control} from 'react-redux-form';
 import {connect} from 'react-redux';
-import { browserHistory } from 'react-router-dom';
 import {addFinancialData} from './FinancialDataActions';
 import * as UUID from '../shared/UUID';
 

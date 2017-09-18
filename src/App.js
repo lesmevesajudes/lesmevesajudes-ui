@@ -11,22 +11,18 @@ import ChildrenPage from './children/ChildrenPage';
 import ChildrenUpdater from './children/ChildrenUpdater';
 import ChildrenAdder from './children/ChildrenAdder';
 import ChildrenReducer from './children/ChildrenReducer';
+import AdultsPage from './adults/AdultsPage';
+import AdultsUpdater from './adults/AdultsUpdater';
+import AdultsAdder from './adults/AdultsAdder';
+import AdultsReducer from './adults/AdultsReducer';
 import FinancialDataPage from './financial/FinancialDataPage';
 import FinancialDataUpdater from './financial/FinancialDataUpdater';
 import FinancialDataAdder from './financial/FinancialDataAdder';
 import FinancialDataReducer from "./financial/FinancialDataReducer";
 import ResultsPage from './results/ResultsPage';
 import ResultsReducer from './results/ResultsReducer';
-
 import logo from './logo.svg';
 import './App.css';
-
-
-const initialUserState = {
-    name: '',
-    children: [],
-    financialData: []
-};
 
 function isDevelopment() {
     return !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
@@ -40,11 +36,13 @@ if (isDevelopment()) {
 const reducersCombined =combineReducers({
     results: ResultsReducer,
     children: ChildrenReducer,
+    adults: AdultsReducer,
     financialData: FinancialDataReducer,
     ...createForms({
-        user: initialUserState
+        user: null
     })
 });
+
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 const extensions = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 const store = isDevelopment()?
@@ -64,6 +62,9 @@ class App extends Component {
                         <Switch>
                             <Route exact={true} path="/" component={IndexPage}/>
                             <Route path="/subject/" component={SubjectForm}/>
+                            <Route path="/adults/new" component={AdultsAdder}/>
+                            <Route path="/adults/:id" component={AdultsUpdater}/>
+                            <Route path="/adults/" component={AdultsPage}/>
                             <Route path="/children/new" component={ChildrenAdder}/>
                             <Route path="/children/:id" component={ChildrenUpdater}/>
                             <Route path="/children/" component={ChildrenPage}/>

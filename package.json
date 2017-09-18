@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "flow-bin": "^0.47.0",
-    "jest": "latest",
+    "jest": "^21.1.0",
     "react-scripts": "1.0.7"
   },
   "scripts": {

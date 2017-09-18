@@ -1,18 +1,18 @@
 //@flow
 import React, {Component} from 'react';
 import {LocalForm} from 'react-redux-form';
-import ChildrenFields from './ChildrenFields';
+import AdultsFields from './AdultsFields';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 
-class ChildrenUpdater extends Component {
+class AdultsUpdater extends Component {
     render() {
         return (
             <div>
-                <h1>Update Child information</h1>
+                <h1>Update Adult information</h1>
                 <LocalForm >
-                    <ChildrenFields {...this.props.child} />
-                    <Link to="/children">
+                    <AdultsFields {...this.props.adult} />
+                    <Link to="/adults">
                         <button>
                         Update
                         </button>
@@ -24,8 +24,8 @@ class ChildrenUpdater extends Component {
 
 
 function mapStateToProps(state, ownProps) {
-    console.log("child: "+JSON.stringify(state.children.get(ownProps.match.params.id)));
-    return {child: state.children.get(ownProps.match.params.id)};
+    console.log("adult: "+JSON.stringify(state.adults.get(ownProps.match.params.id)));
+    return {adult: state.adults.get(ownProps.match.params.id)};
 }
 
-export default connect(mapStateToProps, null)(ChildrenUpdater);
+export default connect(mapStateToProps, null)(AdultsUpdater);

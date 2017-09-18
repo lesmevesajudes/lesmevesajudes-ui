@@ -15,7 +15,7 @@ class ChildrenViewer extends Component {
                 {children.map((child) => (
                     <li key={child.id}>
                         <Link to={'/children/'+ child.id}>
-                            {child.id} - {child.name} - {child.dateBorn}
+                            {child.id} - {child.nom} - {child.data_naixement}
                         </Link>
                         <button key={child.id} onClick={e => this.handleRemoveClicked(child.id)}>
                             Remove

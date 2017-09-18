@@ -10,15 +10,15 @@ class ResultsPage extends React.Component {
     }
 
     render() {
-        if ( typeof this.props.resultsData.values === 'undefined' ) {
+        if ( typeof this.props.resultsData === 'undefined' ) {
             return (<div>Loading....</div>);
         } else {
             return (
                 <div>
                     <h1>Results!</h1>
                     <div>
-                        <p>Salary: {this.props.simulationData.name}</p>
-                        <p>Income Tax: {this.props.resultsData.values.income_tax}</p>
+                        <p>params: {JSON.stringify(this.props.resultsData.params)}</p>
+                        <p>value: {JSON.stringify(this.props.resultsData.value)}</p>
                     </div>
                     <div>
                         <button>
