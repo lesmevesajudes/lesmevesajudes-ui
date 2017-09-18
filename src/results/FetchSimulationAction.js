@@ -3,7 +3,7 @@ import {serialize} from "../children/ChildrenReducer";
 
 export const FETCH_SIMULATION='fetch_simulation';
 
-const CALCULATE_URL ='http://localhost:2000/api/1/calculate';
+const CALCULATE_URL ='https://les-meves-ajudes-api.herokuapp.com/api/1/calculate';
 
 /*
  {
