@@ -3,7 +3,8 @@ import {serialize} from "../children/ChildrenReducer";
 
 export const FETCH_SIMULATION='fetch_simulation';
 
-const CALCULATE_URL ='https://les-meves-ajudes-api.herokuapp.com/api/1/calculate';
+//const CALCULATE_URL ='https://les-meves-ajudes-api.herokuapp.com/api/1/calculate';
+const CALCULATE_URL ='http://localhost:2000/api/1/calculate';
 
 /*
  {
@@ -68,8 +69,8 @@ function buildRequest(simulationData) {
             percep_prestacions_incompatibles_amb_la_feina: adult.percep_prestacions_incompatibles_amb_la_feina
         }));
     return {
-        output_format: "variables",
-        variables: ["AE_230_mensual"],
+        output_format: "test_case",
+        variables: ["AE_230_mensual", "EG_233_mensual", "GE_051_01_mensual", "GE_051_02_mensual", "GE_051_03_mensual", "GG_270_mensual", "HG_077_mensual"],
         scenarios: [
             {
                 test_case: {
@@ -88,6 +89,7 @@ function buildRequest(simulationData) {
 }
 export default  function fetchSimulation(simulationData) {
     let requestBody = buildRequest(simulationData);
+    console.log(requestBody);
     const request = axios.post(`${CALCULATE_URL}`,requestBody);
     return {
         type: FETCH_SIMULATION,
