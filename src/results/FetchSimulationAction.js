@@ -7,6 +7,8 @@ export const FETCH_SIMULATION='fetch_simulation';
 const CALCULATE_URL ='http://localhost:2000/api/1/calculate';
 
 /*
+ Sample:
+
  {
      "output_format": "variables",
      "scenarios": [
@@ -68,6 +70,7 @@ function buildRequest(simulationData) {
             treballa_per_compte_propi: adult.treballa_per_compte_propi,
             percep_prestacions_incompatibles_amb_la_feina: adult.percep_prestacions_incompatibles_amb_la_feina
         }));
+    let householdData = simulationData.householdData;
     return {
         output_format: "test_case",
         variables: ["AE_230_mensual", "EG_233_mensual", "GE_051_01_mensual", "GE_051_02_mensual", "GE_051_03_mensual", "GG_270_mensual", "HG_077_mensual"],
@@ -77,7 +80,8 @@ function buildRequest(simulationData) {
                     families: [
                         {
                             adults: serialize(simulationData.adults).map((adult) => adult.id),
-                            menors: serialize(simulationData.children).map((child) => child.id)
+                            menors: serialize(simulationData.children).map((child) => child.id),
+                            ...householdData
                         }
                     ],
                     persones: [...adults, ...menors ]
@@ -88,6 +92,7 @@ function buildRequest(simulationData) {
     };
 }
 export default  function fetchSimulation(simulationData) {
+    console.log(simulationData);
     let requestBody = buildRequest(simulationData);
     console.log(requestBody);
     const request = axios.post(`${CALCULATE_URL}`,requestBody);

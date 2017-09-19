@@ -29,8 +29,8 @@ const ChildrenFields = (props) => (
         <div className="field">
             <label>City</label>
             <Field model='.ciutat_empadronament' dynamic={false}>
-                <select value={props.city}>
-                    <option value="select one" disabled >Select one ....</option>
+                <select>
+                    <option default value="select one" >Select one ....</option>
                     <option value="Barcelona">Barcelona</option>
                     <option value="L'Hospitalet">L'Hospitalet</option>
                     <option value="Cornellà">Cornellà</option>

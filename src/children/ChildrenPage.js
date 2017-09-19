@@ -9,7 +9,7 @@ class ChildrenPage extends Component {
                 <h1>Family children list</h1>
                 <ChildrenViewer/>
                 <button>
-                    <Link to="/subject/">
+                    <Link to="/household/">
                         back
                     </Link>
                 </button>

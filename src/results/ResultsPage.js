@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import fetchSimulation from './FetchSimulationAction';
 import {serialize as serialize_adults} from "../adults/AdultsReducer";
 import {serialize  as serialize_children} from "../children/ChildrenReducer";
+
 class PersonalBenefits extends React.Component {
 
     renderPersonalBenefitList(personsData, personsWithBenefits) {

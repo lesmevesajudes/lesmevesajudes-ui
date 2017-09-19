@@ -1,26 +1,27 @@
 import React, {Component} from 'react';
 import {applyMiddleware, createStore, combineReducers } from 'redux';
 import {Provider} from 'react-redux';
-import {createForms} from 'react-redux-form';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import promise from 'redux-promise';
 
 import IndexPage from './indexPage/IndexPage';
-import SubjectForm from './subject/SubjectForm';
+import HouseholdForm from './household/HouseholdForm';
 import ChildrenPage from './children/ChildrenPage';
 import ChildrenUpdater from './children/ChildrenUpdater';
 import ChildrenAdder from './children/ChildrenAdder';
-import ChildrenReducer from './children/ChildrenReducer';
 import AdultsPage from './adults/AdultsPage';
 import AdultsUpdater from './adults/AdultsUpdater';
 import AdultsAdder from './adults/AdultsAdder';
-import AdultsReducer from './adults/AdultsReducer';
 import FinancialDataPage from './financial/FinancialDataPage';
 import FinancialDataUpdater from './financial/FinancialDataUpdater';
 import FinancialDataAdder from './financial/FinancialDataAdder';
-import FinancialDataReducer from "./financial/FinancialDataReducer";
 import ResultsPage from './results/ResultsPage';
+import ChildrenReducer from './children/ChildrenReducer';
+import AdultsReducer from './adults/AdultsReducer';
+import FinancialDataReducer from "./financial/FinancialDataReducer";
 import ResultsReducer from './results/ResultsReducer';
+import HouseholdReducer from './household/HouseholdReducer';
+
 import logo from './logo.svg';
 import './App.css';
 
@@ -38,9 +39,7 @@ const reducersCombined =combineReducers({
     children: ChildrenReducer,
     adults: AdultsReducer,
     financialData: FinancialDataReducer,
-    ...createForms({
-        user: null
-    })
+    householdData: HouseholdReducer
 });
 
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
@@ -61,7 +60,7 @@ class App extends Component {
                     <BrowserRouter>
                         <Switch>
                             <Route exact={true} path="/" component={IndexPage}/>
-                            <Route path="/subject/" component={SubjectForm}/>
+                            <Route path="/household/" component={HouseholdForm}/>
                             <Route path="/adults/new" component={AdultsAdder}/>
                             <Route path="/adults/:id" component={AdultsUpdater}/>
                             <Route path="/adults/" component={AdultsPage}/>

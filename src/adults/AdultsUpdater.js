@@ -24,7 +24,6 @@ class AdultsUpdater extends Component {
 
 
 function mapStateToProps(state, ownProps) {
-    console.log("adult: "+JSON.stringify(state.adults.get(ownProps.match.params.id)));
     return {adult: state.adults.get(ownProps.match.params.id)};
 }
 

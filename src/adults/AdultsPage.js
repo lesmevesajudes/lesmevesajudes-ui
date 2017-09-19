@@ -9,7 +9,7 @@ class AdultsPage extends Component {
                 <h1>Family adults list</h1>
                 <AdultsViewer/>
                 <button>
-                    <Link to="/subject/">
+                    <Link to="/household/">
                         back
                     </Link>
                 </button>
