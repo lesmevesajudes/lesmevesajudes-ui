@@ -12,4 +12,5 @@ export type Child = {
     utilitza_el_servei_de_menjador: boolean;
     te_beca_menjador: boolean;
     en_acolliment: boolean;
+    en_guardia_i_custodia: boolean;
 }
