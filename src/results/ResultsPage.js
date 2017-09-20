@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import fetchSimulation from './FetchSimulationAction';
 import {serialize as serialize_adults} from "../adults/AdultsReducer";
 import {serialize  as serialize_children} from "../children/ChildrenReducer";
+import isDevelopment from '../shared/isDevelopment';
 
 class PersonalBenefits extends React.Component {
 
@@ -61,7 +62,11 @@ class FamilyBenefits extends React.Component {
 
 class ResultsPage extends React.Component {
     componentDidMount() {
-        this.props.fetchSimulation(this.props.simulationData);
+        let url = isDevelopment ?
+            'http://localhost:2000/api/1/calculate':
+            'https://les-meves-ajudes-api.herokuapp.com/api/1/calculate';
+
+        this.props.fetchSimulation(this.props.simulationData, url);
     }
 
     render() {

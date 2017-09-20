@@ -21,15 +21,12 @@ import AdultsReducer from './adults/AdultsReducer';
 import FinancialDataReducer from "./financial/FinancialDataReducer";
 import ResultsReducer from './results/ResultsReducer';
 import HouseholdReducer from './household/HouseholdReducer';
+import isDevelopment from './shared/isDevelopment';
 
 import logo from './logo.svg';
 import './App.css';
 
-function isDevelopment() {
-    return !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
-}
-
-if (isDevelopment()) {
+if (isDevelopment) {
     //module.hot.accept();
     console.log("Environment: " + process.env.NODE_ENV);
 }
@@ -44,7 +41,7 @@ const reducersCombined =combineReducers({
 
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 const extensions = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
-const store = isDevelopment()?
+const store = isDevelopment?
     createStoreWithMiddleware(reducersCombined, extensions):
     createStoreWithMiddleware(reducersCombined);
 

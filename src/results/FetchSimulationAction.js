@@ -3,9 +3,6 @@ import {serialize} from "../children/ChildrenReducer";
 
 export const FETCH_SIMULATION='fetch_simulation';
 
-const CALCULATE_URL ='https://les-meves-ajudes-api.herokuapp.com/api/1/calculate';
-//const CALCULATE_URL ='http://localhost:2000/api/1/calculate';
-
 /*
  Sample:
 
@@ -91,11 +88,11 @@ function buildRequest(simulationData) {
         ]
     };
 }
-export default  function fetchSimulation(simulationData) {
+export default  function fetchSimulation(simulationData, url) {
     console.log(simulationData);
     let requestBody = buildRequest(simulationData);
     console.log(requestBody);
-    const request = axios.post(`${CALCULATE_URL}`,requestBody);
+    const request = axios.post(url, requestBody);
     return {
         type: FETCH_SIMULATION,
         payload: request
