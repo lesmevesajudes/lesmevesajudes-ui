@@ -49,7 +49,8 @@ function buildRequest(simulationData) {
         es_escolaritzat: child.es_escolaritzat,
         utilitza_el_servei_de_menjador: child.utilitza_el_servei_de_menjador,
         te_beca_menjador: child.te_beca_menjador,
-        en_acolliment: child.en_acolliment
+        en_acolliment: child.en_acolliment,
+        en_guardia_i_custodia: child.en_guardia_i_custodia
     }));
 
     let adults = serialize(simulationData.adults).map((adult) =>
@@ -89,9 +90,8 @@ function buildRequest(simulationData) {
     };
 }
 export default  function fetchSimulation(simulationData, url) {
-    console.log(simulationData);
     let requestBody = buildRequest(simulationData);
-    console.log(requestBody);
+    console.info(requestBody);
     const request = axios.post(url, requestBody);
     return {
         type: FETCH_SIMULATION,
