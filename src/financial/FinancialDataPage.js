@@ -8,11 +8,11 @@ class FinancialDataPage extends Component {
             <div>
                 <h1>Financial data</h1>
                 <FinancialDataViewer/>
-                <button>
-                    <Link to="/household/">
+                <Link to="/household/">
+                    <button>
                         back
-                    </Link>
-                </button>
+                    </button>
+                </Link>
             </div>
         );
     }

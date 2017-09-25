@@ -8,11 +8,11 @@ class AdultsPage extends Component {
             <div>
                 <h1>Family adults list</h1>
                 <AdultsViewer/>
-                <button>
-                    <Link to="/household/">
+                <Link to="/household/">
+                    <button>
                         back
-                    </Link>
-                </button>
+                    </button>
+                </Link>
             </div>
         );
     }

@@ -88,11 +88,11 @@ class ResultsPage extends React.Component {
                         </div>
                     </div>
                     <div>
-                        <button>
-                            <Link to="/">
+                        <Link to="/">
+                            <button>
                                 back
-                            </Link>
-                        </button>
+                            </button>
+                        </Link>
                     </div>
                 </div>
             );
