@@ -1,9 +1,7 @@
 // @flow
 import {Map} from 'immutable';
-import type {Child, ChildId} from './ChildrenTypes'
+import type {Child, ChildId, ChildState} from './ChildrenTypes'
 import type {ChildActions} from './ChildrenActions'
-
-type ChildState = Map<string, Child>;
 
 function removeChild(state: ChildState, childIdToBeRemoved: ChildId): ChildState {
     return state.delete(childIdToBeRemoved);
@@ -15,7 +13,7 @@ function updateChild(state: ChildState, childToBeUpdated: Child): ChildState {
     return addChild(state, childToBeUpdated);
 }
 
-export function serialize(state:ChildState) {
+export function serialize(state: ChildState) {
     return state.toArray();
 }
 export function initChildState(initialValues: Array<Object>= []): ChildState {

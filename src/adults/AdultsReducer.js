@@ -1,9 +1,8 @@
 // @flow
 import {Map} from 'immutable';
-import type {Adult, AdultId} from './AdultsTypes'
-import type {AdultActions} from './AdultsActions'
 
-type AdultState = Map<string, Adult>;
+import type {Adult, AdultId, AdultState} from './AdultsTypes'
+import type {AdultActions} from './AdultsActions'
 
 function removeAdult(state: AdultState, adultIdToBeRemoved: AdultId): AdultState {
     return state.delete(adultIdToBeRemoved);
@@ -15,7 +14,7 @@ function updateAdult(state: AdultState, adultToBeUpdated: Adult): AdultState {
     return addAdult(state, adultToBeUpdated);
 }
 
-export function serialize(state:AdultState) {
+export function serialize(state:AdultState): Adult[] {
     return state.toArray();
 }
 export function initAdultState(initialValues: Array<Object>= []): AdultState {

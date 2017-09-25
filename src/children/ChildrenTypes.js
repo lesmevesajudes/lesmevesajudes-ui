@@ -1,5 +1,7 @@
 // @flow
+import {Map} from 'immutable';
 export type ChildId = string;
+export type ChildState = Map<string, Child>;
 
 export type Child = {
     id: ChildId;
