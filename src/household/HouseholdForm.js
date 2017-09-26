@@ -39,6 +39,11 @@ class HouseholdForm extends Component {
                         Informació sobre el lloguer
                     </button>
                 </Link>
+                <Link to="/properties/">
+                    <button>
+                        Informació sobre les propietats
+                    </button>
+                </Link>
                 <Link to="/financial/">
                     <button>
                         Informació sobre els ingressos

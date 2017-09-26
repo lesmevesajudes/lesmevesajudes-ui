@@ -6,6 +6,7 @@ import type {AdultState, Adult} from "../adults/AdultsTypes";
 import type {ChildState, Child} from "../children/ChildrenTypes";
 import type {HouseholdData} from "../household/householdDataTypes";
 import type {Rent} from "../rent/rentTypes";
+import type {Properties} from "../properties/PropertiesTypes";
 export const FETCH_SIMULATION='fetch_simulation';
 
 /*
@@ -43,6 +44,15 @@ export const FETCH_SIMULATION='fetch_simulation';
         ],
      "variables": ["ajuda_016_mensual"]
  */
+
+type SimulationData = {
+    adults: AdultState,
+    children: ChildState,
+    rent: Rent,
+    properties: Properties,
+    householdData: HouseholdData
+}
+
 function buildRequest(simulationData: SimulationData) {
     let menors = serialize_child(simulationData.children).map((child: Child) =>
         ({
@@ -102,7 +112,8 @@ function buildRequest(simulationData: SimulationData) {
                             adults: serialize_adult(simulationData.adults).map((adult) => adult.id),
                             menors: serialize_child(simulationData.children).map((child) => child.id),
                             ...simulationData.householdData,
-                            ...simulationData.rent
+                            ...simulationData.rent,
+                            ...simulationData.properties
                         }
                     ],
                     persones: [...adults, ...menors ]
@@ -111,13 +122,6 @@ function buildRequest(simulationData: SimulationData) {
             }
         ]
     };
-}
-
-type SimulationData = {
-    adults: AdultState,
-    children: ChildState,
-    rent: Rent,
-    householdData: HouseholdData
 }
 
 export default  function fetchSimulation(simulationData: SimulationData, url: string) {

@@ -23,10 +23,12 @@ import ResultsReducer from './results/ResultsReducer';
 import HouseholdReducer from './household/HouseholdReducer';
 import RentAdder from "./rent/RentAdder";
 import RentReducer from "./rent/RentReducer";
+import PropertiesAdder from "./properties/PropertiesAdder";
 import isDevelopment from './shared/isDevelopment';
 
 import logo from './logo.svg';
 import './App.css';
+import PropertiesReducer from "./properties/PropertiesReducer";
 
 if (isDevelopment) {
     //module.hot.accept();
@@ -38,6 +40,7 @@ const reducersCombined =combineReducers({
     children: ChildrenReducer,
     adults: AdultsReducer,
     rent: RentReducer,
+    properties: PropertiesReducer,
     financialData: FinancialDataReducer,
     householdData: HouseholdReducer
 });
@@ -71,6 +74,7 @@ class App extends Component {
                             <Route path="/financial/:id" component={FinancialDataUpdater}/>
                             <Route path="/financial/" component={FinancialDataPage}/>
                             <Route path="/rent/" component={RentAdder}/>
+                            <Route path="/properties/" component={PropertiesAdder}/>
                             <Route path="/results/" component={ResultsPage}/>
                         </Switch>
                     </BrowserRouter>
