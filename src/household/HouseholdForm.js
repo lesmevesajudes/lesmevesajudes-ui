@@ -25,23 +25,28 @@ class HouseholdForm extends Component {
                 </LocalForm>
                 <Link to="/adults/">
                     <button>
-                        Add adult information
+                        INformació dels adults
                     </button>
                 </Link>
 
                 <Link to="/children/">
                     <button>
-                        Add children information
+                        Informació dels menors
+                    </button>
+                </Link>
+                <Link to="/rent/">
+                    <button>
+                        Informació sobre el lloguer
                     </button>
                 </Link>
                 <Link to="/financial/">
                     <button>
-                        Add financial data
+                        Informació sobre els ingressos
                     </button>
                 </Link>
                 <Link to="/results/">
                     <button>
-                        Fetch results
+                        Veure els resultats
                     </button>
                 </Link>
             </div>

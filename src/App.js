@@ -21,6 +21,8 @@ import AdultsReducer from './adults/AdultsReducer';
 import FinancialDataReducer from "./financial/FinancialDataReducer";
 import ResultsReducer from './results/ResultsReducer';
 import HouseholdReducer from './household/HouseholdReducer';
+import RentAdder from "./rent/RentAdder";
+import RentReducer from "./rent/RentReducer";
 import isDevelopment from './shared/isDevelopment';
 
 import logo from './logo.svg';
@@ -35,6 +37,7 @@ const reducersCombined =combineReducers({
     results: ResultsReducer,
     children: ChildrenReducer,
     adults: AdultsReducer,
+    rent: RentReducer,
     financialData: FinancialDataReducer,
     householdData: HouseholdReducer
 });
@@ -67,6 +70,7 @@ class App extends Component {
                             <Route path="/financial/new" component={FinancialDataAdder}/>
                             <Route path="/financial/:id" component={FinancialDataUpdater}/>
                             <Route path="/financial/" component={FinancialDataPage}/>
+                            <Route path="/rent/" component={RentAdder}/>
                             <Route path="/results/" component={ResultsPage}/>
                         </Switch>
                     </BrowserRouter>
