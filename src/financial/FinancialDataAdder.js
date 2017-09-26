@@ -13,7 +13,7 @@ class FinancialDataAdder extends Component {
     render() {
         return (
             <div>
-                <h1>Add a new financial data</h1>
+                <h1>Afegir ingressos</h1>
                 <LocalForm model="financialData"
                            onSubmit={(values) => this.handleSubmit(values)}
                 >
@@ -26,20 +26,20 @@ class FinancialDataAdder extends Component {
                             />
                         </div>
                         <div className="field">
-                            <label>Description</label>
+                            <label>Descripció</label>
                             <Control.text
                                 model=".description"
                                 placeholder='Wage'/>
                         </div>
                         <div className="field">
-                            <label>Amount</label>
+                            <label>Quantia</label>
                             <Control.text
                                 model=".amount"
                                 placeholder="100"/>
                         </div>
                     </div>
                     <button type="submit">
-                        Add
+                        Validar
                     </button>
                 </LocalForm>
             </div>

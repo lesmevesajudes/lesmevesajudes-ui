@@ -22,7 +22,7 @@ class FinancialDataViewer extends Component {
                     </li>
                 ))}
                 <li key="new">
-                    <Link to="/financial/new">Create a new financial data record</Link>
+                    <Link to="/financial/new">Afegir ingressos</Link>
                 </li>
             </ul>);
     }

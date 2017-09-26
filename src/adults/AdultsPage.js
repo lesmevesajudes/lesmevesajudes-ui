@@ -6,11 +6,11 @@ class AdultsPage extends Component {
     render() {
         return (
             <div>
-                <h1>Family adults list</h1>
+                <h1>Adults de la unitat de convivència</h1>
                 <AdultsViewer/>
                 <Link to="/household/">
                     <button>
-                        back
+                        Tornar
                     </button>
                 </Link>
             </div>

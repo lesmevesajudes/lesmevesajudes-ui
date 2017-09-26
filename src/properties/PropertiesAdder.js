@@ -22,13 +22,13 @@ class PropertiesAdder extends Component {
 
                         <PropertiesFields {...this.props.properties}/>
                         <button type="submit">
-                            Add
+                            Validar
                         </button>
                     </div>
                 </LocalForm>
                 <Link to="/household/">
                     <button>
-                        back
+                        Tornar
                     </button>
                 </Link>
             </div>

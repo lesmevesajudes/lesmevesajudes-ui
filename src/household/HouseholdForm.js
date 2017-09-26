@@ -20,7 +20,7 @@ class HouseholdForm extends Component {
 
                     <HouseholdFields/>
                     <button type="submit">
-                        Add HouseholdData
+                        Afegir informació de la família
                     </button>
                 </LocalForm>
                 <Link to="/adults/">

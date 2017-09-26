@@ -6,11 +6,11 @@ class ChildrenPage extends Component {
     render() {
         return (
             <div>
-                <h1>Family children list</h1>
+                <h1>Menor de la unitat de convivència</h1>
                 <ChildrenViewer/>
                 <Link to="/household/">
                     <button>
-                        back
+                        Tornar
                     </button>
                 </Link>
             </div>

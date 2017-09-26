@@ -6,11 +6,11 @@ class FinancialDataPage extends Component {
     render() {
         return (
             <div>
-                <h1>Financial data</h1>
+                <h1>Dades econòmiques</h1>
                 <FinancialDataViewer/>
                 <Link to="/household/">
                     <button>
-                        back
+                        Tornar
                     </button>
                 </Link>
             </div>

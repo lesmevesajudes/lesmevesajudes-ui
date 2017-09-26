@@ -17,12 +17,12 @@ class ChildrenAdder extends Component {
     render() {
         return (
             <div>
-                <h1>Add a new child</h1>
+                <h1>Afegir un nou menor</h1>
                 <LocalForm onSubmit={(values) => this.handleSubmit(values)}
                 >
                     <ChildrenFields />
                     <button type="submit">
-                        Add
+                        Validar
                     </button>
                 </LocalForm>
             </div>

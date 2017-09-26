@@ -101,11 +101,17 @@ class ResultsPage extends React.Component {
 
     }
 }
+
+function listPersons(state) {
+    return [
+        ...serialize_adults(state.adults),
+        ...serialize_children(state.children)].reduce(function(acc, element){acc[element.id]=element;return acc;}, {})
+}
 function mapStateToProps(state) {
     return {
         simulationData: state,
         resultsData: state.results,
-        persons: [...serialize_adults(state.adults), ...serialize_children(state.children)].reduce(function(acc, element){acc[element.id]=element;return acc;}, {})
+        persons: listPersons(state)
     };
 }
 
