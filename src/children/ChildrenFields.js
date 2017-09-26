@@ -11,7 +11,7 @@ const ChildrenFields = (props) => (
             />
         </div>
         <div className="field">
-            <label>Child name</label>
+            <label>Nom</label>
             <Control.text
                 model='.nom'
                 placeholder='First Name'
@@ -19,7 +19,7 @@ const ChildrenFields = (props) => (
           />
         </div>
         <div className="field">
-            <label>Date born</label>
+            <label>Data naixement</label>
             <Control.text
                 model='.data_naixement'
                 placeholder="2005-01-21"
@@ -27,7 +27,7 @@ const ChildrenFields = (props) => (
             />
         </div>
         <div className="field">
-            <label>City</label>
+            <label>Ciutat empadronament</label>
             <Field model='.ciutat_empadronament' dynamic={false}>
                 <select>
                     <option default value="select one" >Select one ....</option>

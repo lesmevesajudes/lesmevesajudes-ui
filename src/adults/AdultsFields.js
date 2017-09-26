@@ -34,7 +34,7 @@ const AdultsFields = (props) => (
             />
         </div>
         <div className="field">
-            <label>City</label>
+            <label>Ciutat empadronament</label>
             <Field model='.ciutat_empadronament' dynamic={false}>
                 <select>
                     <option default value="select one">Select one ....</option>
@@ -45,7 +45,7 @@ const AdultsFields = (props) => (
             </Field>
         </div>
         <div className="field">
-            <label><Control.checkbox model=".social_services_user" value={false}/> I am a social services user</label>
+            <label><Control.checkbox model=".social_services_user" value={false}/> usuari de serveis socials</label>
         </div>
         <div className="field">
             <label><Control.checkbox model=".victima_violencia_de_genere" value={false}/> victima violencia de genere</label>
@@ -79,7 +79,7 @@ const AdultsFields = (props) => (
             <label><Control.checkbox model=".es_empadronat_a_catalunya" value={false} /> es empadronat a catalunya</label>
         </div>
         <div className="field">
-            <label><Control.checkbox model=".ingressat_en_centre_penitenciari" value={false}/> Ingressat en centre penitenciari 22</label>
+            <label><Control.checkbox model=".ingressat_en_centre_penitenciari" value={false}/> Ingressat en centre penitenciari</label>
         </div>
         <div className="field">
             <label><Control.checkbox model=".es_orfe_dels_dos_progenitors" value={false}/> És orfe dels dos progenitors</label>
