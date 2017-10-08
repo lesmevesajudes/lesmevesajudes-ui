@@ -8,7 +8,7 @@ class AdultsPage extends Component {
             <div>
                 <h1>Adults de la unitat de convivència</h1>
                 <AdultsViewer/>
-                <Link to="/household/">
+                <Link to="/admin/">
                     <button>
                         Tornar
                     </button>

@@ -26,7 +26,7 @@ class RentAdder extends Component {
                         </button>
                     </div>
                 </LocalForm>
-                <Link to="/household/">
+                <Link to="/admin/">
                     <button>
                         Tornar
                     </button>

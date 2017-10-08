@@ -8,7 +8,7 @@ class ChildrenPage extends Component {
             <div>
                 <h1>Menor de la unitat de convivència</h1>
                 <ChildrenViewer/>
-                <Link to="/household/">
+                <Link to="/admin/">
                     <button>
                         Tornar
                     </button>

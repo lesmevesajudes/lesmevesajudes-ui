@@ -5,7 +5,6 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import promise from 'redux-promise';
 
 import IndexPage from './indexPage/IndexPage';
-import HouseholdForm from './household/HouseholdForm';
 import ChildrenPage from './children/ChildrenPage';
 import ChildrenUpdater from './children/ChildrenUpdater';
 import ChildrenAdder from './children/ChildrenAdder';
@@ -16,6 +15,8 @@ import FinancialDataPage from './financial/FinancialDataPage';
 import FinancialDataUpdater from './financial/FinancialDataUpdater';
 import FinancialDataAdder from './financial/FinancialDataAdder';
 import ResultsPage from './results/ResultsPage';
+import HouseholdForm from "./household/HouseholdForm";
+import AdminPage from './pages/Admin';
 import ChildrenReducer from './children/ChildrenReducer';
 import AdultsReducer from './adults/AdultsReducer';
 import FinancialDataReducer from "./financial/FinancialDataReducer";
@@ -29,6 +30,7 @@ import isDevelopment from './shared/isDevelopment';
 import logo from './logo.svg';
 import './App.css';
 import PropertiesReducer from "./properties/PropertiesReducer";
+
 
 if (isDevelopment) {
     //module.hot.accept();
@@ -63,6 +65,7 @@ class App extends Component {
                     <BrowserRouter>
                         <Switch>
                             <Route exact={true} path="/" component={IndexPage}/>
+                            <Route path="/admin/" component={AdminPage}/>
                             <Route path="/household/" component={HouseholdForm}/>
                             <Route path="/adults/new" component={AdultsAdder}/>
                             <Route path="/adults/:id" component={AdultsUpdater}/>
