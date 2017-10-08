@@ -6,7 +6,7 @@ class IndexPage extends React.Component {
         return (
             <div>
                 <Link to="/household/">
-                    Find you possible benefits!
+                    Troba a quines ajudes et pots acollir!
                 </Link>
             </div>
         );

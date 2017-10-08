@@ -23,7 +23,7 @@ class AdultsViewer extends Component {
                     </li>
                 ))}
                 <li key="new">
-                    <Link to="/adults/new">Create a new adult</Link>
+                    <Link to="/adults/new">Afegir un adult</Link>
                 </li>
             </ul>);
     }

@@ -11,13 +11,13 @@ const FinancialDataFields = (props) => (
             />
         </div>
         <div className="field">
-            <label>FinancialData name</label>
+            <label>Tipus d'ingrés</label>
             <Control.text
                 model=".description"
-                placeholder='Wage'/>
+                placeholder='Salari'/>
         </div>
         <div className="field">
-            <label>Date born</label>
+            <label>Quantitat</label>
             <Control.text
                 model=".amount"
                 placeholder="100"/>

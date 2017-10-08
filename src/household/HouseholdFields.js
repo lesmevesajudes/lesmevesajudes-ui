@@ -16,7 +16,7 @@ const HouseholdFields = (props) => (
         </div>
 
         <div className="field">
-            <label>tipus familia nombrosa:</label>
+            <label>Tipus familia nombrosa:</label>
             <Field model='.tipus_familia_nombrosa' dynamic={false}>
                 <select>
                     <option default value="select one" >Select one ....</option>
@@ -28,7 +28,7 @@ const HouseholdFields = (props) => (
         </div>
 
         <div className="field">
-            <label>tipus familia monoparental:</label>
+            <label>Tipus familia monoparental:</label>
             <Field model='.tipus_familia_monoparental' dynamic={false}>
                 <select>
                     <option default value="select one" >Select one ....</option>
