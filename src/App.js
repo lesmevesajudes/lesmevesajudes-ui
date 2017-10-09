@@ -17,6 +17,7 @@ import FinancialDataAdder from './financial/FinancialDataAdder';
 import ResultsPage from './results/ResultsPage';
 import HouseholdForm from "./household/HouseholdForm";
 import AdminPage from './pages/Admin';
+import WizardPage from './pages/Wizard';
 import ChildrenReducer from './children/ChildrenReducer';
 import AdultsReducer from './adults/AdultsReducer';
 import FinancialDataReducer from "./financial/FinancialDataReducer";
@@ -79,6 +80,7 @@ class App extends Component {
                             <Route path="/rent/" component={RentAdder}/>
                             <Route path="/properties/" component={PropertiesAdder}/>
                             <Route path="/results/" component={ResultsPage}/>
+                            <Route path="/wizard" component={WizardPage}/>
                         </Switch>
                     </BrowserRouter>
                 </Provider>

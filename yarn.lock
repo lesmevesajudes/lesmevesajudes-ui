@@ -542,6 +542,15 @@ babel-loader@7.0.0:
     loader-utils "^1.0.2"
     mkdirp "^0.5.1"
 
+babel-loader@^6.2.4:
+  version "6.4.1"
+  resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-6.4.1.tgz#0b34112d5b0748a8dcdbf51acf6f9bd42d50b8ca"
+  dependencies:
+    find-cache-dir "^0.1.1"
+    loader-utils "^0.2.16"
+    mkdirp "^0.5.1"
+    object-assign "^4.0.1"
+
 babel-messages@^6.23.0:
   version "6.23.0"
   resolved "https://registry.yarnpkg.com/babel-messages/-/babel-messages-6.23.0.tgz#f3cdf4703858035b2a2951c6ec5edf6c62f2630e"
@@ -5511,6 +5520,12 @@ react-scripts@1.0.7:
     whatwg-fetch "2.0.3"
   optionalDependencies:
     fsevents "1.0.17"
+
+react-stepzilla@^4.6.3:
+  version "4.6.3"
+  resolved "https://registry.yarnpkg.com/react-stepzilla/-/react-stepzilla-4.6.3.tgz#187a6f8a67df386876f9c19152b5b7f5b63e0eb8"
+  dependencies:
+    babel-loader "^6.2.4"
 
 react@^15.5.4:
   version "15.6.1"
