@@ -5,9 +5,8 @@
   "dependencies": {
     "axios": "^0.16.2",
     "immutable": "^3.8.1",
-    "react": "^15.5.4",
-    "react-dates": "^12.4.0",
-    "react-dom": "^15.5.4",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
     "react-redux": "^5.0.5",
     "react-redux-form": "^1.12.1",
     "react-router-dom": "^4.1.1",
@@ -16,9 +15,9 @@
     "redux-promise": "^0.5.3"
   },
   "devDependencies": {
-    "flow-bin": "^0.47.0",
+    "flow-bin": "^0.56.0",
     "jest": "^21.1.0",
-    "react-scripts": "1.0.7"
+    "react-scripts": "1.0.14"
   },
   "scripts": {
     "flow": "flow",

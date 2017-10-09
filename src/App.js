@@ -26,6 +26,7 @@ import HouseholdReducer from './household/HouseholdReducer';
 import RentAdder from "./rent/RentAdder";
 import RentReducer from "./rent/RentReducer";
 import PropertiesAdder from "./properties/PropertiesAdder";
+import BackButtonHOC from "./pages/BackButtonHOC";
 import isDevelopment from './shared/isDevelopment';
 
 import logo from './logo.svg';
@@ -67,19 +68,19 @@ class App extends Component {
                         <Switch>
                             <Route exact={true} path="/" component={IndexPage}/>
                             <Route path="/admin/" component={AdminPage}/>
-                            <Route path="/household/" component={HouseholdForm}/>
+                            <Route path="/household/" component={BackButtonHOC(HouseholdForm, "/admin", "Tornar")}/>
                             <Route path="/adults/new" component={AdultsAdder}/>
                             <Route path="/adults/:id" component={AdultsUpdater}/>
-                            <Route path="/adults/" component={AdultsPage}/>
+                            <Route path="/adults/" component={BackButtonHOC(AdultsPage, "/admin", "Tornar")}/>
                             <Route path="/children/new" component={ChildrenAdder}/>
                             <Route path="/children/:id" component={ChildrenUpdater}/>
-                            <Route path="/children/" component={ChildrenPage}/>
+                            <Route path="/children/" component={BackButtonHOC(ChildrenPage, "/admin", "Tornar")}/>
                             <Route path="/financial/new" component={FinancialDataAdder}/>
                             <Route path="/financial/:id" component={FinancialDataUpdater}/>
-                            <Route path="/financial/" component={FinancialDataPage}/>
-                            <Route path="/rent/" component={RentAdder}/>
-                            <Route path="/properties/" component={PropertiesAdder}/>
-                            <Route path="/results/" component={ResultsPage}/>
+                            <Route path="/financial/" component={BackButtonHOC(FinancialDataPage, "/admin", "Tornar")}/>
+                            <Route path="/rent/" component={BackButtonHOC(RentAdder, "/admin", "Tornar")}/>
+                            <Route path="/properties/" component={BackButtonHOC(PropertiesAdder, "/admin", "Tornar")}/>
+                            <Route path="/results/" component={BackButtonHOC(ResultsPage, "/admin", "Tornar")}/>
                             <Route path="/wizard" component={WizardPage}/>
                         </Switch>
                     </BrowserRouter>

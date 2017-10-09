@@ -7,7 +7,6 @@ import * as UUID from '../shared/UUID';
 class FinancialDataAdder extends Component {
     handleSubmit(values) {
         this.props.addFinancialData({...values, 'id': UUID.create()});
-        this.props.history.push('/financial');
     }
 
     render() {

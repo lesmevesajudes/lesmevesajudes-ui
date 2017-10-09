@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {LocalForm} from 'react-redux-form';
-import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 import {addRent} from './RentActions';
 import RentFields from "./RentFields";
@@ -14,7 +13,7 @@ class RentAdder extends Component {
     render() {
         return (
             <div>
-                <h1>Afegir informació sobre el lloguer del domicilil habitual</h1>
+                <h1>Afegir informació sobre el lloguer del domicili habitual</h1>
                 <LocalForm model="rent"
                            onSubmit={(values) => this.handleSubmit(values)}
                 >
@@ -26,11 +25,6 @@ class RentAdder extends Component {
                         </button>
                     </div>
                 </LocalForm>
-                <Link to="/admin/">
-                    <button>
-                        Tornar
-                    </button>
-                </Link>
             </div>
         );
     }

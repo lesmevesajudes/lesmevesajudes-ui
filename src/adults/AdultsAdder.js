@@ -7,13 +7,29 @@ import { addAdult } from './AdultsActions';
 import type {Adult} from './AdultsTypes';
 import * as UUID from '../shared/UUID';
 
-class AdultsAdder extends Component {
+type Props = {
+    addAdult: Function,
+    onFinishAdding: Function,
+}
+
+class AdultsAdder extends Component<Props> {
+    handleCancel: Function;
+    handleSubmit: Function;
+    render: Function;
+
+    constructor(props) {
+        super(props);
+        this.handleCancel = this.handleCancel.bind(this);
+    }
     handleSubmit(formValues: Adult) {
         this.props.addAdult({...formValues, 'id': UUID.create()});
-        this.props.history.push('/adults');
+        this.props.onFinishAdding();
     }
 
-    componentWillMount() {}
+    handleCancel() {
+        this.props.onFinishAdding();
+    }
+
     render() {
         return (
             <div>
@@ -21,9 +37,9 @@ class AdultsAdder extends Component {
                 <LocalForm onSubmit={(values) => this.handleSubmit(values)}
                 >
                     <AdultsFields />
-                    <button type="submit">
-                        Validar
-                    </button>
+                    <button type="submit">Validar</button>
+                    <button onClick={this.handleCancel}>Cancelar</button>
+
                 </LocalForm>
             </div>
         );

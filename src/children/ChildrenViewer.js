@@ -1,14 +1,21 @@
 //@flow
-import React, {Component} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {serialize} from './ChildrenReducer';
 import {removeChild} from './ChildrenActions';
+import type {Child} from './ChildrenTypes';
 
-class ChildrenViewer extends Component {
+type Props = {
+    removeChild: Function ;
+    children: Array<Child>;
+};
+
+class ChildrenViewer extends React.Component<Props> {
     handleRemoveClicked(childId){
         this.props.removeChild(childId);
     }
+
     renderChildrenList(children) {
         return (
             <ul>
@@ -22,9 +29,6 @@ class ChildrenViewer extends Component {
                         </button>
                     </li>
                 ))}
-                <li key="new">
-                    <Link to="/children/new">Create a new child</Link>
-                </li>
             </ul>);
     }
 

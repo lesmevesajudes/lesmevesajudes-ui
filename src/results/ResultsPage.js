@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { Link } from 'react-router-dom';
 import fetchSimulation from './FetchSimulationAction';
 import {serialize as serialize_adults} from "../adults/AdultsReducer";
 import {serialize  as serialize_children} from "../children/ChildrenReducer";
@@ -86,13 +85,6 @@ class ResultsPage extends React.Component {
                             <p>Benefits for households:</p>
                             <FamilyBenefits benefits={this.props.resultsData.value[0].families}/>
                         </div>
-                    </div>
-                    <div>
-                        <Link to="/">
-                            <button>
-                                back
-                            </button>
-                        </Link>
                     </div>
                 </div>
             );

@@ -1,5 +1,5 @@
 //@flow
-import React, { Component } from 'react';
+import React from 'react';
 import { LocalForm } from 'react-redux-form';
 import ChildrenFields from './ChildrenFields';
 import { connect } from 'react-redux';
@@ -7,13 +7,20 @@ import { addChild } from './ChildrenActions';
 import type {Child} from './ChildrenTypes';
 import * as UUID from '../shared/UUID';
 
-class ChildrenAdder extends Component {
+type Props = {
+    addChild: Function,
+    onFinishAdding: Function,
+}
+class ChildrenAdder extends React.Component<Props> {
     handleSubmit(formValues: Child) {
         this.props.addChild({...formValues, 'id': UUID.create()});
-        this.props.history.push('/children');
+        this.props.onFinishAdding();
     }
 
-    componentWillMount() {}
+    handleCancel() {
+        this.props.onFinishAdding();
+    }
+
     render() {
         return (
             <div>
@@ -21,9 +28,8 @@ class ChildrenAdder extends Component {
                 <LocalForm onSubmit={(values) => this.handleSubmit(values)}
                 >
                     <ChildrenFields />
-                    <button type="submit">
-                        Validar
-                    </button>
+                    <button type="submit">Validar</button>
+                    <button onClick={this.handleCancel}>Cancelar</button>
                 </LocalForm>
             </div>
         );

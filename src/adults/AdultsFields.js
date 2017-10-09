@@ -18,7 +18,7 @@ const AdultsFields = (props) => (
           />
         </div>
         <div className="field">
-            <label>Fata naixement</label>
+            <label>Data naixement</label>
             <Control.text
                 model='.data_naixement'
                 placeholder="2005-01-21"

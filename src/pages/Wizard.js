@@ -8,11 +8,12 @@ import FinancialDataAdder from "../financial/FinancialDataAdder";
 import RentAdder from "../rent/RentAdder";
 import ResultsPage from "../results/ResultsPage";
 import PropertiesAdder from "../properties/PropertiesAdder";
+import YesNoSkipStep from "./YesNoSkipStep";
 
 const steps =
     [
         {name: 'Adults', component: <AdultsPage />},
-        {name: 'Menors', component: <ChildrenPage />},
+        {name: 'Menors', component: <YesNoSkipStep question='Hi ha menors a la família?' nextStep="3"><ChildrenPage/></YesNoSkipStep>},
         {name: 'Família', component: <HouseHold />},
         {name: 'Dades Financeres', component: <FinancialDataAdder />},
         {name: 'Lloguer', component: <RentAdder />},
@@ -20,12 +21,16 @@ const steps =
         {name: 'Resultats', component: <ResultsPage />}
 
     ];
+
 class WizardPage extends Component {
     render() {
         return (<div className='step-progress'>
             <StepZilla steps={steps}
                        preventEnterSubmission={true}
-                       nextTextOnFinalActionStep={"Veure resultats"}/>
+                       nextTextOnFinalActionStep={"Veure resultats"}
+                       nextButtonText="Següent"
+                       backButtonText="Anterior"
+            />
         </div>);
 
     }

@@ -50,7 +50,7 @@ const ChildrenFields = (props) => (
                 <Control.checkbox
                     model=".social_services_user"
                     value={props.social_services_user}
-                /> I am a social services user
+                /> Usuari de serveis socials
             </label>
         </div>
         <div className="field">

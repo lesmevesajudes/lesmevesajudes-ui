@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { LocalForm } from 'react-redux-form';
 import {addHouseholdData} from './HouseholdDataActions';
 import {connect} from 'react-redux';
@@ -13,24 +12,15 @@ class HouseholdForm extends Component {
     }
     render() {
         return (
-            <div>
-                <LocalForm model="householdData"
-                           onSubmit={(values) => this.handleSubmit(values)}
-                >
+            <Form model="householdData"
+                       onSubmit={(values) => this.handleSubmit(values)}
+            >
 
-                    <HouseholdFields/>
-                    <button type="submit">
-                        Afegir informació de la família
-                    </button>
-                </LocalForm>
-                <div>
-                    <Link to="/admin/">
-                        <button>
-                            Tornar
-                        </button>
-                    </Link>
-                </div>
-            </div>
+                <HouseholdFields/>
+                <button type="submit">
+                    Afegir informació de la família
+                </button>
+            </Form>
         );
     }
 }
