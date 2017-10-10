@@ -5,7 +5,7 @@ class IndexPage extends React.Component {
     render() {
         return (
             <div>
-                <Link to="/admin/">
+                <Link to="/wizard/">
                     Troba a quines ajudes et pots acollir!
                 </Link>
             </div>
