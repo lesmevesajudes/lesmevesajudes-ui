@@ -40,7 +40,7 @@ class PersonalBenefits extends React.Component {
 }
 
 
-class FamilyBenefits extends React.Component {
+class FamilyBenefits extends React.Component<void> {
 
     renderFamilyBenefitList(family) {
         let possibleBenefits = [];
@@ -60,15 +60,26 @@ class FamilyBenefits extends React.Component {
 }
 
 class ResultsPage extends React.Component {
+
+    enoughDataForSimulation() {
+        return Object.keys(this.props.persons).length > 0;
+    }
+
     componentDidMount() {
         let url = isDevelopment ?
-            'http://localhost:2000/api/1/calculate':
+            'http://localhost:2000/api/1/calculate' :
             'https://les-meves-ajudes-api.herokuapp.com/api/1/calculate';
+        if (this.enoughDataForSimulation()) {
+            this.props.fetchSimulation(this.props.simulationData, url);
+        }
 
-        this.props.fetchSimulation(this.props.simulationData, url);
     }
 
     render() {
+        if ( ! this.enoughDataForSimulation()  ) {
+            return (<div>Falten dades per a executar la simulació....</div>);
+        }
+
         if ( typeof this.props.resultsData.value === 'undefined' ) {
             return (<div>Loading....</div>);
         } else {
@@ -88,9 +99,7 @@ class ResultsPage extends React.Component {
                     </div>
                 </div>
             );
-
         }
-
     }
 }
 
