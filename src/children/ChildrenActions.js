@@ -24,6 +24,12 @@ export function addChild(child: Child): AddChildAction {
         child: child
     };
 }
+export function updateChild(child: Child): UpdateChildAction {
+    return {
+        type: 'UPDATE_CHILD',
+        child: child
+    };
+}
 export function removeChild(childId: ChildId): RemoveChildAction {
     return {
         type: 'REMOVE_CHILD',

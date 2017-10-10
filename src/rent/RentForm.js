@@ -1,13 +1,18 @@
+//@flow
 import React, {Component} from 'react';
 import {LocalForm} from 'react-redux-form';
 import {connect} from 'react-redux';
 import {addRent} from './RentActions';
 import RentFields from "./RentFields";
+import type {Rent} from "./RentTypes";
 
-class RentAdder extends Component {
+type Props = {
+    initialState:?Rent,
+    addRent: Function
+}
+class RentAdder extends Component<Props> {
     handleSubmit(values) {
         this.props.addRent({...values});
-        this.props.history.push('/rent');
     }
 
     render() {
@@ -16,10 +21,11 @@ class RentAdder extends Component {
                 <h1>Afegir informació sobre el lloguer del domicili habitual</h1>
                 <LocalForm model="rent"
                            onSubmit={(values) => this.handleSubmit(values)}
+                           initialState={this.props.initialState}
                 >
                     <div>
 
-                        <RentFields {...this.props.rent}/>
+                        <RentFields />
                         <button type="submit">
                             Validar
                         </button>
@@ -32,7 +38,7 @@ class RentAdder extends Component {
 
 function mapStateToProps(state) {
     return {
-        rent: state.rent
+        initialState: state.rent
     };
 }
 

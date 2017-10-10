@@ -7,7 +7,6 @@ const ChildrenFields = (props) => (
             <Control.text
                 model=".id"
                 type="hidden"
-                value={props.id}
             />
         </div>
         <div className="field">
@@ -15,7 +14,6 @@ const ChildrenFields = (props) => (
             <Control.text
                 model='.nom'
                 placeholder='First Name'
-                value={props.name}
           />
         </div>
         <div className="field">
@@ -23,7 +21,6 @@ const ChildrenFields = (props) => (
             <Control.text
                 model='.data_naixement'
                 placeholder="2005-01-21"
-                value={props.dateBorn}
             />
         </div>
         <div className="field">
@@ -42,14 +39,12 @@ const ChildrenFields = (props) => (
             <Control.text
                 model='.grau_discapacitat'
                 placeholder="0"
-                value={props.grau_discapacitat}
             />
         </div>
         <div className="field">
             <label>
                 <Control.checkbox
                     model=".social_services_user"
-                    value={props.social_services_user}
                 /> Usuari de serveis socials
             </label>
         </div>

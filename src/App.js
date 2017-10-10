@@ -6,11 +6,9 @@ import promise from 'redux-promise';
 
 import IndexPage from './indexPage/IndexPage';
 import ChildrenPage from './children/ChildrenPage';
-import ChildrenUpdater from './children/ChildrenUpdater';
-import ChildrenAdder from './children/ChildrenAdder';
+import ChildrenAdder from './children/ChildrenForm';
 import AdultsPage from './adults/AdultsPage';
-import AdultsUpdater from './adults/AdultsUpdater';
-import AdultsAdder from './adults/AdultsAdder';
+import AdultsAdder from './adults/AdultsForm';
 import FinancialDataPage from './financial/FinancialDataPage';
 import FinancialDataUpdater from './financial/FinancialDataUpdater';
 import FinancialDataAdder from './financial/FinancialDataAdder';
@@ -23,9 +21,9 @@ import AdultsReducer from './adults/AdultsReducer';
 import FinancialDataReducer from "./financial/FinancialDataReducer";
 import ResultsReducer from './results/ResultsReducer';
 import HouseholdReducer from './household/HouseholdReducer';
-import RentAdder from "./rent/RentAdder";
+import RentAdder from "./rent/RentForm";
 import RentReducer from "./rent/RentReducer";
-import PropertiesAdder from "./properties/PropertiesAdder";
+import PropertiesAdder from "./properties/PropertiesForm";
 import BackButtonHOC from "./pages/BackButtonHOC";
 import isDevelopment from './shared/isDevelopment';
 
@@ -70,10 +68,8 @@ class App extends Component {
                             <Route path="/admin/" component={AdminPage}/>
                             <Route path="/household/" component={BackButtonHOC(HouseholdForm, "/admin", "Tornar")}/>
                             <Route path="/adults/new" component={AdultsAdder}/>
-                            <Route path="/adults/:id" component={AdultsUpdater}/>
                             <Route path="/adults/" component={BackButtonHOC(AdultsPage, "/admin", "Tornar")}/>
                             <Route path="/children/new" component={ChildrenAdder}/>
-                            <Route path="/children/:id" component={ChildrenUpdater}/>
                             <Route path="/children/" component={BackButtonHOC(ChildrenPage, "/admin", "Tornar")}/>
                             <Route path="/financial/new" component={FinancialDataAdder}/>
                             <Route path="/financial/:id" component={FinancialDataUpdater}/>

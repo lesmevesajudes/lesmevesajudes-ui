@@ -15,6 +15,7 @@ class FinancialDataAdder extends Component {
                 <h1>Afegir ingressos</h1>
                 <LocalForm model="financialData"
                            onSubmit={(values) => this.handleSubmit(values)}
+                           onUpdate={(values) => console.log(values)}
                 >
                     <div>
                         <div className="field">

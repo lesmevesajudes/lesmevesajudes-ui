@@ -1,47 +1,96 @@
 //@flow
 import React from 'react';
 import ChildrenViewer from './ChildrenViewer';
-import ChildrenAdder from './ChildrenAdder';
-
+import ChildrenAdder from './ChildrenForm';
+import type {Child, ChildId} from "./ChildrenTypes";
+import * as UUID from '../shared/UUID';
+import {connect} from 'react-redux';
+import {serialize} from './ChildrenReducer';
+import { addChild, updateChild, removeChild } from './ChildrenActions';
 type State = {
-    addingChild: boolean,
+    editingChild: boolean,
+    initialFormFields: ?Child
 };
 
-class ChildrenPage extends React.Component<void, State> {
+type Props = {
+    children: Array<Child>,
+    removeChild: Function,
+    addChild: Function,
+    updateChild: Function
+}
+
+class ChildrenPage extends React.Component<Props, State> {
     handleAddChildClick: Function;
-    doneAddingChild: Function;
+    doneEditingChild: Function;
+    handleRemoveChildClick: Function;
+    handleUpdateChildClick: Function;
+    handleSubmitForm: Function;
 
     state = {
-        addingChild: false,
+        editingChild: false,
+        initialFormFields: undefined
     };
 
     constructor() {
         super();
         this.handleAddChildClick = this.handleAddChildClick.bind(this);
-        this.doneAddingChild = this.doneAddingChild.bind(this);
+        this.doneEditingChild = this.doneEditingChild.bind(this);
+        this.handleRemoveChildClick = this.handleRemoveChildClick.bind(this);
+        this.handleUpdateChildClick = this.handleUpdateChildClick.bind(this);
+        this.handleSubmitForm = this.handleSubmitForm.bind(this);
     }
-
     handleAddChildClick() {
-        this.setState({addingChild: true});
+        this.setState({editingChild: true});
     }
+    handleUpdateChildClick(childId: ChildId) {
+        this.setState(
+            {
+                initialFormFields: this.props.children.filter((e) => e.id===childId)[0],
+                editingChild: true
+            }
+        );
+        console.log(childId);
+        console.log(this.props.children.filter((e)=>e.id===childId)[0]);
+    }
+    handleRemoveChildClick(childId: ChildId) {
+        this.props.removeChild(childId);
+    }
+    doneEditingChild() {
+        this.setState({
+            initialFormFields: undefined,
+            editingChild: false});
+    }
+    handleSubmitForm(formValues: Child) {
+        this.doneEditingChild();
 
-    doneAddingChild() {
-        this.setState({addingChild: false});
+        if (formValues.id === undefined) {
+            this.props.addChild({...formValues, id: UUID.create()});
+        } else {
+            this.props.updateChild(formValues);
+        }
     }
+    
     render() {
-        const addingChild = this.state.addingChild;
+        const editingChild = this.state.editingChild;
         let component=undefined;
 
-        if (addingChild) {
+        if (editingChild) {
             component=(
                 <div>
-                    <ChildrenAdder onFinishAdding={() => this.doneAddingChild()}/>
+                    <ChildrenAdder
+                        initialState={this.state.initialFormFields}
+                        onSubmit={this.handleSubmitForm}
+                        onCancel={this.doneEditingChild}
+                        onFinishAdding={() => this.doneEditingChild()}/>
                 </div>);
         } else {
             component=(
                 <div>
                     <h1>Menors de la unitat de convivència</h1>
-                    <ChildrenViewer/>
+                    <ChildrenViewer
+                        children={this.props.children}
+                        onRemoveClick={this.handleRemoveChildClick}
+                        onUpdateClick={this.handleUpdateChildClick}/>
                     <button onClick={this.handleAddChildClick}>Afegir un menor</button>
                 </div>);
         }
@@ -49,4 +98,10 @@ class ChildrenPage extends React.Component<void, State> {
     }
 }
 
-export default ChildrenPage;
+function mapStateToProps(state) {
+    return {
+        children: serialize(state.children)
+    };
+}
+
+export default connect(mapStateToProps, {updateChild, removeChild, addChild})(ChildrenPage);

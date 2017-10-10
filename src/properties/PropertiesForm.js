@@ -1,13 +1,18 @@
+//@flow
 import React, {Component} from 'react';
 import {LocalForm} from 'react-redux-form';
 import {connect} from 'react-redux';
-import {addRent} from './PropertiesActions';
+import {addProperties} from './PropertiesActions';
 import PropertiesFields from "./PropertiesFields";
+import type {Properties} from "./PropertiesTypes";
 
-class PropertiesAdder extends Component {
+type Props = {
+    initialState: Properties,
+    addProperties: Function
+}
+class PropertiesAdder extends Component<Props> {
     handleSubmit(values) {
-        this.props.addRent({...values});
-        this.props.history.push('/properties');
+        this.props.addProperties({...values});
     }
 
     render() {
@@ -15,11 +20,12 @@ class PropertiesAdder extends Component {
             <div>
                 <h1>Afegir informació sobre les propietats i negocis de la família</h1>
                 <LocalForm model="properties"
+                           initialState={this.props.initialState}
                            onSubmit={(values) => this.handleSubmit(values)}
                 >
                     <div>
 
-                        <PropertiesFields {...this.props.properties}/>
+                        <PropertiesFields/>
                         <button type="submit">
                             Validar
                         </button>
@@ -32,8 +38,8 @@ class PropertiesAdder extends Component {
 
 function mapStateToProps(state) {
     return {
-        properties: state.properties
+        initialState: state.properties
     };
 }
 
-export default connect(mapStateToProps, {addRent})(PropertiesAdder);
+export default connect(mapStateToProps, {addProperties})(PropertiesAdder);

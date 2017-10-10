@@ -24,6 +24,12 @@ export function addAdult(adult: Adult): AddAdultAction {
         adult: adult
     };
 }
+export function updateAdult(adult: Adult): UpdateAdultAction {
+    return {
+        type: 'UPDATE_ADULT',
+        adult: adult
+    };
+}
 export function removeAdult(adultId: AdultId): RemoveAdultAction {
     return {
         type: 'REMOVE_ADULT',

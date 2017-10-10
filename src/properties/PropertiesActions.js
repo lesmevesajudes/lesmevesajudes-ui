@@ -8,7 +8,7 @@ type AddPropertiesAction = {
 
 export type PropertiesActions = AddPropertiesAction
 
-export function addRent(propertiesRecord: Properties): AddPropertiesAction {
+export function addProperties(propertiesRecord: Properties): AddPropertiesAction {
     return {
         type: 'ADD_PROPERTIES',
         properties: propertiesRecord

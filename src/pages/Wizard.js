@@ -5,9 +5,9 @@ import ChildrenPage from "../children/ChildrenPage";
 import HouseHold from "../household/HouseholdForm";
 import './Wizard.css';
 import FinancialDataAdder from "../financial/FinancialDataAdder";
-import RentAdder from "../rent/RentAdder";
+import RentAdder from "../rent/RentForm";
 import ResultsPage from "../results/ResultsPage";
-import PropertiesAdder from "../properties/PropertiesAdder";
+import PropertiesAdder from "../properties/PropertiesForm";
 import YesNoSkipStep from "./YesNoSkipStep";
 
 const steps =

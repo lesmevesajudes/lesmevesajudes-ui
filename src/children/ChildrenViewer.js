@@ -1,30 +1,23 @@
 //@flow
 import React from 'react';
-import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
-import {serialize} from './ChildrenReducer';
-import {removeChild} from './ChildrenActions';
 import type {Child} from './ChildrenTypes';
 
 type Props = {
-    removeChild: Function ;
     children: Array<Child>;
+    onRemoveClick: Function,
+    onUpdateClick: Function
 };
 
 class ChildrenViewer extends React.Component<Props> {
-    handleRemoveClicked(childId){
-        this.props.removeChild(childId);
-    }
-
-    renderChildrenList(children) {
+    renderChildrenList(children: Array<Child>) {
         return (
             <ul>
                 {children.map((child) => (
                     <li key={child.id}>
-                        <Link to={'/children/'+ child.id}>
+                       <span onClick={() => this.props.onUpdateClick(child.id)}>
                             {child.id} - {child.nom} - {child.data_naixement}
-                        </Link>
-                        <button key={child.id} onClick={e => this.handleRemoveClicked(child.id)}>
+                        </span>
+                        <button key={child.id} onClick={e => this.props.onRemoveClick(child.id)}>
                             Remove
                         </button>
                     </li>
@@ -40,10 +33,5 @@ class ChildrenViewer extends React.Component<Props> {
         );
     }
 }
-function mapStateToProps(state) {
-    return {
-        children: serialize(state.children)
-    };
-}
 
-export default connect(mapStateToProps, {removeChild})(ChildrenViewer);
+export default ChildrenViewer;
