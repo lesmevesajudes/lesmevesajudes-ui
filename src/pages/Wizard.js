@@ -2,22 +2,23 @@ import React, { Component } from 'react';
 import StepZilla from 'react-stepzilla';
 import AdultsPage from "../adults/AdultsPage";
 import ChildrenPage from "../children/ChildrenPage";
-import HouseHold from "../household/HouseholdForm";
-import './Wizard.css';
+import HouseHoldForm from "../household/HouseholdForm";
 import FinancialDataAdder from "../financial/FinancialDataAdder";
-import RentAdder from "../rent/RentForm";
+import RentForm from "../rent/RentForm";
 import ResultsPage from "../results/ResultsPage";
-import PropertiesAdder from "../properties/PropertiesForm";
+import PropertiesForm from "../properties/PropertiesForm";
 import YesNoSkipStep from "./YesNoSkipStep";
+
+import './Wizard.css';
 
 const steps =
     [
         {name: 'Adults', component: <AdultsPage />},
         {name: 'Menors', component: <YesNoSkipStep question='Hi ha menors a la família?' nextStep="3"><ChildrenPage/></YesNoSkipStep>},
-        {name: 'Família', component: <HouseHold />},
+        {name: 'Família', component: <HouseHoldForm />},
         {name: 'Dades Financeres', component: <FinancialDataAdder />},
-        {name: 'Lloguer', component: <RentAdder />},
-        {name: 'Propietats', component: <PropertiesAdder />},
+        {name: 'Lloguer', component: <RentForm />},
+        {name: 'Propietats', component: <PropertiesForm />},
         {name: 'Resultats', component: <ResultsPage />}
 
     ];

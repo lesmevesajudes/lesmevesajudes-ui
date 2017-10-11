@@ -25,14 +25,10 @@ class HouseholdForm extends Component<Props, void> {
     render() {
         return (
             <LocalForm model="householdData"
-                       onSubmit={this.handleSubmit}
+                       onChange={(e) => this.handleSubmit(e)}
                        initialState={this.props.initialFormFields}
             >
-
                 <HouseholdFields/>
-                <button type="submit">
-                    Afegir informació de la família
-                </button>
             </LocalForm>
         );
     }

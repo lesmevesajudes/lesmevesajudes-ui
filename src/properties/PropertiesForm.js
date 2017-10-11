@@ -10,7 +10,7 @@ type Props = {
     initialState: Properties,
     addProperties: Function
 }
-class PropertiesAdder extends Component<Props> {
+class PropertiesForm extends Component<Props> {
     handleSubmit(values) {
         this.props.addProperties({...values});
     }
@@ -21,14 +21,11 @@ class PropertiesAdder extends Component<Props> {
                 <h1>Afegir informació sobre les propietats i negocis de la família</h1>
                 <LocalForm model="properties"
                            initialState={this.props.initialState}
-                           onSubmit={(values) => this.handleSubmit(values)}
+                           onChange={(values) => this.handleSubmit(values)}
                 >
                     <div>
 
                         <PropertiesFields/>
-                        <button type="submit">
-                            Validar
-                        </button>
                     </div>
                 </LocalForm>
             </div>
@@ -42,4 +39,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, {addProperties})(PropertiesAdder);
+export default connect(mapStateToProps, {addProperties})(PropertiesForm);

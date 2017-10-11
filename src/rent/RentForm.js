@@ -20,15 +20,12 @@ class RentAdder extends Component<Props> {
             <div>
                 <h1>Afegir informació sobre el lloguer del domicili habitual</h1>
                 <LocalForm model="rent"
-                           onSubmit={(values) => this.handleSubmit(values)}
+                           onChange={(values) => this.handleSubmit(values)}
                            initialState={this.props.initialState}
                 >
                     <div>
 
                         <RentFields />
-                        <button type="submit">
-                            Validar
-                        </button>
                     </div>
                 </LocalForm>
             </div>
