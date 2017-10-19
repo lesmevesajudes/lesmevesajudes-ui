@@ -30,3 +30,9 @@ export function removeFinancialData(financialDataId: FinancialDataId): RemoveFin
         financialDataId: financialDataId
     };
 }
+export function updateFinancialData(financialDataRecord: FinancialData): UpdateFinancialDataAction {
+    return {
+        type: 'UPDATE_FINANCIAL_DATA',
+        financialData: financialDataRecord
+    };
+}

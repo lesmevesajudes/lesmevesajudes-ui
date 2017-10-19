@@ -3,6 +3,7 @@ export type FinancialDataId = string;
 
 export type FinancialData = {
     id: FinancialDataId;
-    description: string;
+    receptorId: string;
     amount: number;
+    type: string;
 }

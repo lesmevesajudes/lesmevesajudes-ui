@@ -88,12 +88,12 @@ class ResultsPage extends React.Component {
                     <h1>Results!</h1>
                     <div>
                         <div>
-                            <p>Benefits for persons:</p>
+                            <p>Ajudes per a persones:</p>
 
                             <PersonalBenefits persons={this.props.persons} benefitsForPersons={this.props.resultsData.value[0].persones}/>
                         </div>
                         <div>
-                            <p>Benefits for households:</p>
+                            <p>Ajudes per a la familía:</p>
                             <FamilyBenefits benefits={this.props.resultsData.value[0].families}/>
                         </div>
                     </div>

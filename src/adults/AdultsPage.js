@@ -50,8 +50,6 @@ class AdultsPage extends React.Component<Props, State>{
                 editingAdult: true
             }
         );
-        console.log(adultId);
-        console.log(this.props.adults.filter((e)=>e.id===adultId)[0]);
     }
     handleRemoveAdultClick(adultId: AdultId) {
         this.props.removeAdult(adultId);
@@ -62,12 +60,9 @@ class AdultsPage extends React.Component<Props, State>{
             editingAdult: false});
     }
     handleSubmitForm(formValues: Adult) {
-        console.log("Submit ");
-        console.log(JSON.stringify(formValues));
         this.doneEditingAdult();
 
         if (formValues.id === undefined) {
-            console.log("crea");
             this.props.addAdult({...formValues, id: UUID.create()});
         } else {
             this.props.updateAdult(formValues);

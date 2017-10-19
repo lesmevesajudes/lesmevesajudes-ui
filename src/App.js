@@ -10,8 +10,7 @@ import ChildrenAdder from './children/ChildrenForm';
 import AdultsPage from './adults/AdultsPage';
 import AdultsAdder from './adults/AdultsForm';
 import FinancialDataPage from './financial/FinancialDataPage';
-import FinancialDataUpdater from './financial/FinancialDataUpdater';
-import FinancialDataAdder from './financial/FinancialDataAdder';
+import FinancialDataAdder from './financial/FinancialDataForm';
 import ResultsPage from './results/ResultsPage';
 import HouseholdForm from "./household/HouseholdForm";
 import AdminPage from './pages/Admin';
@@ -72,7 +71,6 @@ class App extends Component {
                             <Route path="/children/new" component={ChildrenAdder}/>
                             <Route path="/children/" component={BackButtonHOC(ChildrenPage, "/admin", "Tornar")}/>
                             <Route path="/financial/new" component={FinancialDataAdder}/>
-                            <Route path="/financial/:id" component={FinancialDataUpdater}/>
                             <Route path="/financial/" component={BackButtonHOC(FinancialDataPage, "/admin", "Tornar")}/>
                             <Route path="/rent/" component={BackButtonHOC(RentAdder, "/admin", "Tornar")}/>
                             <Route path="/properties/" component={BackButtonHOC(PropertiesAdder, "/admin", "Tornar")}/>
