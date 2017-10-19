@@ -103,23 +103,23 @@ class FinancialDataPage extends Component<Props, State> {
                                          onUpdateClick={this.handleUpdateFinancialDataClick}/>
                     <div>
                         <div>
-                            <span>Ingressos del treball</span><br/>
+                            <h2>Ingressos del treball</h2><br/>
                             <button onClick={()=>this.handleAddFinancialDataClick("SALARI")}>Salari</button>
                         </div>
                         <div>
-                            <span>Pensions</span><br/>
+                            <h2>Pensions</h2><br/>
                             <button onClick={()=>this.handleAddFinancialDataClick("PENSIO_RAI")}>Pensió RAI</button>
                             <button onClick={()=>this.handleAddFinancialDataClick("PENSIO_VIUDETAT")}>Pensió viudetat</button>
                             <button onClick={()=>this.handleAddFinancialDataClick("PENSIO_ALIMENTICIA")}>Pensió alímentícia</button>
                         </div>
                         <div>
-                            <span>Ajudes</span><br/>
+                            <h2>Ajudes</h2><br/>
                             <button onClick={()=>this.handleAddFinancialDataClick("AJUDA_MENJADOR")}>Ajuda menjador</button>
                             <button onClick={()=>this.handleAddFinancialDataClick("AJUDA_AL_LLOGUER")}>Ajuda al lloguer</button>
                             <button onClick={()=>this.handleAddFinancialDataClick("RGC")}>Renda Garantida de ciutadania</button>
                         </div>
                         <div>
-                            <span>Rendiments</span>
+                            <h2>Rendiments</h2>
                             <button onClick={()=>this.handleAddFinancialDataClick("FACTURACIO_NEGOCI_FAMILIAR")}>Facturació del negoci</button>
                             <button onClick={()=>this.handleAddFinancialDataClick("RENDIMENTS_PATRIMONI_FAMILIAR")}>Rendiments del patrimoni familiar</button>
                         </div>

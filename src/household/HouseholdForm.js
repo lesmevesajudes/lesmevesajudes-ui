@@ -24,12 +24,15 @@ class HouseholdForm extends Component<Props, void> {
     }
     render() {
         return (
-            <LocalForm model="householdData"
-                       onChange={(e) => this.handleSubmit(e)}
-                       initialState={this.props.initialFormFields}
-            >
-                <HouseholdFields/>
-            </LocalForm>
+            <div>
+                <h1>Informació sobre el tipus de família</h1>
+                <LocalForm model="householdData"
+                           onChange={(e) => this.handleSubmit(e)}
+                           initialState={this.props.initialFormFields}
+                >
+                    <HouseholdFields/>
+                </LocalForm>
+            </div>
         );
     }
 }
