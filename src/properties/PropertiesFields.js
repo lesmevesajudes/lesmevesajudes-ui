@@ -3,7 +3,7 @@ import {Control} from 'react-redux-form';
 
 const PropertiesFields = (props) => (
     <div>
-        <div className="field">
+        {/*<div className="field">
             <label>Facturació del negoci familiar:</label>
             <Control.text
                 model=".volum_del_negoci_familiar"
@@ -14,7 +14,7 @@ const PropertiesFields = (props) => (
             <Control.text
                 model=".rendiments_del_patrimoni"
                 placeholder='0'/>
-        </div>
+        </div>*/}
         <div className="field">
             <label>Valor cadastral finques rustiques:</label>
             <Control.text

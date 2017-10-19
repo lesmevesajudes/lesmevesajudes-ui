@@ -102,13 +102,27 @@ class FinancialDataPage extends Component<Props, State> {
                                          onRemoveClick={this.handleRemoveFinancialDataClick}
                                          onUpdateClick={this.handleUpdateFinancialDataClick}/>
                     <div>
-                        <button onClick={()=>this.handleAddFinancialDataClick("SALARI")}>Salari</button>
-                        <button onClick={()=>this.handleAddFinancialDataClick("PENSIO_RAI")}>Pensió RAI</button>
-                        <button onClick={()=>this.handleAddFinancialDataClick("PENSIO_VIUDETAT")}>Pensió viudetat</button>
-                        <button onClick={()=>this.handleAddFinancialDataClick("PENSIO_ALIMENTICIA")}>Pensió alímentícia</button>
-                        <button onClick={()=>this.handleAddFinancialDataClick("AJUDA_MENJADOR")}>Ajuda menjador</button>
-                        <button onClick={()=>this.handleAddFinancialDataClick("AJUDA_AL_LLOGUER")}>Ajuda al lloguer</button>
-                        <button onClick={()=>this.handleAddFinancialDataClick("RGC")}>Renda Garantida de ciutadania</button>
+                        <div>
+                            <span>Ingressos del treball</span><br/>
+                            <button onClick={()=>this.handleAddFinancialDataClick("SALARI")}>Salari</button>
+                        </div>
+                        <div>
+                            <span>Pensions</span><br/>
+                            <button onClick={()=>this.handleAddFinancialDataClick("PENSIO_RAI")}>Pensió RAI</button>
+                            <button onClick={()=>this.handleAddFinancialDataClick("PENSIO_VIUDETAT")}>Pensió viudetat</button>
+                            <button onClick={()=>this.handleAddFinancialDataClick("PENSIO_ALIMENTICIA")}>Pensió alímentícia</button>
+                        </div>
+                        <div>
+                            <span>Ajudes</span><br/>
+                            <button onClick={()=>this.handleAddFinancialDataClick("AJUDA_MENJADOR")}>Ajuda menjador</button>
+                            <button onClick={()=>this.handleAddFinancialDataClick("AJUDA_AL_LLOGUER")}>Ajuda al lloguer</button>
+                            <button onClick={()=>this.handleAddFinancialDataClick("RGC")}>Renda Garantida de ciutadania</button>
+                        </div>
+                        <div>
+                            <span>Rendiments</span>
+                            <button onClick={()=>this.handleAddFinancialDataClick("FACTURACIO_NEGOCI_FAMILIAR")}>Facturació del negoci</button>
+                            <button onClick={()=>this.handleAddFinancialDataClick("RENDIMENTS_PATRIMONI_FAMILIAR")}>Rendiments del patrimoni familiar</button>
+                        </div>
                     </div>
                 </div>
             );

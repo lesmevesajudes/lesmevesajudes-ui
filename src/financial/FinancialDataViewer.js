@@ -17,7 +17,9 @@ class FinancialDataViewer extends Component<Props, *> {
             "PENSIO_ALIMENTICIA": "Pensió alimentícia",
             "AJUDA_MENJADOR": "Ajuda Menjador",
             "AJUDA_AL_LLOGUER": "Ajuda al lloguer",
-            "RGC": "Renda de ciutadania garantida"
+            "RGC": "Renda de ciutadania garantida",
+            "FACTURACIO_NEGOCI_FAMILIAR": "facturació del negoci familiar",
+            "RENDIMENTS_PATRIMONI_FAMILIAR": "rendiments del patrimoni familiar"
         };
 
         return typeToDescriptionMapping[type];

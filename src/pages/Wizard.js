@@ -17,8 +17,8 @@ const steps =
         {name: 'Menors', component: <YesNoSkipStep question='Hi ha menors a la família?' nextStep="3"><ChildrenPage/></YesNoSkipStep>},
         {name: 'Família', component: <HouseHoldForm />},
         {name: 'Dades Financeres', component: <FinancialDataPage />},
-        {name: 'Lloguer', component: <RentForm />},
-        {name: 'Propietats', component: <PropertiesForm />},
+        {name: 'Lloguer', component: <YesNoSkipStep question="El domicili actual és en règim de lloguer?" nextStep="7"><RentForm /></YesNoSkipStep>},
+        {name: 'Propietats', component: <YesNoSkipStep question="Disposa d'algun inmoble en propietat?" nextStep="7"><PropertiesForm /></YesNoSkipStep>},
         {name: 'Resultats', component: <ResultsPage />}
 
     ];

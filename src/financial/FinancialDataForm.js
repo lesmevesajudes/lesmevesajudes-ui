@@ -17,7 +17,9 @@ class FinancialDataForm extends Component<Props> {
             "PENSIO_ALIMENTICIA": "pensió alimentícia",
             "AJUDA_MENJADOR": "ajuda Menjador",
             "AJUDA_AL_LLOGUER": "ajuda al lloguer",
-            "RGC": "renda de ciutadania garantida"
+            "RGC": "renda de ciutadania garantida",
+            "FACTURACIO_NEGOCI_FAMILIAR": "facturació del negoci familiar",
+            "RENDIMENTS_PATRIMONI_FAMILIAR": "rendiments del patrimoni familiar"
         };
 
         return typeToDescriptionMapping[type];
