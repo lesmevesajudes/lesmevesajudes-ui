@@ -3,21 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "axios": "^0.16.2",
+    "axios": "^0.17.0",
     "immutable": "^3.8.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-redux": "^5.0.5",
-    "react-redux-form": "^1.12.1",
+    "react-redux-form": "^1.15.0",
     "react-router-dom": "^4.1.1",
     "react-stepzilla": "^4.6.3",
     "redux": "^3.6.0",
     "redux-promise": "^0.5.3"
   },
   "devDependencies": {
-    "flow-bin": "^0.56.0",
+    "flow-bin": "^0.58.0",
     "jest": "^21.1.0",
-    "react-scripts": "1.0.14"
+    "react-scripts": "1.0.16"
   },
   "scripts": {
     "flow": "flow",
