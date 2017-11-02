@@ -15,6 +15,7 @@ const AdultsFields = (props) => (
             <Control.text
                 model='.nom'
                 placeholder='First Name'
+                required
           />
         </div>
         <div className="field">
@@ -22,7 +23,7 @@ const AdultsFields = (props) => (
             <Control.text
                 model='.data_naixement'
                 placeholder="2005-01-21"
-
+                type="date"
             />
         </div>
         <div className="field">
@@ -30,7 +31,7 @@ const AdultsFields = (props) => (
             <Control.text
                 model='.grau_discapacitat'
                 placeholder="0"
-
+                type="number"
             />
         </div>
         <div className="field">
@@ -103,10 +104,10 @@ const AdultsFields = (props) => (
             <label><Control.checkbox model=".percep_prestacions_incompatibles_amb_la_feina" value={false}/> Percep prestacions incompatibles amb la feina</label>
         </div>
         <div className="field">
-            <label><Control.checkbox model=".ha_esgotat_prestacio_de_desocupacio" value={false}/> Ha esgotat prestació de desocupatacio</label>
+            <label><Control.checkbox model=".ha_esgotat_prestacio_de_desocupacio" value={false}/> Ha esgotat prestació de desocupació</label>
         </div>
         <div className="field">
-            <label><Control.checkbox model=".demandant_d_ocupacio_durant_12_mesos" value={false}/> Demandant d'ocupacio durant 12 mesos</label>
+            <label><Control.checkbox model=".demandant_d_ocupacio_durant_12_mesos" value={false}/> Demandant d'ocupació durant 12 mesos</label>
         </div>
         <div className="field">
             <label><Control.checkbox model=".durant_el_mes_anterior_ha_presentat_solicituds_recerca_de_feina" value={false}/> Durant el mes anterior ha presentat solicituds recerca de feina</label>
