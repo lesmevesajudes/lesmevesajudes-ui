@@ -5,6 +5,8 @@ import {serialize as serialize_adults} from "../adults/AdultsReducer";
 import {serialize  as serialize_children} from "../children/ChildrenReducer";
 import isDevelopment from '../shared/isDevelopment';
 
+const isEmpty = obj => Object.keys(obj).length === 0 && obj.constructor === Object;
+
 class PersonalBenefits extends React.Component {
 
     renderPersonalBenefitList(personsData, personsWithBenefits) {
@@ -26,7 +28,7 @@ class PersonalBenefits extends React.Component {
 
         return (
             <ul>
-                {personsWithBenefits.map((person) => renderPersonalBenefits(person, personsData))}
+                { Object.entries(personsWithBenefits).map(([id, person]) => renderPersonalBenefits({ ...person, id:id}, personsData)) }
             </ul>);
     }
 
@@ -41,7 +43,7 @@ class PersonalBenefits extends React.Component {
 
 
 class FamilyBenefits extends React.Component<void> {
-
+    // There are no family benefits (At least in codeas HG_077_mensual should be familia benefit)
     renderFamilyBenefitList(family) {
         let possibleBenefits = [];
         return (
@@ -67,8 +69,8 @@ class ResultsPage extends React.Component {
 
     componentDidMount() {
         let url = isDevelopment ?
-            'http://localhost:2000/api/1/calculate' :
-            'https://les-meves-ajudes-api.herokuapp.com/api/1/calculate';
+            'http://localhost:2000/calculate' :
+            'https://les-meves-ajudes-api.herokuapp.com/calculate';
         if (this.enoughDataForSimulation()) {
             this.props.fetchSimulation(this.props.simulationData, url);
         }
@@ -80,7 +82,7 @@ class ResultsPage extends React.Component {
             return (<div>Falten dades per a executar la simulació....</div>);
         }
 
-        if ( typeof this.props.resultsData.value === 'undefined' ) {
+        if ( isEmpty(this.props.resultsData) ) {
             return (<div>Loading....</div>);
         } else {
             return (
@@ -90,11 +92,11 @@ class ResultsPage extends React.Component {
                         <div>
                             <p>Ajudes per a persones:</p>
 
-                            <PersonalBenefits persons={this.props.persons} benefitsForPersons={this.props.resultsData.value[0].persones}/>
+                            <PersonalBenefits benefitsForPersons={this.props.resultsData.persones} persons={this.props.persons}/>
                         </div>
                         <div>
                             <p>Ajudes per a la familía:</p>
-                            <FamilyBenefits benefits={this.props.resultsData.value[0].families}/>
+                            <FamilyBenefits benefits={this.props.resultsData.families}/>
                         </div>
                     </div>
                 </div>
