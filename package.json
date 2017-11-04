@@ -10,6 +10,7 @@
     "react-redux": "^5.0.5",
     "react-redux-form": "^1.15.0",
     "react-router-dom": "^4.1.1",
+    "react-select": "^1.0.0-rc.10",
     "react-stepzilla": "^4.6.3",
     "redux": "^3.6.0",
     "redux-promise": "^0.5.3"

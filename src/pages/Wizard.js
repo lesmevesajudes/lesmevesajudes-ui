@@ -18,7 +18,7 @@ const steps =
         {name: 'Família', component: <HouseHoldForm />},
         {name: 'Dades Financeres', component: <FinancialDataPage />},
         {name: 'Lloguer', component: <YesNoSkipStep question="El domicili actual és en règim de lloguer?" nextStep="7"><RentForm /></YesNoSkipStep>},
-        {name: 'Propietats', component: <YesNoSkipStep question="Disposa d'algun inmoble en propietat?" nextStep="7"><PropertiesForm /></YesNoSkipStep>},
+        {name: 'Propietats', component: <YesNoSkipStep question="A part del domicili habitual, disposa d'algun inmoble en propietat?" nextStep="7"><PropertiesForm /></YesNoSkipStep>},
         {name: 'Resultats', component: <ResultsPage />}
 
     ];

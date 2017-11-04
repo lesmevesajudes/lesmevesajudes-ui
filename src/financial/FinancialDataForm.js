@@ -19,7 +19,9 @@ class FinancialDataForm extends Component<Props> {
             "AJUDA_AL_LLOGUER": "ajuda al lloguer",
             "RGC": "renda de ciutadania garantida",
             "FACTURACIO_NEGOCI_FAMILIAR": "facturació del negoci familiar",
-            "RENDIMENTS_PATRIMONI_FAMILIAR": "rendiments del patrimoni familiar"
+            "RENDIMENTS_PATRIMONI_FAMILIAR": "rendiments del patrimoni familiar",
+            "PRESTACIO_RESIDENCIAL": "prestació residencial",
+            "PRESTACIO_INCOMPATIBLE_AMB_EL_TREBALL": "mostra de prestació incompatible amb el treball"
         };
 
         return typeToDescriptionMapping[type];
@@ -46,16 +48,18 @@ class FinancialDataForm extends Component<Props> {
                         <div className="field">
                             <label>Receptor</label>
                             <Control.select
+                                required
                                 model=".receptorId">
-                                <option disabled selected>seleccioni una persona</option>
+                                <option defaultValue value="" >seleccioni una persona</option>
                                 {this.props.persons.map((person) => (
-                                    <option value={person.id}>{person.nom}</option>
+                                    <option key={person.id} value={person.id}>{person.nom}</option>
                                 ))}
                             </Control.select>
                         </div>
                         <div className="field">
                             <label>Quantia</label>
                             <Control.text
+                                required
                                 model=".amount"
                                 placeholder="100"/>
                         </div>

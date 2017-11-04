@@ -1,4 +1,5 @@
 // @flow
+import {Map} from 'immutable';
 export type FinancialDataId = string;
 
 export type FinancialData = {
@@ -6,4 +7,7 @@ export type FinancialData = {
     receptorId: string;
     amount: number;
     type: string;
+    extra: string;
 }
+
+export type FinancialDataState = Map<string, FinancialData>;

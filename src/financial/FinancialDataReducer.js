@@ -1,9 +1,7 @@
 // @flow
 import {Map} from 'immutable';
-import type {FinancialData, FinancialDataId} from './FinancialDataTypes'
+import type {FinancialData, FinancialDataId, FinancialDataState} from './FinancialDataTypes'
 import type {FinancialDataActions} from './FinancialDataActions'
-
-type FinancialDataState = Map<string, FinancialData>;
 
 function removeFinancialData(state: FinancialDataState, financialDataIdToBeRemoved: FinancialDataId): FinancialDataState {
     return state.delete(financialDataIdToBeRemoved);

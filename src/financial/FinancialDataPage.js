@@ -81,7 +81,6 @@ class FinancialDataPage extends Component<Props, State> {
     render() {
         const editing = this.state.editing;
         let component = undefined;
-        console.log("Editing: " + this.state.editing.toString());
         if (editing) {
             component=(
                 <div>
@@ -117,6 +116,8 @@ class FinancialDataPage extends Component<Props, State> {
                             <button onClick={()=>this.handleAddFinancialDataClick("AJUDA_MENJADOR")}>Ajuda menjador</button>
                             <button onClick={()=>this.handleAddFinancialDataClick("AJUDA_AL_LLOGUER")}>Ajuda al lloguer</button>
                             <button onClick={()=>this.handleAddFinancialDataClick("RGC")}>Renda Garantida de ciutadania</button>
+                            <button onClick={()=>this.handleAddFinancialDataClick("PRESTACIO_RESIDENCIAL")}>Prestació residencial</button>
+                            <button onClick={()=>this.handleAddFinancialDataClick("PRESTACIO_INCOMPATIBLE_AMB_EL_TREBALL")}>Prestació incompatible amb el treball</button>
                         </div>
                         <div>
                             <h2>Rendiments</h2>

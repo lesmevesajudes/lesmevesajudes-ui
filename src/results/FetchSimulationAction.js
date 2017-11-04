@@ -7,6 +7,7 @@ import type {ChildState, Child} from "../children/ChildrenTypes";
 import type {HouseholdData} from "../household/householdDataTypes";
 import type {Rent} from "../rent/rentTypes";
 import type {Properties} from "../properties/PropertiesTypes";
+import type {FinancialData, FinancialDataState} from "../financial/FinancialDataTypes";
 export const FETCH_SIMULATION='fetch_simulation';
 
 /*
@@ -48,14 +49,17 @@ export const FETCH_SIMULATION='fetch_simulation';
 type SimulationData = {
     adults: AdultState,
     children: ChildState,
+    financialData: FinancialDataState,
     rent: Rent,
     properties: Properties,
     householdData: HouseholdData
 }
 const addPeriod = value => ({'2017-01': value});
-
+//TODO implement me
+const esEmpadronatACatalunya = codi_postal => (true);
+const deepMerge = (obj1, obj2) => Object.assign({},...Object.keys(obj1).map(k => ({[k]: {...obj1[k], ...obj2[k]}})));
 function buildRequest(simulationData: SimulationData) {
-    const menors = simulationData.children.reduce((acc, child: Child) =>
+    const menorsPersonalData = simulationData.children.reduce((acc, child: Child) =>
     {
         acc[child.id] = {
             data_naixement: addPeriod(child.data_naixement),
@@ -78,7 +82,7 @@ function buildRequest(simulationData: SimulationData) {
         return acc;
     }, {});
 
-    const adults = simulationData.adults.reduce((acc, adult: Adult) =>
+    const adultsPersonalData = simulationData.adults.reduce((acc, adult: Adult) =>
     {  acc[adult.id] = {
             data_naixement: addPeriod(adult.data_naixement),
             ciutat_empadronament: addPeriod(adult.ciutat_empadronament),
@@ -90,24 +94,20 @@ function buildRequest(simulationData: SimulationData) {
             es_divorciada_de_familia_reagrupada: addPeriod(adult.es_divorciada_de_familia_reagrupada),
             ha_residit_a_catalunya_durant_24_mesos: addPeriod(adult.ha_residit_a_catalunya_durant_24_mesos),
             resident_a_catalunya_durant_5_anys: addPeriod(adult.resident_a_catalunya_durant_5_anys),
-            es_beneficiari_d_una_prestacio_residencial: addPeriod(adult.es_beneficiari_d_una_prestacio_residencial),
             en_els_ultims_12_mesos_ha_fet_baixa_voluntaria_de_la_feina: addPeriod(adult.en_els_ultims_12_mesos_ha_fet_baixa_voluntaria_de_la_feina),
-            es_empadronat_a_catalunya: addPeriod(adult.es_empadronat_a_catalunya),
+            es_empadronat_a_catalunya: addPeriod(esEmpadronatACatalunya(adult.ciutat_empadronament)),
             grau_discapacitat: addPeriod(adult.grau_discapacitat),
             ingressat_en_centre_penitenciari: addPeriod(adult.ingressat_en_centre_penitenciari),
-            desocupat: addPeriod(adult.desocupat),
+            desocupat: addPeriod(adult.situacio_laboral === 'desocupat'),
             es_orfe_dels_dos_progenitors: addPeriod(adult.es_orfe_dels_dos_progenitors),
             ha_treballat_a_l_estranger_6_mesos: addPeriod(adult.ha_treballat_a_l_estranger_6_mesos),
-            no_se_li_ha_concedit_tres_ajudes_rai_anteriors: addPeriod(adult.no_se_li_ha_concedit_tres_ajudes_rai_anteriors),
-            no_se_li_ha_concedit_cap_ajuda_rai_en_els_ultims_12_mesos: addPeriod(adult.no_se_li_ha_concedit_cap_ajuda_rai_en_els_ultims_12_mesos),
-            treballa_per_compte_propi: addPeriod(adult.treballa_per_compte_propi),
-            percep_prestacions_incompatibles_amb_la_feina: addPeriod(adult.percep_prestacions_incompatibles_amb_la_feina),
+            no_se_li_ha_concedit_tres_ajudes_rai_anteriors: addPeriod(true),
+            no_se_li_ha_concedit_cap_ajuda_rai_en_els_ultims_12_mesos: addPeriod(true),
+            treballa_per_compte_propi: addPeriod(adult.situacio_laboral === 'treball_compte_propi'),
             ha_esgotat_prestacio_de_desocupacio: addPeriod(adult.ha_esgotat_prestacio_de_desocupacio),
             demandant_d_ocupacio_durant_12_mesos: addPeriod(adult.demandant_d_ocupacio_durant_12_mesos),
             durant_el_mes_anterior_ha_presentat_solicituds_recerca_de_feina: addPeriod(adult.durant_el_mes_anterior_ha_presentat_solicituds_recerca_de_feina),
-            beneficiari_ajuts_per_violencia_de_genere: addPeriod(adult.beneficiari_ajuts_per_violencia_de_genere),
             al_corrent_de_les_obligacions_tributaries: addPeriod(adult.al_corrent_de_les_obligacions_tributaries),
-            ingressos_disponibles: addPeriod(200),
             AE_230_mensual: addPeriod(null),
             EG_233_mensual: addPeriod(null),
             GE_051_01_mensual: addPeriod(null),
@@ -118,6 +118,69 @@ function buildRequest(simulationData: SimulationData) {
         };
         return acc
     }, {});
+
+    const financialDataReduced = simulationData.financialData.reduce((acc, financialData: FinancialData) =>
+        {
+            let result = acc[financialData.receptorId]? acc[financialData.receptorId]:{};
+
+            switch(financialData.type) {
+
+                case "SALARI":
+                    // FIXME Renombrar a salari
+                    result = {...result, ingressos_disponibles: addPeriod(financialData.amount)};
+                    break;
+                case "PENSIO_RAI":
+                    // FIXME: Passar a codis del domini?
+                    result = {...result, pensio_rai: addPeriod(financialData.amount)};
+                    break;
+                case "PENSIO_VIUDETAT":
+                    // FIXME: Passar a codis del domini?
+                    result = {...result, pensio_viudetat: addPeriod(financialData.amount)};
+                    break;
+                case "PENSIO_ALIMENTICIA":
+                    // FIXME: Passar a codis del domini?
+                    result = {...result, pensio_alimenticia: addPeriod(financialData.amount)};
+                    break;
+                case "AJUDA_MENJADOR":
+                    // FIXME: Passar a codis del domini?
+                    result = {...result, ajuda_menjador: addPeriod(financialData.amount)};
+                    break;
+                case "AJUDA_AL_LLOGUER":
+                    // FIXME: Passar a codis del domini?
+                    result = {...result, ajuda_al_lloguer: addPeriod(financialData.amount)};
+                    break;
+                case "RGC":
+                    // FIXME: Passar a codis del domini?
+                    result = {...result, rgc: addPeriod(financialData.amount)};
+                    break;
+                case "FACTURACIO_NEGOCI_FAMILIAR":
+                    // FIXME Hauria de ser de la família?
+                    result = {...result, volum_del_negoci_familiar: addPeriod(financialData.amount)};
+                    break;
+                case "RENDIMENTS_PATRIMONI_FAMILIAR":
+                    // FIXME Hauria de ser de la família?
+                    result = {...result, rendiments_del_patrimoni: addPeriod(financialData.amount)};
+                    break;
+                case "PRESTACIO_RESIDENCIAL":
+                    // FIXME es pot passar a import?? O es un servei?
+                    result = {...result, es_beneficiari_d_una_prestacio_residencial: addPeriod(true)};
+                    break;
+                case "PRESTACIO_INCOMPATIBLE_AMB_EL_TREBALL":
+                    result = {...result, percep_prestacions_incompatibles_amb_la_feina: addPeriod(true)};
+                    break;
+                case "AJUT_VIOLENCIA_DE_GENERE":
+                    result = {...result, beneficiari_ajuts_per_violencia_de_genere: addPeriod(true)};
+                    break;
+
+                default:
+                    throw new Error("Unknown benefit");
+            }
+            acc[financialData.receptorId] = result;
+            return acc;
+        }, {}) || {};
+
+    const adults = deepMerge(adultsPersonalData,financialDataReduced);
+    const menors = deepMerge(menorsPersonalData,financialDataReduced);
 
     return {
             families:{
