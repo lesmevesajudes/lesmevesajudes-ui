@@ -11,13 +11,13 @@ type Props = {
 class ChildrenViewer extends React.Component<Props> {
     renderChildrenList(children: Array<Child>) {
         return (
-            <ul>
+            <ul className="ItemList">
                 {children.map((child) => (
-                    <li key={child.id}>
-                       <span onClick={() => this.props.onUpdateClick(child.id)}>
-                            {child.id} - {child.nom} - {child.data_naixement}
+                    <li className="Item" key={child.id}>
+                       <span style={{float: 'left'}} onClick={() => this.props.onUpdateClick(child.id)}>
+                            {child.nom} - {child.data_naixement}
                         </span>
-                        <button key={child.id} onClick={e => this.props.onRemoveClick(child.id)}>
+                        <button style={{float: 'right'}} key={child.id} onClick={e => this.props.onRemoveClick(child.id)}>
                             Remove
                         </button>
                     </li>
@@ -27,7 +27,7 @@ class ChildrenViewer extends React.Component<Props> {
 
     render() {
         return (
-            <div>
+            <div className="FormContainer">
                 {this.renderChildrenList(this.props.children)}
             </div>
         );

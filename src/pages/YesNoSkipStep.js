@@ -29,7 +29,8 @@ class YesNoSkipStep extends React.Component {
         if (answeredYes) {
             element = this.props.children;
         } else {
-            element = <div>
+            const divStyle={'marginTop': '32px', 'marginBottom': '32px'};
+            element = <div style={divStyle}>
                 <p> {this.props.question} </p>
                 <button onClick={this.handleYesClick}>Si</button>
                 <button onClick={this.handleNoClick}>No</button>

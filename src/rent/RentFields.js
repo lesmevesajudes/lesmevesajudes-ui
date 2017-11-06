@@ -18,6 +18,7 @@ const RentFields = (props) => (
         <div className="field">
             <label>Import de lloguer:</label>
             <Control.text
+                className="RegularTextInput"
                 model=".import_del_lloguer"
                 placeholder='0'/>
         </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Control, Field} from 'react-redux-form';
+import {Control} from 'react-redux-form';
 
 const ChildrenFields = (props) => (
     <div>
@@ -12,31 +12,35 @@ const ChildrenFields = (props) => (
         <div className="field">
             <label>Nom</label>
             <Control.text
+                required
+                className="RegularTextInput"
                 model='.nom'
-                placeholder='First Name'
+                placeholder='Nom'
           />
         </div>
         <div className="field">
             <label>Data naixement</label>
             <Control.text
+                required
+                className="RegularTextInput"
+                type="date"
                 model='.data_naixement'
                 placeholder="2005-01-21"
             />
         </div>
         <div className="field">
-            <label>Ciutat empadronament</label>
-            <Field model='.ciutat_empadronament' dynamic={false}>
-                <select>
-                    <option default value="select one" >Select one ....</option>
-                    <option value="Barcelona">Barcelona</option>
-                    <option value="L'Hospitalet">L'Hospitalet</option>
-                    <option value="Cornellà">Cornellà</option>
-                </select>
-            </Field>
+            <label>Codi postal empadronament</label>
+            <Control.text
+                required
+                className="RegularTextInput"
+                model='.codi_postal_empadronament'
+                placeholder='08000'
+            />
         </div>
         <div className="field">
             <label>Grau de discapacitat</label>
             <Control.text
+                className="RegularTextInput"
                 model='.grau_discapacitat'
                 placeholder="0"
             />

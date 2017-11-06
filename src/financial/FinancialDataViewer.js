@@ -25,26 +25,21 @@ class FinancialDataViewer extends Component<Props, *> {
         return typeToDescriptionMapping[type];
     }
 
-    renderFinancialDataList(financialData: Array<FinancialData>) {
-        return (
-            <ul>
-                {financialData.map((financialData) => (
-                    <li key={financialData.id}>
-                        <span onClick={() => this.props.onUpdateClick(financialData.id)}>
-                            {financialData.id} - {financialData.receptorId} - {this.typeToDescription(financialData.type)} - {financialData.amount}
-                        </span>
-                        <button key={financialData.id} onClick={e => this.props.onRemoveClick(financialData.id)}>
-                            Remove
-                        </button>
-                    </li>
-                ))}
-            </ul>);
-    }
-
     render() {
         return (
-            <div>
-                {this.renderFinancialDataList(this.props.financialData)}
+            <div className="FormContainer">
+                <ul className="ItemList">
+                    {this.props.financialData.map((financialData) => (
+                        <li className="Item" key={financialData.id}>
+                            <span onClick={() => this.props.onUpdateClick(financialData.id)}>
+                                {financialData.receptorId.substr(0,10)} - {this.typeToDescription(financialData.type)} - {financialData.amount} €
+                            </span>
+                            <button key={financialData.id} onClick={e => this.props.onRemoveClick(financialData.id)}>
+                                Remove
+                            </button>
+                        </li>
+                    ))}
+                </ul>
             </div>
         );
     }

@@ -9,7 +9,7 @@ export class Adult  {
     sexe: string;
     situacio_laboral: string;
     data_naixement: string;
-    ciutat_empadronament: string;
+    codi_postal_empadronament: string;
     social_services_user: boolean = false;
     victima_violencia_de_genere: boolean = false;
     victima_de_terrorisme: boolean = false;

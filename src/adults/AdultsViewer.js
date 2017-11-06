@@ -5,19 +5,20 @@ import type {Adult} from './AdultsTypes';
 type Props = {
     adults: Array<Adult>,
     onRemoveClick: Function,
-    onUpdateClick: Function
+    onUpdateClick: Function,
+    onAddAdultClick: Function
 };
 
 class AdultsViewer extends Component<Props, void> {
     renderAdultsList(adults: Array<Adult>) {
         return (
-            <ul>
+            <ul className="ItemList">
                 {adults.map((adult) => (
-                    <li key={adult.id}>
-                        <span onClick={() => this.props.onUpdateClick(adult.id)}>
-                            {adult.id} - {adult.nom} - {adult.data_naixement}
+                    <li className="Item" key={adult.id}>
+                        <span style={{float: 'left'}} onClick={() => this.props.onUpdateClick(adult.id)}>
+                            {adult.nom} - {adult.data_naixement}
                         </span>
-                        <button key={adult.id} onClick={e => this.props.onRemoveClick(adult.id)}>
+                        <button style={{float: 'right'}} key={adult.id} onClick={e => this.props.onRemoveClick(adult.id)}>
                             Eliminar
                         </button>
                     </li>
@@ -28,7 +29,11 @@ class AdultsViewer extends Component<Props, void> {
     render() {
         return (
             <div>
-                {this.renderAdultsList(this.props.adults)}
+                <h1>Adults de la unitat de convivència</h1>
+                <div className="FormContainer">
+                    {this.renderAdultsList(this.props.adults)}
+                </div>
+                <button onClick={this.props.onAddAdultClick}>Afegir un adult</button>
             </div>
         );
     }

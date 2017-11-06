@@ -15,14 +15,15 @@ class ChildrenForm extends React.Component<Props> {
         return (
             <div>
                 <h1>Afegir un nou menor</h1>
-                <LocalForm
-                    onSubmit={this.props.onSubmit}
-                    initialState={this.props.initialState}
-                >
-                    <ChildrenFields />
-                    <button type="submit">Validar</button>
-                    <button onClick={this.props.onCancel}>Cancelar</button>
-                </LocalForm>
+                <div className="FormContainer">
+                    <LocalForm
+                        onSubmit={this.props.onSubmit}
+                        initialState={this.props.initialState}>
+                        <ChildrenFields />
+                        <button type="submit">Validar</button>
+                        <button onClick={this.props.onCancel}>Cancelar</button>
+                    </LocalForm>
+                </div>
             </div>
         );
     }

@@ -3,8 +3,6 @@ import React, { Component } from 'react';
 import { LocalForm } from 'react-redux-form';
 import {addHouseholdData} from './HouseholdDataActions';
 import {connect} from 'react-redux';
-
-import "./HouseholdForm.css";
 import HouseholdFields from "./HouseholdFields";
 import type {HouseholdData} from "./HouseholdDataTypes";
 
@@ -26,12 +24,14 @@ class HouseholdForm extends Component<Props, void> {
         return (
             <div>
                 <h1>Informació sobre el tipus de família</h1>
-                <LocalForm model="householdData"
-                           onChange={(e) => this.handleSubmit(e)}
-                           initialState={this.props.initialFormFields}
-                >
-                    <HouseholdFields/>
-                </LocalForm>
+                <div className="FormContainer">
+                    <LocalForm model="householdData"
+                               onChange={(e) => this.handleSubmit(e)}
+                               initialState={this.props.initialFormFields}
+                    >
+                        <HouseholdFields/>
+                    </LocalForm>
+                </div>
             </div>
         );
     }

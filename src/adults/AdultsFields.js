@@ -6,23 +6,24 @@ const AdultsFields = (props) => (
         <div className="field">
             <Control.text
                 model=".id"
-                type="hidden"
-            />
+                type="hidden"/>
         </div>
         <div className="field">
             <label>Nom</label>
             <Control.text
+                className="RegularTextInput"
                 model='.nom'
                 placeholder='Nom'
-                required
-          />
+                required/>
         </div>
         <div className="field">
             <label>Data naixement</label>
             <Control.text
+                className="RegularTextInput"
                 model='.data_naixement'
                 placeholder="2005-01-21"
                 type="date"
+                required
             />
         </div>
         <div className="field">
@@ -31,11 +32,13 @@ const AdultsFields = (props) => (
                 model='.sexe'
                 dynamic={false}
             >
-                <select>
-                    <option default value="">Seleccioni'n un</option>
-                    <option value="Dona">Dona</option>
-                    <option value="Home">Home</option>
-                </select>
+                <div className="custom-select">
+                    <select required>
+                        <option default value="">Seleccioni'n un</option>
+                        <option value="Dona">Dona</option>
+                        <option value="Home">Home</option>
+                    </select>
+                </div>
             </Field>
         </div>
         <div className="field">
@@ -44,12 +47,14 @@ const AdultsFields = (props) => (
                 model='.nacionalitat'
                 dynamic={false}
             >
-                <select>
-                    <option default value="">Seleccioni'n un</option>
-                    <option value="Espanyola">Espanyola</option>
-                    <option value="UE">UE</option>
-                    <option value="UE">Altres</option>
-                </select>
+                <div className="custom-select">
+                    <select required>
+                        <option default value="">Seleccioni'n un</option>
+                        <option value="Espanyola">Espanyola</option>
+                        <option value="UE">UE</option>
+                        <option value="UE">Altres</option>
+                    </select>
+                </div>
             </Field>
         </div>
         <div className="field">
@@ -58,34 +63,35 @@ const AdultsFields = (props) => (
                 model='.situacio_laboral'
                 dynamic={false}
             >
-                <select>
-                    <option default value="">Seleccioni'n un</option>
-                    <option value="treball_compte_alie">Treballa per compte alié</option>
-                    <option value="treball_compte_propi">Treballa per compte propi</option>
-                    <option value="desocupat">Desocupat</option>
-                    <option value="estudiant">Estudiant</option>
-                </select>
+                <div className="custom-select">
+                    <select required>
+                        <option default value="">Seleccioni'n un</option>
+                        <option value="treball_compte_alie">Treballa per compte alié</option>
+                        <option value="treball_compte_propi">Treballa per compte propi</option>
+                        <option value="desocupat">Desocupat</option>
+                        <option value="estudiant">Estudiant</option>
+                    </select>
+                </div>
             </Field>
         </div>
 
         <div className="field">
             <label>Grau discapacitat</label>
             <Control.text
+                className="RegularTextInput"
                 model='.grau_discapacitat'
                 placeholder="0"
                 type="number"
             />
         </div>
         <div className="field">
-            <label>Ciutat empadronament</label>
-            <Field model='.ciutat_empadronament' dynamic={false}>
-                <select>
-                    <option default value="select one">Select one ....</option>
-                    <option value="Barcelona">Barcelona</option>
-                    <option value="L'Hospitalet">L'Hospitalet</option>
-                    <option value="Cornellà">Cornellà</option>
-                </select>
-            </Field>
+            <label>Codi postal empadronament</label>
+            <Control.text
+                required
+                className="RegularTextInput centered"
+                model='.codi_postal_empadronament'
+                placeholder='08000'
+            />
         </div>
         <div className="field">
             <label><Control.checkbox model=".social_services_user" value={false}/> Usuari de serveis socials</label>

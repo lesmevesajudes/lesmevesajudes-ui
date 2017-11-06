@@ -16,6 +16,10 @@ ol.progtrckr li {
     line-height: 3em;
     list-style-type: none;
 }
+ol.progtrckr li.progtrckr-doing {
+    color: black;
+    border-bottom: 4px solid yellowgreen;
+}
 
 ol.progtrckr li.progtrckr-done {
     color: black;
@@ -36,8 +40,19 @@ ol.progtrckr li:before {
     left: 50%;
     line-height: 1em;
 }
+ol.progtrckr li.progtrckr-doing:before {
+    content: "";
+    color: white;
+    background-color: yellowgreen;
+    height: 1.2em;
+    width: 1.2em;
+    line-height: 1.2em;
+    border: none;
+    border-radius: 1.2em;
+}
+
 ol.progtrckr li.progtrckr-done:before {
-    content: "\2713";
+    content: "";
     color: white;
     background-color: yellowgreen;
     height: 1.2em;
@@ -47,9 +62,23 @@ ol.progtrckr li.progtrckr-done:before {
     border-radius: 1.2em;
 }
 ol.progtrckr li.progtrckr-todo:before {
-    content: "\039F";
+    content: "";
     color: silver;
-    background-color: white;
-    font-size: 1.5em;
-    bottom: -1.6em;
+    background-color: silver;
+    height: 1.2em;
+    width: 1.2em;
+    line-height: 1.2em;
+    border: none;
+    border-radius: 1.2em;
+}
+div.footer-buttons {
+    padding-left: 10em;
+    padding-right: 10em;
+}
+.pull-right {
+    float: right;
+}
+
+.pull-left {
+    float: left;
 }

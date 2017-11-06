@@ -27,15 +27,16 @@ class AdultsForm extends Component<Props, {}> {
         return (
             <div>
                 <h1>Afegir un nou adult a la unitat de convivència</h1>
-                <LocalForm
-                    onSubmit={this.props.onSubmit}
-                    onChange={this.onChange}
-                    initialState={this.props.initialState}
-                >
-                    <AdultsFields state={this.state}/>
-                    <button type="submit">Validar</button>
-                    <button onClick={this.props.onCancel}>Cancelar</button>
-                </LocalForm>
+                <div className="FormContainer">
+                    <LocalForm
+                        onSubmit={this.props.onSubmit}
+                        onChange={this.onChange}
+                        initialState={this.props.initialState}>
+                        <AdultsFields state={this.state}/>
+                        <button type="submit">Validar</button>
+                        <button onClick={this.props.onCancel}>Cancelar</button>
+                    </LocalForm>
+                </div>
             </div>
         );
     }

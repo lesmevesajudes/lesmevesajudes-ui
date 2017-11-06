@@ -8,27 +8,46 @@ import isDevelopment from '../shared/isDevelopment';
 const isEmpty = obj => Object.keys(obj).length === 0 && obj.constructor === Object;
 
 class PersonalBenefits extends React.Component {
+    constructor() {
+        super();
+        this.possibleBenefits = ["AE_230_mensual", "EG_233_mensual", "GE_051_01_mensual", "GE_051_02_mensual", "GE_051_03_mensual", "GG_270_mensual", "HG_077_mensual"];
+        this.period = "2017-01";
+
+    }
+
+
+    hasAnyBenefit(personWithBenefits) {
+        return this.possibleBenefits.reduce((acc, benefit) => {return acc + personWithBenefits[benefit][this.period]}, 0) > 0
+    }
+
+    renderAPersonalBenefit(benefit, personWithBenefits) {
+        if (personWithBenefits[benefit][this.period] > 0) {
+            return (<li className="Item" key={benefit}> {benefit} - {personWithBenefits[benefit][this.period]} €</li>);
+        }
+    };
+
+    renderPersonalBenefits(person, personsData) {
+        if (this.hasAnyBenefit(person)) {
+            return (
+                <li className="ItemGreen" key={person.id}>
+                    <span>{personsData[person.id].nom}</span>
+                    <ul className="ItemList">
+                        {this.possibleBenefits.map((benefit) => this.renderAPersonalBenefit(benefit, person))}
+                    </ul>
+                </li>);
+        } else {
+            return (
+                <li className="ItemGreen" key={person.id}>
+                    <span>{personsData[person.id].nom} no té cap ajuda</span>
+                </li>);
+        }
+    }
 
     renderPersonalBenefitList(personsData, personsWithBenefits) {
-        let possibleBenefits = ["AE_230_mensual", "EG_233_mensual", "GE_051_01_mensual", "GE_051_02_mensual", "GE_051_03_mensual", "GG_270_mensual", "HG_077_mensual"];
-
-        let renderAPersonalBenefit= function(benefit, personWithBenefits) {
-            return (<li key={benefit}> {benefit} - {personWithBenefits[benefit]["2017-01"]}</li>);
-        };
-
-        let renderPersonalBenefits = function(person, personsData) {
-            return (
-                    <li key={person.id}>
-                        <p>{person.id} - {personsData[person.id].nom}</p>
-                        <ul>
-                            {possibleBenefits.map((benefit)  => renderAPersonalBenefit(benefit, person))}
-                        </ul>
-                    </li>);
-        };
 
         return (
-            <ul>
-                { Object.entries(personsWithBenefits).map(([id, person]) => renderPersonalBenefits({ ...person, id:id}, personsData)) }
+            <ul className="ItemList">
+                { Object.entries(personsWithBenefits).map(([id, person]) => this.renderPersonalBenefits({ ...person, id:id}, personsData)) }
             </ul>);
     }
 
@@ -47,7 +66,7 @@ class FamilyBenefits extends React.Component<void> {
     renderFamilyBenefitList(family) {
         let possibleBenefits = [];
         return (
-            <ul>
+            <ul className="ItemList">
                 {possibleBenefits.map((benefit, family)  => (<li> {benefit} - {family[benefit]}</li>))}
             </ul>);
     }
@@ -78,24 +97,25 @@ class ResultsPage extends React.Component {
     }
 
     render() {
+        const divStyle={'marginTop': '32px', 'marginBottom': '32px'};
         if ( ! this.enoughDataForSimulation()  ) {
-            return (<div>Falten dades per a executar la simulació....</div>);
+            return (<div style={divStyle}>Falten dades per a executar la simulació...</div>);
         }
 
         if ( isEmpty(this.props.resultsData) ) {
-            return (<div>Loading....</div>);
+            return (<div style={divStyle}>Loading....</div>);
         } else {
             return (
                 <div>
                     <h1>Results!</h1>
                     <div>
-                        <div>
-                            <p>Ajudes per a persones:</p>
+                        <div className="FormContainer">
+                            <span>Ajudes per a persones:</span>
 
                             <PersonalBenefits benefitsForPersons={this.props.resultsData.persones} persons={this.props.persons}/>
                         </div>
                         <div>
-                            <p>Ajudes per a la familía:</p>
+                            <span>Ajudes per a la familía:</span>
                             <FamilyBenefits benefits={this.props.resultsData.families}/>
                         </div>
                     </div>

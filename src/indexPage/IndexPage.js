@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom'
 class IndexPage extends React.Component {
     render() {
         return (
-            <div>
-                <Link to="/wizard/">
-                    Troba a quines ajudes et pots acollir!
-                </Link>
+            <div style={{paddingTop: '32px'}}>
+                <button>
+                    <Link to="/wizard/">
+                        Troba a quines ajudes pots optar!
+                    </Link>
+                </button>
             </div>
         );
     }

@@ -32,41 +32,46 @@ class FinancialDataForm extends Component<Props> {
         return (
             <div>
                 <h1>Afegir {this.typeToDescription(this.props.initialState.type)}</h1>
-                <LocalForm model="financialData"
-                           onSubmit={this.props.onSubmit}
-                           initialState={this.props.initialState}
-                >
-                    <div>
-                        <Control.text
-                            model=".id"
-                            type="hidden"
-                        />
-                        <Control.text
-                            model=".tipus"
-                            type="hidden"
-                            placeholder='Tipus'/>
-                        <div className="field">
-                            <label>Receptor</label>
-                            <Control.select
-                                required
-                                model=".receptorId">
-                                <option defaultValue value="" >seleccioni una persona</option>
-                                {this.props.persons.map((person) => (
-                                    <option key={person.id} value={person.id}>{person.nom}</option>
-                                ))}
-                            </Control.select>
-                        </div>
-                        <div className="field">
-                            <label>Quantia</label>
+                <div className="FormContainer">
+                    <LocalForm model="financialData"
+                               onSubmit={this.props.onSubmit}
+                               initialState={this.props.initialState}
+                    >
+                        <div>
                             <Control.text
-                                required
-                                model=".amount"
-                                placeholder="100"/>
+                                model=".id"
+                                type="hidden"
+                            />
+                            <Control.text
+                                model=".tipus"
+                                type="hidden"
+                                placeholder='Tipus'/>
+                            <div className="field">
+                                <label>Receptor</label>
+                                <div className="custom-select">
+                                    <Control.select
+                                        required
+                                        model=".receptorId">
+                                        <option defaultValue value="" >seleccioni una persona</option>
+                                        {this.props.persons.map((person) => (
+                                            <option key={person.id} value={person.id}>{person.nom}</option>
+                                        ))}
+                                    </Control.select>
+                                </div>
+                            </div>
+                            <div className="field">
+                                <label>Quantia</label>
+                                <Control.text
+                                    required
+                                    className="RegularTextInput"
+                                    model=".amount"
+                                    placeholder="100"/>
+                            </div>
                         </div>
-                    </div>
-                    <button type="submit">Validar</button>
-                    <button onClick={this.props.onCancel}>Cancelar</button>
-                </LocalForm>
+                        <button type="submit">Validar</button>
+                        <button onClick={this.props.onCancel}>Cancelar</button>
+                    </LocalForm>
+                </div>
             </div>
         );
     }

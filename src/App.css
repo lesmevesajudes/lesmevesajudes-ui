@@ -9,8 +9,7 @@
 
 .App-header {
   background-color: #222;
-  height: 150px;
-  padding: 20px;
+  height: 110px;
   color: white;
 }
 
@@ -21,4 +20,152 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.FormContainer {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 400px;
+}
+
+h1 {
+    box-sizing: border-box;
+    display: block;
+    font-family: sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    height: 37px;
+    position: relative;
+    text-align: center;
+    -webkit-margin-after: 21.44px;
+    -webkit-margin-before: 21.44px;
+    -webkit-margin-end: 0px;
+    -webkit-margin-start: 0px;
+}
+.field {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+label {
+    display: block;
+    font-size: 0.8rem;
+    line-height: 1.4rem;
+    font-weight: 600;
+    color: #9a9a9a;
+}
+
+.Select {
+    width: 20rem;
+    display: inline-block;
+}
+
+.RegularTextInput {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 1px solid #CDCDCD;
+    font-size: 1rem;
+    padding: 0.5rem;
+    min-width: 20rem;
+}
+.RegularTextInput:focus {
+    outline: 2px solid #1695A3;
+}
+
+centered {
+    text-align: center;
+}
+.ItemList {
+    column-count: 1;
+    column-gap: 0;
+    width: 400px;
+    margin: 0;
+    padding: 0;
+}
+.Item {
+    display: inline-block;
+    width: 400px;
+    background:
+            linear-gradient(
+                    rgba(255,0,0,0.4),
+                    rgba(255,0,0,0.4)
+            ),
+            url(http://placekitten.com/g/100/100);
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    line-height: 65px;
+    font-weight: bold;
+    border: 1px solid white;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.ItemGreen {
+    display: inline-block;
+    background:
+            linear-gradient(
+                    rgba(0,128,0,0.4),
+                    rgba(0,128,0,0.4)
+            ),
+            url(http://placekitten.com/g/100/100);
+    color: black;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    border: 10px solid white;
+    padding: 10px;
+    min-width: 440px;
+}
+
+input[type="radio"], input[type="checkbox"] {
+    margin-right: 0.5rem;
+}
+
+button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 1rem 2rem;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    background: #1695A3;
+    color: white;
+    border: none;
+    margin: 0.5rem 0.5rem;
+    border-radius: 0;
+}
+button:hover {
+    opacity: 0.8;
+}
+button + button {
+    margin-left: 1rem;
+}
+button.secondary {
+    color: #1695A3;
+    background: transparent;
+    border: 1px solid #1695A3;
+}
+
+*, *:before, *:after {
+    box-sizing: border-box;
+    position: relative;
+}
+
+body {
+    font-family: Lato, Helvetica, sans-serif;
+    padding: 1rem;
+}
+
+body, html {
+    font-size: 16px;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+.content {
+    max-width: 1024px;
+    margin: 0 auto;
 }

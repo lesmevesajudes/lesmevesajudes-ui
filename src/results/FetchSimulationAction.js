@@ -8,6 +8,7 @@ import type {HouseholdData} from "../household/householdDataTypes";
 import type {Rent} from "../rent/rentTypes";
 import type {Properties} from "../properties/PropertiesTypes";
 import type {FinancialData, FinancialDataState} from "../financial/FinancialDataTypes";
+import {esBarcelona, esCatalunya} from '../shared/CodisPostals';
 export const FETCH_SIMULATION='fetch_simulation';
 
 /*
@@ -55,16 +56,15 @@ type SimulationData = {
     householdData: HouseholdData
 }
 const addPeriod = value => ({'2017-01': value});
-//TODO implement me
-const esEmpadronatACatalunya = codi_postal => (true);
 const deepMerge = (obj1, obj2) => Object.assign({},...Object.keys(obj1).map(k => ({[k]: {...obj1[k], ...obj2[k]}})));
+
 function buildRequest(simulationData: SimulationData) {
     const menorsPersonalData = simulationData.children.reduce((acc, child: Child) =>
     {
         acc[child.id] = {
             data_naixement: addPeriod(child.data_naixement),
             es_usuari_serveis_socials: addPeriod(child.social_services_user),
-            ciutat_empadronament: addPeriod(child.ciutat_empadronament),
+            ciutat_empadronament: addPeriod(esBarcelona(child.codi_postal_empadronament) ? "Barcelona" : "Altre"),
             grau_discapacitat: addPeriod(child.grau_discapacitat),
             es_escolaritzat: addPeriod(child.es_escolaritzat),
             utilitza_el_servei_de_menjador: addPeriod(child.utilitza_el_servei_de_menjador),
@@ -85,7 +85,7 @@ function buildRequest(simulationData: SimulationData) {
     const adultsPersonalData = simulationData.adults.reduce((acc, adult: Adult) =>
     {  acc[adult.id] = {
             data_naixement: addPeriod(adult.data_naixement),
-            ciutat_empadronament: addPeriod(adult.ciutat_empadronament),
+            ciutat_empadronament: addPeriod(esBarcelona(adult.codi_postal_empadronament) ? "Barcelona" : "Altre"),
             es_usuari_serveis_socials: addPeriod(adult.social_services_user),
             victima_violencia_de_genere: addPeriod(adult.victima_violencia_de_genere),
             victima_de_terrorisme: addPeriod(adult.victima_de_terrorisme),
@@ -95,7 +95,7 @@ function buildRequest(simulationData: SimulationData) {
             ha_residit_a_catalunya_durant_24_mesos: addPeriod(adult.ha_residit_a_catalunya_durant_24_mesos),
             resident_a_catalunya_durant_5_anys: addPeriod(adult.resident_a_catalunya_durant_5_anys),
             en_els_ultims_12_mesos_ha_fet_baixa_voluntaria_de_la_feina: addPeriod(adult.en_els_ultims_12_mesos_ha_fet_baixa_voluntaria_de_la_feina),
-            es_empadronat_a_catalunya: addPeriod(esEmpadronatACatalunya(adult.ciutat_empadronament)),
+            es_empadronat_a_catalunya: addPeriod(esCatalunya(adult.codi_postal_empadronament)),
             grau_discapacitat: addPeriod(adult.grau_discapacitat),
             ingressat_en_centre_penitenciari: addPeriod(adult.ingressat_en_centre_penitenciari),
             desocupat: addPeriod(adult.situacio_laboral === 'desocupat'),

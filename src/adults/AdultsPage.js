@@ -17,7 +17,8 @@ type Props = {
     adults: Array<Adult>,
     removeAdult: Function,
     addAdult: Function,
-    updateAdult: Function
+    updateAdult: Function,
+    jumpToStep: Function
 }
 
 class AdultsPage extends React.Component<Props, State>{
@@ -40,9 +41,11 @@ class AdultsPage extends React.Component<Props, State>{
         this.handleUpdateAdultClick = this.handleUpdateAdultClick.bind(this);
         this.handleSubmitForm = this.handleSubmitForm.bind(this);
     }
+
     handleAddAdultClick() {
         this.setState({editingAdult: true});
     }
+
     handleUpdateAdultClick(adultId: AdultId) {
         this.setState(
             {
@@ -51,14 +54,17 @@ class AdultsPage extends React.Component<Props, State>{
             }
         );
     }
+
     handleRemoveAdultClick(adultId: AdultId) {
         this.props.removeAdult(adultId);
     }
+
     doneEditingAdult() {
         this.setState({
             initialFormFields: undefined,
             editingAdult: false});
     }
+
     handleSubmitForm(formValues: Adult) {
         this.doneEditingAdult();
 
@@ -75,25 +81,21 @@ class AdultsPage extends React.Component<Props, State>{
 
         if (addingAdult) {
             component=(
-                <div>
-                    <AdultsForm
-                        initialState={this.state.initialFormFields}
-                        onSubmit={this.handleSubmitForm}
-                        onCancel={this.doneEditingAdult}
-                        onFinishAdding={() => this.doneEditingAdult()}
-                    />
-                </div>
+                <AdultsForm
+                    initialState={this.state.initialFormFields}
+                    onSubmit={this.handleSubmitForm}
+                    onCancel={this.doneEditingAdult}
+                    onFinishAdding={() => this.doneEditingAdult()}
+                />
             );
         } else {
             component=(
-                <div>
-                    <h1>Adults de la unitat de convivència</h1>
-                    <AdultsViewer
-                        adults={this.props.adults}
-                        onRemoveClick={this.handleRemoveAdultClick}
-                        onUpdateClick={this.handleUpdateAdultClick}/>
-                    <button onClick={this.handleAddAdultClick}>Afegir un adult</button>
-                </div>
+                <AdultsViewer
+                    adults={this.props.adults}
+                    onRemoveClick={this.handleRemoveAdultClick}
+                    onUpdateClick={this.handleUpdateAdultClick}
+                    onAddAdultClick={this.handleAddAdultClick}
+                />
             );
         }
         return component;
