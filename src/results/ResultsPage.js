@@ -89,7 +89,7 @@ class ResultsPage extends React.Component {
     componentDidMount() {
         let url = isDevelopment ?
             'http://localhost:2000/calculate' :
-            'https://lesmevesajudes-api.herokuapp.com//calculate';
+            'https://lesmevesajudes-api.herokuapp.com/calculate';
         if (this.enoughDataForSimulation()) {
             this.props.fetchSimulation(this.props.simulationData, url);
         }
