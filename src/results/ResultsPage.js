@@ -38,7 +38,7 @@ class PersonalBenefits extends React.Component {
         } else {
             return (
                 <li className="ItemGreen" key={person.id}>
-                    <span>{personsData[person.id].nom} no té cap ajuda</span>
+                    <span>{personsData[person.id].nom} no opta a cap ajuda</span>
                 </li>);
         }
     }
@@ -107,15 +107,12 @@ class ResultsPage extends React.Component {
         } else {
             return (
                 <div>
-                    <h1>Results!</h1>
+                    <h1>Ajudes a les que podria optar</h1>
                     <div>
                         <div className="FormContainer">
-                            <span>Ajudes per a persones:</span>
-
                             <PersonalBenefits benefitsForPersons={this.props.resultsData.persones} persons={this.props.persons}/>
                         </div>
                         <div>
-                            <span>Ajudes per a la familía:</span>
                             <FamilyBenefits benefits={this.props.resultsData.families}/>
                         </div>
                     </div>
