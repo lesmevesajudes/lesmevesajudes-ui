@@ -1,0 +1,19 @@
+header {
+    width: 100%;
+    background-color: #1a181d;
+    overflow: hidden;
+}
+
+.HeaderText {
+    float: right;
+    font-size: 2rem;
+    color: white;
+    margin: 15px 0 0 0;
+}
+
+.HeaderLogo {
+    float: left;
+    background-image: url(./AppLogo.png);
+    height: 90px;
+    width: 240px;
+}

@@ -33,8 +33,8 @@ class AdultsForm extends Component<Props, {}> {
                         onChange={this.onChange}
                         initialState={this.props.initialState}>
                         <AdultsFields state={this.state}/>
+                        <button className="CancelButton" onClick={this.props.onCancel}>Cancelar</button>
                         <button type="submit">Validar</button>
-                        <button onClick={this.props.onCancel}>Cancelar</button>
                     </LocalForm>
                 </div>
             </div>

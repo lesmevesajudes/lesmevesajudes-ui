@@ -68,8 +68,8 @@ class FinancialDataForm extends Component<Props> {
                                     placeholder="100"/>
                             </div>
                         </div>
+                        <button className="CancelButton" onClick={this.props.onCancel}>Cancelar</button>
                         <button type="submit">Validar</button>
-                        <button onClick={this.props.onCancel}>Cancelar</button>
                     </LocalForm>
                 </div>
             </div>

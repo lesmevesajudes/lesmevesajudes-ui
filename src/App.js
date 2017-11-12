@@ -13,12 +13,10 @@ import ResultsReducer from './results/ResultsReducer';
 import HouseholdReducer from './household/HouseholdReducer';
 import RentReducer from "./rent/RentReducer";
 import isDevelopment from './shared/isDevelopment';
-
-import logo from './logo.svg';
-import './reset.css';
 import './App.css';
 import './select-css.css';
 import PropertiesReducer from "./properties/PropertiesReducer";
+import AppHeader from "./components/header/AppHeader";
 
 
 if (isDevelopment) {
@@ -42,23 +40,21 @@ const store = isDevelopment?
     createStoreWithMiddleware(reducersCombined, extensions):
     createStoreWithMiddleware(reducersCombined);
 
+
 class App extends Component {
     render() {
         return (
             <div className="App">
-                <div className="App-header">
-                    <img src={logo} className="App-logo" alt="logo"/>
-                    <h2>Simulador de drets socials</h2>
-                </div>
+                <AppHeader/>
                 <div className="content">
-                <Provider store={ store }>
-                    <BrowserRouter>
-                        <Switch>
-                            <Route exact={true} path="/" component={IndexPage}/>
-                            <Route path="/wizard" component={WizardPage}/>
-                        </Switch>
-                    </BrowserRouter>
-                </Provider>
+                    <Provider store={ store }>
+                        <BrowserRouter>
+                            <Switch>
+                                <Route exact={true} path="/" component={IndexPage}/>
+                                <Route path="/wizard" component={WizardPage}/>
+                            </Switch>
+                        </BrowserRouter>
+                    </Provider>
                 </div>
             </div>
         );

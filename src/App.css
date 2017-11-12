@@ -2,24 +2,54 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 110px;
-  color: white;
-}
-
 .App-intro {
   font-size: large;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.IndexPageImage {
+    width: 100%;
+    height: 600px;
+    background-image: url(./indexPage/IndexPageBackground.jpeg);
+    background-size:cover;
+}
+
+.CTA {
+    margin: 275px 0 0 0;
+    font-size: 1.5rem;
+}
+
+.CTALink {
+    text-decoration: none;
+    color: black;
+}
+.Presentation {
+
+    background-color: lightgrey;
+}
+
+.PresentationText {
+    text-align: justify;
+    padding: 1rem;
+    max-width: 1024px;
+    margin: auto;
+    font-size: 1.5rem;
+}
+
+.Main {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.Cell {
+    max-width: 30%;
+    float: left;
+    margin: 1rem;
+}
+
+.Row::after {
+    content: "";
+    clear: both;
+    display: table;
 }
 
 .FormContainer {
@@ -31,10 +61,6 @@
 h1 {
     box-sizing: border-box;
     display: block;
-    font-family: sans-serif;
-    font-size: 32px;
-    font-weight: 700;
-    height: 37px;
     position: relative;
     text-align: center;
     -webkit-margin-after: 21.44px;
@@ -69,13 +95,11 @@ label {
     padding: 0.5rem;
     min-width: 20rem;
 }
+
 .RegularTextInput:focus {
     outline: 2px solid #1695A3;
 }
 
-centered {
-    text-align: center;
-}
 .ItemList {
     column-count: 1;
     column-gap: 0;
@@ -83,15 +107,11 @@ centered {
     margin: 0;
     padding: 0;
 }
+
 .Item {
     display: inline-block;
     width: 400px;
-    background:
-            linear-gradient(
-                    rgba(255,0,0,0.4),
-                    rgba(255,0,0,0.4)
-            ),
-            url(http://placekitten.com/g/100/100);
+    background-color: lightgrey;
     color: white;
     text-align: center;
     font-size: 16px;
@@ -104,12 +124,7 @@ centered {
 
 .ItemGreen {
     display: inline-block;
-    background:
-            linear-gradient(
-                    rgba(0,128,0,0.4),
-                    rgba(0,128,0,0.4)
-            ),
-            url(http://placekitten.com/g/100/100);
+    background-color: lightgrey;
     color: black;
     text-align: center;
     font-size: 20px;
@@ -136,36 +151,29 @@ button {
     margin: 0.5rem 0.5rem;
     border-radius: 0;
 }
+
 button:hover {
     opacity: 0.8;
 }
+
 button + button {
     margin-left: 1rem;
 }
+
 button.secondary {
     color: #1695A3;
     background: transparent;
     border: 1px solid #1695A3;
 }
 
-*, *:before, *:after {
-    box-sizing: border-box;
-    position: relative;
+.CancelButton {
+    background: transparent;
+    border: 2px solid #1695A3;
+    color: #1695A3;
+    font-weight: 600;
 }
 
-body {
-    font-family: Lato, Helvetica, sans-serif;
-    padding: 1rem;
-}
-
-body, html {
-    font-size: 16px;
-    height: 100%;
-    width: 100%;
-    margin: 0;
-}
-
-.content {
-    max-width: 1024px;
-    margin: 0 auto;
+footer {
+    background-color: black;
+    height: 200px;
 }

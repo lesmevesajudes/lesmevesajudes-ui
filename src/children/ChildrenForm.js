@@ -20,8 +20,8 @@ class ChildrenForm extends React.Component<Props> {
                         onSubmit={this.props.onSubmit}
                         initialState={this.props.initialState}>
                         <ChildrenFields />
+                        <button className="CancelButton" onClick={this.props.onCancel}>Cancelar</button>
                         <button type="submit">Validar</button>
-                        <button onClick={this.props.onCancel}>Cancelar</button>
                     </LocalForm>
                 </div>
             </div>
