@@ -3,3 +3,6 @@
     background-color:#fff;
     display: block;
 }
+.react-cookie-banner {
+    overflow: hidden;
+}

@@ -94,6 +94,7 @@ label {
     font-size: 1rem;
     padding: 0.5rem;
     min-width: 20rem;
+    height: 36px;
 }
 
 .RegularTextInput:focus {
