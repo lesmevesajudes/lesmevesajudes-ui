@@ -8,7 +8,8 @@ header {
     float: right;
     font-size: 2rem;
     color: white;
-    margin: 15px 0 0 0;
+    padding: 0 15px 0 0;
+
 }
 
 .HeaderLogo {
