@@ -33,7 +33,7 @@ class AdultsViewer extends Component<Props, void> {
                 <div className="FormContainer">
                     {this.renderAdultsList(this.props.adults)}
                 </div>
-                <button onClick={this.props.onAddAdultClick}>Afegir un adult</button>
+                <button id='AddAdultButton' onClick={this.props.onAddAdultClick}>Afegir un adult</button>
             </div>
         );
     }
