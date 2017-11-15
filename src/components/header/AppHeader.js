@@ -8,7 +8,7 @@ class AppHeader extends Component {
             <header>
                 <AcceptCookiesBanner/>
                 <div className="HeaderLogo"/>
-                <p className="HeaderText">lesmevesajudes.tlddomain</p>
+                <p className="HeaderText">lesmevesajudes.barcelona</p>
             </header>
         );
     }
