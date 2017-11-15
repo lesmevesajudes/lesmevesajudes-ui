@@ -134,6 +134,9 @@ label {
     padding: 10px;
     min-width: 440px;
 }
+input:focus {
+    outline:none;
+}
 
 input[type="radio"], input[type="checkbox"] {
     margin-right: 0.5rem;
@@ -153,6 +156,9 @@ button {
     border-radius: 0;
 }
 
+button:focus {
+    outline: none;
+}
 button:hover {
     opacity: 0.8;
 }
