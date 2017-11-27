@@ -16,7 +16,7 @@ const PropertiesFields = (props) => (
                 placeholder='0'/>
         </div>*/}
         <div className="field">
-            <label>Valor cadastral finques rustiques:</label>
+            <label>Valor cadastral finques rústiques:</label>
             <Control.text
                 className="RegularTextInput"
                 model=".valor_cadastral_finques_rustiques"
@@ -24,7 +24,7 @@ const PropertiesFields = (props) => (
         </div>
 
         <div className="field">
-            <label>Valor cadastral finques rustiques:</label>
+            <label>Valor cadastral finques urbanes:</label>
             <Control.text
                 className="RegularTextInput"
                 model=".valor_cadastral_finques_urbanes"
