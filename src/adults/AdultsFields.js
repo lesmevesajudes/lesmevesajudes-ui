@@ -12,6 +12,7 @@ const AdultsFields = (props) => (
             <label>Nom</label>
             <Control.text
                 className="RegularTextInput"
+                id='nom'
                 model='.nom'
                 placeholder='Nom'
                 required/>
@@ -20,6 +21,7 @@ const AdultsFields = (props) => (
             <label>Data naixement</label>
             <Control.text
                 className="RegularTextInput"
+                id='data_naixement'
                 model='.data_naixement'
                 placeholder="2005-01-21"
                 type="date"
@@ -29,6 +31,7 @@ const AdultsFields = (props) => (
         <div className="field">
             <label>Sexe</label>
             <Field
+                id='sexe'
                 model='.sexe'
                 dynamic={false}
             >
