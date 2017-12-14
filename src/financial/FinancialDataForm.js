@@ -28,7 +28,6 @@ class FinancialDataForm extends Component<Props> {
     }
 
     render() {
-        console.log(JSON.stringify(this.props.persons));
         return (
             <div>
                 <h1>Afegir {this.typeToDescription(this.props.initialState.type)}</h1>
