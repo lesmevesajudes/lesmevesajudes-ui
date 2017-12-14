@@ -1,13 +1,27 @@
+// @flow
 import React from 'react';
 import {Control} from 'react-redux-form';
+import type {Rent} from "./RentTypes";
 
-const RentFields = (props) => (
+type Props = {
+    initialState:?Rent,
+    persons: Array<any>,
+}
+
+const RentFields = (props: Props) => (
     <div>
         <div className="field">
-            <label><Control.checkbox model=".ingressos_suficients_per_pagar_el_lloguer" /> Disposa d'ingressos suficients per a pagar el lloguer</label>
-        </div>
-        <div className="field">
-            <label><Control.checkbox model=".LLOGMAXBCN" /> El lloguer no supera el lloguer màxim per a Barcelona</label>
+            <label>Titular del contracte de lloguer</label>
+            <div className="custom-select">
+                <Control.select
+                    required
+                    model=".titular_contracte_lloguer_id">
+                    <option defaultValue value="" >seleccioni una persona</option>
+                    {props.persons.map((person) => (
+                        <option key={person.id} value={person.id}>{person.nom}</option>
+                    ))}
+                </Control.select>
+            </div>
         </div>
         <div className="field">
             <label><Control.checkbox model=".esta_al_corrent_del_pagament_de_lloguer" /> Està al corrent del pagament del lloguer</label>
