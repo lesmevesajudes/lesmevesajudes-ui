@@ -178,7 +178,9 @@ function buildRequest(simulationData: SimulationData) {
             acc[financialData.receptorId] = result;
             return acc;
         }, {}) || {};
-
+    if ( typeof adultsPersonalData[simulationData.rent.titular_contracte_de_lloguer_id] !== 'undefined' ) {
+        adultsPersonalData[simulationData.rent.titular_contracte_de_lloguer_id].titular_contracte_de_lloguer = addPeriod(true);
+    }
     const adults = deepMerge(adultsPersonalData,financialDataReduced);
     const menors = deepMerge(menorsPersonalData,financialDataReduced);
 
@@ -195,7 +197,9 @@ function buildRequest(simulationData: SimulationData) {
                         }, {}),
                     ...Object.keys(simulationData.rent).reduce((acc, value) =>
                     {
-                        acc[value] = addPeriod(simulationData.rent[value]);
+                        if ( value !== "titular_contracte_de_lloguer_id" ) {
+                            acc[value] = addPeriod(simulationData.rent[value]);
+                        }
                         return acc;
                     }, {}),
                     ...Object.keys(simulationData.properties).reduce((acc, value) =>

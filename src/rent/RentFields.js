@@ -15,7 +15,7 @@ const RentFields = (props: Props) => (
             <div className="custom-select">
                 <Control.select
                     required
-                    model=".titular_contracte_lloguer_id">
+                    model=".titular_contracte_de_lloguer_id">
                     <option defaultValue value="" >seleccioni una persona</option>
                     {props.persons.map((person) => (
                         <option key={person.id} value={person.id}>{person.nom}</option>
