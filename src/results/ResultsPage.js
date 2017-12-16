@@ -4,6 +4,7 @@ import fetchSimulation from './FetchSimulationAction';
 import {serialize as serialize_adults} from "../adults/AdultsReducer";
 import {serialize  as serialize_children} from "../children/ChildrenReducer";
 import isDevelopment from '../shared/isDevelopment';
+import {Link} from "react-router-dom";
 
 const isEmpty = obj => Object.keys(obj).length === 0 && obj.constructor === Object;
 
@@ -115,6 +116,13 @@ class ResultsPage extends React.Component {
                         <div>
                             <FamilyBenefits benefits={this.props.resultsData.families}/>
                         </div>
+                    </div>
+                    <div>
+                        <Link to="/reportBug/">
+                            <button>
+                                <b>Informar d'un error</b>
+                            </button>
+                        </Link>
                     </div>
                 </div>
             );

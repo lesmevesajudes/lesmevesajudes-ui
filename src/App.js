@@ -17,6 +17,7 @@ import './App.css';
 import './select-css.css';
 import PropertiesReducer from "./properties/PropertiesReducer";
 import AppHeader from "./components/header/AppHeader";
+import ReportBugPage from "./reportBug/ReportBugPage";
 
 
 if (isDevelopment) {
@@ -52,6 +53,7 @@ class App extends Component {
                             <Switch>
                                 <Route exact={true} path="/" component={IndexPage}/>
                                 <Route path="/wizard" component={WizardPage}/>
+                                <Route path="/reportBug" component={ReportBugPage}/>
                             </Switch>
                         </BrowserRouter>
                     </Provider>
