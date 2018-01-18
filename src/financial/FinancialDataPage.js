@@ -114,10 +114,11 @@ class FinancialDataPage extends Component<Props, State> {
                         <div>
                             <h2>Ajudes</h2><br/>
                             <button onClick={()=>this.handleAddFinancialDataClick("AJUDA_MENJADOR")}>Ajuda menjador</button>
-                            <button onClick={()=>this.handleAddFinancialDataClick("AJUDA_AL_LLOGUER")}>Ajuda al lloguer</button>
                             <button onClick={()=>this.handleAddFinancialDataClick("RGC")}>Renda Garantida de ciutadania</button>
+                            <button onClick={()=>this.handleAddFinancialDataClick("RENDA BÀSICA DEMANCIPACIO")}>Renda Bàsica d’Emancipació</button>
                             <button onClick={()=>this.handleAddFinancialDataClick("PRESTACIO_RESIDENCIAL")}>Prestació residencial</button>
                             <button onClick={()=>this.handleAddFinancialDataClick("PRESTACIO_INCOMPATIBLE_AMB_EL_TREBALL")}>Prestació incompatible amb el treball</button>
+                            <button onClick={()=>this.handleAddFinancialDataClick("PRESTACIO_PER_AL_PAGAMENT_DEL_LLOGUER_DEL_CONSORCI_DHABITATGE")}>Prestació per al pagament del lloguer <br/>del Consorci d’Habitatge de Catalunya</button>
                         </div>
                         <div>
                             <h2>Rendiments</h2>

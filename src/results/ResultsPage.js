@@ -6,8 +6,6 @@ import {serialize  as serialize_children} from "../children/ChildrenReducer";
 import isDevelopment from '../shared/isDevelopment';
 import {Link} from "react-router-dom";
 
-const isEmpty = obj => Object.keys(obj).length === 0 && obj.constructor === Object;
-
 class PersonalBenefits extends React.Component {
     constructor() {
         super();
@@ -98,35 +96,47 @@ class ResultsPage extends React.Component {
     }
 
     render() {
-        const divStyle={'marginTop': '32px', 'marginBottom': '32px'};
-        if ( ! this.enoughDataForSimulation()  ) {
+        const divStyle = {'marginTop': '32px', 'marginBottom': '32px'};
+        if (!this.enoughDataForSimulation()) {
             return (<div style={divStyle}>Falten dades per a executar la simulació...</div>);
         }
 
-        if ( isEmpty(this.props.resultsData) ) {
+        if (!this.props.isRequestDone) {
             return (<div style={divStyle}>Loading....</div>);
-        } else {
-            return (
+        }
+
+        if (this.props.isError) {
+            return (<div>
+                <h1>Error fent la petició</h1>
+                <p>{this.props.resultsData.message}</p>
+                <p>Details:</p>
+                <p>
+                    {JSON.stringify(JSON.parse(this.props.resultsData.response.request.responseText), null, 2)}
+                </p>
+            </div>);
+        }
+
+        return (
+            <div>
+                <h1>Ajudes a les que podria optar</h1>
                 <div>
-                    <h1>Ajudes a les que podria optar</h1>
-                    <div>
-                        <div className="FormContainer">
-                            <PersonalBenefits benefitsForPersons={this.props.resultsData.persones} persons={this.props.persons}/>
-                        </div>
-                        <div>
-                            <FamilyBenefits benefits={this.props.resultsData.families}/>
-                        </div>
+                    <div className="FormContainer">
+                        <PersonalBenefits benefitsForPersons={this.props.resultsData.persones}
+                                          persons={this.props.persons}/>
                     </div>
                     <div>
-                        <Link to="/reportBug/">
-                            <button>
-                                <b>Informar d'un error</b>
-                            </button>
-                        </Link>
+                        <FamilyBenefits benefits={this.props.resultsData.families}/>
                     </div>
                 </div>
-            );
-        }
+                <div>
+                    <Link to="/reportBug/">
+                        <button>
+                            <b>Informar d'un error</b>
+                        </button>
+                    </Link>
+                </div>
+            </div>
+        );
     }
 }
 
@@ -137,8 +147,10 @@ function listPersons(state) {
 }
 function mapStateToProps(state) {
     return {
+        isError: state.results.isError,
+        isRequestDone: state.results.isRequestDone,
         simulationData: state,
-        resultsData: state.results,
+        resultsData: state.results.response,
         persons: listPersons(state)
     };
 }

@@ -58,6 +58,10 @@ type SimulationData = {
 const addPeriod = value => ({'2017-01': value});
 const deepMerge = (obj1, obj2) => Object.assign({},...Object.keys(obj1).map(k => ({[k]: {...obj1[k], ...obj2[k]}})));
 
+function shouldBePartOfFamilyVariables(value) {
+    return (value !== "titular_contracte_de_lloguer_id");
+}
+
 function buildRequest(simulationData: SimulationData) {
     const menorsPersonalData = simulationData.children.reduce((acc, child: Child) =>
     {
@@ -76,8 +80,7 @@ function buildRequest(simulationData: SimulationData) {
             GE_051_01_mensual: addPeriod(null),
             GE_051_02_mensual: addPeriod(null),
             GE_051_03_mensual: addPeriod(null),
-            GG_270_mensual: addPeriod(null),
-            HG_077_mensual: addPeriod(null)
+            GG_270_mensual: addPeriod(null)
         };
         return acc;
     }, {});
@@ -87,6 +90,7 @@ function buildRequest(simulationData: SimulationData) {
             data_naixement: addPeriod(adult.data_naixement),
             ciutat_empadronament: addPeriod(esBarcelona(adult.codi_postal_empadronament) ? "Barcelona" : "Altre"),
             es_usuari_serveis_socials: addPeriod(adult.social_services_user),
+            nacionalitat: addPeriod(adult.nacionalitat),
             victima_violencia_de_genere: addPeriod(adult.victima_violencia_de_genere),
             victima_de_terrorisme: addPeriod(adult.victima_de_terrorisme),
             es_victima_de_violencia_masclista: addPeriod(adult.es_victima_de_violencia_masclista),
@@ -114,7 +118,7 @@ function buildRequest(simulationData: SimulationData) {
             GE_051_02_mensual: addPeriod(null),
             GE_051_03_mensual: addPeriod(null),
             GG_270_mensual: addPeriod(null),
-            HG_077_mensual: addPeriod(null)
+            HG_077_01_mensual: addPeriod(null)
         };
         return acc
     }, {});
@@ -197,7 +201,7 @@ function buildRequest(simulationData: SimulationData) {
                         }, {}),
                     ...Object.keys(simulationData.rent).reduce((acc, value) =>
                     {
-                        if ( value !== "titular_contracte_de_lloguer_id" ) {
+                        if ( shouldBePartOfFamilyVariables(value) ) {
                             acc[value] = addPeriod(simulationData.rent[value]);
                         }
                         return acc;
@@ -216,7 +220,7 @@ function buildRequest(simulationData: SimulationData) {
 
 export default  function fetchSimulation(simulationData: SimulationData, url: string) {
     let requestBody = buildRequest(simulationData);
-    console.info(requestBody);
+    console.log("Request: ",requestBody);
     const request = axios.post(url, requestBody);
     return {
         type: FETCH_SIMULATION,

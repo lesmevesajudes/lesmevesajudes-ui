@@ -120,7 +120,7 @@ const AdultsFields = (props) => (
         </div>}
         {props.state.nacionalitat && props.state.nacionalitat !== "Espanyola" &&
         <div className="field">
-            <label><Control.checkbox model=".ha_residit_a_catalunya_durant_24_mesos" value={false}/> Ha residit a Catalunya durant 24 mesos</label>
+            <label><Control.checkbox model=".ha_residit_a_catalunya_durant_24_mesos" value={false}/> Ha residit a Catalunya durant els últims 24 mesos</label>
         </div>}
         {props.state.nacionalitat && props.state.nacionalitat !== "Espanyola" &&
         <div className="field">

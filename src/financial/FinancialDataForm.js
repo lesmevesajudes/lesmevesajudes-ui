@@ -18,10 +18,12 @@ class FinancialDataForm extends Component<Props> {
             "AJUDA_MENJADOR": "ajuda Menjador",
             "AJUDA_AL_LLOGUER": "ajuda al lloguer",
             "RGC": "renda de ciutadania garantida",
+            "RENDA_BASICA_DEMANCIPACIO": "remda bàsica d'emancipació",
             "FACTURACIO_NEGOCI_FAMILIAR": "facturació del negoci familiar",
             "RENDIMENTS_PATRIMONI_FAMILIAR": "rendiments del patrimoni familiar",
             "PRESTACIO_RESIDENCIAL": "prestació residencial",
-            "PRESTACIO_INCOMPATIBLE_AMB_EL_TREBALL": "mostra de prestació incompatible amb el treball"
+            "PRESTACIO_INCOMPATIBLE_AMB_EL_TREBALL": "mostra de prestació incompatible amb el treball",
+            "PRESTACIO_PER_AL_PAGAMENT_DEL_LLOGUER_DEL_CONSORCI_DHABITATGE": "prestacions per al pagament del lloguer de convocatòries del Consorci d’Habitatge de Catalunya"
         };
 
         return typeToDescriptionMapping[type];
