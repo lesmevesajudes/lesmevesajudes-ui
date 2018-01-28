@@ -7,6 +7,7 @@ export class Adult  {
     id: AdultId;
     nom: string;
     sexe: string;
+    nacionalitat: string;
     situacio_laboral: string;
     data_naixement: string;
     codi_postal_empadronament: string;
@@ -16,7 +17,9 @@ export class Adult  {
     es_victima_de_violencia_masclista: boolean = false;
     te_permis_de_residencia: boolean = false;
     es_divorciada_de_familia_reagrupada: boolean = false;
-    ha_residit_a_catalunya_durant_24_mesos: boolean = false;
+    ha_residit_a_lextranger_els_ultims_24_mesos: boolean = false;
+    ha_residit_a_lextranger_36_mesos_continuats: boolean = false;
+    ha_residit_a_lextranger_60_mesos_discontinuats: boolean = false;
     resident_a_catalunya_durant_5_anys: boolean = false;
     en_els_ultims_12_mesos_ha_fet_baixa_voluntaria_de_la_feina: boolean = false;
     grau_discapacitat: number = 0;

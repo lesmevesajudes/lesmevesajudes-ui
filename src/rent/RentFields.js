@@ -25,10 +25,6 @@ const RentFields = (props: Props) => (
         <div className="field">
             <label><Control.checkbox model=".relacio_de_parentiu_amb_el_propietari" /> Algun membre de la família té relació de parentiu amb el propietari de l'habitatge</label>
         </div>
-
-        <div className="field">
-            <label><Control.checkbox model=".habitatge_de_ladministracio" /> L'habitatge és propietat o gestionat per l'Agència de l'Habitatge de Catalunya o pel Patronat Municipal de l'Habitatge de Barcelona.</label>
-        </div>
         </div>
         <div className="field">
             <label><Control.checkbox model=".esta_al_corrent_del_pagament_de_lloguer" /> Està al corrent del pagament del lloguer</label>

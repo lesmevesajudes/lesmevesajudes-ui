@@ -10,7 +10,6 @@ function addRent(state: RentState, rentToBeAdded: Rent): RentState {
 
 function initRentState(): RentState {
     return {
-        ingressos_suficients_per_pagar_el_lloguer: false,
         LLOGMAXBCN: false,
         esta_al_corrent_del_pagament_de_lloguer: false,
         lloguer_domiciliat: false,

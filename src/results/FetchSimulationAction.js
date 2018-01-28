@@ -69,6 +69,7 @@ function buildRequest(simulationData: SimulationData) {
             data_naixement: addPeriod(child.data_naixement),
             es_usuari_serveis_socials: addPeriod(child.social_services_user),
             ciutat_empadronament: addPeriod(esBarcelona(child.codi_postal_empadronament) ? "Barcelona" : "Altre"),
+            codi_postal_empadronament: addPeriod(child.codi_postal_empadronament),
             grau_discapacitat: addPeriod(child.grau_discapacitat),
             es_escolaritzat: addPeriod(child.es_escolaritzat),
             utilitza_el_servei_de_menjador: addPeriod(child.utilitza_el_servei_de_menjador),
@@ -89,6 +90,7 @@ function buildRequest(simulationData: SimulationData) {
     {  acc[adult.id] = {
             data_naixement: addPeriod(adult.data_naixement),
             ciutat_empadronament: addPeriod(esBarcelona(adult.codi_postal_empadronament) ? "Barcelona" : "Altre"),
+            codi_postal_empadronament: addPeriod(adult.codi_postal_empadronament),
             es_usuari_serveis_socials: addPeriod(adult.social_services_user),
             nacionalitat: addPeriod(adult.nacionalitat),
             victima_violencia_de_genere: addPeriod(adult.victima_violencia_de_genere),
@@ -96,7 +98,6 @@ function buildRequest(simulationData: SimulationData) {
             es_victima_de_violencia_masclista: addPeriod(adult.es_victima_de_violencia_masclista),
             te_permis_de_residencia: addPeriod(adult.te_permis_de_residencia),
             es_divorciada_de_familia_reagrupada: addPeriod(adult.es_divorciada_de_familia_reagrupada),
-            ha_residit_a_catalunya_durant_24_mesos: addPeriod(adult.ha_residit_a_catalunya_durant_24_mesos),
             resident_a_catalunya_durant_5_anys: addPeriod(adult.resident_a_catalunya_durant_5_anys),
             en_els_ultims_12_mesos_ha_fet_baixa_voluntaria_de_la_feina: addPeriod(adult.en_els_ultims_12_mesos_ha_fet_baixa_voluntaria_de_la_feina),
             es_empadronat_a_catalunya: addPeriod(esCatalunya(adult.codi_postal_empadronament)),
@@ -118,7 +119,7 @@ function buildRequest(simulationData: SimulationData) {
             GE_051_02_mensual: addPeriod(null),
             GE_051_03_mensual: addPeriod(null),
             GG_270_mensual: addPeriod(null),
-            HG_077_01_mensual: addPeriod(null)
+            HG_077_03_mensual: addPeriod(null)
         };
         return acc
     }, {});
@@ -210,8 +211,7 @@ function buildRequest(simulationData: SimulationData) {
                     {
                         acc[value] = addPeriod(simulationData.properties[value]);
                         return acc;
-                    }, {}),
-                    //HG_077_mensual: {"2017-01": null}
+                    }, {})
                 }
             },
             persones: {...adults, ...menors}

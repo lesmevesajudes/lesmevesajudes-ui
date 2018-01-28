@@ -9,7 +9,7 @@ import {Link} from "react-router-dom";
 class PersonalBenefits extends React.Component {
     constructor() {
         super();
-        this.possibleBenefits = ["AE_230_mensual", "EG_233_mensual", "GE_051_01_mensual", "GE_051_02_mensual", "GE_051_03_mensual", "GG_270_mensual", "HG_077_mensual"];
+        this.possibleBenefits = ["AE_230_mensual", "EG_233_mensual", "GE_051_01_mensual", "GE_051_02_mensual", "GE_051_03_mensual", "GG_270_mensual", "HG_077_03_mensual"];
         this.period = "2017-01";
 
     }
