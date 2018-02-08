@@ -30,6 +30,13 @@ const RentFields = (props: Props) => (
             <label><Control.checkbox model=".esta_al_corrent_del_pagament_de_lloguer" /> Està al corrent del pagament del lloguer</label>
         </div>
         <div className="field">
+            <label>Import del deute:</label>
+            <Control.text
+                className="RegularTextInput"
+                model=".import_del_deute_amb_el_propietari"
+                placeholder='0'/>
+        </div>
+        <div className="field">
             <label><Control.checkbox model=".lloguer_domiciliat" /> El pagament del lloguer està domiciliat</label>
         </div>
         <div className="field">
