@@ -12,7 +12,7 @@ type Props = {
     initialState:?Rent,
     addRent: Function
 }
-class RentAdder extends Component<Props> {
+class RentForm extends Component<Props> {
     handleSubmit(values) {
         this.props.addRent({...values});
     }
@@ -24,11 +24,10 @@ class RentAdder extends Component<Props> {
                 <div className="FormContainer">
                 <LocalForm model="rent"
                            onChange={(values) => this.handleSubmit(values)}
-                           initialState={this.props.initialState}
+                           initialState={this.props.state}
                 >
                     <div>
-
-                        <RentFields persons={this.props.persons}/>
+                        <RentFields state={this.props.state} persons={this.props.persons}/>
                     </div>
                 </LocalForm>
                 </div>
@@ -46,9 +45,9 @@ function listPersons(state) {
 
 function mapStateToProps(state) {
     return {
-        initialState: state.rent,
+        state: state.rent,
         persons: listPersons(state)
     };
 }
 
-export default connect(mapStateToProps, {addRent})(RentAdder);
+export default connect(mapStateToProps, {addRent})(RentForm);

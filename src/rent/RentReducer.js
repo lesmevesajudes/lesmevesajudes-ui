@@ -10,10 +10,6 @@ function addRent(state: RentState, rentToBeAdded: Rent): RentState {
 
 function initRentState(): RentState {
     return {
-        LLOGMAXBCN: false,
-        esta_al_corrent_del_pagament_de_lloguer: false,
-        lloguer_domiciliat: false,
-        import_del_lloguer: 0
     }
 }
 export default function (state:RentState = initRentState() , action: RentActions): RentState {

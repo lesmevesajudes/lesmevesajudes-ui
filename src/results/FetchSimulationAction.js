@@ -59,7 +59,7 @@ const addPeriod = value => ({'2017-01': value});
 const deepMerge = (obj1, obj2) => Object.assign({},...Object.keys(obj1).map(k => ({[k]: {...obj1[k], ...obj2[k]}})));
 
 function shouldBePartOfFamilyVariables(value) {
-    return (value !== "titular_contracte_de_lloguer_id");
+    return (value !== "titular_contracte_de_lloguer_id" && value !== "existeix_deute_en_el_pagament_del_lloguer");
 }
 
 function buildRequest(simulationData: SimulationData) {

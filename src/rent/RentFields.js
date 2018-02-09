@@ -4,7 +4,7 @@ import {Control} from 'react-redux-form';
 import type {Rent} from "./RentTypes";
 
 type Props = {
-    initialState:?Rent,
+    state:?Rent,
     persons: Array<any>,
 }
 
@@ -21,21 +21,23 @@ const RentFields = (props: Props) => (
                         <option key={person.id} value={person.id}>{person.nom}</option>
                     ))}
                 </Control.select>
+            </div>
+            <div className="field">
+                <label><Control.checkbox model=".relacio_de_parentiu_amb_el_propietari" /> Algun membre de la família té relació de parentiu amb el propietari de l'habitatge</label>
+            </div>
         </div>
         <div className="field">
-            <label><Control.checkbox model=".relacio_de_parentiu_amb_el_propietari" /> Algun membre de la família té relació de parentiu amb el propietari de l'habitatge</label>
+            <label><Control.checkbox model=".existeix_deute_en_el_pagament_del_lloguer" /> Existeix un deute en el pagament del lloguer</label>
         </div>
-        </div>
-        <div className="field">
-            <label><Control.checkbox model=".esta_al_corrent_del_pagament_de_lloguer" /> Està al corrent del pagament del lloguer</label>
-        </div>
-        <div className="field">
-            <label>Import del deute:</label>
-            <Control.text
-                className="RegularTextInput"
-                model=".import_del_deute_amb_el_propietari"
-                placeholder='0'/>
-        </div>
+        {props.state.existeix_deute_en_el_pagament_del_lloguer === true &&
+            <div className="field">
+                <label>Import del deute:</label>
+                <Control.text
+                    className="RegularTextInput"
+                    model=".import_del_deute_amb_el_propietari"
+                    placeholder='0'/>
+            </div>
+        }
         <div className="field">
             <label><Control.checkbox model=".lloguer_domiciliat" /> El pagament del lloguer està domiciliat</label>
         </div>
