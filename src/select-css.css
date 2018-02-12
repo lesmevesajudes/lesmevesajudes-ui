@@ -59,7 +59,7 @@
         appearance: none;
     }
     .custom-select select:focus {
-        outline: 2px solid #1695A3;
+        outline: 2px solid #00ACD4;
     }
 }
 

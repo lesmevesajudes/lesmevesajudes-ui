@@ -6,35 +6,6 @@
   font-size: large;
 }
 
-.IndexPageImage {
-    width: 100%;
-    height: 600px;
-    background-image: url(./indexPage/IndexPageBackground.jpeg);
-    background-size:cover;
-}
-
-.CTA {
-    margin: 275px 0 0 0;
-    font-size: 1.5rem;
-}
-
-.CTALink {
-    text-decoration: none;
-    color: black;
-}
-.Presentation {
-
-    background-color: lightgrey;
-}
-
-.PresentationText {
-    text-align: justify;
-    padding: 1rem;
-    max-width: 1024px;
-    margin: auto;
-    font-size: 1.5rem;
-}
-
 .Main {
     max-width: 960px;
     margin: 0 auto;
@@ -97,7 +68,7 @@ label {
 }
 
 .RegularTextInput:focus {
-    outline: 2px solid #1695A3;
+    outline: 2px solid #00ACD4;
 }
 
 .ItemList {
@@ -148,7 +119,7 @@ button {
     padding: 1rem 2rem;
     text-transform: uppercase;
     font-size: 0.8rem;
-    background: #1695A3;
+    background: #00ACD4;
     color: white;
     border: none;
     margin: 0.5rem 0.5rem;
@@ -167,15 +138,15 @@ button + button {
 }
 
 button.secondary {
-    color: #1695A3;
+    color: #00ACD4;
     background: transparent;
-    border: 1px solid #1695A3;
+    border: 1px solid #00ACD4;
 }
 
 .CancelButton {
     background: transparent;
-    border: 2px solid #1695A3;
-    color: #1695A3;
+    border: 2px solid #00ACD4;
+    color: #00ACD4;
     font-weight: 600;
 }
 

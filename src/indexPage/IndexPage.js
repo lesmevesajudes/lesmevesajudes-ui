@@ -1,28 +1,37 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import AppFooter from "../components/Footer/Footer";
+import './IndexPage.css';
 
 class IndexPage extends React.Component {
     render() {
         return (
             <div>
-                <div className="IndexPageImage">
+                <div className="Main">
+                    <div className="Block">
+                        <div className='AppLogo'>
+                        </div>
+                        <div className="BlockText">
+                            <p>Vols saber a quines ajudes públiques pots optar?</p>
+                        </div>
+                    </div>
+                    <div className='CTA'>
                         <Link className="CTALink" to="/wizard/">
-                            <button className="CTA">
-                                <b>Troba a quines ajudes pots optar!</b>
+                            <button className="CTAButton">
+                                <b>Consultar</b>
                             </button>
                         </Link>
+                    </div>
 
-                </div>
-                <div className="Presentation">
-                    <p className="PresentationText">Benvolgut/da,<br/>
-                        està accedint el simulador social de les meves ajudes de la Ciutat de Barcelona per comprovar
-                        si és susceptible de poder veure quines ajudes pot assolir.
-                        Aquest simulador no tramita cap sol·licitud. El simulador virtual farà unes preguntes amb la
-                        intenció de determinar si pot arribar a optar de les prestacions implementades en el sistema.</p>
 
-                </div>
-                <div className="Main">
+                    <div className="Presentation">
+                        <p className="PresentationText">Benvolgut/da,<br/>
+                            està accedint el simulador social de les meves ajudes de la Ciutat de Barcelona per comprovar
+                            si és susceptible de poder veure quines ajudes pot assolir.
+                            Aquest simulador no tramita cap sol·licitud. El simulador virtual farà unes preguntes amb la
+                            intenció de determinar si pot arribar a optar de les prestacions implementades en el sistema.</p>
+
+                    </div>
                     <div className="Row">
                         <div className="Cell">
                             <h1>Ajudes RAI</h1>

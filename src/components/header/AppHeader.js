@@ -12,13 +12,14 @@ class AppHeader extends Component {
                         <nav className="bcnbrand-shortcuts" id="bcnbrand-shortcuts-nav" aria-hidden="true" style={{maxHeight: '0px', display: 'none'}}>
                             <ul className="bcnbrand-list" aria-expanded="false">
                                 <li>
-                                    <a target="_blank" href="http://ajuntament.barcelona.cat" tabIndex="3" title="ajuntament.barcelona.cat" data-ga="Ajuntament">
+                                    <a target="_blank" rel="noopener noreferrer" href="http://ajuntament.barcelona.cat"
+                                       tabIndex="3" title="ajuntament.barcelona.cat" data-ga="Ajuntament">
                                         <span className="bcnbrand-icon bcn-icon-ajuntament bcnbrand-circle bcnbrand-bg-purple"/>
                                         <span className="bcnbrand-link">ajuntament.barcelona.cat</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a target="_blank" href="http://meet.barcelona.cat/ca" tabIndex="3" title="meet.barcelona.cat" data-ga="Meet">
+                                    <a target="_blank" rel="noopener noreferrer" href="http://meet.barcelona.cat/ca" tabIndex="3" title="meet.barcelona.cat" data-ga="Meet">
                                         <span className="bcnbrand-icon bcn-icon-meet bcnbrand-circle bcnbrand-bg-yellow"/>
                                         <span className="bcnbrand-link">meet.barcelona.cat</span>
                                     </a>
@@ -26,37 +27,39 @@ class AppHeader extends Component {
                             </ul>
                             <ul className="bcnbrand-list" aria-expanded="false">
                                 <li>
-                                    <a target="_blank" href="http://eldigital.barcelona.cat/" tabIndex="3" title="Notícies BCN" data-ga="Noticies">
+                                    <a target="_blank" rel="noopener noreferrer" href="http://eldigital.barcelona.cat/"
+                                       tabIndex="3" title="Notícies BCN" data-ga="Noticies">
                                         <span className="bcnbrand-icon bcn-icon-noticies"/>
                                         <span className="bcnbrand-link">Notícies BCN</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a target="_blank" href="http://guia.barcelona.cat/ca" tabIndex="3" title="Guia BCN" data-ga="Guia">
+                                    <a target="_blank" rel="noopener noreferrer" href="http://guia.barcelona.cat/ca"
+                                       tabIndex="3" title="Guia BCN" data-ga="Guia">
                                         <span className="bcnbrand-icon bcn-icon-guia"/>
                                         <span className="bcnbrand-link">Guia BCN</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a target="_blank" href="https://w30.bcn.cat/APPS/portaltramits/portal/index/default.html?language=ca" tabIndex="3" title="Tràmits" data-ga="Tramits">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://w30.bcn.cat/APPS/portaltramits/portal/index/default.html?language=ca" tabIndex="3" title="Tràmits" data-ga="Tramits">
                                         <span className="bcnbrand-icon bcn-icon-tramits-o"/>
                                         <span className="bcnbrand-link">Tràmits</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a target="_blank" href="http://barcelona.cat/planol/" tabIndex="3" title="Plànol BCN" data-ga="Planol">
+                                    <a target="_blank" rel="noopener noreferrer" href="http://barcelona.cat/planol/" tabIndex="3" title="Plànol BCN" data-ga="Planol">
                                         <span className="bcnbrand-icon bcn-icon-planol"/>
                                         <span className="bcnbrand-link">Plànol BCN</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a target="_blank" href="http://ajuntament.barcelona.cat/canals-comunicacio-ciutadana/" tabIndex="3" title="Canals de comunicació" data-ga="Canals">
+                                    <a target="_blank" rel="noopener noreferrer" href="http://ajuntament.barcelona.cat/canals-comunicacio-ciutadana/" tabIndex="3" title="Canals de comunicació" data-ga="Canals">
                                         <span className="bcnbrand-icon bcn-icon-relacio-ciutada"/>
                                         <span className="bcnbrand-link">Canals de comunicació</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a target="_blank" href="http://com-shi-va.lameva.barcelona.cat/ca/" tabIndex="3" title="Com s'hi va" data-ga="Com shi va">
+                                    <a target="_blank" rel="noopener noreferrer" href="http://com-shi-va.lameva.barcelona.cat/ca/" tabIndex="3" title="Com s'hi va" data-ga="Com shi va">
                                         <span className="bcnbrand-icon bcn-icon-comshiva"/>
                                         <span className="bcnbrand-link">Com s'hi va</span>
                                     </a>
@@ -87,7 +90,7 @@ class AppHeader extends Component {
                                 </li>
                                 <li>
                                     <a href="javascript:" className="bcnbrand-nav-link bcnbrand-nav-link-squares" data-target="bcnbrand-shortcuts" tabIndex="2" title="Dreceres de barcelona.cat" aria-label="Dreceres de barcelona.cat" aria-expanded="false" aria-controls="bcnbrand-shortcuts-nav" data-ga="Drecera">
-                                        <span className="bcnbrand-icon bcn-icon-menu-drecera"></span>
+                                        <span className="bcnbrand-icon bcn-icon-menu-drecera"/>
                                     </a>
                                 </li>
                                 <li>
@@ -111,7 +114,7 @@ class AppHeader extends Component {
                                     </a>
                                 </li>
                                 <li>
-                                    <a target="_blank" className="bcnbrand-logo-main" href="http://ajuntament.barcelona.cat/ca/" tabIndex="10" data-ga="Llima">
+                                    <a target="_blank" rel="noopener noreferrer" className="bcnbrand-logo-main" href="http://ajuntament.barcelona.cat/ca/" tabIndex="10" data-ga="Llima">
                                         <img src="https://w9.barcelona.cat/assets/images/brand/banner/2017/logo.png" alt="Logo Ajuntament de Barcelona"/>
                                     </a>
                                 </li>
