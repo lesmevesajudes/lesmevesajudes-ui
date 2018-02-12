@@ -58,8 +58,17 @@ class IndexPage extends React.Component {
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
                         </div>
                     </div>
+                    <div class="footer">
+                        <div class="footer-content">
+                            <ul>
+                                <li class="city-council">© Ajuntament de Barcelona</li>
+                                <li class="department"><a href="http://www.barcelona.cat/dretssocials/ca/">Drets Socials</a></li>
+                                <li><a href="/ca/avis-legal">Avís legal</a></li>
+                                <li><a href="/ca/accessibilitat">Accessibilitat</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <AppFooter/>
             </div>
         );
     }
