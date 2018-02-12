@@ -105,10 +105,6 @@ const AdultsFields = (props) => (
             </div>}
         {props.state.sexe === "Dona" &&
         <div className="field">
-            <label><Control.checkbox model=".es_victima_de_violencia_masclista" value={false}/> Víctima de violencia masclista</label>
-        </div>}
-        {props.state.sexe === "Dona" &&
-        <div className="field">
             <label><Control.checkbox model=".es_divorciada_de_familia_reagrupada" value={false}/> És divorciada de familia reagrupada</label>
         </div>}
         <div className="field">

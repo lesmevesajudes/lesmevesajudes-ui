@@ -95,7 +95,6 @@ function buildRequest(simulationData: SimulationData) {
             nacionalitat: addPeriod(adult.nacionalitat),
             victima_violencia_de_genere: addPeriod(adult.victima_violencia_de_genere),
             victima_de_terrorisme: addPeriod(adult.victima_de_terrorisme),
-            es_victima_de_violencia_masclista: addPeriod(adult.es_victima_de_violencia_masclista),
             te_permis_de_residencia: addPeriod(adult.te_permis_de_residencia),
             es_divorciada_de_familia_reagrupada: addPeriod(adult.es_divorciada_de_familia_reagrupada),
             resident_a_catalunya_durant_5_anys: addPeriod(adult.resident_a_catalunya_durant_5_anys),
