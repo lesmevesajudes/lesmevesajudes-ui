@@ -22,10 +22,22 @@ const RentFields = (props: Props) => (
                     ))}
                 </Control.select>
             </div>
-            <div className="field">
-                <label><Control.checkbox model=".relacio_de_parentiu_amb_el_propietari" /> Algun membre de la família té relació de parentiu amb el propietari de l'habitatge</label>
-            </div>
         </div>
+        <div className="field">
+            <label>Data signatura del contracte d'arrendament</label>
+            <Control.text
+                className="RegularTextInput"
+                id='data_signatura_contracte_arrendament'
+                model='.data_signatura_contracte_arrendament'
+                placeholder="2005-01-21"
+                type="date"
+                required
+            />
+        </div>
+        <div className="field">
+            <label><Control.checkbox model=".relacio_de_parentiu_amb_el_propietari" /> Algun membre de la família té relació de parentiu amb el propietari de l'habitatge</label>
+        </div>
+
         <div className="field">
             <label><Control.checkbox model=".existeix_deute_en_el_pagament_del_lloguer" /> Existeix un deute en el pagament del lloguer</label>
         </div>

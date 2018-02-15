@@ -131,7 +131,7 @@ function buildRequest(simulationData: SimulationData) {
 
                 case "SALARI":
                     // FIXME Renombrar a salari
-                    result = {...result, ingressos_disponibles: addPeriod(financialData.amount)};
+                    result = {...result, salari_net: addPeriod(financialData.amount)};
                     break;
                 case "PENSIO_RAI":
                     // FIXME: Passar a codis del domini?

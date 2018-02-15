@@ -22,12 +22,6 @@ type Props = {
 }
 
 class AdultsPage extends React.Component<Props, State>{
-    handleAddAdultClick: Function;
-    doneEditingAdult: Function;
-    handleRemoveAdultClick: Function;
-    handleUpdateAdultClick: Function;
-    handleSubmitForm: Function;
-
     state = {
         editingAdult: false,
         initialFormFields: undefined
