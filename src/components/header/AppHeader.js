@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import "./AppHeader.css";
+import "./core.css";
+import "./bcn-icon.css"
+import LogoBCN from "./logo.png";
 import AcceptCookiesBanner from "./AcceptCookiesBanner";
 
 class AppHeader extends Component {
@@ -115,7 +118,7 @@ class AppHeader extends Component {
                                 </li>
                                 <li>
                                     <a target="_blank" rel="noopener noreferrer" className="bcnbrand-logo-main" href="http://ajuntament.barcelona.cat/ca/" tabIndex="10" data-ga="Llima">
-                                        <img src="https://w9.barcelona.cat/assets/images/brand/banner/2017/logo.png" alt="Logo Ajuntament de Barcelona"/>
+                                        <img src={LogoBCN} alt="Logo Ajuntament de Barcelona"/>
                                     </a>
                                 </li>
                             </ul>

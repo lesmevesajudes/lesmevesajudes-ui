@@ -12,6 +12,7 @@
     text-align: center;
     line-height: 1.5;
 }
+
 .CTAButton {
     background-color: #e23787;
     border-radius: 3px;
@@ -23,23 +24,6 @@
 .CTALink {
     text-decoration: none;
     color: black;
-}
-
-.Cell {
-    max-width: 30%;
-    float: left;
-    margin: 1rem;
-}
-
-.Row::after {
-    content: "";
-    clear: both;
-    display: table;
-}
-
-.Main {
-    max-width: 960px;
-    margin: 0 auto;
 }
 
 .Presentation {
@@ -55,15 +39,19 @@
 }
 
 .AppLogo {
-    height: 410px;
-    width: 470px;
+    max-height: 410px;
+    max-width: 470px;
+    height: auto;
+    width: auto;
     float:left;
-    background-image: url(./AppLogo.jpg);
+    vertical-align: middle;
 }
+
 .Block {
     height: 410px;
     background-color: #004a8e;
 }
+
 .BlockText {
     font-size: 46px;
     max-width: 50%;
@@ -113,4 +101,61 @@
 .footer li + li {
     border-left: 1px solid #666666;
 
+}
+
+.Cell {
+    max-width: 30%;
+    float: left;
+    margin: 1rem;
+}
+
+.Row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.Main {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 1rem 2rem;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    background: #00ACD4;
+    color: white;
+    border: none;
+    margin: 0.5rem 0.5rem;
+    border-radius: 0;
+}
+
+button:focus {
+    outline: none;
+}
+button:hover {
+    opacity: 0.8;
+}
+
+h1 {
+    box-sizing: border-box;
+    display: block;
+    position: relative;
+    text-align: center;
+    -webkit-margin-after: 21.44px;
+    -webkit-margin-before: 21.44px;
+    -webkit-margin-end: 0;
+    -webkit-margin-start: 0;
+}
+
+body {
+    line-height: 1.5;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #333;
+    margin: 0 0 0 0;
 }

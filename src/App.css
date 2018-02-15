@@ -11,18 +11,6 @@
     margin: 0 auto;
 }
 
-.Cell {
-    max-width: 30%;
-    float: left;
-    margin: 1rem;
-}
-
-.Row::after {
-    content: "";
-    clear: both;
-    display: table;
-}
-
 .FormContainer {
     margin-left: auto;
     margin-right: auto;

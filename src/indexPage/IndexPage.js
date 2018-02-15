@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import AppFooter from "../components/Footer/Footer";
 import './IndexPage.css';
 
 class IndexPage extends React.Component {
