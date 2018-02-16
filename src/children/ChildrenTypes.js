@@ -10,7 +10,7 @@ export type Child = {
     codi_postal_empadronament: string;
     social_services_user: boolean;
     grau_discapacitat: number;
-    es_escolaritzat: boolean;
+    es_escolaritzat_entre_P3_i_4rt_ESO: boolean;
     utilitza_el_servei_de_menjador: boolean;
     te_beca_menjador: boolean;
     en_acolliment: boolean;

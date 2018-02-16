@@ -12,6 +12,7 @@ import FinancialDataReducer from "./financial/FinancialDataReducer";
 import ResultsReducer from './results/ResultsReducer';
 import HouseholdReducer from './household/HouseholdReducer';
 import RentReducer from "./rent/RentReducer";
+import IncomeDataReducer from "./income/IncomeDataReducer";
 import isDevelopment from './shared/isDevelopment';
 import './App.css';
 import './select-css.css';
@@ -32,6 +33,7 @@ const reducersCombined =combineReducers({
     rent: RentReducer,
     properties: PropertiesReducer,
     financialData: FinancialDataReducer,
+    incomeData: IncomeDataReducer,
     householdData: HouseholdReducer
 });
 

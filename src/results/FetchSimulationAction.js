@@ -71,7 +71,7 @@ function buildRequest(simulationData: SimulationData) {
             ciutat_empadronament: addPeriod(esBarcelona(child.codi_postal_empadronament) ? "Barcelona" : "Altre"),
             codi_postal_empadronament: addPeriod(child.codi_postal_empadronament),
             grau_discapacitat: addPeriod(child.grau_discapacitat),
-            es_escolaritzat: addPeriod(child.es_escolaritzat),
+            es_escolaritzat_entre_P3_i_4rt_ESO: addPeriod(child.es_escolaritzat_entre_P3_i_4rt_ESO),
             utilitza_el_servei_de_menjador: addPeriod(child.utilitza_el_servei_de_menjador),
             te_beca_menjador: addPeriod(child.te_beca_menjador),
             en_acolliment: addPeriod(child.en_acolliment),

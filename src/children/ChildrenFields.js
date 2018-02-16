@@ -53,7 +53,7 @@ const ChildrenFields = (props) => (
             </label>
         </div>
         <div className="field">
-            <label><Control.checkbox model=".es_escolaritzat" /> Està escolaritzat</label>
+            <label><Control.checkbox model=".es_escolaritzat_entre_P3_i_4rt_ESO" /> Està escolaritzat entre P4 i 4rt d'ESO</label>
         </div>
         <div className="field">
             <label><Control.checkbox model=".utilitza_el_servei_de_menjador" /> Utilitza el servei de menjador de l'escola</label>
