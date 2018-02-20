@@ -73,6 +73,7 @@ const AdultsFields = (props) => (
                         <option value="treball_compte_propi">Treballa per compte propi</option>
                         <option value="desocupat">Desocupat</option>
                         <option value="estudiant">Estudiant</option>
+                        <option value="jubilat">Jubilat</option>
                     </select>
                 </div>
             </Field>
