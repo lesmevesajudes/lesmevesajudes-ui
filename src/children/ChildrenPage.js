@@ -49,8 +49,6 @@ class ChildrenPage extends React.Component<Props, State> {
                 editingChild: true
             }
         );
-        console.log(childId);
-        console.log(this.props.children.filter((e)=>e.id===childId)[0]);
     }
     handleRemoveChildClick(childId: ChildId) {
         this.props.removeChild(childId);

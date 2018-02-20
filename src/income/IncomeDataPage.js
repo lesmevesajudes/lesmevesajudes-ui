@@ -44,8 +44,6 @@ class incomeDataPage extends React.Component<Props, State>{
     }
 
     handleUpdateIncomeDataClick(adultId: AdultId) {
-        console.log(adultId);
-        console.log(this.props.personesQuePodenTenirRendes.get(adultId).nom);
         this.setState(
             {
                 initialFormFields: this.props.incomeData[adultId],
