@@ -16,10 +16,10 @@ class IncomeDataViewer extends Component<Props, void> {
     renderIncomeDataList(personesQuePodenTenirRendes: Map<Adult>, ingressosDeclarats: Map<Renda>) {
         return (
             <ul className="ItemList">
-                {personesQuePodenTenirRendes.map((adult) => (
+                {personesQuePodenTenirRendes.valueSeq().map((adult) => (
                     <li className="Item" key={adult.id}>
                         <span style={{float: 'left'}} onClick={() => this.props.onUpdateClick(adult.id)}>
-                            {adult.nom} - {adult.data_naixement}
+                            {adult.nom} - {adult.data_naixement} -
                         </span>
                         <button style={{float: 'right'}} key={adult.id} onClick={() => this.props.onUpdateClick(adult.id)}>
                             Modificar
