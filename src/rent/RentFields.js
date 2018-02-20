@@ -2,10 +2,11 @@
 import React from 'react';
 import {Control} from 'react-redux-form';
 import type {Rent} from "./RentTypes";
+import {Adult} from "../adults/AdultsTypes";
 
 type Props = {
     state:?Rent,
-    persons: Array<any>,
+    personesQuePodenTenirContracteDeLloguer: Map<Adult>,
 }
 
 const RentFields = (props: Props) => (
@@ -17,9 +18,11 @@ const RentFields = (props: Props) => (
                     required
                     model=".titular_contracte_de_lloguer_id">
                     <option defaultValue value="" >seleccioni una persona</option>
-                    {props.persons.map((person) => (
-                        <option key={person.id} value={person.id}>{person.nom}</option>
+                    {props.personesQuePodenTenirContracteDeLloguer.valueSeq().map((persona) => (
+                        <option key={persona.id} value={persona.id}>{persona.nom}</option>
                     ))}
+                    <option key="no-conviu" value="no-conviu">Una persona que no viu a l'habitatge</option>
+
                 </Control.select>
             </div>
         </div>

@@ -7,10 +7,12 @@ import RentFields from "./RentFields";
 import type {Rent} from "./RentTypes";
 import {serialize as serialize_adults} from '../adults/AdultsReducer';
 import {serialize as serialize_children} from '../children/ChildrenReducer';
+import {Adult} from "../adults/AdultsTypes";
 
 type Props = {
     initialState:?Rent,
-    addRent: Function
+    addRent: Function,
+    personesQuePodenTenirContracteDeLloguer: Map<Adult>
 }
 class RentForm extends Component<Props> {
     handleSubmit(values) {
@@ -27,7 +29,9 @@ class RentForm extends Component<Props> {
                            initialState={this.props.state}
                 >
                     <div>
-                        <RentFields state={this.props.state} persons={this.props.persons}/>
+                        <RentFields
+                            state={this.props.state}
+                            personesQuePodenTenirContracteDeLloguer={this.props.personesQuePodenTenirContracteDeLloguer}/>
                     </div>
                 </LocalForm>
                 </div>
@@ -36,17 +40,11 @@ class RentForm extends Component<Props> {
     }
 }
 
-function listPersons(state) {
-    return [
-        ...serialize_adults(state.adults),
-        ...serialize_children(state.children)];
-}
-
 
 function mapStateToProps(state) {
     return {
         state: state.rent,
-        persons: listPersons(state)
+        personesQuePodenTenirContracteDeLloguer: state.adults
     };
 }
 
