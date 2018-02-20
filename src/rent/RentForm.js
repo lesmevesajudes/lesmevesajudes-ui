@@ -5,8 +5,6 @@ import {connect} from 'react-redux';
 import {addRent} from './RentActions';
 import RentFields from "./RentFields";
 import type {Rent} from "./RentTypes";
-import {serialize as serialize_adults} from '../adults/AdultsReducer';
-import {serialize as serialize_children} from '../children/ChildrenReducer';
 import {Adult} from "../adults/AdultsTypes";
 
 type Props = {

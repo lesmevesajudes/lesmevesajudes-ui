@@ -1,7 +1,6 @@
 //@flow
 import React, { Component } from 'react';
 import { LocalForm } from 'react-redux-form';
-import {Adult} from './IncomeDataTypes';
 import IncomeDataFields from './IncomeDataFields';
 import type {Renda} from "./IncomeDataTypes";
 

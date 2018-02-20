@@ -7,7 +7,6 @@ import type {ChildState, Child} from "../children/ChildrenTypes";
 import type {HouseholdData} from "../household/householdDataTypes";
 import type {Rent} from "../rent/rentTypes";
 import type {Properties} from "../properties/PropertiesTypes";
-import type {FinancialData, FinancialDataState} from "../financial/FinancialDataTypes";
 import {esBarcelona, esCatalunya} from '../shared/CodisPostals';
 export const FETCH_SIMULATION='fetch_simulation';
 
@@ -56,7 +55,6 @@ type SimulationData = {
     householdData: HouseholdData
 }
 const addPeriod = value => ({'2017-01': value});
-const deepMerge = (obj1, obj2) => Object.assign({},...Object.keys(obj1).map(k => ({[k]: {...obj1[k], ...obj2[k]}})));
 
 function shouldBePartOfFamilyVariables(value) {
     return (value !== "titular_contracte_de_lloguer_id" && value !== "existeix_deute_en_el_pagament_del_lloguer");
@@ -117,76 +115,13 @@ function buildRequest(simulationData: SimulationData) {
             GE_051_01_mensual: addPeriod(null),
             GE_051_02_mensual: addPeriod(null),
             GE_051_03_mensual: addPeriod(null),
-            GG_270_mensual: addPeriod(null),
-            HG_077_03_mensual: addPeriod(null)
+            GG_270_mensual: addPeriod(null)
         };
         return acc
     }, {});
-
-    const financialDataReduced = simulationData.financialData.reduce((acc, financialData: FinancialData) =>
-        {
-            let result = acc[financialData.receptorId]? acc[financialData.receptorId]:{};
-
-            switch(financialData.type) {
-
-                case "SALARI":
-                    // FIXME Renombrar a salari
-                    result = {...result, salari_net: addPeriod(financialData.amount)};
-                    break;
-                case "PENSIO_RAI":
-                    // FIXME: Passar a codis del domini?
-                    result = {...result, pensio_rai: addPeriod(financialData.amount)};
-                    break;
-                case "PENSIO_VIUDETAT":
-                    // FIXME: Passar a codis del domini?
-                    result = {...result, pensio_viudetat: addPeriod(financialData.amount)};
-                    break;
-                case "PENSIO_ALIMENTICIA":
-                    // FIXME: Passar a codis del domini?
-                    result = {...result, pensio_alimenticia: addPeriod(financialData.amount)};
-                    break;
-                case "AJUDA_MENJADOR":
-                    // FIXME: Passar a codis del domini?
-                    result = {...result, ajuda_menjador: addPeriod(financialData.amount)};
-                    break;
-                case "AJUDA_AL_LLOGUER":
-                    // FIXME: Passar a codis del domini?
-                    result = {...result, ajuda_al_lloguer: addPeriod(financialData.amount)};
-                    break;
-                case "RGC":
-                    // FIXME: Passar a codis del domini?
-                    result = {...result, rgc: addPeriod(financialData.amount)};
-                    break;
-                case "FACTURACIO_NEGOCI_FAMILIAR":
-                    // FIXME Hauria de ser de la família?
-                    result = {...result, volum_del_negoci_familiar: addPeriod(financialData.amount)};
-                    break;
-                case "RENDIMENTS_PATRIMONI_FAMILIAR":
-                    // FIXME Hauria de ser de la família?
-                    result = {...result, rendiments_del_patrimoni: addPeriod(financialData.amount)};
-                    break;
-                case "PRESTACIO_RESIDENCIAL":
-                    // FIXME es pot passar a import?? O es un servei?
-                    result = {...result, es_beneficiari_d_una_prestacio_residencial: addPeriod(true)};
-                    break;
-                case "PRESTACIO_INCOMPATIBLE_AMB_EL_TREBALL":
-                    result = {...result, percep_prestacions_incompatibles_amb_la_feina: addPeriod(true)};
-                    break;
-                case "AJUT_VIOLENCIA_DE_GENERE":
-                    result = {...result, beneficiari_ajuts_per_violencia_de_genere: addPeriod(true)};
-                    break;
-
-                default:
-                    throw new Error("Unknown benefit");
-            }
-            acc[financialData.receptorId] = result;
-            return acc;
-        }, {}) || {};
     if ( typeof adultsPersonalData[simulationData.rent.titular_contracte_de_lloguer_id] !== 'undefined' ) {
         adultsPersonalData[simulationData.rent.titular_contracte_de_lloguer_id].titular_contracte_de_lloguer = addPeriod(true);
     }
-    const adults = deepMerge(adultsPersonalData,financialDataReduced);
-    const menors = deepMerge(menorsPersonalData,financialDataReduced);
 
     return {
             families:{
@@ -213,7 +148,7 @@ function buildRequest(simulationData: SimulationData) {
                     }, {})
                 }
             },
-            persones: {...adults, ...menors}
+            persones: {...adultsPersonalData, ...menorsPersonalData}
         }
 }
 

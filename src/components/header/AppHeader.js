@@ -68,7 +68,7 @@ class AppHeader extends Component {
                                     </a>
                                 </li>
                             </ul>
-                            <a href="javascript:" className="bcnbrand-close" tabIndex="4" title="Tanca" aria-label="Tanca" aria-expanded="false" aria-controls="bcnbrand-shortcuts-nav" data-ga="Tanca-Drecera">
+                            <a className="bcnbrand-close" tabIndex="4" title="Tanca" aria-label="Tanca" aria-expanded="false" aria-controls="bcnbrand-shortcuts-nav" data-ga="Tanca-Drecera">
                                 <span className="bcnbrand-icon bcn-icon-tancar-light"/>
                             </a>
                         </nav>
@@ -78,7 +78,7 @@ class AppHeader extends Component {
                                 <li><a href="https://vacances.barcelona.cat" tabIndex="8" className="active" lang="ca" title="Català" data-ga="CA">Català</a></li>
                                 <li><a href="https://vacances.barcelona.cat/es/" tabIndex="8" lang="es" title="Castellano" data-ga="ES">Castellano</a></li>
                             </ul>
-                            <a href="javascript:" className="bcnbrand-close" tabIndex="9" title="Tanca" aria-label="Tanca" aria-expanded="false" aria-controls="bcnbrand-lang-nav" data-ga="Tanca-Idioma">
+                            <a className="bcnbrand-close" tabIndex="9" title="Tanca" aria-label="Tanca" aria-expanded="false" aria-controls="bcnbrand-lang-nav" data-ga="Tanca-Idioma">
                                 <span className="bcnbrand-icon bcn-icon-tancar-light"/>
                             </a>
                         </nav>
@@ -92,7 +92,7 @@ class AppHeader extends Component {
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="javascript:" className="bcnbrand-nav-link bcnbrand-nav-link-squares" data-target="bcnbrand-shortcuts" tabIndex="2" title="Dreceres de barcelona.cat" aria-label="Dreceres de barcelona.cat" aria-expanded="false" aria-controls="bcnbrand-shortcuts-nav" data-ga="Drecera">
+                                    <a className="bcnbrand-nav-link bcnbrand-nav-link-squares" data-target="bcnbrand-shortcuts" tabIndex="2" title="Dreceres de barcelona.cat" aria-label="Dreceres de barcelona.cat" aria-expanded="false" aria-controls="bcnbrand-shortcuts-nav" data-ga="Drecera">
                                         <span className="bcnbrand-icon bcn-icon-menu-drecera"/>
                                     </a>
                                 </li>
@@ -107,7 +107,7 @@ class AppHeader extends Component {
                                     </form>
                                 </li>
                                 <li>
-                                    <a href="javascript:" className="bcnbrand-nav-link bcnbrand-nav-link-lang-selector" data-target="bcnbrand-lang" tabIndex="7" title="Canviar idioma" aria-label="Canviar idioma" aria-expanded="false" aria-controls="bcnbrand-lang-nav" data-ga="Idioma">
+                                    <a className="bcnbrand-nav-link bcnbrand-nav-link-lang-selector" data-target="bcnbrand-lang" tabIndex="7" title="Canviar idioma" aria-label="Canviar idioma" aria-expanded="false" aria-controls="bcnbrand-lang-nav" data-ga="Idioma">
                                         <span className="bcnbrand-icon bcn-icon-idioma"/>
                                         <span className="bcnbrand-select-lang">
                                             <span className="bcnbrand-lang-text">Català</span>

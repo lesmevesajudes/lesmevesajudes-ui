@@ -1,5 +1,5 @@
 import React from 'react';
-import {Control, Field} from 'react-redux-form';
+import {Control} from 'react-redux-form';
 
 const IncomeDataFields = (props) => (
     <div>

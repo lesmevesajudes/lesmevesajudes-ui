@@ -3,7 +3,7 @@ import React from 'react';
 import IncomeDataViewer from './IncomeDataViewer';
 import IncomeDataForm from './IncomeDataForm';
 import {connect} from 'react-redux';
-import type {IncomeData, IncomeDataId, Renda} from './IncomeDataTypes';
+import type {Renda} from './IncomeDataTypes';
 import * as UUID from '../shared/UUID';
 import { addIncomeData, updateIncomeData, removeIncomeData } from './IncomeDataActions';
 import {Adult} from "../adults/AdultsTypes";
@@ -12,7 +12,7 @@ import {Map} from 'immutable';
 
 type State = {
     editingIncomeData: boolean,
-    initialFormFields: ?IncomeData,
+    initialFormFields: ?Renda,
     adultName: string
 };
 

@@ -5,7 +5,6 @@ import ChildrenPage from "../children/ChildrenPage";
 import HouseHoldForm from "../household/HouseholdForm";
 import RentForm from "../rent/RentForm";
 import ResultsPage from "../results/ResultsPage";
-import PropertiesForm from "../properties/PropertiesForm";
 import YesNoSkipStep from "./YesNoSkipStep";
 
 import './Wizard.css';
