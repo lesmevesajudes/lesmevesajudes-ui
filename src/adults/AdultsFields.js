@@ -61,6 +61,15 @@ const AdultsFields = (props) => (
             </Field>
         </div>
         <div className="field">
+            <label>Codi postal empadronament</label>
+            <Control.text
+                required
+                className="RegularTextInput centered"
+                model='.codi_postal_empadronament'
+                placeholder='08000'
+            />
+        </div>
+        <div className="field">
             <label>Situació laboral</label>
             <Field
                 model='.situacio_laboral'
@@ -86,15 +95,6 @@ const AdultsFields = (props) => (
                 model='.grau_discapacitat'
                 placeholder="0"
                 type="number"
-            />
-        </div>
-        <div className="field">
-            <label>Codi postal empadronament</label>
-            <Control.text
-                required
-                className="RegularTextInput centered"
-                model='.codi_postal_empadronament'
-                placeholder='08000'
             />
         </div>
         <div className="field">

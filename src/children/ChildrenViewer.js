@@ -17,11 +17,11 @@ class ChildrenViewer extends React.Component<Props> {
                        <span style={{float: 'left'}} onClick={() => this.props.onUpdateClick(child.id)}>
                             {child.nom} - {child.data_naixement}
                         </span>
-                        <button style={{float: 'right'}} key={child.id} onClick={e => this.props.onRemoveClick(child.id)}>
-                            <i class="material-icons">delete</i>
+                        <button style={{float: 'right'}} className="littlebutton" key={"delete" + child.id} onClick={e => this.props.onRemoveClick(child.id)}>
+                            <i className="material-icons">delete</i>
                         </button>
-                        <button style={{float: 'right'}} key={child.id} onClick={e => this.props.onUpdateClick(child.id)}>
-                            <i class="material-icons">edit</i>
+                        <button style={{float: 'right'}} className="littlebutton" key={"edit" + child.id} onClick={e => this.props.onUpdateClick(child.id)}>
+                            <i className="material-icons">edit</i>
                         </button>
                     </li>
                 ))}
