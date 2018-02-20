@@ -8,7 +8,7 @@
 
 .CTA {
     font-size: 1.5rem;
-    background-color: #00acd4;
+    background-color: #004a8e;
     text-align: center;
     line-height: 1.5;
 }
@@ -16,7 +16,6 @@
     background-color: #e23787;
     border-radius: 3px;
     font-weight: 400;
-    font-family: 'Source Sans Pro', sans-serif;
     color: white;
 }
 
@@ -56,29 +55,35 @@
 
 .AppLogo {
     height: 410px;
-    width: 470px;
-    float:left;
-    background-image: url(./AppLogo.jpg);
+    width: 50%;
+    float: left;
+    background: url(./AppLogo.png) no-repeat center;
+    background-size: contain;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
 }
 .Block {
     height: 410px;
-    background-color: #004a8e;
+    background-color: #00acd4;
+    padding: 5px;
 }
 .BlockText {
+    padding-top: 140px;
+    height: 410px;
+    text-align: left;
     font-size: 46px;
     max-width: 50%;
     float: right;
     font-weight: 600;
     color: white;
-    text-align: left;
-    padding-top: 50px;
+    padding-left: 5px;
 }
 
 .atclear {
     clear: both;
     color: rgb(0, 0, 0);
     display: block;
-    font-family: "Source Sans Pro", Arial, Verdana, sans-serif;
     font-size: 10px;
     white-space: nowrap;
     width: 94px;
