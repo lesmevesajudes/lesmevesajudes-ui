@@ -9,7 +9,7 @@ const IncomeDataFields = (props) => (
                 type="hidden"/>
         </div>
         <div className="field">
-            <label>Ingressos bruts</label>
+            <label>Ingressos bruts anuals (&euro;)</label>
             <Control.text
                 className="RegularTextInput"
                 id='ingressos_bruts'

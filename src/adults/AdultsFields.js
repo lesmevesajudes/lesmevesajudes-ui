@@ -9,7 +9,7 @@ const AdultsFields = (props) => (
                 type="hidden"/>
         </div>
         <div className="field">
-            <label>Nom</label>
+            <label>Com vol identificar a aquesta persona?</label>
             <Control.text
                 className="RegularTextInput"
                 id='nom'
@@ -149,7 +149,7 @@ const AdultsFields = (props) => (
             <label><Control.checkbox model=".durant_el_mes_anterior_ha_presentat_solicituds_recerca_de_feina" value={false}/> Durant el mes anterior ha presentat solicituds recerca de feina</label>
         </div>}
         <div className="field">
-            <label><Control.checkbox model=".al_corrent_de_les_obligacions_tributaries" value={false}/> Al corrent de les obligacions tributàries</label>
+            <label><Control.checkbox model=".al_corrent_de_les_obligacions_tributaries" defaultChecked/> Al corrent de les obligacions tributàries</label>
         </div>
 
     </div>

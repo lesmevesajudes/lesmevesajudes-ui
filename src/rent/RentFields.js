@@ -43,7 +43,7 @@ const RentFields = (props: Props) => (
         </div>
         {props.state.existeix_deute_en_el_pagament_del_lloguer === true &&
             <div className="field">
-                <label>Import del deute:</label>
+                <label>Import total del deute (&euro;)</label>
                 <Control.text
                     className="RegularTextInput"
                     model=".import_del_deute_amb_el_propietari"
@@ -54,7 +54,7 @@ const RentFields = (props: Props) => (
             <label><Control.checkbox model=".lloguer_domiciliat" /> El pagament del lloguer està domiciliat</label>
         </div>
         <div className="field">
-            <label>Import de lloguer:</label>
+            <label>Import mensual del lloguer (&euro;)</label>
             <Control.text
                 className="RegularTextInput"
                 model=".import_del_lloguer"

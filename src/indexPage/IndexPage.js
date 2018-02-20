@@ -33,24 +33,24 @@ class IndexPage extends React.Component {
                     </div>
                     <div className="Row">
                         <div className="Cell">
-                            <h1>Ajudes RAI</h1>
+                            <h1>Fons infància</h1>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
                         </div>
                         <div className="Cell">
-                            <h1>Ajudes al lloguer</h1>
+                            <h1>Ajuts individuals de menjador</h1>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                         </div>
                         <div className="Cell">
-                            <h1>Beques menjador</h1>
+                            <h1>Ajuts al pagament del lloguer</h1>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        </div>
+                        <div className="Cell">
+                            <h1>Renda activa d'inserció</h1>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
                         </div>
                         <div className="Cell">
                             <h1>Renda Garantida Ciutadania</h1>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        </div>
-                        <div className="Cell">
-                            <h1>Ajuda a menors de 0 a 16 anys</h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
                         </div>
                     </div>
                     <div className="footer">

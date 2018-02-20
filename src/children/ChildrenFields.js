@@ -10,7 +10,7 @@ const ChildrenFields = (props) => (
             />
         </div>
         <div className="field">
-            <label>Nom</label>
+            <label>Com vol identificar a aquesta persona?</label>
             <Control.text
                 required
                 className="RegularTextInput"
