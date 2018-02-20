@@ -19,7 +19,10 @@ class AdultsViewer extends Component<Props, void> {
                             {adult.nom} - {adult.data_naixement}
                         </span>
                         <button style={{float: 'right'}} key={adult.id} onClick={e => this.props.onRemoveClick(adult.id)}>
-                            Eliminar
+                            <i class="material-icons">delete</i>
+                        </button>
+                        <button style={{float: 'right'}} key={adult.id} onClick={e => this.props.onUpdateClick(adult.id)}>
+                            <i class="material-icons">edit</i>
                         </button>
                     </li>
                 ))}
