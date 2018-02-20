@@ -11,7 +11,7 @@ class IndexPage extends React.Component {
                         <div className='AppLogo'>
                         </div>
                         <div className="BlockText">
-                            <p>Vols saber a quines ajudes públiques pots optar?</p>
+                            <span>Vols saber a quins ajuts públics pots optar?</span>
                         </div>
                     </div>
                     <div className='CTA'>
