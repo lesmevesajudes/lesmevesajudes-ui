@@ -9,19 +9,32 @@ import {Link} from "react-router-dom";
 class PersonalBenefits extends React.Component {
     constructor() {
         super();
-        this.possibleBenefits = ["AE_230_mensual", "EG_233_mensual", "GE_051_01_mensual", "GE_051_02_mensual", "GE_051_03_mensual", "GG_270_mensual", "HG_077_03_mensual"];
+        this.possibleBenefits = [
+            {ID: "AE_230_mensual", name: "Fons infància", periode: "mes",url: "/ajuts/fons_infancia"},
+            {ID: "EG_233_mensual", name: "Ajuts individuals de menjador", periode: "dia", url: "/ajuts/menjador"},
+            {ID: "GE_051_01_mensual", name: "Renda activa d'inserció", periode: "mes", url:"/ajuts/rai"},
+            {ID: "GE_051_02_mensual", name: "Renda activa d'inserció", periode: "mes", url:"/ajuts/rai"},
+            {ID: "GE_051_03_mensual", name: "Renda activa d'inserció", periode: "mes", url:"/ajuts/rai"},
+            {ID: "GG_270_mensual", name: "Renda Garantida Ciutadana", periode: "mes", url:"/ajuts/rgc"}]
         this.period = "2017-01";
 
     }
 
 
     hasAnyBenefit(personWithBenefits) {
-        return this.possibleBenefits.reduce((acc, benefit) => {return acc + personWithBenefits[benefit][this.period]}, 0) > 0
+        return this.possibleBenefits.reduce((acc, benefit) => {return acc + personWithBenefits[benefit.ID][this.period]}, 0) > 0
     }
 
     renderAPersonalBenefit(benefit, personWithBenefits) {
-        if (personWithBenefits[benefit][this.period] > 0) {
-            return (<li className="Item" key={benefit}> {benefit} - {personWithBenefits[benefit][this.period]} €</li>);
+        if (personWithBenefits[benefit.ID][this.period] > 0) {
+            return (
+                <li className="Item" key={benefit.ID}>
+                    {benefit.name} - {personWithBenefits[benefit.ID][this.period]} € / {benefit.periode}
+                    <Link to={benefit.url}>
+                        <button style={{float: 'right'}} className="littlebutton" key={benefit.ID}><i className="material-icons">info</i>
+                        </button>
+                    </Link>
+                </li>);
         }
     };
 
@@ -46,7 +59,7 @@ class PersonalBenefits extends React.Component {
 
         return (
             <ul className="ItemList">
-                { Object.entries(personsWithBenefits).map(([id, person]) => this.renderPersonalBenefits({ ...person, id:id}, personsData)) }
+                { Object.entries(personsWithBenefits).map(([id, person]) => this.renderPersonalBenefits({...person, id:id}, personsData)) }
             </ul>);
     }
 

@@ -10,7 +10,6 @@
     max-width: 960px;
     margin: 0 auto;
 }
-
 .FormContainer {
     margin-left: auto;
     margin-right: auto;
@@ -139,9 +138,4 @@ button.secondary {
     border: 2px solid #00ACD4;
     color: #00ACD4;
     font-weight: 600;
-}
-
-footer {
-    background-color: black;
-    height: 200px;
 }

@@ -19,6 +19,12 @@ import './select-css.css';
 import PropertiesReducer from "./properties/PropertiesReducer";
 import AppHeader from "./components/header/AppHeader";
 import ReportBugPage from "./reportBug/ReportBugPage";
+import InfoRAI from "./pages/InfoRAI";
+import InfoRGC from "./pages/InfoRGC";
+import InfoLloguer from "./pages/InfoLloguer";
+import InfoMenjador from "./pages/InfoMenjador";
+import InfoFonsInfancia from "./pages/InfoFonsInfancia";
+import AppFooter from "./components/Footer/Footer";
 
 
 if (isDevelopment) {
@@ -56,10 +62,16 @@ class App extends Component {
                                 <Route exact={true} path="/" component={IndexPage}/>
                                 <Route path="/wizard" component={WizardPage}/>
                                 <Route path="/reportBug" component={ReportBugPage}/>
+                                <Route path="/ajuts/rai" component={InfoRAI}/>
+                                <Route path="/ajuts/rgc" component={InfoRGC}/>
+                                <Route path="/ajuts/lloguer" component={InfoLloguer}/>
+                                <Route path="/ajuts/menjador" component={InfoMenjador}/>
+                                <Route path="/ajuts/fons_infancia" component={InfoFonsInfancia}/>
                             </Switch>
                         </BrowserRouter>
                     </Provider>
                 </div>
+                <AppFooter/>
             </div>
         );
     }

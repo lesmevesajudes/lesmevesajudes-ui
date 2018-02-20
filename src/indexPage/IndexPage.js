@@ -49,18 +49,8 @@ class IndexPage extends React.Component {
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
                         </div>
                         <div className="Cell">
-                            <h1>Renda Garantida Ciutadania</h1>
+                            <h1>Renda Garantida Ciutadana</h1>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        </div>
-                    </div>
-                    <div className="footer">
-                        <div className="footer-content">
-                            <ul>
-                                <li className="city-council">© Ajuntament de Barcelona</li>
-                                <li className="department"><a href="http://www.barcelona.cat/dretssocials/ca/">Drets Socials</a></li>
-                                <li><a href="/ca/avis-legal">Avís legal</a></li>
-                                <li><a href="/ca/accessibilitat">Accessibilitat</a></li>
-                            </ul>
                         </div>
                     </div>
                 </div>
