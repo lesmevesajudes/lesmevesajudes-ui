@@ -21,6 +21,8 @@ h1 {
     display: block;
     position: relative;
     text-align: center;
+    line-height: 1.1;
+    height: 60px;
     -webkit-margin-after: 21.44px;
     -webkit-margin-before: 21.44px;
     -webkit-margin-end: 0;

@@ -17,6 +17,7 @@
     border-radius: 3px;
     font-weight: 400;
     color: white;
+    font-size: 18px;
 }
 
 .CTALink {
@@ -50,7 +51,7 @@
     padding: 1rem;
     max-width: 1024px;
     margin: auto;
-    font-size: 1.5rem;
+    font-size: 16px;
 }
 
 .AppLogo {
@@ -63,11 +64,13 @@
     -moz-background-size: contain;
     -o-background-size: contain;
 }
+
 .Block {
     min-height: 410px;
     background-color: #00acd4;
     padding: 5px;
 }
+
 .BlockText {
     flex-direction: column;
     justify-content: center;
@@ -93,4 +96,5 @@
 
 .IndexPageLink {
     text-decoration: none;
+    color: #004a8e;
 }

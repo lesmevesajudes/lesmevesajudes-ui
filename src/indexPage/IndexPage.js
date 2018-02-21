@@ -42,6 +42,8 @@ class IndexPage extends React.Component {
                             <h1><Link className="IndexPageLink" to="/ajuts/lloguer">Ajuts al pagament del lloguer</Link></h1>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                         </div>
+                    </div>
+                    <div className="Row">
                         <div className="Cell">
                             <h1><Link className="IndexPageLink" to="/ajuts/rai">Renda activa d'inserció</Link></h1>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
