@@ -17,39 +17,37 @@ class IndexPage extends React.Component {
                     <div className='CTA'>
                         <Link className="CTALink" to="/wizard/">
                             <button className="CTAButton">
-                                <b>Consultar</b>
+                                <b>Comença la simulació</b>
                             </button>
                         </Link>
                     </div>
 
-
                     <div className="Presentation">
-                        <p className="PresentationText">Benvolgut/da,<br/>
-                            està accedint el simulador social de les meves ajudes de la Ciutat de Barcelona per comprovar
-                            si és susceptible de poder veure quines ajudes pot assolir.
-                            Aquest simulador no tramita cap sol·licitud. El simulador virtual farà unes preguntes amb la
-                            intenció de determinar si pot arribar a optar de les prestacions implementades en el sistema.</p>
-
+                        <p className="PresentationText"> Aquesta eina et permetrà consultar a quins ajuts i prestacions
+                            socials tens dret de manera àgil i precisa. Podràs trobar-hi ajudes gestionades per
+                            l’Ajuntament, la Generalitat i l’Estat. El simulador, que es troba en fase inicial, anirà
+                            incorporant nous ajuts.
+                        </p>
                     </div>
                     <div className="Row">
                         <div className="Cell">
-                            <h1><Link to="/ajuts/fons_infancia">Fons infància</Link></h1>
+                            <h1><Link className="IndexPageLink" to="/ajuts/fons_infancia">Fons infància</Link></h1>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
                         </div>
                         <div className="Cell">
-                            <h1><Link to="/ajuts/menjador">Ajuts individuals de menjador</Link></h1>
+                            <h1><Link className="IndexPageLink" to="/ajuts/menjador">Ajuts individuals de menjador</Link></h1>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                         </div>
                         <div className="Cell">
-                            <h1><Link to="/ajuts/lloguer">Ajuts al pagament del lloguer</Link></h1>
+                            <h1><Link className="IndexPageLink" to="/ajuts/lloguer">Ajuts al pagament del lloguer</Link></h1>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                         </div>
                         <div className="Cell">
-                            <h1><Link to="/ajuts/rai">Renda activa d'inserció</Link></h1>
+                            <h1><Link className="IndexPageLink" to="/ajuts/rai">Renda activa d'inserció</Link></h1>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
                         </div>
                         <div className="Cell">
-                            <h1><Link to="/ajuts/rgc">Renda Garantida Ciutadana</Link></h1>
+                            <h1><Link className="IndexPageLink" to="/ajuts/rgc">Renda Garantida Ciutadana</Link></h1>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                         </div>
                     </div>

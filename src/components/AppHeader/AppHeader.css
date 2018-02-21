@@ -1,0 +1,11 @@
+.AppHeader {
+    padding: 5px;
+    background-color: #00acd4;
+}
+.AppLogoPetit{
+    background: url("AppLogoPetit.png") no-repeat;
+    height: 40px;
+    width: 50%;
+    background-size: contain;
+    -webkit-background-size: contain;
+}

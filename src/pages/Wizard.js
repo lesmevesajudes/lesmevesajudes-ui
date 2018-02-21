@@ -9,6 +9,7 @@ import YesNoSkipStep from "./YesNoSkipStep";
 
 import './Wizard.css';
 import IncomeDataPage from "../income/IncomeDataPage";
+import AppHeader from "../components/AppHeader/AppHeader";
 
 const steps =
     [
@@ -25,6 +26,7 @@ class WizardPage extends Component {
     render() {
         return (
             <div className='step-progress'>
+                <AppHeader/>
                 <StepZilla steps={steps}
                            preventEnterSubmission={true}
                            nextTextOnFinalActionStep={'Veure resultats'}

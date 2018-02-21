@@ -121,3 +121,7 @@
     border-left: 1px solid #666666;
 
 }
+
+.IndexPageLink {
+    text-decoration: none;
+}

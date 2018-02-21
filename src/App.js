@@ -17,7 +17,7 @@ import isDevelopment from './shared/isDevelopment';
 import './App.css';
 import './select-css.css';
 import PropertiesReducer from "./properties/PropertiesReducer";
-import AppHeader from "./components/header/AppHeader";
+import CorporateHeader from "./components/Header/CorporateHeader";
 import ReportBugPage from "./reportBug/ReportBugPage";
 import InfoRAI from "./pages/InfoRAI";
 import InfoRGC from "./pages/InfoRGC";
@@ -25,6 +25,7 @@ import InfoLloguer from "./pages/InfoLloguer";
 import InfoMenjador from "./pages/InfoMenjador";
 import InfoFonsInfancia from "./pages/InfoFonsInfancia";
 import AppFooter from "./components/Footer/Footer";
+import AppHeader from "./components/AppHeader/AppHeader";
 
 
 if (isDevelopment) {
@@ -54,7 +55,7 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <AppHeader/>
+                <CorporateHeader/>
                 <div className="content">
                     <Provider store={ store }>
                         <BrowserRouter>

@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import "./AppHeader.css";
+import "./CorporateHeader.css";
 import "./core.css";
 import "./bcn-icon.css"
 import LogoBCN from "./logo.png";
 import AcceptCookiesBanner from "./AcceptCookiesBanner";
 
-class AppHeader extends Component {
+class CorporateHeader extends Component {
     render() {
         return (
             <header id="brand" className="v2017 lang-ca bcnbrand-legacy">
@@ -130,4 +130,4 @@ class AppHeader extends Component {
     }
 }
 
-export default AppHeader;
+export default CorporateHeader;
