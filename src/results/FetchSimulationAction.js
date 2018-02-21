@@ -8,6 +8,8 @@ import type {HouseholdData} from "../household/householdDataTypes";
 import type {Rent} from "../rent/rentTypes";
 import type {Properties} from "../properties/PropertiesTypes";
 import {esBarcelona, esCatalunya} from '../shared/CodisPostals';
+import OpenFiscaAPIClient from "../shared/OpenFiscaAPIClient";
+import type {FinancialDataState} from "../financial/FinancialDataTypes";
 export const FETCH_SIMULATION='fetch_simulation';
 
 /*
@@ -54,6 +56,7 @@ type SimulationData = {
     properties: Properties,
     householdData: HouseholdData
 }
+
 const addPeriod = value => ({'2017-01': value});
 
 function shouldBePartOfFamilyVariables(value) {
@@ -152,12 +155,12 @@ function buildRequest(simulationData: SimulationData) {
         }
 }
 
-export default  function fetchSimulation(simulationData: SimulationData, url: string) {
+export function fetchSimulation(simulationData: SimulationData) {
     let requestBody = buildRequest(simulationData);
     console.log("Request: ",requestBody);
-    const request = axios.post(url, requestBody);
+    let client = new OpenFiscaAPIClient();
     return {
         type: FETCH_SIMULATION,
-        payload: request
+        payload: client.makeSimulation(requestBody)
     };
 }

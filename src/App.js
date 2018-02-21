@@ -25,8 +25,6 @@ import InfoLloguer from "./pages/InfoLloguer";
 import InfoMenjador from "./pages/InfoMenjador";
 import InfoFonsInfancia from "./pages/InfoFonsInfancia";
 import AppFooter from "./components/Footer/Footer";
-import AppHeader from "./components/AppHeader/AppHeader";
-
 
 if (isDevelopment) {
     //module.hot.accept();
