@@ -12,6 +12,7 @@
     text-align: center;
     line-height: 1.5;
     color: white;
+    padding-bottom: 10px;
 }
 .CTAButton {
     background-color: #e23787;
@@ -52,13 +53,13 @@
 }
 
 .AppLogoWrapper {
-    padding: 5px;
+    padding: 15px;
     background-color: #00acd4;
 
 }
 
 .AppLogo {
-    min-height: 220px;
+    min-height: 200px;
     width: 100%;
     background-size: contain;
     background: #00acd4 url(./AppLogo.png) no-repeat center;
