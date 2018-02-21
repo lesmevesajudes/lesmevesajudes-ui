@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './Footer.css';
 
 class AppFooter extends Component {
     render() {
