@@ -1,10 +1,12 @@
 import React from 'react';
 import './InfoPage.css';
+import AppHeader from "../components/AppHeader/AppHeader";
 
 class InfoMenjador extends React.Component {
     render() {
         return (
             <div>
+                <AppHeader/>
                 <div className="Main">
                     <h1>Beques menjador</h1>
                     <p>És un ajut individual de menjador (que cobreixen del tot o parcialment el cost del servei) a
