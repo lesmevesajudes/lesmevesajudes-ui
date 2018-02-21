@@ -11,6 +11,7 @@
     background-color: #004a8e;
     text-align: center;
     line-height: 1.5;
+    color: white;
 }
 .CTAButton {
     background-color: #e23787;
@@ -42,10 +43,6 @@
     margin: 0 auto;
 }
 
-.Presentation {
-    background-color: #e3e4e4;
-}
-
 .PresentationText {
     text-align: justify;
     padding: 1rem;
@@ -54,19 +51,24 @@
     font-size: 16px;
 }
 
+.AppLogoWrapper {
+    padding: 5px;
+    background-color: #00acd4;
+
+}
+
 .AppLogo {
-    min-height: 410px;
-    width: 50%;
-    float: left;
-    background: url(./AppLogo.png) no-repeat center;
+    min-height: 280px;
+    width: 100%;
     background-size: contain;
+    background: #00acd4 url(./AppLogo.png) no-repeat center;
     -webkit-background-size: contain;
     -moz-background-size: contain;
     -o-background-size: contain;
 }
 
 .Block {
-    min-height: 410px;
+    min-height: 280px;
     background-color: #00acd4;
     padding: 5px;
 }

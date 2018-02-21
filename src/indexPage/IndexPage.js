@@ -7,14 +7,16 @@ class IndexPage extends React.Component {
         return (
             <div>
                 <div className="Main">
-                    <div className="Block">
-                        <div className='AppLogo'>
-                        </div>
-                        <div className="BlockText">
-                            <span>Vols saber a quins ajuts públics pots optar?</span>
-                        </div>
+                    <div className="AppLogoWrapper">
+                        <div className='AppLogo'/>
                     </div>
                     <div className='CTA'>
+                        <b>Vols saber a quins ajuts públics pots optar?</b>
+                        <p className="PresentationText"> Aquesta eina et permetrà consultar a quins ajuts i prestacions
+                            socials tens dret de manera àgil i precisa. Podràs trobar-hi ajudes gestionades per
+                            l’Ajuntament, la Generalitat i l’Estat. El simulador, que es troba en fase inicial, anirà
+                            incorporant nous ajuts.
+                        </p>
                         <Link className="CTALink" to="/wizard/">
                             <button className="CTAButton">
                                 <b>Comença la simulació</b>
@@ -23,11 +25,7 @@ class IndexPage extends React.Component {
                     </div>
 
                     <div className="Presentation">
-                        <p className="PresentationText"> Aquesta eina et permetrà consultar a quins ajuts i prestacions
-                            socials tens dret de manera àgil i precisa. Podràs trobar-hi ajudes gestionades per
-                            l’Ajuntament, la Generalitat i l’Estat. El simulador, que es troba en fase inicial, anirà
-                            incorporant nous ajuts.
-                        </p>
+
                     </div>
                     <div className="Row">
                         <div className="Cell">
