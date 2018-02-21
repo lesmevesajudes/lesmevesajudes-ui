@@ -46,7 +46,9 @@
 
 .PresentationText {
     text-align: justify;
-    padding: 1rem;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     max-width: 1024px;
     margin: auto;
     font-size: 16px;
