@@ -58,7 +58,7 @@
 }
 
 .AppLogo {
-    min-height: 280px;
+    min-height: 220px;
     width: 100%;
     background-size: contain;
     background: #00acd4 url(./AppLogo.png) no-repeat center;
