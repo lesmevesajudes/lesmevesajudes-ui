@@ -33,23 +33,23 @@ class IndexPage extends React.Component {
                     </div>
                     <div className="Row">
                         <div className="Cell">
-                            <h1>Fons infància</h1>
+                            <h1><Link to="/ajuts/fons_infancia">Fons infància</Link></h1>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
                         </div>
                         <div className="Cell">
-                            <h1>Ajuts individuals de menjador</h1>
+                            <h1><Link to="/ajuts/menjador">Ajuts individuals de menjador</Link></h1>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                         </div>
                         <div className="Cell">
-                            <h1>Ajuts al pagament del lloguer</h1>
+                            <h1><Link to="/ajuts/lloguer">Ajuts al pagament del lloguer</Link></h1>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                         </div>
                         <div className="Cell">
-                            <h1>Renda activa d'inserció</h1>
+                            <h1><Link to="/ajuts/rai">Renda activa d'inserció</Link></h1>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
                         </div>
                         <div className="Cell">
-                            <h1>Renda Garantida Ciutadana</h1>
+                            <h1><Link to="/ajuts/rgc">Renda Garantida Ciutadana</Link></h1>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                         </div>
                     </div>
