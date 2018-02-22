@@ -16,7 +16,7 @@ class IndexPage extends React.Component {
                     </div>
                 </div>
                 <div className='CTA'>
-                    <p className="PresentationText"><b>Vols saber a quins ajuts públics pots optar?</b> Aquesta eina et permetrà consultar a quins ajuts i prestacions
+                    <p className="PresentationText">Aquesta eina et permetrà consultar a quins ajuts i prestacions
                         socials tens dret de manera àgil i precisa. Podràs trobar-hi ajudes gestionades per
                         l’Ajuntament, la Generalitat i l’Estat. El simulador, que es troba en fase inicial, anirà
                         incorporant nous ajuts.
