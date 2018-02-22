@@ -8,11 +8,13 @@ class IndexPage extends React.Component {
         return (
             <div>
                 <AppHeader/>
-                <div className="Block">
-                    <div className='AppLogo'>
-                    </div>
-                    <div className="BlockText">
-                        <span>Vols saber a quins ajuts públics pots optar?</span>
+                <div className="BlockContainer">
+                    <div className="Block">
+                        <div className='AppLogo'>
+                        </div>
+                        <div className="BlockText">
+                            <span>Vols saber a quins ajuts públics pots accedir?</span>
+                        </div>
                     </div>
                 </div>
                 <div className='CTA'>
