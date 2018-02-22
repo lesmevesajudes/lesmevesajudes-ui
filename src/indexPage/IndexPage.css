@@ -57,12 +57,12 @@
 .AppLogoWrapper {
     padding: 15px;
     background-color: #00acd4;
-
 }
 
 .AppLogo {
-    min-height: 200px;
-    width: 100%;
+    min-height: 410px;
+    width: 50%;
+    float:left;
     background-size: contain;
     background: #00acd4 url(./AppLogo.png) no-repeat center;
     -webkit-background-size: contain;
@@ -71,7 +71,7 @@
 }
 
 .Block {
-    min-height: 280px;
+    min-height: 410px;
     background-color: #00acd4;
     padding: 5px;
 }
