@@ -12,14 +12,12 @@ class InfoLloguer extends React.Component {
                     <p>Les prestacions per al pagament del lloguer són ajuts a fons perdut per fer front al pagament del
                         lloguer de les unitats de convivència que tinguin ingressos baixos o moderats, a qui el cost
                         de l'habitatge pot situar en risc d'exclusió social residencial.</p>
-                    <p>Els destinataris són els titulars de contractes de lloguer obtinguts a través de les borses de
-                        mediació per al lloguer social, o gestionats per entitats sense ànim de lucre. També
-                        beneficiaris de les prestacions econòmiques d’especial urgència (adreçades a persones que han
-                        perdut l’habitatge a conseqüència d’un procés de desnonament o d’execució hipotecària),
-                        beneficiaris de les prestacions complementàries per donar continuïtat al pagament del lloguer.
-                        També poden accedir les persones que ja van ser beneficiàries el darrer any (renovació) que no
-                        rebessin les subvencions per al  per al pagament del lloguer segons la resolució
-                        Resolució GAH/939/2016, de 5 d'abril.</p>
+                    <p>S'entén que hi ha risc d'exclusió social quan la unitat de convivència a què pertany la persona
+                        que sol·licita l'ajut paga un lloguer superior al definit com a lloguer just.
+                        Únicament poden presentar la sol·licitud aquelles persones que renoven les prestacions per al
+                        pagament del lloguer. Actualment no hi ha convocatòria oberta per a nous sol·licitants,
+                        col·lectius específics.
+                    </p>
 
 
                     <h2>Enllaços</h2>

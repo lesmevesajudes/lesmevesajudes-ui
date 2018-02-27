@@ -12,15 +12,18 @@ class InfoRGC extends React.Component {
                     <p>La Renda garantida de ciutadania (RGC) és la prestació social a través de la qual s’asseguren els
                         mínims d'una vida digna a les persones i unitats familiars que es troben en situació de pobresa,
                         per tal de promoure la seva autonomia i participació activa en la societat. Es tracta d’una
-                        prestació social de naturalesa econòmica i percepció periòdica.  La Renda garantida de ciutadania
-                        (RGC) és un dret subjectiu i,  consta de dues prestacions econòmiques: a) prestació garantida, no
-                        condicionada, subjecta als requisits que estableix la llei; b) prestació complementària d'activació
-                        i inserció, condicionada al compromís d’un pla d'inclusió social o d'inserció laboral.</p>
+                        prestació social de naturalesa econòmica i percepció periòdica.  La Renda garantida de
+                        ciutadania (RGC) és un dret subjectiu i consta de dues prestacions econòmiques:</p>
+                    <ul>
+                        <li>prestació garantida, no condicionada, subjecta als requisits que estableix la llei.</li>
+                        <li>prestació complementària d'activació i inserció, condicionada al compromís d’un pla
+                            d'inclusió social o d'inserció laboral.</li>
+                    </ul>
                     <p>
-                        Els destinataris han de ser persones majors de 23 anys, empadronats a Catalunya i residents durant
-                        vint-i-quatre mesos anteriors,  no ser beneficiàries d'una prestació pública o privada de servei
-                        residencial permanent de tipus social, sanitari o sociosanitari, i no disposar d’ingressos, rendes
-                        o recursos mínims, durant els sis mesos anteriors a la sol·licitud.
+                        Els destinataris han de ser persones majors de 23 anys, empadronats a Catalunya i residents
+                        durant els vint-i-quatre mesos anteriors, no ser beneficiàries d'una prestació pública o privada
+                        de servei residencial permanent de tipus social, sanitari o sociosanitari, i no disposar
+                        d’ingressos, rendes o recursos mínims, durant els sis mesos anteriors a la sol·licitud.
                     </p>
 
 

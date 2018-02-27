@@ -9,13 +9,14 @@ class InfoMenjador extends React.Component {
                 <AppHeader/>
                 <div className="Main">
                     <h1>Beques menjador</h1>
-                    <p>És un ajut individual de menjador (que cobreixen del tot o parcialment el cost del servei) a
+                    <p>És un ajut individual de menjador (que cobreix del tot o parcialment el cost del servei) a
                         l'alumnat que pertany a famílies en situacions socioeconòmiques desafavorides. Els destinataris
-                        són l'alumnat de P-3 a 4t d'ESO escolaritzat en centres públics i concertats de famílies amb
+                        són l'alumnat de P-3 a 4t d'ESO escolaritzat en centres públics i concertats, de famílies amb
                         ingressos baixos.</p>
-                    <p>Per sol·licitar un ajut, les famílies s'han d'adreçar al Consorci d’Educació de Barcelona en el
-                        cas dels alumnes escolaritzats en centres de la ciutat de Barcelona (als consells comarcals en
-                        cas de ser de fora de la ciutat de Barcelona).</p>
+                    <p>Per sol·licitar un ajut, les famílies s'han d'adreçar al Consorci d’Educació de Barcelona si
+                        els alumnes estan escolaritzats en centres de la ciutat de Barcelona o als consells
+                        comarcals en cas de tractar-se de centres de fora de Barcelona.
+                    </p>
                     <h2>Enllaços</h2>
                     <ul>
                         <li><a href="http://ensenyament.gencat.cat/ca/serveis-tramits/ajuts-subvencions/per-destinataris/families-alumnes/individuals-menjador/">Plana oficial de l'ajut</a></li>
