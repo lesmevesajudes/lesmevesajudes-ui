@@ -34,6 +34,8 @@ export default function (state:AdultState = initAdultState() , action: AdultActi
             return removeAdult(state, action.adultId);
         case 'UPDATE_ADULT':
             return updateAdult(state, action.adult);
+        case 'ADD_INCOME_DATA':
+            return updateAdult(state, Object.assign(state.get(action.adultId), {ingressos_bruts: action.ingressos_bruts}));
         default:
             return state;
     }

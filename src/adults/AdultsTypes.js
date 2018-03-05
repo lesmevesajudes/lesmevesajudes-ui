@@ -26,6 +26,7 @@ export class Adult  {
     demandant_d_ocupacio_durant_12_mesos: boolean = false;
     durant_el_mes_anterior_ha_presentat_solicituds_recerca_de_feina: boolean = false;
     al_corrent_de_les_obligacions_tributaries: boolean = false;
+    ingressos_bruts: number = 0;
 
 }
 

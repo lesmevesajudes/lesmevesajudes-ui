@@ -16,6 +16,12 @@ type UpdateAdultAction = {
     adult: Adult;
 };
 
+type AddIncomeDataAction = {
+    type: 'ADD_INCOME_DATA';
+    adultId: AdultId;
+    ingressos_bruts: number;
+};
+
 export type AdultActions = AddAdultAction | RemoveAdultAction | UpdateAdultAction
 
 export function addAdult(adult: Adult): AddAdultAction {
@@ -34,5 +40,13 @@ export function removeAdult(adultId: AdultId): RemoveAdultAction {
     return {
         type: 'REMOVE_ADULT',
         adultId: adultId
+    };
+}
+
+export function addIncomeDataAction(adultId: AdultId, ingressosBruts: number): AddIncomeDataAction {
+    return {
+        type: 'ADD_INCOME_DATA',
+        adultId: adultId,
+        ingressos_bruts: ingressosBruts
     };
 }

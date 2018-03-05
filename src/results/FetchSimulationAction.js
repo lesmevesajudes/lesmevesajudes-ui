@@ -103,6 +103,7 @@ function buildRequest(simulationData: SimulationData) {
             es_empadronat_a_catalunya: addPeriod(esCatalunya(adult.codi_postal_empadronament)),
             grau_discapacitat: addPeriod(adult.grau_discapacitat),
             ingressat_en_centre_penitenciari: addPeriod(adult.ingressat_en_centre_penitenciari),
+            ingressos_bruts: addPeriod(adult.ingressos_bruts),
             desocupat: addPeriod(adult.situacio_laboral === 'desocupat'),
             es_orfe_dels_dos_progenitors: addPeriod(adult.es_orfe_dels_dos_progenitors),
             ha_treballat_a_l_estranger_6_mesos: addPeriod(adult.ha_treballat_a_l_estranger_6_mesos),

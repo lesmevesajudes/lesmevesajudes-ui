@@ -46,7 +46,7 @@ label {
     display: inline-block;
 }
 
-.RegularTextInput {
+.RegularTextInput{
     -webkit-appearance: none;
     -moz-appearance: none;
     border: 1px solid #CDCDCD;
@@ -54,6 +54,10 @@ label {
     padding: 0.5rem;
     min-width: 20rem;
     height: 36px;
+}
+
+.SmallTextInput {
+    min-width: 10rem;
 }
 
 .RegularTextInput:focus {

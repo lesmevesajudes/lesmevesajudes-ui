@@ -1,29 +1,40 @@
 //@flow
 import React, {Component} from 'react';
-import type {Renda} from './IncomeDataTypes';
 import {Adult} from "../adults/AdultsTypes";
 import {Map} from 'immutable';
+import type {AdultId} from "../adults/AdultsTypes";
+import {Control, LocalForm} from 'react-redux-form';
 
 type Props = {
-    personesQuePodenTenirRendes: Map<Adult>,
-    ingressosDeclarats: Map<Renda>,
-    onRemoveClick: Function,
-    onUpdateClick: Function,
+    personesQuePodenTenirRendes: Map<AdultId, Adult>,
     onAddIncomeDataClick: Function
 };
 
 class IncomeDataViewer extends Component<Props, void> {
-    renderIncomeDataList(personesQuePodenTenirRendes: Map<Adult>, ingressosDeclarats: Map<Renda>) {
+    renderIncomeDataList(personesQuePodenTenirRendes: Map<AdultId, Adult>) {
         return (
             <ul className="ItemList">
-                {personesQuePodenTenirRendes.valueSeq().map((adult) => (
+                {personesQuePodenTenirRendes.valueSeq().map((adult:Adult) => (
                     <li className="Item" key={adult.id}>
-                        <span style={{float: 'left'}} onClick={() => this.props.onUpdateClick(adult.id)}>
+                        <div style={{float: 'left'}}>
                             {adult.nom} - {adult.data_naixement}
-                        </span>
-                        <button style={{float: 'right'}} key={adult.id} onClick={() => this.props.onUpdateClick(adult.id)}>
-                            Modificar
-                        </button>
+                        </div>
+                        <div className="field" style={{float: 'right', maxWidth: '200px'}}>
+                            <LocalForm model="householdData"
+                                       onChange={(e) => this.props.onAddIncomeDataClick(e)}
+                                       initialState={{id: adult.id, ingressos_bruts: adult.ingressos_bruts}}
+                            >
+                                <Control.text
+                                    model='.adult_id'
+                                    type="hidden"/>
+                                <label>Ingressos bruts anuals (&euro;)</label>
+                                <Control.text
+                                    className="RegularTextInput SmallTextInput"
+                                    id='ingressos_bruts'
+                                    model='.ingressos_bruts'
+                                    placeholder='0'/>
+                            </LocalForm>
+                        </div>
                     </li>
                 ))}
             </ul>);

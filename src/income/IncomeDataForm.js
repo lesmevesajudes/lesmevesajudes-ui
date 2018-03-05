@@ -8,7 +8,7 @@ import type {Renda} from "./IncomeDataTypes";
 
 type Props = {
     initialState: ?Renda,
-    adultName: string,
+    adultName: ?string,
     onCancel: Function,
     onSubmit: Function,
 }
