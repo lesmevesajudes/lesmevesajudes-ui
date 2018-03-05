@@ -10,12 +10,14 @@ import YesNoSkipStep from "./YesNoSkipStep";
 import './Wizard.css';
 import IncomeDataPage from "../income/IncomeDataPage";
 import AppHeader from "../components/AppHeader/AppHeader";
+import BenefitsPage from "../benefits/BenefitsPage";
 
 const steps =
     [
         {name: 'Adults', component: <AdultsPage />},
         {name: 'Menors', component: <YesNoSkipStep question='Hi ha menors a la família?' nextStep="3"><ChildrenPage/></YesNoSkipStep>},
         {name: 'Ingressos', component: <IncomeDataPage />},
+        {name: 'Ajuts', component: <BenefitsPage />},
         {name: 'Domicili habitual', component: <YesNoSkipStep question="El domicili actual és en règim de lloguer?" nextStep="7"><RentForm /></YesNoSkipStep>},
         {name: 'Resultats', component: <ResultsPage />}
 

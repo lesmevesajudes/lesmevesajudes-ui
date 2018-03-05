@@ -1,7 +1,7 @@
 //@flow
 import React, { Component } from 'react';
 import { LocalForm } from 'react-redux-form';
-import IncomeDataFields from './IncomeDataFields';
+import IncomeDataFields from './BenefitsFields';
 
 
 
@@ -11,7 +11,7 @@ type Props = {
     onSubmit: Function,
 }
 
-class AdultsForm extends Component<Props, {}> {
+class BenefitsForm extends Component<Props, {}> {
     state = {};
     onChange: Function;
 
@@ -42,4 +42,4 @@ class AdultsForm extends Component<Props, {}> {
     }
 }
 
-export default AdultsForm;
+export default BenefitsForm;

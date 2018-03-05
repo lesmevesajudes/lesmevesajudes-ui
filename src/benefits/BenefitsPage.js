@@ -1,26 +1,26 @@
 //@flow
 import React from 'react';
-import IncomeDataViewer from './IncomeDataViewer';
 import {connect} from 'react-redux';
 import {Adult} from "../adults/AdultsTypes";
 import type {AdultId} from "../adults/AdultsTypes";
 import {Map} from 'immutable';
 import {addIncomeDataAction} from '../adults/AdultsActions'
+import BenefitsViewer from "./BenefitsViewer";
 
 type Props = {
-    personesQuePodenTenirRendes: Map<AdultId, Adult>,
+    personesQuePodenTenirAjuts: Map<AdultId, Adult>,
     addIncomeDataAction: Function,
 }
 
-class incomeDataPage extends React.Component<Props>{
+class BenefitsPage extends React.Component<Props>{
 
     constructor() {
         super();
     }
 
     render() {
-        return (<IncomeDataViewer
-            personesQuePodenTenirRendes={this.props.personesQuePodenTenirRendes}
+        return (<BenefitsViewer
+            personesQuePodenTenirAjuts={this.props.personesQuePodenTenirAjuts}
             onAddIncomeDataClick={this.handleAddIncomeDataClick}
         />);
     }
@@ -32,8 +32,9 @@ class incomeDataPage extends React.Component<Props>{
 
 function mapStateToProps(state) {
     return {
-        personesQuePodenTenirRendes: state.adults,
+        personesQuePodenTenirAjuts: state.adults,
+        incomeData: state.incomeData
     };
 }
 
-export default connect(mapStateToProps, {addIncomeDataAction})(incomeDataPage);
+export default connect(mapStateToProps, {addIncomeDataAction})(BenefitsPage);
