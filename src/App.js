@@ -48,6 +48,7 @@ const store = isDevelopment?
 
 
 class App extends Component {
+
     render() {
         return (
             <div className="App">

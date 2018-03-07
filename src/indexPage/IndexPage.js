@@ -2,9 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import './IndexPage.css';
 import AppHeader from "../components/AppHeader/AppHeader";
+import { translate, Trans } from 'react-i18next';
 
 class IndexPage extends React.Component {
     render() {
+        const { i18n } = this.props;
         return (
             <div>
                 <AppHeader/>
@@ -35,8 +37,8 @@ class IndexPage extends React.Component {
                     </div>
                     <div className="Row">
                         <div className="Cell">
-                            <h1><Link className="IndexPageLink" to="/ajuts/fons_infancia">Fons infància</Link></h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                            <h1><Link className="IndexPageLink" to="/ajuts/fons_infancia">{i18n.t('Fons infància')}</Link></h1>
+                            <p><Trans i18nKey="index.description.fons_infancia">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Trans></p>
                         </div>
                         <div className="Cell">
                             <h1><Link className="IndexPageLink" to="/ajuts/menjador">Ajuts individuals de menjador</Link></h1>
@@ -63,4 +65,4 @@ class IndexPage extends React.Component {
     }
 }
 
-export default IndexPage;
+export default  translate('translations')(IndexPage);
