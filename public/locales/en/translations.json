@@ -50,10 +50,16 @@
   "Comença la simulació": "Comença la simulació",
   "Adults de la unitat de convivència": "Adults de la unitat de convivència",
   "Afegir un adult": "Afegir un adult",
-  "index.FonsInfanciaShortText": "Fons infància Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  "index.AjutsIndividualsShortText": "Ajuts individuals de menjador Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  "index.AjutsAlPagamentLloguerShortText": "Ajuts al pagament del lloguer Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  "index.RendaActivaInsercioShortText": "Renda activa d'inserció Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  "index.RendaGarantidaCiutadanaShortText": "Renda Garantida Ciutadana Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  "index.PresentationText": "Aquesta eina et permetrà consultar a quins ajuts i prestacions socials tens dret de manera àgil i precisa. Podràs trobar-hi ajudes gestionades per l’Ajuntament, la Generalitat i l’Estat. El simulador, que es troba en fase inicial, anirà incorporant nous ajuts."
+  "FonsInfanciaShortText": "Fons infància Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  "AjutsIndividualsShortText": "Ajuts individuals de menjador Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  "AjutsAlPagamentLloguerShortText": "Ajuts al pagament del lloguer Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  "RendaActivaInsercioShortText": "Renda activa d'inserció Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  "RendaGarantidaCiutadanaShortText": "Renda Garantida Ciutadana Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  "PresentationText": "Aquesta eina et permetrà consultar a quins ajuts i prestacions socials tens dret de manera àgil i precisa. Podràs trobar-hi ajudes gestionades per l’Ajuntament, la Generalitat i l’Estat. El simulador, que es troba en fase inicial, anirà incorporant nous ajuts.",
+  "Adults": "__STRING_NOT_TRANSLATED__",
+  "Menors": "__STRING_NOT_TRANSLATED__",
+  "Ingressos": "__STRING_NOT_TRANSLATED__",
+  "Ajuts": "__STRING_NOT_TRANSLATED__",
+  "Domicili habitual": "__STRING_NOT_TRANSLATED__",
+  "Resultats": "__STRING_NOT_TRANSLATED__"
 }

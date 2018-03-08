@@ -1,4 +1,10 @@
 {
+  "FonsInfanciaShortText": "Fondo de infancia Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  "AjutsIndividualsShortText": "Ayuda individual de comedor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  "AjutsAlPagamentLloguerShortText": "Ayudas al pago del alquiler Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  "RendaActivaInsercioShortText": "Renta activa de inserción Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  "RendaGarantidaCiutadanaShortText": "Renta Garantida Ciudadana Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  "PresentationText": "Esta herramienta te permitirá consultar a qué ayudas y prestaciones sociales tienes derecho de forma ágil y precisa. Podrás encontrar ayudas gestionadas por el Ayuntamiento, la Generalitat y el Estado. El simulador, que se encuentra en su fase inicial, incorporará nuevas ayudas.",
   "Fons infància": "Fondo de infancia",
   "Fons infància Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.": "Fondo de infancia Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   "Ajuts individuals de menjador": "Ayudas individuales comedor",
@@ -49,10 +55,10 @@
   "Comença la simulació": "Empezar la simulación",
   "Adults de la unitat de convivència": "Adultos de la unidad de convivencia",
   "Afegir un adult": "Añadir un adulto",
-  "index.FonsInfanciaShortText": "Fondo de infancia Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  "index.AjutsIndividualsShortText": "Ayuda individual de comedor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  "index.AjutsAlPagamentLloguerShortText": "Ayudas al pago del alquiler Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  "index.RendaActivaInsercioShortText": "Renta activa d'inserció Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  "index.RendaGarantidaCiutadanaShortText": "Renta Garantida Ciudadana Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  "index.PresentationText": "Esta herramienta te permitirá consultar a qué ayudas y prestaciones sociales tienes derecho de forma ágil y precisa. Podrás encontrar ayudas gestionadas por el Ayuntamiento, la Generalitat y el Estado. El simulador, que se encuentra en su fase inicial, incorporará nuevas ayudas."
+  "Adults": "Adultos",
+  "Menors": "Menores",
+  "Ingressos": "Ingresos",
+  "Ajuts": "Ayudas",
+  "Domicili habitual": "Domicilio habitual",
+  "Resultats": "Resultados"
 }

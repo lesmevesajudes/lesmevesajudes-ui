@@ -19,7 +19,7 @@ class IndexPage extends React.Component {
                     </div>
                 </div>
                 <div className='CTA'>
-                    <p className="PresentationText"><Trans i18nKey="index.PresentationText">Aquesta eina et permetrà consultar a quins ajuts i prestacions
+                    <p className="PresentationText"><Trans i18nKey="PresentationText">Aquesta eina et permetrà consultar a quins ajuts i prestacions
                         socials tens dret de manera àgil i precisa. Podràs trobar-hi ajudes gestionades per
                         l’Ajuntament, la Generalitat i l’Estat. El simulador, que es troba en fase inicial, anirà
                         incorporant nous ajuts.</Trans>
@@ -37,29 +37,29 @@ class IndexPage extends React.Component {
                     <div className="Row">
                         <div className="Cell">
                             <h1><Link className="IndexPageLink" to="/ajuts/fons_infancia"><Trans>Fons infància</Trans></Link></h1>
-                            <p><Trans i18nKey='index.FonsInfanciaShortText'>Fons infància Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            <p><Trans i18nKey='FonsInfanciaShortText'>Fons infància Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                                 eiusmod tempor incididunt ut labore et dolore magna aliqua.</Trans></p>
                         </div>
                         <div className="Cell">
                             <h1><Link className="IndexPageLink" to="/ajuts/menjador"><Trans>Ajuts individuals de menjador</Trans></Link></h1>
-                            <p><Trans i18nKey='index.AjutsIndividualsShortText'>Ajuts individuals de menjador Lorem ipsum dolor sit amet, consectetur adipiscing
+                            <p><Trans i18nKey='AjutsIndividualsShortText'>Ajuts individuals de menjador Lorem ipsum dolor sit amet, consectetur adipiscing
                                 elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Trans></p>
                         </div>
                         <div className="Cell">
                             <h1><Link className="IndexPageLink" to="/ajuts/lloguer"><Trans>Ajuts al pagament del lloguer</Trans></Link></h1>
-                            <p><Trans i18nKey='index.AjutsAlPagamentLloguerShortText'>Ajuts al pagament del lloguer Lorem ipsum dolor sit amet, consectetur adipiscing
+                            <p><Trans i18nKey='AjutsAlPagamentLloguerShortText'>Ajuts al pagament del lloguer Lorem ipsum dolor sit amet, consectetur adipiscing
                                 elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Trans></p>
                         </div>
                     </div>
                     <div className="Row">
                         <div className="Cell">
                             <h1><Link className="IndexPageLink" to="/ajuts/rai"><Trans>Renda activa d'inserció</Trans></Link></h1>
-                            <p><Trans i18nKey='index.RendaActivaInsercioShortText'>Renda activa d'inserció Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            <p><Trans i18nKey='RendaActivaInsercioShortText'>Renda activa d'inserció Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                                 sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Trans></p>
                         </div>
                         <div className="Cell">
                             <h1><Link className="IndexPageLink" to="/ajuts/rgc"><Trans>Renda Garantida Ciutadana</Trans></Link></h1>
-                            <p><Trans i18nKey='index.RendaGarantidaCiutadanaShortText'>Renda Garantida Ciutadana Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            <p><Trans i18nKey='RendaGarantidaCiutadanaShortText'>Renda Garantida Ciutadana Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                                 sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Trans></p>
                         </div>
                     </div>
@@ -69,4 +69,4 @@ class IndexPage extends React.Component {
     }
 }
 
-export default  translate('translations')(IndexPage);
+export default translate('translations')(IndexPage);

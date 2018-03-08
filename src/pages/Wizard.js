@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import StepZilla from 'react-stepzilla';
 import AdultsPage from "../adults/AdultsPage";
 import ChildrenPage from "../children/ChildrenPage";
-import HouseHoldForm from "../household/HouseholdForm";
 import RentForm from "../rent/RentForm";
 import ResultsPage from "../results/ResultsPage";
 import YesNoSkipStep from "./YesNoSkipStep";
@@ -11,15 +10,16 @@ import './Wizard.css';
 import IncomeDataPage from "../income/IncomeDataPage";
 import AppHeader from "../components/AppHeader/AppHeader";
 import BenefitsPage from "../benefits/BenefitsPage";
+import {Trans, translate} from "react-i18next";
 
 const steps =
     [
-        {name: 'Adults', component: <AdultsPage />},
-        {name: 'Menors', component: <YesNoSkipStep question='Hi ha menors a la família?' nextStep="3"><ChildrenPage/></YesNoSkipStep>},
-        {name: 'Ingressos', component: <IncomeDataPage />},
-        {name: 'Ajuts', component: <BenefitsPage />},
-        {name: 'Domicili habitual', component: <YesNoSkipStep question="El domicili actual és en règim de lloguer?" nextStep="7"><RentForm /></YesNoSkipStep>},
-        {name: 'Resultats', component: <ResultsPage />}
+        {name: <Trans>Adults</Trans>, component: <AdultsPage />},
+        {name: <Trans>Menors</Trans>, component: <YesNoSkipStep question='Hi ha menors a la família?' nextStep="3"><ChildrenPage/></YesNoSkipStep>},
+        {name: <Trans>Ingressos</Trans>, component: <IncomeDataPage />},
+        {name: <Trans>Ajuts</Trans>, component: <BenefitsPage />},
+        {name: <Trans>Domicili habitual</Trans>, component: <YesNoSkipStep question="El domicili actual és en règim de lloguer?" nextStep="7"><RentForm /></YesNoSkipStep>},
+        {name: <Trans>Resultats</Trans>, component: <ResultsPage />}
 
     ];
 
@@ -41,4 +41,4 @@ class WizardPage extends Component {
     }
 }
 
-export default WizardPage;
+export default translate('translations')(WizardPage);
