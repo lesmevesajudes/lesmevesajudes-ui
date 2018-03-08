@@ -13,11 +13,6 @@ type Props = {
 }
 
 class incomeDataPage extends React.Component<Props>{
-
-    constructor() {
-        super();
-    }
-
     render() {
         return (<IncomeDataViewer
             personesQuePodenTenirRendes={this.props.personesQuePodenTenirRendes}

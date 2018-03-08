@@ -13,11 +13,6 @@ type Props = {
 }
 
 class BenefitsPage extends React.Component<Props>{
-
-    constructor() {
-        super();
-    }
-
     render() {
         return (<BenefitsViewer
             personesQuePodenTenirAjuts={this.props.personesQuePodenTenirAjuts}

@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import {Adult} from "../adults/AdultsTypes";
 import {Map} from 'immutable';
 import type {AdultId} from "../adults/AdultsTypes";
-import {Control, LocalForm} from 'react-redux-form';
+import {LocalForm} from 'react-redux-form';
 
 type Props = {
     personesQuePodenTenirAjuts: Map<AdultId, Adult>,
