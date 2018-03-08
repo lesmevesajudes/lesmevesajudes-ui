@@ -1,5 +1,4 @@
 //@flow
-import axios from 'axios';
 import {serialize as serialize_child} from "../children/ChildrenReducer";
 import {serialize as serialize_adult} from "../adults/AdultsReducer";
 import type {AdultState, Adult} from "../adults/AdultsTypes";

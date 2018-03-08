@@ -60,5 +60,7 @@
   "Ingressos": "Ingresos",
   "Ajuts": "Ayudas",
   "Domicili habitual": "Domicilio habitual",
-  "Resultats": "Resultados"
+  "Resultats": "Resultados",
+  "Hi ha menors a la família?": "__STRING_NOT_TRANSLATED__",
+  "El domicili actual és en règim de lloguer?": "__STRING_NOT_TRANSLATED__"
 }

@@ -10,35 +10,39 @@ import './Wizard.css';
 import IncomeDataPage from "../income/IncomeDataPage";
 import AppHeader from "../components/AppHeader/AppHeader";
 import BenefitsPage from "../benefits/BenefitsPage";
-import {Trans, translate} from "react-i18next";
+import {translate} from "react-i18next";
 
-const steps =
-    [
-        {name: <Trans>Adults</Trans>, component: <AdultsPage />},
-        {name: <Trans>Menors</Trans>, component: <YesNoSkipStep question='Hi ha menors a la família?' nextStep="3"><ChildrenPage/></YesNoSkipStep>},
-        {name: <Trans>Ingressos</Trans>, component: <IncomeDataPage />},
-        {name: <Trans>Ajuts</Trans>, component: <BenefitsPage />},
-        {name: <Trans>Domicili habitual</Trans>, component: <YesNoSkipStep question="El domicili actual és en règim de lloguer?" nextStep="7"><RentForm /></YesNoSkipStep>},
-        {name: <Trans>Resultats</Trans>, component: <ResultsPage />}
 
-    ];
 
 class WizardPage extends Component {
     render() {
-        return (
-            <div className='step-progress'>
-                <AppHeader/>
-                <StepZilla steps={steps}
-                           preventEnterSubmission={true}
-                           nextTextOnFinalActionStep={'Veure resultats'}
-                           nextButtonText='Següent'
-                           backButtonText='Anterior'
-                           nextButtonCls='btn btn-next btn-primary btn-lg pull-right'
-                           backButtonCls='btn btn-prev btn-primary btn-lg pull-left'
-                />
-        </div>);
+        const { t } = this.props;
 
-    }
+        const steps =
+            [
+                {name: t('Adults'), component: <AdultsPage />},
+                {name: t('Menors'), component: <YesNoSkipStep question={t('Hi ha menors a la família?')} nextStep="3"><ChildrenPage/></YesNoSkipStep>},
+                {name: t('Ingressos'), component: <IncomeDataPage />},
+                {name: t('Ajuts'), component: <BenefitsPage />},
+                {name: t('Domicili habitual'), component: <YesNoSkipStep question={t('El domicili actual és en règim de lloguer?')} nextStep="7"><RentForm /></YesNoSkipStep>},
+                {name: t('Resultats'), component: <ResultsPage />}
+
+            ];
+
+        return (
+                <div className='step-progress'>
+                    <AppHeader/>
+                    <StepZilla steps={steps}
+                               preventEnterSubmission={true}
+                               nextTextOnFinalActionStep={'Veure resultats'}
+                               nextButtonText='Següent'
+                               backButtonText='Anterior'
+                               nextButtonCls='btn btn-next btn-primary btn-lg pull-right'
+                               backButtonCls='btn btn-prev btn-primary btn-lg pull-left'
+                    />
+            </div>);
+
+        }
 }
 
 export default translate('translations')(WizardPage);

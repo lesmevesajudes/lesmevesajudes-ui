@@ -5,7 +5,7 @@ module.exports = {
     options: {
         debug: true,
         func: {
-            list: ['i18next.t', 'i18n.t'],
+            list: [ 't'],
             extensions: ['.js', '.jsx']
         },
         trans: {
@@ -23,7 +23,14 @@ module.exports = {
         ],
         defaultLng: 'ct',
         defaultNs: 'translations',
-        defaultValue: '__STRING_NOT_TRANSLATED__',
+        defaultValue: function(lng, ns, key) {
+            if (lng === 'ct') {
+                // Return key as the default value for Catalan language
+                return key;
+            }
+            // Return the string '__NOT_TRANSLATED__' for other languages
+            return '__NOT_TRANSLATED__';
+        },
         resource: {
             loadPath: 'public/locales/{{lng}}/{{ns}}.json',
             savePath: 'public/locales/{{lng}}/{{ns}}.json',
