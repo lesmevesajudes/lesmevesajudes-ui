@@ -6,7 +6,6 @@ import { translate, Trans } from 'react-i18next';
 
 class IndexPage extends React.Component {
     render() {
-        const { i18n } = this.props;
         return (
             <div>
                 <AppHeader/>
@@ -15,19 +14,19 @@ class IndexPage extends React.Component {
                         <div className='AppLogo'>
                         </div>
                         <div className="BlockText">
-                            <span>Vols saber a quins ajuts públics pots accedir?</span>
+                            <span><Trans>Vols saber a quins ajuts públics pots accedir?</Trans></span>
                         </div>
                     </div>
                 </div>
                 <div className='CTA'>
-                    <p className="PresentationText">Aquesta eina et permetrà consultar a quins ajuts i prestacions
+                    <p className="PresentationText"><Trans i18nKey="index.PresentationText">Aquesta eina et permetrà consultar a quins ajuts i prestacions
                         socials tens dret de manera àgil i precisa. Podràs trobar-hi ajudes gestionades per
                         l’Ajuntament, la Generalitat i l’Estat. El simulador, que es troba en fase inicial, anirà
-                        incorporant nous ajuts.
+                        incorporant nous ajuts.</Trans>
                     </p>
                     <Link className="CTALink" to="/wizard/">
                         <button className="CTAButton">
-                            <b>Comença la simulació</b>
+                            <b><Trans>Comença la simulació</Trans></b>
                         </button>
                     </Link>
                 </div>
@@ -37,26 +36,31 @@ class IndexPage extends React.Component {
                     </div>
                     <div className="Row">
                         <div className="Cell">
-                            <h1><Link className="IndexPageLink" to="/ajuts/fons_infancia">{i18n.t('Fons infància')}</Link></h1>
-                            <p><Trans i18nKey="index.description.fons_infancia">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Trans></p>
+                            <h1><Link className="IndexPageLink" to="/ajuts/fons_infancia"><Trans>Fons infància</Trans></Link></h1>
+                            <p><Trans i18nKey='index.FonsInfanciaShortText'>Fons infància Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                eiusmod tempor incididunt ut labore et dolore magna aliqua.</Trans></p>
                         </div>
                         <div className="Cell">
-                            <h1><Link className="IndexPageLink" to="/ajuts/menjador">Ajuts individuals de menjador</Link></h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <h1><Link className="IndexPageLink" to="/ajuts/menjador"><Trans>Ajuts individuals de menjador</Trans></Link></h1>
+                            <p><Trans i18nKey='index.AjutsIndividualsShortText'>Ajuts individuals de menjador Lorem ipsum dolor sit amet, consectetur adipiscing
+                                elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Trans></p>
                         </div>
                         <div className="Cell">
-                            <h1><Link className="IndexPageLink" to="/ajuts/lloguer">Ajuts al pagament del lloguer</Link></h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <h1><Link className="IndexPageLink" to="/ajuts/lloguer"><Trans>Ajuts al pagament del lloguer</Trans></Link></h1>
+                            <p><Trans i18nKey='index.AjutsAlPagamentLloguerShortText'>Ajuts al pagament del lloguer Lorem ipsum dolor sit amet, consectetur adipiscing
+                                elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Trans></p>
                         </div>
                     </div>
                     <div className="Row">
                         <div className="Cell">
-                            <h1><Link className="IndexPageLink" to="/ajuts/rai">Renda activa d'inserció</Link></h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                            <h1><Link className="IndexPageLink" to="/ajuts/rai"><Trans>Renda activa d'inserció</Trans></Link></h1>
+                            <p><Trans i18nKey='index.RendaActivaInsercioShortText'>Renda activa d'inserció Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Trans></p>
                         </div>
                         <div className="Cell">
-                            <h1><Link className="IndexPageLink" to="/ajuts/rgc">Renda Garantida Ciutadana</Link></h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <h1><Link className="IndexPageLink" to="/ajuts/rgc"><Trans>Renda Garantida Ciutadana</Trans></Link></h1>
+                            <p><Trans i18nKey='index.RendaGarantidaCiutadanaShortText'>Renda Garantida Ciutadana Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Trans></p>
                         </div>
                     </div>
                 </div>

@@ -1,5 +1,5 @@
-import fs from 'fs';
-import chalk from 'chalk';
+const fs = require('fs');
+const chalk = require('chalk');
 
 module.exports = {
     options: {
@@ -14,7 +14,7 @@ module.exports = {
             extensions: ['.js', '.jsx'],
             fallbackKey: function(ns, value) {
                 // Returns a hash value as the fallback key
-                return sha1(value);
+                return value;
             }
         },
         lngs: ['ct','es','en'],
@@ -30,7 +30,7 @@ module.exports = {
             jsonIndent: 2,
             lineEnding: '\n'
         },
-        nsSeparator: false, // namespace separator
+        nsSeparator: true, // namespace separator
         keySeparator: false, // key separator
         interpolation: {
             prefix: '{{',

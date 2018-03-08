@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { LocalForm } from 'react-redux-form';
 import {Adult} from './AdultsTypes';
 import AdultsFields from './AdultsFields';
+import {Trans, translate} from "react-i18next";
 
 
 
@@ -26,15 +27,15 @@ class AdultsForm extends Component<Props, {}> {
     render() {
         return (
             <div>
-                <h1>Afegir un nou adult a la unitat de convivència</h1>
+                <h1><Trans>Afegir un nou adult a la unitat de convivència</Trans></h1>
                 <div className="FormContainer">
                     <LocalForm
                         onSubmit={this.props.onSubmit}
                         onChange={this.onChange}
                         initialState={this.props.initialState}>
                         <AdultsFields state={this.state}/>
-                        <button className="CancelButton" onClick={this.props.onCancel}>Cancelar</button>
-                        <button type="submit">Validar</button>
+                        <button className="CancelButton" onClick={this.props.onCancel}><Trans>Cancelar</Trans></button>
+                        <button type="submit"><Trans>Validar</Trans></button>
                     </LocalForm>
                 </div>
             </div>
@@ -42,4 +43,4 @@ class AdultsForm extends Component<Props, {}> {
     }
 }
 
-export default AdultsForm;
+export default translate('translations')(AdultsForm);

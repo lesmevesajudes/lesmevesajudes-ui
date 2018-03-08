@@ -1,6 +1,7 @@
 //@flow
 import React, {Component} from 'react';
 import type {Adult} from './AdultsTypes';
+import {Trans, translate} from "react-i18next";
 
 type Props = {
     adults: Array<Adult>,
@@ -32,14 +33,14 @@ class AdultsViewer extends Component<Props, void> {
     render() {
         return (
             <div>
-                <h1>Adults de la unitat de convivència</h1>
+                <h1><Trans>Adults de la unitat de convivència</Trans></h1>
                 <div className="FormContainer">
                     {this.renderAdultsList(this.props.adults)}
                 </div>
-                <button id='AddAdultButton' onClick={this.props.onAddAdultClick}>Afegir un adult</button>
+                <button id='AddAdultButton' onClick={this.props.onAddAdultClick}><Trans>Afegir un adult</Trans></button>
             </div>
         );
     }
 }
 
-export default AdultsViewer;
+export default translate('translations')(AdultsViewer);
