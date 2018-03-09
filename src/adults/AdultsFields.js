@@ -2,6 +2,7 @@ import React from 'react';
 import {Control, Field} from 'react-redux-form';
 import Trans from "react-i18next/dist/es/Trans";
 import {translate} from "react-i18next";
+import {Input, MenuItem, Select} from "material-ui";
 
 
 const AdultsFields = (props) => (
@@ -14,20 +15,20 @@ const AdultsFields = (props) => (
         <div className="field">
             <label><Trans>Com vol identificar a aquesta persona?</Trans></label>
             <Control.text
-                className="RegularTextInput"
                 id='nom'
                 model='.nom'
                 placeholder='Nom'
+                component={Input}
                 required/>
         </div>
         <div className="field">
             <label><Trans>Data naixement</Trans></label>
             <Control.text
-                className="RegularTextInput"
                 id='data_naixement'
                 model='.data_naixement'
                 placeholder="2005-01-21"
                 type="date"
+                component={Input}
                 required
             />
         </div>
@@ -38,6 +39,21 @@ const AdultsFields = (props) => (
                 model='.sexe'
                 dynamic={false}
             >
+                <Select
+                    value={(props) => props.viewValue}
+                    onChange={this.handleChange}
+                    inputProps={{
+                        name: 'age',
+                        id: 'age-simple',
+                    }}
+                >
+                    <MenuItem value="">
+                        <em>None</em>
+                    </MenuItem>
+                    <MenuItem value={10}>Ten</MenuItem>
+                    <MenuItem value={20}>Twenty</MenuItem>
+                    <MenuItem value={30}>Thirty</MenuItem>
+                </Select>
                 <div className="custom-select">
                     <select required>
                         <option default value=""><Trans>Seleccioni'n un</Trans></option>
@@ -52,6 +68,7 @@ const AdultsFields = (props) => (
             <Field
                 model='.nacionalitat'
                 dynamic={false}
+                component={Select}
             >
                 <div className="custom-select">
                     <select required>
@@ -67,9 +84,9 @@ const AdultsFields = (props) => (
             <label><Trans>Codi postal empadronament</Trans></label>
             <Control.text
                 required
-                className="RegularTextInput centered"
                 model='.codi_postal_empadronament'
                 placeholder='08000'
+                component={Input}
             />
         </div>
         <div className="field">
@@ -77,6 +94,7 @@ const AdultsFields = (props) => (
             <Field
                 model='.situacio_laboral'
                 dynamic={false}
+                component={Select}
             >
                 <div className="custom-select">
                     <select required>
@@ -94,10 +112,10 @@ const AdultsFields = (props) => (
         <div className="field">
             <label><Trans>Grau discapacitat</Trans></label>
             <Control.text
-                className="RegularTextInput"
                 model='.grau_discapacitat'
                 placeholder="0"
                 type="number"
+                component={Input}
             />
         </div>
         <div className="field">

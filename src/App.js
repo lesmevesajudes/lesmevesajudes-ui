@@ -24,6 +24,7 @@ import InfoLloguer from "./pages/InfoLloguer";
 import InfoMenjador from "./pages/InfoMenjador";
 import InfoFonsInfancia from "./pages/InfoFonsInfancia";
 import AppFooter from "./components/Footer/Footer";
+import {Reboot} from "material-ui";
 
 if (isDevelopment) {
     //module.hot.accept();
@@ -53,6 +54,7 @@ class App extends Component {
         return (
             <div className="App">
                 <CorporateHeader/>
+                <Reboot />
                 <div className="content">
                     <Provider store={ store }>
                         <BrowserRouter>

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import './IndexPage.css';
 import AppHeader from "../components/AppHeader/AppHeader";
 import { translate, Trans } from 'react-i18next';
+import Button from 'material-ui/Button';
 
 class IndexPage extends React.Component {
     render() {
@@ -25,9 +26,9 @@ class IndexPage extends React.Component {
                         incorporant nous ajuts.</Trans>
                     </p>
                     <Link className="CTALink" to="/wizard/">
-                        <button className="CTAButton">
+                        <Button variant="raised" color="primary">
                             <b><Trans>Comença la simulació</Trans></b>
-                        </button>
+                        </Button>
                     </Link>
                 </div>
                 <div className="Main">
