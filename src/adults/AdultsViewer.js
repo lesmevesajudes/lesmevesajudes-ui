@@ -2,6 +2,7 @@
 import React, {Component} from 'react';
 import type {Adult} from './AdultsTypes';
 import {Trans, translate} from "react-i18next";
+import {Button} from "material-ui";
 
 type Props = {
     adults: Array<Adult>,
@@ -37,7 +38,7 @@ class AdultsViewer extends Component<Props, void> {
                 <div className="FormContainer">
                     {this.renderAdultsList(this.props.adults)}
                 </div>
-                <button id='AddAdultButton' onClick={this.props.onAddAdultClick}><Trans>Afegir un adult</Trans></button>
+                <Button variant="raised" color="primary"  id='AddAdultButton' onClick={this.props.onAddAdultClick}><Trans>Afegir un adult</Trans></Button>
             </div>
         );
     }

@@ -4,14 +4,25 @@ import { LocalForm } from 'react-redux-form';
 import {Adult} from './AdultsTypes';
 import AdultsFields from './AdultsFields';
 import {Trans, translate} from "react-i18next";
-
+import { withStyles } from 'material-ui/styles';
+import {Button} from 'material-ui';
 
 
 type Props = {
     initialState: ?Adult,
     onCancel: Function,
     onSubmit: Function,
+    classes: Object
 }
+
+const styles = theme => ({
+    button: {
+        margin: theme.spacing.unit,
+    },
+    input: {
+        display: 'none',
+    },
+});
 
 class AdultsForm extends Component<Props, {}> {
     state = {};
@@ -25,6 +36,7 @@ class AdultsForm extends Component<Props, {}> {
         this.setState(e);
     }
     render() {
+        const { classes } = this.props;
         return (
             <div>
                 <h1><Trans>Afegir un nou adult a la unitat de convivència</Trans></h1>
@@ -34,8 +46,8 @@ class AdultsForm extends Component<Props, {}> {
                         onChange={this.onChange}
                         initialState={this.props.initialState}>
                         <AdultsFields state={this.state}/>
-                        <button className="CancelButton" onClick={this.props.onCancel}><Trans>Cancelar</Trans></button>
-                        <button type="submit"><Trans>Validar</Trans></button>
+                        <Button variant="raised" color="secondary" className={classes.button} onClick={this.props.onCancel}><Trans>Cancelar</Trans></Button>
+                        <Button variant="raised" color="primary" type="submit" className={classes.button}><Trans>Validar</Trans></Button>
                     </LocalForm>
                 </div>
             </div>
@@ -43,4 +55,4 @@ class AdultsForm extends Component<Props, {}> {
     }
 }
 
-export default translate('translations')(AdultsForm);
+export default withStyles(styles)(translate('translations')(AdultsForm));

@@ -4,6 +4,7 @@ import {Adult} from "../adults/AdultsTypes";
 import {Map} from 'immutable';
 import type {AdultId} from "../adults/AdultsTypes";
 import {Control, LocalForm} from 'react-redux-form';
+import {Input} from "material-ui";
 
 type Props = {
     personesQuePodenTenirRendes: Map<AdultId, Adult>,
@@ -20,18 +21,19 @@ class IncomeDataViewer extends Component<Props, void> {
                             {adult.nom} - {adult.data_naixement}
                         </div>
                         <div className="field" style={{float: 'right', maxWidth: '200px'}}>
-                            <LocalForm model="householdData"
+                            <LocalForm model="PersonalIncomeData"
                                        onChange={(e) => this.props.onAddIncomeDataClick(e)}
                                        initialState={{id: adult.id, ingressos_bruts: adult.ingressos_bruts}}
                             >
                                 <Control.text
                                     model='.adult_id'
-                                    type="hidden"/>
+                                    type="hidden"
+                                />
                                 <label>Ingressos bruts anuals (&euro;)</label>
                                 <Control.text
-                                    className="RegularTextInput SmallTextInput"
                                     id='ingressos_bruts'
                                     model='.ingressos_bruts'
+                                    component={Input}
                                     placeholder='0'/>
                             </LocalForm>
                         </div>

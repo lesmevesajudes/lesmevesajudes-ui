@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import './IndexPage.css';
 import AppHeader from "../components/AppHeader/AppHeader";
 import { translate, Trans } from 'react-i18next';
-import Button from 'material-ui/Button';
+import {Button} from 'material-ui';
 
 class IndexPage extends React.Component {
     render() {

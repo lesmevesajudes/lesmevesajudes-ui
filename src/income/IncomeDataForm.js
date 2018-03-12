@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { LocalForm } from 'react-redux-form';
 import IncomeDataFields from './IncomeDataFields';
+import {Button} from "material-ui";
 
 
 
@@ -33,8 +34,8 @@ class AdultsForm extends Component<Props, {}> {
                         //initialState={this.props.initialState}
                     >
                         <IncomeDataFields state={this.state}/>
-                        <button className="CancelButton" onClick={this.props.onCancel}>Cancelar</button>
-                        <button type="submit">Validar</button>
+                        <Button className="CancelButton" onClick={this.props.onCancel}>Cancelar</Button>
+                        <Button type="submit">Validar</Button>
                     </LocalForm>
                 </div>
             </div>

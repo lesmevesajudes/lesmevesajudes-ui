@@ -7,6 +7,8 @@ import * as UUID from '../shared/UUID';
 import {connect} from 'react-redux';
 import {serialize} from './ChildrenReducer';
 import { addChild, updateChild, removeChild } from './ChildrenActions';
+import {Button} from "material-ui";
+import {withStyles} from "material-ui/styles/index";
 type State = {
     editingChild: boolean,
     initialFormFields: ?Child
@@ -16,8 +18,18 @@ type Props = {
     children: Array<Child>,
     removeChild: Function,
     addChild: Function,
-    updateChild: Function
+    updateChild: Function,
+    classes: Object
 }
+
+const styles = theme => ({
+    button: {
+        margin: theme.spacing.unit,
+    },
+    input: {
+        display: 'none',
+    },
+});
 
 class ChildrenPage extends React.Component<Props, State> {
     handleAddChildClick: Function;
@@ -69,7 +81,8 @@ class ChildrenPage extends React.Component<Props, State> {
     }
     
     render() {
-        const editingChild = this.state.editingChild;
+        const { classes } = this.props;
+        const { editingChild } = this.state;
         let component=undefined;
 
         if (editingChild) {
@@ -89,7 +102,7 @@ class ChildrenPage extends React.Component<Props, State> {
                         children={this.props.children}
                         onRemoveClick={this.handleRemoveChildClick}
                         onUpdateClick={this.handleUpdateChildClick}/>
-                    <button onClick={this.handleAddChildClick}>Afegir un menor</button>
+                    <Button variant="raised" color="secondary" className={classes.button} onClick={this.handleAddChildClick}>Afegir un menor</Button>
                 </div>);
         }
         return component;
@@ -102,4 +115,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, {updateChild, removeChild, addChild})(ChildrenPage);
+export default withStyles(styles)(connect(mapStateToProps, {updateChild, removeChild, addChild})(ChildrenPage));

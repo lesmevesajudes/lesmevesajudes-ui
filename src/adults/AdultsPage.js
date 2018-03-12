@@ -36,11 +36,11 @@ class AdultsPage extends React.Component<Props, State>{
         this.handleSubmitForm = this.handleSubmitForm.bind(this);
     }
 
-    handleAddAdultClick() {
+    handleAddAdultClick = () => {
         this.setState({editingAdult: true});
     }
 
-    handleUpdateAdultClick(adultId: AdultId) {
+    handleUpdateAdultClick = (adultId: AdultId) => {
         this.setState(
             {
                 initialFormFields: this.props.adults.filter((e) => e.id===adultId)[0],
@@ -49,17 +49,17 @@ class AdultsPage extends React.Component<Props, State>{
         );
     }
 
-    handleRemoveAdultClick(adultId: AdultId) {
+    handleRemoveAdultClick = (adultId: AdultId) => {
         this.props.removeAdult(adultId);
     }
 
-    doneEditingAdult() {
+    doneEditingAdult = () => {
         this.setState({
             initialFormFields: undefined,
             editingAdult: false});
     }
 
-    handleSubmitForm(formValues: Adult) {
+    handleSubmitForm = (formValues: Adult) => {
         this.doneEditingAdult();
 
         if (formValues.id === undefined) {
