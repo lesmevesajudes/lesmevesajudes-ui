@@ -4,7 +4,6 @@ import AdultsPage from "../adults/AdultsPage";
 import ChildrenPage from "../children/ChildrenPage";
 import RentForm from "../rent/RentForm";
 import ResultsPage from "../results/ResultsPage";
-import YesNoSkipStep from "./YesNoSkipStep";
 
 import './Wizard.css';
 import AppHeader from "../components/AppHeader/AppHeader";
@@ -19,8 +18,8 @@ class WizardPage extends Component {
         const steps =
             [
                 {name: t('Adults'), component: <AdultsPage />},
-                {name: t('Menors'), component: <YesNoSkipStep question={t('Hi ha menors a la família?')} nextStep="3"><ChildrenPage/></YesNoSkipStep>},
-                {name: t('Domicili habitual'), component: <YesNoSkipStep question={t('El domicili actual és en règim de lloguer?')} nextStep="7"><RentForm /></YesNoSkipStep>},
+                {name: t('Menors'), component: <ChildrenPage/>},
+                {name: t('Domicili habitual'), component: <RentForm />},
                 {name: t('Resultats'), component: <ResultsPage />}
 
             ];
