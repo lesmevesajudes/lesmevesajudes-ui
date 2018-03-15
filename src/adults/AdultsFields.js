@@ -2,7 +2,7 @@ import React from 'react';
 import {Control, Field} from 'react-redux-form';
 import Trans from "react-i18next/dist/es/Trans";
 import {translate} from "react-i18next";
-import {Checkbox, Input, MenuItem, Select} from "material-ui";
+import {Checkbox, Input, InputAdornment, MenuItem, Select} from "material-ui";
 
 
 const AdultsFields = (props) => (
@@ -11,6 +11,25 @@ const AdultsFields = (props) => (
             <Control.text
                 model=".id"
                 type="hidden"/>
+        </div>
+        <div className="field">
+            <label><Trans>Rol</Trans></label>
+            <Field
+                id='rol'
+                model='.rol'
+                dynamic={false}
+            >
+                <div className="custom-select">
+                    <select required>
+                        <option default value=""><Trans>Seleccioni'n un</Trans></option>
+                        <option value="pares"><Trans>Pare/Mare/Tutor/a</Trans></option>
+                        <option value="avis"><Trans>Avi/Àvia/Sogre/Sogra</Trans></option>
+                        <option value="fill"><Trans>Fill</Trans></option>
+                        <option value="altres_adults_familiars"><Trans>Altres familiar</Trans></option>
+                        <option value="altres_adults"><Trans>Altres convivents</Trans></option>
+                    </select>
+                </div>
+            </Field>
         </div>
         <div className="field">
             <label><Trans>Com vol identificar a aquesta persona?</Trans></label>
@@ -34,45 +53,37 @@ const AdultsFields = (props) => (
         </div>
         <div className="field">
             <label><Trans>Sexe</Trans></label>
-            <Field
+            <Control.custom
                 id='sexe'
                 model='.sexe'
                 dynamic={false}
+                component={Select}
+                style={{minWidth: 120}}
+                value=""
             >
-                <div className="custom-select">
-                    <select required>
-                        <option default value=""><Trans>Seleccioni'n un</Trans></option>
-                        <option value="Dona"><Trans>Dona</Trans></option>
-                        <option value="Home"><Trans>Home</Trans></option>
-                    </select>
-                </div>
-            </Field>
+                    <MenuItem value=""><Trans>Seleccioni'n un</Trans></MenuItem>
+                    <MenuItem value="dona"><Trans>Dona</Trans></MenuItem>
+                    <MenuItem value="home"><Trans>Home</Trans></MenuItem>
+            </Control.custom>
         </div>
         <div className="field">
-            <label><Trans>Nacionalitat</Trans></label>
+            <label><Trans>Tipus de document de identitat</Trans></label>
             <Field
-                model='.nacionalitat'
+                model='.tipus_document_identitat'
                 dynamic={false}
             >
                 <div className="custom-select">
                     <select required>
                         <option default value=""><Trans>Seleccioni'n un</Trans></option>
-                        <option value="Espanyola"><Trans>Espanyola</Trans></option>
-                        <option value="UE"><Trans>UE</Trans></option>
-                        <option value="UE"><Trans>Altres</Trans></option>
+                        <option value="DNI"><Trans>DNI</Trans></option>
+                        <option value="NIE"><Trans>NIE</Trans></option>
+                        <option value="passaport"><Trans>Passaport</Trans></option>
+                        <option value="altres"><Trans>Altres</Trans></option>
                     </select>
                 </div>
             </Field>
         </div>
-        <div className="field">
-            <label><Trans>Codi postal empadronament</Trans></label>
-            <Control.text
-                required
-                model='.codi_postal_empadronament'
-                placeholder='08000'
-                component={Input}
-            />
-        </div>
+
         <div className="field">
             <label><Trans>Situació laboral</Trans></label>
             <Field
@@ -91,7 +102,17 @@ const AdultsFields = (props) => (
                 </div>
             </Field>
         </div>
-
+        <div className="field">
+            <label><Trans>Data alta padró (sense interrupcions)</Trans></label>
+            <Control.text
+                id='data_alta_padro'
+                model='.data_alta_padro'
+                placeholder="2005-01-21"
+                type="date"
+                component={Input}
+                required
+            />
+        </div>
         <div className="field">
             <label><Trans>Grau discapacitat</Trans></label>
             <Control.text
@@ -99,31 +120,35 @@ const AdultsFields = (props) => (
                 placeholder="0"
                 type="number"
                 component={Input}
+                controlProps={{endAdornment: <InputAdornment position="end"> % </InputAdornment>}}
             />
         </div>
         <div className="field">
-            <label><Control.checkbox model=".social_services_user" checked={false} component={Checkbox}/><Trans>Usuari de serveis socials</Trans></label>
+            <label><Trans>Total ingressos bruts 2016</Trans></label>
+            <Control.text
+                model='.ingressos_bruts'
+                placeholder="0"
+                type="number"
+                component={Input}
+                controlProps={{endAdornment: <InputAdornment position="end"> € </InputAdornment>}}
+            />
         </div>
-        {props.state.sexe === "Dona" &&
+        {props.state.sexe === "dona" &&
             <div className="field">
                 <label><Control.checkbox model=".victima_violencia_de_genere" checked={false} component={Checkbox}/><Trans>Víctima violencia de genere</Trans></label>
             </div>}
-        {props.state.sexe === "Dona" &&
+        {props.state.sexe === "dona" &&
         <div className="field">
             <label><Control.checkbox model=".es_divorciada_de_familia_reagrupada" checked={false} component={Checkbox}/><Trans>És divorciada de familia reagrupada</Trans></label>
         </div>}
         <div className="field">
             <label><Control.checkbox model=".victima_de_terrorisme" checked={false} component={Checkbox}/><Trans>Víctima de terrorisme</Trans></label>
         </div>
-        {props.state.nacionalitat && props.state.nacionalitat !== "Espanyola" &&
-        <div className="field">
-            <label><Control.checkbox model=".te_permis_de_residencia" checked={false} component={Checkbox}/><Trans>Té permís de residència</Trans></label>
-        </div>}
-        {props.state.nacionalitat && props.state.nacionalitat !== "Espanyola" &&
+        {props.state.nacionalitat && props.state.tipus_document_identitat !== "DNI" &&
         <div className="field">
             <label><Control.checkbox model=".ha_residit_a_lextranger_els_ultims_24_mesos" checked={false} component={Checkbox}/><Trans>Ha residit a l'extranger durant els últims 24 mesos</Trans></label>
         </div>}
-        {props.state.nacionalitat && props.state.nacionalitat !== "Espanyola" &&
+        {props.state.nacionalitat && props.state.tipus_document_identitat !== "DNI" &&
         <div className="field">
             <label><Control.checkbox model=".resident_a_catalunya_durant_5_anys" checked={false} component={Checkbox}/><Trans>Ha residit a Catalunya durant 5 anys</Trans></label>
         </div>}
@@ -153,9 +178,11 @@ const AdultsFields = (props) => (
             <label><Control.checkbox model=".durant_el_mes_anterior_ha_presentat_solicituds_recerca_de_feina" checked={false} component={Checkbox}/><Trans>Durant el mes anterior ha presentat solicituds recerca de feina</Trans></label>
         </div>}
         <div className="field">
-            <label><Control.checkbox model=".al_corrent_de_les_obligacions_tributaries" defaultChecked component={Checkbox}/><Trans>Al corrent de les obligacions tributàries</Trans></label>
+            <label><Control.checkbox model=".al_corrent_de_les_obligacions_tributaries" component={Checkbox}/><Trans>Al corrent de les obligacions tributàries</Trans></label>
         </div>
-
+        <div className="field">
+            <label><Control.checkbox model=".usuari_serveis_socials"  component={Checkbox}/><Trans>Usuari de serveis socials en seguiment a un CSS o servei especialitzat de l'Ajuntament de Barcelona</Trans></label>
+        </div>
     </div>
 );
 

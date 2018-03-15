@@ -7,9 +7,7 @@ import ResultsPage from "../results/ResultsPage";
 import YesNoSkipStep from "./YesNoSkipStep";
 
 import './Wizard.css';
-import IncomeDataPage from "../income/IncomeDataPage";
 import AppHeader from "../components/AppHeader/AppHeader";
-import BenefitsPage from "../benefits/BenefitsPage";
 import {translate} from "react-i18next";
 
 
@@ -22,8 +20,6 @@ class WizardPage extends Component {
             [
                 {name: t('Adults'), component: <AdultsPage />},
                 {name: t('Menors'), component: <YesNoSkipStep question={t('Hi ha menors a la família?')} nextStep="3"><ChildrenPage/></YesNoSkipStep>},
-                {name: t('Ingressos'), component: <IncomeDataPage />},
-                {name: t('Ajuts'), component: <BenefitsPage />},
                 {name: t('Domicili habitual'), component: <YesNoSkipStep question={t('El domicili actual és en règim de lloguer?')} nextStep="7"><RentForm /></YesNoSkipStep>},
                 {name: t('Resultats'), component: <ResultsPage />}
 

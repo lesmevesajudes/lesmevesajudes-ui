@@ -69,6 +69,9 @@ const ChildrenFields = (props) => (
         <div className="field">
             <label><Control.checkbox model=".en_guardia_i_custodia" component={Checkbox}/> En guardia i custodia</label>
         </div>
+        <div className="field">
+            <label><Control.checkbox model=".beneficiari_fons_infancia_2017" component={Checkbox}/> Beneficiari/a fons infància 2017</label>
+        </div>
     </div>
 );
 

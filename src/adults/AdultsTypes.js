@@ -7,7 +7,9 @@ export class Adult  {
     id: AdultId;
     nom: string;
     sexe: string;
-    nacionalitat: string;
+    rol: string;
+    tipus_document_identitat: string;
+    data_alta_padro: string;
     situacio_laboral: string;
     data_naixement: string;
     codi_postal_empadronament: string;

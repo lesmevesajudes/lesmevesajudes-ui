@@ -1,10 +1,11 @@
 // @flow
 import React from 'react';
-import {Control} from 'react-redux-form';
+import {Control, Field} from 'react-redux-form';
 import type {Rent} from "./RentTypes";
 import {Adult} from "../adults/AdultsTypes";
 import {Checkbox, Input} from "material-ui";
 import type {AdultId} from "../adults/AdultsTypes";
+import {Trans} from "react-i18next";
 
 type Props = {
     state:?Rent,
@@ -40,12 +41,44 @@ const RentFields = (props: Props) => (
             />
         </div>
         <div className="field">
+            <label><Trans>Codi postal empadronament</Trans></label>
+            <Control.text
+                required
+                model='.codi_postal_empadronament'
+                placeholder='08000'
+                component={Input}
+            />
+        </div>
+        <div className="field">
+            <label><Trans>Relació amb l'habitatge</Trans></label>
+            <Field
+                model='.relacio_habitatge'
+                dynamic={false}
+            >
+                <div className="custom-select">
+                    <select required>
+                        <option default value=""><Trans>Seleccioni'n un</Trans></option>
+                        <option value="treball_compte_alie"><Trans>Propietari</Trans></option>
+                        <option value="treball_compte_propi"><Trans>Llogater</Trans></option>
+                        <option value="desocupat"><Trans>Usufructuari</Trans></option>
+                    </select>
+                </div>
+            </Field>
+        </div>
+        <div className="field">
             <label><Control.checkbox model=".relacio_de_parentiu_amb_el_propietari" component={Checkbox}/> Algun membre de la família té relació de parentiu amb el propietari de l'habitatge</label>
         </div>
 
         <div className="field">
             <label><Control.checkbox model=".existeix_deute_en_el_pagament_del_lloguer" component={Checkbox}/> Existeix un deute en el pagament del lloguer</label>
         </div>
+        <div className="field">
+            <label><Control.checkbox model=".tinc_alguna_p``opietat" component={Checkbox}/> Tinc alguna propietat a part de l'habitatge habitual</label>
+        </div>
+        // Valor finca rustica
+        // Valor finca urbana
+
+
         {props.state.existeix_deute_en_el_pagament_del_lloguer === true &&
             <div className="field">
                 <label>Import total del deute (&euro;)</label>
@@ -66,6 +99,8 @@ const RentFields = (props: Props) => (
                 placeholder='0'/>
         </div>
     </div>
+    //Preguntar si hi ha hipoteca
+    //              Preguntar titular hipoteca
 );
 
 export default RentFields;

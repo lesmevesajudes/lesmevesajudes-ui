@@ -15,4 +15,5 @@ export type Child = {
     te_beca_menjador: boolean;
     en_acolliment: boolean;
     en_guardia_i_custodia: boolean;
+    beneficiari_fons_infancia_2017: boolean;
 }
