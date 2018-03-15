@@ -8,14 +8,12 @@ import IndexPage from './indexPage/IndexPage';
 import WizardPage from './pages/Wizard';
 import ChildrenReducer from './children/ChildrenReducer';
 import AdultsReducer from './adults/AdultsReducer';
-import FinancialDataReducer from "./financial/FinancialDataReducer";
 import ResultsReducer from './results/ResultsReducer';
 import HouseholdReducer from './household/HouseholdReducer';
 import RentReducer from "./rent/RentReducer";
 import isDevelopment from './shared/isDevelopment';
 import './App.css';
 import './select-css.css';
-import PropertiesReducer from "./properties/PropertiesReducer";
 import CorporateHeader from "./components/Header/CorporateHeader";
 import ReportBugPage from "./reportBug/ReportBugPage";
 import InfoRAI from "./pages/InfoRAI";
@@ -36,8 +34,6 @@ const reducersCombined =combineReducers({
     children: ChildrenReducer,
     adults: AdultsReducer,
     rent: RentReducer,
-    properties: PropertiesReducer,
-    financialData: FinancialDataReducer,
     householdData: HouseholdReducer
 });
 
