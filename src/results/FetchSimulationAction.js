@@ -6,42 +6,6 @@ import type {Rent} from "../rent/rentTypes";
 import OpenFiscaAPIClient from "../shared/OpenFiscaAPIClient";
 export const FETCH_SIMULATION='fetch_simulation';
 
-/*
- Sample:
-
- {
-     "output_format": "variables",
-     "scenarios": [
-             {
-                "test_case": {
-                    "households": [
-                        {
-                            "parents": ["pare1"],
-                            "children": ["infant1"]
-                        }
-                    ],
-                    "persons": [
-                        {
-                            "id": "pare1",
-                            "birth": "1961-01-15",
-                            "disposable_income": "7000",
-                            "usuari_serveis_socials": 1,
-                            "ciutat_empadronament": "Barcelona"
-                        },
-                        {
-                            "id": "infant1",
-                            "birth": "2002-01-15",
-                            "usuari_serveis_socials": 1,
-                            "ciutat_empadronament": "Barcelona"
-                        }
-                    ]
-             },
-             "period": "2017-1"
-           }
-        ],
-     "variables": ["ajuda_016_mensual"]
- */
-
 type SimulationData = {
     adults: AdultState,
     rent: Rent,
@@ -55,28 +19,6 @@ function shouldBePartOfFamilyVariables(value) {
 }
 
 function buildRequest(simulationData: SimulationData) {
-    /*const menorsPersonalData = simulationData.children.reduce((acc, child: Child) =>
-    {
-        acc[child.id] = {
-            data_naixement: addPeriod(child.data_naixement),
-            es_usuari_serveis_socials: addPeriod(child.social_services_user),
-            ciutat_empadronament: addPeriod(esBarcelona(child.codi_postal_empadronament) ? "Barcelona" : "Altre"),
-            codi_postal_empadronament: addPeriod(child.codi_postal_empadronament),
-            grau_discapacitat: addPeriod(child.grau_discapacitat),
-            es_escolaritzat_entre_P3_i_4rt_ESO: addPeriod(child.es_escolaritzat_entre_P3_i_4rt_ESO),
-            utilitza_el_servei_de_menjador: addPeriod(child.utilitza_el_servei_de_menjador),
-            te_beca_menjador: addPeriod(child.te_beca_menjador),
-            en_acolliment: addPeriod(child.en_acolliment),
-            en_guardia_i_custodia: addPeriod(child.en_guardia_i_custodia),
-            AE_230_mensual: addPeriod(null),
-            EG_233_mensual: addPeriod(null),
-            GE_051_01_mensual: addPeriod(null),
-            GE_051_02_mensual: addPeriod(null),
-            GE_051_03_mensual: addPeriod(null),
-            GG_270_mensual: addPeriod(null)
-        };
-        return acc;
-    }, {});*/
 
     const adultsPersonalData = simulationData.adults.reduce((acc, adult: Adult) =>
     {  acc[adult.id] = {
@@ -124,7 +66,7 @@ function buildRequest(simulationData: SimulationData) {
                 familia_1:
                 {
                     adults: serialize_adult(simulationData.adults).filter((adult) => adult.rol === "pares").map((adult) => adult.id),
-                    child: serialize_adult(simulationData.adults).filter((adult) => adult.rol === "fill").map((adult) => adult.id),
+                    menors: serialize_adult(simulationData.adults).filter((adult) => adult.rol === "fill").map((adult) => adult.id),
                     ...Object.keys(simulationData.rent).reduce((acc, value) =>
                     {
                         if ( shouldBePartOfFamilyVariables(value) ) {

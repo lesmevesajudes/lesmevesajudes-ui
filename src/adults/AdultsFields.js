@@ -148,7 +148,7 @@ const AdultsFields = (props) => (
         <div className="field">
             <label><Control.checkbox model=".ha_residit_a_lextranger_els_ultims_24_mesos" checked={false} component={Checkbox}/><Trans>Ha residit a l'extranger durant els últims 24 mesos</Trans></label>
         </div>
-        { props.state.tipus_document_identitat && props.state.tipus_document_identitat !== "DNI" &&
+        { props.state.tipus_document_identitat !== "DNI" &&
         <div className="field">
             <label><Control.checkbox model=".resident_a_catalunya_durant_5_anys" checked={false} component={Checkbox}/><Trans>Ha residit a Catalunya durant 5 anys</Trans></label>
         </div>}

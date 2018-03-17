@@ -25,6 +25,7 @@ const styles = theme => ({
 });
 
 class AdultsForm extends Component<Props, {}> {
+
     state = {};
     onChange: Function;
 
@@ -45,7 +46,7 @@ class AdultsForm extends Component<Props, {}> {
                         onSubmit={this.props.onSubmit}
                         onChange={this.onChange}
                         initialState={this.props.initialState}>
-                        <AdultsFields state={this.state}/>
+                        <AdultsFields state={(typeof this.state === "undefined")? this.props.initialState:this.state}/>
                         <Button variant="raised" color="secondary" className={classes.button} onClick={this.props.onCancel}><Trans>Cancelar</Trans></Button>
                         <Button variant="raised" color="primary" type="submit" className={classes.button}><Trans>Validar</Trans></Button>
                     </LocalForm>

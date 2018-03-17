@@ -15,6 +15,7 @@ type Props = {
     personesQuePodenTenirContracteDeLloguer: Map<AdultId, Adult>,
     state: any
 }
+
 class RentForm extends Component<Props> {
     handleSubmit(values) {
         this.props.addRent({...values});

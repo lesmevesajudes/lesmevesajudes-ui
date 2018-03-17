@@ -1,16 +1,24 @@
 import React from "react";
 import Link from "react-router-dom/es/Link";
+import {Map} from "immutable";
+import type {AdultId} from "../adults/AdultsTypes";
+import {Adult} from "../adults/AdultsTypes";
 
-class PersonalBenefits extends React.Component {
+type Props = {
+    benefitsForPersons: any,
+    persons: Map<AdultId, Adult>
+}
+
+class PersonalBenefits extends React.Component<Props> {
     constructor() {
         super();
         this.possibleBenefits = [
             {ID: "AE_230_mensual", name: "Fons infància", periode: "mes",url: "/ajuts/fons_infancia"},
             {ID: "EG_233_mensual", name: "Ajuts individuals de menjador", periode: "dia", url: "/ajuts/menjador"},
-            {ID: "GE_051_01_mensual", name: "Renda activa d'inserció discapacitat 33%", periode: "mes", url:"/ajuts/rai"},
+            /*{ID: "GE_051_01_mensual", name: "Renda activa d'inserció discapacitat 33%", periode: "mes", url:"/ajuts/rai"},
             {ID: "GE_051_02_mensual", name: "Renda activa d'inserció per a emigrants retornats", periode: "mes", url:"/ajuts/rai"},
             {ID: "GE_051_03_mensual", name: "Renda activa d'inserció per a víctimes de violència de gènere o domèstica", periode: "mes", url:"/ajuts/rai"},
-            {ID: "GG_270_mensual", name: "Renda Garantida Ciutadana", periode: "mes", url:"/ajuts/rgc"}]
+            {ID: "GG_270_mensual", name: "Renda Garantida Ciutadana", periode: "mes", url:"/ajuts/rgc"}*/];
         this.period = "2017-01";
 
     }
@@ -33,11 +41,11 @@ class PersonalBenefits extends React.Component {
         }
     };
 
-    renderPersonalBenefits(person, personsData) {
+    renderPersonalBenefits(person: any, personsData: Map<AdultId, Adult>) {
         if (this.hasAnyBenefit(person)) {
             return (
                 <li className="ItemGreen" key={person.id}>
-                    <span>{personsData[person.id].nom}</span>
+                    <span>{personsData.get(person.id).nom}</span>
                     <ul className="ItemList">
                         {this.possibleBenefits.map((benefit) => this.renderAPersonalBenefit(benefit, person))}
                     </ul>
@@ -45,16 +53,16 @@ class PersonalBenefits extends React.Component {
         } else {
             return (
                 <li className="ItemGreen" key={person.id}>
-                    <span>{personsData[person.id].nom} no opta a cap ajuda</span>
+                    <span>{personsData.get(person.id).nom} no opta a cap ajuda</span>
                 </li>);
         }
     }
 
-    renderPersonalBenefitList(personsData, personsWithBenefits) {
+    renderPersonalBenefitList(personsData: Map<AdultId, Adult>, personsWithBenefits:any) {
 
         return (
             <ul className="ItemList">
-                { Object.entries(personsWithBenefits).map(([id, person]) => this.renderPersonalBenefits({...person, id:id}, personsData)) }
+                { Object.entries(personsWithBenefits).map(([id, personFromAPI]) => this.renderPersonalBenefits({...personFromAPI, id: id}, personsData)) }
             </ul>);
     }
 

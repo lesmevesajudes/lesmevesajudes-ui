@@ -1,12 +1,20 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {fetchSimulation} from './FetchSimulationAction';
-import {serialize as serialize_adults} from "../adults/AdultsReducer";
 import {Link} from "react-router-dom";
 import PersonalBenefits from "./PersonalBenefits";
 import FamilyBenefits from "./FamilyBenefits";
+import type {AdultId, Adult} from "../adults/AdultsTypes";
 
-class ResultsPage extends React.Component {
+
+type Props = {
+    isError: boolean,
+    isRequestDone: boolean,
+    simulationData: any,
+    resultsData: any,
+    persons: Map<AdultId, Adult>
+}
+class ResultsPage extends React.Component <Props> {
 
     enoughDataForSimulation() {
         return Object.keys(this.props.persons).length > 0;
@@ -63,17 +71,13 @@ class ResultsPage extends React.Component {
     }
 }
 
-function listPersons(state) {
-    return [
-        ...serialize_adults(state.adults)]
-}
 function mapStateToProps(state) {
     return {
         isError: state.results.isError,
         isRequestDone: state.results.isRequestDone,
         simulationData: state,
         resultsData: state.results.response,
-        persons: listPersons(state)
+        persons: state.adults
     };
 }
 
