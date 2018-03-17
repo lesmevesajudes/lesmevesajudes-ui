@@ -20,7 +20,7 @@ class AdultsViewer extends Component<Props, void> {
                         <span style={{float: 'left'}} onClick={() => this.props.onUpdateClick(adult.id)}>
                             {adult.nom} - {adult.data_naixement}
                         </span>
-                        <button style={{float: 'right'}} className="littlebutton" key={"delete" + adult.id} onClick={() => this.props.onRemoveClick(adult.id)}>
+                        <button style={{float: 'right'}} className="littlebutton" key={"delete" + adult.id} onClick={   () => this.props.onRemoveClick(adult.id)}>
                             <i className="material-icons">delete</i>
                         </button>
                         <button style={{float: 'right'}} className="littlebutton" key={"edit" + adult.id} onClick={() => this.props.onUpdateClick(adult.id)}>

@@ -6,11 +6,13 @@ import {addRent} from './RentActions';
 import RentFields from "./RentFields";
 import type {Rent} from "./RentTypes";
 import {Adult} from "../adults/AdultsTypes";
+import type {AdultId} from "../adults/AdultsTypes";
 
 type Props = {
     initialState:?Rent,
     addRent: Function,
-    personesQuePodenTenirContracteDeLloguer: Map<Adult>
+    personesQuePodenTenirContracteDeLloguer: Map<AdultId, Adult>,
+    state: any
 }
 class RentForm extends Component<Props> {
     handleSubmit(values) {
