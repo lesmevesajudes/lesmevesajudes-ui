@@ -17,7 +17,7 @@ class WizardPage extends Component {
 
         const steps =
             [
-                {name: t('Adults'), component: <AdultsPage />},
+                {name: t('Persones que conviuen'), component: <AdultsPage />},
                 {name: t('Menors'), component: <ChildrenPage/>},
                 {name: t('Domicili habitual'), component: <RentForm />},
                 {name: t('Resultats'), component: <ResultsPage />}

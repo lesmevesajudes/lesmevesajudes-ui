@@ -2,7 +2,7 @@ import React from 'react';
 import {Control, Field} from 'react-redux-form';
 import Trans from "react-i18next/dist/es/Trans";
 import {translate} from "react-i18next";
-import {Checkbox, Input, InputAdornment, MenuItem, Select} from "material-ui";
+import {Checkbox, Input, InputAdornment} from "material-ui";
 
 
 const AdultsFields = (props) => (
@@ -53,18 +53,19 @@ const AdultsFields = (props) => (
         </div>
         <div className="field">
             <label><Trans>Sexe</Trans></label>
-            <Control.custom
+            <Field
                 id='sexe'
                 model='.sexe'
                 dynamic={false}
-                component={Select}
-                style={{minWidth: 120}}
-                value=""
             >
-                    <MenuItem value=""><Trans>Seleccioni'n un</Trans></MenuItem>
-                    <MenuItem value="dona"><Trans>Dona</Trans></MenuItem>
-                    <MenuItem value="home"><Trans>Home</Trans></MenuItem>
-            </Control.custom>
+                <div className="custom-select">
+                    <select required>
+                        <option value=""><Trans>Seleccioni'n un</Trans></option>
+                        <option value="dona"><Trans>Dona</Trans></option>
+                        <option value="home"><Trans>Home</Trans></option>
+                    </select>
+                </div>
+            </Field>
         </div>
         <div className="field">
             <label><Trans>Tipus de document de identitat</Trans></label>

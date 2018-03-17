@@ -39,7 +39,7 @@ class AdultsForm extends Component<Props, {}> {
         const { classes } = this.props;
         return (
             <div>
-                <h1><Trans>Afegir un nou adult a la unitat de convivència</Trans></h1>
+                <h1><Trans>Afegir una persona a la unitat de convivència</Trans></h1>
                 <div className="FormContainer">
                     <LocalForm
                         onSubmit={this.props.onSubmit}

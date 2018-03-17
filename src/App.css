@@ -67,14 +67,14 @@ label {
 .ItemList {
     column-count: 1;
     column-gap: 0;
-    width: 400px;
+    min-width: 400px;
     margin: 0;
     padding: 0;
 }
 
 .Item {
     display: inline-block;
-    width: 400px;
+    width: 100%;
     background-color: lightgrey;
     color: white;
     text-align: center;

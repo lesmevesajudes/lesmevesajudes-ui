@@ -20,10 +20,10 @@ class AdultsViewer extends Component<Props, void> {
                         <span style={{float: 'left'}} onClick={() => this.props.onUpdateClick(adult.id)}>
                             {adult.nom} - {adult.data_naixement}
                         </span>
-                        <button style={{float: 'right'}} className="littlebutton" key={"delete" + adult.id} onClick={e => this.props.onRemoveClick(adult.id)}>
+                        <button style={{float: 'right'}} className="littlebutton" key={"delete" + adult.id} onClick={() => this.props.onRemoveClick(adult.id)}>
                             <i className="material-icons">delete</i>
                         </button>
-                        <button style={{float: 'right'}} className="littlebutton" key={"edit" + adult.id} onClick={e => this.props.onUpdateClick(adult.id)}>
+                        <button style={{float: 'right'}} className="littlebutton" key={"edit" + adult.id} onClick={() => this.props.onUpdateClick(adult.id)}>
                             <i className="material-icons">edit</i>
                         </button>
                     </li>
@@ -34,11 +34,11 @@ class AdultsViewer extends Component<Props, void> {
     render() {
         return (
             <div>
-                <h1><Trans>Adults de la unitat de convivència</Trans></h1>
+                <h1><Trans>Persones de la unitat de convivència</Trans></h1>
                 <div className="FormContainer">
                     {this.renderAdultsList(this.props.adults)}
                 </div>
-                <Button variant="raised" color="primary"  id='AddAdultButton' onClick={this.props.onAddAdultClick}><Trans>Afegir un adult</Trans></Button>
+                <Button variant="raised" color="primary"  id='AddAdultButton' onClick={this.props.onAddAdultClick}><Trans>Afegir una persona</Trans></Button>
             </div>
         );
     }
