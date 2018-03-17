@@ -13,6 +13,15 @@ const AdultsFields = (props) => (
                 type="hidden"/>
         </div>
         <div className="field">
+            <label><Trans>Com vol identificar a aquesta persona?</Trans></label>
+            <Control.text
+                id='nom'
+                model='.nom'
+                placeholder='Nom'
+                component={Input}
+                required/>
+        </div>
+        <div className="field">
             <label><Trans>Rol</Trans></label>
             <Field
                 id='rol'
@@ -30,15 +39,6 @@ const AdultsFields = (props) => (
                     </select>
                 </div>
             </Field>
-        </div>
-        <div className="field">
-            <label><Trans>Com vol identificar a aquesta persona?</Trans></label>
-            <Control.text
-                id='nom'
-                model='.nom'
-                placeholder='Nom'
-                component={Input}
-                required/>
         </div>
         <div className="field">
             <label><Trans>Data naixement</Trans></label>
@@ -145,11 +145,10 @@ const AdultsFields = (props) => (
         <div className="field">
             <label><Control.checkbox model=".victima_de_terrorisme" checked={false} component={Checkbox}/><Trans>Víctima de terrorisme</Trans></label>
         </div>
-        {props.state.nacionalitat && props.state.tipus_document_identitat !== "DNI" &&
         <div className="field">
             <label><Control.checkbox model=".ha_residit_a_lextranger_els_ultims_24_mesos" checked={false} component={Checkbox}/><Trans>Ha residit a l'extranger durant els últims 24 mesos</Trans></label>
-        </div>}
-        {props.state.nacionalitat && props.state.tipus_document_identitat !== "DNI" &&
+        </div>
+        {props.state.tipus_document_identitat && props.state.tipus_document_identitat !== "DNI" &&
         <div className="field">
             <label><Control.checkbox model=".resident_a_catalunya_durant_5_anys" checked={false} component={Checkbox}/><Trans>Ha residit a Catalunya durant 5 anys</Trans></label>
         </div>}
@@ -181,9 +180,30 @@ const AdultsFields = (props) => (
         <div className="field">
             <label><Control.checkbox model=".al_corrent_de_les_obligacions_tributaries" component={Checkbox}/><Trans>Al corrent de les obligacions tributàries</Trans></label>
         </div>
+        { props.state.rol === "fill" &&
         <div className="field">
-            <label><Control.checkbox model=".usuari_serveis_socials"  component={Checkbox}/><Trans>Usuari de serveis socials en seguiment a un CSS o servei especialitzat de l'Ajuntament de Barcelona</Trans></label>
-        </div>
+            <label><Control.checkbox model=".es_escolaritzat_entre_P3_i_4rt_ESO" component={Checkbox} /> Està escolaritzat entre P4 i 4rt d'ESO</label>
+        </div>}
+        { props.state.rol === "fill" &&
+        <div className="field">
+            <label><Control.checkbox model=".utilitza_el_servei_de_menjador" component={Checkbox} /> Utilitza el servei de menjador de l'escola</label>
+        </div>}
+        { props.state.rol === "fill" &&
+        <div className="field">
+            <label><Control.checkbox model=".te_beca_menjador" component={Checkbox} /> Té beca menjador</label>
+        </div>}
+        { props.state.rol === "fill" &&
+        <div className="field">
+            <label><Control.checkbox model=".en_acolliment" component={Checkbox} /> En acolliment</label>
+        </div>}
+        { props.state.rol === "fill" &&
+        <div className="field">
+            <label><Control.checkbox model=".en_guardia_i_custodia" component={Checkbox}/> En guardia i custodia</label>
+        </div>}
+        { props.state.rol === "fill" &&
+        <div className="field">
+            <label><Control.checkbox model=".beneficiari_fons_infancia_2017" component={Checkbox}/> Beneficiari/a fons infància 2017</label>
+        </div>}
     </div>
 );
 

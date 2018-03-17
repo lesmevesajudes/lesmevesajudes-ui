@@ -6,10 +6,8 @@ import promise from 'redux-promise';
 
 import IndexPage from './indexPage/IndexPage';
 import WizardPage from './pages/Wizard';
-import ChildrenReducer from './children/ChildrenReducer';
 import AdultsReducer from './adults/AdultsReducer';
 import ResultsReducer from './results/ResultsReducer';
-import HouseholdReducer from './household/HouseholdReducer';
 import RentReducer from "./rent/RentReducer";
 import isDevelopment from './shared/isDevelopment';
 import './App.css';
@@ -31,10 +29,8 @@ if (isDevelopment) {
 
 const reducersCombined =combineReducers({
     results: ResultsReducer,
-    children: ChildrenReducer,
     adults: AdultsReducer,
     rent: RentReducer,
-    householdData: HouseholdReducer
 });
 
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);

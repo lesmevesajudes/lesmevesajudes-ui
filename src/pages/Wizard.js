@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import StepZilla from 'react-stepzilla';
 import AdultsPage from "../adults/AdultsPage";
-import ChildrenPage from "../children/ChildrenPage";
 import RentForm from "../rent/RentForm";
 import ResultsPage from "../results/ResultsPage";
 
@@ -18,7 +17,6 @@ class WizardPage extends Component {
         const steps =
             [
                 {name: t('Persones que conviuen'), component: <AdultsPage />},
-                {name: t('Menors'), component: <ChildrenPage/>},
                 {name: t('Domicili habitual'), component: <RentForm />},
                 {name: t('Resultats'), component: <ResultsPage />}
 

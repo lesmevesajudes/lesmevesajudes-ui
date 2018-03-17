@@ -2,7 +2,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {fetchSimulation} from './FetchSimulationAction';
 import {serialize as serialize_adults} from "../adults/AdultsReducer";
-import {serialize  as serialize_children} from "../children/ChildrenReducer";
 import {Link} from "react-router-dom";
 import PersonalBenefits from "./PersonalBenefits";
 import FamilyBenefits from "./FamilyBenefits";
@@ -66,8 +65,7 @@ class ResultsPage extends React.Component {
 
 function listPersons(state) {
     return [
-        ...serialize_adults(state.adults),
-        ...serialize_children(state.children)].reduce(function(acc, element){acc[element.id]=element;return acc;}, {})
+        ...serialize_adults(state.adults)]
 }
 function mapStateToProps(state) {
     return {
