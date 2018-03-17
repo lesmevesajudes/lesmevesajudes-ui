@@ -114,6 +114,7 @@ function buildRequest(simulationData: SimulationData) {
         };
         return acc
     }, {});
+
     if ( typeof adultsPersonalData[simulationData.rent.titular_contracte_de_lloguer_id] !== 'undefined' ) {
         adultsPersonalData[simulationData.rent.titular_contracte_de_lloguer_id].titular_contracte_de_lloguer = addPeriod(true);
     }
@@ -123,12 +124,6 @@ function buildRequest(simulationData: SimulationData) {
                 familia_1:
                 {
                     adults: serialize_adult(simulationData.adults).map((adult) => adult.id),
-                    //menors: serialize_child(simulationData.children).map((child) => child.id),
-                    ...Object.keys(simulationData.householdData).reduce((acc, value) =>
-                        {
-                            acc[value] = addPeriod(simulationData.householdData[value]);
-                            return acc;
-                        }, {}),
                     ...Object.keys(simulationData.rent).reduce((acc, value) =>
                     {
                         if ( shouldBePartOfFamilyVariables(value) ) {

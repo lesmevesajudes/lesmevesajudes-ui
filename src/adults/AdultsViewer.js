@@ -18,7 +18,7 @@ class AdultsViewer extends Component<Props, void> {
                 {adults.map((adult) => (
                     <li className="Item" key={adult.id}>
                         <span style={{float: 'left'}} onClick={() => this.props.onUpdateClick(adult.id)}>
-                            {adult.nom} - {adult.data_naixement}
+                            {adult.nom} - {adult.data_naixement} - {adult.rol.toUpperCase()}
                         </span>
                         <button style={{float: 'right'}} className="littlebutton" key={"delete" + adult.id} onClick={   () => this.props.onRemoveClick(adult.id)}>
                             <i className="material-icons">delete</i>
