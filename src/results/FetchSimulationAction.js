@@ -107,10 +107,10 @@ function buildRequest(simulationData: SimulationData) {
             beneficiari_fons_infancia_2017: addPeriod(adult.beneficiari_fons_infancia_2017),
             AE_230_mensual: addPeriod(null),
             EG_233_mensual: addPeriod(null),
-            GE_051_01_mensual: addPeriod(null),
+            /*GE_051_01_mensual: addPeriod(null),
             GE_051_02_mensual: addPeriod(null),
             GE_051_03_mensual: addPeriod(null),
-            GG_270_mensual: addPeriod(null)
+            GG_270_mensual: addPeriod(null)*/
         };
         return acc
     }, {});
@@ -123,7 +123,8 @@ function buildRequest(simulationData: SimulationData) {
             families:{
                 familia_1:
                 {
-                    adults: serialize_adult(simulationData.adults).map((adult) => adult.id),
+                    adults: serialize_adult(simulationData.adults).filter((adult) => adult.rol === "pares").map((adult) => adult.id),
+                    child: serialize_adult(simulationData.adults).filter((adult) => adult.rol === "fill").map((adult) => adult.id),
                     ...Object.keys(simulationData.rent).reduce((acc, value) =>
                     {
                         if ( shouldBePartOfFamilyVariables(value) ) {

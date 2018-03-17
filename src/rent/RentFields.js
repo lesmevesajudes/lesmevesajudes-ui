@@ -6,7 +6,7 @@ import {Adult} from "../adults/AdultsTypes";
 import {Checkbox, Input} from "material-ui";
 import type {AdultId} from "../adults/AdultsTypes";
 import {Trans} from "react-i18next";
-import {Map} from "immutable"
+import {Map} from "immutable";
 
 type Props = {
     state:?Rent ,

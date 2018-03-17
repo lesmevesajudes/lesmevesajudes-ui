@@ -7,6 +7,7 @@ import RentFields from "./RentFields";
 import type {Rent} from "./RentTypes";
 import {Adult} from "../adults/AdultsTypes";
 import type {AdultId} from "../adults/AdultsTypes";
+import {Map} from "immutable";
 
 type Props = {
     initialState:?Rent,
@@ -44,7 +45,7 @@ class RentForm extends Component<Props> {
 function mapStateToProps(state) {
     return {
         state: state.rent,
-        personesQuePodenTenirContracteDeLloguer: state.adults
+        personesQuePodenTenirContracteDeLloguer: state.adults.filter((adult) => adult.rol !== "fill")
     };
 }
 
