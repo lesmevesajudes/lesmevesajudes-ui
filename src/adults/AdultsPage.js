@@ -38,7 +38,7 @@ class AdultsPage extends React.Component<Props, State>{
 
     handleAddAdultClick = () => {
         this.setState({editingAdult: true});
-    }
+    };
 
     handleUpdateAdultClick = (adultId: AdultId) => {
         this.setState(
@@ -47,27 +47,27 @@ class AdultsPage extends React.Component<Props, State>{
                 editingAdult: true
             }
         );
-    }
+    };
 
     handleRemoveAdultClick = (adultId: AdultId) => {
         this.props.removeAdult(adultId);
-    }
+    };
 
     doneEditingAdult = () => {
         this.setState({
             initialFormFields: undefined,
             editingAdult: false});
-    }
+    };
 
     handleSubmitForm = (formValues: Adult) => {
         this.doneEditingAdult();
-
+        console.log(formValues);
         if (formValues.id === undefined) {
-            this.props.addAdult({...formValues, id: UUID.create()});
+            return this.props.addAdult({...formValues, id: UUID.create()});
         } else {
-            this.props.updateAdult(formValues);
+            return this.props.updateAdult(formValues);
         }
-    }
+    };
 
     render() {
         const addingAdult = this.state.editingAdult;
@@ -76,7 +76,7 @@ class AdultsPage extends React.Component<Props, State>{
         if (addingAdult) {
             component=(
                 <AdultsForm
-                    initialState={this.state.initialFormFields}
+                    initialValues={this.state.initialFormFields}
                     onSubmit={this.handleSubmitForm}
                     onCancel={this.doneEditingAdult}
                     onFinishAdding={() => this.doneEditingAdult()}
@@ -103,4 +103,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, {updateAdult, removeAdult, addAdult})(AdultsPage);
+export default connect(mapStateToProps, {addAdult, updateAdult, removeAdult})(AdultsPage);

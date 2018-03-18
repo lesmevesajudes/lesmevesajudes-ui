@@ -21,16 +21,18 @@ import InfoMenjador from "./pages/InfoMenjador";
 import InfoFonsInfancia from "./pages/InfoFonsInfancia";
 import AppFooter from "./components/Footer/Footer";
 import {Reboot} from "material-ui";
+import { reducer as reduxFormReducer } from 'redux-form';
 
 if (isDevelopment) {
     //module.hot.accept();
     console.log("Environment: " + process.env.NODE_ENV);
 }
 
-const reducersCombined =combineReducers({
+const reducersCombined = combineReducers({
     results: ResultsReducer,
     adults: AdultsReducer,
     rent: RentReducer,
+    form: reduxFormReducer, // mounted under "form"
 });
 
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);

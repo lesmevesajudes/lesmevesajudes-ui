@@ -18,6 +18,8 @@
     "react-router-dom": "^4.1.1",
     "react-stepzilla": "^4.6.3",
     "redux": "^3.6.0",
+    "redux-form": "^7.3.0",
+    "redux-form-material-ui": "^5.0.0-beta.2",
     "redux-promise": "^0.5.3"
   },
   "devDependencies": {
