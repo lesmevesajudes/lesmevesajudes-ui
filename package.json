@@ -14,7 +14,6 @@
     "react-dom": "^16.1.0",
     "react-i18next": "^7.4.0",
     "react-redux": "^5.0.5",
-    "react-redux-form": "^1.16.0",
     "react-router-dom": "^4.1.1",
     "react-stepzilla": "^4.6.3",
     "redux": "^3.6.0",

@@ -11,6 +11,7 @@ import { withStyles } from 'material-ui/styles';
 import {Field, formValueSelector, reduxForm} from 'redux-form';
 import {connect} from "react-redux";
 import {Button, MenuItem} from "material-ui";
+import edat from "../shared/Edat";
 
 type Props = {
     initialState: ?Adult,
@@ -20,7 +21,9 @@ type Props = {
     esDona: Boolean,
     teDNI: Boolean,
     esDesocupat: Boolean,
-    esFill: Boolean
+    esFill: Boolean,
+    potTreballar: Boolean,
+    escolaritzat: Boolean
 }
 
 const styles = theme => ({
@@ -33,7 +36,7 @@ const styles = theme => ({
 });
 
 let AdultsForm = (props: Props) => {
-        const { classes, esDona, teDNI, esDesocupat, esFill, handleSubmit } = props;
+        const { classes, esDona, teDNI, esDesocupat, esFill, handleSubmit, potTreballar, escolaritzat } = props;
         return (
             <div>
                 <h1><Trans>Afegir una persona a la unitat de convivència</Trans></h1>
@@ -103,7 +106,18 @@ let AdultsForm = (props: Props) => {
                                     <MenuItem value="altres"><Trans>Altres</Trans></MenuItem>
                                 </Field>
                             </div>
-
+                            <div className="field">
+                                <label><Trans>Data alta padró a l'actual habitatge (sense interrupcions)</Trans></label>
+                                <Field
+                                    id='data_alta_padro'
+                                    name='data_alta_padro'
+                                    placeholder="2005-01-21"
+                                    type="date"
+                                    component={TextField}
+                                    required
+                                />
+                            </div>
+                            { potTreballar &&
                             <div className="field">
                                 <label><Trans>Situació laboral</Trans></label>
                                 <Field
@@ -116,16 +130,14 @@ let AdultsForm = (props: Props) => {
                                     <MenuItem value="estudiant"><Trans>Estudiant</Trans></MenuItem>
                                     <MenuItem value="jubilat"><Trans>Jubilat</Trans></MenuItem>
                                 </Field>
-                            </div>
+                            </div>}
                             <div className="field">
-                                <label><Trans>Data alta padró (sense interrupcions)</Trans></label>
+                                <label><Trans>Total ingressos bruts 2016</Trans></label>
                                 <Field
-                                    id='data_alta_padro'
-                                    name='data_alta_padro'
-                                    placeholder="2005-01-21"
-                                    type="date"
+                                    name='.ingressos_bruts'
+                                    placeholder="0"
+                                    type="number"
                                     component={TextField}
-                                    required
                                 />
                             </div>
                             <div className="field">
@@ -137,70 +149,65 @@ let AdultsForm = (props: Props) => {
                                     component={TextField}
                                 />
                             </div>
-                            <div className="field">
-                                <label><Trans>Total ingressos bruts 2016</Trans></label>
-                                <Field
-                                    name='.ingressos_bruts'
-                                    placeholder="0"
-                                    type="number"
-                                    component={TextField}
-                                />
-                            </div>
-                            { esDona &&
+                            { esDona && ! esFill &&
                             <div className="field">
                                 <label><Field name="victima_violencia_de_genere" checked={false} component={Checkbox}/><Trans>Víctima violencia de genere</Trans></label>
                             </div>}
-                            { esDona &&
+                            { esDona && ! esFill &&
                             <div className="field">
                                 <label><Field name="es_divorciada_de_familia_reagrupada" checked={false} component={Checkbox}/><Trans>És divorciada de familia reagrupada</Trans></label>
                             </div>}
                             <div className="field">
                                 <label><Field name="victima_de_terrorisme" checked={false} component={Checkbox}/><Trans>Víctima de terrorisme</Trans></label>
                             </div>
+                            {potTreballar &&
                             <div className="field">
                                 <label><Field name="ha_residit_a_lextranger_els_ultims_24_mesos" checked={false} component={Checkbox}/><Trans>Ha residit a l'extranger durant els últims 24 mesos</Trans></label>
-                            </div>
-                            { teDNI &&
+                            </div>}
+                            { teDNI && potTreballar &&
                             <div className="field">
                                 <label><Field name="resident_a_catalunya_durant_5_anys" checked={false} component={Checkbox}/><Trans>Ha residit a Catalunya durant 5 anys</Trans></label>
                             </div>}
+                            { potTreballar &&
                             <div className="field">
                                 <label><Field name="ingressat_en_centre_penitenciari" checked={false} component={Checkbox}/><Trans>Ingressat en centre penitenciari</Trans></label>
-                            </div>
+                            </div>}
                             <div className="field">
                                 <label><Field name="es_orfe_dels_dos_progenitors" checked={false} component={Checkbox}/><Trans>És orfe dels dos progenitors</Trans></label>
                             </div>
+                            { potTreballar &&
                             <div className="field">
                                 <label><Field name="ha_treballat_a_l_estranger_6_mesos" checked={false} component={Checkbox}/><Trans>Ha treballat a l'estranger 6 mesos</Trans></label>
-                            </div>
-                            { esDesocupat &&
+                            </div>}
+                            { potTreballar && esDesocupat &&
                             <div className="field">
                                 <label><Field name="en_els_ultims_12_mesos_ha_fet_baixa_voluntaria_de_la_feina" checked={false} component={Checkbox}/><Trans>En els últims 12 mesos ha fet baixa voluntaria de la feina</Trans></label>
                             </div>}
-                            { esDesocupat &&
+                            { potTreballar && esDesocupat &&
                             <div className="field">
                                 <label><Field name="ha_esgotat_prestacio_de_desocupacio" checked={false} component={Checkbox}/><Trans>Ha esgotat prestació de desocupació</Trans></label>
                             </div>}
-                            { esDesocupat &&
+                            { potTreballar && esDesocupat &&
                             <div className="field">
                                 <label><Field name="demandant_d_ocupacio_durant_12_mesos" checked={false} component={Checkbox}/><Trans>Demandant d'ocupació durant 12 mesos</Trans></label>
                             </div>}
-                            { esDesocupat &&
+                            { potTreballar && esDesocupat &&
                             <div className="field">
                                 <label><Field name="durant_el_mes_anterior_ha_presentat_solicituds_recerca_de_feina" checked={false} component={Checkbox}/><Trans>Durant el mes anterior ha presentat solicituds recerca de feina</Trans></label>
                             </div>}
+                            {potTreballar &&
                             <div className="field">
                                 <label><Field name="al_corrent_de_les_obligacions_tributaries" component={Checkbox}/><Trans>Al corrent de les obligacions tributàries</Trans></label>
-                            </div>
+                            </div> }
                             { esFill &&
                             <div className="field">
                                 <label><Field name="es_escolaritzat_entre_P3_i_4rt_ESO" component={Checkbox} /> Està escolaritzat entre P4 i 4rt d'ESO</label>
                             </div>}
-                            { esFill &&
+                            { esFill && escolaritzat &&
                             <div className="field">
                                 <label><Field name="utilitza_el_servei_de_menjador" component={Checkbox} /> Utilitza el servei de menjador de l'escola</label>
                             </div>}
-                            { esFill &&
+                            { esFill && escolaritzat &&
                             <div className="field">
                                 <label><Field name="te_beca_menjador" component={Checkbox} /> Té beca menjador</label>
                             </div>}
@@ -216,6 +223,9 @@ let AdultsForm = (props: Props) => {
                             <div className="field">
                                 <label><Field name="beneficiari_fons_infancia_2017" component={Checkbox}/> Beneficiari/a fons infància 2017</label>
                             </div>}
+                            <div className="field">
+                                <label><Field name="es_usuari_serveis_socials" component={Checkbox}/> Usuari de serveis socials en seguiment a un CSS o servei especialitzat de l'Ajuntament de Barcelona</label>
+                            </div>
                         </div>
                         <Button variant="raised" color="secondary" className={classes.button} onClick={props.onCancel}><Trans>Cancelar</Trans></Button>
                         <Button variant="raised" color="primary" type="submit" className={classes.button} ><Trans>Validar</Trans></Button>
@@ -238,11 +248,15 @@ AdultsForm = connect(
         const esDesocupat = selector(state, 'situacio_laboral') === "desocupat";
         const teDNI = selector(state, 'tipus_document_identitat') === "DNI";
         const esDona = selector(state, 'sexe') === "dona";
+        const potTreballar = (edat(selector(state, 'data_naixement')) || 0) >=16;
+        const escolaritzat = selector(state, 'es_escolaritzat_entre_P3_i_4rt_ESO');
         return {
             esFill,
             esDesocupat,
             teDNI,
-            esDona
+            esDona,
+            potTreballar,
+            escolaritzat
         }
     }
 )(AdultsForm);

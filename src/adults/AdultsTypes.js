@@ -33,6 +33,7 @@ export class Adult  {
     en_acolliment: boolean = false;
     en_guardia_i_custodia: boolean = false;
     beneficiari_fons_infancia_2017: boolean = false;
+    es_usuari_serveis_socials: boolean = false;
 }
 
 export type AdultState = Map<string, Adult>;

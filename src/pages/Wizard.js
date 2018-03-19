@@ -7,6 +7,7 @@ import ResultsPage from "../results/ResultsPage";
 import './Wizard.css';
 import AppHeader from "../components/AppHeader/AppHeader";
 import {translate} from "react-i18next";
+import HouseholdForm from "../household/HouseholdForm";
 
 
 
@@ -17,6 +18,7 @@ class WizardPage extends Component {
         const steps =
             [
                 {name: t('Persones que conviuen'), component: <AdultsPage />},
+                {name: t('Família'), component: <HouseholdForm />},
                 {name: t('Domicili habitual'), component: <RentForm />},
                 {name: t('Resultats'), component: <ResultsPage />}
 

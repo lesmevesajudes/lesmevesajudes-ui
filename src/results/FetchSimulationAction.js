@@ -18,6 +18,15 @@ function shouldBePartOfFamilyVariables(value) {
     return (value !== "titular_contracte_de_lloguer_id" && value !== "existeix_deute_en_el_pagament_del_lloguer");
 }
 
+function es_barcelona_ciutat(codi_postal: number) {
+    const codis_postals_barcelona_ciutat = [8001, 8002, 8003, 8004, 8005, 8006, 8007, 8008, 8009, 8010, 8011, 8012,
+        8013, 8014, 8015, 8016, 8017, 8018, 8019, 8020, 8021, 8022, 8023, 8024,
+        8025, 8026, 8027, 8028, 8029, 8030, 8031, 8032, 8033, 8034, 8035, 8036,
+        8037, 8038, 8039, 8040, 8041, 8042, 8075, 8196, 8830, 8903, 8904, 8930,
+        8960];
+    return codis_postals_barcelona_ciutat.indexOf(codi_postal) !== -1;
+}
+
 function buildRequest(simulationData: SimulationData) {
 
     const adultsPersonalData = simulationData.adults.reduce((acc, adult: Adult) =>
@@ -47,6 +56,7 @@ function buildRequest(simulationData: SimulationData) {
             en_acolliment: addPeriod(adult.en_acolliment),
             en_guardia_i_custodia: addPeriod(adult.en_guardia_i_custodia),
             beneficiari_fons_infancia_2017: addPeriod(adult.beneficiari_fons_infancia_2017),
+            es_usuari_serveis_socials: addPeriod(adult.es_usuari_serveis_socials),
             AE_230_mensual: addPeriod(null),
             EG_233_mensual: addPeriod(null),
             /*GE_051_01_mensual: addPeriod(null),
@@ -67,13 +77,16 @@ function buildRequest(simulationData: SimulationData) {
                 {
                     adults: serialize_adult(simulationData.adults).filter((adult) => adult.rol === "pares").map((adult) => adult.id),
                     menors: serialize_adult(simulationData.adults).filter((adult) => adult.rol === "fill").map((adult) => adult.id),
+                    altres_adults:serialize_adult(simulationData.adults).filter((adult) => adult.rol !== "fill" && adult.rol !== "pares").map((adult) => adult.id),
                     ...Object.keys(simulationData.rent).reduce((acc, value) =>
                     {
                         if ( shouldBePartOfFamilyVariables(value) ) {
                             acc[value] = addPeriod(simulationData.rent[value]);
                         }
                         return acc;
-                    }, {})
+                    }, {}),
+
+                    domicili_a_barcelona_ciutat: addPeriod(es_barcelona_ciutat(parseInt(simulationData.rent['codi_postal_habitatge'], 10)))
                 }
             },
             persones: {...adultsPersonalData}

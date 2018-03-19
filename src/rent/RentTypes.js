@@ -2,7 +2,7 @@
 
 export type Rent = {
     relacio_habitatge: string,
-    codi_postal_empadronament: string,
+    codi_postal_habitatge: string,
     titular_contracte_de_lloguer_id: string,
     data_signatura_contracte_arrendament: string,
     relacio_de_parentiu_amb_el_propietari: boolean,

@@ -10,7 +10,7 @@ import { addAdult, updateAdult, removeAdult } from './AdultsActions';
 
 type State = {
     editingAdult: boolean,
-    initialFormFields: ?Adult
+    initialFormValues: ?Adult
 };
 
 type Props = {
@@ -24,7 +24,7 @@ type Props = {
 class AdultsPage extends React.Component<Props, State>{
     state = {
         editingAdult: false,
-        initialFormFields: undefined
+        initialFormValues: undefined
     };
 
     constructor() {
@@ -43,7 +43,7 @@ class AdultsPage extends React.Component<Props, State>{
     handleUpdateAdultClick = (adultId: AdultId) => {
         this.setState(
             {
-                initialFormFields: this.props.adults.filter((e) => e.id===adultId)[0],
+                initialFormValues: this.props.adults.filter((e) => e.id===adultId)[0],
                 editingAdult: true
             }
         );
@@ -55,7 +55,7 @@ class AdultsPage extends React.Component<Props, State>{
 
     doneEditingAdult = () => {
         this.setState({
-            initialFormFields: undefined,
+            initialFormValues: undefined,
             editingAdult: false});
     };
 
@@ -76,7 +76,7 @@ class AdultsPage extends React.Component<Props, State>{
         if (addingAdult) {
             component=(
                 <AdultsForm
-                    initialValues={this.state.initialFormFields}
+                    initialValues={this.state.initialFormValues}
                     onSubmit={this.handleSubmitForm}
                     onCancel={this.doneEditingAdult}
                     onFinishAdding={() => this.doneEditingAdult()}

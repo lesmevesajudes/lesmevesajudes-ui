@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {applyMiddleware, createStore, combineReducers } from 'redux';
+import {applyMiddleware, createStore, combineReducers, compose } from 'redux';
 import {Provider} from 'react-redux';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import promise from 'redux-promise';
@@ -22,6 +22,7 @@ import InfoFonsInfancia from "./pages/InfoFonsInfancia";
 import AppFooter from "./components/Footer/Footer";
 import {Reboot} from "material-ui";
 import { reducer as reduxFormReducer } from 'redux-form';
+import HouseholdReducer from "./household/HouseholdReducer";
 
 if (isDevelopment) {
     //module.hot.accept();
@@ -31,15 +32,24 @@ if (isDevelopment) {
 const reducersCombined = combineReducers({
     results: ResultsReducer,
     adults: AdultsReducer,
+    household: HouseholdReducer,
     rent: RentReducer,
     form: reduxFormReducer, // mounted under "form"
 });
+const store = createStore(
+    reducersCombined,
+    {},
+    compose(
+        applyMiddleware(promise),
+        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    )
+);
 
-const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
+/*const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 const extensions = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 const store = isDevelopment?
     createStoreWithMiddleware(reducersCombined, extensions):
-    createStoreWithMiddleware(reducersCombined);
+    createStoreWithMiddleware(reducersCombined);*/
 
 
 class App extends Component {
