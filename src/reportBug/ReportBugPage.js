@@ -1,17 +1,17 @@
 //@flow
 import React, {Component} from 'react';
-import {LocalForm} from 'react-redux-form';
-import {Control} from 'react-redux-form';
 import {connect} from 'react-redux';
 import {reportBug} from './ReportBugActions';
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
+import {Field, reduxForm} from 'redux-form';
+import { TextField } from 'redux-form-material-ui';
 type Props = {
     currentState: any
 }
 class ReportBugPage extends Component<Props> {
     handleSubmit(values) {
-        this.props.reportBug({...values, application_state: this.props.currentState});
-        this.props.history.push('/');
+        //this.props.reportBug({...values, application_state: this.props.currentState});
+        //this.props.history.push('/');
     }
 
     render() {
@@ -19,31 +19,32 @@ class ReportBugPage extends Component<Props> {
             <div>
                 <h1>Informar d'un error de l'aplicació</h1>
                 <div className="FormContainer">
-                    <LocalForm model="reportBug"
+                    <form name="ReportBug"
                                onSubmit={(values) => this.handleSubmit(values)}
                     >
                         <div>
                             <div className="field">
                                 <label>Nom de l'informador</label>
-                                <Control.text
-                                    className="RegularTextInput"
-                                    model=".nom_informador"
+                                <Field
+                                    component={TextField}
+                                    name="nom_informador"
                                     placeholder='Nom'/>
                             </div>
                             <div className="field">
                                 <label>Correu electrònic de l'informador</label>
-                                <Control.text
-                                    className="RegularTextInput"
+                                <Field
+                                    component={TextField}
                                     type="email"
-                                    model=".correu_informador"
+                                    name="correu_informador"
                                     placeholder='nom@domini.tld'/>
                             </div>
                             <div className="field">
                                 <label>Resultat esperat</label>
-                                <Control.textarea
+                                <Field
                                     rows="20"
                                     cols="50"
-                                    model=".resultat_esperat"
+                                    name="resultat_esperat"
+                                    component={TextField}
                                     placeholder='...'/>
                             </div>
                             <div className="field">
@@ -57,7 +58,7 @@ class ReportBugPage extends Component<Props> {
                             </div>
                             <button type="submit">Informar d'error</button>
                         </div>
-                    </LocalForm>
+                    </form>
                 </div>
             </div>
         );
@@ -71,4 +72,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, {reportBug})(withRouter(ReportBugPage));
+export default connect(mapStateToProps, {reportBug})(withRouter(reduxForm({form: 'ReportBug'})(ReportBugPage)));
