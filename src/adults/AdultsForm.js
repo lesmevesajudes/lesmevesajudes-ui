@@ -212,10 +212,6 @@ let AdultsForm = (props: Props) => {
                             <div className="field">
                                 <label><Field name="en_guardia_i_custodia" component={Checkbox}/> En guardia i custodia</label>
                             </div>}
-                            { esFill &&
-                            <div className="field">
-                                <label><Field name="beneficiari_fons_infancia_2017" component={Checkbox}/> Beneficiari/a fons infància 2017</label>
-                            </div>}
                         </div>
                         <Button variant="raised" color="secondary" className={classes.button} onClick={props.onCancel}><Trans>Cancelar</Trans></Button>
                         <Button variant="raised" color="primary" type="submit" className={classes.button} ><Trans>Validar</Trans></Button>
