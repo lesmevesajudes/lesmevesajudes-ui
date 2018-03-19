@@ -36,7 +36,7 @@ const styles = theme => ({
 });
 
 let AdultsForm = (props: Props) => {
-        const { classes, esDona, teDNI, esDesocupat, esFill, handleSubmit, potTreballar, escolaritzat } = props;
+        const { classes, esDona, teDNI, esDesocupat, esFill, handleSubmit, potTreballar } = props;
         return (
             <div>
                 <h1><Trans>Afegir una persona a la unitat de convivència</Trans></h1>
@@ -67,7 +67,7 @@ let AdultsForm = (props: Props) => {
                                 >
                                     <MenuItem value="pares"><Trans>Pare/Mare/Tutor/a</Trans></MenuItem>
                                     <MenuItem value="avis"><Trans>Avi/Àvia/Sogre/Sogra</Trans></MenuItem>
-                                    <MenuItem value="fill"><Trans>Fill</Trans></MenuItem>
+                                    <MenuItem value="fill"><Trans>Fill/Filla/Infant en acolliment</Trans></MenuItem>
                                     <MenuItem value="altres_adults_familiars"><Trans>Altres familiar</Trans></MenuItem>
                                     <MenuItem value="altres_adults"><Trans>Altres convivents</Trans></MenuItem>
                                 </Field>
@@ -84,10 +84,10 @@ let AdultsForm = (props: Props) => {
                                 />
                             </div>
                             <div className="field">
-                                <label><Trans>Sexe</Trans></label>
+                                <label><Trans>Gènere</Trans></label>
                                 <Field
-                                    id='sexe'
-                                    name='sexe'
+                                    id='genere'
+                                    name='genere'
                                     component={Select}
                                 >
                                     <MenuItem value="dona"><Trans>Dona</Trans></MenuItem>
@@ -172,9 +172,10 @@ let AdultsForm = (props: Props) => {
                             <div className="field">
                                 <label><Field name="ingressat_en_centre_penitenciari" checked={false} component={Checkbox}/><Trans>Ingressat en centre penitenciari</Trans></label>
                             </div>}
+                            { potTreballar &&
                             <div className="field">
                                 <label><Field name="es_orfe_dels_dos_progenitors" checked={false} component={Checkbox}/><Trans>És orfe dels dos progenitors</Trans></label>
-                            </div>
+                            </div>}
                             { potTreballar &&
                             <div className="field">
                                 <label><Field name="ha_treballat_a_l_estranger_6_mesos" checked={false} component={Checkbox}/><Trans>Ha treballat a l'estranger 6 mesos</Trans></label>
@@ -201,15 +202,7 @@ let AdultsForm = (props: Props) => {
                             </div> }
                             { esFill &&
                             <div className="field">
-                                <label><Field name="es_escolaritzat_entre_P3_i_4rt_ESO" component={Checkbox} /> Està escolaritzat entre P4 i 4rt d'ESO</label>
-                            </div>}
-                            { esFill && escolaritzat &&
-                            <div className="field">
-                                <label><Field name="utilitza_el_servei_de_menjador" component={Checkbox} /> Utilitza el servei de menjador de l'escola</label>
-                            </div>}
-                            { esFill && escolaritzat &&
-                            <div className="field">
-                                <label><Field name="te_beca_menjador" component={Checkbox} /> Té beca menjador</label>
+                                <label><Field name="es_escolaritzat_entre_P3_i_4rt_ESO" component={Checkbox} /> Està escolaritzat entre P3 i 4rt d'ESO</label>
                             </div>}
                             { esFill &&
                             <div className="field">
@@ -223,9 +216,6 @@ let AdultsForm = (props: Props) => {
                             <div className="field">
                                 <label><Field name="beneficiari_fons_infancia_2017" component={Checkbox}/> Beneficiari/a fons infància 2017</label>
                             </div>}
-                            <div className="field">
-                                <label><Field name="es_usuari_serveis_socials" component={Checkbox}/> Usuari de serveis socials en seguiment a un CSS o servei especialitzat de l'Ajuntament de Barcelona</label>
-                            </div>
                         </div>
                         <Button variant="raised" color="secondary" className={classes.button} onClick={props.onCancel}><Trans>Cancelar</Trans></Button>
                         <Button variant="raised" color="primary" type="submit" className={classes.button} ><Trans>Validar</Trans></Button>
@@ -247,16 +237,14 @@ AdultsForm = connect(
         const esFill = selector(state, 'rol') === "fill";
         const esDesocupat = selector(state, 'situacio_laboral') === "desocupat";
         const teDNI = selector(state, 'tipus_document_identitat') === "DNI";
-        const esDona = selector(state, 'sexe') === "dona";
+        const esDona = selector(state, 'genere') === "dona";
         const potTreballar = (edat(selector(state, 'data_naixement')) || 0) >=16;
-        const escolaritzat = selector(state, 'es_escolaritzat_entre_P3_i_4rt_ESO');
         return {
             esFill,
             esDesocupat,
             teDNI,
             esDona,
-            potTreballar,
-            escolaritzat
+            potTreballar
         }
     }
 )(AdultsForm);

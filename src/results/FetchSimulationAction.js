@@ -1,21 +1,23 @@
 //@flow
-import {serialize as serialize_adult} from "../adults/AdultsReducer";
-import type {AdultState, Adult} from "../adults/AdultsTypes";
-import type {HouseholdData} from "../household/householdDataTypes";
-import type {Rent} from "../rent/rentTypes";
-import OpenFiscaAPIClient from "../shared/OpenFiscaAPIClient";
+import {serialize as serialize_adult} from '../adults/AdultsReducer';
+import type {AdultState, Adult} from '../adults/AdultsTypes';
+import type {HouseholdData} from '../household/householdDataTypes';
+import type {Rent} from '../rent/rentTypes';
+import OpenFiscaAPIClient from '../shared/OpenFiscaAPIClient';
 export const FETCH_SIMULATION='fetch_simulation';
 
 type SimulationData = {
     adults: AdultState,
     rent: Rent,
-    householdData: HouseholdData
+    household: HouseholdData
 }
 
 const addPeriod = value => ({'2017-01': value});
 
 function shouldBePartOfFamilyVariables(value) {
-    return (value !== "titular_contracte_de_lloguer_id" && value !== "existeix_deute_en_el_pagament_del_lloguer");
+    return (value !== 'titular_contracte_de_lloguer_id'
+        && value !== 'existeix_deute_en_el_pagament_del_lloguer'
+        && value !== 'tinc_alguna_propietat_a_part_habitatge_habitual');
 }
 
 function es_barcelona_ciutat(codi_postal: number) {
@@ -51,12 +53,9 @@ function buildRequest(simulationData: SimulationData) {
             durant_el_mes_anterior_ha_presentat_solicituds_recerca_de_feina: addPeriod(adult.durant_el_mes_anterior_ha_presentat_solicituds_recerca_de_feina),
             al_corrent_de_les_obligacions_tributaries: addPeriod(adult.al_corrent_de_les_obligacions_tributaries),
             es_escolaritzat_entre_P3_i_4rt_ESO: addPeriod(adult.es_escolaritzat_entre_P3_i_4rt_ESO),
-            utilitza_el_servei_de_menjador: addPeriod(adult.utilitza_el_servei_de_menjador),
-            te_beca_menjador: addPeriod(adult.te_beca_menjador),
             en_acolliment: addPeriod(adult.en_acolliment),
             en_guardia_i_custodia: addPeriod(adult.en_guardia_i_custodia),
             beneficiari_fons_infancia_2017: addPeriod(adult.beneficiari_fons_infancia_2017),
-            es_usuari_serveis_socials: addPeriod(adult.es_usuari_serveis_socials),
             AE_230_mensual: addPeriod(null),
             EG_233_mensual: addPeriod(null),
             /*GE_051_01_mensual: addPeriod(null),
@@ -75,9 +74,9 @@ function buildRequest(simulationData: SimulationData) {
             families:{
                 familia_1:
                 {
-                    adults: serialize_adult(simulationData.adults).filter((adult) => adult.rol === "pares").map((adult) => adult.id),
-                    menors: serialize_adult(simulationData.adults).filter((adult) => adult.rol === "fill").map((adult) => adult.id),
-                    altres_adults:serialize_adult(simulationData.adults).filter((adult) => adult.rol !== "fill" && adult.rol !== "pares").map((adult) => adult.id),
+                    adults: serialize_adult(simulationData.adults).filter((adult) => adult.rol === 'pares').map((adult) => adult.id),
+                    menors: serialize_adult(simulationData.adults).filter((adult) => adult.rol === 'fill').map((adult) => adult.id),
+                    altres_adults:serialize_adult(simulationData.adults).filter((adult) => adult.rol !== 'fill' && adult.rol !== 'pares').map((adult) => adult.id),
                     ...Object.keys(simulationData.rent).reduce((acc, value) =>
                     {
                         if ( shouldBePartOfFamilyVariables(value) ) {
@@ -85,7 +84,8 @@ function buildRequest(simulationData: SimulationData) {
                         }
                         return acc;
                     }, {}),
-
+                    es_usuari_serveis_socials: addPeriod(simulationData.household.es_usuari_serveis_socials),
+                    data_obertura_expedient_serveis_socials: addPeriod(simulationData.household.data_obertura_expedient_serveis_socials),
                     domicili_a_barcelona_ciutat: addPeriod(es_barcelona_ciutat(parseInt(simulationData.rent['codi_postal_habitatge'], 10)))
                 }
             },
@@ -95,7 +95,7 @@ function buildRequest(simulationData: SimulationData) {
 
 export function fetchSimulation(simulationData: SimulationData) {
     let requestBody = buildRequest(simulationData);
-    console.log("Request: ",requestBody);
+    console.log('Request: ',requestBody);
     let client = new OpenFiscaAPIClient();
     return {
         type: FETCH_SIMULATION,
