@@ -13,7 +13,7 @@ import {Trans} from 'react-i18next';
 
 
 type Props = {
-    initialState:?Rent,
+    initialValues: ?Rent,
     addRent: Function,
     personesQuePodenTenirContracteDeLloguer: Map<AdultId, Adult>,
     state: any,
@@ -22,7 +22,7 @@ type Props = {
 }
 
 const RentForm = (props: Props) => {
-    const { esLlogater, existeixDeute, addRent } = props;
+    const { esLlogater, existeixDeute } = props;
     return (
         <div>
             <h1>Afegir informació sobre el lloguer del domicili habitual</h1>
@@ -132,7 +132,7 @@ function mapStateToProps(state) {
     return {
         esLlogater: selector(state, 'relacio_habitatge') === 'llogater',
         existeixDeute: selector(state, 'existeix_deute_en_el_pagament_del_lloguer'),
-        state: state.rent,
+        initialValues: state.rent,
         personesQuePodenTenirContracteDeLloguer: state.adults.filter((adult) => adult.rol !== 'fill')
     };
 }
