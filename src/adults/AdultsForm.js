@@ -67,7 +67,8 @@ let AdultsForm = (props: Props) => {
                                 >
                                     <MenuItem value="pares"><Trans>Pare/Mare/Tutor/a</Trans></MenuItem>
                                     <MenuItem value="avis"><Trans>Avi/Àvia/Sogre/Sogra</Trans></MenuItem>
-                                    <MenuItem value="fill"><Trans>Fill/Filla/Infant en acolliment</Trans></MenuItem>
+                                    <MenuItem value="fill"><Trans>Fill/Filla</Trans></MenuItem>
+                                    <MenuItem value="infant_acollit"><Trans>Infant en acolliment</Trans></MenuItem>
                                     <MenuItem value="altres_adults_familiars"><Trans>Altres familiar</Trans></MenuItem>
                                     <MenuItem value="altres_adults"><Trans>Altres convivents</Trans></MenuItem>
                                 </Field>
@@ -134,7 +135,7 @@ let AdultsForm = (props: Props) => {
                             <div className="field">
                                 <label><Trans>Total ingressos bruts 2016</Trans></label>
                                 <Field
-                                    name='.ingressos_bruts'
+                                    name='ingressos_bruts'
                                     placeholder="0"
                                     type="number"
                                     component={TextField}
@@ -143,7 +144,7 @@ let AdultsForm = (props: Props) => {
                             <div className="field">
                                 <label><Trans>Grau discapacitat</Trans></label>
                                 <Field
-                                    name='.grau_discapacitat'
+                                    name='grau_discapacitat'
                                     placeholder="0"
                                     type="number"
                                     component={TextField}

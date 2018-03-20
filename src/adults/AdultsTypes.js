@@ -33,4 +33,4 @@ export class Adult  {
     beneficiari_fons_infancia_2017: boolean = false;
 }
 
-export type AdultState = Map<string, Adult>;
+export type AdultState = Map<AdultId, Adult>;
