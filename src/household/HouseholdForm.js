@@ -10,6 +10,7 @@ import {Trans} from "react-i18next";
 import {Adult} from "../adults/AdultsTypes";
 import type {AdultId} from "../adults/AdultsTypes";
 import {Map} from 'immutable';
+import {esFamiliaNombrosa, esInfantAcollit, esSustentador} from "../shared/selectorUtils";
 
 
 type Props = {
@@ -75,21 +76,14 @@ let HouseholdForm = (props: Props) => {
 };
 
 const selector = formValueSelector('HouseholdForm');
-const esFill = (persona: Adult) => persona.rol === 'fill' || persona.rol === 'infant_acollit';
-
-const esFamiliaNombrosa = (persona: Map<AdultId, Adult>) =>{
-    const tresFillsOMes: boolean = persona.filter( (persona: Adult) => esFill(persona) ).count() >= 3;
-    const dosFillsOMesAlgunAmbDiscapacitatSuperior33: boolean = persona.filter( (persona: Adult) => esFill(persona) ).count() >= 2 && persona.filter( (persona: Adult) => esFill(persona) && persona.grau_discapacitat > 33 ).count() >= 1;
-    return tresFillsOMes || dosFillsOMesAlgunAmbDiscapacitatSuperior33;
-};
 
 function mapStateToProps(state) {
     return {
         initialValues: state.household,
         esUsuariServeisSocials: selector(state, 'es_usuari_serveis_socials'),
-        esMonoparental: state.adults.filter( (adult: Adult) => adult.rol === 'pares' ).count() === 1,
+        esMonoparental: state.adults.filter( (persona: Adult) => esSustentador(persona) ).count() === 1,
         esFamiliaNombrosa: esFamiliaNombrosa(state.adults) ,
-        infantsEnAcolliment: state.adults.filter( (adult: Adult) => adult.rol === 'infant_acollit')
+        infantsEnAcolliment: state.adults.filter( (adult: Adult) => esInfantAcollit(adult))
     };
 }
 

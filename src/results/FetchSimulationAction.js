@@ -4,6 +4,7 @@ import type {AdultState, Adult} from '../adults/AdultsTypes';
 import type {HouseholdData} from '../household/householdDataTypes';
 import type {Rent} from '../rent/rentTypes';
 import OpenFiscaAPIClient from '../shared/OpenFiscaAPIClient';
+import {esFill, esSustentador} from "../shared/selectorUtils";
 export const FETCH_SIMULATION='fetch_simulation';
 
 type SimulationData = {
@@ -74,9 +75,9 @@ function buildRequest(simulationData: SimulationData) {
             families:{
                 familia_1:
                 {
-                    adults: serialize_adult(simulationData.adults).filter((adult) => adult.rol === 'pares').map((adult) => adult.id),
-                    menors: serialize_adult(simulationData.adults).filter((adult) => adult.rol === 'fill').map((adult) => adult.id),
-                    altres_adults:serialize_adult(simulationData.adults).filter((adult) => adult.rol !== 'fill' && adult.rol !== 'pares').map((adult) => adult.id),
+                    adults: serialize_adult(simulationData.adults).filter((persona) => esSustentador(persona)).map((persona) => persona.id),
+                    menors: serialize_adult(simulationData.adults).filter((persona) => esFill(persona)).map((persona) => persona.id),
+                    altres_adults:serialize_adult(simulationData.adults).filter((persona) => ! esFill(persona) && persona.rol !== 'pares').map((persona) => persona.id),
                     ...Object.keys(simulationData.rent).reduce((acc, value) =>
                     {
                         if ( shouldBePartOfFamilyVariables(value) ) {
