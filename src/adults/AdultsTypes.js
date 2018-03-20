@@ -28,9 +28,6 @@ export class Adult  {
     durant_el_mes_anterior_ha_presentat_solicituds_recerca_de_feina: boolean = false;
     al_corrent_de_les_obligacions_tributaries: boolean = false;
     es_escolaritzat_entre_P3_i_4rt_ESO: boolean = false;
-    en_acolliment: boolean = false;
-    en_guardia_i_custodia: boolean = false;
-    beneficiari_fons_infancia_2017: boolean = false;
 }
 
 export type AdultState = Map<AdultId, Adult>;

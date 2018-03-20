@@ -4,7 +4,7 @@ import type {AdultState, Adult} from '../adults/AdultsTypes';
 import type {HouseholdData} from '../household/householdDataTypes';
 import type {Rent} from '../rent/rentTypes';
 import OpenFiscaAPIClient from '../shared/OpenFiscaAPIClient';
-import {esFill, esSustentador} from "../shared/selectorUtils";
+import {esFill, esInfantAcollit, esSustentador, tipusCustodia} from "../shared/selectorUtils";
 export const FETCH_SIMULATION='fetch_simulation';
 
 type SimulationData = {
@@ -54,9 +54,8 @@ function buildRequest(simulationData: SimulationData) {
             durant_el_mes_anterior_ha_presentat_solicituds_recerca_de_feina: addPeriod(adult.durant_el_mes_anterior_ha_presentat_solicituds_recerca_de_feina),
             al_corrent_de_les_obligacions_tributaries: addPeriod(adult.al_corrent_de_les_obligacions_tributaries),
             es_escolaritzat_entre_P3_i_4rt_ESO: addPeriod(adult.es_escolaritzat_entre_P3_i_4rt_ESO),
-            en_acolliment: addPeriod(adult.en_acolliment),
-            en_guardia_i_custodia: addPeriod(adult.en_guardia_i_custodia),
-            beneficiari_fons_infancia_2017: addPeriod(adult.beneficiari_fons_infancia_2017),
+            en_acolliment: addPeriod(esInfantAcollit(adult)),
+            tipus_custodia: addPeriod(tipusCustodia(adult)),
             AE_230_mensual: addPeriod(null),
             EG_233_mensual: addPeriod(null),
             /*GE_051_01_mensual: addPeriod(null),
@@ -86,7 +85,6 @@ function buildRequest(simulationData: SimulationData) {
                         return acc;
                     }, {}),
                     es_usuari_serveis_socials: addPeriod(simulationData.household.es_usuari_serveis_socials),
-                    data_obertura_expedient_serveis_socials: addPeriod(simulationData.household.data_obertura_expedient_serveis_socials),
                     domicili_a_barcelona_ciutat: addPeriod(es_barcelona_ciutat(parseInt(simulationData.rent['codi_postal_habitatge'], 10)))
                 }
             },

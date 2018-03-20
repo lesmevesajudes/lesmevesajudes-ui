@@ -6,7 +6,7 @@ import {
     Select,
     TextField
 } from 'redux-form-material-ui'
-import { Trans, translate } from "react-i18next";
+import { Trans } from "react-i18next";
 import { withStyles } from 'material-ui/styles';
 import {Field, formValueSelector, reduxForm} from 'redux-form';
 import {connect} from "react-redux";
@@ -158,9 +158,10 @@ let AdultsForm = (props: Props) => {
                             <div className="field">
                                 <label><Field name="es_divorciada_de_familia_reagrupada" checked={false} component={Checkbox}/><Trans>És divorciada de familia reagrupada</Trans></label>
                             </div>}
+                            { potTreballar &&
                             <div className="field">
                                 <label><Field name="victima_de_terrorisme" checked={false} component={Checkbox}/><Trans>Víctima de terrorisme</Trans></label>
-                            </div>
+                            </div>}
                             {potTreballar &&
                             <div className="field">
                                 <label><Field name="ha_residit_a_lextranger_els_ultims_24_mesos" checked={false} component={Checkbox}/><Trans>Ha residit a l'extranger durant els últims 24 mesos</Trans></label>
@@ -205,14 +206,6 @@ let AdultsForm = (props: Props) => {
                             <div className="field">
                                 <label><Field name="es_escolaritzat_entre_P3_i_4rt_ESO" component={Checkbox} /> Està escolaritzat entre P3 i 4rt d'ESO</label>
                             </div>}
-                            { esFill &&
-                            <div className="field">
-                                <label><Field name="en_acolliment" component={Checkbox} /> En acolliment</label>
-                            </div>}
-                            { esFill &&
-                            <div className="field">
-                                <label><Field name="en_guardia_i_custodia" component={Checkbox}/> En guardia i custodia</label>
-                            </div>}
                         </div>
                         <Button variant="raised" color="secondary" className={classes.button} onClick={props.onCancel}><Trans>Cancelar</Trans></Button>
                         <Button variant="raised" color="primary" type="submit" className={classes.button} ><Trans>Validar</Trans></Button>
@@ -231,7 +224,7 @@ const selector = formValueSelector('AdultsForm');
 AdultsForm = connect(
     state => {
         // can select values individually
-        const esFill = selector(state, 'rol') === "fill";
+        const esFill = selector(state, 'rol') === "fill" || selector(state, 'rol') === 'infant_acollit';
         const esDesocupat = selector(state, 'situacio_laboral') === "desocupat";
         const teDNI = selector(state, 'tipus_document_identitat') === "DNI";
         const esDona = selector(state, 'genere') === "dona";

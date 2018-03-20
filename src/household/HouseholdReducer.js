@@ -10,9 +10,10 @@ function addHouseholdData(state: HouseholdDataState, householdDataToBeAdded: Hou
 
 function initHouseholdDataState():HouseholdDataState {
     return {
-        nivell_de_risc_d_exclusio_social: "No",
         tipus_familia_nombrosa: "No",
-        tipus_familia_monoparental: "No"
+        tipus_familia_monoparental: "No",
+        es_usuari_serveis_socials: false,
+        custodies: null
     }
 }
 
