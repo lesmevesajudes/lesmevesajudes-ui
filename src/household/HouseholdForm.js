@@ -51,11 +51,11 @@ let HouseholdForm = (props: Props) => {
                     { esMonoparental &&
                         fills.valueSeq().map( (infant: Adult) =>
                             <div key={infant.id}>
-                                <label><Field name={"custodia." + infant.id + ".existeix" } component={Checkbox}/> Tinc la custodia de {infant.nom}</label>
-                                { (typeof custodies !== 'undefined' && typeof custodies[infant.id] !== 'undefined') &&
+                                <label><Field name={"custodies." + infant.id + ".existeix" } component={Checkbox}/> Tinc la custodia de {infant.nom}</label>
+                                { ( custodies !== null && custodies[infant.id] !== null ) &&
                                 <div className="field">
                                     <label>Tipus de guardia i custodia:</label>
-                                    <Field name={ 'custodia.' + infant.id + '.tipus' } component={Select}>
+                                    <Field name={ 'custodies.' + infant.id + '.tipus' } component={Select}>
                                         <MenuItem value="compartida">Compartida</MenuItem>
                                         <MenuItem value="total">Total</MenuItem>
                                     </Field>
@@ -73,12 +73,13 @@ let HouseholdForm = (props: Props) => {
 };
 
 function mapStateToProps(state) {
+    console.log("custodies:" +state.household.custodies );
     return {
         initialValues: state.household,
         esMonoparental: state.adults.filter( (persona: Adult) => esSustentador(persona) ).count() === 1,
         esFamiliaNombrosa: esFamiliaNombrosa(state.adults) ,
         fills: state.adults.filter( (adult: Adult) => esFill(adult)),
-        custodies: state.household.custodia
+        custodies: state.household.custodies
     };
 }
 
@@ -88,4 +89,4 @@ export default connect(mapStateToProps, {addHouseholdData})(
             form: 'HouseholdForm',
             onChange: (values, dispatch, props, previousValues) => {
                 dispatch(addHouseholdData(values));
-            },})(HouseholdForm));
+            }})(HouseholdForm));

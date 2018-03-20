@@ -12,4 +12,4 @@ export const esFamiliaNombrosa = (persona: Map<AdultId, Adult>) =>{
 };
 
 export const esInfantAcollit = (persona: Adult) => persona.rol === 'infant_acollit';
-export const tipusCustodia = (persona: Adult, familia: HouseholdData) => ( typeof familia.custodies[persona.id] !== undefined )? familia.custodies.tipus: 'cap';
+export const tipusCustodia = (persona: Adult, familia: HouseholdData) => ( familia.custodies !== null && typeof familia.custodies[persona.id] !== 'undefined' )? familia.custodies[persona.id].tipus: 'cap';

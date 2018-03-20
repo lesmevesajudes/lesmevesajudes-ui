@@ -55,7 +55,7 @@ function buildRequest(simulationData: SimulationData) {
             al_corrent_de_les_obligacions_tributaries: addPeriod(adult.al_corrent_de_les_obligacions_tributaries),
             es_escolaritzat_entre_P3_i_4rt_ESO: addPeriod(adult.es_escolaritzat_entre_P3_i_4rt_ESO),
             en_acolliment: addPeriod(esInfantAcollit(adult)),
-            tipus_custodia: addPeriod(tipusCustodia(adult)),
+            tipus_custodia: addPeriod(tipusCustodia(adult, simulationData.household)),
             AE_230_mensual: addPeriod(null),
             EG_233_mensual: addPeriod(null),
             /*GE_051_01_mensual: addPeriod(null),
