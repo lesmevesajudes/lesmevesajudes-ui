@@ -36,27 +36,19 @@ const reducersCombined = combineReducers({
     rent: RentReducer,
     form: reduxFormReducer, // mounted under "form"
 });
-const store = createStore(
-    reducersCombined,
-    {},
-    compose(
-        applyMiddleware(promise),
-        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-    )
-);
 
-/*const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
+const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 const extensions = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 const store = isDevelopment?
     createStoreWithMiddleware(reducersCombined, extensions):
-    createStoreWithMiddleware(reducersCombined);*/
+    createStoreWithMiddleware(reducersCombined);
 
 
 class App extends Component {
 
     render() {
         return (
-            <div className="App">
+            <div>
                 <CorporateHeader/>
                 <Reboot />
                 <div className="content">

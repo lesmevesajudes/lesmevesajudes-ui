@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+
 }
 
 .App-intro {
@@ -144,4 +144,10 @@ button.secondary {
     border: 2px solid #00ACD4;
     color: #00ACD4;
     font-weight: 600;
+}
+.progtrckr{
+    text-align:center
+}
+div.footer-buttons {
+    padding: 1em;
 }

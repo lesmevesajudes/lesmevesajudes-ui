@@ -72,7 +72,6 @@ class AdultsPage extends React.Component<Props, State>{
     render() {
         const addingAdult = this.state.editingAdult;
         let component = undefined;
-
         if (addingAdult) {
             component=(
                 <AdultsForm

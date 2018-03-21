@@ -3,7 +3,7 @@ import type {Adult, AdultId} from './AdultsTypes';
 
 type AddAdultAction = {
     type: 'ADD_ADULT';
-    adult: Adult;
+    adult: any;
 };
 
 type RemoveAdultAction = {
