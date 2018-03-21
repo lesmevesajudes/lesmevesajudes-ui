@@ -56,6 +56,7 @@ function buildRequest(simulationData: SimulationData) {
             en_acolliment: addPeriod(esInfantAcollit(adult)),
             tipus_custodia: addPeriod(tipusCustodia(adult, simulationData.household, esMonoparental(simulationData.adults))),
             AE_230_mensual: addPeriod(null),
+            AE_230_01_mensual: addPeriod(null),
             EG_233_mensual: addPeriod(null),
             /*GE_051_01_mensual: addPeriod(null),
             GE_051_02_mensual: addPeriod(null),

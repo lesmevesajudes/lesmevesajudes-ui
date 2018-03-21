@@ -14,6 +14,7 @@ class PersonalBenefits extends React.Component<Props> {
         super();
         this.possibleBenefits = [
             {ID: "AE_230_mensual", name: "Fons infància", periode: "mes",url: "/ajuts/fons_infancia"},
+            {ID: "AE_230_01_mensual", name: "Fons infància ajut famílies monoparentals", periode: "any",url: "/ajuts/fons_infancia"},
             {ID: "EG_233_mensual", name: "Ajuts individuals de menjador", periode: "dia", url: "/ajuts/menjador"},
             /*{ID: "GE_051_01_mensual", name: "Renda activa d'inserció discapacitat 33%", periode: "mes", url:"/ajuts/rai"},
             {ID: "GE_051_02_mensual", name: "Renda activa d'inserció per a emigrants retornats", periode: "mes", url:"/ajuts/rai"},
