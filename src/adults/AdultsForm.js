@@ -14,7 +14,8 @@ import {
     Button,
     MenuItem,
     Grid,
-    Paper
+    Paper,
+    Popover
 } from "material-ui";
 import QuestionIcon from "material-ui-icons/ErrorOutline"
 import AddIcon from "material-ui-icons/Add"
@@ -67,18 +68,33 @@ let AdultsForm = (props: Props) => {
                                       className={styles.textNormal}
                                       justify={"flex-start"}
                                       alignItems={"flex-start"}>
-                                    <Grid item xs sm>
+                                    <Grid item xs sm={5}>
                                         <Field
                                             component="input"
                                             name="id"
                                             type="hidden"/>
-                                        <label><Trans>Com vol identificar a aquesta persona?  <QuestionIcon/></Trans></label>
+                                        <label><Trans>Com vol identificar a aquesta persona?</Trans>
+                                            <QuestionIcon/>
+                                        </label>
                                         <Field
                                             id='nom'
                                             name='nom'
                                             placeholder='Nom'
                                             component={TextField}
+                                            fullWidth
                                             required/>
+                                    </Grid>
+                                    <Grid item xs sm={4}>
+                                        <label><Trans>Data naixement</Trans></label>
+                                        <Field
+                                            id='data_naixement'
+                                            name='data_naixement'
+                                            placeholder="2005-01-21"
+                                            type="date"
+                                            fullWidth
+                                            component={TextField}
+                                            required
+                                        />
                                     </Grid>
                                     <Grid item xs={0} sm>
 
@@ -87,13 +103,16 @@ let AdultsForm = (props: Props) => {
                                 <Grid container
                                       justify={"flex-start"}
                                       alignItems={"flex-start"}>
-                                    <Grid item xs sm>
-                                        <label><Trans>Rol</Trans><QuestionIcon/></label>
+                                    <Grid item xs sm={5}>
+                                        <label><Trans>Rol Familiar</Trans></label>
                                         <Field
                                             name='rol'
                                             label='Rol'
                                             component={Select}
+                                            placeholder="Rol familiar"
+                                            fullWidth
                                         >
+
                                             <MenuItem value="pares"><Trans>Pare/Mare/Tutor/a</Trans></MenuItem>
                                             <MenuItem value="avis"><Trans>Avi/Àvia/Sogre/Sogra</Trans></MenuItem>
                                             <MenuItem value="fill"><Trans>Fill</Trans></MenuItem>
@@ -101,37 +120,13 @@ let AdultsForm = (props: Props) => {
                                                 familiar</Trans></MenuItem>
                                             <MenuItem value="altres_adults"><Trans>Altres convivents</Trans></MenuItem>
                                         </Field>
-
                                     </Grid>
-                                    <Grid item xs={0} sm>
-
-                                    </Grid>
-                                </Grid>
-                                <Grid container
-                                      justify={"flex-start"}
-                                      alignItems={"flex-start"}>
-                                    <Grid item xs sm>
-                                        <label><Trans>Data naixement</Trans></label>
-                                        <Field
-                                            id='data_naixement'
-                                            name='data_naixement'
-                                            placeholder="2005-01-21"
-                                            type="date"
-                                            component={TextField}
-                                            required
-                                        />
-                                    </Grid>
-                                    <Grid item xs={0} sm>
-                                    </Grid>
-                                </Grid>
-                                <Grid container
-                                      justify={"flex-start"}
-                                      alignItems={"flex-start"}>
-                                    <Grid item xs sm>
+                                    <Grid item xs sm={4}>
                                         <label><Trans>Sexe</Trans></label>
                                         <Field
                                             id='sexe'
                                             name='sexe'
+                                            fullWidth
                                             component={Select}
                                         >
                                             <MenuItem value="dona"><Trans>Dona</Trans></MenuItem>
@@ -144,11 +139,12 @@ let AdultsForm = (props: Props) => {
                                 <Grid container
                                       justify={"flex-start"}
                                       alignItems={"flex-start"}>
-                                    <Grid item xs sm>
+                                    <Grid item xs sm={5}>
                                         <label><Trans>Tipus de document de identitat</Trans></label>
                                         <Field
                                             name='tipus_document_identitat'
                                             component={Select}
+                                            fullWidth
                                         >
                                             <MenuItem value="DNI"><Trans>DNI</Trans></MenuItem>
                                             <MenuItem value="NIE"><Trans>NIE</Trans></MenuItem>
@@ -162,7 +158,7 @@ let AdultsForm = (props: Props) => {
                                 <Grid container
                                       justify={"flex-start"}
                                       alignItems={"flex-start"}>
-                                    <Grid item xs sm>
+                                    <Grid item xs sm={5}>
                                         <label><Trans>Data alta padró a l'actual habitatge (sense interrupcions)</Trans></label>
                                         <Field
                                             id='data_alta_padro'
@@ -170,6 +166,7 @@ let AdultsForm = (props: Props) => {
                                             placeholder="2005-01-21"
                                             type="date"
                                             component={TextField}
+                                            fullWidth
                                             required
                                         />
                                     </Grid>
@@ -179,13 +176,14 @@ let AdultsForm = (props: Props) => {
                                 <Grid container
                                       justify={"flex-start"}
                                       alignItems={"flex-start"}>
-                                    <Grid item xs sm>
+                                    <Grid item xs sm={5}>
                                         {potTreballar &&
                                         <div className="field">
                                             <label><Trans>Situació laboral</Trans></label>
                                             <Field
                                                 name='situacio_laboral'
                                                 component={Select}
+                                                fullWidth
                                             >
                                                 <MenuItem value="treball_compte_alie"><Trans>Treballa per compte alié</Trans></MenuItem>
                                                 <MenuItem value="treball_compte_propi"><Trans>Treballa per compte
@@ -202,25 +200,33 @@ let AdultsForm = (props: Props) => {
                                 <Grid container
                                       justify={"flex-start"}
                                       alignItems={"flex-start"}>
-                                    <Grid item xs sm>
+                                    <Grid item xs sm={5}>
                                         <label><Trans>Total ingressos bruts 2016</Trans></label>
                                         <Field
                                             name='.ingressos_bruts'
                                             placeholder="0"
                                             type="number"
+                                            fullWidth
                                             component={TextField}
                                         />
 
                                     </Grid>
-                                    <Grid item xs  sm>
+                                    <Grid item xs={0} sm={2}></Grid>
+                                </Grid>
+                                <Grid container
+                                      justify={"flex-start"}
+                                      alignItems={"flex-start"}>
+                                    <Grid item xs  sm={5}>
                                         <label><Trans>Grau discapacitat</Trans></label>
                                         <Field
                                             name='.grau_discapacitat'
                                             placeholder="0"
                                             type="number"
+                                            fullWidth
                                             component={TextField}
                                         />
                                     </Grid>
+                                    <Grid item xs={0} sm={2}></Grid>
                                 </Grid>
                                 <Grid container
                                       justify={"flex-start"}
