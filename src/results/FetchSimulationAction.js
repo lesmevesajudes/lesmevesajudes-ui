@@ -4,7 +4,7 @@ import type {AdultState, Adult} from '../adults/AdultsTypes';
 import type {HouseholdData} from '../household/householdDataTypes';
 import type {Rent} from '../rent/rentTypes';
 import OpenFiscaAPIClient from '../shared/OpenFiscaAPIClient';
-import {esFill, esInfantAcollit, esSustentador, tipusCustodia} from "../shared/selectorUtils";
+import {esFill, esInfantAcollit, esMonoparental, esSustentador, tipusCustodia} from "../shared/selectorUtils";
 export const FETCH_SIMULATION='fetch_simulation';
 
 type SimulationData = {
@@ -31,7 +31,6 @@ function es_barcelona_ciutat(codi_postal: number) {
 }
 
 function buildRequest(simulationData: SimulationData) {
-
     const adultsPersonalData = simulationData.adults.reduce((acc, adult: Adult) =>
     {  acc[adult.id] = {
             data_naixement: addPeriod(adult.data_naixement),
@@ -55,7 +54,7 @@ function buildRequest(simulationData: SimulationData) {
             al_corrent_de_les_obligacions_tributaries: addPeriod(adult.al_corrent_de_les_obligacions_tributaries),
             es_escolaritzat_entre_P3_i_4rt_ESO: addPeriod(adult.es_escolaritzat_entre_P3_i_4rt_ESO),
             en_acolliment: addPeriod(esInfantAcollit(adult)),
-            tipus_custodia: addPeriod(tipusCustodia(adult, simulationData.household)),
+            tipus_custodia: addPeriod(tipusCustodia(adult, simulationData.household, esMonoparental(simulationData.adults))),
             AE_230_mensual: addPeriod(null),
             EG_233_mensual: addPeriod(null),
             /*GE_051_01_mensual: addPeriod(null),
@@ -84,6 +83,8 @@ function buildRequest(simulationData: SimulationData) {
                         }
                         return acc;
                     }, {}),
+                    tipus_familia_monoparental: addPeriod(simulationData.household.tipus_familia_monoparental),
+                    tipus_familia_nombrosa: addPeriod(simulationData.household.tipus_familia_nombrosa),
                     es_usuari_serveis_socials: addPeriod(simulationData.household.es_usuari_serveis_socials),
                     domicili_a_barcelona_ciutat: addPeriod(es_barcelona_ciutat(parseInt(simulationData.rent['codi_postal_habitatge'], 10)))
                 }

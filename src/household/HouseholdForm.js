@@ -73,7 +73,6 @@ let HouseholdForm = (props: Props) => {
 };
 
 function mapStateToProps(state) {
-    console.log("custodies:" +state.household.custodies );
     return {
         initialValues: state.household,
         esMonoparental: state.adults.filter( (persona: Adult) => esSustentador(persona) ).count() === 1,
