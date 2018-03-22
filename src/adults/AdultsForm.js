@@ -216,7 +216,7 @@ let AdultsForm = (props: Props) => {
     };
 
 AdultsForm = reduxForm({
-    form: 'AdultsForm'  // a unique identifier for this form
+    form: 'AdultsForm'
 })(AdultsForm);
 
 const selector = formValueSelector('AdultsForm');
