@@ -36,10 +36,11 @@ class ResultsPage extends React.Component <Props> {
                 valid_result: !values.invalid_result
             })
             .then(function(response){
-                console.log('saved successfully')
+                console.log('saved successfully');
+                //kill em all
+                window.location.reload(true);
             });
-        //kill em all
-        window.location.reload(true);
+
     };
 
     render() {
