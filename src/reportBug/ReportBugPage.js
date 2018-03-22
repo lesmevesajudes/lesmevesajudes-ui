@@ -1,20 +1,19 @@
 //@flow
-import React, {Component} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import {reportBug} from './ReportBugActions';
 import { withRouter } from 'react-router-dom';
-import {Field, reduxForm} from 'redux-form';
-import { TextField } from 'redux-form-material-ui';
-import { Button } from 'material-ui';
+import {Field, formValueSelector, reduxForm} from 'redux-form';
+import { TextField, Checkbox } from 'redux-form-material-ui';
+import {Button} from 'material-ui';
 import {withStyles} from "material-ui/styles/index";
-import type {Adult} from "../adults/AdultsTypes";
-
 
 type Props = {
     currentState: any,
     handleSubmit: Function,
     onCancel: Function,
-    classes: Object
+    classes: Object,
+    resultatIncorrecte: Boolean
 }
 
 const styles = theme => ({
@@ -22,74 +21,65 @@ const styles = theme => ({
         margin: theme.spacing.unit,
     },
     input: {
-        display: 'none',
+        minWidth: '700px'
     },
+    hiddenInput: {
+        display: 'none'
+    }
 });
 
-
-const handleSubmitForm = (formValues: Adult) => {
-    console.log("Submitting:");
-    console.log(formValues);
-};
-
 const ReportBug = (props: Props) => {
-    const { handleSubmit, currentState, classes } = props;
+    const { classes, handleSubmit, resultatIncorrecte} = props;
     return (
         <div>
-            <h1>Informar d'un error de l'aplicació</h1>
+            <h1>Informar del resultat de la simulació</h1>
             <div className="FormContainer">
-                <form name="ReportBug"
-                >
+                <form name="ReportBug" onSubmit={handleSubmit}>
                     <div>
-                        <div className="field">
-                            <label>Nom de l'informador</label>
+                        <div className='field'>
+                            <label><Field name='invalid_result' component={Checkbox}/> El resultat de la simulació NO és correcte.</label>
+                        </div>
+                        {resultatIncorrecte &&
+                            <div className="field">
+                                <label>Resultat esperat</label>
+                                <Field
+                                    name="resultat_esperat"
+                                    component={TextField}
+                                    className={classes.input}
+                                    placeholder='...'/>
+                            </div>
+                        }
+
+                        <div className='field'>
+                            <label>Comentaris</label>
                             <Field
+                                name='comments'
+                                placeholder='...'
+                                className={classes.input}
                                 component={TextField}
-                                name="nom_informador"
-                                placeholder='Nom'/>
+                            />
                         </div>
-                        <div className="field">
-                            <label>Correu electrònic de l'informador</label>
-                            <Field
-                                component={TextField}
-                                type="email"
-                                name="correu_informador"
-                                placeholder='nom@domini.tld'/>
-                        </div>
-                        <div className="field">
-                            <label>Resultat esperat</label>
-                            <Field
-                                rows="20"
-                                cols="50"
-                                name="resultat_esperat"
-                                component={TextField}
-                                placeholder='...'/>
-                        </div>
-                        <div className="field">
-                            <label>Estat de la aplicació</label>
-                            <textarea
-                                readonly={true}
-                                rows="40"
-                                cols="50"
-                                value={JSON.stringify(currentState, null, 4)}
-                                placeholder='...'/>
-                        </div>
-                        <Button variant="raised" color="primary" type="submit">Informar d'error</Button>
-                        <Button variant="raised" color="secondary" className={classes.button} onClick={props.onCancel}>Cancelar</Button>                        </div>
+                        <Field
+                            name='application_state'
+                            className={classes.hiddenInput}
+                            component={TextField}
+                        />
+                        <Button variant="raised" color="primary" type="submit">Informar</Button>
+                    </div>
                 </form>
             </div>
         </div>
     );
-}
+};
 
-
+const selector = formValueSelector('ReportBug');
 function mapStateToProps(state) {
     return {
-        currentState: state,
+        initialValues: {application_state: JSON.stringify(state)},
+        resultatIncorrecte: selector(state, 'invalid_result')
     };
 }
 
 export default withStyles(styles)(connect(mapStateToProps, {reportBug})(withRouter(reduxForm({
-    form: 'ReportBug',
-    onSubmit: (values: Object, dispatch: Function, props: Object) => dispatch(handleSubmitForm(values))
+    form: 'ReportBug'
 })(ReportBug))));
