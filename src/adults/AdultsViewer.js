@@ -10,7 +10,6 @@ type Props = {
     onUpdateClick: Function,
     onAddAdultClick: Function
 };
-
 class AdultsViewer extends Component<Props, void> {
     renderAdultsList(adults: Array<Adult>) {
         return (
@@ -49,15 +48,16 @@ class AdultsViewer extends Component<Props, void> {
                         </div>
                     </li>
                 ))}
-            </ul>);
+            </ul>
+);
     }
 
     render() {
         return (
-            <div>
+            <div >
                 <h1><Trans>Persones de la unitat de convivència</Trans></h1>
-                <div className="FormContainer">
-                    {this.renderAdultsList(this.props.adults)}
+                <div>
+                            {this.renderAdultsList(this.props.adults)}
                 </div>
                 <Button variant="raised" color="primary" id='AddAdultButton'
                         onClick={this.props.onAddAdultClick}><Trans>Afegir una persona</Trans></Button>

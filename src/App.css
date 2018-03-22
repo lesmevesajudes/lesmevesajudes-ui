@@ -158,3 +158,9 @@ div.footer-buttons {
 .MuiSelect-selectMenu-168{
     width: 200px !important;
 }
+.bg-container {
+    background: #f2f2f2;
+    border: #dbdbdb 1px solid;
+    border-radius: 4px;
+    min-height: 100px;
+}

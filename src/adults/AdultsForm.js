@@ -22,6 +22,8 @@ import AddIcon from "material-ui-icons/Add"
 import ClearInputIcon from "material-ui-icons/Clear"
 import edat from "../shared/Edat";
 
+const required = value => value ? undefined : 'Required'
+
 type Props = {
     initialState: ?Adult,
     onCancel: Function,
@@ -43,7 +45,7 @@ const styles = theme => ({
         flexGrow: 1,
     },
     wrapper: {
-        maxWidth: 200
+        backgroundColor: 'black'
     },
     button: {
         margin: theme.spacing.unit,
@@ -59,8 +61,8 @@ let AdultsForm = (props: Props) => {
         <div className={styles.root}>
             <h1><Trans>Afegir una persona a la unitat de convivència</Trans></h1>
             <form onSubmit={handleSubmit}>
-                <div className={styles.wrapper} >
-                    <Paper>
+                <div class="bg-container" >
+                    <div>
                         <Grid style={{ padding: 20 }} container wrap="nowrap">
                             <Grid xs sm item>
                                 <Grid container
@@ -107,6 +109,7 @@ let AdultsForm = (props: Props) => {
                                         <Field
                                             name='rol'
                                             label='Rol'
+                                            validate={[ required]}
                                             component={Select}
                                             placeholder="Rol familiar"
                                             fullWidth
@@ -346,7 +349,7 @@ let AdultsForm = (props: Props) => {
                                 </Grid>
                             </Grid>
                         </Grid>
-                    </Paper>
+                    </div>
                 </div>
             </form>
         </div>
