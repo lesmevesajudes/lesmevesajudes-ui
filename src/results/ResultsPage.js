@@ -17,7 +17,7 @@ type Props = {
 class ResultsPage extends React.Component <Props> {
 
     enoughDataForSimulation() {
-        return Object.keys(this.props.persons).length > 0;
+        return this.props.persons.count() > 0;
     }
 
     componentDidMount() {
