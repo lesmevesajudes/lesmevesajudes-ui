@@ -62,7 +62,6 @@ let AdultsForm = (props: Props) => {
                 <div className={styles.wrapper} >
                     <Paper>
                         <Grid style={{ padding: 20 }} container wrap="nowrap">
-
                             <Grid xs sm item>
                                 <Grid container
                                       className={styles.textNormal}
@@ -209,7 +208,6 @@ let AdultsForm = (props: Props) => {
                                             fullWidth
                                             component={TextField}
                                         />
-
                                     </Grid>
                                     <Grid item xs={0} sm={2}></Grid>
                                 </Grid>
@@ -347,23 +345,17 @@ let AdultsForm = (props: Props) => {
                                     </Grid>
                                 </Grid>
                             </Grid>
-
                         </Grid>
-
-
                     </Paper>
                 </div>
             </form>
         </div>
     );
 };
-
 AdultsForm = reduxForm({
     form: 'AdultsForm'  // a unique identifier for this form
 })(AdultsForm);
-
 const selector = formValueSelector('AdultsForm');
-
 AdultsForm = connect(
     state => {
         // can select values individually
@@ -383,5 +375,4 @@ AdultsForm = connect(
         }
     }
 )(AdultsForm);
-
 export default withStyles(styles)(AdultsForm);

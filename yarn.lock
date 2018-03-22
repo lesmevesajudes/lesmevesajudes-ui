@@ -5464,6 +5464,13 @@ material-ui-icons@^1.0.0-beta.36:
   dependencies:
     recompose "^0.26.0"
 
+material-ui-pickers@^1.0.0-rc.3:
+  version "1.0.0-rc.3"
+  resolved "https://registry.yarnpkg.com/material-ui-pickers/-/material-ui-pickers-1.0.0-rc.3.tgz#85659c9fb728765bf863d3afb56569770fd36af9"
+  dependencies:
+    babel-runtime "^6.26.0"
+    react-text-mask "^5.1.0"
+
 material-ui@^1.0.0-beta.36:
   version "1.0.0-beta.36"
   resolved "https://registry.yarnpkg.com/material-ui/-/material-ui-1.0.0-beta.36.tgz#e877c570008cb0e4e7784fc69ff0359121a4866a"
@@ -6683,7 +6690,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.0.0, prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1:
+prop-types@^15.0.0, prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1:
   version "15.6.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.1.tgz#36644453564255ddda391191fb3a125cbdf654ca"
   dependencies:
@@ -7035,6 +7042,12 @@ react-stepzilla@^4.6.3:
   resolved "https://registry.yarnpkg.com/react-stepzilla/-/react-stepzilla-4.7.0.tgz#4a35f9e5382cbde4f71e8d6d5b599ec188009b99"
   dependencies:
     babel-loader "^6.2.4"
+
+react-text-mask@^5.1.0:
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/react-text-mask/-/react-text-mask-5.2.1.tgz#26f7e492b265a03f7d1a32d78bc3a214a40812c9"
+  dependencies:
+    prop-types "^15.5.6"
 
 react-transition-group@^2.2.1:
   version "2.2.1"
