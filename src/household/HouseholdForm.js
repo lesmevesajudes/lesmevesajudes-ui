@@ -1,77 +1,89 @@
 //@flow
 import React from 'react';
-import {addHouseholdData} from './HouseholdDataActions';
-import {connect} from 'react-redux';
-import type {HouseholdData} from "./HouseholdDataTypes";
-import {Select} from 'redux-form-material-ui';
-import {Field, reduxForm} from 'redux-form';
-import {MenuItem, Grid} from "material-ui";
+import { addHouseholdData } from './HouseholdDataActions';
+import { connect } from 'react-redux';
+import type {HouseholdData } from "./HouseholdDataTypes";
+import { Select, Checkbox } from 'redux-form-material-ui';
+import { Field, reduxForm } from 'redux-form';
+import { MenuItem } from "material-ui";
+import {Adult} from "../adults/AdultsTypes";
+import type {AdultId} from "../adults/AdultsTypes";
+import {Map} from 'immutable';
+import {esFamiliaNombrosa, esFill, esSustentador} from "../shared/selectorUtils";
 
 
 type Props = {
-    initialFormFields: HouseholdData,
-    addHouseholdData: Function
+    initialValues: HouseholdData,
+    addHouseholdData: Function,
+    esUsuariServeisSocials: Boolean,
+    esMonoparental: Boolean,
+    esFamiliaNombrosa: Boolean,
+    fills: Map<AdultId, Adult>,
+    custodies: Object
 }
-const styles = theme => ({
-    textNormal: {
-        textAlign: 'left'
-    },
-    root: {
-        flexGrow: 1,
-    },
-    wrapper: {
-        backgroundColor: 'black'
-    },
-    button: {
-        margin: theme.spacing.unit,
-    },
-    input: {
-        display: 'none',
-    },
-});
+
 let HouseholdForm = (props: Props) => {
+    const { esMonoparental, esFamiliaNombrosa, fills, custodies } = props;
     return (
-        <div className={styles.root}>
+        <div>
+            <h1>Informació sobre el tipus de família</h1>
+            <div className="FormContainer">
+                <form name='HouseholdForm'>
+                    { esFamiliaNombrosa &&
+                    <div className="field">
+                        <label>Tipus familia nombrosa:</label>
+                        <Field name='tipus_familia_nombrosa' component={Select}>
+                            <MenuItem value="No">No</MenuItem>
+                            <MenuItem value="General">General</MenuItem>
+                            <MenuItem value="Especial">Especial</MenuItem>
+                        </Field>
+                    </div>}
 
-                <h1>Informació sobre el tipus de família</h1>
-
-                <div  class="bg-container">
-                    <Grid style={{ padding: 20 }} container wrap="nowrap">
-                        <form
-                            onBlur={(values) => props.addHouseholdData({...values})}
-                        >
+                    { esMonoparental &&
+                    <div className="field">
+                        <label>Disposa del carnet de familia monoparental:</label>
+                        <Field name='tipus_familia_monoparental' component={Select}>
+                            <MenuItem value="No">No</MenuItem>
+                            <MenuItem value="General">General</MenuItem>
+                            <MenuItem value="Especial">Especial</MenuItem>
+                        </Field>
+                    </div>}
+                    { esMonoparental &&
+                    fills.valueSeq().map( (infant: Adult) =>
+                        <div key={infant.id}>
+                            <label><Field name={"custodies." + infant.id + ".existeix" } component={Checkbox}/> Tinc la custodia de {infant.nom}</label>
+                            { ( custodies !== null && custodies[infant.id] !== null ) &&
                             <div className="field">
-                                <label>Tipus familia nombrosa:</label>
-                                <Field name='tipus_familia_nombrosa' fullWidth component={Select}>
-                                    <MenuItem default value="select one" >Select one ....</MenuItem>
-                                    <MenuItem value="No">No</MenuItem>
-                                    <MenuItem value="General">General</MenuItem>
-                                    <MenuItem value="Especial">Especial</MenuItem>
+                                <label>Tipus de guardia i custodia:</label>
+                                <Field name={ 'custodies.' + infant.id + '.tipus' } component={Select}>
+                                    <MenuItem value="compartida">Compartida</MenuItem>
+                                    <MenuItem value="total">Total</MenuItem>
                                 </Field>
-                            </div>
+                            </div>}
+                        </div>)
 
-                            <div className="field">
-                                <label>Tipus familia monoparental:</label>
-                                <Field name='tipus_familia_monoparental' fullWidth component={Select}>
-                                    <MenuItem default value="select one" >Select one ....</MenuItem>
-                                    <MenuItem value="No">No</MenuItem>
-                                    <MenuItem value="General">General</MenuItem>
-                                    <MenuItem value="Especial">Especial</MenuItem>
-                                </Field>
-                            </div>
-                        </form>
-                    </Grid>
-                </div>
-
-
+                    }
+                    <div className="field">
+                        <label><Field name="es_usuari_serveis_socials" component={Checkbox}/> Família usuaria de serveis socials en seguiment a un CSS o servei especialitzat de l'Ajuntament de Barcelona</label>
+                    </div>
+                </form>
+            </div>
         </div>
     );
 };
-
 function mapStateToProps(state) {
     return {
-        initialFormFields: state.householdData
+        initialValues: state.household,
+        esMonoparental: state.adults.filter( (persona: Adult) => esSustentador(persona) ).count() === 1,
+        esFamiliaNombrosa: esFamiliaNombrosa(state.adults) ,
+        fills: state.adults.filter( (adult: Adult) => esFill(adult)),
+        custodies: state.household.custodies
     };
 }
-
-export default connect(mapStateToProps, {addHouseholdData})(reduxForm({form: 'household'})(HouseholdForm));
+export default connect(mapStateToProps, {addHouseholdData})(
+    reduxForm(
+        {
+            form: 'HouseholdForm',
+            onChange: (values, dispatch, props, previousValues) => {
+                dispatch(addHouseholdData(values));
+            }})(HouseholdForm));

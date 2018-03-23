@@ -1,11 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {fetchSimulation} from './FetchSimulationAction';
-import {Link} from "react-router-dom";
 import PersonalBenefits from "./PersonalBenefits";
 import FamilyBenefits from "./FamilyBenefits";
 import type {AdultId, Adult} from "../adults/AdultsTypes";
-
+import ReportBug from "../reportBug/ReportBugPage";
+import axios from "axios/index";
 
 type Props = {
     isError: boolean,
@@ -25,11 +25,31 @@ class ResultsPage extends React.Component <Props> {
             this.props.fetchSimulation(this.props.simulationData);
         }
     }
+    submitReport = (values) => {
+        // print the form values to the console
+        console.log("form submit:",values);
+        axios.post('https://lesmevesajudes-ss.herokuapp.com/api/simulations',
+            {
+                comments: values.comments || "",
+                expected_result: values.resultat_esperat || "",
+                application_state: values.application_state,
+                valid_result: !values.invalid_result
+            })
+            .then(function(response){
+                console.log('saved successfully')
+            });
+        //kill em all
+        window.location.reload(true);
+    };
 
     render() {
         const divStyle = {'marginTop': '32px', 'marginBottom': '32px'};
         if (!this.enoughDataForSimulation()) {
-            return (<div style={divStyle}>Falten dades per a executar la simulació...</div>);
+            return (<div style={divStyle}>Falten dades per a executar la simulació...
+                <div>
+                    <ReportBug onSubmit={this.submitReport}/>
+                </div>
+            </div>);
         }
 
         if (!this.props.isRequestDone) {
@@ -60,11 +80,7 @@ class ResultsPage extends React.Component <Props> {
                     </div>
                 </div>
                 <div>
-                    <Link to="/reportBug/">
-                        <button>
-                            <b>Informar d'un error</b>
-                        </button>
-                    </Link>
+                    <ReportBug onSubmit={this.submitReport}/>
                 </div>
             </div>
         );

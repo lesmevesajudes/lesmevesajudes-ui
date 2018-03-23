@@ -10,5 +10,7 @@ export type Rent = {
     import_del_deute_amb_el_propietari: number,
     lloguer_domiciliat: boolean,
     import_del_lloguer: number,
-    tinc_alguna_propietat: boolean
+    tinc_alguna_propietat_a_part_habitatge_habitual: boolean,
+    valor_cadastral_finques_rustiques: number,
+    valor_cadastral_finques_urbanes: number
 }

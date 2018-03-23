@@ -22,6 +22,14 @@ import AddIcon from "material-ui-icons/Add"
 import ClearInputIcon from "material-ui-icons/Clear"
 import edat from "../shared/Edat";
 
+import { Trans } from 'react-i18next';
+import { withStyles } from 'material-ui/styles';
+import {Field, formValueSelector, reduxForm} from 'redux-form';
+import {connect} from 'react-redux';
+import {Button, MenuItem} from 'material-ui';
+import edat from '../shared/Edat';
+
+
 const required = value => value ? undefined : 'Required'
 
 type Props = {
@@ -356,7 +364,7 @@ let AdultsForm = (props: Props) => {
     );
 };
 AdultsForm = reduxForm({
-    form: 'AdultsForm'  // a unique identifier for this form
+    form: 'AdultsForm'
 })(AdultsForm);
 const selector = formValueSelector('AdultsForm');
 AdultsForm = connect(
@@ -368,6 +376,11 @@ AdultsForm = connect(
         const esDona = selector(state, 'sexe') === "dona";
         const potTreballar = (edat(selector(state, 'data_naixement')) || 0) >= 16;
         const escolaritzat = selector(state, 'es_escolaritzat_entre_P3_i_4rt_ESO');
+        const esFill = selector(state, 'rol') === 'fill' || selector(state, 'rol') === 'infant_acollit';
+        const esDesocupat = selector(state, 'situacio_laboral') === 'desocupat';
+        const teDNI = selector(state, 'tipus_document_identitat') === 'DNI';
+        const esDona = selector(state, 'genere') === 'dona';
+        const potTreballar = (edat(selector(state, 'data_naixement')) || 0) >=16;
         return {
             esFill,
             esDesocupat,

@@ -61,7 +61,6 @@ class AdultsPage extends React.Component<Props, State>{
 
     handleSubmitForm = (formValues: Adult) => {
         this.doneEditingAdult();
-        console.log(formValues);
         if (formValues.id === undefined) {
             return this.props.addAdult({...formValues, id: UUID.create()});
         } else {

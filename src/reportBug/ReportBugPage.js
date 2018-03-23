@@ -1,75 +1,85 @@
 //@flow
-import React, {Component} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import {reportBug} from './ReportBugActions';
 import { withRouter } from 'react-router-dom';
-import {Field, reduxForm} from 'redux-form';
-import { TextField } from 'redux-form-material-ui';
-type Props = {
-    currentState: any
-}
-class ReportBugPage extends Component<Props> {
-    handleSubmit(values) {
-        //this.props.reportBug({...values, application_state: this.props.currentState});
-        //this.props.history.push('/');
-    }
+import {Field, formValueSelector, reduxForm} from 'redux-form';
+import { TextField, Checkbox } from 'redux-form-material-ui';
+import {Button} from 'material-ui';
+import {withStyles} from "material-ui/styles/index";
 
-    render() {
-        return (
-            <div>
-                <h1>Informar d'un error de l'aplicació</h1>
-                <div className="FormContainer">
-                    <form name="ReportBug"
-                               onSubmit={(values) => this.handleSubmit(values)}
-                    >
-                        <div>
-                            <div className="field">
-                                <label>Nom de l'informador</label>
-                                <Field
-                                    component={TextField}
-                                    name="nom_informador"
-                                    placeholder='Nom'/>
-                            </div>
-                            <div className="field">
-                                <label>Correu electrònic de l'informador</label>
-                                <Field
-                                    component={TextField}
-                                    type="email"
-                                    name="correu_informador"
-                                    placeholder='nom@domini.tld'/>
-                            </div>
+type Props = {
+    currentState: any,
+    handleSubmit: Function,
+    onCancel: Function,
+    classes: Object,
+    resultatIncorrecte: Boolean
+}
+
+const styles = theme => ({
+    button: {
+        margin: theme.spacing.unit,
+    },
+    input: {
+        minWidth: '700px'
+    },
+    hiddenInput: {
+        display: 'none'
+    }
+});
+
+const ReportBug = (props: Props) => {
+    const { classes, handleSubmit, resultatIncorrecte} = props;
+    return (
+        <div>
+            <h1>Informar del resultat de la simulació</h1>
+            <div className="FormContainer">
+                <form name="ReportBug" onSubmit={handleSubmit}>
+                    <div>
+                        <div className='field'>
+                            <label><Field name='invalid_result' component={Checkbox}/> El resultat de la simulació NO és correcte.</label>
+                        </div>
+                        {resultatIncorrecte &&
                             <div className="field">
                                 <label>Resultat esperat</label>
                                 <Field
-                                    rows="20"
-                                    cols="50"
                                     name="resultat_esperat"
                                     component={TextField}
+                                    className={classes.input}
                                     placeholder='...'/>
                             </div>
-                            <div className="field">
-                                <label>Estat de la aplicació</label>
-                                <textarea
-                                    readonly={true}
-                                    rows="40"
-                                    cols="50"
-                                    value={JSON.stringify(this.props.currentState, null, 4)}
-                                    placeholder='...'/>
-                            </div>
-                            <button type="submit">Informar d'error</button>
+                        }
+
+                        <div className='field'>
+                            <label>Comentaris</label>
+                            <Field
+                                name='comments'
+                                placeholder='...'
+                                className={classes.input}
+                                component={TextField}
+                            />
                         </div>
-                    </form>
-                </div>
+                        <Field
+                            name='application_state'
+                            className={classes.hiddenInput}
+                            component={TextField}
+                        />
+                        <Button variant="raised" color="primary" type="submit">Informar</Button>
+                    </div>
+                </form>
             </div>
-        );
-    }
-}
+        </div>
+    );
+};
 
-
+const selector = formValueSelector('ReportBug');
 function mapStateToProps(state) {
     return {
-        currentState: state,
+        initialValues: {application_state: JSON.stringify(state)},
+        resultatIncorrecte: selector(state, 'invalid_result')
     };
 }
 
-export default connect(mapStateToProps, {reportBug})(withRouter(reduxForm({form: 'ReportBug'})(ReportBugPage)));
+export default withStyles(styles)(connect(mapStateToProps, {reportBug})(withRouter(reduxForm({
+    form: 'ReportBug'
+})(ReportBug))));

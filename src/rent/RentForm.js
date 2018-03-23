@@ -18,11 +18,12 @@ type Props = {
     personesQuePodenTenirContracteDeLloguer: Map<AdultId, Adult>,
     state: any,
     esLlogater: boolean,
-    existeixDeute: boolean
+    existeixDeute: boolean,
+    teAlgunaPropietat: boolean
 }
 
 const RentForm = (props: Props) => {
-    const { esLlogater, existeixDeute } = props;
+    const { esLlogater, existeixDeute, teAlgunaPropietat } = props;
     return (
         <div>
             <h1>Afegir informació sobre el lloguer del domicili habitual</h1>
@@ -32,6 +33,15 @@ const RentForm = (props: Props) => {
                 <div>
                     <div>
                         <div className='field'>
+                            <div className='field'>
+                                <label><Trans>Codi postal on es troba l'habitatge</Trans></label>
+                                <Field
+                                    required
+                                    name='codi_postal_habitatge'
+                                    placeholder='08000'
+                                    component={TextField}
+                                />
+                            </div>
                             <label><Trans>Relació amb l'habitatge</Trans></label>
                             <Field
                                 name='relacio_habitatge'
@@ -42,16 +52,6 @@ const RentForm = (props: Props) => {
                                 <MenuItem value='usufructuari'><Trans>Usufructuari</Trans></MenuItem>
                             </Field>
                         </div>
-                        { esLlogater &&
-                        <div className='field'>
-                            <label><Trans>Codi postal on es troba l'habitatge</Trans></label>
-                            <Field
-                                required
-                                name='codi_postal_habitatge'
-                                placeholder='08000'
-                                component={TextField}
-                            />
-                        </div>}
                         { esLlogater &&
                         <div className='field'>
                             <label>Titular del contracte de lloguer</label>
@@ -113,10 +113,21 @@ const RentForm = (props: Props) => {
                         }
 
                         <div className='field'>
-                            <label><Field name='tinc_alguna_propietat' component={Checkbox}/> Tinc alguna propietat a part de l'habitatge habitual</label>
+                            <label><Field name='tinc_alguna_propietat_a_part_habitatge_habitual' component={Checkbox}/> Tinc alguna propietat a part de l'habitatge habitual</label>
                         </div>
-                        {
-                            // Valor finca rustica
+                        { teAlgunaPropietat &&
+                        <div className='field'>
+                            <label>Valor cadastral finques urbanes (&euro;)</label>
+                            <Field
+                                name='valor_cadastral_finques_urbanes'
+                                component={TextField}
+                                placeholder='0'/>
+                            <label>Valor cadastral finques rustiques (&euro;)</label>
+                            <Field
+                                name='valor_cadastral_finques_rustiques'
+                                component={TextField}
+                                placeholder='0'/>
+                        </div>
                             // Valor finca urbana
                         }
                     </div>
@@ -126,7 +137,7 @@ const RentForm = (props: Props) => {
             </div>
         </div>
     );
-}
+};
 
 const selector = formValueSelector('RentForm');
 
@@ -134,6 +145,7 @@ function mapStateToProps(state) {
     return {
         esLlogater: selector(state, 'relacio_habitatge') === 'llogater',
         existeixDeute: selector(state, 'existeix_deute_en_el_pagament_del_lloguer'),
+        teAlgunaPropietat: selector(state, 'tinc_alguna_propietat_a_part_habitatge_habitual'),
         initialValues: state.rent,
         personesQuePodenTenirContracteDeLloguer: state.adults.filter((adult) => adult.rol !== 'fill')
     };
