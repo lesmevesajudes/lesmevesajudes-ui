@@ -6,27 +6,18 @@ import {
     Select,
     TextField,
 } from 'redux-form-material-ui'
-import {Trans, translate} from "react-i18next";
-import {withStyles} from 'material-ui/styles';
-import {Field, formValueSelector, reduxForm} from 'redux-form';
-import {connect} from "react-redux";
-import {
-    Button,
-    MenuItem,
-    Grid,
-    Paper,
-    Popover
-} from "material-ui";
 import QuestionIcon from "material-ui-icons/ErrorOutline"
 import AddIcon from "material-ui-icons/Add"
 import ClearInputIcon from "material-ui-icons/Clear"
-import edat from "../shared/Edat";
-
 import { Trans } from 'react-i18next';
 import { withStyles } from 'material-ui/styles';
 import {Field, formValueSelector, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
-import {Button, MenuItem} from 'material-ui';
+import {
+    Button,
+    MenuItem,
+    Grid,
+    Paper} from 'material-ui';
 import edat from '../shared/Edat';
 
 
@@ -370,12 +361,6 @@ const selector = formValueSelector('AdultsForm');
 AdultsForm = connect(
     state => {
         // can select values individually
-        const esFill = selector(state, 'rol') === "fill";
-        const esDesocupat = selector(state, 'situacio_laboral') === "desocupat";
-        const teDNI = selector(state, 'tipus_document_identitat') === "DNI";
-        const esDona = selector(state, 'sexe') === "dona";
-        const potTreballar = (edat(selector(state, 'data_naixement')) || 0) >= 16;
-        const escolaritzat = selector(state, 'es_escolaritzat_entre_P3_i_4rt_ESO');
         const esFill = selector(state, 'rol') === 'fill' || selector(state, 'rol') === 'infant_acollit';
         const esDesocupat = selector(state, 'situacio_laboral') === 'desocupat';
         const teDNI = selector(state, 'tipus_document_identitat') === 'DNI';
@@ -386,8 +371,7 @@ AdultsForm = connect(
             esDesocupat,
             teDNI,
             esDona,
-            potTreballar,
-            escolaritzat
+            potTreballar
         }
     }
 )(AdultsForm);
