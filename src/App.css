@@ -164,3 +164,6 @@ div.footer-buttons {
     border-radius: 4px;
     min-height: 100px;
 }
+.extra-padding{
+    padding:20px;
+}

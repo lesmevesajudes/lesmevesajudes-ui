@@ -28,6 +28,7 @@ let HouseholdForm = (props: Props) => {
         <div>
             <h1>Informació sobre el tipus de família</h1>
             <div className="FormContainer">
+                <div class="bg-container">
                 <form name='HouseholdForm'>
                     { esFamiliaNombrosa &&
                     <div className="field">
@@ -67,6 +68,7 @@ let HouseholdForm = (props: Props) => {
                         <label><Field name="es_usuari_serveis_socials" component={Checkbox}/> Família usuaria de serveis socials en seguiment a un CSS o servei especialitzat de l'Ajuntament de Barcelona</label>
                     </div>
                 </form>
+                </div>
             </div>
         </div>
     );
