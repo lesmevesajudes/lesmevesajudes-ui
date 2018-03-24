@@ -7,7 +7,7 @@ import {Adult} from '../adults/AdultsTypes';
 import type {AdultId} from '../adults/AdultsTypes';
 import {Map} from 'immutable';
 import {Field, formValueSelector, reduxForm} from 'redux-form';
-import {MenuItem} from 'material-ui';
+import {MenuItem, Grid} from 'material-ui';
 import { Checkbox, TextField, Select } from 'redux-form-material-ui';
 import {Trans} from 'react-i18next';
 
@@ -27,7 +27,8 @@ const RentForm = (props: Props) => {
     return (
         <div>
             <h1>Afegir informació sobre el lloguer del domicili habitual</h1>
-            <div className='FormContainer'>
+            <div  class="bg-container">
+                <Grid style={{ padding: 20 }} container wrap="nowrap">
             <form name='RentForm'>
                 <div>
                     <div>
@@ -132,6 +133,7 @@ const RentForm = (props: Props) => {
                     </div>
                 </div>
             </form>
+                </Grid>
             </div>
         </div>
     );

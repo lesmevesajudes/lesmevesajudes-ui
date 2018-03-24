@@ -3823,10 +3823,6 @@ i18next@^10.5.0:
   version "10.5.0"
   resolved "https://registry.yarnpkg.com/i18next/-/i18next-10.5.0.tgz#a2a90e67774fa85b8ff9cd0063e697e482440de7"
 
-icepick@^1.1.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/icepick/-/icepick-1.3.0.tgz#e4942842ed8f9ee778d7dd78f7e36627f49fdaef"
-
 iconv-lite@0.4.19, iconv-lite@^0.4.17, iconv-lite@~0.4.13:
   version "0.4.19"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.19.tgz#f7468f60135f5e5dad3399c0a81be9a1603a082b"
@@ -3937,7 +3933,7 @@ interpret@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.1.0.tgz#7ed1b1410c6a0e0f78cf95d3b8440c63f78b8614"
 
-invariant@^2.0.0, invariant@^2.2.1, invariant@^2.2.2, invariant@~2.2.1:
+invariant@^2.0.0, invariant@^2.2.1, invariant@^2.2.2:
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.3.tgz#1a827dfde7dcbd7c323f0ca826be8fa7c5e9d688"
   dependencies:
@@ -5312,10 +5308,6 @@ lodash.defaultsdeep@4.3.2:
     lodash.mergewith "^4.0.0"
     lodash.rest "^4.0.0"
 
-lodash.get@~4.4.2:
-  version "4.4.2"
-  resolved "https://registry.yarnpkg.com/lodash.get/-/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
-
 lodash.isarguments@^3.0.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/lodash.isarguments/-/lodash.isarguments-3.1.0.tgz#2f573d85c6a24289ff00663b491c1d338ff3458a"
@@ -5387,10 +5379,6 @@ lodash.templatesettings@^4.0.0:
   resolved "https://registry.yarnpkg.com/lodash.templatesettings/-/lodash.templatesettings-4.1.0.tgz#2b4d4e95ba440d915ff08bc899e4553666713316"
   dependencies:
     lodash._reinterpolate "~3.0.0"
-
-lodash.topath@~4.5.2:
-  version "4.5.2"
-  resolved "https://registry.yarnpkg.com/lodash.topath/-/lodash.topath-4.5.2.tgz#3616351f3bba61994a0931989660bd03254fd009"
 
 lodash.uniq@^4.5.0:
   version "4.5.0"
@@ -5469,6 +5457,19 @@ map-visit@^1.0.0:
   resolved "https://registry.yarnpkg.com/map-visit/-/map-visit-1.0.0.tgz#ecdca8f13144e660f1b5bd41f12f3479d98dfb8f"
   dependencies:
     object-visit "^1.0.0"
+
+material-ui-icons@^1.0.0-beta.36:
+  version "1.0.0-beta.36"
+  resolved "https://registry.yarnpkg.com/material-ui-icons/-/material-ui-icons-1.0.0-beta.36.tgz#86390a61f4c83f718eaba77ccce575834f2cf2a8"
+  dependencies:
+    recompose "^0.26.0"
+
+material-ui-pickers@^1.0.0-rc.3:
+  version "1.0.0-rc.3"
+  resolved "https://registry.yarnpkg.com/material-ui-pickers/-/material-ui-pickers-1.0.0-rc.3.tgz#85659c9fb728765bf863d3afb56569770fd36af9"
+  dependencies:
+    babel-runtime "^6.26.0"
+    react-text-mask "^5.1.0"
 
 material-ui@^1.0.0-beta.36:
   version "1.0.0-beta.36"
@@ -6942,30 +6943,12 @@ react-lifecycles-compat@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-1.0.2.tgz#551d8b1d156346e5fcf30ffac9b32ce3f78b8850"
 
-react-native-segmented-control-tab@^3.2.1:
-  version "3.2.2"
-  resolved "https://registry.yarnpkg.com/react-native-segmented-control-tab/-/react-native-segmented-control-tab-3.2.2.tgz#251ce94acdc655e04063b9813bb1ef595bf11f2d"
-  dependencies:
-    prop-types "^15.5.10"
-
 react-popper@^0.8.0:
   version "0.8.2"
   resolved "https://registry.yarnpkg.com/react-popper/-/react-popper-0.8.2.tgz#092095ff13933211d3856d9f325511ec3a42f12c"
   dependencies:
     popper.js "^1.12.9"
     prop-types "^15.6.0"
-
-react-redux-form@^1.16.0:
-  version "1.16.6"
-  resolved "https://registry.yarnpkg.com/react-redux-form/-/react-redux-form-1.16.6.tgz#02447e7823475b6c9af0306077b7331e13f9f265"
-  dependencies:
-    icepick "^1.1.0"
-    invariant "~2.2.1"
-    lodash.get "~4.4.2"
-    lodash.topath "~4.5.2"
-    prop-types "^15.5.6"
-    react-native-segmented-control-tab "^3.2.1"
-    shallow-compare "^1.2.1"
 
 react-redux@^5.0.5:
   version "5.0.7"
@@ -7059,6 +7042,12 @@ react-stepzilla@^4.6.3:
   resolved "https://registry.yarnpkg.com/react-stepzilla/-/react-stepzilla-4.7.0.tgz#4a35f9e5382cbde4f71e8d6d5b599ec188009b99"
   dependencies:
     babel-loader "^6.2.4"
+
+react-text-mask@^5.1.0:
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/react-text-mask/-/react-text-mask-5.2.1.tgz#26f7e492b265a03f7d1a32d78bc3a214a40812c9"
+  dependencies:
+    prop-types "^15.5.6"
 
 react-transition-group@^2.2.1:
   version "2.2.1"
@@ -7701,10 +7690,6 @@ shallow-clone@^2.0.2:
     is-extendable "^1.0.1"
     kind-of "^6.0.2"
     mixin-object "^3.0.0"
-
-shallow-compare@^1.2.1:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/shallow-compare/-/shallow-compare-1.2.2.tgz#fa4794627bf455a47c4f56881d8a6132d581ffdb"
 
 shebang-command@^1.2.0:
   version "1.2.0"

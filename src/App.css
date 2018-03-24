@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+
 }
 
 .App-intro {
@@ -71,19 +71,21 @@ label {
     margin: 0;
     padding: 0;
 }
-
+.ItemList > li {
+    list-style: none;
+}
 .Item {
     display: inline-block;
     width: 100%;
-    background-color: lightgrey;
-    color: white;
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.18);
+    color: #333333;
     text-align: center;
     font-size: 16px;
     line-height: 65px;
     font-weight: bold;
-    border: 1px solid white;
     padding-left: 10px;
     padding-right: 10px;
+    border: 1px solid #CDCDCD;
 }
 
 .ItemGreen {
@@ -120,7 +122,9 @@ button {
 }
 
 .littlebutton {
-    padding: 1rem 1rem;
+    padding: 0px;
+    background: none;
+    color: #333333;
 }
 button:focus {
     outline: none;
@@ -144,4 +148,22 @@ button.secondary {
     border: 2px solid #00ACD4;
     color: #00ACD4;
     font-weight: 600;
+}
+.progtrckr{
+    text-align:center
+}
+div.footer-buttons {
+    padding: 1em;
+}
+.MuiSelect-selectMenu-168{
+    width: 200px !important;
+}
+.bg-container {
+    background: #f2f2f2;
+    border: #dbdbdb 1px solid;
+    border-radius: 4px;
+    min-height: 100px;
+}
+.extra-padding{
+    padding:20px;
 }

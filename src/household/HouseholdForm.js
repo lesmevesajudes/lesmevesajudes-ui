@@ -28,6 +28,7 @@ let HouseholdForm = (props: Props) => {
         <div>
             <h1>Informació sobre el tipus de família</h1>
             <div className="FormContainer">
+                <div class="bg-container">
                 <form name='HouseholdForm'>
                     { esFamiliaNombrosa &&
                     <div className="field">
@@ -49,29 +50,29 @@ let HouseholdForm = (props: Props) => {
                         </Field>
                     </div>}
                     { esMonoparental &&
-                        fills.valueSeq().map( (infant: Adult) =>
-                            <div key={infant.id}>
-                                <label><Field name={"custodies." + infant.id + ".existeix" } component={Checkbox}/> Tinc la custodia de {infant.nom}</label>
-                                { ( custodies !== null && custodies[infant.id] !== null ) &&
-                                <div className="field">
-                                    <label>Tipus de guardia i custodia:</label>
-                                    <Field name={ 'custodies.' + infant.id + '.tipus' } component={Select}>
-                                        <MenuItem value="compartida">Compartida</MenuItem>
-                                        <MenuItem value="total">Total</MenuItem>
-                                    </Field>
-                                </div>}
-                            </div>)
+                    fills.valueSeq().map( (infant: Adult) =>
+                        <div key={infant.id}>
+                            <label><Field name={"custodies." + infant.id + ".existeix" } component={Checkbox}/> Tinc la custodia de {infant.nom}</label>
+                            { ( custodies !== null && custodies[infant.id] !== null ) &&
+                            <div className="field">
+                                <label>Tipus de guardia i custodia:</label>
+                                <Field name={ 'custodies.' + infant.id + '.tipus' } component={Select}>
+                                    <MenuItem value="compartida">Compartida</MenuItem>
+                                    <MenuItem value="total">Total</MenuItem>
+                                </Field>
+                            </div>}
+                        </div>)
 
                     }
                     <div className="field">
                         <label><Field name="es_usuari_serveis_socials" component={Checkbox}/> Família usuaria de serveis socials en seguiment a un CSS o servei especialitzat de l'Ajuntament de Barcelona</label>
                     </div>
                 </form>
+                </div>
             </div>
         </div>
     );
 };
-
 function mapStateToProps(state) {
     return {
         initialValues: state.household,
@@ -81,7 +82,6 @@ function mapStateToProps(state) {
         custodies: state.household.custodies
     };
 }
-
 export default connect(mapStateToProps, {addHouseholdData})(
     reduxForm(
         {

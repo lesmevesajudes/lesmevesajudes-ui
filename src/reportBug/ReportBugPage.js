@@ -34,6 +34,7 @@ const ReportBug = (props: Props) => {
         <div>
             <h1>Informar del resultat de la simulació</h1>
             <div className="FormContainer">
+                <div class="bg-container extra-padding">
                 <form name="ReportBug" onSubmit={handleSubmit}>
                     <div>
                         <div className='field'>
@@ -67,6 +68,7 @@ const ReportBug = (props: Props) => {
                         <Button variant="raised" color="primary" type="submit">Informar</Button>
                     </div>
                 </form>
+                </div>
             </div>
         </div>
     );

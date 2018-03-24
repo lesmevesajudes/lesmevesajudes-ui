@@ -20,6 +20,7 @@ import InfoLloguer from "./pages/InfoLloguer";
 import InfoMenjador from "./pages/InfoMenjador";
 import InfoFonsInfancia from "./pages/InfoFonsInfancia";
 import AppFooter from "./components/Footer/Footer";
+import ScrollToTop from './components/Common/ScrollToTop'
 import {Reboot} from "material-ui";
 import { reducer as reduxFormReducer } from 'redux-form';
 import HouseholdReducer from "./household/HouseholdReducer";
@@ -48,22 +49,26 @@ class App extends Component {
 
     render() {
         return (
-            <div className="App">
+            <div>
                 <CorporateHeader/>
                 <Reboot />
                 <div className="content">
                     <Provider store={ store }>
                         <BrowserRouter>
+
                             <Switch>
-                                <Route exact={true} path="/" component={IndexPage}/>
-                                <Route path="/wizard" component={WizardPage}/>
-                                <Route path="/reportBug" component={ReportBugPage}/>
-                                <Route path="/ajuts/rai" component={InfoRAI}/>
-                                <Route path="/ajuts/rgc" component={InfoRGC}/>
-                                <Route path="/ajuts/lloguer" component={InfoLloguer}/>
-                                <Route path="/ajuts/menjador" component={InfoMenjador}/>
-                                <Route path="/ajuts/fons_infancia" component={InfoFonsInfancia}/>
+                                <ScrollToTop>
+                                    <Route exact={true} path="/" component={IndexPage}/>
+                                    <Route path="/wizard" component={WizardPage}/>
+                                    <Route path="/reportBug" component={ReportBugPage}/>
+                                    <Route path="/ajuts/rai" component={InfoRAI}/>
+                                    <Route path="/ajuts/rgc" component={InfoRGC}/>
+                                    <Route path="/ajuts/lloguer" component={InfoLloguer}/>
+                                    <Route path="/ajuts/menjador" component={InfoMenjador}/>
+                                    <Route path="/ajuts/fons_infancia" component={InfoFonsInfancia}/>
+                                </ScrollToTop>
                             </Switch>
+
                         </BrowserRouter>
                     </Provider>
                 </div>
