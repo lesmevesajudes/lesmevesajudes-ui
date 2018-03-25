@@ -3,12 +3,6 @@ import StepZilla from 'react-stepzilla';
 import AdultsPage from "../adults/AdultsPage";
 import RentForm from "../rent/RentForm";
 import ResultsPage from "../results/ResultsPage";
-import {
-    Button,
-    MenuItem,
-    Grid,
-    Paper
-} from "material-ui";
 import './Wizard.css';
 import AppHeader from "../components/AppHeader/AppHeader";
 import {translate} from "react-i18next";
@@ -30,24 +24,17 @@ class WizardPage extends Component {
             ];
 
         return (
-                <div className='step-progress'>
+                <div>
                     <AppHeader/>
-                    <Grid container xs sm justify={"center"}>
-                        <Grid item xs={0} sm={3}></Grid>
-                        <Grid item xs={12} sm>
-                        <StepZilla steps={steps}
-                                   preventEnterSubmission={true}
-                                   nextTextOnFinalActionStep={'Veure resultats'}
-                                   nextButtonText='Següent'
-                                   backButtonText='Anterior'
-                                   nextButtonCls='btn btn-next btn-primary btn-lg pull-right'
-                                   backButtonCls='btn btn-prev btn-primary btn-lg pull-left'
-                        />
-                        </Grid>
-                        <Grid item xs={0} sm={3}></Grid>
-                    </Grid>
-
-            </div>);
+                            <StepZilla steps={steps}
+                                       preventEnterSubmission={true}
+                                       nextTextOnFinalActionStep={'Veure resultats'}
+                                       nextButtonText='Següent'
+                                       backButtonText='Anterior'
+                                       nextButtonCls='btn btn-next btn-primary btn-lg pull-right'
+                                       backButtonCls='btn btn-prev btn-primary btn-lg pull-left'
+                            />
+                </div>);
 
         }
 }

@@ -23,10 +23,8 @@ h1 {
     text-align: center;
     line-height: 1.1;
     min-height: 70px;
-    -webkit-margin-after: 21px;
-    -webkit-margin-before: 21px;
-    -webkit-margin-end: 0;
-    -webkit-margin-start: 0;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 .field {
     display: block;
@@ -71,7 +69,7 @@ label {
     margin: 0;
     padding: 0;
 }
-.ItemList > li {
+.PersonItems {
     list-style: none;
 }
 .Item {
@@ -86,6 +84,7 @@ label {
     padding-left: 10px;
     padding-right: 10px;
     border: 1px solid #CDCDCD;
+    margin: 5px;
 }
 
 .ItemGreen {
@@ -162,7 +161,10 @@ div.footer-buttons {
     background: #f2f2f2;
     border: #dbdbdb 1px solid;
     border-radius: 4px;
-    min-height: 100px;
+    min-height: 180px;
+    max-width: 960px;
+    margin: 30px auto;
+    padding: 20px
 }
 .extra-padding{
     padding:20px;

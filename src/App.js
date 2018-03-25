@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {applyMiddleware, createStore, combineReducers, compose } from 'redux';
+import {applyMiddleware, createStore, combineReducers} from 'redux';
 import {Provider} from 'react-redux';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import promise from 'redux-promise';
@@ -19,10 +19,9 @@ import InfoRGC from "./pages/InfoRGC";
 import InfoLloguer from "./pages/InfoLloguer";
 import InfoMenjador from "./pages/InfoMenjador";
 import InfoFonsInfancia from "./pages/InfoFonsInfancia";
-import AppFooter from "./components/Footer/Footer";
 import ScrollToTop from './components/Common/ScrollToTop'
 import {Reboot} from "material-ui";
-import { reducer as reduxFormReducer } from 'redux-form';
+import {reducer as reduxFormReducer} from 'redux-form';
 import HouseholdReducer from "./household/HouseholdReducer";
 
 if (isDevelopment) {
@@ -52,10 +51,8 @@ class App extends Component {
             <div>
                 <CorporateHeader/>
                 <Reboot />
-                <div className="content">
                     <Provider store={ store }>
                         <BrowserRouter>
-
                             <Switch>
                                 <ScrollToTop>
                                     <Route exact={true} path="/" component={IndexPage}/>
@@ -68,11 +65,8 @@ class App extends Component {
                                     <Route path="/ajuts/fons_infancia" component={InfoFonsInfancia}/>
                                 </ScrollToTop>
                             </Switch>
-
                         </BrowserRouter>
                     </Provider>
-                </div>
-                <AppFooter/>
             </div>
         );
     }

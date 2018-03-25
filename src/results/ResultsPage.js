@@ -36,17 +36,13 @@ class ResultsPage extends React.Component <Props> {
                 valid_result: !values.invalid_result
             })
             .then(function(response){
-                if (response.status === 200) {
-                    console.log('saved successfully', response);
-                    //kill em all
-                    window.location.reload(true);
-                }
-                else alert ("Something broke: ", response.statusText)
-
+                console.log('saved successfully', response);
+                //kill em all
+                window.location.reload(true);
             }).catch(function (error) {
-                console.log(error);
+                console.error(error);
                 alert(error);
-            });;
+            });
 
     };
 
