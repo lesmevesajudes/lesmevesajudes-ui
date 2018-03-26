@@ -10,7 +10,7 @@ import AdultsReducer from './adults/AdultsReducer';
 import ResultsReducer from './results/ResultsReducer';
 import RentReducer from "./rent/RentReducer";
 import isDevelopment from './shared/isDevelopment';
-import './App.css';
+import './styles/styles.css';
 import './select-css.css';
 import CorporateHeader from "./components/Header/CorporateHeader";
 import ReportBugPage from "./reportBug/ReportBugPage";

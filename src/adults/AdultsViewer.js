@@ -4,7 +4,7 @@ import type {Adult} from './AdultsTypes';
 import {Trans, translate} from "react-i18next";
 import {Button, Grid} from "material-ui";
 import {withStyles} from "material-ui/styles/index";
-import AddIcon from "material-ui-icons/AddCircle"
+import Icon from 'material-ui/Icon';
 
 const styles = () => ({
     root: {
@@ -66,8 +66,6 @@ class AdultsViewer extends Component<Props, void> {
     }
 
     render() {
-        const { classes } = this.props;
-
         return (
             <div className="bg-container">
                 <h1><Trans>Persones de la unitat de convivència</Trans></h1>
@@ -76,9 +74,9 @@ class AdultsViewer extends Component<Props, void> {
                         <Grid container>
                             {this.renderAdultsList(this.props.adults)}
                         </Grid>
-                        <Grid container justify={"center"}>
+                        <Grid container justify={"flex-start"}>
                             <Button  id='AddAdultButton' class="addButton" onClick={this.props.onAddAdultClick}>
-                                <Trans><span> Afegir una persona  </span><AddIcon  /></Trans>
+                                <Trans><span> Afegir una persona  </span><Icon>add_circle</Icon></Trans>
                             </Button>
                         </Grid>
                     </Grid>

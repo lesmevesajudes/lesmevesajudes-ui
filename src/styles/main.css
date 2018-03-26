@@ -1,0 +1,102 @@
+.App {
+
+}
+
+.App-intro {
+    font-size: large;
+}
+
+.Main {
+    max-width: 960px;
+    margin: 0 auto;
+}
+.FormContainer {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 768px;
+}
+
+h1 {
+    box-sizing: border-box;
+    display: block;
+    position: relative;
+    text-align: center;
+    line-height: 1.1;
+    min-height: 70px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.field {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+label {
+    display: block;
+    font-size: 0.8rem;
+    line-height: 1.4rem;
+    font-weight: 600;
+    color: #9a9a9a;
+}
+
+
+input:focus {
+    outline:none;
+}
+
+input[type="radio"], input[type="checkbox"] {
+    margin-right: 0.5rem;
+}
+
+button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 1rem 2rem;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    background: #00ACD4;
+    color: white;
+    border: none;
+    margin: 0.5rem 0.5rem;
+    border-radius: 0;
+}
+.progtrckr{
+    text-align:center
+}
+.bg-container {
+    background: #f2f2f2;
+    border: #dbdbdb 1px solid;
+    border-radius: 4px;
+    min-height: 180px;
+    max-width: 960px;
+    margin: 30px auto;
+    padding: 20px
+}
+.extra-padding{
+    padding:20px;
+}
+
+button:focus {
+    outline: none;
+}
+button:hover {
+    opacity: 0.8;
+}
+
+button + button {
+    margin-left: 1rem;
+}
+
+button.secondary {
+    color: #00ACD4;
+    background: transparent;
+    border: 1px solid #00ACD4;
+}
+
+
+div.footer-buttons {
+    padding: 1em;
+}
+.MuiSelect-selectMenu-168{
+    width: 200px !important;
+}

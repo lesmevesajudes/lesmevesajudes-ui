@@ -27,7 +27,7 @@ const RentForm = (props: Props) => {
     return (
         <div class="bg-container">
             <h1>Afegir informació sobre el lloguer del domicili habitual</h1>
-                <Grid container style={{ padding: 20 }} container wrap="nowrap">
+                <Grid container style={{ padding: 20 }} wrap="nowrap">
             <form name='RentForm'>
                 <div>
                     <div>
