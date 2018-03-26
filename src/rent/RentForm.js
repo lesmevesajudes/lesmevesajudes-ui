@@ -25,9 +25,8 @@ type Props = {
 const RentForm = (props: Props) => {
     const { esLlogater, existeixDeute, teAlgunaPropietat } = props;
     return (
-        <div>
+        <div class="bg-container">
             <h1>Afegir informació sobre el lloguer del domicili habitual</h1>
-            <div  class="bg-container">
                 <Grid style={{ padding: 20 }} container wrap="nowrap">
             <form name='RentForm'>
                 <div>
@@ -134,7 +133,6 @@ const RentForm = (props: Props) => {
                 </div>
             </form>
                 </Grid>
-            </div>
         </div>
     );
 };

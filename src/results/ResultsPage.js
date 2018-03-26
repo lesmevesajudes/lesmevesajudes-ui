@@ -21,9 +21,9 @@ class ResultsPage extends React.Component <Props> {
     }
 
     componentDidMount() {
-        if (this.enoughDataForSimulation()) {
+        /*if (this.enoughDataForSimulation()) {
             this.props.fetchSimulation(this.props.simulationData);
-        }
+        }*/
     }
     submitReport = (values) => {
         // print the form values to the console

@@ -18,13 +18,34 @@ export function serialize(state:AdultState): Adult[] {
     return state.toArray();
 }
 export function initAdultState(initialValues: Array<Object>= []): AdultState {
-    const initialValuesAsObject: Object = initialValues.reduce(
+    /*const initialValuesAsObject: Object = initialValues.reduce(
         function(acc, cur) {
             acc[cur.id] = cur;
             return acc;
             },
         {});
-    return Map (initialValuesAsObject);
+    return Map (initialValuesAsObject);*/
+    return Map({
+        'e4f16155-1bb6-4f9b-8d01-4ec7e2cff021': (({
+            nom: 'Joan',
+            data_naixement: '1978-01-15',
+            rol: 'pares',
+            sexe: 'dona',
+            tipus_document_identitat: 'DNI',
+            data_alta_padro: '2010-10-29',
+            situacio_laboral: 'treball_compte_alie',
+            id: 'e4f16155-1bb6-4f9b-8d01-4ec7e2cff021'
+        }: any): Adult),
+        '4efdb18c-e5a6-42cd-81ec-b81be8467da2': (({
+            nom: 'Maria',
+            data_naixement: '2010-10-10',
+            rol: 'fill',
+            sexe: 'dona',
+            tipus_document_identitat: 'DNI',
+            data_alta_padro: '2010-10-10',
+            id: '4efdb18c-e5a6-42cd-81ec-b81be8467da2'
+        }: any): Adult)
+    });
 }
 export default function (state:AdultState = initAdultState() , action: AdultActions): AdultState {
     switch (action.type) {
