@@ -29,6 +29,9 @@
 .addButton span {
     color: #D3327E;
 }
+.errorText {
+    color: #c60c30;
+}
 .addButton {
     background: white;
     padding: 15px;

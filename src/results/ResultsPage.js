@@ -58,7 +58,9 @@ class ResultsPage extends React.Component <Props> {
         const divStyle = {'marginTop': '32px', 'marginBottom': '32px'};
         const {classes} = this.props;
         if (!this.enoughDataForSimulation()) {
-            return (<div style={divStyle}>Falten dades per a executar la simulació...
+            return (
+                <div class="bg-container ">
+                    <p class="errorText">Falten dades per a executar la </p>
                 <div>
                     <ReportBug onSubmit={this.submitReport}/>
                 </div>
