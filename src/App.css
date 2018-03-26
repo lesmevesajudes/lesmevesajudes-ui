@@ -161,13 +161,25 @@ button {
     min-width: 150px;
 }
 .backButton {
-    border:  2px solid #D3327E;
     color: #9a9a9a;
     padding: 15px;
     border-radius: 4px;
     text-transform: none;
     font-size: 14px;
     min-width: 150px;
+}
+.addButton span {
+    color: #D3327E;
+}
+.addButton {
+    background: white;
+
+    padding: 15px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: none;
+
 }
 button:focus {
     outline: none;
