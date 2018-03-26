@@ -290,6 +290,7 @@ let AdultsForm = (props: Props) => {
         </div>
     );
 };
+//El icono AddIcon, se deberia añadir Absolute, 25% y relative al button para probar si funciona bien el tema de align, pero es un parche.
 AdultsForm = reduxForm({
     form: 'AdultsForm'
 })(AdultsForm);
