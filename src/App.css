@@ -61,44 +61,62 @@ label {
 .RegularTextInput:focus {
     outline: 2px solid #00ACD4;
 }
-
+.ResultList {
+    padding:0;
+}
 .ItemList {
-    column-count: 1;
-    column-gap: 0;
-    min-width: 400px;
-    margin: 0;
-    padding: 0;
+    padding:0;
 }
 .PersonItems {
     list-style: none;
 }
 .Item {
-    display: inline-block;
+    display: block;
     width: 100%;
-    box-shadow: 0px 2px 4px rgba(0,0,0,0.18);
-    color: #333333;
-    text-align: center;
     font-size: 16px;
-    line-height: 65px;
+    line-height: 55px;
     font-weight: bold;
-    padding-left: 10px;
-    padding-right: 10px;
-    border: 1px solid #CDCDCD;
-    margin: 5px;
+    background: white;
+    margin:0 0 15px 0;
 }
-
+.ItemResultOut {
+    display: block;
+    margin:0 0 15px 0;
+    line-height: 55px;
+    list-style: none;
+}
+.ItemResult {
+    display: block;
+    line-height: 55px;
+    font-size: 20px;
+    padding: 10px;
+    background: white;
+    margin:0 0 15px 0;
+}
+.ResultPage {
+    color: #265A96;
+}
 .ItemGreen {
-    display: inline-block;
-    background-color: lightgrey;
-    color: black;
+    display: block;
+
     text-align: center;
     font-size: 20px;
-    font-weight: bold;
-    border: 10px solid white;
     padding: 10px;
-    min-width: 440px;
 }
-
+.Separator {
+    border-left: 1px solid #CDCDCD;
+    font-size: 14px
+}
+.benefitText {
+    font-size: 16px;
+}
+.moneyText {
+    font-weight: 800;
+    font-size: 16px;
+}
+.ItemTitle {
+    font-size: 20px;
+}
 input:focus {
     outline:none;
 }
@@ -124,6 +142,32 @@ button {
     padding: 0px;
     background: none;
     color: #333333;
+}
+.buttonInfo {
+    background: #D3327E;
+    color: white;
+    padding: 15px;
+    border-radius: 4px;
+    text-transform: none;
+    font-size: 12px;
+}
+.nextButton {
+    background: #D3327E;
+    color: white;
+    padding: 15px;
+    border-radius: 4px;
+    text-transform: none;
+    font-size: 14px;
+    min-width: 150px;
+}
+.backButton {
+    border:  2px solid #D3327E;
+    color: #9a9a9a;
+    padding: 15px;
+    border-radius: 4px;
+    text-transform: none;
+    font-size: 14px;
+    min-width: 150px;
 }
 button:focus {
     outline: none;
@@ -168,4 +212,10 @@ div.footer-buttons {
 }
 .extra-padding{
     padding:20px;
+}
+.personNameAlign{
+    text-align:center;
+}
+.AdultsViewerPage {
+    color: #265A96;
 }

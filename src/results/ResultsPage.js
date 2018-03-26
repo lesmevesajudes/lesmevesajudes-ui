@@ -6,13 +6,21 @@ import FamilyBenefits from "./FamilyBenefits";
 import type {AdultId, Adult} from "../adults/AdultsTypes";
 import ReportBug from "../reportBug/ReportBugPage";
 import axios from "axios/index";
+import {Grid} from "material-ui";
+import {withStyles} from "material-ui/styles/index";
 
+const styles = () => ({
+    root: {
+        flexGrow: 1
+    }
+});
 type Props = {
     isError: boolean,
     isRequestDone: boolean,
     simulationData: any,
     resultsData: any,
-    persons: Map<AdultId, Adult>
+    persons: Map<AdultId, Adult>,
+    classes: Object
 }
 class ResultsPage extends React.Component <Props> {
 
@@ -48,6 +56,7 @@ class ResultsPage extends React.Component <Props> {
 
     render() {
         const divStyle = {'marginTop': '32px', 'marginBottom': '32px'};
+        const {classes} = this.props;
         if (!this.enoughDataForSimulation()) {
             return (<div style={divStyle}>Falten dades per a executar la simulació...
                 <div>
@@ -73,15 +82,21 @@ class ResultsPage extends React.Component <Props> {
 
         return (
             <div>
-                <h1>Ajudes a les que podria optar</h1>
-                <div>
-                    <div className="FormContainer">
-                        <PersonalBenefits benefitsForPersons={this.props.resultsData.persones}
-                                          persons={this.props.persons}/>
-                    </div>
-                    <div>
-                        <FamilyBenefits benefits={this.props.resultsData.families}/>
-                    </div>
+                <div class="bg-container ">
+                    <h1>Ajudes a les que podria optar</h1>
+                    <Grid className={classes.root} container>
+                        <Grid item xs={12}>
+                            <PersonalBenefits benefitsForPersons={this.props.resultsData.persones}
+                                              persons={this.props.persons}/>
+                        </Grid>
+
+                        <Grid item xs={12}>
+                            <div>
+                                <FamilyBenefits benefits={this.props.resultsData.families}/>
+                            </div>
+                        </Grid>
+
+                    </Grid>
                 </div>
                 <div>
                     <ReportBug onSubmit={this.submitReport}/>
@@ -101,4 +116,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, {fetchSimulation})(ResultsPage);
+export default connect(mapStateToProps, {fetchSimulation})(withStyles(styles)(ResultsPage));

@@ -31,8 +31,8 @@ class WizardPage extends Component {
                                        nextTextOnFinalActionStep={'Veure resultats'}
                                        nextButtonText='Següent'
                                        backButtonText='Anterior'
-                                       nextButtonCls='btn btn-next btn-primary btn-lg pull-right'
-                                       backButtonCls='btn btn-prev btn-primary btn-lg pull-left'
+                                       nextButtonCls='btn btn-next btn-primary btn-lg pull-right nextButton'
+                                       backButtonCls='btn btn-prev btn-primary btn-lg pull-left backButton'
                             />
                 </div>);
 

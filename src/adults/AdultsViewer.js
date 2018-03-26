@@ -28,7 +28,7 @@ class AdultsViewer extends Component<Props, void> {
                         <span className="Item" onClick={() => this.props.onUpdateClick(adult.id)}>
                                                             <Grid item xs={12}>
                         <Grid container alignItems={'center'} justify={'space-between'} direction={'row'}>
-                                <Grid item xs={5} sm={5}>
+                                <Grid className="personNameAlign" item xs={5} sm={5}>
                                           {adult.nom}
                                 </Grid>
                                 <Grid item xs={2} sm={2}>
@@ -68,9 +68,9 @@ class AdultsViewer extends Component<Props, void> {
         const { classes } = this.props;
 
         return (
-            <div className="bg-container" >
+            <div className="bg-container">
                 <h1><Trans>Persones de la unitat de convivència</Trans></h1>
-                <Grid container className={classes.root}>
+                <Grid container className="AdultsViewerPage">
                     <Grid item xs={12}>
                         <Grid container>
                             {this.renderAdultsList(this.props.adults)}
