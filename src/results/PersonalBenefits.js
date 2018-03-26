@@ -41,17 +41,17 @@ class PersonalBenefits extends React.Component<Props> {
     renderAPersonalBenefit(benefit, personWithBenefits) {
         if (personWithBenefits[benefit.ID][this.period] > 0) {
             return (
-                <Grid className="ResultPage" container xs sm justify={'space-between'} alignItems={'center'}>
+                <Grid className="ResultPage" container justify={'space-between'} alignItems={'center'}>
                     <Grid item sm={12}>
                         <li className="ItemResult" key={benefit.ID}>
-                            <Grid container  justify={'space-between'}>
-                                <Grid item xs sm={7}>
-                                   <span className="benefitText">{benefit.name}</span>
+                            <Grid container justify={'flex-start'} wrap={"wrap"}>
+                                <Grid className="benefitText"  item xs={12} sm={7}>
+                                   <p>{benefit.name}</p>
                                 </Grid>
-                                <Grid className={"Separator"} item xs sm={2}>
+                                <Grid className={"Separator"} item xs={6} sm={2}>
                                     Import: <span className="moneyText">{personWithBenefits[benefit.ID][this.period]}</span> € / {benefit.periode}
                                 </Grid>
-                                <Grid  item xs sm={3}>
+                                <Grid  item xs={6} sm={3}>
                                     <Link to={benefit.url}>
                                         <button style={{float: 'right'}} className="buttonInfo" key={benefit.ID}>
                                             Més informació

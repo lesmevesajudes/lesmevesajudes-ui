@@ -75,28 +75,3 @@ button {
 .extra-padding{
     padding:20px;
 }
-
-button:focus {
-    outline: none;
-}
-button:hover {
-    opacity: 0.8;
-}
-
-button + button {
-    margin-left: 1rem;
-}
-
-button.secondary {
-    color: #00ACD4;
-    background: transparent;
-    border: 1px solid #00ACD4;
-}
-
-
-div.footer-buttons {
-    padding: 1em;
-}
-.MuiSelect-selectMenu-168{
-    width: 200px !important;
-}
