@@ -20,7 +20,7 @@ import {
 import edat from '../shared/Edat';
 
 
-const required = value => value ? undefined : 'Required';
+export type AdultFormInitialValues = Adult | {rol: String}
 
 type Props = {
     initialState: ?Adult,
@@ -53,7 +53,6 @@ const styles = theme => ({
         display: 'none',
     }
 });
-let typeAdult;
 let AdultsForm = (props: Props) => {
     const {classes, esDona, teDNI, esDesocupat, esFill, handleSubmit, potTreballar, escolaritzat} = props;
     return (

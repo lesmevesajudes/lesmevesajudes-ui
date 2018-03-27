@@ -7,11 +7,11 @@ import type { Adult, AdultId} from './AdultsTypes';
 import {serialize} from './AdultsReducer';
 import * as UUID from '../shared/UUID';
 import { addAdult, updateAdult, removeAdult } from './AdultsActions';
+import type {AdultFormInitialValues} from "./AdultsForm";
 
 type State = {
     editingAdult: boolean,
-    initialFormValues: ?Adult,
-    typePerson: String
+    initialFormValues: ?AdultFormInitialValues
 };
 
 type Props = {
@@ -39,10 +39,10 @@ class AdultsPage extends React.Component<Props, State>{
 
     }
 
-    handleAddAdultClick = (rol: PersonRol) => {
-        console.log(rol)
+    handleAddAdultClick = (rol: String) => {
+        console.log(rol);
         this.setState({
-            typePerson: rol,
+            initialFormValues: {rol},
             editingAdult: true
         });
     };
@@ -81,7 +81,7 @@ class AdultsPage extends React.Component<Props, State>{
         if (addingAdult) {
             component=(
                 <AdultsForm
-                    initialValues={this.state.initialFormValues,{rol: this.state.typePerson}}
+                    initialValues={this.state.initialFormValues}
                     onSubmit={this.handleSubmitForm}
                     onCancel={this.doneEditingAdult}
                     onFinishAdding={() => this.doneEditingAdult()}
