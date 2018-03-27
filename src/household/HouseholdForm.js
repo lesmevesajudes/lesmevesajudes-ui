@@ -34,9 +34,8 @@ let HouseholdForm = (props: Props) => {
     return (
         <div class="bg-container">
             <h1>Informació sobre el tipus de família</h1>
-            <Grid  style={{ padding: 20 }} container className={classes.root}>
-                <div className="">
-                    <Grid item xs sm={12}>
+            <Grid container direction={'row'} justify={'space-around'}>
+                    <Grid item xs sm={5}>
                         <form name='HouseholdForm'>
                             {esFamiliaNombrosa &&
                             <div className="field">
@@ -80,7 +79,9 @@ let HouseholdForm = (props: Props) => {
                             </div>
                         </form>
                     </Grid>
-                </div>
+                    <Grid item xs sm={5} hidden={{ smDown: true }}>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis gravida erat. Donec ac nulla et ligula facilisis auctor sed eu enim. In hac habitasse platea dictumst. In ultrices rhoncus felis faucibus blandit. Curabitur scelerisque, urna nec finibus molestie, orci est imperdiet arcu, et fermentum velit est nec nisi. Morbi mollis vel purus sed fringilla. Aliquam ut tellus at justo varius vulputate non in justo. Ut at lorem at augue facilisis varius. Aliquam semper quam a dolor porttitor, et condimentum velit malesuada. In ac diam quis dolor lacinia varius ut sit amet ligula. Nulla facilisi. Integer vestibulum neque ac sagittis consequat. Morbi non odio lorem.
+                    </Grid>
             </Grid>
         </div>
     );
