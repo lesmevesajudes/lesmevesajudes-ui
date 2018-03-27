@@ -59,7 +59,8 @@ const RentForm = (props: Props) => {
                                         <label>Titular del contracte de lloguer</label>
                                         <Field
                                             name='titular_contracte_de_lloguer_id'
-                                            component={Select}>
+                                            component={Select} fullWidth>
+
                                             {props.personesQuePodenTenirContracteDeLloguer.valueSeq().map((persona) => (
                                                 <MenuItem key={persona.id} value={persona.id}>{persona.nom}</MenuItem>
                                             ))}
@@ -74,16 +75,17 @@ const RentForm = (props: Props) => {
                                             placeholder='2005-01-21'
                                             type='date'
                                             component={TextField}
+                                            fullWidth
                                             required
                                         />
                                     </div>}
                                     { esLlogater &&
                                     <div className='field'>
-                                        <label><Field name='relacio_de_parentiu_amb_el_propietari' component={Checkbox}/> Algun membre de la família té relació de parentiu amb el propietari de l'habitatge</label>
+                                        <label><Field name='relacio_de_parentiu_amb_el_propietari' component={Checkbox} fullWidth/> Algun membre de la família té relació de parentiu amb el propietari de l'habitatge</label>
                                     </div>}
                                     { esLlogater &&
                                     <div className='field'>
-                                        <label><Field name='existeix_deute_en_el_pagament_del_lloguer' component={Checkbox}/> Existeix un deute en el pagament del lloguer</label>
+                                        <label><Field name='existeix_deute_en_el_pagament_del_lloguer' component={Checkbox} fullWidth/> Existeix un deute en el pagament del lloguer</label>
                                     </div>}
 
                                     { esLlogater && existeixDeute &&
@@ -92,12 +94,13 @@ const RentForm = (props: Props) => {
                                         <Field
                                             name='import_del_deute_amb_el_propietari'
                                             component={TextField}
-                                            placeholder='0'/>
+                                            placeholder='0'
+                                            fullWidth/>
                                     </div>}
 
                                     { esLlogater &&
                                     <div className='field'>
-                                        <label><Field name='lloguer_domiciliat' component={Checkbox}/> El pagament del lloguer està domiciliat</label>
+                                        <label><Field name='lloguer_domiciliat' component={Checkbox} fullWidth/> El pagament del lloguer està domiciliat</label>
                                     </div>}
 
                                     { esLlogater &&
@@ -106,7 +109,8 @@ const RentForm = (props: Props) => {
                                         <Field
                                             name='import_del_lloguer'
                                             component={TextField}
-                                            placeholder='0'/>
+                                            placeholder='0'
+                                            fullWidth/>
                                     </div>}
 
                                     {
@@ -115,7 +119,7 @@ const RentForm = (props: Props) => {
                                     }
 
                                     <div className='field'>
-                                        <label><Field name='tinc_alguna_propietat_a_part_habitatge_habitual' component={Checkbox}/> Tinc alguna propietat a part de l'habitatge habitual</label>
+                                        <label><Field name='tinc_alguna_propietat_a_part_habitatge_habitual' component={Checkbox} fullWidth/> Tinc alguna propietat a part de l'habitatge habitual</label>
                                     </div>
                                     { teAlgunaPropietat &&
                                     <div className='field'>
@@ -123,12 +127,14 @@ const RentForm = (props: Props) => {
                                         <Field
                                             name='valor_cadastral_finques_urbanes'
                                             component={TextField}
-                                            placeholder='0'/>
+                                            placeholder='0'
+                                            fullWidth/>
                                         <label>Valor cadastral finques rustiques (&euro;)</label>
                                         <Field
                                             name='valor_cadastral_finques_rustiques'
                                             component={TextField}
-                                            placeholder='0'/>
+                                            placeholder='0'
+                                            fullWidth/>
                                     </div>
                                         // Valor finca urbana
                                     }
