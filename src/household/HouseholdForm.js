@@ -40,7 +40,7 @@ let HouseholdForm = (props: Props) => {
                             {esFamiliaNombrosa &&
                             <div className="field">
                                 <label>Tipus familia nombrosa:</label>
-                                <Field name='tipus_familia_nombrosa' component={Select}>
+                                <Field name='tipus_familia_nombrosa' component={Select} fullWidth>
                                     <MenuItem value="No">No</MenuItem>
                                     <MenuItem value="General">General</MenuItem>
                                     <MenuItem value="Especial">Especial</MenuItem>
@@ -50,7 +50,7 @@ let HouseholdForm = (props: Props) => {
                             {esMonoparental &&
                             <div className="field">
                                 <label>Disposa del carnet de familia monoparental:</label>
-                                <Field name='tipus_familia_monoparental' component={Select}>
+                                <Field name='tipus_familia_monoparental' component={Select} fullWidth>
                                     <MenuItem value="No">No</MenuItem>
                                     <MenuItem value="General">General</MenuItem>
                                     <MenuItem value="Especial">Especial</MenuItem>
@@ -60,11 +60,11 @@ let HouseholdForm = (props: Props) => {
                             fills.valueSeq().map((infant: Adult) =>
                                 <div key={infant.id}>
                                     <label><Field name={"custodies." + infant.id + ".existeix"}
-                                                  component={Checkbox}/> Tinc la custodia de {infant.nom}</label>
+                                                  component={Checkbox} fullWidth/> Tinc la custodia de {infant.nom}</label>
                                     {(custodies !== null && custodies[infant.id] !== null) &&
                                     <div className="field">
                                         <label>Tipus de guardia i custodia:</label>
-                                        <Field name={'custodies.' + infant.id + '.tipus'} component={Select}>
+                                        <Field name={'custodies.' + infant.id + '.tipus'} component={Select} fullWidth>
                                             <MenuItem value="compartida">Compartida</MenuItem>
                                             <MenuItem value="total">Total</MenuItem>
                                         </Field>
@@ -73,7 +73,7 @@ let HouseholdForm = (props: Props) => {
 
                             }
                             <div className="field">
-                                <label><Field name="es_usuari_serveis_socials" component={Checkbox}/> Família usuaria de
+                                <label><Field name="es_usuari_serveis_socials" component={Checkbox} fullWidth/> Família usuaria de
                                     serveis socials en seguiment a un CSS o servei especialitzat de l'Ajuntament de
                                     Barcelona</label>
                             </div>

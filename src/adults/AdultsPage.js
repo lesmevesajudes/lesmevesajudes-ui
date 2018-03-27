@@ -34,6 +34,7 @@ class AdultsPage extends React.Component<Props, State>{
         this.handleRemoveAdultClick = this.handleRemoveAdultClick.bind(this);
         this.handleUpdateAdultClick = this.handleUpdateAdultClick.bind(this);
         this.handleSubmitForm = this.handleSubmitForm.bind(this);
+
     }
 
     handleAddAdultClick = () => {
@@ -69,6 +70,8 @@ class AdultsPage extends React.Component<Props, State>{
     };
 
     render() {
+        console.log("test");
+        console.log(this.props);
         const addingAdult = this.state.editingAdult;
         let component = undefined;
         if (addingAdult) {
