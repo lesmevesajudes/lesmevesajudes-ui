@@ -63,7 +63,7 @@ let AdultsForm = (props: Props) => {
                         type="hidden"/>
                     <Grid container className={classes.root}>
                         <Grid item xs={12}>
-                            <Grid container direction={'row'} justify={'space-around'}>
+                            <Grid container direction={'row'} justify={'space-around'} alignItems={'stretch'}>
                                 <Grid item xs={12} md={5}>
                                     <Grid container direction={'column'} alignItems={'stretch'}>
                                             <label><Trans>Com vol identificar a aquesta persona?</Trans>
@@ -91,12 +91,6 @@ let AdultsForm = (props: Props) => {
                                                 type="hidden"
                                                 required
                                             >
-                                               /*<MenuItem type="hidden" value="pares"><Trans>Pare/Mare/Tutor/a</Trans></MenuItem>
-                                                <MenuItem value="avis"><Trans>Avi/Àvia/Sogre/Sogra</Trans></MenuItem>
-                                                <MenuItem value="fill"><Trans>Fill</Trans></MenuItem>
-                                                <MenuItem value="altres_adults_familiars"><Trans>Altres
-                                                    familiar</Trans></MenuItem>
-                                                <MenuItem value="altres_adults"><Trans>Altres convivents</Trans></MenuItem>*/
                                             </Field>
                                             <label><Trans>Sexe</Trans></label>
                                             <Field

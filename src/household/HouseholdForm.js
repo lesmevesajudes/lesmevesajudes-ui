@@ -26,11 +26,10 @@ type Props = {
     esFamiliaNombrosa: Boolean,
     fills: Map<AdultId, Adult>,
     custodies: Object,
-    classes: Object
 }
 
 let HouseholdForm = (props: Props) => {
-    const {esMonoparental, esFamiliaNombrosa, fills, custodies, classes} = props;
+    const {esMonoparental, esFamiliaNombrosa, fills, custodies} = props;
     return (
         <div class="bg-container">
             <h1>Informació sobre el tipus de família</h1>

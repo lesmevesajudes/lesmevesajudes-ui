@@ -81,3 +81,22 @@ button {
 .extra-padding{
     padding:20px;
 }
+.Item {
+    display: block;
+    text-align: center;
+    font-size: 16px;
+    line-height: 55px;
+    font-weight: bold;
+    background: white;
+    margin:0 0 15px 0;
+}
+.ItemParent {
+    border-radius: 8px;
+    display: block;
+    text-align: center;
+    font-size: 16px;
+    line-height: 55px;
+    font-weight: bold;
+    background: white;
+    margin:0 0 15px 0;
+}

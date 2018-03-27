@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import type {Adult} from './AdultsTypes';
 import {Trans, translate} from "react-i18next";
-import {Button, Grid} from "material-ui";
+import {Grid} from "material-ui";
 import {withStyles} from "material-ui/styles/index";
 import Icon from 'material-ui/Icon';
 
@@ -24,51 +24,61 @@ class AdultsViewer extends Component<Props, void> {
     renderAdultsList(adults: Array<Adult>) {
         return (
             <Grid item xs={12}>
-                <Grid container alignItems={'stretch'} justify={'space-between'} spacing={40}>
+                <Grid container>
                     <Grid item xs sm={10}>
-                        <Grid container wrap={"wrap"} spacing={40} >
+                        <Grid container wrap={"wrap"} >
                             <Grid  className={"border-family"} item sm={6}>
-                            {
-                                adults.filter((adult)=> adult.rol === "pares").map((adult) => (
-                                                    <li className={'PersonItems'} key={adult.id}>
-                                                        <Grid container alignItems={'center'} justify={'space-between'} direction={'row'}>
-                                                            <Grid className="Item" item xs={12}>
-                                                            <span onClick={() => this.props.onUpdateClick(adult.id)}>
-                                                                <Grid container justify={'space-between'}>
-                                                                    <Grid className="personNameAlign" item>
-                                                                            {adult.nom}
-                                                                    </Grid>
-                                                                </Grid>
-                                                            </span>
-                                                                <button className="littlebutton" key={"delete" + adult.id}
-                                                                        onClick={() => this.props.onRemoveClick(adult.id)}>
-                                                                    <i className="material-icons">delete</i>
-                                                                 </button>
-        
+                            <Grid container >
+                                    {
+                                        adults.filter((adult)=> adult.rol === "pares").map((adult) => (
+                                            <Grid item sm={6}>
+                                                <Grid category justify={'space-jutify'} >
+                                                            <li className={'ItemParent'} key={adult.id}>
+                                                            <Grid item sm={12}>
+                                                                    <span onClick={() => this.props.onUpdateClick(adult.id)}>
+                                                                                    {adult.nom}
+                                                                    </span>
                                                             </Grid>
-                                                        </Grid>
-                                                    </li>
-                                ))
-                            }
-                            {adults.length != 2 &&  
-                                <Button id='AddAdultButton' class="addButton" onClick={() => this.props.onAddAdultClick("pares")}>
-                                    <Trans><span> Afegir una persona  </span><Icon>add_circle</Icon></Trans>
-                                </Button>
+                                                            <Grid item sm={12}>
+                                                                    <button className="littlebutton" key={"delete" + adult.id}
+                                                                            onClick={() => this.props.onRemoveClick(adult.id)}>
+                                                                        <i className="material-icons">delete</i>
+                                                                    </button>
+                                                            </Grid>
+
+                                                            </li>
+                                                </Grid>
+                                            </Grid>
+                                        ))
+                                    }
+     
+                            {adults.length !== 2 &&  
+                                <Grid item sm={12}>
+                                <span id='AddAdultButton' class="addButton" onClick={() => this.props.onAddAdultClick("pares")}>
+                                    <Icon>add_circle</Icon>
+                                </span>
+                                </Grid>
                              }
-                                                               
+                            </Grid>                           
                             </Grid>
                             <Grid className={"border-family"} item sm={6}>
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid at atque aut deserunt, distinctio facilis itaque modi nisi officia porro praesentium quis similique soluta tempore totam ut voluptas voluptate voluptatem.
                             </Grid>
                         </Grid>
-                        <Grid container wrap={"wrap"} spacing={40}>
+                        <Grid container wrap={"wrap"}>
                             <Grid className={"border-family"} item sm={12}>
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aut, dolorem nam perferendis quod suscipit voluptatibus. Consequuntur corporis delectus dolorum enim error expedita impedit neque nihil odit quam, tempore voluptates!
                             </Grid>
                         </Grid>
                     </Grid>
-                    <Grid className={"border-family"} item xs sm={2}>
-                            hola amics
+                    <Grid  item xs sm={2}>
+                         <Grid container wrap={"wrap"}> 
+                            <Grid  className={"border-family"} item sm={6}>
+                                <Grid container direction={'column'} spacing={6}>
+                         hola amics
+                            </Grid>
+                                </Grid>
+                         </Grid>
                     </Grid>
                 </Grid>
             </Grid>

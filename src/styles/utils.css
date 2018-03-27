@@ -26,20 +26,16 @@
     text-transform: none;
     font-size: 14px;
 }
-.addButton span {
-    color: #D3327E;
-}
+
 .errorText {
     color: #c60c30;
 }
 .addButton {
     background: white;
+    color: black;
     padding: 15px;
-    border-radius: 4px;
-    font-size: 14px;
-    font-weight: 700;
-    text-transform: none;
-
+    border-radius: 10px;
+    border: #dbdbdb 1px solid;
 }
 .CancelButton {
     background: transparent;
