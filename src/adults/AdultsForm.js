@@ -32,7 +32,8 @@ type Props = {
     esDesocupat: Boolean,
     esFill: Boolean,
     potTreballar: Boolean,
-    escolaritzat: Boolean
+    escolaritzat: Boolean,
+    typePerson: String
 }
 
 const styles = theme => ({
@@ -52,7 +53,7 @@ const styles = theme => ({
         display: 'none',
     }
 });
-
+let typeAdult;
 let AdultsForm = (props: Props) => {
     const {classes, esDona, teDNI, esDesocupat, esFill, handleSubmit, potTreballar, escolaritzat} = props;
     return (
@@ -87,22 +88,18 @@ let AdultsForm = (props: Props) => {
                                                 component={TextField}
                                                 required
                                             />
-                                            <label><Trans>Rol Familiar</Trans></label>
                                             <Field
                                                 name='rol'
-                                                label='Rol'
-                                                validate={[ required]}
-                                                component={Select}
-                                                placeholder="Rol familiar"
-                                                fullWidth
+                                                component={TextField}
+                                                type="hidden"
+                                                required
                                             >
-
-                                                <MenuItem value="pares"><Trans>Pare/Mare/Tutor/a</Trans></MenuItem>
+                                               /*<MenuItem type="hidden" value="pares"><Trans>Pare/Mare/Tutor/a</Trans></MenuItem>
                                                 <MenuItem value="avis"><Trans>Avi/Àvia/Sogre/Sogra</Trans></MenuItem>
                                                 <MenuItem value="fill"><Trans>Fill</Trans></MenuItem>
                                                 <MenuItem value="altres_adults_familiars"><Trans>Altres
                                                     familiar</Trans></MenuItem>
-                                                <MenuItem value="altres_adults"><Trans>Altres convivents</Trans></MenuItem>
+                                                <MenuItem value="altres_adults"><Trans>Altres convivents</Trans></MenuItem>*/
                                             </Field>
                                             <label><Trans>Sexe</Trans></label>
                                             <Field

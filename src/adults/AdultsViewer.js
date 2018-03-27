@@ -17,52 +17,60 @@ type Props = {
     onRemoveClick: Function,
     onUpdateClick: Function,
     onAddAdultClick: Function,
-    classes: Object
+    classes: Object,
 };
 
 class AdultsViewer extends Component<Props, void> {
     renderAdultsList(adults: Array<Adult>) {
         return (
             <Grid item xs={12}>
-                <ul className="ItemList">
-                    {adults.map((adult) => (
-                        <li className={'PersonItems'} key={adult.id}>
-                            <Grid container alignItems={'center'} justify={'space-between'} direction={'row'}>
-                                <Grid item xs={10}>
-                                <span className="Item" onClick={() => this.props.onUpdateClick(adult.id)}>
-                                    <Grid container justify={'space-between'}>
-                                        <Grid className="personNameAlign" item xs={6} sm={5}>
-                                                  {adult.nom}
-                                        </Grid>
-                                        <Grid item xs={4} sm={2}>
-                                            {adult.rol.toUpperCase()}
-                                        </Grid>
-                                        <Grid item xs={2} sm={3}>
-                                            {adult.data_naixement}
-                                        </Grid>
-                                    </Grid>
-                                </span>
-                                </Grid>
-                                <Grid item xs={2} sm={2}>
-                                    <Grid container justify={'flex-end'}>
-                                        <Grid item xs={6} sm={6}>
-                                                <button className="littlebutton" key={"delete" + adult.id}
-                                                        onClick={() => this.props.onRemoveClick(adult.id)}>
-                                                    <i className="material-icons">delete</i>
-                                                </button>
-                                        </Grid>
-                                        <Grid item xs={6} sm={6}>
-                                                <button className="littlebutton" key={"edit" + adult.id}
-                                                        onClick={() => this.props.onUpdateClick(adult.id)}>
-                                                    <i className="material-icons">edit</i>
-                                                </button>
-                                        </Grid>
-                                    </Grid>
-                                </Grid>
+                <Grid container alignItems={'stretch'} justify={'space-between'} spacing={40}>
+                    <Grid item xs sm={10}>
+                        <Grid container wrap={"wrap"} spacing={40} >
+                            <Grid  className={"border-family"} item sm={6}>
+                            {
+                                adults.filter((adult)=> adult.rol === "pares").map((adult) => (
+                                                    <li className={'PersonItems'} key={adult.id}>
+                                                        <Grid container alignItems={'center'} justify={'space-between'} direction={'row'}>
+                                                            <Grid className="Item" item xs={12}>
+                                                            <span onClick={() => this.props.onUpdateClick(adult.id)}>
+                                                                <Grid container justify={'space-between'}>
+                                                                    <Grid className="personNameAlign" item>
+                                                                            {adult.nom}
+                                                                    </Grid>
+                                                                </Grid>
+                                                            </span>
+                                                                <button className="littlebutton" key={"delete" + adult.id}
+                                                                        onClick={() => this.props.onRemoveClick(adult.id)}>
+                                                                    <i className="material-icons">delete</i>
+                                                                 </button>
+        
+                                                            </Grid>
+                                                        </Grid>
+                                                    </li>
+                                ))
+                            }
+                            {adults.length != 2 &&  
+                                <Button id='AddAdultButton' class="addButton" onClick={() => this.props.onAddAdultClick("pares")}>
+                                    <Trans><span> Afegir una persona  </span><Icon>add_circle</Icon></Trans>
+                                </Button>
+                             }
+                                                               
                             </Grid>
-                        </li>
-                    ))}
-                </ul>
+                            <Grid className={"border-family"} item sm={6}>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid at atque aut deserunt, distinctio facilis itaque modi nisi officia porro praesentium quis similique soluta tempore totam ut voluptas voluptate voluptatem.
+                            </Grid>
+                        </Grid>
+                        <Grid container wrap={"wrap"} spacing={40}>
+                            <Grid className={"border-family"} item sm={12}>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aut, dolorem nam perferendis quod suscipit voluptatibus. Consequuntur corporis delectus dolorum enim error expedita impedit neque nihil odit quam, tempore voluptates!
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                    <Grid className={"border-family"} item xs sm={2}>
+                            hola amics
+                    </Grid>
+                </Grid>
             </Grid>
         );
     }
@@ -71,15 +79,13 @@ class AdultsViewer extends Component<Props, void> {
         return (
             <div className="bg-container">
                 <h1><Trans>Persones de la unitat de convivència</Trans></h1>
-                <Grid container className="AdultsViewerPage">
+                <Grid container className="AdultsViewerPage" spacing={24}>
                     <Grid item xs={12}>
-                        <Grid container>
+                        <Grid alignItems={'center'} justify={'space-between'}>
                             {this.renderAdultsList(this.props.adults)}
                         </Grid>
                         <Grid container justify={"flex-start"}>
-                            <Button id='AddAdultButton' class="addButton" onClick={this.props.onAddAdultClick}>
-                                <Trans><span> Afegir una persona  </span><Icon>add_circle</Icon></Trans>
-                            </Button>
+
                         </Grid>
                     </Grid>
                 </Grid>

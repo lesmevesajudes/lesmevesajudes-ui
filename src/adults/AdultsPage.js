@@ -3,14 +3,15 @@ import React from 'react';
 import AdultsViewer from './AdultsViewer';
 import AdultsForm from './AdultsForm';
 import {connect} from 'react-redux';
-import type { Adult, AdultId } from './AdultsTypes';
+import type { Adult, AdultId} from './AdultsTypes';
 import {serialize} from './AdultsReducer';
 import * as UUID from '../shared/UUID';
 import { addAdult, updateAdult, removeAdult } from './AdultsActions';
 
 type State = {
     editingAdult: boolean,
-    initialFormValues: ?Adult
+    initialFormValues: ?Adult,
+    typePerson: String
 };
 
 type Props = {
@@ -18,7 +19,8 @@ type Props = {
     removeAdult: Function,
     addAdult: Function,
     updateAdult: Function,
-    jumpToStep: Function
+    jumpToStep: Function,
+    PersonRol: String
 }
 
 class AdultsPage extends React.Component<Props, State>{
@@ -37,8 +39,12 @@ class AdultsPage extends React.Component<Props, State>{
 
     }
 
-    handleAddAdultClick = () => {
-        this.setState({editingAdult: true});
+    handleAddAdultClick = (rol: PersonRol) => {
+        console.log(rol)
+        this.setState({
+            typePerson: rol,
+            editingAdult: true
+        });
     };
 
     handleUpdateAdultClick = (adultId: AdultId) => {
@@ -70,14 +76,12 @@ class AdultsPage extends React.Component<Props, State>{
     };
 
     render() {
-        console.log("test");
-        console.log(this.props);
         const addingAdult = this.state.editingAdult;
         let component = undefined;
         if (addingAdult) {
             component=(
                 <AdultsForm
-                    initialValues={this.state.initialFormValues}
+                    initialValues={this.state.initialFormValues,{rol: this.state.typePerson}}
                     onSubmit={this.handleSubmitForm}
                     onCancel={this.doneEditingAdult}
                     onFinishAdding={() => this.doneEditingAdult()}
