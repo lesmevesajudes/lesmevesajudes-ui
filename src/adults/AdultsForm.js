@@ -23,7 +23,6 @@ import edat from '../shared/Edat';
 export type AdultFormInitialValues = Adult | {rol: String}
 
 type Props = {
-    initialState: ?Adult,
     onCancel: Function,
     handleSubmit: Function,
     classes: Object,
@@ -32,8 +31,7 @@ type Props = {
     esDesocupat: Boolean,
     esFill: Boolean,
     potTreballar: Boolean,
-    escolaritzat: Boolean,
-    typePerson: String
+    escolaritzat: Boolean
 }
 
 const styles = theme => ({
