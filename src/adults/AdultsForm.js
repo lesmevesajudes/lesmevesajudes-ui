@@ -43,12 +43,14 @@ const styles = theme => ({
     display: "none"
   }
 });
+
 const textesSegonsRol = {
   pares: "pare/mare",
   fill: "fill/filla",
   altres_adults: "altres adults",
   altres_adults_familiars: "altres familiars"
 };
+
 let AdultsForm = (props: Props) => {
   const {
     classes,
@@ -63,7 +65,7 @@ let AdultsForm = (props: Props) => {
   } = props;
   return (
     <div className="bg-container">
-      <h1>{`Afegir ${textesSegonsRol[rol]} a la unitatde convivència`}</h1>
+      <h1>{`Afegir ${textesSegonsRol[rol]} a la unitat de convivència`}</h1>
       <form onSubmit={handleSubmit}>
         <Field component="input" name="id" type="hidden" />
         <Grid container className={classes.root}>
