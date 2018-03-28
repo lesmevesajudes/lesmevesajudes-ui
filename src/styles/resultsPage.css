@@ -29,15 +29,7 @@
 .PersonItems {
     list-style: none;
 }
-.Item {
-    display: block;
 
-    font-size: 16px;
-    line-height: 55px;
-    font-weight: bold;
-    background: white;
-    margin:0 0 15px 0;
-}
 .ItemResultOut {
     display: block;
     margin:0 0 15px 0;

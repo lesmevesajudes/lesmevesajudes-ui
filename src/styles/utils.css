@@ -43,3 +43,9 @@
     color: #00ACD4;
     font-weight: 600;
 }
+.fixFlex {
+    margin-top: 8px !important
+}
+.rightButton {
+    text-align:right;
+}

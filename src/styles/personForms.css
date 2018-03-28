@@ -4,3 +4,11 @@
 .AdultsViewerPage {
     color: #265A96;
 }
+.titleTypePerson {
+    color: black;
+    font-size: 18px;
+    text-align: center
+}
+.testMargin {
+    margin-top:15px;
+}
