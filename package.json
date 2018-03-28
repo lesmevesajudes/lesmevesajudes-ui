@@ -29,6 +29,7 @@
     "i18next-scanner": "^2.4.6",
     "jest": "^22.4.0",
     "nightwatch": "^0.9.16",
+    "prettier": "^1.11.1",
     "react-scripts": "1.1.1"
   },
   "scripts": {
