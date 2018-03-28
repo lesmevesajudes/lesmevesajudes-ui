@@ -42,6 +42,14 @@ const styles = theme => ({
 		display: "none"
 	}
 });
+const typeFamily = [
+	{
+		pares: "pare/mare",
+		fill: "fill/filla",
+		altres_adults: "Altres adults",
+		altres_adults_familiars: "Altres membres familiars"
+	}
+];
 let AdultsForm = (props: Props) => {
 	const {
 		classes,
@@ -51,12 +59,19 @@ let AdultsForm = (props: Props) => {
 		esFill,
 		handleSubmit,
 		potTreballar,
-		escolaritzat
+		escolaritzat,
+		tipuFamiliar
 	} = props;
 	return (
 		<div className="bg-container">
 			<h1>
-				<Trans>Afegir una persona a la unitat de convivència</Trans>
+				<Trans>
+					Afegir{" "}
+					{typeFamily.map(function(x) {
+						return x[tipuFamiliar];
+					})}{" "}
+					a la unitatde convivència
+				</Trans>
 			</h1>
 			<form onSubmit={handleSubmit}>
 				<Field component="input" name="id" type="hidden" />
@@ -491,12 +506,14 @@ AdultsForm = connect(state => {
 	const teDNI = selector(state, "tipus_document_identitat") === "DNI";
 	const esDona = selector(state, "genere") === "dona";
 	const potTreballar = (edat(selector(state, "data_naixement")) || 0) >= 16;
+	const tipusMembreFamilia = selector(state, "rol");
 	return {
 		esFill,
 		esDesocupat,
 		teDNI,
 		esDona,
-		potTreballar
+		potTreballar,
+		tipuFamiliar: tipusMembreFamilia
 	};
 })(AdultsForm);
 export default withStyles(styles)(AdultsForm);
