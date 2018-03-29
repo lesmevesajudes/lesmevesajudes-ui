@@ -71,6 +71,6 @@ function mapStateToProps(state) {
     };
 }
 
-export default withStyles(styles)(connect(mapStateToProps, {reportBug})(withRouter(reduxForm({
+export default withStyles()(connect(mapStateToProps, {reportBug})(withRouter(reduxForm({
     form: 'ReportBug'
 })(ReportBug))));

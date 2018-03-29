@@ -97,4 +97,4 @@ export default connect(mapStateToProps, {addHouseholdData})(
             onChange: (values, dispatch, props, previousValues) => {
                 dispatch(addHouseholdData(values));
             }
-        })(withStyles(styles)(HouseholdForm)));
+        })(withStyles()(HouseholdForm)));
