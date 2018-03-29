@@ -161,7 +161,7 @@ class AdultsViewer extends Component<Props, void> {
 						</Grid>
 					</Grid>
 				</Grid>
-				<Grid item xs sm={2} className={"border-family-right"}>
+				<Grid item xs sm={2} className={"border-family"}>
 					<Grid container justify={"space-between"} direction={"column"}>
 						<Grid item xs sm={12}>
 							<span className={"titleTypePerson"}>

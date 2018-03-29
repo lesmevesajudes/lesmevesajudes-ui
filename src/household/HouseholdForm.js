@@ -12,12 +12,6 @@ import {Map} from 'immutable';
 import {esFamiliaNombrosa, esFill, esSustentador} from "../shared/selectorUtils";
 import {withStyles} from "material-ui/styles/index";
 
-const styles = () => ({
-    root: {
-        flexGrow: 1
-    }
-});
-
 type Props = {
     initialValues: HouseholdData,
     addHouseholdData: Function,
