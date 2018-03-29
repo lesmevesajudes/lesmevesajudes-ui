@@ -4,12 +4,12 @@
 
   "selenium" : {
     "start_process" : false,
-    "server_path" : "",
+    "server_path" : "test/browser/selenium-server-standalone-3.9.0.jar",
     "log_path" : "",
     "host" : "127.0.0.1",
     "port" : 4444,
     "cli_args" : {
-      "webdriver.chrome.driver" : "",
+      "webdriver.chrome.driver" : "test/browser/chromedriver",
       "webdriver.ie.driver" : ""
     }
   },

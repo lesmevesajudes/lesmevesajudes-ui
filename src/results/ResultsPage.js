@@ -124,5 +124,5 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, { fetchSimulation })(
-  withStyles(styles)(ResultsPage)
+  withStyles()(ResultsPage)
 );

@@ -492,4 +492,4 @@ AdultsForm = connect(state => {
     rol
   };
 })(AdultsForm);
-export default withStyles(styles)(AdultsForm);
+export default withStyles()(AdultsForm);
