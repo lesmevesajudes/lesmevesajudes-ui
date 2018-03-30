@@ -412,16 +412,6 @@ let AdultsForm = (props: Props) => {
                       </label>
                     </div>
                   )}
-                  <div className="field">
-                    <label>
-                      <Field
-                        name="es_usuari_serveis_socials"
-                        component={Checkbox}
-                      />{" "}
-                      Usuari de serveis socials en seguiment a un CSS o servei
-                      especialitzat de l'Ajuntament de Barcelona
-                    </label>
-                  </div>
                 </Grid>
               </Grid>
               <Grid item md={5} hidden={{ smDown: true }}>

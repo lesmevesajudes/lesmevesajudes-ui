@@ -12,4 +12,6 @@ export const esFamiliaNombrosa = (persones: Map<AdultId, Adult>) =>{
 };
 export const esMonoparental = (persones: Map<AdultId, Adult>) => persones.filter( (persona: Adult) => esSustentador(persona) ).count() === 1;
 export const esInfantAcollit = (persona: Adult) => persona.rol === 'infant_acollit';
+export const esAltresFamiliars = (persona: Adult) => persona.rol === 'altres_adults_familiars';
+export const esAltresNoFamiliars = (persona: Adult) => persona.rol === 'altres_adults';
 export const tipusCustodia = (persona: Adult, familia: HouseholdData, esMonoparental: boolean) => ( familia.custodies !== null && typeof familia.custodies[persona.id] !== 'undefined' )? familia.custodies[persona.id].tipus: esMonoparental? 'cap':'total';
