@@ -1,0 +1,51 @@
+.littlebutton {
+    padding: 0px;
+    background: none;
+    color: #333333;
+}
+.buttonInfo {
+    background: #D3327E;
+    color: white;
+    padding: 15px;
+    border-radius: 4px;
+    text-transform: none;
+    font-size: 12px;
+}
+.nextButton {
+
+    color: white;
+    padding: 15px;
+    border-radius: 4px;
+    text-transform: none;
+    font-size: 14px;
+}
+.backButton {
+    color: #9a9a9a;
+    padding: 15px;
+    border-radius: 4px;
+    text-transform: none;
+    font-size: 14px;
+}
+
+.errorText {
+    color: #c60c30;
+}
+.addButton {
+    background: white;
+    color: black;
+    padding: 15px;
+    border-radius: 10px;
+    border: #dbdbdb 1px solid;
+}
+.CancelButton {
+    background: transparent;
+    border: 2px solid #00ACD4;
+    color: #00ACD4;
+    font-weight: 600;
+}
+.fixFlex {
+    margin-top: 8px !important
+}
+.rightButton {
+    text-align:right;
+}

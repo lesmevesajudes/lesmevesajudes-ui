@@ -1,0 +1,75 @@
+
+.Select {
+
+    display: inline-block;
+}
+
+.RegularTextInput{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: 1px solid #CDCDCD;
+    font-size: 1rem;
+    padding: 0.5rem;
+    height: 36px;
+}
+
+.SmallTextInput {
+    min-width: 10rem;
+}
+
+.RegularTextInput:focus {
+    outline: 2px solid #00ACD4;
+}
+.ResultList {
+    padding:0;
+}
+.ItemList {
+    padding:0;
+}
+.PersonItems {
+    list-style: none;
+}
+
+.ItemResultOut {
+    display: block;
+    margin:0 0 15px 0;
+    line-height: 55px;
+    list-style: none;
+}
+.ItemResult {
+    display: block;
+    line-height: 55px;
+    font-size: 20px;
+    padding: 10px;
+    background: white;
+    margin:0 0 15px 0;
+}
+.ResultPage {
+    color: #265A96;
+}
+.ItemGreen {
+    display: block;
+
+    text-align: center;
+    font-size: 20px;
+    padding: 10px;
+}
+.Separator {
+    border-left: 1px solid #CDCDCD;
+    font-size: 14px
+}
+.benefitText {
+    font-size: 16px;
+}
+@media (max-width: 650px) {
+    .benefitText {
+        white-space: pre-line;
+    }
+}
+.moneyText {
+    font-weight: 800;
+    font-size: 16px;
+}
+.ItemTitle {
+    font-size: 20px;
+}
