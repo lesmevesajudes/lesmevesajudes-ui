@@ -3,26 +3,18 @@ import React, { Component } from "react";
 import type { Adult } from "./AdultsTypes";
 import { Trans, translate } from "react-i18next";
 import { Grid } from "material-ui";
-import { withStyles } from "material-ui/styles/index";
 import Icon from "material-ui/Icon";
-
-const styles = () => ({
-	root: {
-		flexGrow: 1
-	}
-});
+import {esAltresFamiliars, esAltresNoFamiliars, esFill, esSustentador} from "../shared/selectorUtils";
 
 type Props = {
 	adults: Array<Adult>,
 	onRemoveClick: Function,
 	onUpdateClick: Function,
-	onAddAdultClick: Function,
-	classes: Object
+	onAddAdultClick: Function
 };
 
 class AdultsViewer extends Component<Props, void> {
-	renderAdultsList(adults: Array<Adult>) {
-		console.log(adults);
+	renderPersonesQueConviuenList(persones: Array<Adult>) {
 		return (
 			<Grid container alignItems={"stretch"}>
 				<Grid item xs sm={10}>
@@ -30,26 +22,26 @@ class AdultsViewer extends Component<Props, void> {
 						<Grid className={"border-family"} item sm={6}>
 							<Grid container>
 								<Grid item xs sm={12}>
-									<span className={"titleTypePerson"}>Pares</span>
+									<span className={"personRoleTitle"}>Pares</span>
 								</Grid>
-								{adults.filter(adult => adult.rol === "pares").map(adult => (
-									<Grid item sm={6}>
+								{persones.filter((persona: Adult) => esSustentador(persona)).map((persona: Adult) => (
+									<Grid key={persona.id} item sm={6}>
 										<Grid container spacing={8}>
-											<li className={"ItemParent"} key={adult.id}>
+											<li className={"ItemParent"} key={persona.id}>
 												<Grid item sm={12}>
 													<span
-														onClick={() => this.props.onUpdateClick(adult.id)}
+														onClick={() => this.props.onUpdateClick(persona.id)}
 													>
-														{adult.nom}
+														{persona.nom}
 														<br />
-														{adult.data_naixement}
+														{persona.data_naixement}
 													</span>
 												</Grid>
 												<Grid item sm={12}>
 													<button
 														className="littlebutton"
-														key={"delete" + adult.id}
-														onClick={() => this.props.onRemoveClick(adult.id)}
+														key={"delete" + persona.id}
+														onClick={() => this.props.onRemoveClick(persona.id)}
 													>
 														<i className="material-icons">delete</i>
 													</button>
@@ -59,7 +51,7 @@ class AdultsViewer extends Component<Props, void> {
 									</Grid>
 								))}
 
-								{adults.filter(adult => adult.rol === "pares").length !== 2 && (
+								{persones.filter((persona: Adult) => esSustentador(persona)).length !== 2 &&
 									<Grid item sm={12} className={"rightButton"}>
 										<span
 											id="AddAdultButton"
@@ -68,34 +60,34 @@ class AdultsViewer extends Component<Props, void> {
 											<Icon>add_circle</Icon>
 										</span>
 									</Grid>
-								)}
+								}
 							</Grid>
 						</Grid>
 						<Grid className={"border-family"} item sm={6}>
 							<Grid container>
 								<Grid item xs sm={12}>
-									<span className={"titleTypePerson"}>Altres familiars</span>
+									<span className={"personRoleTitle"}>Altres familiars</span>
 								</Grid>
-								{adults
-									.filter(adult => adult.rol === "altres_adults_familiars")
-									.map(adult => (
-										<Grid item sm={6}>
+								{persones
+									.filter((persona: Adult) => esAltresFamiliars(persona))
+									.map((persona: Adult) => (
+										<Grid key={persona.id} item sm={6}>
 											<Grid container spacing={8}>
-												<li className={"ItemParent"} key={adult.id}>
+												<li className={"ItemParent"} key={persona.id}>
 													<Grid item sm={12}>
 														<span
-															onClick={() => this.props.onUpdateClick(adult.id)}
+															onClick={() => this.props.onUpdateClick(persona.id)}
 														>
-															{adult.nom}
+															{persona.nom}
 															<br />
-															{adult.data_naixement}
+															{persona.data_naixement}
 														</span>
 													</Grid>
 													<Grid item sm={12}>
 														<button
 															className="littlebutton"
-															key={"delete" + adult.id}
-															onClick={() => this.props.onRemoveClick(adult.id)}
+															key={"delete" + persona.id}
+															onClick={() => this.props.onRemoveClick(persona.id)}
 														>
 															<i className="material-icons">delete</i>
 														</button>
@@ -121,26 +113,26 @@ class AdultsViewer extends Component<Props, void> {
 						<Grid className={"border-family"} item sm={12}>
 							<Grid container>
 								<Grid item xs sm={12}>
-									<span className={"titleTypePerson"}>Fills</span>
+									<span className={"personRoleTitle"}>Fills</span>
 								</Grid>
-								{adults.filter(adult => adult.rol === "fills").map(adult => (
-									<Grid item sm={4}>
+								{persones.filter((persona: Adult) => esFill(persona)).map((persona: Adult) => (
+									<Grid key={persona.id} item sm={4}>
 										<Grid container spacing={8}>
-											<li className={"ItemParent"} key={adult.id}>
+											<li className={"ItemParent"} key={persona.id}>
 												<Grid item sm={12}>
 													<span
-														onClick={() => this.props.onUpdateClick(adult.id)}
+														onClick={() => this.props.onUpdateClick(persona.id)}
 													>
-														{adult.nom}
+														{persona.nom}
 														<br />
-														{adult.data_naixement}
+														{persona.data_naixement}
 													</span>
 												</Grid>
 												<Grid item sm={12}>
 													<button
 														className="littlebutton"
-														key={"delete" + adult.id}
-														onClick={() => this.props.onRemoveClick(adult.id)}
+														key={"delete" + persona.id}
+														onClick={() => this.props.onRemoveClick(persona.id)}
 													>
 														<i className="material-icons">delete</i>
 													</button>
@@ -152,7 +144,7 @@ class AdultsViewer extends Component<Props, void> {
 								<Grid item sm={12} className={"rightButton"}>
 									<span
 										id="AddAdultButton"
-										onClick={() => this.props.onAddAdultClick("fills")}
+										onClick={() => this.props.onAddAdultClick("fill")}
 									>
 										<Icon>add_circle</Icon>
 									</span>
@@ -164,30 +156,30 @@ class AdultsViewer extends Component<Props, void> {
 				<Grid item xs sm={2} className={"border-family-right"}>
 					<Grid container justify={"space-between"} direction={"column"}>
 						<Grid item xs sm={12}>
-							<span className={"titleTypePerson"}>
+							<span className={"personRoleTitle"}>
 								Altres adults no familiars
 							</span>
 						</Grid>
-						{adults
-							.filter(adult => adult.rol === "altres_adults")
-							.map(adult => (
-								<Grid item sm={12}>
+						{persones
+							.filter((persona: Adult) => esAltresNoFamiliars(persona))
+							.map((persona: Adult) => (
+								<Grid key={persona.id} item sm={12}>
 									<Grid container direction={"column"} spacing={8}>
-										<li className={"ItemParent"} key={adult.id}>
+										<li className={"ItemParent"} key={persona.id}>
 											<Grid item sm={12}>
 												<span
-													onClick={() => this.props.onUpdateClick(adult.id)}
+													onClick={() => this.props.onUpdateClick(persona.id)}
 												>
-													{adult.nom}
+													{persona.nom}
 													<br />
-													{adult.data_naixement}
+													{persona.data_naixement}
 												</span>
 											</Grid>
 											<Grid item sm={12}>
 												<button
 													className="littlebutton"
-													key={"delete" + adult.id}
-													onClick={() => this.props.onRemoveClick(adult.id)}
+													key={"delete" + persona.id}
+													onClick={() => this.props.onRemoveClick(persona.id)}
 												>
 													<i className="material-icons">delete</i>
 												</button>
@@ -219,7 +211,7 @@ class AdultsViewer extends Component<Props, void> {
 					</h1>
 					<Grid container className="AdultsViewerPage">
 						<Grid item xs={12}>
-							{this.renderAdultsList(this.props.adults)}
+							{this.renderPersonesQueConviuenList(this.props.adults)}
 						</Grid>
 					</Grid>
 				</div>
@@ -233,4 +225,4 @@ class AdultsViewer extends Component<Props, void> {
 	}
 }
 
-export default translate("translations")(withStyles(styles)(AdultsViewer));
+export default translate("translations")(AdultsViewer);
