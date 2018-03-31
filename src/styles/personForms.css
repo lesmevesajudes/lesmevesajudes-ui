@@ -1,16 +1,16 @@
-.personNameAlign{
-    text-align:center;
+.personNameAlign {
+    text-align: center;
 }
 .AdultsViewerPage {
-    color: #265A96;
+    color: #265a96;
 }
 .personRoleTitle {
     color: black;
     font-size: 18px;
-    text-align: center
+    text-align: center;
 }
 .testMargin {
-    margin-top:15px;
+    margin-top: 15px;
 }
 .bg-family {
     padding: 20px;
@@ -18,7 +18,8 @@
     border: #dbdbdb 1px solid;
     border-radius: 4px;
 }
-.container-family{
+
+.container-family {
     max-width: 960px;
     margin: 30px auto;
 }

@@ -1,14 +1,14 @@
 //@flow
 import React from "react";
-import { Adult } from "./AdultsTypes";
-import { Checkbox, Select, TextField } from "redux-form-material-ui";
+import {Adult} from "./AdultsTypes";
+import {Checkbox, Select, TextField} from "redux-form-material-ui";
 import AddIcon from "material-ui-icons/Add";
 import ClearInputIcon from "material-ui-icons/Clear";
-import { Trans } from "react-i18next";
-import { withStyles } from "material-ui/styles";
-import { Field, formValueSelector, reduxForm } from "redux-form";
-import { connect } from "react-redux";
-import { Button, MenuItem, Grid } from "material-ui";
+import {Trans} from "react-i18next";
+import {withStyles} from "material-ui/styles";
+import {Field, formValueSelector, reduxForm} from "redux-form";
+import {connect} from "react-redux";
+import {Button, Grid, MenuItem} from "material-ui";
 import edat from "../shared/Edat";
 
 export type AdultFormInitialValues = Adult | { rol: String };
@@ -23,9 +23,8 @@ type Props = {
   esFill: Boolean,
   potTreballar: Boolean,
   escolaritzat: Boolean,
-	rol: string
+  rol: string
 };
-
 
 const textesSegonsRol = {
   pares: "pare/mare",
@@ -482,4 +481,4 @@ AdultsForm = connect(state => {
     rol
   };
 })(AdultsForm);
-export default withStyles(  )(AdultsForm);
+export default withStyles()(AdultsForm);

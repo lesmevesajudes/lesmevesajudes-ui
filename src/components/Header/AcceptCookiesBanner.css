@@ -1,7 +1,8 @@
 .button-close {
     color: white;
     display: block;
-    position: absolute; top: 50%;
+    position: absolute;
+    top: 50%;
     right: 35px;
     line-height: 19px;
     margin-top: -12px;
@@ -26,7 +27,7 @@
 }
 
 .cookie-link {
-    color: #c60c30;;
+    color: #c60c30;
     text-decoration: underline;
     font-style: oblique;
     margin-left: 10px;
@@ -39,5 +40,5 @@
     font-weight: 400;
     line-height: 17px;
     max-width: 75%;
-    word-wrap: break-word
+    word-wrap: break-word;
 }

@@ -1,13 +1,11 @@
-
 .Select {
-
     display: inline-block;
 }
 
-.RegularTextInput{
+.RegularTextInput {
     -webkit-appearance: none;
     -moz-appearance: none;
-    border: 1px solid #CDCDCD;
+    border: 1px solid #cdcdcd;
     font-size: 1rem;
     padding: 0.5rem;
     height: 36px;
@@ -18,13 +16,13 @@
 }
 
 .RegularTextInput:focus {
-    outline: 2px solid #00ACD4;
+    outline: 2px solid #00acd4;
 }
 .ResultList {
-    padding:0;
+    padding: 0;
 }
 .ItemList {
-    padding:0;
+    padding: 0;
 }
 .PersonItems {
     list-style: none;
@@ -32,7 +30,7 @@
 
 .ItemResultOut {
     display: block;
-    margin:0 0 15px 0;
+    margin: 0 0 15px 0;
     line-height: 55px;
     list-style: none;
 }
@@ -42,10 +40,10 @@
     font-size: 20px;
     padding: 10px;
     background: white;
-    margin:0 0 15px 0;
+    margin: 0 0 15px 0;
 }
 .ResultPage {
-    color: #265A96;
+    color: #265a96;
 }
 .ItemGreen {
     display: block;
@@ -55,8 +53,8 @@
     padding: 10px;
 }
 .Separator {
-    border-left: 1px solid #CDCDCD;
-    font-size: 14px
+    border-left: 1px solid #cdcdcd;
+    font-size: 14px;
 }
 .benefitText {
     font-size: 16px;

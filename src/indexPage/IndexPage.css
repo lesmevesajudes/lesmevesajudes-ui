@@ -1,7 +1,7 @@
 .IndexPageImage {
     width: 100%;
     height: 205px;
-    background-color: #16487B;
+    background-color: #16487b;
     text-align: left;
     display: block;
 }
@@ -62,16 +62,16 @@
 .AppLogo {
     min-height: 410px;
     width: 55%;
-    float:left;
+    float: left;
     background-size: contain;
     background: #00acd4 url(./AppLogo.png) no-repeat center;
     -webkit-background-size: contain;
     -moz-background-size: contain;
     -o-background-size: contain;
 }
-.BlockContainer{
-    background-color: #00acd4;
 
+.BlockContainer {
+    background-color: #00acd4;
 }
 
 .Block {

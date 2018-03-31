@@ -18,12 +18,12 @@ ol.progtrckr li {
 }
 ol.progtrckr li.progtrckr-doing {
     color: black;
-    border-bottom: 4px solid #00ACD4;
+    border-bottom: 4px solid #00acd4;
 }
 
 ol.progtrckr li.progtrckr-done {
     color: black;
-    border-bottom: 4px solid #00ACD4;
+    border-bottom: 4px solid #00acd4;
 }
 ol.progtrckr li.progtrckr-todo {
     color: silver;
@@ -43,7 +43,7 @@ ol.progtrckr li:before {
 ol.progtrckr li.progtrckr-doing:before {
     content: "";
     color: white;
-    background-color: #00ACD4;
+    background-color: #00acd4;
     height: 1.2em;
     width: 1.2em;
     line-height: 1.2em;
@@ -54,7 +54,7 @@ ol.progtrckr li.progtrckr-doing:before {
 ol.progtrckr li.progtrckr-done:before {
     content: "";
     color: white;
-    background-color: #00ACD4;
+    background-color: #00acd4;
     height: 1.2em;
     width: 1.2em;
     line-height: 1.2em;
@@ -86,7 +86,7 @@ div.footer-buttons {
 
 .btn-prev {
     background-color: transparent;
-    border: 2px solid #00ACD4;
-    color: #00ACD4;
+    border: 2px solid #00acd4;
+    color: #00acd4;
     font-weight: 600;
 }
