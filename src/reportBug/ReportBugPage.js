@@ -2,10 +2,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {reportBug} from './ReportBugActions';
-import { withRouter } from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import {Field, formValueSelector, reduxForm} from 'redux-form';
-import { TextField, Checkbox } from 'redux-form-material-ui';
-import {Button, Grid, Hidden} from "material-ui";
+import {Checkbox, TextField} from 'redux-form-material-ui';
+import {Button, Grid} from "material-ui";
 import '../styles/main.css';
 
 type Props = {
@@ -21,7 +21,7 @@ const ReportBug = (props: Props) => {
     const { classes, handleSubmit, resultatIncorrecte} = props;
     return (
         <Grid container>
-                <Grid container direction={"column"}>
+          <Grid container direction={"column"} spacing={16}>
                     <h1>Informar del resultat de la simulació</h1>
                     <form name='ReportBug' onSubmit={handleSubmit}>
                         <Grid container alignItems={'stretch'}>
@@ -47,16 +47,19 @@ const ReportBug = (props: Props) => {
                                         fullWidth
                                         component={TextField}
                                     />
-                                    <Hidden xsUp>
-                                        <Field
-                                            name='application_state'
-                                            fullWidth
-                                            component={TextField}
-                                        />
-                                    </Hidden>
+                                  <Field
+                                      name='application_state'
+                                      fullWidth
+                                      component="input"
+                                      type="hidden"
+                                  />
+                                  <Grid container spacing={16} direction={'row'} justify={'space-around'}
+                                        alignItems={'center'}>
                                     <Grid item>
-                                        <Button variant="raised" color="primary" type="submit">Informar</Button>
+                                      <Button variant="raised" color="primary" type="submit"
+                                              style={{margin: 8}}>Informar</Button>
                                     </Grid>
+                                  </Grid>
                                 </Grid>
                             </Grid>
                             </Grid>
