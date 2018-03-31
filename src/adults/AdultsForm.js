@@ -26,23 +26,6 @@ type Props = {
 	rol: string
 };
 
-const styles = theme => ({
-  root: {
-    flexGrow: 1
-  },
-  textNormal: {
-    textAlign: "left"
-  },
-  wrapper: {
-    backgroundColor: "black"
-  },
-  button: {
-    margin: theme.spacing.unit
-  },
-  input: {
-    display: "none"
-  }
-});
 
 const textesSegonsRol = {
   pares: "pare/mare",
@@ -499,4 +482,4 @@ AdultsForm = connect(state => {
     rol
   };
 })(AdultsForm);
-export default withStyles(styles)(AdultsForm);
+export default withStyles(  )(AdultsForm);

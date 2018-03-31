@@ -16,17 +16,6 @@ type Props = {
     resultatIncorrecte: Boolean
 }
 
-const styles = theme => ({
-    button: {
-        margin: theme.spacing.unit,
-    },
-    input: {
-        minWidth: '700px'
-    },
-    hiddenInput: {
-        display: 'none'
-    }
-});
 
 const ReportBug = (props: Props) => {
     const { classes, handleSubmit, resultatIncorrecte} = props;
@@ -82,6 +71,6 @@ function mapStateToProps(state) {
     };
 }
 
-export default withStyles(styles)(connect(mapStateToProps, {reportBug})(withRouter(reduxForm({
+export default withStyles()(connect(mapStateToProps, {reportBug})(withRouter(reduxForm({
     form: 'ReportBug'
 })(ReportBug))));

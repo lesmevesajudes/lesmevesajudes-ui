@@ -9,11 +9,9 @@ import axios from "axios/index";
 import { Grid } from "material-ui";
 import { withStyles } from "material-ui/styles/index";
 
-const styles = () => ({
-  root: {
-    flexGrow: 1
-  }
-});
+
+
+
 type Props = {
   isError: boolean,
   isRequestDone: boolean,
@@ -126,5 +124,5 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, { fetchSimulation })(
-  withStyles(styles)(ResultsPage)
+  withStyles()(ResultsPage)
 );

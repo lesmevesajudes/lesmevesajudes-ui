@@ -26,7 +26,6 @@
     text-transform: none;
     font-size: 14px;
 }
-
 .errorText {
     color: #c60c30;
 }
@@ -43,9 +42,7 @@
     color: #00ACD4;
     font-weight: 600;
 }
-.fixFlex {
-    margin-top: 8px !important
-}
+
 .rightButton {
     text-align:right;
 }
