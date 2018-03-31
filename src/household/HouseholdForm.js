@@ -25,7 +25,7 @@ type Props = {
 let HouseholdForm = (props: Props) => {
     const {esMonoparental, esFamiliaNombrosa, fills, custodies} = props;
     return (
-        <div class="bg-container">
+        <div className="bg-container">
             <h1>Informació sobre el tipus de família</h1>
             <Grid container direction={'row'} justify={'space-around'}>
                     <Grid item xs sm={5}>

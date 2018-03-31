@@ -13,9 +13,9 @@
 
 input {
     min-width: 700px
-},
+}
 .hiddenInput {
-    display: 'none'
+    display: none
 }
 .root {
     flex: 1

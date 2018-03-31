@@ -52,21 +52,31 @@ class ResultsPage extends React.Component<Props> {
   };
 
   render() {
-    const divStyle = { marginTop: "32px", marginBottom: "32px" };
     const { classes } = this.props;
     if (!this.enoughDataForSimulation()) {
       return (
-        <div class="bg-container ">
-          <p class="errorText">Falten dades per a executar la </p>
           <div>
-            <ReportBug onSubmit={this.submitReport} />
+            <div className="bg-container ">
+              <h1>Ajudes a les que podria optar</h1>
+              <Grid className={classes.root} container>
+                <Grid item>
+                  <p className="errorText">Falten dades per a executar la simulació</p>
+                </Grid>
+              </Grid>
+            </div>
+            <div className="bg-container ">
+              <Grid container className={classes.root}>
+                <Grid item xs={12}>
+                  <ReportBug onSubmit={this.submitReport} />
+                </Grid>
+              </Grid>
+            </div>
           </div>
-        </div>
       );
     }
 
     if (!this.props.isRequestDone) {
-      return <div style={divStyle}>Carregant...</div>;
+      return <div>Carregant...</div>;
     }
 
     if (this.props.isError) {
@@ -87,28 +97,31 @@ class ResultsPage extends React.Component<Props> {
     }
 
     return (
-      <div>
-        <div class="bg-container ">
-          <h1>Ajudes a les que podria optar</h1>
-          <Grid className={classes.root} container>
-            <Grid item xs={12}>
-              <PersonalBenefits
-                benefitsForPersons={this.props.resultsData.persones}
-                persons={this.props.persons}
-              />
-            </Grid>
-
-            <Grid item xs={12}>
-              <div>
-                <FamilyBenefits benefits={this.props.resultsData.families} />
-              </div>
-            </Grid>
-          </Grid>
-        </div>
         <div>
-          <ReportBug onSubmit={this.submitReport} />
+          <div className="bg-container ">
+            <h1>Ajudes a les que podria optar</h1>
+            <Grid className={classes.root} container>
+              <Grid item xs={12}>
+                <PersonalBenefits
+                  benefitsForPersons={this.props.resultsData.persones}
+                  persons={this.props.persons}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <div>
+                  <FamilyBenefits benefits={this.props.resultsData.families} />
+                </div>
+              </Grid>
+            </Grid>
+          </div>
+          <div>
+            <Grid container className={classes.root}>
+              <Grid item xs={12}>
+                <ReportBug onSubmit={this.submitReport} />
+              </Grid>
+            </Grid>
+          </div>
         </div>
-      </div>
     );
   }
 }

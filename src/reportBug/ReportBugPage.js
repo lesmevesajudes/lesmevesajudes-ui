@@ -5,8 +5,8 @@ import {reportBug} from './ReportBugActions';
 import { withRouter } from 'react-router-dom';
 import {Field, formValueSelector, reduxForm} from 'redux-form';
 import { TextField, Checkbox } from 'redux-form-material-ui';
-import {Button} from 'material-ui';
-import {withStyles} from "material-ui/styles/index";
+import {Button, Grid, Hidden} from "material-ui";
+import '../styles/main.css';
 
 type Props = {
     currentState: any,
@@ -20,46 +20,50 @@ type Props = {
 const ReportBug = (props: Props) => {
     const { classes, handleSubmit, resultatIncorrecte} = props;
     return (
-        <div>
-            <h1>Informar del resultat de la simulació</h1>
-            <div className="FormContainer">
-                <div class="bg-container extra-padding">
-                <form name="ReportBug" onSubmit={handleSubmit}>
-                    <div>
-                        <div className='field'>
-                            <label><Field name='invalid_result' component={Checkbox}/> El resultat de la simulació NO és correcte.</label>
-                        </div>
-                        {resultatIncorrecte &&
-                            <div className="field">
-                                <label>Resultat esperat</label>
-                                <Field
-                                    name="resultat_esperat"
-                                    component={TextField}
-                                    className={classes.input}
-                                    placeholder='...'/>
-                            </div>
-                        }
-
-                        <div className='field'>
-                            <label>Comentaris</label>
-                            <Field
-                                name='comments'
-                                placeholder='...'
-                                className={classes.input}
-                                component={TextField}
-                            />
-                        </div>
-                        <Field
-                            name='application_state'
-                            className={classes.hiddenInput}
-                            component={TextField}
-                        />
-                        <Button variant="raised" color="primary" type="submit">Informar</Button>
-                    </div>
-                </form>
-                </div>
-            </div>
-        </div>
+        <Grid container>
+                <Grid container direction={"column"}>
+                    <h1>Informar del resultat de la simulació</h1>
+                    <form name='ReportBug' onSubmit={handleSubmit}>
+                        <Grid container alignItems={'stretch'}>
+                          <Grid item xs={12}>
+                            <Grid container direction={"column"} alignItems={"stretch"}>
+                                <Grid item>
+                                    <label><Field name='invalid_result' component={Checkbox}/> El resultat de la simulació NO és correcte.</label>
+                                    {resultatIncorrecte &&
+                                        <Grid item xs={12}>
+                                            <label>Resultat esperat</label>
+                                            <Field
+                                                name="resultat_esperat"
+                                                component={TextField}
+                                                fullWidth
+                                                placeholder='...'
+                                            />
+                                        </Grid>
+                                    }
+                                    <label>Comentaris</label>
+                                    <Field
+                                        name='comments'
+                                        placeholder='...'
+                                        fullWidth
+                                        component={TextField}
+                                    />
+                                    <Hidden xsUp>
+                                        <Field
+                                            name='application_state'
+                                            fullWidth
+                                            component={TextField}
+                                        />
+                                    </Hidden>
+                                    <Grid item>
+                                        <Button variant="raised" color="primary" type="submit">Informar</Button>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                            </Grid>
+                        </Grid>
+                    </form>
+            </Grid>
+        </Grid>
     );
 };
 
@@ -71,6 +75,6 @@ function mapStateToProps(state) {
     };
 }
 
-export default withStyles()(connect(mapStateToProps, {reportBug})(withRouter(reduxForm({
+export default connect(mapStateToProps, {reportBug})(withRouter(reduxForm({
     form: 'ReportBug'
-})(ReportBug))));
+})(ReportBug)));
