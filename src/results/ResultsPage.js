@@ -1,16 +1,13 @@
 import React from "react";
-import { connect } from "react-redux";
-import { fetchSimulation } from "./FetchSimulationAction";
+import {connect} from "react-redux";
+import {fetchSimulation} from "./FetchSimulationAction";
 import PersonalBenefits from "./PersonalBenefits";
 import FamilyBenefits from "./FamilyBenefits";
-import type { AdultId, Adult } from "../adults/AdultsTypes";
+import type {Adult, AdultId} from "../adults/AdultsTypes";
 import ReportBug from "../reportBug/ReportBugPage";
 import axios from "axios/index";
-import { Grid } from "material-ui";
-import { withStyles } from "material-ui/styles/index";
-
-
-
+import {Grid} from "material-ui";
+import {withStyles} from "material-ui/styles/index";
 
 type Props = {
   isError: boolean,
@@ -60,14 +57,16 @@ class ResultsPage extends React.Component<Props> {
               <h1>Ajudes a les que podria optar</h1>
               <Grid className={classes.root} container>
                 <Grid item>
-                  <p className="errorText">Falten dades per a executar la simulació</p>
+                  <p className="errorText">
+                    Falten dades per a executar la simulació
+                  </p>
                 </Grid>
               </Grid>
             </div>
             <div className="bg-container ">
               <Grid container className={classes.root}>
                 <Grid item xs={12}>
-                  <ReportBug onSubmit={this.submitReport} />
+                  <ReportBug onSubmit={this.submitReport}/>
                 </Grid>
               </Grid>
             </div>
@@ -103,13 +102,13 @@ class ResultsPage extends React.Component<Props> {
             <Grid className={classes.root} container>
               <Grid item xs={12}>
                 <PersonalBenefits
-                  benefitsForPersons={this.props.resultsData.persones}
-                  persons={this.props.persons}
+                    benefitsForPersons={this.props.resultsData.persones}
+                    persons={this.props.persons}
                 />
               </Grid>
               <Grid item xs={12}>
                 <div>
-                  <FamilyBenefits benefits={this.props.resultsData.families} />
+                  <FamilyBenefits benefits={this.props.resultsData.families}/>
                 </div>
               </Grid>
             </Grid>
@@ -117,7 +116,7 @@ class ResultsPage extends React.Component<Props> {
           <div>
             <Grid container className={classes.root}>
               <Grid item xs={12}>
-                <ReportBug onSubmit={this.submitReport} />
+                <ReportBug onSubmit={this.submitReport}/>
               </Grid>
             </Grid>
           </div>

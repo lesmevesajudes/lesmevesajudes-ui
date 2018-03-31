@@ -4,7 +4,7 @@
     color: #333333;
 }
 .buttonInfo {
-    background: #D3327E;
+    background: #d3327e;
     color: white;
     padding: 15px;
     border-radius: 4px;
@@ -12,7 +12,6 @@
     font-size: 12px;
 }
 .nextButton {
-
     color: white;
     padding: 15px;
     border-radius: 4px;
@@ -38,11 +37,11 @@
 }
 .CancelButton {
     background: transparent;
-    border: 2px solid #00ACD4;
-    color: #00ACD4;
+    border: 2px solid #00acd4;
+    color: #00acd4;
     font-weight: 600;
 }
 
 .rightButton {
-    text-align:right;
+    text-align: right;
 }
