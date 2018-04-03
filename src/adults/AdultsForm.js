@@ -93,8 +93,8 @@ let AdultsForm = (props: Props) => {
                   <label>
                     <Trans>Sexe</Trans>
                   </label>
-                  <Field id="sexe" name="sexe" fullWidth component={Select}>
-                    <MenuItem value="dona">
+                  <Field id="sexe" name="sexeform" fullWidth component={Select}>
+                    <MenuItem id="donavalue" value="dona">
                       <Trans>Dona</Trans>
                     </MenuItem>
                     <MenuItem value="home">
@@ -456,6 +456,7 @@ let AdultsForm = (props: Props) => {
                 color="primary"
                 type="submit"
                 className={classes.button}
+                name="ButtonValidar"
               >
                 <Trans>
                   Validar <AddIcon />

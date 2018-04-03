@@ -62,7 +62,7 @@ class AdultsViewer extends Component<Props, void> {
 								{adults.filter(adult => adult.rol === "pares").length !== 2 && (
 									<Grid item sm={12} className={"rightButton"}>
 										<span
-											id="AddAdultButton"
+											id="AddParentButton"
 											onClick={() => this.props.onAddAdultClick("pares")}
 										>
 											<Icon>add_circle</Icon>
@@ -106,7 +106,7 @@ class AdultsViewer extends Component<Props, void> {
 									))}
 								<Grid item sm={12} className={"rightButton"}>
 									<span
-										id="AddAdultButton"
+										id="AddOtherFamilyButton"
 										onClick={() =>
 											this.props.onAddAdultClick("altres_adults_familiars")
 										}
@@ -151,7 +151,7 @@ class AdultsViewer extends Component<Props, void> {
 								))}
 								<Grid item sm={12} className={"rightButton"}>
 									<span
-										id="AddAdultButton"
+										id="AddChildButton"
 										onClick={() => this.props.onAddAdultClick("fills")}
 									>
 										<Icon>add_circle</Icon>
@@ -198,7 +198,7 @@ class AdultsViewer extends Component<Props, void> {
 							))}
 						<Grid item sm={12} className={"rightButton"}>
 							<span
-								id="AddAdultButton"
+								id="AddOtherAdultButton"
 								onClick={() => this.props.onAddAdultClick("altres_adults")}
 							>
 								<Icon>add_circle</Icon>
