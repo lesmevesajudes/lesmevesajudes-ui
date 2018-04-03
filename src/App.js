@@ -9,7 +9,6 @@ import WizardPage from "./pages/Wizard";
 import AdultsReducer from "./adults/AdultsReducer";
 import ResultsReducer from "./results/ResultsReducer";
 import RentReducer from "./rent/RentReducer";
-import isDevelopment from "./shared/isDevelopment";
 import "./styles/styles.css";
 import CorporateHeader from "./components/Header/CorporateHeader";
 import ReportBugPage from "./reportBug/ReportBugPage";
@@ -19,14 +18,10 @@ import InfoLloguer from "./pages/InfoLloguer";
 import InfoMenjador from "./pages/InfoMenjador";
 import InfoFonsInfancia from "./pages/InfoFonsInfancia";
 import ScrollToTop from "./components/Common/ScrollToTop";
-import {Reboot} from "material-ui";
+import {CssBaseline} from "material-ui";
 import {reducer as reduxFormReducer} from "redux-form";
+import { ENVIRONMENT } from "./config";
 import HouseholdReducer from "./household/HouseholdReducer";
-
-if (isDevelopment) {
-  //module.hot.accept();
-  console.log("Environment: " + process.env.NODE_ENV);
-}
 
 const reducersCombined = combineReducers({
   results: ResultsReducer,
@@ -39,7 +34,7 @@ const reducersCombined = combineReducers({
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 const extensions =
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
-const store = isDevelopment
+const store = (ENVIRONMENT === "development")
   ? createStoreWithMiddleware(reducersCombined, extensions)
   : createStoreWithMiddleware(reducersCombined);
 
@@ -48,7 +43,7 @@ class App extends Component {
     return (
       <div>
         <CorporateHeader />
-        <Reboot />
+        <CssBaseline />
         <Provider store={store}>
           <BrowserRouter>
             <Switch>
