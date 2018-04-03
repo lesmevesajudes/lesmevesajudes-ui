@@ -63,5 +63,21 @@
   "Domicili habitual": "__STRING_NOT_TRANSLATED__",
   "Resultats": "Results",
   "Hi ha menors a la família?": "__STRING_NOT_TRANSLATED__",
-  "El domicili actual és en règim de lloguer?": "__STRING_NOT_TRANSLATED__"
+  "El domicili actual és en règim de lloguer?": "__STRING_NOT_TRANSLATED__",
+  "Tipus de document de identitat": "Tipus de document de identitat",
+  "DNI": "DNI",
+  "NIE": "NIE",
+  "Passaport": "Passaport",
+  "Data alta padró a l'actual habitatge (sense interrupcions)": "Data alta padró a l'actual habitatge (sense interrupcions)",
+  "Total ingressos bruts 2016": "Total ingressos bruts 2016",
+  "Cancelar <1></1>": "Cancelar <1></1>",
+  "Validar <1></1>": "Validar <1></1>",
+  "Persones de la unitat de convivència": "Persones de la unitat de convivència",
+  "Persones que conviuen": "__NOT_TRANSLATED__",
+  "Família": "__NOT_TRANSLATED__",
+  "Codi postal on es troba l'habitatge": "Codi postal on es troba l'habitatge",
+  "Relació amb l'habitatge": "Relació amb l'habitatge",
+  "Propietari": "Propietari",
+  "Llogater": "Llogater",
+  "Usufructuari": "Usufructuari"
 }
