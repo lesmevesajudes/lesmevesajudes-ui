@@ -1,0 +1,18 @@
+{
+  "name": "Les meves ajudes",
+  "description": "",
+  "env": {
+    "APP_NAME": {
+      "value": "Les meves ajudes"
+    },
+    "NODE_ENV": {
+      "value": "production"
+    }
+  },
+  "image": "heroku/nodejs",
+  "buildpacks": [
+    {
+      "url": "https://github.com/mars/create-react-app-buildpack"
+    }
+  ]
+}
