@@ -46,11 +46,12 @@ const RentForm = (props: Props) => {
                                         <label><Trans>Relació amb l'habitatge</Trans></label>
                                         <Field
                                             name='relacio_habitatge'
+                                            data-test='habitatge'
                                             component={Select}
                                             fullWidth
                                         >
                                             <MenuItem value='propietari'><Trans>Propietari</Trans></MenuItem>
-                                            <MenuItem value='llogater'><Trans>Llogater</Trans></MenuItem>
+                                            <MenuItem data-test='llogater' value='llogater'><Trans>Llogater</Trans></MenuItem>
                                             <MenuItem value='usufructuari'><Trans>Usufructuari</Trans></MenuItem>
                                         </Field>
                                     </div>

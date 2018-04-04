@@ -66,7 +66,7 @@ let HouseholdForm = (props: Props) => {
 
                             }
                             <div className="field">
-                                <label><Field name="es_usuari_serveis_socials" component={Checkbox} fullWidth/> Família usuaria de
+                                <label><Field data-test="es_usuari_serveis_socials" name="es_usuari_serveis_socials" component={Checkbox} fullWidth/> Família usuaria de
                                     serveis socials en seguiment a un CSS o servei especialitzat de l'Ajuntament de
                                     Barcelona</label>
                             </div>
