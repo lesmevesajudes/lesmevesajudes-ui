@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "babel-polyfill": "^6.26.0",
     "i18next": "^10.5.0",
     "i18next-browser-languagedetector": "^2.1.0",
     "i18next-xhr-backend": "^1.5.1",

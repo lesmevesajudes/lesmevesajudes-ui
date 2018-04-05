@@ -1,3 +1,8 @@
+import "core-js/es6/map";
+import "core-js/es6/set";
+import "core-js/library/fn/reflect/apply";
+
+import "core-js/fn/reflect/apply";
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
