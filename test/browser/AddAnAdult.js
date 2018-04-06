@@ -26,21 +26,15 @@ module.exports = {
 			.waitForElementVisible("[data-test='sexe_home']", DEFAULT_TIMEOUT)
 			.click("[data-test='sexe_home']")
 			.pause(200) // La salsa secreta
-			.waitForElementVisible(
-				"[data-test='document_identitat']",
-				DEFAULT_TIMEOUT
-			)
+			.waitForElementVisible("[data-test='document_identitat']",DEFAULT_TIMEOUT)
 			.click("[data-test='document_identitat']")
 			.waitForElementVisible("#menu-tipus_document_identitat", DEFAULT_TIMEOUT)
 			.waitForElementVisible("[data-test='di_dni']", DEFAULT_TIMEOUT)
 			.click("[data-test='di_dni']")
-			.waitForElementVisible(
-				"[data-test='es_usuari_serveis_socials']",
-				DEFAULT_TIMEOUT
-			)
+			.waitForElementVisible("[data-test='es_usuari_serveis_socials']",DEFAULT_TIMEOUT)
 			.click('[data-test="es_usuari_serveis_socials"')
 			.click('button[name="ButtonValidar"]')
-			.pause(3000);
+			.waitForElementVisible("#AddChildButton" DEFAULT_TIMEOUT)
 	},
 	"add an child": browser => {
 		browser
@@ -55,42 +49,32 @@ module.exports = {
 			.waitForElementVisible("[data-test='sexe_home']", DEFAULT_TIMEOUT)
 			.click("[data-test='sexe_home']")
 			.pause(200) // La salsa secreta
-			.waitForElementVisible(
-				"[data-test='document_identitat']",
-				DEFAULT_TIMEOUT
-			)
+			.waitForElementVisible("[data-test='document_identitat']",DEFAULT_TIMEOUT)
 			.click("[data-test='document_identitat']")
 			.waitForElementVisible("#menu-tipus_document_identitat", DEFAULT_TIMEOUT)
 			.waitForElementVisible("[data-test='di_dni']", DEFAULT_TIMEOUT)
 			.click("[data-test='di_dni']")
 			.click('button[name="ButtonValidar"]')
-			.pause(3000)
+			.waitForElementVisible("#next-button" DEFAULT_TIMEOUT)
 			.click("#next-button");
 	},
 	"family settings": browser => {
 		browser
-			.waitForElementVisible(
-				'[data-test="es_usuari_serveis_socials"]',
-				DEFAULT_TIMEOUT
-			)
+			.waitForElementVisible('[data-test="es_usuari_serveis_socials"]',DEFAULT_TIMEOUT)
 			.click('[data-test="es_usuari_serveis_socials"')
-			.pause(3000)
+			.waitForElementVisible("#next-button" DEFAULT_TIMEOUT)
 			.click("#next-button");
 	},
 	"housefold settings": browser => {
 		browser
-			.waitForElementVisible(
-				'input[name="codi_postal_habitatge"]',
-				DEFAULT_TIMEOUT
-			)
+			.waitForElementVisible('input[name="codi_postal_habitatge"]',DEFAULT_TIMEOUT)
 			.setValue('input[name="codi_postal_habitatge"]', "08004")
 			.waitForElementVisible("[data-test='habitatge']", DEFAULT_TIMEOUT)
 			.click("[data-test='habitatge']")
 			.waitForElementVisible("[data-test='llogater']", DEFAULT_TIMEOUT)
 			.click("[data-test='llogater']")
-			.pause(3000)
+			.waitForElementVisible("#next-button" DEFAULT_TIMEOUT)
 			.click("#next-button")
-			.pause(30000);
 	},
 	after: function(browser) {
 		browser.end();
