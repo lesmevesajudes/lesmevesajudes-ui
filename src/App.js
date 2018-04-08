@@ -19,7 +19,7 @@ import InfoLloguer from "./pages/InfoLloguer";
 import InfoMenjador from "./pages/InfoMenjador";
 import InfoFonsInfancia from "./pages/InfoFonsInfancia";
 import ScrollToTop from "./components/Common/ScrollToTop";
-import {Reboot} from "material-ui";
+import {CssBaseline} from "material-ui";
 import {reducer as reduxFormReducer} from "redux-form";
 import HouseholdReducer from "./household/HouseholdReducer";
 
@@ -48,7 +48,7 @@ class App extends Component {
 		return (
 			<div>
 				<CorporateHeader />
-				<Reboot />
+				<CssBaseline />
 				<Provider store={store}>
 					<BrowserRouter>
 						<Switch>
