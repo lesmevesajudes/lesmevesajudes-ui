@@ -1,0 +1,18 @@
+{
+  "name": "ajuts.barcelona",
+  "description": "",
+  "env": {
+    "APP_NAME": {
+      "value": "ajuts.barcelona"
+    },
+    "NODE_ENV": {
+      "value": "production"
+    }
+  },
+  "image": "heroku/nodejs",
+  "buildpacks": [
+    {
+      "url": "https://github.com/mars/create-react-app-buildpack"
+    }
+  ]
+}
