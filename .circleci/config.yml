@@ -1,0 +1,37 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:9.11.1-browsers
+    steps:
+      - checkout
+      - run: mkdir test-reports
+      - run:
+          name: Download Selenium
+          command: |
+            curl -O http://selenium-release.storage.googleapis.com/3.11/selenium-server-standalone-3.11.0.jar
+      - run:
+          name: Start Selenium
+          command: |
+            java -jar selenium-server-standalone-3.11.0.jar -log test-reports/selenium.log
+          background: true
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
+      - run: yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - run:
+          name: Create a production build
+          command: |
+            yarn build
+      - run:
+          name: Start server
+          command: |
+            yarn global add serve
+            serve -s build -p 3000
+          background: true
+      - run: yarn browser_tests --env chrome_headless
