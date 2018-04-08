@@ -12,13 +12,13 @@
 }
 
 input {
-    min-width: 700px
-},
+    min-width: 700px;
+}
 .hiddenInput {
-    display: 'none'
+    display: none;
 }
 .root {
-    flex: 1
+    flex: 1;
 }
 h1 {
     box-sizing: border-box;
@@ -42,7 +42,7 @@ label {
     color: #9a9a9a;
 }
 input:focus {
-    outline:none;
+    outline: none;
 }
 input[type="radio"], input[type="checkbox"] {
     margin-right: 0.5rem;
@@ -53,15 +53,17 @@ button {
     padding: 1rem 2rem;
     text-transform: uppercase;
     font-size: 0.8rem;
-    background: #00ACD4;
+    background: #00acd4;
     color: white;
     border: none;
     margin: 0.5rem 0.5rem;
     border-radius: 0;
 }
-.progtrckr{
-    text-align:center
+
+.progtrckr {
+    text-align: center;
 }
+
 .bg-container {
     background: #f2f2f2;
     border: #dbdbdb 1px solid;
@@ -69,15 +71,18 @@ button {
     min-height: 180px;
     max-width: 960px;
     margin: 30px auto;
-    padding: 20px
+    padding: 20px;
 }
+
 .border-family {
-     border: #dbdbdb 1px solid;
-     border-radius: 4px;
- }
-.extra-padding{
-    padding:20px;
+    border: #dbdbdb 1px solid;
+    border-radius: 4px;
 }
+
+.extra-padding {
+    padding: 20px;
+}
+
 .Item {
     display: block;
     text-align: center;
@@ -85,8 +90,9 @@ button {
     line-height: 55px;
     font-weight: bold;
     background: white;
-    margin:0 0 15px 0;
+    margin: 0 0 15px 0;
 }
+
 .ItemParent {
     border-radius: 8px;
     display: block;
@@ -94,8 +100,8 @@ button {
     font-size: 16px;
     font-weight: bold;
     background: white;
-    width: 100%
+    width: 100%;
 }
 .fixFlex {
-    margin-top: 8px !important
+    margin-top: 8px !important;
 }

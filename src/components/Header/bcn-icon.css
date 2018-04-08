@@ -1,17 +1,18 @@
 @font-face {
-  font-family: 'icoajuntament';
-  src:  url('fonts/icoajuntament.eot?gz9mfl');
-  src:  url('fonts/icoajuntament.eot?gz9mfl#iefix') format('embedded-opentype'),
-    url('fonts/icoajuntament.ttf?gz9mfl') format('truetype'),
-    url('fonts/icoajuntament.woff?gz9mfl') format('woff'),
-    url('fonts/icoajuntament.svg?gz9mfl#icoajuntament') format('svg');
+    font-family: "icoajuntament";
+    src: url("fonts/icoajuntament.eot?gz9mfl");
+    src: url("fonts/icoajuntament.eot?gz9mfl#iefix") format("embedded-opentype"),
+    url("fonts/icoajuntament.ttf?gz9mfl") format("truetype"),
+    url("fonts/icoajuntament.woff?gz9mfl") format("woff"),
+    url("fonts/icoajuntament.svg?gz9mfl#icoajuntament") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
-[class^="bcn-icon-"], [class*=" bcn-icon-"] {
+[class^="bcn-icon-"],
+[class*=" bcn-icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'icoajuntament' !important;
+    font-family: "icoajuntament" !important;
   speak: none;
   font-style: normal;
   font-weight: normal;

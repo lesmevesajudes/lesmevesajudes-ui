@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { applyMiddleware, createStore, combineReducers } from "redux";
-import { Provider } from "react-redux";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import React, {Component} from "react";
+import {applyMiddleware, combineReducers, createStore} from "redux";
+import {Provider} from "react-redux";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
 import promise from "redux-promise";
 
 import IndexPage from "./indexPage/IndexPage";
@@ -11,7 +11,6 @@ import ResultsReducer from "./results/ResultsReducer";
 import RentReducer from "./rent/RentReducer";
 import isDevelopment from "./shared/isDevelopment";
 import "./styles/styles.css";
-import "./select-css.css";
 import CorporateHeader from "./components/Header/CorporateHeader";
 import ReportBugPage from "./reportBug/ReportBugPage";
 import InfoRAI from "./pages/InfoRAI";
@@ -20,8 +19,8 @@ import InfoLloguer from "./pages/InfoLloguer";
 import InfoMenjador from "./pages/InfoMenjador";
 import InfoFonsInfancia from "./pages/InfoFonsInfancia";
 import ScrollToTop from "./components/Common/ScrollToTop";
-import { Reboot } from "material-ui";
-import { reducer as reduxFormReducer } from "redux-form";
+import {Reboot} from "material-ui";
+import {reducer as reduxFormReducer} from "redux-form";
 import HouseholdReducer from "./household/HouseholdReducer";
 
 if (isDevelopment) {
