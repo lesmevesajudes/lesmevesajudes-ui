@@ -1,3 +1,5 @@
+const waitForModalAnimationsToFinishIGuess = 400;
+
 module.exports = {
 	"load index page": browser => {
 		browser
@@ -24,14 +26,13 @@ module.exports = {
 			.click("[data-test='sexe']")
 			.waitForElementVisible("[data-test='sexe_home']")
 			.click("[data-test='sexe_home']")
-			.pause(200) // Hack to let modal close
+			.pause(waitForModalAnimationsToFinishIGuess)
 			.waitForElementVisible("[data-test='document_identitat']")
 			.click("[data-test='document_identitat']")
 			.waitForElementVisible("#menu-tipus_document_identitat")
 			.waitForElementVisible("[data-test='di_dni']")
 			.click("[data-test='di_dni']")
-			.waitForElementVisible("[data-test='es_usuari_serveis_socials']")
-			.click('[data-test="es_usuari_serveis_socials"')
+			.pause(waitForModalAnimationsToFinishIGuess)
 			.waitForElementVisible('button[name="ButtonValidar"]')
 			.click('button[name="ButtonValidar"]')
 			.waitForElementVisible('div.container-family')
@@ -49,18 +50,14 @@ module.exports = {
 			.click("[data-test='sexe']")
 			.waitForElementVisible("[data-test='sexe_home']")
 			.click("[data-test='sexe_home']")
-			.pause(200) // Hack to let modal close
-			.getLocationInView("[data-test='document_identitat']")
+			.pause(waitForModalAnimationsToFinishIGuess)
 			.waitForElementVisible("[data-test='document_identitat']")
 			.click("[data-test='document_identitat']")
 			.waitForElementVisible("#menu-tipus_document_identitat")
 			.waitForElementVisible("[data-test='di_dni']")
 			.click("[data-test='di_dni']")
-			.waitForElementVisible("[data-test='es_usuari_serveis_socials']")
-			.click('[data-test="es_usuari_serveis_socials"')
-			.getLocationInView('button[name="ButtonValidar"]')
+			.pause(waitForModalAnimationsToFinishIGuess)
 			.waitForElementVisible('button[name="ButtonValidar"]')
-			.pause(200) // Hack to let modal close
 			.click('button[name="ButtonValidar"]')
 			.waitForElementVisible('div.container-family')
 			.assert.containsText('li[data-test="Child 1"]', 'Child 1');

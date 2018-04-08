@@ -3,10 +3,12 @@ import { Map } from "immutable";
 
 export type AdultId = string;
 
+export type PersonRole = 'pares'|'fill'|'altres_adults'|'altres_adults_familiars';
+
 export class Adult {
 	id: AdultId;
 	nom: string;
-	rol: string;
+	rol: PersonRole;
 	data_naixement: string;
 	genere: string;
 	tipus_document_identitat: string;

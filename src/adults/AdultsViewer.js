@@ -1,11 +1,11 @@
 //@flow
 import React, { Component } from "react";
-import type { Adult } from "./AdultsTypes";
+import type {Adult, PersonRole} from "./AdultsTypes";
 import { Trans, translate } from "react-i18next";
 import { Grid } from "material-ui";
 import { withStyles } from "material-ui/styles/index";
 import Icon from "material-ui/Icon";
-
+import {esAltresNoFamiliars, esAltresFamiliars, esSustentador} from "../shared/selectorUtils";
 const styles = () => ({
 	root: {
 		flexGrow: 1
@@ -16,7 +16,7 @@ type Props = {
 	adults: Array<Adult>,
 	onRemoveClick: Function,
 	onUpdateClick: Function,
-	onAddAdultClick: Function,
+	onAddAdultClick: (x: PersonRole) => void,
 	classes: Object
 };
 
@@ -32,7 +32,7 @@ class AdultsViewer extends Component<Props, void> {
 								<Grid item xs sm={12}>
 									<span className={"titleTypePerson"}>Pares</span>
 								</Grid>
-								{adults.filter(adult => adult.rol === "pares").map(adult => (
+								{ adults.filter(adult => esSustentador(adult)).map(adult => (
 									<Grid item sm={6}>
 										<Grid container spacing={8}>
 											<li className={"ItemParent"} key={adult.id} data-test={adult.nom}>
@@ -59,7 +59,7 @@ class AdultsViewer extends Component<Props, void> {
 									</Grid>
 								))}
 
-								{adults.filter(adult => adult.rol === "pares").length !== 2 && (
+								{adults.filter(adult => esSustentador(adult)).length !== 2 && (
 									<Grid item sm={12} className={"rightButton"}>
 										<span
 											id="AddParentButton"
@@ -77,7 +77,7 @@ class AdultsViewer extends Component<Props, void> {
 									<span className={"titleTypePerson"}>Altres familiars</span>
 								</Grid>
 								{adults
-									.filter(adult => adult.rol === "altres_adults_familiars")
+									.filter(adult => esAltresFamiliars(adult))
 									.map(adult => (
 										<Grid item sm={6}>
 											<Grid container spacing={8}>
@@ -169,7 +169,7 @@ class AdultsViewer extends Component<Props, void> {
 							</span>
 						</Grid>
 						{adults
-							.filter(adult => adult.rol === "altres_adults")
+							.filter(adult => esAltresNoFamiliars(adult))
 							.map(adult => (
 								<Grid item sm={12}>
 									<Grid container direction={"column"} spacing={8}>

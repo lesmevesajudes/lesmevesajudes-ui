@@ -1,28 +1,16 @@
 {
-  "src_folders" : ["test/browser/"],
-  "output_folder" : "reports",
-  "globals_path" : "nightwatchGlobals.js",
-
-  "selenium" : {
-    "start_process" : false,
-    "log_path" : "",
-    "host" : "127.0.0.1",
-    "port" : 4444,
-    "cli_args" : {
-      "webdriver.chrome.driver" : "test/browser/chromedriver",
-      "webdriver.ie.driver" : ""
-    }
-  },
-
-  "test_settings" : {
-    "default" : {
-      "launch_url" : "http://localhost:3000",
-      "selenium_port"  : 4444,
-      "selenium_host"  : "localhost",
+  "src_folders": [
+    "test/browser/"
+  ],
+  "output_folder": "reports",
+  "globals_path": "nightwatchGlobals.js",
+  "test_settings": {
+    "default": {
+      "launch_url": "http://localhost:3000",
       "silent": true,
-      "screenshots" : {
-        "enabled" : false,
-        "path" : ""
+      "screenshots": {
+        "enabled": false,
+        "path": ""
       },
       "desiredCapabilities": {
         "browserName": "chrome",
@@ -30,12 +18,13 @@
         "acceptSslCerts": true
       }
     },
-
-    "chrome" : {
+    "chrome_headless": {
       "desiredCapabilities": {
-        "browserName": "chrome",
-        "javascriptEnabled": true,
-        "acceptSslCerts": true
+        "chromeOptions": {
+          "args": [
+            "--headless"
+          ]
+        }
       }
     }
   }

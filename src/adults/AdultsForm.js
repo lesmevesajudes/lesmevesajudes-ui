@@ -10,6 +10,7 @@ import { Field, formValueSelector, reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import { Button, MenuItem, Grid } from "material-ui";
 import edat from "../shared/Edat";
+import type {PersonRole} from "./AdultsTypes";
 
 export type AdultFormInitialValues = Adult | { rol: String };
 
@@ -23,10 +24,10 @@ type Props = {
 	esFill: Boolean,
 	potTreballar: Boolean,
 	escolaritzat: Boolean,
-	rol: string
+	rol: PersonRole
 };
 
-const textesSegonsRol = {
+const textesSegonsRol: { [PersonRole]: string } = {
 	pares: "pare/mare",
 	fill: "fill/filla",
 	altres_adults: "altres adults",
@@ -45,6 +46,7 @@ let AdultsForm = (props: Props) => {
 		escolaritzat,
 		rol
 	} = props;
+
 	return (
 		<div className="bg-container">
 			<h1>{`Afegir ${textesSegonsRol[rol]} a la unitat de convivència`}</h1>
