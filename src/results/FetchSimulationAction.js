@@ -100,13 +100,6 @@ function buildRequest(simulationData: SimulationData) {
         es_divorciada_de_familia_reagrupada: addPeriod(
           adult.es_divorciada_de_familia_reagrupada
         ),
-        victima_de_terrorisme: addPeriod(adult.victima_de_terrorisme),
-        ha_residit_a_lextranger_els_ultims_24_mesos: addPeriod(
-          adult.ha_residit_a_lextranger_els_ultims_24_mesos
-        ),
-        resident_a_catalunya_durant_5_anys: addPeriod(
-          adult.resident_a_catalunya_durant_5_anys
-        ),
         ingressat_en_centre_penitenciari: addPeriod(
           adult.ingressat_en_centre_penitenciari
         ),
@@ -127,9 +120,6 @@ function buildRequest(simulationData: SimulationData) {
         ),
         durant_el_mes_anterior_ha_presentat_solicituds_recerca_de_feina: addPeriod(
           adult.durant_el_mes_anterior_ha_presentat_solicituds_recerca_de_feina
-        ),
-        al_corrent_de_les_obligacions_tributaries: addPeriod(
-          adult.al_corrent_de_les_obligacions_tributaries
         ),
         es_escolaritzat_entre_P3_i_4rt_ESO: addPeriod(
           adult.es_escolaritzat_entre_P3_i_4rt_ESO

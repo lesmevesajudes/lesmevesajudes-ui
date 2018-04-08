@@ -217,43 +217,6 @@ let AdultsForm = (props: Props) => {
 												</label>
 											</div>
 										)}
-									<div className="field">
-										<label>
-											<Field
-												name="victima_de_terrorisme"
-												checked={false}
-												component={Checkbox}
-											/>
-											<Trans>Víctima de terrorisme</Trans>
-										</label>
-									</div>
-									{potTreballar && (
-										<div className="field">
-											<label>
-												<Field
-													name="ha_residit_a_lextranger_els_ultims_24_mesos"
-													checked={false}
-													component={Checkbox}
-												/>
-												<Trans>
-													Ha residit a l'extranger durant els últims 24 mesos
-												</Trans>
-											</label>
-										</div>
-									)}
-									{teDNI &&
-										potTreballar && (
-											<div className="field">
-												<label>
-													<Field
-														name="resident_a_catalunya_durant_5_anys"
-														checked={false}
-														component={Checkbox}
-													/>
-													<Trans>Ha residit a Catalunya durant 5 anys</Trans>
-												</label>
-											</div>
-										)}
 									{potTreballar && (
 										<div className="field">
 											<label>
@@ -346,17 +309,6 @@ let AdultsForm = (props: Props) => {
 												</label>
 											</div>
 										)}
-									{potTreballar && (
-										<div className="field">
-											<label>
-												<Field
-													name="al_corrent_de_les_obligacions_tributaries"
-													component={Checkbox}
-												/>
-												<Trans>Al corrent de les obligacions tributàries</Trans>
-											</label>
-										</div>
-									)}
 									{esFill && (
 										<div className="field">
 											<label>
