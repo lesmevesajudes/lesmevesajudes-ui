@@ -21,14 +21,14 @@ jobs:
             java -jar node_modules/selenium-server-standalone/index.jar -log test-reports/selenium.log
           background: true
       - run:
+          name: Create a production build
+          command: |
+            yarn build
+      - run:
           name: Run server
           command: |
             yarn serve
           background: true
-      - run:
-          name: Create a production build
-          command: |
-            yarn build
       - run:
           name: Wait for server
           command: yarn wait-on http://localhost:3000 -t 10000
