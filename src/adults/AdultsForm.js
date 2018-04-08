@@ -38,7 +38,7 @@ let AdultsForm = (props: Props) => {
 	const {
 		classes,
 		esDona,
-		teDNI,
+		//teDNI,
 		esDesocupat,
 		esFill,
 		handleSubmit,
@@ -429,14 +429,14 @@ AdultsForm = connect(state => {
 		selector(state, "rol") === "fill" ||
 		selector(state, "rol") === "infant_acollit";
 	const esDesocupat = selector(state, "situacio_laboral") === "desocupat";
-	const teDNI = selector(state, "tipus_document_identitat") === "DNI";
+	//const teDNI = selector(state, "tipus_document_identitat") === "DNI";
 	const esDona = selector(state, "genere") === "dona";
 	const potTreballar = (edat(selector(state, "data_naixement")) || 0) >= 16;
 	const rol = selector(state, "rol");
 	return {
 		esFill,
 		esDesocupat,
-		teDNI,
+		//teDNI,
 		esDona,
 		potTreballar,
 		rol
