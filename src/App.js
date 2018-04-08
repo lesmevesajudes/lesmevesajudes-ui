@@ -49,7 +49,6 @@ class App extends Component {
 		return (
 			<div>
 				<CorporateHeader />
-				<p>Hola</p>
 				<Reboot />
 				<Provider store={store}>
 					<BrowserRouter>
