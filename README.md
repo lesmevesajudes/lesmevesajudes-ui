@@ -1,5 +1,7 @@
 # Les meves ajudes
 
+[![CircleCI](https://circleci.com/gh/jvalduvieco/lesmevesajudes-ui.svg?style=svg)](https://circleci.com/gh/jvalduvieco/lesmevesajudes-ui)
+
 ## Useful commands
 * start development server:
 ```
