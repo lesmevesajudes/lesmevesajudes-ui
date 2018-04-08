@@ -1,0 +1,35 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:9.11.1-browsers
+    steps:
+      - checkout
+      - run: mkdir test-reports
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
+      - run: yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - run:
+          name: Start Selenium
+          command: |
+            java -jar node_modules/selenium-server-standalone/index.jar -log test-reports/selenium.log
+          background: true
+      - run:
+          name: Create a production build
+          command: |
+            yarn build
+      - run:
+          name: Run server
+          command: |
+            yarn serve
+          background: true
+      - run:
+          name: Wait for server
+          command: yarn wait-on http://localhost:3000 -t 10000
+      - run: yarn browser_tests --env chrome_headless
