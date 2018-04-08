@@ -45,14 +45,13 @@ const ReportBug = (props: Props) => {
                             <Field
                                 name='comments'
                                 placeholder='...'
+                                fullWidth
                                 className={classes.input}
                                 component={TextField}
                             />
                         </div>
                         <Field
-                            name='application_state'
-                            className={classes.hiddenInput}
-                            component={TextField}
+                            component="input" name="application_state" type="hidden"
                         />
                         <Button variant="raised" color="primary" type="submit">Informar</Button>
                     </div>
