@@ -25,7 +25,7 @@ type Props = {
 const RentForm = (props: Props) => {
     const { esLlogater, existeixDeute, teAlgunaPropietat } = props;
     return (
-        <div class="bg-container">
+        <div className="bg-container">
             <h1>Afegir informació sobre el lloguer del domicili habitual</h1>
             <Grid container direction={'row'} justify={'space-around'}>
                     <Grid item xs sm={5}>
@@ -167,7 +167,7 @@ function mapStateToProps(state) {
 export default connect(mapStateToProps)(reduxForm(
     {
         form: 'RentForm',
-        onChange: (values, dispatch, props, previousValues) => {
+        onChange: (values, dispatch) => {
             dispatch(addRent(values));
         },
     })(RentForm));
