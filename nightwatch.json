@@ -1,10 +1,10 @@
 {
   "src_folders" : ["test/browser/"],
   "output_folder" : "reports",
+  "globals_path" : "nightwatchGlobals.js",
 
   "selenium" : {
     "start_process" : false,
-    "server_path" : "test/browser/selenium-server-standalone-3.9.0.jar",
     "log_path" : "",
     "host" : "127.0.0.1",
     "port" : 4444,

@@ -35,8 +35,8 @@ class AdultsViewer extends Component<Props, void> {
 								{adults.filter(adult => adult.rol === "pares").map(adult => (
 									<Grid item sm={6}>
 										<Grid container spacing={8}>
-											<li className={"ItemParent"} key={adult.id}>
-												<Grid item sm={12}>
+											<li className={"ItemParent"} key={adult.id} data-test={adult.nom}>
+												<Grid item sm={12} >
 													<span
 														onClick={() => this.props.onUpdateClick(adult.id)}
 													>
@@ -81,7 +81,7 @@ class AdultsViewer extends Component<Props, void> {
 									.map(adult => (
 										<Grid item sm={6}>
 											<Grid container spacing={8}>
-												<li className={"ItemParent"} key={adult.id}>
+												<li className={"ItemParent"} key={adult.id} data-test={adult.nom}>
 													<Grid item sm={12}>
 														<span
 															onClick={() => this.props.onUpdateClick(adult.id)}
@@ -123,10 +123,10 @@ class AdultsViewer extends Component<Props, void> {
 								<Grid item xs sm={12}>
 									<span className={"titleTypePerson"}>Fills</span>
 								</Grid>
-								{adults.filter(adult => adult.rol === "fills").map(adult => (
+								{adults.filter(adult => adult.rol === "fill").map(adult => (
 									<Grid item sm={4}>
 										<Grid container spacing={8}>
-											<li className={"ItemParent"} key={adult.id}>
+											<li className={"ItemParent"} key={adult.id} data-test={adult.nom}>
 												<Grid item sm={12}>
 													<span
 														onClick={() => this.props.onUpdateClick(adult.id)}
@@ -152,7 +152,7 @@ class AdultsViewer extends Component<Props, void> {
 								<Grid item sm={12} className={"rightButton"}>
 									<span
 										id="AddChildButton"
-										onClick={() => this.props.onAddAdultClick("fills")}
+										onClick={() => this.props.onAddAdultClick("fill")}
 									>
 										<Icon>add_circle</Icon>
 									</span>
@@ -173,7 +173,7 @@ class AdultsViewer extends Component<Props, void> {
 							.map(adult => (
 								<Grid item sm={12}>
 									<Grid container direction={"column"} spacing={8}>
-										<li className={"ItemParent"} key={adult.id}>
+										<li className={"ItemParent"} key={adult.id} data-test={adult.nom}>
 											<Grid item sm={12}>
 												<span
 													onClick={() => this.props.onUpdateClick(adult.id)}
