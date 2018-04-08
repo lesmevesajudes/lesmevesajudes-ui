@@ -23,7 +23,7 @@ const ReportBug = (props: Props) => {
         <div>
             <h1>Informar del resultat de la simulació</h1>
             <div className="FormContainer">
-                <div class="bg-container extra-padding">
+                <div className="bg-container extra-padding">
                 <form name="ReportBug" onSubmit={handleSubmit}>
                     <div>
                         <div className='field'>
