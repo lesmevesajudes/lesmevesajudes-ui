@@ -19,8 +19,8 @@ type Props = {
     esMonoparental: Boolean,
     esFamiliaNombrosa: Boolean,
     fills: Map<AdultId, Adult>,
-    custodies: Object,
-}
+    custodies: Object
+};
 
 let HouseholdForm = (props: Props) => {
     const {esMonoparental, esFamiliaNombrosa, fills, custodies} = props;
@@ -94,7 +94,7 @@ export default connect(mapStateToProps, {addHouseholdData})(
     reduxForm(
         {
             form: 'HouseholdForm',
-            onChange: (values, dispatch, props, previousValues) => {
+            onChange: (values, dispatch) => {
                 dispatch(addHouseholdData(values));
             }
         })(withStyles()(HouseholdForm)));
