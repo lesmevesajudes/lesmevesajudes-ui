@@ -22,7 +22,6 @@ type Props = {
 
 class AdultsViewer extends Component<Props, void> {
 	renderAdultsList(adults: Array<Adult>) {
-		console.log(adults);
 		return (
 			<Grid container alignItems={"stretch"}>
 				<Grid item xs sm={10}>
@@ -33,7 +32,7 @@ class AdultsViewer extends Component<Props, void> {
 									<span className={"titleTypePerson"}>Pares</span>
 								</Grid>
 								{ adults.filter(adult => esSustentador(adult)).map(adult => (
-									<Grid item sm={6}>
+									<Grid item sm={6} key={adult.id}>
 										<Grid container spacing={8}>
 											<li className={"ItemParent"} key={adult.id} data-test={adult.nom}>
 												<Grid item sm={12} >
@@ -79,7 +78,7 @@ class AdultsViewer extends Component<Props, void> {
 								{adults
 									.filter(adult => esAltresFamiliars(adult))
 									.map(adult => (
-										<Grid item sm={6}>
+										<Grid item sm={6} key={adult.id}>
 											<Grid container spacing={8}>
 												<li className={"ItemParent"} key={adult.id} data-test={adult.nom}>
 													<Grid item sm={12}>
@@ -124,7 +123,7 @@ class AdultsViewer extends Component<Props, void> {
 									<span className={"titleTypePerson"}>Fills</span>
 								</Grid>
 								{adults.filter(adult => adult.rol === "fill").map(adult => (
-									<Grid item sm={4}>
+									<Grid item sm={4} key={adult.id}>
 										<Grid container spacing={8}>
 											<li className={"ItemParent"} key={adult.id} data-test={adult.nom}>
 												<Grid item sm={12}>
@@ -171,7 +170,7 @@ class AdultsViewer extends Component<Props, void> {
 						{adults
 							.filter(adult => esAltresNoFamiliars(adult))
 							.map(adult => (
-								<Grid item sm={12}>
+								<Grid item sm={12} key={adult.id}>
 									<Grid container direction={"column"} spacing={8}>
 										<li className={"ItemParent"} key={adult.id} data-test={adult.nom}>
 											<Grid item sm={12}>

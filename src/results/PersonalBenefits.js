@@ -57,6 +57,7 @@ class PersonalBenefits extends React.Component<Props> {
               container
               justify={"space-between"}
               alignItems={"center"}
+              key={benefit.ID}
           >
             <Grid item sm={12}>
               <li className="ItemResult" key={benefit.ID}>
@@ -108,7 +109,7 @@ class PersonalBenefits extends React.Component<Props> {
       );
     } else {
       return (
-          <Grid container xs sm justify={"space-between"} alignItems={"center"}>
+          <Grid container justify={"space-between"} alignItems={"center"} key={person.id}>
             <Grid item sm={12}>
               <li className="ItemResultOut" key={person.id}>
                 <div>
