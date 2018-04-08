@@ -24,14 +24,17 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+       - run:
+          name: Install server
+          command: |
+            yarn global add serve
+       - run:
+          name: Run server
+          command: |
+            serve -s build -p 3000
+          background: true
       - run:
           name: Create a production build
           command: |
             yarn build
-      - run:
-          name: Start server
-          command: |
-            yarn global add serve
-            serve -s build -p 3000
-          background: true
       - run: yarn browser_tests --env chrome_headless
