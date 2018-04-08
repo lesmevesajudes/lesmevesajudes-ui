@@ -6,35 +6,30 @@ jobs:
     steps:
       - checkout
       - run: mkdir test-reports
-      - run:
-          name: Download Selenium
-          command: |
-            curl -O http://selenium-release.storage.googleapis.com/3.11/selenium-server-standalone-3.11.0.jar
-      - run:
-          name: Start Selenium
-          command: |
-            java -jar selenium-server-standalone-3.11.0.jar -log test-reports/selenium.log
-          background: true
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
+      - run:
+          name: Start Selenium
+          command: |
+            java -jar node_modules/selenium-server-standalone/index.jar -log test-reports/selenium.log
+          background: true
       - run: yarn install
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-       - run:
-          name: Install server
-          command: |
-            yarn global add serve
-       - run:
+      - run:
           name: Run server
           command: |
-            serve -s build -p 3000
+            yarn serve
           background: true
       - run:
           name: Create a production build
           command: |
             yarn build
+      - run:
+          name: Wait for server
+          command: yarn wait-on http://localhost:3000 -t 10000
       - run: yarn browser_tests --env chrome_headless
