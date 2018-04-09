@@ -99,3 +99,6 @@ button {
 .fixFlex {
     margin-top: 8px !important
 }
+input.cercabcn {
+    min-width: 190px;
+}
