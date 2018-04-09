@@ -72,7 +72,7 @@ let AdultsForm = (props: Props) => {
                       <Trans>Sexe</Trans>
                     </label>
                     <Field data-test="sexe" name="sexe" fullWidth component={Select}>
-                      <MenuItem data-test="sexe_dona" id="donavalue" value="dona">
+                      <MenuItem data-test="sexe_dona" value="dona">
                         <Trans>Dona</Trans>
                       </MenuItem>
                       <MenuItem data-test="sexe_home" value="home">
