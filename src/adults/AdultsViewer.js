@@ -1,11 +1,11 @@
 //@flow
 import React, { Component } from "react";
-import type { Adult } from "./AdultsTypes";
+import type {Adult, PersonRole} from "./AdultsTypes";
 import { Trans, translate } from "react-i18next";
 import { Grid } from "material-ui";
 import { withStyles } from "material-ui/styles/index";
 import Icon from "material-ui/Icon";
-
+import {esAltresNoFamiliars, esAltresFamiliars, esSustentador} from "../shared/selectorUtils";
 const styles = () => ({
 	root: {
 		flexGrow: 1
@@ -16,13 +16,12 @@ type Props = {
 	adults: Array<Adult>,
 	onRemoveClick: Function,
 	onUpdateClick: Function,
-	onAddAdultClick: Function,
+	onAddAdultClick: (x: PersonRole) => void,
 	classes: Object
 };
 
 class AdultsViewer extends Component<Props, void> {
 	renderAdultsList(adults: Array<Adult>) {
-		console.log(adults);
 		return (
 			<Grid container alignItems={"stretch"}>
 				<Grid item xs sm={10}>
@@ -32,11 +31,11 @@ class AdultsViewer extends Component<Props, void> {
 								<Grid item xs sm={12}>
 									<span className={"titleTypePerson"}>Pares</span>
 								</Grid>
-								{adults.filter(adult => adult.rol === "pares").map(adult => (
-									<Grid item sm={6}>
+								{ adults.filter(adult => esSustentador(adult)).map(adult => (
+									<Grid item sm={6} key={adult.id}>
 										<Grid container spacing={8}>
-											<li className={"ItemParent"} key={adult.id}>
-												<Grid item sm={12}>
+											<li className={"ItemParent"} key={adult.id} data-test={adult.nom}>
+												<Grid item sm={12} >
 													<span
 														onClick={() => this.props.onUpdateClick(adult.id)}
 													>
@@ -59,10 +58,10 @@ class AdultsViewer extends Component<Props, void> {
 									</Grid>
 								))}
 
-								{adults.filter(adult => adult.rol === "pares").length !== 2 && (
+								{adults.filter(adult => esSustentador(adult)).length !== 2 && (
 									<Grid item sm={12} className={"rightButton"}>
 										<span
-											id="AddAdultButton"
+											id="AddParentButton"
 											onClick={() => this.props.onAddAdultClick("pares")}
 										>
 											<Icon>add_circle</Icon>
@@ -77,11 +76,11 @@ class AdultsViewer extends Component<Props, void> {
 									<span className={"titleTypePerson"}>Altres familiars</span>
 								</Grid>
 								{adults
-									.filter(adult => adult.rol === "altres_adults_familiars")
+									.filter(adult => esAltresFamiliars(adult))
 									.map(adult => (
-										<Grid item sm={6}>
+										<Grid item sm={6} key={adult.id}>
 											<Grid container spacing={8}>
-												<li className={"ItemParent"} key={adult.id}>
+												<li className={"ItemParent"} key={adult.id} data-test={adult.nom}>
 													<Grid item sm={12}>
 														<span
 															onClick={() => this.props.onUpdateClick(adult.id)}
@@ -106,7 +105,7 @@ class AdultsViewer extends Component<Props, void> {
 									))}
 								<Grid item sm={12} className={"rightButton"}>
 									<span
-										id="AddAdultButton"
+										id="AddOtherFamilyButton"
 										onClick={() =>
 											this.props.onAddAdultClick("altres_adults_familiars")
 										}
@@ -123,10 +122,10 @@ class AdultsViewer extends Component<Props, void> {
 								<Grid item xs sm={12}>
 									<span className={"titleTypePerson"}>Fills</span>
 								</Grid>
-								{adults.filter(adult => adult.rol === "fills").map(adult => (
-									<Grid item sm={4}>
+								{adults.filter(adult => adult.rol === "fill").map(adult => (
+									<Grid item sm={4} key={adult.id}>
 										<Grid container spacing={8}>
-											<li className={"ItemParent"} key={adult.id}>
+											<li className={"ItemParent"} key={adult.id} data-test={adult.nom}>
 												<Grid item sm={12}>
 													<span
 														onClick={() => this.props.onUpdateClick(adult.id)}
@@ -151,8 +150,8 @@ class AdultsViewer extends Component<Props, void> {
 								))}
 								<Grid item sm={12} className={"rightButton"}>
 									<span
-										id="AddAdultButton"
-										onClick={() => this.props.onAddAdultClick("fills")}
+										id="AddChildButton"
+										onClick={() => this.props.onAddAdultClick("fill")}
 									>
 										<Icon>add_circle</Icon>
 									</span>
@@ -169,11 +168,11 @@ class AdultsViewer extends Component<Props, void> {
 							</span>
 						</Grid>
 						{adults
-							.filter(adult => adult.rol === "altres_adults")
+							.filter(adult => esAltresNoFamiliars(adult))
 							.map(adult => (
-								<Grid item sm={12}>
+								<Grid item sm={12} key={adult.id}>
 									<Grid container direction={"column"} spacing={8}>
-										<li className={"ItemParent"} key={adult.id}>
+										<li className={"ItemParent"} key={adult.id} data-test={adult.nom}>
 											<Grid item sm={12}>
 												<span
 													onClick={() => this.props.onUpdateClick(adult.id)}
@@ -198,7 +197,7 @@ class AdultsViewer extends Component<Props, void> {
 							))}
 						<Grid item sm={12} className={"rightButton"}>
 							<span
-								id="AddAdultButton"
+								id="AddOtherAdultButton"
 								onClick={() => this.props.onAddAdultClick("altres_adults")}
 							>
 								<Icon>add_circle</Icon>

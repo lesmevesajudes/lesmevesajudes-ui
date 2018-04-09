@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React, {Component} from "react";
 import "./CorporateHeader.css";
 import "./core.css";
-import "./bcn-icon.css"
+import "./bcn-icon.css";
 import LogoBCN from "./logo.png";
 import AcceptCookiesBanner from "./AcceptCookiesBanner";
 

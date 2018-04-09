@@ -23,7 +23,7 @@ const ReportBug = (props: Props) => {
         <div>
             <h1>Informar del resultat de la simulació</h1>
             <div className="FormContainer">
-                <div class="bg-container extra-padding">
+                <div className="bg-container extra-padding">
                 <form name="ReportBug" onSubmit={handleSubmit}>
                     <div>
                         <div className='field'>
@@ -45,14 +45,13 @@ const ReportBug = (props: Props) => {
                             <Field
                                 name='comments'
                                 placeholder='...'
+                                fullWidth
                                 className={classes.input}
                                 component={TextField}
                             />
                         </div>
                         <Field
-                            name='application_state'
-                            className={classes.hiddenInput}
-                            component={TextField}
+                            component="input" name="application_state" type="hidden"
                         />
                         <Button variant="raised" color="primary" type="submit">Informar</Button>
                     </div>

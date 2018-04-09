@@ -19,13 +19,13 @@ type Props = {
     esMonoparental: Boolean,
     esFamiliaNombrosa: Boolean,
     fills: Map<AdultId, Adult>,
-    custodies: Object,
-}
+    custodies: Object
+};
 
 let HouseholdForm = (props: Props) => {
     const {esMonoparental, esFamiliaNombrosa, fills, custodies} = props;
     return (
-        <div class="bg-container">
+        <div className="bg-container">
             <h1>Informació sobre el tipus de família</h1>
             <Grid container direction={'row'} justify={'space-around'}>
                     <Grid item xs sm={5}>
@@ -52,8 +52,8 @@ let HouseholdForm = (props: Props) => {
                             {esMonoparental &&
                             fills.valueSeq().map((infant: Adult) =>
                                 <div key={infant.id}>
-                                    <label><Field name={"custodies." + infant.id + ".existeix"}
-                                                  component={Checkbox} fullWidth/> Tinc la custodia de {infant.nom}</label>
+                                    <label><Field name={"custodies." + infant.id + ".existeix"} component={Checkbox}/>
+                                      Tinc la custodia de {infant.nom}</label>
                                     {(custodies !== null && custodies[infant.id] !== null) &&
                                     <div className="field">
                                         <label>Tipus de guardia i custodia:</label>
@@ -66,14 +66,21 @@ let HouseholdForm = (props: Props) => {
 
                             }
                             <div className="field">
-                                <label><Field name="es_usuari_serveis_socials" component={Checkbox} fullWidth/> Família usuaria de
-                                    serveis socials en seguiment a un CSS o servei especialitzat de l'Ajuntament de
-                                    Barcelona</label>
+                                <label>
+                                  <Field data-test="es_usuari_serveis_socials" name="es_usuari_serveis_socials" component={Checkbox}/>
+                                  Família usuaria de serveis socials en seguiment a un CSS o servei especialitzat de l'Ajuntament de Barcelona</label>
                             </div>
                         </form>
                     </Grid>
                     <Grid item xs sm={5} hidden={{ smDown: true }}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis gravida erat. Donec ac nulla et ligula facilisis auctor sed eu enim. In hac habitasse platea dictumst. In ultrices rhoncus felis faucibus blandit. Curabitur scelerisque, urna nec finibus molestie, orci est imperdiet arcu, et fermentum velit est nec nisi. Morbi mollis vel purus sed fringilla. Aliquam ut tellus at justo varius vulputate non in justo. Ut at lorem at augue facilisis varius. Aliquam semper quam a dolor porttitor, et condimentum velit malesuada. In ac diam quis dolor lacinia varius ut sit amet ligula. Nulla facilisi. Integer vestibulum neque ac sagittis consequat. Morbi non odio lorem.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis gravida erat.
+                      Donec ac nulla et ligula facilisis auctor sed eu enim. In hac habitasse platea dictumst.
+                      In ultrices rhoncus felis faucibus blandit. Curabitur scelerisque, urna nec finibus molestie,
+                      orci est imperdiet arcu, et fermentum velit est nec nisi. Morbi mollis vel purus sed fringilla.
+                      Aliquam ut tellus at justo varius vulputate non in justo. Ut at lorem at augue facilisis varius.
+                      Aliquam semper quam a dolor porttitor, et condimentum velit malesuada.
+                      In ac diam quis dolor lacinia varius ut sit amet ligula. Nulla facilisi.
+                      Integer vestibulum neque ac sagittis consequat. Morbi non odio lorem.
                     </Grid>
             </Grid>
         </div>
@@ -94,7 +101,7 @@ export default connect(mapStateToProps, {addHouseholdData})(
     reduxForm(
         {
             form: 'HouseholdForm',
-            onChange: (values, dispatch, props, previousValues) => {
+            onChange: (values, dispatch) => {
                 dispatch(addHouseholdData(values));
             }
         })(withStyles()(HouseholdForm)));

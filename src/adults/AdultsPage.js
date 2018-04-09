@@ -39,7 +39,6 @@ class AdultsPage extends React.Component<Props, State> {
   }
 
   handleAddAdultClick = (rol: String) => {
-    console.log(rol);
     this.setState({
       initialFormValues: { rol },
       editingAdult: true
