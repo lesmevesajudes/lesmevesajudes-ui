@@ -102,6 +102,11 @@ button {
     background: white;
     width: 100%;
 }
+
 .fixFlex {
-    margin-top: 8px !important;
+    margin-top: 8px !important
+}
+
+input.cercabcn {
+    min-width: 190px;
 }
