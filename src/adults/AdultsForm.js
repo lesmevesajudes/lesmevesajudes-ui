@@ -98,7 +98,7 @@ let AdultsForm = (props: Props) => {
                     </Field>
                     <label>
                       <Trans>
-                        Data alta padró a l'actual habitatge (sense interrupcions)
+                        Data alta padró a l&apos;actual habitatge (sense interrupcions)
                       </Trans>
                     </label>
                     <Field name="data_alta_padro" placeholder="2005-01-21" type="date" component={TextField} fullWidth
@@ -160,7 +160,7 @@ let AdultsForm = (props: Props) => {
                     {potTreballar &&
                     <label>
                       <Field name="ha_treballat_a_l_estranger_6_mesos" checked={false} component={Checkbox}/>
-                      <Trans>Ha treballat a l'estranger 6 mesos</Trans>
+                      <Trans>Ha treballat a l&apos;estranger 6 mesos</Trans>
                     </label>
                     }
                     {potTreballar && esDesocupat &&
@@ -181,7 +181,7 @@ let AdultsForm = (props: Props) => {
                     {potTreballar && esDesocupat &&
                     <label>
                       <Field name="demandant_d_ocupacio_durant_12_mesos" checked={false} component={Checkbox}/>
-                      <Trans>Demandant d'ocupació durant 12 mesos</Trans>
+                      <Trans>Demandant d&apos;ocupació durant 12 mesos</Trans>
                     </label>
                     }
                     {potTreballar && esDesocupat &&
@@ -196,14 +196,14 @@ let AdultsForm = (props: Props) => {
                     {esFill &&
                     <label>
                       <Field name="es_escolaritzat_entre_P3_i_4rt_ESO" component={Checkbox}/>
-                      Està escolaritzat entre P4 i 4rt d'ESO
+                      Està escolaritzat entre P4 i 4rt d&apos;ESO
                     </label>
                     }
                     {esFill && escolaritzat &&
                     <Grid item>
                       <label>
                         <Field name="utilitza_el_servei_de_menjador" component={Checkbox}/>
-                        Utilitza el servei de menjador de l'escola
+                        Utilitza el servei de menjador de l&apos;escola
                       </label>
                     </Grid>
                     }
