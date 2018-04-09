@@ -10,6 +10,7 @@ import {Field, formValueSelector, reduxForm} from 'redux-form';
 import {MenuItem, Grid} from 'material-ui';
 import {Checkbox, TextField, Select} from 'redux-form-material-ui';
 import {Trans} from 'react-i18next';
+import DescriptionText from "../components/Common/DescriptionText"
 
 type Props = {
   initialValues: ?Rent,
@@ -29,10 +30,9 @@ const RentForm = (props: Props) => {
         <Grid container direction={'row'} justify={'space-around'}>
           <Grid item xs sm={5}>
             <form name='RentForm'>
-              <div>
                 <div>
-                  <div className='field'>
-                    <div className='field'>
+                  <div>
+                    <div>
                       <label><Trans>Codi postal on es troba l'habitatge</Trans></label>
                       <Field
                           required
@@ -55,7 +55,7 @@ const RentForm = (props: Props) => {
                     </Field>
                   </div>
                   {esLlogater &&
-                  <div className='field'>
+                  <div>
                     <label>Titular del contracte de lloguer</label>
                     <Field
                         name='titular_contracte_de_lloguer_id'
@@ -68,7 +68,7 @@ const RentForm = (props: Props) => {
                     </Field>
                   </div>}
                   {esLlogater &&
-                  <div className='field'>
+                  <div>
                     <label>Data signatura del contracte d'arrendament</label>
                     <Field
                         name='data_signatura_contracte_arrendament'
@@ -80,18 +80,18 @@ const RentForm = (props: Props) => {
                     />
                   </div>}
                   {esLlogater &&
-                  <div className='field'>
+                  <div>
                     <label><Field name='relacio_de_parentiu_amb_el_propietari' component={Checkbox}/>
                       Algun membre de la família té relació de parentiu amb el propietari de l'habitatge</label>
                   </div>}
                   {esLlogater &&
-                  <div className='field'>
+                  <div>
                     <label><Field name='existeix_deute_en_el_pagament_del_lloguer' component={Checkbox}/>
                       Existeix un deute en el pagament del lloguer</label>
                   </div>}
 
                   {esLlogater && existeixDeute &&
-                  <div className='field'>
+                  <div>
                     <label>Import total del deute (&euro;)</label>
                     <Field
                         name='import_del_deute_amb_el_propietari'
@@ -101,13 +101,13 @@ const RentForm = (props: Props) => {
                   </div>}
 
                   {esLlogater &&
-                  <div className='field'>
+                  <div>
                     <label><Field name='lloguer_domiciliat' component={Checkbox}/> El pagament del lloguer està
                       domiciliat</label>
                   </div>}
 
                   {esLlogater &&
-                  <div className='field'>
+                  <div>
                     <label>Import mensual del lloguer (&euro;)</label>
                     <Field
                         name='import_del_lloguer'
@@ -121,13 +121,13 @@ const RentForm = (props: Props) => {
                     //              Preguntar titular hipoteca
                   }
 
-                  <div className='field'>
+                  <div>
                     <label>
                       <Field name='tinc_alguna_propietat_a_part_habitatge_habitual' component={Checkbox}/>
                       Tinc alguna propietat a part de l'habitatge habitual</label>
                   </div>
                   {teAlgunaPropietat &&
-                  <div className='field'>
+                  <div>
                     <label>Valor cadastral finques urbanes (&euro;)</label>
                     <Field
                         name='valor_cadastral_finques_urbanes'
@@ -144,12 +144,10 @@ const RentForm = (props: Props) => {
                     // Valor finca urbana
                   }
                 </div>
-              </div>
             </form>
           </Grid>
           <Grid item xs sm={5}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A corporis cum cupiditate esse est eum eveniet
-            incidunt laboriosam natus neque, nisi non odit placeat porro quasi rem vero voluptate voluptatum!
+              <DescriptionText/>
           </Grid>
 
         </Grid>

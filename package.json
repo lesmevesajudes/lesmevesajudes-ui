@@ -34,7 +34,6 @@
     "selenium-server-standalone": "^2.53.1",
     "serve": "^6.5.3",
     "wait-on": "^2.1.0"
-
   },
   "scripts": {
     "flow": "flow",

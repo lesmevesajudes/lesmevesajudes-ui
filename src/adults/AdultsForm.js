@@ -11,7 +11,7 @@ import { connect } from "react-redux";
 import { Button, MenuItem, Grid } from "material-ui";
 import edat from "../shared/Edat";
 import type {PersonRole} from "./AdultsTypes";
-
+import DescriptionText from "../components/Common/DescriptionText"
 export type AdultFormInitialValues = Adult | { rol: String };
 
 type Props = {
@@ -144,7 +144,7 @@ let AdultsForm = (props: Props) => {
 										required
 									/>
 									{potTreballar && (
-										<div className="field">
+										<div>
 											<label>
 												<Trans>Situació laboral</Trans>
 											</label>
@@ -193,7 +193,7 @@ let AdultsForm = (props: Props) => {
 									/>
 									{esDona &&
 										!esFill && (
-											<div className="field">
+											<div>
 												<label>
 													<Field
 														name="victima_violencia_de_genere"
@@ -206,7 +206,7 @@ let AdultsForm = (props: Props) => {
 										)}
 									{esDona &&
 										!esFill && (
-											<div className="field">
+											<div>
 												<label>
 													<Field
 														name="es_divorciada_de_familia_reagrupada"
@@ -218,7 +218,7 @@ let AdultsForm = (props: Props) => {
 											</div>
 										)}
 									{potTreballar && (
-										<div className="field">
+										<div>
 											<label>
 												<Field
 													name="ingressat_en_centre_penitenciari"
@@ -229,7 +229,7 @@ let AdultsForm = (props: Props) => {
 											</label>
 										</div>
 									)}
-									<div className="field">
+									<div>
 										<label>
 											<Field
 												name="es_orfe_dels_dos_progenitors"
@@ -240,7 +240,7 @@ let AdultsForm = (props: Props) => {
 										</label>
 									</div>
 									{potTreballar && (
-										<div className="field">
+										<div>
 											<label>
 												<Field
 													name="ha_treballat_a_l_estranger_6_mesos"
@@ -253,7 +253,7 @@ let AdultsForm = (props: Props) => {
 									)}
 									{potTreballar &&
 										esDesocupat && (
-											<div className="field">
+											<div>
 												<label>
 													<Field
 														name="en_els_ultims_12_mesos_ha_fet_baixa_voluntaria_de_la_feina"
@@ -269,7 +269,7 @@ let AdultsForm = (props: Props) => {
 										)}
 									{potTreballar &&
 										esDesocupat && (
-											<div className="field">
+											<div>
 												<label>
 													<Field
 														name="ha_esgotat_prestacio_de_desocupacio"
@@ -282,7 +282,7 @@ let AdultsForm = (props: Props) => {
 										)}
 									{potTreballar &&
 										esDesocupat && (
-											<div className="field">
+											<div>
 												<label>
 													<Field
 														name="demandant_d_ocupacio_durant_12_mesos"
@@ -295,7 +295,7 @@ let AdultsForm = (props: Props) => {
 										)}
 									{potTreballar &&
 										esDesocupat && (
-											<div className="field">
+											<div>
 												<label>
 													<Field
 														name="durant_el_mes_anterior_ha_presentat_solicituds_recerca_de_feina"
@@ -310,7 +310,7 @@ let AdultsForm = (props: Props) => {
 											</div>
 										)}
 									{esFill && (
-										<div className="field">
+										<div>
 											<label>
 												<Field
 													name="es_escolaritzat_entre_P3_i_4rt_ESO"
@@ -322,7 +322,7 @@ let AdultsForm = (props: Props) => {
 									)}
 									{esFill &&
 										escolaritzat && (
-											<div className="field">
+											<div>
 												<label>
 													<Field
 														name="utilitza_el_servei_de_menjador"
@@ -334,7 +334,7 @@ let AdultsForm = (props: Props) => {
 										)}
 									{esFill &&
 										escolaritzat && (
-											<div className="field">
+											<div>
 												<label>
 													<Field name="te_beca_menjador" component={Checkbox} />{" "}
 													Té beca menjador
@@ -342,7 +342,7 @@ let AdultsForm = (props: Props) => {
 											</div>
 										)}
 									{esFill && (
-										<div className="field">
+										<div>
 											<label>
 												<Field name="en_acolliment" component={Checkbox} /> En
 												acolliment
@@ -350,7 +350,7 @@ let AdultsForm = (props: Props) => {
 										</div>
 									)}
 									{esFill && (
-										<div className="field">
+										<div>
 											<label>
 												<Field
 													name="en_guardia_i_custodia"
@@ -361,7 +361,7 @@ let AdultsForm = (props: Props) => {
 										</div>
 									)}
 									{esFill && (
-										<div className="field">
+										<div>
 											<label>
 												<Field
 													name="beneficiari_fons_infancia_2017"
@@ -374,17 +374,7 @@ let AdultsForm = (props: Props) => {
 								</Grid>
 							</Grid>
 							<Grid item md={5} hidden={{ smDown: true }}>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-								quis gravida erat. Donec ac nulla et ligula facilisis auctor sed
-								eu enim. In hac habitasse platea dictumst. In ultrices rhoncus
-								felis faucibus blandit. Curabitur scelerisque, urna nec finibus
-								molestie, orci est imperdiet arcu, et fermentum velit est nec
-								nisi. Morbi mollis vel purus sed fringilla. Aliquam ut tellus at
-								justo varius vulputate non in justo. Ut at lorem at augue
-								facilisis varius. Aliquam semper quam a dolor porttitor, et
-								condimentum velit malesuada. In ac diam quis dolor lacinia
-								varius ut sit amet ligula. Nulla facilisi. Integer vestibulum
-								neque ac sagittis consequat. Morbi non odio lorem.
+								<DescriptionText/>
 							</Grid>
 						</Grid>
 					</Grid>

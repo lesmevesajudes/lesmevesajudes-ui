@@ -53,7 +53,7 @@ class ResultsPage extends React.Component<Props> {
           <div>
             <div className="bg-container ">
               <h1>Ajudes a les que podria optar</h1>
-              <Grid className={classes.root} container>
+              <Grid container>
                 <Grid item>
                   <p className="errorText">
                     Falten dades per a executar la simulació
@@ -62,7 +62,7 @@ class ResultsPage extends React.Component<Props> {
               </Grid>
             </div>
             <div className="bg-container ">
-              <Grid container className={classes.root}>
+              <Grid container>
                 <Grid item xs={12}>
                   <ReportBug onSubmit={this.submitReport}/>
                 </Grid>
