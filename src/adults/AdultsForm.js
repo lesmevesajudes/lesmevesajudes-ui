@@ -49,7 +49,7 @@ let AdultsForm = (props: Props) => {
   } = props;
 
   return (
-      <div className="bg-container">
+      <Grid container className="bg-container">
         <h1>{`Afegir ${textesSegonsRol[rol]} a la unitat de convivència`}</h1>
         <form onSubmit={handleSubmit}>
           <Field component="input" name="id" type="hidden"/>
@@ -255,7 +255,7 @@ let AdultsForm = (props: Props) => {
             </Grid>
           </Grid>
         </form>
-      </div>
+      </Grid>
   );
 };
 //El icono AddIcon, se deberia añadir Absolute, 25% y relative al button para probar si funciona bien el tema de align, pero es un parche.
