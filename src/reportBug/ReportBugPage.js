@@ -5,7 +5,7 @@ import {reportBug} from './ReportBugActions';
 import { withRouter } from 'react-router-dom';
 import {Field, formValueSelector, reduxForm} from 'redux-form';
 import { TextField, Checkbox } from 'redux-form-material-ui';
-import {Button} from 'material-ui';
+import {Button, Grid} from 'material-ui';
 import {withStyles} from "material-ui/styles/index";
 
 type Props = {
@@ -20,27 +20,28 @@ type Props = {
 const ReportBug = (props: Props) => {
     const { classes, handleSubmit, resultatIncorrecte} = props;
     return (
-        <div>
-            <h1>Informar del resultat de la simulació</h1>
-            <div className="FormContainer">
-                <div className="bg-container extra-padding">
+        <Grid container className="container-family">
+            <Grid item sm={12}>
+              <h1 >Informar del resultat de la simulació</h1>
+            </Grid>
+            <Grid item sm={12}>
+                <Grid item className="bg-container extra-padding">
                 <form name="ReportBug" onSubmit={handleSubmit}>
-                    <div>
-                        <div className='field'>
+                        <Grid item >
                             <label><Field name='invalid_result' component={Checkbox}/> El resultat de la simulació NO és correcte.</label>
-                        </div>
+                        </Grid>
                         {resultatIncorrecte &&
-                            <div className="field">
+                            <Grid item>
                                 <label>Resultat esperat</label>
                                 <Field
                                     name="resultat_esperat"
                                     component={TextField}
                                     className={classes.input}
                                     placeholder='...'/>
-                            </div>
+                            </Grid>
                         }
 
-                        <div className='field'>
+                        <Grid item>
                             <label>Comentaris</label>
                             <Field
                                 name='comments'
@@ -49,16 +50,15 @@ const ReportBug = (props: Props) => {
                                 className={classes.input}
                                 component={TextField}
                             />
-                        </div>
+                        </Grid>
                         <Field
                             component="input" name="application_state" type="hidden"
                         />
                         <Button variant="raised" color="primary" type="submit">Informar</Button>
-                    </div>
                 </form>
-                </div>
-            </div>
-        </div>
+                </Grid>
+            </Grid>
+        </Grid>
     );
 };
 

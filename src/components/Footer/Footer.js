@@ -1,12 +1,13 @@
 import React, {Component} from "react";
 import "./Footer.css";
+import {Grid} from 'material-ui';
 
 class AppFooter extends Component {
   render() {
     return (
         <footer>
-          <div className="footer">
-            <div className="footer-content">
+          <Grid container className="footer">
+            <Grid item className="footer-content">
               <ul>
                 <li className="city-council">© Ajuntament de Barcelona</li>
                 <li className="department">
@@ -21,8 +22,8 @@ class AppFooter extends Component {
                   <a href="/ca/accessibilitat">Accessibilitat</a>
                 </li>
               </ul>
-            </div>
-          </div>
+            </Grid>
+          </Grid>
         </footer>
     );
   }

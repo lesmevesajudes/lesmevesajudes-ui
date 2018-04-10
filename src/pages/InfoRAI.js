@@ -1,13 +1,13 @@
 import React from "react";
 import "./InfoPage.css";
 import AppHeader from "../components/AppHeader/AppHeader";
-
+import {Grid} from 'material-ui'
 class InfoRAI extends React.Component {
   render() {
     return (
-        <div>
+        <Grid container className="container-family">
           <AppHeader/>
-          <div className="Main">
+          <Grid item sm={12} className="Main">
             <h1>Renda activa d'inserció</h1>
             <span>
             L’objectiu de la renda activa d’inserció (RAI) és incrementar les
@@ -55,8 +55,8 @@ class InfoRAI extends React.Component {
                 </a>
               </li>
             </ul>
-          </div>
-        </div>
+          </Grid>
+        </Grid>
     );
   }
 }

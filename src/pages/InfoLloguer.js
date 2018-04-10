@@ -1,13 +1,14 @@
 import React from "react";
 import "./InfoPage.css";
 import AppHeader from "../components/AppHeader/AppHeader";
+import {Grid} from 'material-ui'
 
 class InfoLloguer extends React.Component {
   render() {
     return (
-        <div>
+        <Grid container className="container-family">
           <AppHeader/>
-          <div className="Main">
+          <Grid item sm={12} className="Main">
             <h1>
               Habitatge - Ajuda per pagament del lloguer (renovables, especial
               urgències, borsa i > 65 anys)
@@ -41,8 +42,8 @@ class InfoLloguer extends React.Component {
                 </a>
               </li>
             </ul>
-          </div>
-        </div>
+          </Grid>
+        </Grid>
     );
   }
 }

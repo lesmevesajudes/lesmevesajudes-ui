@@ -28,8 +28,8 @@ class AdultsViewer extends Component<Props, void> {
 					<Grid container wrap={"wrap"}>
 						<Grid className={"border-family"} item sm={6}>
 							<Grid container>
-								<Grid item xs sm={12}>
-									<span className={"titleTypePerson"}>Pares</span>
+								<Grid item xs sm={12} className={"titleTypePerson"}>
+									<span >Pares</span>
 								</Grid>
 								{ adults.filter(adult => esSustentador(adult)).map(adult => (
 									<Grid item sm={6} key={adult.id}>
@@ -72,8 +72,8 @@ class AdultsViewer extends Component<Props, void> {
 						</Grid>
 						<Grid className={"border-family"} item sm={6}>
 							<Grid container>
-								<Grid item xs sm={12}>
-									<span className={"titleTypePerson"}>Altres familiars</span>
+								<Grid item xs sm={12} className={"titleTypePerson"}>
+									<span>Altres familiars</span>
 								</Grid>
 								{adults
 									.filter(adult => esAltresFamiliars(adult))
@@ -119,8 +119,8 @@ class AdultsViewer extends Component<Props, void> {
 					<Grid container wrap={"wrap"} className={"fixFlex"}>
 						<Grid className={"border-family"} item sm={12}>
 							<Grid container>
-								<Grid item xs sm={12}>
-									<span className={"titleTypePerson"}>Fills</span>
+								<Grid item xs sm={12} className={"titleTypePerson"}>
+									<span>Fills</span>
 								</Grid>
 								{adults.filter(adult => adult.rol === "fill").map(adult => (
 									<Grid item sm={4} key={adult.id}>
@@ -162,8 +162,8 @@ class AdultsViewer extends Component<Props, void> {
 				</Grid>
 				<Grid item xs sm={2} className={"border-family"}>
 					<Grid container justify={"space-between"} direction={"column"}>
-						<Grid item xs sm={12}>
-							<span className={"titleTypePerson"}>
+						<Grid item xs sm={12} className={"titleTypePerson"}>
+							<span>
 								Altres adults no familiars
 							</span>
 						</Grid>
@@ -211,8 +211,8 @@ class AdultsViewer extends Component<Props, void> {
 
 	render() {
 		return (
-			<div className="container-family">
-				<div className="bg-family">
+			<Grid container className="container-family">
+				<Grid item   sm={12} xs={12} className="bg-family">
 					<h1>
 						<Trans>Persones de la unitat de convivència</Trans>
 					</h1>
@@ -221,13 +221,13 @@ class AdultsViewer extends Component<Props, void> {
 							{this.renderAdultsList(this.props.adults)}
 						</Grid>
 					</Grid>
-				</div>
-				<div className="fixFlex">
+				</Grid>
+				<Grid item  sm={12} xs={12} className="fixFlex">
 					<span>
 						<Icon>add_circle</Icon> <span>Afegir un altre família</span>
 					</span>
-				</div>
-			</div>
+				</Grid>
+			</Grid>
 		);
 	}
 }

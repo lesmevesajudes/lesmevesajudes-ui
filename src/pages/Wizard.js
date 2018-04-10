@@ -7,7 +7,7 @@ import "./Wizard.css";
 import AppHeader from "../components/AppHeader/AppHeader";
 import { translate } from "react-i18next";
 import HouseholdForm from "../household/HouseholdForm";
-
+import {Grid} from 'material-ui'
 class WizardPage extends Component {
   render() {
     const { t } = this.props;
@@ -20,7 +20,7 @@ class WizardPage extends Component {
     ];
 
     return (
-      <div>
+      <Grid>
         <AppHeader />
         <StepZilla
           steps={steps}
@@ -31,7 +31,7 @@ class WizardPage extends Component {
           nextButtonCls="btn btn-next btn-primary btn-lg pull-right nextButton"
           backButtonCls="btn btn-prev btn-primary btn-lg pull-left backButton"
         />
-      </div>
+      </Grid>
     );
   }
 }

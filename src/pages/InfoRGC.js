@@ -1,13 +1,14 @@
 import React from "react";
 import "./InfoPage.css";
 import AppHeader from "../components/AppHeader/AppHeader";
+import {Grid} from 'material-ui'
 
 class InfoRGC extends React.Component {
   render() {
     return (
-        <div>
+        <Grid container className="container-family">
           <AppHeader/>
-          <div className="Main">
+          <Grid item sm={12} className="Main">
             <h1>Renda Garantida de Ciutadania</h1>
             <p>
               La Renda garantida de ciutadania (RGC) és la prestació social a
@@ -50,8 +51,8 @@ class InfoRGC extends React.Component {
                 </a>
               </li>
             </ul>
-          </div>
-        </div>
+          </Grid>
+        </Grid>
     );
   }
 }
