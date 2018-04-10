@@ -33,7 +33,7 @@ class AdultsViewer extends Component<Props, void> {
 									<span >Pares</span>
 								</Grid>
 								{ adults.filter(adult => esSustentador(adult)).map(adult => (
-									<PersonShowCase adult={adult}/>
+                    <PersonShowCase key={adult.id} adult={adult}/>
 								))}
 
 								{adults.filter(adult => esSustentador(adult)).length !== 2 && (
@@ -56,7 +56,7 @@ class AdultsViewer extends Component<Props, void> {
 								{adults
 									.filter(adult => esAltresFamiliars(adult))
 									.map(adult => (
-                      <PersonShowCase adult={adult}/>
+                      <PersonShowCase key={adult.id} adult={adult}/>
 									))}
 								<Grid item sm={12} className={"rightButton"}>
 									<span
@@ -78,7 +78,7 @@ class AdultsViewer extends Component<Props, void> {
 									<span>Fills</span>
 								</Grid>
 								{adults.filter(adult => adult.rol === "fill").map(adult => (
-                      <PersonShowCase adult={adult}/>
+                      <PersonShowCase key={adult.id} adult={adult}/>
 								))}
 								<Grid item sm={12} className={"rightButton"}>
 									<span
@@ -102,7 +102,7 @@ class AdultsViewer extends Component<Props, void> {
 						{adults
 							.filter(adult => esAltresNoFamiliars(adult))
 							.map(adult => (
-                      <PersonShowCase adult={adult}/>
+                      <PersonShowCase key={adult.id} adult={adult}/>
 							))}
 						<Grid item sm={12} className={"rightButton"}>
 							<span
