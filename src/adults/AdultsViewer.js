@@ -6,6 +6,7 @@ import { Grid } from "material-ui";
 import { withStyles } from "material-ui/styles/index";
 import Icon from "material-ui/Icon";
 import {esAltresNoFamiliars, esAltresFamiliars, esSustentador} from "../shared/selectorUtils";
+import PersonShowCase from "./PersonShowCase";
 const styles = () => ({
 	root: {
 		flexGrow: 1
@@ -32,30 +33,7 @@ class AdultsViewer extends Component<Props, void> {
 									<span >Pares</span>
 								</Grid>
 								{ adults.filter(adult => esSustentador(adult)).map(adult => (
-									<Grid item sm={6} key={adult.id}>
-										<Grid container spacing={8}>
-											<li className={"ItemParent"} key={adult.id} data-test={adult.nom}>
-												<Grid item sm={12} >
-													<span
-														onClick={() => this.props.onUpdateClick(adult.id)}
-													>
-														{adult.nom}
-														<br />
-														{adult.data_naixement}
-													</span>
-												</Grid>
-												<Grid item sm={12}>
-													<button
-														className="littlebutton"
-														key={"delete" + adult.id}
-														onClick={() => this.props.onRemoveClick(adult.id)}
-													>
-														<i className="material-icons">delete</i>
-													</button>
-												</Grid>
-											</li>
-										</Grid>
-									</Grid>
+									<PersonShowCase adult={adult}/>
 								))}
 
 								{adults.filter(adult => esSustentador(adult)).length !== 2 && (
@@ -78,30 +56,7 @@ class AdultsViewer extends Component<Props, void> {
 								{adults
 									.filter(adult => esAltresFamiliars(adult))
 									.map(adult => (
-										<Grid item sm={6} key={adult.id}>
-											<Grid container spacing={8}>
-												<li className={"ItemParent"} key={adult.id} data-test={adult.nom}>
-													<Grid item sm={12}>
-														<span
-															onClick={() => this.props.onUpdateClick(adult.id)}
-														>
-															{adult.nom}
-															<br />
-															{adult.data_naixement}
-														</span>
-													</Grid>
-													<Grid item sm={12}>
-														<button
-															className="littlebutton"
-															key={"delete" + adult.id}
-															onClick={() => this.props.onRemoveClick(adult.id)}
-														>
-															<i className="material-icons">delete</i>
-														</button>
-													</Grid>
-												</li>
-											</Grid>
-										</Grid>
+                      <PersonShowCase adult={adult}/>
 									))}
 								<Grid item sm={12} className={"rightButton"}>
 									<span
@@ -123,30 +78,7 @@ class AdultsViewer extends Component<Props, void> {
 									<span>Fills</span>
 								</Grid>
 								{adults.filter(adult => adult.rol === "fill").map(adult => (
-									<Grid item sm={4} key={adult.id}>
-										<Grid container spacing={8}>
-											<li className={"ItemParent"} key={adult.id} data-test={adult.nom}>
-												<Grid item sm={12}>
-													<span
-														onClick={() => this.props.onUpdateClick(adult.id)}
-													>
-														{adult.nom}
-														<br />
-														{adult.data_naixement}
-													</span>
-												</Grid>
-												<Grid item sm={12}>
-													<button
-														className="littlebutton"
-														key={"delete" + adult.id}
-														onClick={() => this.props.onRemoveClick(adult.id)}
-													>
-														<i className="material-icons">delete</i>
-													</button>
-												</Grid>
-											</li>
-										</Grid>
-									</Grid>
+                      <PersonShowCase adult={adult}/>
 								))}
 								<Grid item sm={12} className={"rightButton"}>
 									<span
@@ -170,30 +102,7 @@ class AdultsViewer extends Component<Props, void> {
 						{adults
 							.filter(adult => esAltresNoFamiliars(adult))
 							.map(adult => (
-								<Grid item sm={12} key={adult.id}>
-									<Grid container direction={"column"} spacing={8}>
-										<li className={"ItemParent"} key={adult.id} data-test={adult.nom}>
-											<Grid item sm={12}>
-												<span
-													onClick={() => this.props.onUpdateClick(adult.id)}
-												>
-													{adult.nom}
-													<br />
-													{adult.data_naixement}
-												</span>
-											</Grid>
-											<Grid item sm={12}>
-												<button
-													className="littlebutton"
-													key={"delete" + adult.id}
-													onClick={() => this.props.onRemoveClick(adult.id)}
-												>
-													<i className="material-icons">delete</i>
-												</button>
-											</Grid>
-										</li>
-									</Grid>
-								</Grid>
+                      <PersonShowCase adult={adult}/>
 							))}
 						<Grid item sm={12} className={"rightButton"}>
 							<span
