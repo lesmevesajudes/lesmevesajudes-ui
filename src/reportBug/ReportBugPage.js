@@ -16,7 +16,6 @@ type Props = {
     resultatIncorrecte: Boolean
 }
 
-
 const ReportBug = (props: Props) => {
     const { classes, handleSubmit, resultatIncorrecte} = props;
     return (
@@ -33,27 +32,14 @@ const ReportBug = (props: Props) => {
                         {resultatIncorrecte &&
                             <Grid item>
                                 <label>Resultat esperat</label>
-                                <Field
-                                    name="resultat_esperat"
-                                    component={TextField}
-                                    className={classes.input}
-                                    placeholder='...'/>
+                                <Field name="resultat_esperat" component={TextField} className={classes.input} placeholder='...' />
                             </Grid>
                         }
-
                         <Grid item>
                             <label>Comentaris</label>
-                            <Field
-                                name='comments'
-                                placeholder='...'
-                                fullWidth
-                                className={classes.input}
-                                component={TextField}
-                            />
+                            <Field name='comments' placeholder='...' fullWidth className={classes.input} component={TextField} />
                         </Grid>
-                        <Field
-                            component="input" name="application_state" type="hidden"
-                        />
+                        <Field component="input" name="application_state" type="hidden" />
                         <Button variant="raised" color="primary" type="submit">Informar</Button>
                 </form>
                 </Grid>
