@@ -99,7 +99,7 @@ class CorporateHeader extends Component {
                                 <li>
                                     <form action="https://cercador.barcelona.cat/ca">
                                         <div className="bcnbrand-input">
-                                            <input class="cercabcn" type="text" name="query" placeholder="Cerca a barcelona.cat..." tabIndex="5" title="Cerca a barcelona.cat" data-ga="Cerca"/>
+                                            <input className="cercabcn" type="text" name="query" placeholder="Cerca a barcelona.cat..." tabIndex="5" title="Cerca a barcelona.cat" data-ga="Cerca"/>
                                                 <button type="submit" tabIndex="6" title="Cerca a barcelona.cat" data-ga="Cerca">
                                                     <span className="bcnbrand-icon bcn-icon-cerca"/>
                                                 </button>

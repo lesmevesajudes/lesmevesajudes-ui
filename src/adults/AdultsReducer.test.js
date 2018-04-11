@@ -3,7 +3,7 @@ import AdultsReducer, {initAdultState, serialize} from "./AdultsReducer";
 import {addAdult, removeAdult} from "./AdultsActions";
 
 describe("AdultsReducer", () => {
-  it("should add a adult", () => {
+  it("should add a person", () => {
     expect(
         serialize(
             AdultsReducer(
@@ -23,7 +23,7 @@ describe("AdultsReducer", () => {
       }
     ]);
   }),
-      it("should add a adult to a preexisting adult", () => {
+      it("should add a person to a preexisting person", () => {
         expect(
             serialize(
                 AdultsReducer(
@@ -54,7 +54,7 @@ describe("AdultsReducer", () => {
           }
         ]);
       }),
-      it("add should update a adult to if id exists", () => {
+      it("add should update a person to if id exists", () => {
         expect(
             serialize(
                 AdultsReducer(
@@ -80,7 +80,7 @@ describe("AdultsReducer", () => {
           }
         ]);
       }),
-      it("add remove a adult", () => {
+      it("add remove a person", () => {
         expect(
             serialize(
                 AdultsReducer(
