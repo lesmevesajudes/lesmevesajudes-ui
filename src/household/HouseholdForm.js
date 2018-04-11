@@ -10,7 +10,6 @@ import {Adult} from "../adults/AdultsTypes";
 import type {AdultId} from "../adults/AdultsTypes";
 import {Map} from 'immutable';
 import {esFamiliaNombrosa, esFill, esSustentador} from "../shared/selectorUtils";
-import {withStyles} from "material-ui/styles/index";
 import DescriptionText from "../components/Common/DescriptionText"
 
 type Props = {
@@ -98,4 +97,4 @@ export default connect(mapStateToProps, {addHouseholdData})(
           onChange: (values, dispatch) => {
             dispatch(addHouseholdData(values));
           }
-        })(withStyles()(HouseholdForm)));
+        })(HouseholdForm));

@@ -7,16 +7,15 @@ import type {Adult, AdultId} from "../adults/AdultsTypes";
 import ReportBug from "../reportBug/ReportBugPage";
 import axios from "axios/index";
 import {Grid} from "material-ui";
-import {withStyles} from "material-ui/styles/index";
 
 type Props = {
   isError: boolean,
   isRequestDone: boolean,
   simulationData: any,
   resultsData: any,
-  persons: Map<AdultId, Adult>,
-  classes: Object
+  persons: Map<AdultId, Adult>
 };
+
 class ResultsPage extends React.Component<Props> {
   enoughDataForSimulation() {
     return this.props.persons.count() > 0;
@@ -25,29 +24,29 @@ class ResultsPage extends React.Component<Props> {
   componentDidMount() {
     if (this.enoughDataForSimulation()) this.props.fetchSimulation(this.props.simulationData);
   }
+
   submitReport = values => {
     // print the form values to the console
     console.log("form submit:", values);
     axios
-      .post("https://lesmevesajudes-ss.herokuapp.com/api/simulations", {
-        comments: values.comments || "",
-        expected_result: values.resultat_esperat || "",
-        application_state: values.application_state,
-        valid_result: !values.invalid_result
-      })
-      .then(function(response) {
-        console.log("saved successfully", response);
-        //kill em all
-        window.location.reload(true);
-      })
-      .catch(function(error) {
-        console.error(error);
-        alert(error);
-      });
+        .post("https://lesmevesajudes-ss.herokuapp.com/api/simulations", {
+          comments: values.comments || "",
+          expected_result: values.resultat_esperat || "",
+          application_state: values.application_state,
+          valid_result: !values.invalid_result
+        })
+        .then(function (response) {
+          console.log("saved successfully", response);
+          //kill em all
+          window.location.reload(true);
+        })
+        .catch(function (error) {
+          console.error(error);
+          alert(error);
+        });
   };
 
   render() {
-    const { classes } = this.props;
     if (!this.enoughDataForSimulation()) {
       return (
           <div>
@@ -78,18 +77,18 @@ class ResultsPage extends React.Component<Props> {
 
     if (this.props.isError) {
       return (
-        <div>
-          <h1>Error fent la petició</h1>
-          <p>{this.props.resultsData.message}</p>
-          <p>Details:</p>
-          <p>
-            {JSON.stringify(
-              JSON.parse(this.props.resultsData.response.request.responseText),
-              null,
-              2
-            )}
-          </p>
-        </div>
+          <div>
+            <h1>Error fent la petició</h1>
+            <p>{this.props.resultsData.message}</p>
+            <p>Details:</p>
+            <p>
+              {JSON.stringify(
+                  JSON.parse(this.props.resultsData.response.request.responseText),
+                  null,
+                  2
+              )}
+            </p>
+          </div>
       );
     }
 
@@ -97,7 +96,7 @@ class ResultsPage extends React.Component<Props> {
         <div>
           <div className="bg-container ">
             <h1>Ajudes a les que podria optar</h1>
-            <Grid className={classes.root} container>
+            <Grid container>
               <Grid item xs={12}>
                 <PersonalBenefits
                     benefitsForPersons={this.props.resultsData.persones}
@@ -112,7 +111,7 @@ class ResultsPage extends React.Component<Props> {
             </Grid>
           </div>
           <div>
-            <Grid container className={classes.root}>
+            <Grid container>
               <Grid item xs={12}>
                 <ReportBug onSubmit={this.submitReport}/>
               </Grid>
@@ -133,6 +132,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { fetchSimulation })(
-  withStyles()(ResultsPage)
-);
+export default connect(mapStateToProps, {fetchSimulation})(ResultsPage);

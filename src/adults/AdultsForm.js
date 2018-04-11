@@ -5,7 +5,6 @@ import {Checkbox, Select, TextField} from "redux-form-material-ui";
 import AddIcon from "material-ui-icons/Add";
 import ClearInputIcon from "material-ui-icons/Clear";
 import {Trans} from "react-i18next";
-import {withStyles} from "material-ui/styles";
 import {Field, formValueSelector, reduxForm} from "redux-form";
 import {connect} from "react-redux";
 import {Button, MenuItem, Grid} from "material-ui";
@@ -258,11 +257,14 @@ let AdultsForm = (props: Props) => {
       </Grid>
   );
 };
+
 //El icono AddIcon, se deberia añadir Absolute, 25% y relative al button para probar si funciona bien el tema de align, pero es un parche.
 AdultsForm = reduxForm({
   form: "AdultsForm"
 })(AdultsForm);
+
 const selector = formValueSelector("AdultsForm");
+
 AdultsForm = connect(state => {
   // can select values individually
   const esFill =
@@ -282,4 +284,5 @@ AdultsForm = connect(state => {
     rol
   };
 })(AdultsForm);
-export default withStyles()(AdultsForm);
+
+export default AdultsForm;
