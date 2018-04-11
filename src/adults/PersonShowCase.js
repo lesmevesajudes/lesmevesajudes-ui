@@ -14,11 +14,10 @@ class PersonShowCase extends Component <Props> {
           <Grid container spacing={8}>
             <li className={"ItemParent"} key={person.id} data-test={person.nom}>
               <Grid item sm={12}>
-						  <span onClick={() => this.props.onUpdateClick(person.id)}>
-								{person.nom}
-                <br/>
-                {person.data_naixement}
-							</span>
+                <span onClick={() => this.props.onUpdateClick(person.id)}>
+                  {person.nom}<br/>
+                  {person.data_naixement}
+                </span>
               </Grid>
               <Grid item sm={12}>
                 <button className="littlebutton"
