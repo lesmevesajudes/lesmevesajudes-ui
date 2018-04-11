@@ -1,5 +1,6 @@
 //@flow
 import React from "react";
+import type {PersonRole} from "./AdultsTypes";
 import {Adult} from "./AdultsTypes";
 import {Checkbox, Select, TextField} from "redux-form-material-ui";
 import AddIcon from "material-ui-icons/Add";
@@ -7,9 +8,8 @@ import ClearInputIcon from "material-ui-icons/Clear";
 import {Trans} from "react-i18next";
 import {Field, formValueSelector, reduxForm} from "redux-form";
 import {connect} from "react-redux";
-import {Button, MenuItem, Grid} from "material-ui";
+import {Button, Grid, MenuItem} from "material-ui";
 import edat from "../shared/Edat";
-import type {PersonRole} from "./AdultsTypes";
 import DescriptionText from "../components/Common/DescriptionText"
 
 export type AdultFormInitialValues = Adult | { rol: String };
@@ -36,7 +36,6 @@ const textesSegonsRol: { [PersonRole]: string } = {
 
 let AdultsForm = (props: Props) => {
   const {
-    classes,
     esDona,
     //teDNI,
     esDesocupat,
@@ -52,7 +51,7 @@ let AdultsForm = (props: Props) => {
         <h1>{`Afegir ${textesSegonsRol[rol]} a la unitat de convivència`}</h1>
         <form onSubmit={handleSubmit}>
           <Field component="input" name="id" type="hidden"/>
-          <Grid container className={classes.root}>
+          <Grid container>
             <Grid item xs={12}>
               <Grid container direction={"row"} justify={"space-around"} alignItems={"stretch"}>
                 <Grid item xs={12} md={5}>
@@ -240,7 +239,7 @@ let AdultsForm = (props: Props) => {
             </Grid>
             <Grid item sm={12}>
               <Grid container justify={"space-around"}>
-                <Button variant="raised" color="secondary" className={classes.button} onClick={props.onCancel}>
+                <Button variant="raised" color="secondary" onClick={props.onCancel}>
                   <Trans>
                     Cancelar <ClearInputIcon/>
                   </Trans>
