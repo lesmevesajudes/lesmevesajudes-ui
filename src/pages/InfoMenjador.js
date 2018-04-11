@@ -1,13 +1,14 @@
 import React from "react";
 import "./InfoPage.css";
 import AppHeader from "../components/AppHeader/AppHeader";
+import {Grid} from 'material-ui'
 
 class InfoMenjador extends React.Component {
   render() {
     return (
-        <div>
+        <Grid container className="container-family">
           <AppHeader/>
-          <div className="Main">
+          <Grid item sm={12} className="Main">
             <h1>Beques menjador</h1>
             <p>
               És un ajut individual de menjador (que cobreix del tot o parcialment
@@ -35,8 +36,8 @@ class InfoMenjador extends React.Component {
                 </a>
               </li>
             </ul>
-          </div>
-        </div>
+          </Grid>
+        </Grid>
     );
   }
 }

@@ -77,8 +77,11 @@ button {
 .border-family {
     border: #dbdbdb 1px solid;
     border-radius: 4px;
+    padding: 8px
 }
-
+.titleTypePerson {
+  margin-bottom: 50px
+}
 .extra-padding {
     padding: 20px;
 }
@@ -102,6 +105,11 @@ button {
     background: white;
     width: 100%;
 }
+
 .fixFlex {
-    margin-top: 8px !important;
+    margin-top: 8px !important
+}
+
+input.cercabcn {
+    min-width: 190px;
 }
