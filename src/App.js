@@ -22,6 +22,7 @@ import ScrollToTop from "./components/Common/ScrollToTop";
 import {CssBaseline} from "material-ui";
 import {reducer as reduxFormReducer} from "redux-form";
 import HouseholdReducer from "./household/HouseholdReducer";
+import {composeWithDevTools} from "redux-devtools-extension";
 
 if (isDevelopment) {
 	//module.hot.accept();
@@ -36,12 +37,11 @@ const reducersCombined = combineReducers({
 	form: reduxFormReducer // mounted under "form"
 });
 
-const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
-const extensions =
-	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
+const middlewares = applyMiddleware(promise);
+
 const store = isDevelopment
-	? createStoreWithMiddleware(reducersCombined, extensions)
-	: createStoreWithMiddleware(reducersCombined);
+    ? createStore(reducersCombined, composeWithDevTools(middlewares))
+    : createStore(reducersCombined, middlewares);
 
 class App extends Component {
 	render() {
