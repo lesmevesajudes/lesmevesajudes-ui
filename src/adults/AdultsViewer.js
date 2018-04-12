@@ -17,7 +17,6 @@ type Props = {
 
 class AdultsViewer extends Component<Props, void> {
   renderAdultsList(adults: Array<Adult>) {
-    console.log(this.props)
     return (
         <Grid container alignItems={"stretch"}>
           <Grid item xs sm={10}>
