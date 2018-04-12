@@ -5,7 +5,7 @@ jobs:
       - image: circleci/node:9.11.1-browsers
     steps:
       - checkout
-      - run: mkdir test-reports
+      - run: mkdir reports
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
@@ -18,7 +18,7 @@ jobs:
       - run:
           name: Start Selenium
           command: |
-            java -jar node_modules/selenium-server-standalone/index.jar -log test-reports/selenium.log
+            java -jar node_modules/selenium-server-standalone/index.jar -log reports/selenium.log
           background: true
       - run:
           name: Create a production build
@@ -33,3 +33,5 @@ jobs:
           name: Wait for server
           command: yarn wait-on http://localhost:3000 -t 10000
       - run: yarn browser_tests --env chrome_headless
+      - store_artifacts:
+          path: ./reports/failure_screenshots/
