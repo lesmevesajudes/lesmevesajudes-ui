@@ -17,6 +17,7 @@ type Props = {
 
 class AdultsViewer extends Component<Props, void> {
   renderAdultsList(adults: Array<Adult>) {
+    console.log(this.props)
     return (
         <Grid container alignItems={"stretch"}>
           <Grid item xs sm={10}>
@@ -27,7 +28,7 @@ class AdultsViewer extends Component<Props, void> {
                     <span>Pares</span>
                   </Grid>
                   {adults.filter(adult => esSustentador(adult)).map(adult => (
-                      <PersonShowCase key={adult.id} person={adult}/>
+                      <PersonShowCase person={adult} removePerson={this.props.onRemoveClick} updatePerson={this.props.onUpdateClick}/>
                   ))}
 
                   {adults.filter(adult => esSustentador(adult)).length !== 2 && (
@@ -50,7 +51,7 @@ class AdultsViewer extends Component<Props, void> {
                   {adults
                       .filter(adult => esAltresFamiliars(adult))
                       .map(adult => (
-                          <PersonShowCase key={adult.id} person={adult}/>
+                          <PersonShowCase person={adult} removePerson={this.props.onRemoveClick} updatePerson={this.props.onUpdateClick}/>
                       ))}
                   <Grid item sm={12} className={"rightButton"}>
 									<span
@@ -72,7 +73,7 @@ class AdultsViewer extends Component<Props, void> {
                     <span>Fills</span>
                   </Grid>
                   {adults.filter(adult => adult.rol === "fill").map(adult => (
-                      <PersonShowCase key={adult.id} person={adult}/>
+                      <PersonShowCase person={adult} removePerson={this.props.onRemoveClick} updatePerson={this.props.onUpdateClick}/>
                   ))}
                   <Grid item sm={12} className={"rightButton"}>
 									<span
@@ -96,7 +97,7 @@ class AdultsViewer extends Component<Props, void> {
               {adults
                   .filter(adult => esAltresNoFamiliars(adult))
                   .map(adult => (
-                      <PersonShowCase key={adult.id} person={adult}/>
+                      <PersonShowCase person={adult} removePerson={this.props.onRemoveClick} updatePerson={this.props.onUpdateClick}/>
                   ))}
               <Grid item sm={12} className={"rightButton"}>
 							<span

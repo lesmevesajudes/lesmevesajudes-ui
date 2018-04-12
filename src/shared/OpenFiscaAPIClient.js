@@ -4,7 +4,7 @@ import isDevelopment from "./isDevelopment";
 class OpenFiscaAPIClient {
   url: ?string = undefined;
   productionURL: string = "https://lesmevesajudes-api.herokuapp.com";
-  developmentURL: string = "http://localhost:2000";
+  developmentURL: string = "https://lesmevesajudes-api.herokuapp.com";
 
   constructor(isDevel: boolean) {
     if (typeof isDevel === "undefined") {
