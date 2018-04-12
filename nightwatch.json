@@ -19,6 +19,12 @@
       }
     },
     "chrome_headless": {
+      "screenshots": {
+        "enabled": true,
+        "on_failure": true,
+        "on_error": true,
+        "path": "./reports/failure_screenshots/"
+      },
       "desiredCapabilities": {
         "chromeOptions": {
           "args": [
