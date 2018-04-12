@@ -39,7 +39,7 @@ const reducersCombined = combineReducers({
 
 const store = isDevelopment
     ? createStore(reducersCombined, composeWithDevTools(applyMiddleware(promise)))
-    : createStore(reducersCombined, promise);
+    : createStore(reducersCombined, applyMiddleware(promise));
 
 class App extends Component {
 	render() {
