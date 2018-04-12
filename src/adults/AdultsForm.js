@@ -153,7 +153,7 @@ let AdultsForm = (props: Props) => {
                     }
                     {esDona && victimaViolenciaDeGenere &&
                     <label>
-                      <Field name="perceb_alguna_ajuda_que_no_li_permeti_treballar" checked={false}
+                      <Field name="percep_prestacions_incompatibles_amb_la_feina" checked={false}
                              component={Checkbox}/>
                       <Trans>Perceb alguna ajuda que no li permeti treballar?</Trans>
                     </label>
@@ -180,7 +180,7 @@ let AdultsForm = (props: Props) => {
                     <label>
                       <Field name="ingressat_en_centre_penitenciari_pot_treballar" checked={false}
                              component={Checkbox}/>
-                      <Trans>Ingressat en centre penitenciari</Trans>
+                      <Trans>El règim penitenciari li permet treballar fora del centre</Trans>
                     </label>
                     }
                     <label>

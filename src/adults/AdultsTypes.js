@@ -27,7 +27,7 @@ export class Adult {
   ingressos_bruts: number = 0;
   inscrit_com_a_demandant_docupacio: boolean = false;
   nom: string;
-  perceb_alguna_ajuda_que_no_li_permeti_treballar: boolean = false;
+  percep_prestacions_incompatibles_amb_la_feina: boolean = false;
   rol: PersonRole;
   situacio_laboral: string;
   tipus_document_identitat: string;

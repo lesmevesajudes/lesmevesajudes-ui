@@ -136,7 +136,7 @@ function buildRequest(simulationData: SimulationData) {
             esMonoparental(simulationData.adults)
           ),
         ),
-        perceb_alguna_ajuda_que_no_li_permeti_treballar: addPeriod(adult.perceb_alguna_ajuda_que_no_li_permeti_treballar),
+        percep_prestacions_incompatibles_amb_la_feina: addPeriod(adult.percep_prestacions_incompatibles_amb_la_feina),
         victima_violencia_domestica: addPeriod(adult.victima_violencia_domestica),
         AE_230_mensual: addPeriod(null),
         AE_230_01_mensual: addPeriod(null),
