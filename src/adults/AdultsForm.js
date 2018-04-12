@@ -19,7 +19,6 @@ type Props = {
   esDesocupat: Boolean,
   esDona: Boolean,
   esFill: Boolean,
-  haCobratLaRAIEnElsUltims12Mesos: Boolean,
   handleSubmit: Function,
   haTreballatALEstranger6Mesos: Boolean,
   ingressatEnCentrePenitenciari: Boolean,
@@ -45,7 +44,6 @@ let AdultsForm = (props: Props) => {
     esDona,
     esFill,
     handleSubmit,
-    haCobratLaRAIEnElsUltims12Mesos,
     haTreballatALEstranger6Mesos,
     ingressatEnCentrePenitenciari,
     inscritComADemandantDocupacio,
@@ -116,8 +114,8 @@ let AdultsForm = (props: Props) => {
                         <Trans>Situació laboral</Trans>
                       </label>
                       <Field name="situacio_laboral" component={Select} fullWidth>
-                        <MenuItem value="treball_compte_alie_jornada_complerta">
-                          <Trans>Treballa per compte alié jornada complerta</Trans>
+                        <MenuItem value="treball_compte_daltri_jornada_complerta">
+                          <Trans>Treballa per compte d'altri jornada complerta</Trans>
                         </MenuItem>
                         <MenuItem value="treball_compte_alie_jornada_parcial">
                           <Trans>Treballa per compte alié jornada parcial</Trans>
@@ -204,9 +202,7 @@ let AdultsForm = (props: Props) => {
                     <label>
                       <Field name="en_els_ultims_12_mesos_ha_fet_baixa_voluntaria_de_la_feina" checked={false}
                              component={Checkbox}/>
-                      <Trans>
-                        En els últims 12 mesos ha fet baixa voluntaria de la feina
-                      </Trans>
+                      <Trans>En els últims 12 mesos ha fet baixa voluntaria de la feina</Trans>
                     </label>
                     }
                     {potTreballar && esDesocupat &&
@@ -232,52 +228,46 @@ let AdultsForm = (props: Props) => {
                     <label>
                       <Field name="durant_el_mes_anterior_ha_presentat_solicituds_recerca_de_feina" checked={false}
                              component={Checkbox}/>
-                      <Trans>
-                        Ha realitzat accions de recerca activa de feina en el mes anterior
-                      </Trans>
+                      <Trans>Ha realitzat accions de recerca activa de feina en el mes anterior</Trans>
                     </label>
                     }
                     {potTreballar && esDesocupat && inscritComADemandantDocupacio &&
                     <label>
                       <Field name="ha_estat_beneficiari_de_la_rai_en_els_ultims_12_mesos" checked={false}
                              component={Checkbox}/>
-                      <Trans>
-                        Ha estat beneficiari de la RAI en els últims 12 mesos
-                      </Trans>
+                      <Trans>Ha estat beneficiari de la RAI en els últims 12 mesos</Trans>
                     </label>
                     }
-                    {potTreballar && esDesocupat && inscritComADemandantDocupacio && haCobratLaRAIEnElsUltims12Mesos &&
+                    {potTreballar && esDesocupat && inscritComADemandantDocupacio &&
                     <label>
                       <Field name="ha_estat_beneficiari_de_les_tres_rai_anteriors" checked={false}
                              component={Checkbox}/>
-                      <Trans>
-                        Ha estat beneficiari de tres RAI anteriors
-                      </Trans>
+                      <Trans>Ha estat beneficiari de tres RAI anteriors</Trans>
                     </label>
                     }
                     {esFill &&
                     <label>
                       <Field name="es_escolaritzat_entre_P3_i_4rt_ESO" component={Checkbox}/>
-                      Està escolaritzat entre P4 i 4rt d&apos;ESO
+                      <Trans>Està escolaritzat entre P4 i 4rt d&apos;ESO</Trans>
                     </label>
                     }
                     {esFill && escolaritzat &&
                     <Grid item>
                       <label>
                         <Field name="te_beca_menjador" component={Checkbox}/>
-                        Té beca menjador
+                        <Trans>Té beca menjador</Trans>
                       </label>
                     </Grid>
                     }
                     {esFill &&
                     <label>
-                      <Field name="en_acolliment" component={Checkbox}/> En acolliment
+                      <Field name="en_acolliment" component={Checkbox}/> <Trans>En acolliment</Trans>
                     </label>
                     }
                     {esFill &&
                     <label>
                       <Field name="beneficiari_fons_infancia_2017" component={Checkbox}/>
-                      Beneficiari/a fons infància 2017
+                      <Trans>Beneficiari/a fons infància 2017</Trans>
                     </label>
                     }
                   </Grid>
@@ -290,14 +280,10 @@ let AdultsForm = (props: Props) => {
             <Grid item sm={12}>
               <Grid container justify={"space-around"}>
                 <Button variant="raised" color="secondary" onClick={props.onCancel}>
-                  <Trans>
-                    Cancelar <ClearInputIcon/>
-                  </Trans>
+                  <Trans>Cancelar <ClearInputIcon/></Trans>
                 </Button>
                 <Button variant="raised" color="primary" type="submit" name="ButtonValidar">
-                  <Trans>
-                    Validar <AddIcon/>
-                  </Trans>
+                  <Trans>Validar <AddIcon/></Trans>
                 </Button>
               </Grid>
             </Grid>
@@ -322,7 +308,6 @@ AdultsForm = connect(state => {
   const esFill =
       selector(state, "rol") === "fill" ||
       selector(state, "rol") === "infant_acollit";
-  const haCobratLaRAIEnElsUltims12Mesos = selector(state, "ha_estat_beneficiari_de_la_rai_en_els_ultims_12_mesos");
   const haTreballatALEstranger6Mesos = selector(state, "ha_treballat_a_l_estranger_6_mesos");
   const ingressatEnCentrePenitenciari = selector(state, "ingressat_en_centre_penitenciari");
   const inscritComADemandantDocupacio = selector(state, "inscrit_com_a_demandant_docupacio");
@@ -335,7 +320,6 @@ AdultsForm = connect(state => {
     //teDNI,
     esDona,
     esFill,
-    haCobratLaRAIEnElsUltims12Mesos,
     haTreballatALEstranger6Mesos,
     ingressatEnCentrePenitenciari,
     inscritComADemandantDocupacio,

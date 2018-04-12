@@ -140,11 +140,12 @@ function buildRequest(simulationData: SimulationData) {
         victima_violencia_domestica: addPeriod(adult.victima_violencia_domestica),
         AE_230_mensual: addPeriod(null),
         AE_230_01_mensual: addPeriod(null),
-        EG_233_mensual: addPeriod(null)
-        /*GE_051_01_mensual: addPeriod(null),
-            GE_051_02_mensual: addPeriod(null),
-            GE_051_03_mensual: addPeriod(null),
-            GG_270_mensual: addPeriod(null)*/
+        EG_233_mensual: addPeriod(null),
+        GE_051_00_mensual: addPeriod(null),
+        GE_051_01_mensual: addPeriod(null),
+        GE_051_02_mensual: addPeriod(null),
+        GE_051_03_mensual: addPeriod(null),
+        /*GG_270_mensual: addPeriod(null)*/
       };
       return acc;
     },

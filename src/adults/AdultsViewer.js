@@ -4,7 +4,7 @@ import type {Adult, PersonRole} from "./AdultsTypes";
 import {Trans, translate} from "react-i18next";
 import {Grid} from "material-ui";
 import Icon from "material-ui/Icon";
-import {esAltresNoFamiliars, esAltresFamiliars, esSustentador} from "../shared/selectorUtils";
+import {esAltresFamiliars, esAltresNoFamiliars, esSustentador} from "../shared/selectorUtils";
 import PersonShowCase from "./PersonShowCase";
 
 type Props = {
@@ -27,7 +27,8 @@ class AdultsViewer extends Component<Props, void> {
                     <span>Pares</span>
                   </Grid>
                   {adults.filter(adult => esSustentador(adult)).map(adult => (
-                      <PersonShowCase person={adult} removePerson={this.props.onRemoveClick} updatePerson={this.props.onUpdateClick}/>
+                      <PersonShowCase key={adult.id} person={adult} removePerson={this.props.onRemoveClick}
+                                      updatePerson={this.props.onUpdateClick}/>
                   ))}
 
                   {adults.filter(adult => esSustentador(adult)).length !== 2 && (
