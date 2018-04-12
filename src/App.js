@@ -37,9 +37,11 @@ const reducersCombined = combineReducers({
 	form: reduxFormReducer // mounted under "form"
 });
 
+const middlewares = applyMiddleware(promise);
+
 const store = isDevelopment
-    ? createStore(reducersCombined, composeWithDevTools(applyMiddleware(promise)))
-    : createStore(reducersCombined, applyMiddleware(promise));
+    ? createStore(reducersCombined, composeWithDevTools(middlewares))
+    : createStore(reducersCombined, middlewares);
 
 class App extends Component {
 	render() {
