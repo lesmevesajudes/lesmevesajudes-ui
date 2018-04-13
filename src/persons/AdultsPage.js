@@ -1,6 +1,6 @@
 //@flow
 import React from "react";
-import AdultsViewer from "./AdultsViewer";
+import AdultsViewer from "./PersonsViewer";
 import type {AdultFormInitialValues} from "./AdultsForm";
 import AdultsForm from "./AdultsForm";
 import {connect} from "react-redux";

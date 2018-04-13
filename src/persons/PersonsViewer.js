@@ -15,8 +15,8 @@ type Props = {
   classes: Object
 };
 
-class AdultsViewer extends Component<Props, void> {
-  renderAdultsList(adults: Array<Person>) {
+class PersonsViewer extends Component<Props, void> {
+  renderAdultsList(persons: Array<Person>) {
     return (
         <Grid container alignItems={"stretch"}>
           <Grid item xs sm={10}>
@@ -26,12 +26,12 @@ class AdultsViewer extends Component<Props, void> {
                   <Grid item xs sm={12} className={"titleTypePerson"}>
                     <span>Pares</span>
                   </Grid>
-                  {adults.filter(adult => esSustentador(adult)).map(adult => (
-                      <PersonShowCase key={adult.id} person={adult} removePerson={this.props.onRemoveClick}
+                  {persons.filter(person => esSustentador(person)).map(person => (
+                      <PersonShowCase key={person.id} person={person} removePerson={this.props.onRemoveClick}
                                       updatePerson={this.props.onUpdateClick}/>
                   ))}
 
-                  {adults.filter(adult => esSustentador(adult)).length !== 2 && (
+                  {persons.filter(adult => esSustentador(adult)).length !== 2 && (
                       <Grid item sm={12} className={"rightButton"}>
 										<span
                         id="AddParentButton"
@@ -48,10 +48,10 @@ class AdultsViewer extends Component<Props, void> {
                   <Grid item xs sm={12} className={"titleTypePerson"}>
                     <span>Altres familiars</span>
                   </Grid>
-                  {adults
-                      .filter(adult => esAltresFamiliars(adult))
-                      .map(adult => (
-                          <PersonShowCase key={adult.id} person={adult} removePerson={this.props.onRemoveClick}
+                  {persons
+                      .filter(person => esAltresFamiliars(person))
+                      .map(person => (
+                          <PersonShowCase key={person.id} person={person} removePerson={this.props.onRemoveClick}
                                           updatePerson={this.props.onUpdateClick}/>
                       ))}
                   <Grid item sm={12} className={"rightButton"}>
@@ -73,8 +73,8 @@ class AdultsViewer extends Component<Props, void> {
                   <Grid item xs sm={12} className={"titleTypePerson"}>
                     <span>Fills</span>
                   </Grid>
-                  {adults.filter(adult => adult.rol === "fill").map(adult => (
-                      <PersonShowCase key={adult.id} person={adult} removePerson={this.props.onRemoveClick}
+                  {persons.filter(person => person.rol === "fill").map(person => (
+                      <PersonShowCase key={person.id} person={person} removePerson={this.props.onRemoveClick}
                                       updatePerson={this.props.onUpdateClick}/>
                   ))}
                   <Grid item sm={12} className={"rightButton"}>
@@ -96,10 +96,10 @@ class AdultsViewer extends Component<Props, void> {
 								Altres adults no familiars
 							</span>
               </Grid>
-              {adults
-                  .filter(adult => esAltresNoFamiliars(adult))
-                  .map(adult => (
-                      <PersonShowCase key={adult.id} person={adult} removePerson={this.props.onRemoveClick}
+              {persons
+                  .filter(person => esAltresNoFamiliars(person))
+                  .map(person => (
+                      <PersonShowCase key={person.id} person={person} removePerson={this.props.onRemoveClick}
                                       updatePerson={this.props.onUpdateClick}/>
                   ))}
               <Grid item sm={12} className={"rightButton"}>
@@ -139,4 +139,4 @@ class AdultsViewer extends Component<Props, void> {
   }
 }
 
-export default translate("translations")(AdultsViewer);
+export default translate("translations")(PersonsViewer);
