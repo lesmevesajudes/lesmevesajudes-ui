@@ -143,7 +143,7 @@ let AdultsForm = (props: Props) => {
                       <Trans>Grau discapacitat</Trans>
                     </label>
                     <Field name="grau_discapacitat" placeholder="0" type="number" component={TextField}/>
-                    {esDona &&
+                    {esDona && potTreballar &&
                     <label>
                       <Field name="victima_violencia_de_genere" checked={false} component={Checkbox}/>
                       <Trans>Víctima violència de genere</Trans>
