@@ -1,5 +1,5 @@
 /* global describe, it, toEqual */
-import AdultsReducer, {initAdultState, serialize} from "./AdultsReducer";
+import AdultsReducer, {initPersonState, serialize} from "./PersonsReducer";
 import {addPerson, removePerson} from "./PersonsActions";
 
 describe("AdultsReducer", () => {
@@ -7,7 +7,7 @@ describe("AdultsReducer", () => {
     expect(
         serialize(
             AdultsReducer(
-                initAdultState(),
+                initPersonState(),
                 addPerson({
                   id: "2j32j3l2jlj23",
                   dateBorn: "2010-12-12",
@@ -27,7 +27,7 @@ describe("AdultsReducer", () => {
         expect(
             serialize(
                 AdultsReducer(
-                    initAdultState([
+                    initPersonState([
                       {
                         id: "2j32j3l2jlj23",
                         dateBorn: "2010-12-12",
@@ -58,7 +58,7 @@ describe("AdultsReducer", () => {
         expect(
             serialize(
                 AdultsReducer(
-                    initAdultState([
+                    initPersonState([
                       {
                         id: "de2e3ee233ede",
                         dateBorn: "2010-12-12",
@@ -84,7 +84,7 @@ describe("AdultsReducer", () => {
         expect(
             serialize(
                 AdultsReducer(
-                    initAdultState([
+                    initPersonState([
                       {
                         id: "de2e3ee233ede",
                         dateBorn: "2010-12-12",

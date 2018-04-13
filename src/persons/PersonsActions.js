@@ -2,18 +2,18 @@
 import type {Person, PersonID} from "./PersonTypes";
 
 type AddPersonAction = {
-  type: "ADD_ADULT",
-  adult: any
+  type: "ADD_PERSON",
+  person: any
 };
 
 type RemovePersonAction = {
-  type: "REMOVE_ADULT",
-  adultId: PersonID
+  type: "REMOVE_PERSON",
+  personID: PersonID
 };
 
 type UpdatePersonAction = {
-  type: "UPDATE_ADULT",
-  adult: Person
+  type: "UPDATE_PERSON",
+  person: Person
 };
 
 export type PersonActions =
@@ -23,21 +23,21 @@ export type PersonActions =
 
 export function addPerson(person: Person): AddPersonAction {
   return {
-    type: "ADD_ADULT",
-    adult: person
+    type: "ADD_PERSON",
+    person: person
   };
 }
 
 export function updatePerson(person: Person): UpdatePersonAction {
   return {
-    type: "UPDATE_ADULT",
-    adult: person
+    type: "UPDATE_PERSON",
+    person: person
   };
 }
 
 export function removePerson(personID: PersonID): RemovePersonAction {
   return {
-    type: "REMOVE_ADULT",
-    adultId: personID
+    type: "REMOVE_PERSON",
+    personID: personID
   };
 }

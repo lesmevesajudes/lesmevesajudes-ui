@@ -1,5 +1,5 @@
 //@flow
-import {serialize as serialize_adult} from "../persons/AdultsReducer";
+import {serialize as serialize_adult} from "../persons/PersonsReducer";
 import type {Person, PersonsState} from "../persons/PersonTypes";
 import type {HouseholdData} from "../household/householdDataTypes";
 import type {Rent} from "../rent/rentTypes";

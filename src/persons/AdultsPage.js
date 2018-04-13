@@ -5,7 +5,7 @@ import type {AdultFormInitialValues} from "./AdultsForm";
 import AdultsForm from "./AdultsForm";
 import {connect} from "react-redux";
 import type {Person, PersonID} from "./PersonTypes";
-import {serialize} from "./AdultsReducer";
+import {serialize} from "./PersonsReducer";
 import * as UUID from "../shared/UUID";
 import {addPerson, removePerson, updatePerson} from "./PersonsActions";
 
