@@ -19,12 +19,8 @@ import InfoLloguer from "./pages/InfoLloguer";
 import InfoMenjador from "./pages/InfoMenjador";
 import InfoFonsInfancia from "./pages/InfoFonsInfancia";
 import ScrollToTop from "./components/Common/ScrollToTop";
-<<<<<<< HEAD
 import {CssBaseline} from "material-ui";
 import {reducer as reduxFormReducer} from "redux-form";
-=======
-import { reducer as reduxFormReducer } from "redux-form";
->>>>>>> Update buttons. temp fix
 import HouseholdReducer from "./household/HouseholdReducer";
 import {composeWithDevTools} from "redux-devtools-extension";
 
@@ -50,7 +46,6 @@ const store = isDevelopment
 class App extends Component {
   render() {
     return (
-<<<<<<< HEAD
         <div>
           <CorporateHeader/>
           <CssBaseline/>
@@ -71,30 +66,6 @@ class App extends Component {
             </BrowserRouter>
           </Provider>
         </div>
-=======
-      <div>
-        <CorporateHeader />
-        <Provider store={store}>
-          <BrowserRouter>
-            <Switch>
-              <ScrollToTop>
-                <Route exact={true} path="/" component={IndexPage} />
-                <Route path="/wizard" component={WizardPage} />
-                <Route path="/reportBug" component={ReportBugPage} />
-                <Route path="/ajuts/rai" component={InfoRAI} />
-                <Route path="/ajuts/rgc" component={InfoRGC} />
-                <Route path="/ajuts/lloguer" component={InfoLloguer} />
-                <Route path="/ajuts/menjador" component={InfoMenjador} />
-                <Route
-                  path="/ajuts/fons_infancia"
-                  component={InfoFonsInfancia}
-                />
-              </ScrollToTop>
-            </Switch>
-          </BrowserRouter>
-        </Provider>
-      </div>
->>>>>>> Update buttons. temp fix
     );
   }
 }
