@@ -71,24 +71,24 @@ class PersonalBenefits extends React.Component<Props> {
           <Grid
               className="ResultPage"
               container
-              justify={"center"}
-              alignItems={"center"}
+              justify="center"
+              alignItems="center"
               key={benefit.ID}
           >
             <Grid item sm={12}>
               <li className="ItemResult" key={benefit.ID}>
-                <Grid container justify={"center"} alignItems={"center"} wrap={"wrap"}>
+                <Grid container justify="center" alignItems="center" wrap="wrap">
                   <Grid className="benefitText" item xs={12} sm={7}>
                     <p>{benefit.name}</p>
                   </Grid>
-                  <Grid className={"Separator"} item xs={6} sm={2}>
+                  <Grid item className="Separator" xs={6} sm={2}>
                     Import:{" "}
                     <span className="moneyText">
                     {personWithBenefits[benefit.ID][this.period]}
                   </span>{" "}
                     € / {benefit.periode}
                   </Grid>
-                  <Grid className={"Separator"}item xs={6} sm={3}>
+                  <Grid item className="Separator" xs={6} sm={3}>
                     <Link to={benefit.url}>
                       <button
                           style={{float: "right", marginTop: 17}}
@@ -125,7 +125,7 @@ class PersonalBenefits extends React.Component<Props> {
       );
     } else {
       return (
-          <Grid container justify={"space-between"} alignItems={"center"} key={person.id}>
+          <Grid container justify="space-between" alignItems="center" key={person.id}>
             <Grid item sm={12}>
               <li className="ItemResultOut" key={person.id}>
                 <div>
@@ -133,12 +133,7 @@ class PersonalBenefits extends React.Component<Props> {
                   Ajudes per: <span className="ItemTitle">{person.nom}</span>
                 </span>
                   <br/>
-
-                  <Grid
-                      container
-                      className="ResultPage"
-                      justify={"space-between"}
-                  >
+                  <Grid container className="ResultPage" justify="space-between">
                     <Grid item xs sm={12}>
                       <div className="ItemResult">No opta a cap ajuda</div>
                     </Grid>

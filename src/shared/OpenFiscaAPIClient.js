@@ -11,7 +11,7 @@ class OpenFiscaAPIClient {
       isDevel = isDevelopment;
     }
     if (isDevel) {
-      this.url = this.productionURL;
+      this.url = this.developmentURL;
     } else {
       this.url = this.productionURL;
     }
