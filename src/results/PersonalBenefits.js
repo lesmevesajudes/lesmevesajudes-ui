@@ -91,8 +91,7 @@ class PersonalBenefits extends React.Component<Props> {
                   <Grid item className="Separator" xs={6} sm={3}>
                     <Link to={benefit.url}>
                       <button
-                          style={{float: "right", marginTop: 17}}
-                          className="buttonInfo"
+                          className="buttonMoreInfo"
                           key={benefit.ID}
                       >
                         Més informació

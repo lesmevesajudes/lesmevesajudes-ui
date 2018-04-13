@@ -74,3 +74,13 @@
 .ItemTitle {
     font-size: 20px;
 }
+.buttonMoreInfo {
+  background: #d3327e;
+  color: white;
+  padding: 15px;
+  border-radius: 4px;
+  text-transform: none;
+  font-size: 12px;
+  float: "right";
+  margin-top: 17px;
+}
