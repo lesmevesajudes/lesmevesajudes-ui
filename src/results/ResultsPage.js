@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {fetchSimulation} from "./FetchSimulationAction";
 import PersonalBenefits from "./PersonalBenefits";
 import FamilyBenefits from "./FamilyBenefits";
-import type {Adult, AdultId} from "../adults/AdultsTypes";
+import type {AdultId, Person} from "../persons/AdultsTypes";
 import ReportBug from "../reportBug/ReportBugPage";
 import axios from "axios/index";
 import {Grid} from "material-ui";
@@ -13,7 +13,7 @@ type Props = {
   isRequestDone: boolean,
   simulationData: any,
   resultsData: any,
-  persons: Map<AdultId, Adult>
+  persons: Map<AdultId, Person>
 };
 
 class ResultsPage extends React.Component<Props> {

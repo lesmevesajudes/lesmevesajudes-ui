@@ -1,6 +1,6 @@
 /* global describe, it, toEqual */
 import AdultsReducer, {initAdultState, serialize} from "./AdultsReducer";
-import {addAdult, removeAdult} from "./AdultsActions";
+import {addPerson, removePerson} from "./PersonsActions";
 
 describe("AdultsReducer", () => {
   it("should add a person", () => {
@@ -8,7 +8,7 @@ describe("AdultsReducer", () => {
         serialize(
             AdultsReducer(
                 initAdultState(),
-                addAdult({
+                addPerson({
                   id: "2j32j3l2jlj23",
                   dateBorn: "2010-12-12",
                   name: "Maria"
@@ -34,7 +34,7 @@ describe("AdultsReducer", () => {
                         name: "Maria"
                       }
                     ]),
-                    addAdult({
+                    addPerson({
                       id: "de2e3ee233ede",
                       dateBorn: "2010-12-12",
                       name: "Maria"
@@ -65,7 +65,7 @@ describe("AdultsReducer", () => {
                         name: "Maria"
                       }
                     ]),
-                    addAdult({
+                    addPerson({
                       id: "de2e3ee233ede",
                       dateBorn: "2010-12-12",
                       name: "Maria"
@@ -96,7 +96,7 @@ describe("AdultsReducer", () => {
                         name: "Pere"
                       }
                     ]),
-                    removeAdult("de2e3ee233ede")
+                    removePerson("de2e3ee233ede")
                 )
             )
         ).toEqual([

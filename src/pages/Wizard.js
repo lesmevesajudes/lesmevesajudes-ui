@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import StepZilla from "react-stepzilla";
-import AdultsPage from "../adults/AdultsPage";
+import AdultsPage from "../persons/AdultsPage";
 import RentForm from "../rent/RentForm";
 import ResultsPage from "../results/ResultsPage";
 import "./Wizard.css";

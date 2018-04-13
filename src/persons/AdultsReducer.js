@@ -1,8 +1,8 @@
 // @flow
 import {Map} from "immutable";
 
-import type {Adult, AdultId, AdultState} from "./AdultsTypes";
-import type {AdultActions} from "./AdultsActions";
+import type {AdultId, AdultState, Person} from "./AdultsTypes";
+import type {PersonActions} from "./PersonsActions";
 
 function removeAdult(
     state: AdultState,
@@ -10,14 +10,16 @@ function removeAdult(
 ): AdultState {
   return state.delete(adultIdToBeRemoved);
 }
-function addAdult(state: AdultState, adultToBeAdded: Adult): AdultState {
+
+function addAdult(state: AdultState, adultToBeAdded: Person): AdultState {
   return state.set(adultToBeAdded.id, adultToBeAdded);
 }
-function updateAdult(state: AdultState, adultToBeUpdated: Adult): AdultState {
+
+function updateAdult(state: AdultState, adultToBeUpdated: Person): AdultState {
   return addAdult(state, adultToBeUpdated);
 }
 
-export function serialize(state: AdultState): Adult[] {
+export function serialize(state: AdultState): Person[] {
   return state.toArray();
 }
 export function initAdultState(initialValues: Array<Object> = []): AdultState {
@@ -33,7 +35,7 @@ export function initAdultState(initialValues: Array<Object> = []): AdultState {
 }
 export default function(
     state: AdultState = initAdultState(),
-    action: AdultActions
+    action: PersonActions
 ): AdultState {
   switch (action.type) {
     case "ADD_ADULT":

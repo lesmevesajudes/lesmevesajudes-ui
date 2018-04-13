@@ -1,13 +1,13 @@
 //@flow
 import React from "react";
 import AdultsViewer from "./AdultsViewer";
+import type {AdultFormInitialValues} from "./AdultsForm";
 import AdultsForm from "./AdultsForm";
-import { connect } from "react-redux";
-import type { Adult, AdultId } from "./AdultsTypes";
-import { serialize } from "./AdultsReducer";
+import {connect} from "react-redux";
+import type {AdultId, Person} from "./AdultsTypes";
+import {serialize} from "./AdultsReducer";
 import * as UUID from "../shared/UUID";
-import { addAdult, updateAdult, removeAdult } from "./AdultsActions";
-import type { AdultFormInitialValues } from "./AdultsForm";
+import {addPerson, removePerson, updatePerson} from "./PersonsActions";
 
 type State = {
   editingAdult: boolean,
@@ -15,7 +15,7 @@ type State = {
 };
 
 type Props = {
-  adults: Array<Adult>,
+  adults: Array<Person>,
   removeAdult: Function,
   addAdult: Function,
   updateAdult: Function,
@@ -63,7 +63,7 @@ class AdultsPage extends React.Component<Props, State> {
     });
   };
 
-  handleSubmitForm = (formValues: Adult) => {
+  handleSubmitForm = (formValues: Person) => {
     this.doneEditingAdult();
     if (formValues.id === undefined) {
       return this.props.addAdult({ ...formValues, id: UUID.create() });
@@ -104,6 +104,6 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { addAdult, updateAdult, removeAdult })(
+export default connect(mapStateToProps, {addAdult: addPerson, updateAdult: updatePerson, removeAdult: removePerson})(
   AdultsPage
 );

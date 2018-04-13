@@ -3,19 +3,19 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {addRent} from './RentActions';
 import type {Rent} from './RentTypes';
-import {Adult} from '../adults/AdultsTypes';
-import type {AdultId} from '../adults/AdultsTypes';
+import type {AdultId} from '../persons/AdultsTypes';
+import {Person} from '../persons/AdultsTypes';
 import {Map} from 'immutable';
 import {Field, formValueSelector, reduxForm} from 'redux-form';
-import {MenuItem, Grid} from 'material-ui';
-import {Checkbox, TextField, Select} from 'redux-form-material-ui';
+import {Grid, MenuItem} from 'material-ui';
+import {Checkbox, Select, TextField} from 'redux-form-material-ui';
 import {Trans} from 'react-i18next';
 import DescriptionText from "../components/Common/DescriptionText"
 
 type Props = {
   initialValues: ?Rent,
   addRent: Function,
-  personesQuePodenTenirContracteDeLloguer: Map<AdultId, Adult>,
+  personesQuePodenTenirContracteDeLloguer: Map<AdultId, Person>,
   state: any,
   esLlogater: boolean,
   existeixDeute: boolean,

@@ -1,12 +1,13 @@
 import React from "react";
 import Link from "react-router-dom/es/Link";
 import {Map} from "immutable";
-import type {AdultId} from "../adults/AdultsTypes";
-import {Adult} from "../adults/AdultsTypes";
+import type {AdultId} from "../persons/AdultsTypes";
+import {Person} from "../persons/AdultsTypes";
 import {Grid} from "material-ui";
+
 type Props = {
   benefitsForPersons: any,
-  persons: Map<AdultId, Adult>
+  persons: Map<AdultId, Person>
 };
 
 class PersonalBenefits extends React.Component<Props> {
@@ -105,7 +106,7 @@ class PersonalBenefits extends React.Component<Props> {
     }
   }
 
-  renderPersonalBenefits(person: Adult, personBenefits: any) {
+  renderPersonalBenefits(person: Person, personBenefits: any) {
     if (this.hasAnyBenefit(personBenefits)) {
       return (
           <li className="ItemResultOut" key={person.id}>
@@ -145,14 +146,14 @@ class PersonalBenefits extends React.Component<Props> {
   }
 
   renderPersonalBenefitList(
-      personsData: Map<AdultId, Adult>,
+      personsData: Map<AdultId, Person>,
       personsWithBenefits: any
   ) {
     return (
         <ul className="ResultList">
           {personsData
               .valueSeq()
-              .map((person: Adult) =>
+              .map((person: Person) =>
                   this.renderPersonalBenefits(person, personsWithBenefits[person.id])
               )}
         </ul>

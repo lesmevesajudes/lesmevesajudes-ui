@@ -1,6 +1,6 @@
 //@flow
 import React, {Component} from "react";
-import type {Adult, PersonRole} from "./AdultsTypes";
+import type {Person, PersonRole} from "./AdultsTypes";
 import {Trans, translate} from "react-i18next";
 import {Grid} from "material-ui";
 import Icon from "material-ui/Icon";
@@ -8,7 +8,7 @@ import {esAltresFamiliars, esAltresNoFamiliars, esSustentador} from "../shared/s
 import PersonShowCase from "./PersonShowCase";
 
 type Props = {
-  adults: Array<Adult>,
+  adults: Array<Person>,
   onRemoveClick: Function,
   onUpdateClick: Function,
   onAddAdultClick: (x: PersonRole) => void,
@@ -16,7 +16,7 @@ type Props = {
 };
 
 class AdultsViewer extends Component<Props, void> {
-  renderAdultsList(adults: Array<Adult>) {
+  renderAdultsList(adults: Array<Person>) {
     return (
         <Grid container alignItems={"stretch"}>
           <Grid item xs sm={10}>

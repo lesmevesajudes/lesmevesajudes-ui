@@ -6,7 +6,7 @@ import promise from "redux-promise";
 
 import IndexPage from "./indexPage/IndexPage";
 import WizardPage from "./pages/Wizard";
-import AdultsReducer from "./adults/AdultsReducer";
+import AdultsReducer from "./persons/AdultsReducer";
 import ResultsReducer from "./results/ResultsReducer";
 import RentReducer from "./rent/RentReducer";
 import isDevelopment from "./shared/isDevelopment";

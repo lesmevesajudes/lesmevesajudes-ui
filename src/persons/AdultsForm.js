@@ -1,7 +1,7 @@
 //@flow
 import React from "react";
 import type {PersonRole} from "./AdultsTypes";
-import {Adult} from "./AdultsTypes";
+import {Person} from "./AdultsTypes";
 import {Checkbox, Select, TextField} from "redux-form-material-ui";
 import AddIcon from "material-ui-icons/Add";
 import ClearInputIcon from "material-ui-icons/Clear";
@@ -12,7 +12,7 @@ import {Button, Grid, MenuItem} from "material-ui";
 import edat from "../shared/Edat";
 import DescriptionText from "../components/Common/DescriptionText"
 
-export type AdultFormInitialValues = Adult | { rol: String };
+export type AdultFormInitialValues = Person | { rol: String };
 
 type Props = {
   escolaritzat: Boolean,

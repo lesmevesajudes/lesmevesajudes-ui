@@ -1,6 +1,6 @@
 //@flow
-import {serialize as serialize_adult} from "../adults/AdultsReducer";
-import type {Adult, AdultState} from "../adults/AdultsTypes";
+import {serialize as serialize_adult} from "../persons/AdultsReducer";
+import type {AdultState, Person} from "../persons/AdultsTypes";
 import type {HouseholdData} from "../household/householdDataTypes";
 import type {Rent} from "../rent/rentTypes";
 import OpenFiscaAPIClient from "../shared/OpenFiscaAPIClient";
@@ -20,7 +20,7 @@ const lastYear = value => ({"2016": value});
 
 function buildRequest(simulationData: SimulationData) {
   const adultsPersonalData = simulationData.adults.reduce(
-    (acc, adult: Adult) => {
+      (acc, adult: Person) => {
       acc[adult.id] = {
         data_naixement: currentMonth(adult.data_naixement),
         tipus_document_identitat: currentMonth(adult.tipus_document_identitat),
