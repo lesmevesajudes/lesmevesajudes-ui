@@ -1,0 +1,37 @@
+diff a/src/adults/AdultsViewer.js b/src/adults/AdultsViewer.js	(rejected hunks)
+@@ -34,7 +34,7 @@ class AdultsViewer extends Component<Props, void> {
+ 								</Grid>
+ 								{adults.filter(adult => adult.rol === "pares").map(adult => (
+ 									<Grid item sm={6}>
+-										<Grid container spacing={8}>
++										<Grid container className={"FixPadding"}>
+ 											<li className={"ItemParent"} key={adult.id}>
+ 												<Grid item sm={12}>
+ 													<span
+@@ -80,7 +80,7 @@ class AdultsViewer extends Component<Props, void> {
+ 									.filter(adult => adult.rol === "altres_adults_familiars")
+ 									.map(adult => (
+ 										<Grid item sm={6}>
+-											<Grid container spacing={8}>
++											<Grid container className={"FixPadding"}>
+ 												<li className={"ItemParent"} key={adult.id}>
+ 													<Grid item sm={12}>
+ 														<span
+@@ -125,7 +125,7 @@ class AdultsViewer extends Component<Props, void> {
+ 								</Grid>
+ 								{adults.filter(adult => adult.rol === "fills").map(adult => (
+ 									<Grid item sm={4}>
+-										<Grid container spacing={8}>
++										<Grid container className={"FixPadding"}>
+ 											<li className={"ItemParent"} key={adult.id}>
+ 												<Grid item sm={12}>
+ 													<span
+@@ -172,7 +172,7 @@ class AdultsViewer extends Component<Props, void> {
+ 							.filter(adult => adult.rol === "altres_adults")
+ 							.map(adult => (
+ 								<Grid item sm={12}>
+-									<Grid container direction={"column"} spacing={8}>
++									<Grid container direction={"column"} className={"FixPadding"}>
+ 										<li className={"ItemParent"} key={adult.id}>
+ 											<Grid item sm={12}>
+ 												<span

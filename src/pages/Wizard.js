@@ -25,11 +25,12 @@ class WizardPage extends Component {
         <StepZilla
           steps={steps}
           preventEnterSubmission={true}
+          prevBtnOnLastStep={false}
           nextTextOnFinalActionStep={"Veure resultats"}
           nextButtonText="Següent"
           backButtonText="Anterior"
-          nextButtonCls="btn btn-next btn-primary btn-lg pull-right nextButton"
-          backButtonCls="btn btn-prev btn-primary btn-lg pull-left backButton"
+          nextButtonCls="btn btn-next btn-primary btn-lg nextButton"
+          backButtonCls="btn btn-prev btn-primary btn-lg backButton"
         />
       </Grid>
     );
