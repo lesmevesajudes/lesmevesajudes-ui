@@ -53,8 +53,11 @@
     padding: 10px;
 }
 .Separator {
-    border-left: 1px solid #cdcdcd;
-    font-size: 14px;
+  min-height: 75px;
+  border-left: 1px solid #cdcdcd;
+  font-size: 14px;
+  line-height: 74px;
+  text-align: center;
 }
 .benefitText {
     font-size: 16px;

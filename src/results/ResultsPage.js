@@ -7,6 +7,7 @@ import type {Adult, AdultId} from "../adults/AdultsTypes";
 import ReportBug from "../reportBug/ReportBugPage";
 import axios from "axios/index";
 import {Grid} from "material-ui";
+import Icon from "material-ui/Icon";
 
 type Props = {
   isError: boolean,

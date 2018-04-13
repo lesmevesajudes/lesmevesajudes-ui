@@ -4,7 +4,7 @@ import {Map} from "immutable";
 import type {AdultId} from "../adults/AdultsTypes";
 import {Adult} from "../adults/AdultsTypes";
 import {Grid} from "material-ui";
-
+import { } from "material-ui-icons"
 type Props = {
   benefitsForPersons: any,
   persons: Map<AdultId, Adult>
@@ -71,13 +71,13 @@ class PersonalBenefits extends React.Component<Props> {
           <Grid
               className="ResultPage"
               container
-              justify={"space-between"}
+              justify={"center"}
               alignItems={"center"}
               key={benefit.ID}
           >
             <Grid item sm={12}>
               <li className="ItemResult" key={benefit.ID}>
-                <Grid container justify={"flex-start"} wrap={"wrap"}>
+                <Grid container justify={"center"} alignItems={"center"} wrap={"wrap"}>
                   <Grid className="benefitText" item xs={12} sm={7}>
                     <p>{benefit.name}</p>
                   </Grid>
@@ -88,10 +88,10 @@ class PersonalBenefits extends React.Component<Props> {
                   </span>{" "}
                     € / {benefit.periode}
                   </Grid>
-                  <Grid item xs={6} sm={3}>
+                  <Grid className={"Separator"}item xs={6} sm={3}>
                     <Link to={benefit.url}>
                       <button
-                          style={{float: "right"}}
+                          style={{float: "right", marginTop: 17}}
                           className="buttonInfo"
                           key={benefit.ID}
                       >
@@ -111,8 +111,8 @@ class PersonalBenefits extends React.Component<Props> {
     if (this.hasAnyBenefit(personBenefits)) {
       return (
           <li className="ItemResultOut" key={person.id}>
-          <span>
-            Ajudes per: <span className="ItemTitle">{person.nom}</span>
+          <span className="ItemTitle">
+            Ajudes per: <span>{person.nom}</span>
           </span>
             <br/>
 
