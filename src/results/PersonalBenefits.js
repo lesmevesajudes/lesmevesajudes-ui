@@ -4,7 +4,6 @@ import {Map} from "immutable";
 import type {AdultId} from "../adults/AdultsTypes";
 import {Adult} from "../adults/AdultsTypes";
 import {Grid} from "material-ui";
-import { } from "material-ui-icons"
 type Props = {
   benefitsForPersons: any,
   persons: Map<AdultId, Adult>
