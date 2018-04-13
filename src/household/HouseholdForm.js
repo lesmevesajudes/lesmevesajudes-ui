@@ -6,8 +6,8 @@ import type {HouseholdData} from "./HouseholdDataTypes";
 import {Checkbox, Select} from 'redux-form-material-ui';
 import {Field, reduxForm} from 'redux-form';
 import {Grid, MenuItem} from "material-ui";
-import type {AdultId} from "../persons/AdultsTypes";
-import {Person} from "../persons/AdultsTypes";
+import type {PersonID} from "../persons/PersonTypes";
+import {Person} from "../persons/PersonTypes";
 import {Map} from 'immutable';
 import {esFamiliaNombrosa, esFill, esMonoparental} from "../shared/selectorUtils";
 import DescriptionText from "../components/Common/DescriptionText"
@@ -18,7 +18,7 @@ type Props = {
   esUsuariServeisSocials: Boolean,
   esMonoparental: Boolean,
   esFamiliaNombrosa: Boolean,
-  fills: Map<AdultId, Person>,
+  fills: Map<PersonID, Person>,
   custodies: Object
 };
 

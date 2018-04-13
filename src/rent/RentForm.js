@@ -3,8 +3,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {addRent} from './RentActions';
 import type {Rent} from './RentTypes';
-import type {AdultId} from '../persons/AdultsTypes';
-import {Person} from '../persons/AdultsTypes';
+import type {PersonID} from '../persons/PersonTypes';
+import {Person} from '../persons/PersonTypes';
 import {Map} from 'immutable';
 import {Field, formValueSelector, reduxForm} from 'redux-form';
 import {Grid, MenuItem} from 'material-ui';
@@ -15,7 +15,7 @@ import DescriptionText from "../components/Common/DescriptionText"
 type Props = {
   initialValues: ?Rent,
   addRent: Function,
-  personesQuePodenTenirContracteDeLloguer: Map<AdultId, Person>,
+  personesQuePodenTenirContracteDeLloguer: Map<PersonID, Person>,
   state: any,
   esLlogater: boolean,
   existeixDeute: boolean,

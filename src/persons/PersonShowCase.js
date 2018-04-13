@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Grid} from "material-ui";
-import {Person} from "./AdultsTypes";
+import {Person} from "./PersonTypes";
 
 type Props = {
   person: Person,

@@ -1,6 +1,6 @@
 //@flow
 import {serialize as serialize_adult} from "../persons/AdultsReducer";
-import type {AdultState, Person} from "../persons/AdultsTypes";
+import type {Person, PersonsState} from "../persons/PersonTypes";
 import type {HouseholdData} from "../household/householdDataTypes";
 import type {Rent} from "../rent/rentTypes";
 import OpenFiscaAPIClient from "../shared/OpenFiscaAPIClient";
@@ -10,7 +10,7 @@ import {esBarcelonaCiutat} from "../shared/CodisPostals";
 export const FETCH_SIMULATION = "fetch_simulation";
 
 type SimulationData = {
-  adults: AdultState,
+  adults: PersonsState,
   rent: Rent,
   household: HouseholdData
 };

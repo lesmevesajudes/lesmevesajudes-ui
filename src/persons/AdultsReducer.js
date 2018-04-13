@@ -1,28 +1,29 @@
 // @flow
 import {Map} from "immutable";
 
-import type {AdultId, AdultState, Person} from "./AdultsTypes";
+import type {Person, PersonID, PersonsState} from "./PersonTypes";
 import type {PersonActions} from "./PersonsActions";
 
 function removeAdult(
-    state: AdultState,
-    adultIdToBeRemoved: AdultId
-): AdultState {
+    state: PersonsState,
+    adultIdToBeRemoved: PersonID
+): PersonsState {
   return state.delete(adultIdToBeRemoved);
 }
 
-function addAdult(state: AdultState, adultToBeAdded: Person): AdultState {
+function addAdult(state: PersonsState, adultToBeAdded: Person): PersonsState {
   return state.set(adultToBeAdded.id, adultToBeAdded);
 }
 
-function updateAdult(state: AdultState, adultToBeUpdated: Person): AdultState {
+function updateAdult(state: PersonsState, adultToBeUpdated: Person): PersonsState {
   return addAdult(state, adultToBeUpdated);
 }
 
-export function serialize(state: AdultState): Person[] {
+export function serialize(state: PersonsState): Person[] {
   return state.toArray();
 }
-export function initAdultState(initialValues: Array<Object> = []): AdultState {
+
+export function initAdultState(initialValues: Array<Object> = []): PersonsState {
   const initialValuesAsObject: Object = initialValues.reduce(function (
       acc,
       cur
@@ -34,9 +35,9 @@ export function initAdultState(initialValues: Array<Object> = []): AdultState {
   return Map(initialValuesAsObject);
 }
 export default function(
-    state: AdultState = initAdultState(),
+    state: PersonsState = initAdultState(),
     action: PersonActions
-): AdultState {
+): PersonsState {
   switch (action.type) {
     case "ADD_ADULT":
       return addAdult(state, action.adult);

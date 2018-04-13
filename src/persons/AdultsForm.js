@@ -1,7 +1,7 @@
 //@flow
 import React from "react";
-import type {PersonRole} from "./AdultsTypes";
-import {Person} from "./AdultsTypes";
+import type {PersonRole} from "./PersonTypes";
+import {Person} from "./PersonTypes";
 import {Checkbox, Select, TextField} from "redux-form-material-ui";
 import AddIcon from "material-ui-icons/Add";
 import ClearInputIcon from "material-ui-icons/Clear";

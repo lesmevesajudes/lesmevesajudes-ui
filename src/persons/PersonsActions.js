@@ -1,5 +1,5 @@
 // @flow
-import type {AdultId, Person} from "./AdultsTypes";
+import type {Person, PersonID} from "./PersonTypes";
 
 type AddPersonAction = {
   type: "ADD_ADULT",
@@ -8,7 +8,7 @@ type AddPersonAction = {
 
 type RemovePersonAction = {
   type: "REMOVE_ADULT",
-  adultId: AdultId
+  adultId: PersonID
 };
 
 type UpdatePersonAction = {
@@ -35,7 +35,7 @@ export function updatePerson(person: Person): UpdatePersonAction {
   };
 }
 
-export function removePerson(personID: AdultId): RemovePersonAction {
+export function removePerson(personID: PersonID): RemovePersonAction {
   return {
     type: "REMOVE_ADULT",
     adultId: personID

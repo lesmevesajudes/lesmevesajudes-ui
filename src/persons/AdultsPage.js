@@ -4,7 +4,7 @@ import AdultsViewer from "./PersonsViewer";
 import type {AdultFormInitialValues} from "./AdultsForm";
 import AdultsForm from "./AdultsForm";
 import {connect} from "react-redux";
-import type {AdultId, Person} from "./AdultsTypes";
+import type {Person, PersonID} from "./PersonTypes";
 import {serialize} from "./AdultsReducer";
 import * as UUID from "../shared/UUID";
 import {addPerson, removePerson, updatePerson} from "./PersonsActions";
@@ -45,14 +45,14 @@ class AdultsPage extends React.Component<Props, State> {
     });
   };
 
-  handleUpdateAdultClick = (adultId: AdultId) => {
+  handleUpdateAdultClick = (adultId: PersonID) => {
     this.setState({
       initialFormValues: this.props.adults.filter(e => e.id === adultId)[0],
       editingAdult: true
     });
   };
 
-  handleRemoveAdultClick = (adultId: AdultId) => {
+  handleRemoveAdultClick = (adultId: PersonID) => {
     this.props.removeAdult(adultId);
   };
 

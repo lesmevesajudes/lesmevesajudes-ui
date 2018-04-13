@@ -1,6 +1,6 @@
 //@flow
 import React, {Component} from "react";
-import type {Person, PersonRole} from "./AdultsTypes";
+import type {Person, PersonRole} from "./PersonTypes";
 import {Trans, translate} from "react-i18next";
 import {Grid} from "material-ui";
 import Icon from "material-ui/Icon";

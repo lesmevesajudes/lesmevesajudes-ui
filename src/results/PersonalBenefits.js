@@ -1,13 +1,13 @@
 import React from "react";
 import Link from "react-router-dom/es/Link";
 import {Map} from "immutable";
-import type {AdultId} from "../persons/AdultsTypes";
-import {Person} from "../persons/AdultsTypes";
+import type {PersonID} from "../persons/PersonTypes";
+import {Person} from "../persons/PersonTypes";
 import {Grid} from "material-ui";
 
 type Props = {
   benefitsForPersons: any,
-  persons: Map<AdultId, Person>
+  persons: Map<PersonID, Person>
 };
 
 class PersonalBenefits extends React.Component<Props> {
@@ -146,7 +146,7 @@ class PersonalBenefits extends React.Component<Props> {
   }
 
   renderPersonalBenefitList(
-      personsData: Map<AdultId, Person>,
+      personsData: Map<PersonID, Person>,
       personsWithBenefits: any
   ) {
     return (
