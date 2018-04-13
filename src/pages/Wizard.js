@@ -1,13 +1,14 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import StepZilla from "react-stepzilla";
 import AdultsPage from "../adults/AdultsPage";
 import RentForm from "../rent/RentForm";
 import ResultsPage from "../results/ResultsPage";
 import "./Wizard.css";
 import AppHeader from "../components/AppHeader/AppHeader";
-import { translate } from "react-i18next";
+import {translate} from "react-i18next";
 import HouseholdForm from "../household/HouseholdForm";
 import {Grid} from 'material-ui'
+
 class WizardPage extends Component {
   render() {
     const { t } = this.props;
@@ -23,14 +24,14 @@ class WizardPage extends Component {
       <Grid>
         <AppHeader />
         <StepZilla
-          steps={steps}
-          preventEnterSubmission={true}
-          prevBtnOnLastStep={false}
-          nextTextOnFinalActionStep={"Veure resultats"}
-          nextButtonText="Següent"
-          backButtonText="Anterior"
-          nextButtonCls="btn btn-next btn-primary btn-lg nextButton"
-          backButtonCls="btn btn-prev btn-primary btn-lg backButton"
+            steps={steps}
+            preventEnterSubmission={true}
+            prevBtnOnLastStep={true}
+            nextTextOnFinalActionStep={"Veure resultats"}
+            nextButtonText="Següent"
+            backButtonText="Anterior"
+            nextButtonCls="btn btn-next btn-primary btn-lg nextButton"
+            backButtonCls="btn btn-prev btn-primary btn-lg backButton"
         />
       </Grid>
     );
