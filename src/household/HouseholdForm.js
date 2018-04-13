@@ -3,13 +3,13 @@ import React from 'react';
 import {addHouseholdData} from './HouseholdDataActions';
 import {connect} from 'react-redux';
 import type {HouseholdData} from "./HouseholdDataTypes";
-import {Select, Checkbox} from 'redux-form-material-ui';
+import {Checkbox, Select} from 'redux-form-material-ui';
 import {Field, reduxForm} from 'redux-form';
-import {MenuItem, Grid} from "material-ui";
-import {Adult} from "../adults/AdultsTypes";
+import {Grid, MenuItem} from "material-ui";
 import type {AdultId} from "../adults/AdultsTypes";
+import {Adult} from "../adults/AdultsTypes";
 import {Map} from 'immutable';
-import {esFamiliaNombrosa, esFill, esSustentador} from "../shared/selectorUtils";
+import {esFamiliaNombrosa, esFill, esMonoparental} from "../shared/selectorUtils";
 import DescriptionText from "../components/Common/DescriptionText"
 
 type Props = {
@@ -83,7 +83,7 @@ let HouseholdForm = (props: Props) => {
 function mapStateToProps(state) {
   return {
     initialValues: state.household,
-    esMonoparental: state.adults.filter((persona: Adult) => esSustentador(persona)).count() === 1,
+    esMonoparental: esMonoparental(state.adults),
     esFamiliaNombrosa: esFamiliaNombrosa(state.adults),
     fills: state.adults.filter((adult: Adult) => esFill(adult)),
     custodies: state.household.custodies

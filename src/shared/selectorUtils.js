@@ -1,6 +1,6 @@
+import type {AdultId} from "../adults/AdultsTypes";
 import {Adult} from "../adults/AdultsTypes";
 import {Map} from "immutable";
-import type {AdultId} from "../adults/AdultsTypes";
 import type {HouseholdData} from "../household/HouseholdDataTypes";
 
 export const esFill = (persona: Adult) => persona.rol === 'fill' || esInfantAcollit(persona);
@@ -13,7 +13,7 @@ export const esFamiliaNombrosa = (persones: Map<AdultId, Adult>) => {
   return tresFillsOMes || dosFillsOMesAlgunAmbDiscapacitatSuperior33;
 };
 export const esMonoparental = (persones: Map<AdultId, Adult>) =>
-    persones.filter((persona: Adult) => esSustentador(persona)).count() === 1;
+    persones.filter((persona: Adult) => esSustentador(persona)).count() === 1 && persones.filter(esFill).count() > 0;
 export const esInfantAcollit = (persona: Adult) => persona.rol === 'infant_acollit';
 export const tipusCustodia = (persona: Adult, familia: HouseholdData, esMonoparental: boolean) =>
     (familia.custodies !== null && typeof familia.custodies[persona.id] !== 'undefined') ?
