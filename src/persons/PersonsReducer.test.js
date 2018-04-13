@@ -1,12 +1,12 @@
 /* global describe, it, toEqual */
-import AdultsReducer, {initPersonState, serialize} from "./PersonsReducer";
+import PersonsReducer, {initPersonState, serialize} from "./PersonsReducer";
 import {addPerson, removePerson} from "./PersonsActions";
 
-describe("AdultsReducer", () => {
+describe("PersonsReducer", () => {
   it("should add a person", () => {
     expect(
         serialize(
-            AdultsReducer(
+            PersonsReducer(
                 initPersonState(),
                 addPerson({
                   id: "2j32j3l2jlj23",
@@ -26,7 +26,7 @@ describe("AdultsReducer", () => {
       it("should add a person to a preexisting person", () => {
         expect(
             serialize(
-                AdultsReducer(
+                PersonsReducer(
                     initPersonState([
                       {
                         id: "2j32j3l2jlj23",
@@ -57,7 +57,7 @@ describe("AdultsReducer", () => {
       it("add should update a person to if id exists", () => {
         expect(
             serialize(
-                AdultsReducer(
+                PersonsReducer(
                     initPersonState([
                       {
                         id: "de2e3ee233ede",
@@ -83,7 +83,7 @@ describe("AdultsReducer", () => {
       it("add remove a person", () => {
         expect(
             serialize(
-                AdultsReducer(
+                PersonsReducer(
                     initPersonState([
                       {
                         id: "de2e3ee233ede",

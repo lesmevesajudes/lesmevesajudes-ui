@@ -8,15 +8,15 @@ import {esAltresFamiliars, esAltresNoFamiliars, esSustentador} from "../shared/s
 import PersonShowCase from "./PersonShowCase";
 
 type Props = {
-  adults: Array<Person>,
+  persons: Array<Person>,
   onRemoveClick: Function,
   onUpdateClick: Function,
-  onAddAdultClick: (x: PersonRole) => void,
+  onAddPersonClick: (x: PersonRole) => void,
   classes: Object
 };
 
 class PersonsViewer extends Component<Props, void> {
-  renderAdultsList(persons: Array<Person>) {
+  renderPersonsList(persons: Array<Person>) {
     return (
         <Grid container alignItems={"stretch"}>
           <Grid item xs sm={10}>
@@ -31,11 +31,11 @@ class PersonsViewer extends Component<Props, void> {
                                       updatePerson={this.props.onUpdateClick}/>
                   ))}
 
-                  {persons.filter(adult => esSustentador(adult)).length !== 2 && (
+                  {persons.filter(person => esSustentador(person)).length !== 2 && (
                       <Grid item sm={12} className={"rightButton"}>
 										<span
                         id="AddParentButton"
-                        onClick={() => this.props.onAddAdultClick("pares")}
+                        onClick={() => this.props.onAddPersonClick("pares")}
                     >
 											<Icon>add_circle</Icon>
 										</span>
@@ -58,7 +58,7 @@ class PersonsViewer extends Component<Props, void> {
 									<span
                       id="AddOtherFamilyButton"
                       onClick={() =>
-                          this.props.onAddAdultClick("altres_adults_familiars")
+                          this.props.onAddPersonClick("altres_adults_familiars")
                       }
                   >
 										<Icon>add_circle</Icon>
@@ -80,7 +80,7 @@ class PersonsViewer extends Component<Props, void> {
                   <Grid item sm={12} className={"rightButton"}>
 									<span
                       id="AddChildButton"
-                      onClick={() => this.props.onAddAdultClick("fill")}
+                      onClick={() => this.props.onAddPersonClick("fill")}
                   >
 										<Icon>add_circle</Icon>
 									</span>
@@ -104,8 +104,8 @@ class PersonsViewer extends Component<Props, void> {
                   ))}
               <Grid item sm={12} className={"rightButton"}>
 							<span
-                  id="AddOtherAdultButton"
-                  onClick={() => this.props.onAddAdultClick("altres_adults")}
+                  id="AddOtherPersonButton"
+                  onClick={() => this.props.onAddPersonClick("altres_adults")}
               >
 								<Icon>add_circle</Icon>
 							</span>
@@ -123,9 +123,9 @@ class PersonsViewer extends Component<Props, void> {
             <h1>
               <Trans>Persones de la unitat de convivència</Trans>
             </h1>
-            <Grid container className="AdultsViewerPage">
+            <Grid container className="PersonsViewerPage">
               <Grid item xs={12}>
-                {this.renderAdultsList(this.props.adults)}
+                {this.renderPersonsList(this.props.persons)}
               </Grid>
             </Grid>
           </Grid>

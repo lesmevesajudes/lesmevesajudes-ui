@@ -83,9 +83,9 @@ let HouseholdForm = (props: Props) => {
 function mapStateToProps(state) {
   return {
     initialValues: state.household,
-    esMonoparental: esMonoparental(state.adults),
-    esFamiliaNombrosa: esFamiliaNombrosa(state.adults),
-    fills: state.adults.filter((adult: Person) => esFill(adult)),
+    esMonoparental: esMonoparental(state.persons),
+    esFamiliaNombrosa: esFamiliaNombrosa(state.persons),
+    fills: state.persons.filter((person: Person) => esFill(person)),
     custodies: state.household.custodies
   };
 }

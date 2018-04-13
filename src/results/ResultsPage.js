@@ -128,7 +128,7 @@ function mapStateToProps(state) {
     isRequestDone: state.results.isRequestDone,
     simulationData: state,
     resultsData: state.results.response,
-    persons: state.adults
+    persons: state.persons
   };
 }
 

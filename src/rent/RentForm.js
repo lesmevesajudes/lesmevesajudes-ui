@@ -10,7 +10,8 @@ import {Field, formValueSelector, reduxForm} from 'redux-form';
 import {Grid, MenuItem} from 'material-ui';
 import {Checkbox, Select, TextField} from 'redux-form-material-ui';
 import {Trans} from 'react-i18next';
-import DescriptionText from "../components/Common/DescriptionText"
+import DescriptionText from "../components/Common/DescriptionText";
+import {esFill} from "../shared/selectorUtils";
 
 type Props = {
   initialValues: ?Rent,
@@ -116,7 +117,7 @@ function mapStateToProps(state) {
     existeixDeute: selector(state, 'existeix_deute_en_el_pagament_del_lloguer'),
     teAlgunaPropietat: selector(state, 'tinc_alguna_propietat_a_part_habitatge_habitual'),
     initialValues: state.rent,
-    personesQuePodenTenirContracteDeLloguer: state.adults.filter((adult) => adult.rol !== 'fill')
+    personesQuePodenTenirContracteDeLloguer: state.persons.filter((persona) => !esFill(persona))
   };
 }
 

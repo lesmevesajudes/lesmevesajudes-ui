@@ -6,7 +6,7 @@ import promise from "redux-promise";
 
 import IndexPage from "./indexPage/IndexPage";
 import WizardPage from "./pages/Wizard";
-import AdultsReducer from "./persons/PersonsReducer";
+import PersonsReducer from "./persons/PersonsReducer";
 import ResultsReducer from "./results/ResultsReducer";
 import RentReducer from "./rent/RentReducer";
 import isDevelopment from "./shared/isDevelopment";
@@ -31,7 +31,7 @@ if (isDevelopment) {
 
 const reducersCombined = combineReducers({
   results: ResultsReducer,
-  adults: AdultsReducer,
+  persons: PersonsReducer,
   household: HouseholdReducer,
   rent: RentReducer,
   form: reduxFormReducer // mounted under "form"
