@@ -51,7 +51,8 @@ class AdultsViewer extends Component<Props, void> {
                   {adults
                       .filter(adult => esAltresFamiliars(adult))
                       .map(adult => (
-                          <PersonShowCase person={adult} removePerson={this.props.onRemoveClick} updatePerson={this.props.onUpdateClick}/>
+                          <PersonShowCase key={adult.id} person={adult} removePerson={this.props.onRemoveClick}
+                                          updatePerson={this.props.onUpdateClick}/>
                       ))}
                   <Grid item sm={12} className={"rightButton"}>
 									<span
@@ -73,7 +74,8 @@ class AdultsViewer extends Component<Props, void> {
                     <span>Fills</span>
                   </Grid>
                   {adults.filter(adult => adult.rol === "fill").map(adult => (
-                      <PersonShowCase person={adult} removePerson={this.props.onRemoveClick} updatePerson={this.props.onUpdateClick}/>
+                      <PersonShowCase key={adult.id} person={adult} removePerson={this.props.onRemoveClick}
+                                      updatePerson={this.props.onUpdateClick}/>
                   ))}
                   <Grid item sm={12} className={"rightButton"}>
 									<span
@@ -97,7 +99,8 @@ class AdultsViewer extends Component<Props, void> {
               {adults
                   .filter(adult => esAltresNoFamiliars(adult))
                   .map(adult => (
-                      <PersonShowCase person={adult} removePerson={this.props.onRemoveClick} updatePerson={this.props.onUpdateClick}/>
+                      <PersonShowCase key={adult.id} person={adult} removePerson={this.props.onRemoveClick}
+                                      updatePerson={this.props.onUpdateClick}/>
                   ))}
               <Grid item sm={12} className={"rightButton"}>
 							<span

@@ -220,7 +220,7 @@ let AdultsForm = (props: Props) => {
                     {potTreballar && esDesocupat && inscritComADemandantDocupacio &&
                     <label>
                       <Field name="demandant_d_ocupacio_durant_12_mesos" checked={false} component={Checkbox}/>
-                      <Trans>Ha estat inscrits de forma ininterrompuda com a demandant d'ocupació almenys 12
+                      <Trans>Ha estat inscrit de forma ininterrompuda com a demandant d'ocupació almenys 12
                         mesos</Trans>
                     </label>
                     }
