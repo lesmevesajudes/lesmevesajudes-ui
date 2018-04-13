@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {Grid} from "material-ui";
-import {Adult} from "./AdultsTypes";
+import {Person} from "./PersonTypes";
 
 type Props = {
-  person: Adult,
+  person: Person,
   removePerson: Function,
   updatePerson: Function
 };
@@ -11,7 +11,7 @@ type Props = {
 class PersonShowCase extends Component <Props> {
   render() {
     const {person} = this.props;
-    console.log(this.props)
+    console.log(this.props);
     return (
         <Grid item sm={6} key={person.id}>
           <Grid container spacing={8}>

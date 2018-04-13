@@ -1,14 +1,14 @@
 /* global describe, it, toEqual */
-import AdultsReducer, {initAdultState, serialize} from "./AdultsReducer";
-import {addAdult, removeAdult} from "./AdultsActions";
+import PersonsReducer, {initPersonState, serialize} from "./PersonsReducer";
+import {addPerson, removePerson} from "./PersonsActions";
 
-describe("AdultsReducer", () => {
+describe("PersonsReducer", () => {
   it("should add a person", () => {
     expect(
         serialize(
-            AdultsReducer(
-                initAdultState(),
-                addAdult({
+            PersonsReducer(
+                initPersonState(),
+                addPerson({
                   id: "2j32j3l2jlj23",
                   dateBorn: "2010-12-12",
                   name: "Maria"
@@ -26,15 +26,15 @@ describe("AdultsReducer", () => {
       it("should add a person to a preexisting person", () => {
         expect(
             serialize(
-                AdultsReducer(
-                    initAdultState([
+                PersonsReducer(
+                    initPersonState([
                       {
                         id: "2j32j3l2jlj23",
                         dateBorn: "2010-12-12",
                         name: "Maria"
                       }
                     ]),
-                    addAdult({
+                    addPerson({
                       id: "de2e3ee233ede",
                       dateBorn: "2010-12-12",
                       name: "Maria"
@@ -57,15 +57,15 @@ describe("AdultsReducer", () => {
       it("add should update a person to if id exists", () => {
         expect(
             serialize(
-                AdultsReducer(
-                    initAdultState([
+                PersonsReducer(
+                    initPersonState([
                       {
                         id: "de2e3ee233ede",
                         dateBorn: "2010-12-12",
                         name: "Maria"
                       }
                     ]),
-                    addAdult({
+                    addPerson({
                       id: "de2e3ee233ede",
                       dateBorn: "2010-12-12",
                       name: "Maria"
@@ -83,8 +83,8 @@ describe("AdultsReducer", () => {
       it("add remove a person", () => {
         expect(
             serialize(
-                AdultsReducer(
-                    initAdultState([
+                PersonsReducer(
+                    initPersonState([
                       {
                         id: "de2e3ee233ede",
                         dateBorn: "2010-12-12",
@@ -96,7 +96,7 @@ describe("AdultsReducer", () => {
                         name: "Pere"
                       }
                     ]),
-                    removeAdult("de2e3ee233ede")
+                    removePerson("de2e3ee233ede")
                 )
             )
         ).toEqual([

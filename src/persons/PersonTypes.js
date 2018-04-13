@@ -1,11 +1,11 @@
 // @flow
 import {Map} from "immutable";
 
-export type AdultId = string;
+export type PersonID = string;
 
 export type PersonRole = 'pares'|'fill'|'altres_adults'|'altres_adults_familiars';
 
-export class Adult {
+export class Person {
   data_naixement: string;
   data_alta_padro: string;
   demandant_d_ocupacio_durant_12_mesos: boolean = false;
@@ -21,7 +21,7 @@ export class Adult {
   ha_estat_beneficiari_de_les_tres_rai_anteriors: boolean = false;
   ha_treballat_a_l_estranger_6_mesos: boolean = false;
   ha_treballat_a_l_estranger_6_mesos_i_ha_retornat_en_els_ultims_12_mesos: boolean = false;
-  id: AdultId;
+  id: PersonID;
   ingressat_en_centre_penitenciari: boolean = false;
   ingressat_en_centre_penitenciari_pot_treballar: boolean = false;
   ingressos_bruts: number = 0;
@@ -35,4 +35,4 @@ export class Adult {
   victima_violencia_domestica: boolean = false;
 }
 
-export type AdultState = Map<AdultId, Adult>;
+export type PersonsState = Map<PersonID, Person>;

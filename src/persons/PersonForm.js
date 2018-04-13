@@ -1,7 +1,7 @@
 //@flow
 import React from "react";
-import type {PersonRole} from "./AdultsTypes";
-import {Adult} from "./AdultsTypes";
+import type {PersonRole} from "./PersonTypes";
+import {Person} from "./PersonTypes";
 import {Checkbox, Select, TextField} from "redux-form-material-ui";
 import AddIcon from "material-ui-icons/Add";
 import ClearInputIcon from "material-ui-icons/Clear";
@@ -12,7 +12,7 @@ import {Button, Grid, MenuItem} from "material-ui";
 import edat from "../shared/Edat";
 import DescriptionText from "../components/Common/DescriptionText"
 
-export type AdultFormInitialValues = Adult | { rol: String };
+export type PersonFormInitialValues = Person | { rol: String };
 
 type Props = {
   escolaritzat: Boolean,
@@ -33,11 +33,11 @@ type Props = {
 const textesSegonsRol: { [PersonRole]: string } = {
   pares: "pare/mare",
   fill: "fill/filla",
-  altres_adults: "altres adults",
+  altres_adults: "altres persons",
   altres_adults_familiars: "altres familiars"
 };
 
-let AdultsForm = (props: Props) => {
+let PersonForm = (props: Props) => {
   const {
     escolaritzat,
     esDesocupat,
@@ -294,13 +294,13 @@ let AdultsForm = (props: Props) => {
 };
 
 //El icono AddIcon, se deberia añadir Absolute, 25% y relative al button para probar si funciona bien el tema de align, pero es un parche.
-AdultsForm = reduxForm({
-  form: "AdultsForm"
-})(AdultsForm);
+PersonForm = reduxForm({
+  form: "PersonForm"
+})(PersonForm);
 
-const selector = formValueSelector("AdultsForm");
+const selector = formValueSelector("PersonForm");
 
-AdultsForm = connect(state => {
+PersonForm = connect(state => {
   const esDesocupat = selector(state, "situacio_laboral") === "desocupat";
   //const teDNI = selector(state, "tipus_document_identitat") === "DNI";
   const esDona = selector(state, "genere") === "dona";
@@ -327,6 +327,6 @@ AdultsForm = connect(state => {
     rol,
     victimaViolenciaDeGenere
   };
-})(AdultsForm);
+})(PersonForm);
 
-export default AdultsForm;
+export default PersonForm;

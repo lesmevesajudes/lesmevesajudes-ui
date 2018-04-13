@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import StepZilla from "react-stepzilla";
-import AdultsPage from "../adults/AdultsPage";
+import PersonsPage from "../persons/PersonsPage";
 import RentForm from "../rent/RentForm";
 import ResultsPage from "../results/ResultsPage";
 import "./Wizard.css";
@@ -14,7 +14,7 @@ class WizardPage extends Component {
     const { t } = this.props;
 
     const steps = [
-      { name: t("Persones que conviuen"), component: <AdultsPage /> },
+      {name: t("Persones que conviuen"), component: <PersonsPage/>},
       { name: t("Família"), component: <HouseholdForm /> },
       { name: t("Domicili habitual"), component: <RentForm /> },
       { name: t("Resultats"), component: <ResultsPage /> }

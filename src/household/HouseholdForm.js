@@ -6,8 +6,8 @@ import type {HouseholdData} from "./HouseholdDataTypes";
 import {Checkbox, Select} from 'redux-form-material-ui';
 import {Field, reduxForm} from 'redux-form';
 import {Grid, MenuItem} from "material-ui";
-import type {AdultId} from "../adults/AdultsTypes";
-import {Adult} from "../adults/AdultsTypes";
+import type {PersonID} from "../persons/PersonTypes";
+import {Person} from "../persons/PersonTypes";
 import {Map} from 'immutable';
 import {esFamiliaNombrosa, esFill, esMonoparental} from "../shared/selectorUtils";
 import DescriptionText from "../components/Common/DescriptionText"
@@ -18,7 +18,7 @@ type Props = {
   esUsuariServeisSocials: Boolean,
   esMonoparental: Boolean,
   esFamiliaNombrosa: Boolean,
-  fills: Map<AdultId, Adult>,
+  fills: Map<PersonID, Person>,
   custodies: Object
 };
 
@@ -50,7 +50,7 @@ let HouseholdForm = (props: Props) => {
                 </Field>
               </Grid>}
               {esMonoparental &&
-              fills.valueSeq().map((infant: Adult) =>
+              fills.valueSeq().map((infant: Person) =>
                   <Grid item key={infant.id}>
                     <label><Field name={"custodies." + infant.id + ".existeix"} component={Checkbox}/>
                       Tinc la custodia de {infant.nom}</label>
@@ -83,9 +83,9 @@ let HouseholdForm = (props: Props) => {
 function mapStateToProps(state) {
   return {
     initialValues: state.household,
-    esMonoparental: esMonoparental(state.adults),
-    esFamiliaNombrosa: esFamiliaNombrosa(state.adults),
-    fills: state.adults.filter((adult: Adult) => esFill(adult)),
+    esMonoparental: esMonoparental(state.persons),
+    esFamiliaNombrosa: esFamiliaNombrosa(state.persons),
+    fills: state.persons.filter((person: Person) => esFill(person)),
     custodies: state.household.custodies
   };
 }
