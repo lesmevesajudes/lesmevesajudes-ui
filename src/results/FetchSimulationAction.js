@@ -1,16 +1,11 @@
 //@flow
-import { serialize as serialize_adult } from "../adults/AdultsReducer";
-import type { AdultState, Adult } from "../adults/AdultsTypes";
-import type { HouseholdData } from "../household/householdDataTypes";
-import type { Rent } from "../rent/rentTypes";
+import {serialize as serialize_adult} from "../adults/AdultsReducer";
+import type {Adult, AdultState} from "../adults/AdultsTypes";
+import type {HouseholdData} from "../household/householdDataTypes";
+import type {Rent} from "../rent/rentTypes";
 import OpenFiscaAPIClient from "../shared/OpenFiscaAPIClient";
-import {
-  esFill,
-  esInfantAcollit,
-  esMonoparental,
-  esSustentador,
-  tipusCustodia
-} from "../shared/selectorUtils";
+import {esFill, esInfantAcollit, esMonoparental, esSustentador, tipusCustodia} from "../shared/selectorUtils";
+
 export const FETCH_SIMULATION = "fetch_simulation";
 
 type SimulationData = {
@@ -103,18 +98,27 @@ function buildRequest(simulationData: SimulationData) {
         ingressat_en_centre_penitenciari: addPeriod(
           adult.ingressat_en_centre_penitenciari
         ),
+        ingressat_en_centre_penitenciari_pot_treballar: addPeriod(
+            adult.ingressat_en_centre_penitenciari_pot_treballar
+        ),
         es_orfe_dels_dos_progenitors: addPeriod(
           adult.es_orfe_dels_dos_progenitors
         ),
         ha_treballat_a_l_estranger_6_mesos: addPeriod(
           adult.ha_treballat_a_l_estranger_6_mesos
         ),
+        ha_treballat_a_l_estranger_6_mesos_i_ha_retornat_en_els_ultims_12_mesos: addPeriod(
+            adult.ha_treballat_a_l_estranger_6_mesos_i_ha_retornat_en_els_ultims_12_mesos
+        ),
         en_els_ultims_12_mesos_ha_fet_baixa_voluntaria_de_la_feina: addPeriod(
           adult.en_els_ultims_12_mesos_ha_fet_baixa_voluntaria_de_la_feina
         ),
+        ha_estat_beneficiari_de_la_rai_en_els_ultims_12_mesos: addPeriod(adult.ha_estat_beneficiari_de_la_rai_en_els_ultims_12_mesos),
+        ha_estat_beneficiari_de_les_tres_rai_anteriors: addPeriod(adult.ha_estat_beneficiari_de_les_tres_rai_anteriors),
         ha_esgotat_prestacio_de_desocupacio: addPeriod(
           adult.ha_esgotat_prestacio_de_desocupacio
         ),
+        inscrit_com_a_demandant_docupacio: addPeriod(adult.inscrit_com_a_demandant_docupacio),
         demandant_d_ocupacio_durant_12_mesos: addPeriod(
           adult.demandant_d_ocupacio_durant_12_mesos
         ),
@@ -130,15 +134,18 @@ function buildRequest(simulationData: SimulationData) {
             adult,
             simulationData.household,
             esMonoparental(simulationData.adults)
-          )
+          ),
         ),
+        percep_prestacions_incompatibles_amb_la_feina: addPeriod(adult.percep_prestacions_incompatibles_amb_la_feina),
+        victima_violencia_domestica: addPeriod(adult.victima_violencia_domestica),
         AE_230_mensual: addPeriod(null),
         AE_230_01_mensual: addPeriod(null),
-        EG_233_mensual: addPeriod(null)
-        /*GE_051_01_mensual: addPeriod(null),
-            GE_051_02_mensual: addPeriod(null),
-            GE_051_03_mensual: addPeriod(null),
-            GG_270_mensual: addPeriod(null)*/
+        EG_233_mensual: addPeriod(null),
+        GE_051_00_mensual: addPeriod(null),
+        GE_051_01_mensual: addPeriod(null),
+        GE_051_02_mensual: addPeriod(null),
+        GE_051_03_mensual: addPeriod(null),
+        /*GG_270_mensual: addPeriod(null)*/
       };
       return acc;
     },

@@ -31,11 +31,27 @@ class PersonalBenefits extends React.Component<Props> {
         name: "Ajuts individuals de menjador",
         periode: "dia",
         url: "/ajuts/menjador"
+      },
+      {
+        ID: "GE_051_00_mensual",
+        name: "Renda activa d'inserció aturats de llarga durada",
+        periode: "mes",
+        url: "/ajuts/rai"
+      },
+      {ID: "GE_051_01_mensual", name: "Renda activa d'inserció discapacitat 33%", periode: "mes", url: "/ajuts/rai"},
+      {
+        ID: "GE_051_02_mensual",
+        name: "Renda activa d'inserció per a emigrants retornats",
+        periode: "mes",
+        url: "/ajuts/rai"
+      },
+      {
+        ID: "GE_051_03_mensual",
+        name: "Renda activa d'inserció per a víctimes de violència de gènere o domèstica",
+        periode: "mes",
+        url: "/ajuts/rai"
       }
-      /*{ID: "GE_051_01_mensual", name: "Renda activa d'inserció discapacitat 33%", periode: "mes", url:"/ajuts/rai"},
-            {ID: "GE_051_02_mensual", name: "Renda activa d'inserció per a emigrants retornats", periode: "mes", url:"/ajuts/rai"},
-            {ID: "GE_051_03_mensual", name: "Renda activa d'inserció per a víctimes de violència de gènere o domèstica", periode: "mes", url:"/ajuts/rai"},
-            {ID: "GG_270_mensual", name: "Renda Garantida Ciutadana", periode: "mes", url:"/ajuts/rgc"}*/
+      //{ID: "GG_270_mensual", name: "Renda Garantida Ciutadana", periode: "mes", url:"/ajuts/rgc"}
     ];
     this.period = "2017-01";
   }

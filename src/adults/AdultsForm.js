@@ -15,16 +15,19 @@ import DescriptionText from "../components/Common/DescriptionText"
 export type AdultFormInitialValues = Adult | { rol: String };
 
 type Props = {
-  onCancel: Function,
-  handleSubmit: Function,
-  classes: Object,
-  esDona: Boolean,
-  teDNI: Boolean,
-  esDesocupat: Boolean,
-  esFill: Boolean,
-  potTreballar: Boolean,
   escolaritzat: Boolean,
-  rol: PersonRole
+  esDesocupat: Boolean,
+  esDona: Boolean,
+  esFill: Boolean,
+  handleSubmit: Function,
+  haTreballatALEstranger6Mesos: Boolean,
+  ingressatEnCentrePenitenciari: Boolean,
+  inscritComADemandantDocupacio: Boolean,
+  onCancel: Function,
+  potTreballar: Boolean,
+  rol: PersonRole,
+  //teDNI: Boolean,
+  victimaViolenciaDeGenere: Boolean
 };
 
 const textesSegonsRol: { [PersonRole]: string } = {
@@ -36,14 +39,18 @@ const textesSegonsRol: { [PersonRole]: string } = {
 
 let AdultsForm = (props: Props) => {
   const {
-    esDona,
-    //teDNI,
+    escolaritzat,
     esDesocupat,
+    esDona,
     esFill,
     handleSubmit,
+    haTreballatALEstranger6Mesos,
+    ingressatEnCentrePenitenciari,
+    inscritComADemandantDocupacio,
     potTreballar,
-    escolaritzat,
-    rol
+    rol,
+    //teDNI,
+    victimaViolenciaDeGenere
   } = props;
 
   return (
@@ -69,11 +76,11 @@ let AdultsForm = (props: Props) => {
                     <label>
                       <Trans>Sexe</Trans>
                     </label>
-                    <Field data-test="sexe" name="sexe" fullWidth component={Select}>
-                      <MenuItem data-test="sexe_dona" value="dona">
+                    <Field data-test="genere" name="genere" fullWidth component={Select}>
+                      <MenuItem data-test="genere_dona" value="dona">
                         <Trans>Dona</Trans>
                       </MenuItem>
-                      <MenuItem data-test="sexe_home" value="home">
+                      <MenuItem data-test="genere_home" value="home">
                         <Trans>Home</Trans>
                       </MenuItem>
                     </Field>
@@ -107,8 +114,11 @@ let AdultsForm = (props: Props) => {
                         <Trans>Situació laboral</Trans>
                       </label>
                       <Field name="situacio_laboral" component={Select} fullWidth>
-                        <MenuItem value="treball_compte_alie">
-                          <Trans>Treballa per compte alié</Trans>
+                        <MenuItem value="treball_compte_daltri_jornada_complerta">
+                          <Trans>Treballa per compte d'altri jornada complerta</Trans>
+                        </MenuItem>
+                        <MenuItem value="treball_compte_alie_jornada_parcial">
+                          <Trans>Treballa per compte alié jornada parcial</Trans>
                         </MenuItem>
                         <MenuItem value="treball_compte_propi">
                           <Trans>Treballa per compte propi</Trans>
@@ -128,15 +138,28 @@ let AdultsForm = (props: Props) => {
                     <label>
                       <Trans>Total ingressos bruts 2016</Trans>
                     </label>
-                    <Field name=".ingressos_bruts" placeholder="0" type="number" fullWidth component={TextField}/>
+                    <Field name="ingressos_bruts" placeholder="0" type="number" fullWidth component={TextField}/>
                     <label>
                       <Trans>Grau discapacitat</Trans>
                     </label>
-                    <Field name=".grau_discapacitat" placeholder="0" type="number" component={TextField}/>
-                    {esDona && !esFill &&
+                    <Field name="grau_discapacitat" placeholder="0" type="number" component={TextField}/>
+                    {esDona &&
                     <label>
                       <Field name="victima_violencia_de_genere" checked={false} component={Checkbox}/>
-                      <Trans>Víctima violencia de genere</Trans>
+                      <Trans>Víctima violència de genere</Trans>
+                    </label>
+                    }
+                    {esDona && victimaViolenciaDeGenere &&
+                    <label>
+                      <Field name="percep_prestacions_incompatibles_amb_la_feina" checked={false}
+                             component={Checkbox}/>
+                      <Trans>Perceb alguna ajuda que no li permeti treballar?</Trans>
+                    </label>
+                    }
+                    {potTreballar &&
+                    <label>
+                      <Field name="victima_violencia_domestica" checked={false} component={Checkbox}/>
+                      <Trans>Víctima violència de domèstica</Trans>
                     </label>
                     }
                     {esDona && !esFill &&
@@ -145,10 +168,17 @@ let AdultsForm = (props: Props) => {
                       <Trans>És divorciada de familia reagrupada</Trans>
                     </label>
                     }
-                    {potTreballar &&
+                    {potTreballar && esDesocupat && inscritComADemandantDocupacio &&
                     <label>
                       <Field name="ingressat_en_centre_penitenciari" checked={false} component={Checkbox}/>
                       <Trans>Ingressat en centre penitenciari</Trans>
+                    </label>
+                    }
+                    {ingressatEnCentrePenitenciari &&
+                    <label>
+                      <Field name="ingressat_en_centre_penitenciari_pot_treballar" checked={false}
+                             component={Checkbox}/>
+                      <Trans>El règim penitenciari li permet treballar fora del centre</Trans>
                     </label>
                     }
                     <label>
@@ -161,73 +191,83 @@ let AdultsForm = (props: Props) => {
                       <Trans>Ha treballat a l&apos;estranger 6 mesos</Trans>
                     </label>
                     }
+                    {potTreballar && haTreballatALEstranger6Mesos &&
+                    <label>
+                      <Field name="ha_treballat_a_l_estranger_6_mesos_i_ha_retornat_en_els_ultims_12_mesos"
+                             checked={false} component={Checkbox}/>
+                      <Trans>Ha retornat d'aquest període de treball en els últims 12 mesos</Trans>
+                    </label>
+                    }
                     {potTreballar && esDesocupat &&
                     <label>
                       <Field name="en_els_ultims_12_mesos_ha_fet_baixa_voluntaria_de_la_feina" checked={false}
                              component={Checkbox}/>
-                      <Trans>
-                        En els últims 12 mesos ha fet baixa voluntaria de la feina
-                      </Trans>
+                      <Trans>En els últims 12 mesos ha fet baixa voluntaria de la feina</Trans>
                     </label>
                     }
                     {potTreballar && esDesocupat &&
                     <label>
                       <Field name="ha_esgotat_prestacio_de_desocupacio" checked={false} component={Checkbox}/>
-                      <Trans>Ha esgotat prestació de desocupació</Trans>
+                      <Trans>Ha esgotat una prestació contributiva o subsidi per desocupació</Trans>
                     </label>
                     }
                     {potTreballar && esDesocupat &&
                     <label>
-                      <Field name="demandant_d_ocupacio_durant_12_mesos" checked={false} component={Checkbox}/>
-                      <Trans>Demandant d&apos;ocupació durant 12 mesos</Trans>
+                      <Field name="inscrit_com_a_demandant_docupacio" checked={false} component={Checkbox}/>
+                      <Trans>És inscrit com a demandant d'ocupació</Trans>
                     </label>
                     }
-                    {potTreballar && esDesocupat &&
+                    {potTreballar && esDesocupat && inscritComADemandantDocupacio &&
+                    <label>
+                      <Field name="demandant_d_ocupacio_durant_12_mesos" checked={false} component={Checkbox}/>
+                      <Trans>Ha estat inscrits de forma ininterrompuda com a demandant d'ocupació almenys 12
+                        mesos</Trans>
+                    </label>
+                    }
+                    {potTreballar && esDesocupat && inscritComADemandantDocupacio &&
                     <label>
                       <Field name="durant_el_mes_anterior_ha_presentat_solicituds_recerca_de_feina" checked={false}
                              component={Checkbox}/>
-                      <Trans>
-                        Durant el mes anterior ha presentat solicituds recerca de feina
-                      </Trans>
+                      <Trans>Ha realitzat accions de recerca activa de feina en el mes anterior</Trans>
+                    </label>
+                    }
+                    {potTreballar && esDesocupat && inscritComADemandantDocupacio &&
+                    <label>
+                      <Field name="ha_estat_beneficiari_de_la_rai_en_els_ultims_12_mesos" checked={false}
+                             component={Checkbox}/>
+                      <Trans>Ha estat beneficiari de la RAI en els últims 12 mesos</Trans>
+                    </label>
+                    }
+                    {potTreballar && esDesocupat && inscritComADemandantDocupacio &&
+                    <label>
+                      <Field name="ha_estat_beneficiari_de_les_tres_rai_anteriors" checked={false}
+                             component={Checkbox}/>
+                      <Trans>Ha estat beneficiari de tres RAI anteriors</Trans>
                     </label>
                     }
                     {esFill &&
                     <label>
                       <Field name="es_escolaritzat_entre_P3_i_4rt_ESO" component={Checkbox}/>
-                      Està escolaritzat entre P4 i 4rt d&apos;ESO
+                      <Trans>Està escolaritzat entre P4 i 4rt d&apos;ESO</Trans>
                     </label>
-                    }
-                    {esFill && escolaritzat &&
-                    <Grid item>
-                      <label>
-                        <Field name="utilitza_el_servei_de_menjador" component={Checkbox}/>
-                        Utilitza el servei de menjador de l&apos;escola
-                      </label>
-                    </Grid>
                     }
                     {esFill && escolaritzat &&
                     <Grid item>
                       <label>
                         <Field name="te_beca_menjador" component={Checkbox}/>
-                        Té beca menjador
+                        <Trans>Té beca menjador</Trans>
                       </label>
                     </Grid>
                     }
                     {esFill &&
                     <label>
-                      <Field name="en_acolliment" component={Checkbox}/> En acolliment
-                    </label>
-                    }
-                    {esFill &&
-                    <label>
-                      <Field name="en_guardia_i_custodia" component={Checkbox}/>
-                      En guardia i custodia
+                      <Field name="en_acolliment" component={Checkbox}/> <Trans>En acolliment</Trans>
                     </label>
                     }
                     {esFill &&
                     <label>
                       <Field name="beneficiari_fons_infancia_2017" component={Checkbox}/>
-                      Beneficiari/a fons infància 2017
+                      <Trans>Beneficiari/a fons infància 2017</Trans>
                     </label>
                     }
                   </Grid>
@@ -240,14 +280,10 @@ let AdultsForm = (props: Props) => {
             <Grid item sm={12}>
               <Grid container justify={"space-around"}>
                 <Button variant="raised" color="secondary" onClick={props.onCancel}>
-                  <Trans>
-                    Cancelar <ClearInputIcon/>
-                  </Trans>
+                  <Trans>Cancelar <ClearInputIcon/></Trans>
                 </Button>
                 <Button variant="raised" color="primary" type="submit" name="ButtonValidar">
-                  <Trans>
-                    Validar <AddIcon/>
-                  </Trans>
+                  <Trans>Validar <AddIcon/></Trans>
                 </Button>
               </Grid>
             </Grid>
@@ -265,22 +301,31 @@ AdultsForm = reduxForm({
 const selector = formValueSelector("AdultsForm");
 
 AdultsForm = connect(state => {
-  // can select values individually
-  const esFill =
-      selector(state, "rol") === "fill" ||
-      selector(state, "rol") === "infant_acollit";
   const esDesocupat = selector(state, "situacio_laboral") === "desocupat";
   //const teDNI = selector(state, "tipus_document_identitat") === "DNI";
   const esDona = selector(state, "genere") === "dona";
+  const escolaritzat = selector(state, "es_escolaritzat_entre_P3_i_4rt_ESO");
+  const esFill =
+      selector(state, "rol") === "fill" ||
+      selector(state, "rol") === "infant_acollit";
+  const haTreballatALEstranger6Mesos = selector(state, "ha_treballat_a_l_estranger_6_mesos");
+  const ingressatEnCentrePenitenciari = selector(state, "ingressat_en_centre_penitenciari");
+  const inscritComADemandantDocupacio = selector(state, "inscrit_com_a_demandant_docupacio");
   const potTreballar = (edat(selector(state, "data_naixement")) || 0) >= 16;
   const rol = selector(state, "rol");
+  const victimaViolenciaDeGenere = selector(state, "victima_violencia_de_genere");
   return {
-    esFill,
+    escolaritzat,
     esDesocupat,
     //teDNI,
     esDona,
+    esFill,
+    haTreballatALEstranger6Mesos,
+    ingressatEnCentrePenitenciari,
+    inscritComADemandantDocupacio,
     potTreballar,
-    rol
+    rol,
+    victimaViolenciaDeGenere
   };
 })(AdultsForm);
 

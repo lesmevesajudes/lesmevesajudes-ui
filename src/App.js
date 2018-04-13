@@ -25,16 +25,16 @@ import HouseholdReducer from "./household/HouseholdReducer";
 import {composeWithDevTools} from "redux-devtools-extension";
 
 if (isDevelopment) {
-	//module.hot.accept();
-	console.log("Environment: " + process.env.NODE_ENV);
+  //module.hot.accept();
+  console.log("Environment: " + process.env.NODE_ENV);
 }
 
 const reducersCombined = combineReducers({
-	results: ResultsReducer,
-	adults: AdultsReducer,
-	household: HouseholdReducer,
-	rent: RentReducer,
-	form: reduxFormReducer // mounted under "form"
+  results: ResultsReducer,
+  adults: AdultsReducer,
+  household: HouseholdReducer,
+  rent: RentReducer,
+  form: reduxFormReducer // mounted under "form"
 });
 
 const middlewares = applyMiddleware(promise);
@@ -44,33 +44,30 @@ const store = isDevelopment
     : createStore(reducersCombined, middlewares);
 
 class App extends Component {
-	render() {
-		return (
-			<div>
-				<CorporateHeader />
-				<CssBaseline />
-				<Provider store={store}>
-					<BrowserRouter>
-						<Switch>
-							<ScrollToTop>
-								<Route exact={true} path="/" component={IndexPage} />
-								<Route path="/wizard" component={WizardPage} />
-								<Route path="/reportBug" component={ReportBugPage} />
-								<Route path="/ajuts/rai" component={InfoRAI} />
-								<Route path="/ajuts/rgc" component={InfoRGC} />
-								<Route path="/ajuts/lloguer" component={InfoLloguer} />
-								<Route path="/ajuts/menjador" component={InfoMenjador} />
-								<Route
-									path="/ajuts/fons_infancia"
-									component={InfoFonsInfancia}
-								/>
-							</ScrollToTop>
-						</Switch>
-					</BrowserRouter>
-				</Provider>
-			</div>
-		);
-	}
+  render() {
+    return (
+        <div>
+          <CorporateHeader/>
+          <CssBaseline/>
+          <Provider store={store}>
+            <BrowserRouter>
+              <Switch>
+                <ScrollToTop>
+                  <Route exact={true} path="/" component={IndexPage}/>
+                  <Route path="/wizard" component={WizardPage}/>
+                  <Route path="/reportBug" component={ReportBugPage}/>
+                  <Route path="/ajuts/rai" component={InfoRAI}/>
+                  <Route path="/ajuts/rgc" component={InfoRGC}/>
+                  <Route path="/ajuts/lloguer" component={InfoLloguer}/>
+                  <Route path="/ajuts/menjador" component={InfoMenjador}/>
+                  <Route path="/ajuts/fons_infancia" component={InfoFonsInfancia}/>
+                </ScrollToTop>
+              </Switch>
+            </BrowserRouter>
+          </Provider>
+        </div>
+    );
+  }
 }
 
 export default App;
