@@ -4,7 +4,6 @@ import {Map} from "immutable";
 import type {AdultId} from "../adults/AdultsTypes";
 import {Adult} from "../adults/AdultsTypes";
 import {Grid} from "material-ui";
-
 type Props = {
   benefitsForPersons: any,
   persons: Map<AdultId, Adult>
@@ -71,28 +70,27 @@ class PersonalBenefits extends React.Component<Props> {
           <Grid
               className="ResultPage"
               container
-              justify={"space-between"}
-              alignItems={"center"}
+              justify="center"
+              alignItems="center"
               key={benefit.ID}
           >
             <Grid item sm={12}>
               <li className="ItemResult" key={benefit.ID}>
-                <Grid container justify={"flex-start"} wrap={"wrap"}>
+                <Grid container justify="center" alignItems="center" wrap="wrap">
                   <Grid className="benefitText" item xs={12} sm={7}>
                     <p>{benefit.name}</p>
                   </Grid>
-                  <Grid className={"Separator"} item xs={6} sm={2}>
+                  <Grid item className="Separator" xs={6} sm={2}>
                     Import:{" "}
                     <span className="moneyText">
                     {personWithBenefits[benefit.ID][this.period]}
                   </span>{" "}
                     € / {benefit.periode}
                   </Grid>
-                  <Grid item xs={6} sm={3}>
+                  <Grid item className="Separator" xs={6} sm={3}>
                     <Link to={benefit.url}>
                       <button
-                          style={{float: "right"}}
-                          className="buttonInfo"
+                          className="buttonMoreInfo"
                           key={benefit.ID}
                       >
                         Més informació
@@ -111,8 +109,8 @@ class PersonalBenefits extends React.Component<Props> {
     if (this.hasAnyBenefit(personBenefits)) {
       return (
           <li className="ItemResultOut" key={person.id}>
-          <span>
-            Ajudes per: <span className="ItemTitle">{person.nom}</span>
+          <span className="ItemTitle">
+            Ajudes per: <span>{person.nom}</span>
           </span>
             <br/>
 
@@ -125,7 +123,7 @@ class PersonalBenefits extends React.Component<Props> {
       );
     } else {
       return (
-          <Grid container justify={"space-between"} alignItems={"center"} key={person.id}>
+          <Grid container justify="space-between" alignItems="center" key={person.id}>
             <Grid item sm={12}>
               <li className="ItemResultOut" key={person.id}>
                 <div>
@@ -133,12 +131,7 @@ class PersonalBenefits extends React.Component<Props> {
                   Ajudes per: <span className="ItemTitle">{person.nom}</span>
                 </span>
                   <br/>
-
-                  <Grid
-                      container
-                      className="ResultPage"
-                      justify={"space-between"}
-                  >
+                  <Grid container className="ResultPage" justify="space-between">
                     <Grid item xs sm={12}>
                       <div className="ItemResult">No opta a cap ajuda</div>
                     </Grid>

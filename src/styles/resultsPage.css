@@ -53,8 +53,11 @@
     padding: 10px;
 }
 .Separator {
-    border-left: 1px solid #cdcdcd;
-    font-size: 14px;
+  min-height: 75px;
+  border-left: 1px solid #cdcdcd;
+  font-size: 14px;
+  line-height: 74px;
+  text-align: center;
 }
 .benefitText {
     font-size: 16px;
@@ -70,4 +73,14 @@
 }
 .ItemTitle {
     font-size: 20px;
+}
+.buttonMoreInfo {
+  background: #d3327e;
+  color: white;
+  padding: 15px;
+  border-radius: 4px;
+  text-transform: none;
+  font-size: 12px;
+  float: "right";
+  margin-top: 17px;
 }

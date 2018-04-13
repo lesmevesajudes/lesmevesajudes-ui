@@ -11,7 +11,7 @@
 }
 
 .AppLogoPetit {
-    background: url("AppLogoPetit.png") no-repeat;
+    background: url("./logopetit.png") no-repeat;
     height: 60px;
     width: 50%;
     background-size: contain;
