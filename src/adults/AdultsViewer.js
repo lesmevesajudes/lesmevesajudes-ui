@@ -16,6 +16,7 @@ type Props = {
 };
 
 class AdultsViewer extends Component<Props, void> {
+<<<<<<< HEAD
   renderAdultsList(adults: Array<Adult>) {
     return (
         <Grid container alignItems={"stretch"}>
@@ -30,6 +31,45 @@ class AdultsViewer extends Component<Props, void> {
                       <PersonShowCase key={adult.id} person={adult} removePerson={this.props.onRemoveClick}
                                       updatePerson={this.props.onUpdateClick}/>
                   ))}
+=======
+	renderAdultsList(adults: Array<Adult>) {
+		console.log(adults);
+		return (
+			<Grid container alignItems={"stretch"}>
+				<Grid item xs sm={10}>
+					<Grid container wrap={"wrap"}>
+						<Grid className={"border-family"} item sm={6}>
+							<Grid container>
+								<Grid item xs sm={12}>
+									<span className={"titleTypePerson"}>Pares</span>
+								</Grid>
+								{adults.filter(adult => adult.rol === "pares").map(adult => (
+									<Grid item sm={6}>
+										<Grid container className={"FixPadding"}>
+											<li className={"ItemParent"} key={adult.id}>
+												<Grid item sm={12}>
+													<span
+														onClick={() => this.props.onUpdateClick(adult.id)}
+													>
+														{adult.nom}
+														<br />
+														{adult.data_naixement}
+													</span>
+												</Grid>
+												<Grid item sm={12}>
+													<button
+														className="littlebutton"
+														key={"delete" + adult.id}
+														onClick={() => this.props.onRemoveClick(adult.id)}
+													>
+														<i className="material-icons">delete</i>
+													</button>
+												</Grid>
+											</li>
+										</Grid>
+									</Grid>
+								))}
+>>>>>>> Update buttons. temp fix
 
                   {adults.filter(adult => esSustentador(adult)).length !== 2 && (
                       <Grid item sm={12} className={"rightButton"}>
@@ -39,6 +79,7 @@ class AdultsViewer extends Component<Props, void> {
                     >
 											<Icon>add_circle</Icon>
 										</span>
+<<<<<<< HEAD
                       </Grid>
                   )}
                 </Grid>
@@ -54,6 +95,46 @@ class AdultsViewer extends Component<Props, void> {
                           <PersonShowCase person={adult} removePerson={this.props.onRemoveClick} updatePerson={this.props.onUpdateClick}/>
                       ))}
                   <Grid item sm={12} className={"rightButton"}>
+=======
+									</Grid>
+								)}
+							</Grid>
+						</Grid>
+						<Grid className={"border-family"} item sm={6}>
+							<Grid container>
+								<Grid item xs sm={12}>
+									<span className={"titleTypePerson"}>Altres familiars</span>
+								</Grid>
+								{adults
+									.filter(adult => adult.rol === "altres_adults_familiars")
+									.map(adult => (
+										<Grid item sm={6}>
+											<Grid container className={"FixPadding"}>
+												<li className={"ItemParent"} key={adult.id}>
+													<Grid item sm={12}>
+														<span
+															onClick={() => this.props.onUpdateClick(adult.id)}
+														>
+															{adult.nom}
+															<br />
+															{adult.data_naixement}
+														</span>
+													</Grid>
+													<Grid item sm={12}>
+														<button
+															className="littlebutton"
+															key={"delete" + adult.id}
+															onClick={() => this.props.onRemoveClick(adult.id)}
+														>
+															<i className="material-icons">delete</i>
+														</button>
+													</Grid>
+												</li>
+											</Grid>
+										</Grid>
+									))}
+								<Grid item sm={12} className={"rightButton"}>
+>>>>>>> Update buttons. temp fix
 									<span
                       id="AddOtherFamilyButton"
                       onClick={() =>
@@ -62,6 +143,7 @@ class AdultsViewer extends Component<Props, void> {
                   >
 										<Icon>add_circle</Icon>
 									</span>
+<<<<<<< HEAD
                   </Grid>
                 </Grid>
               </Grid>
@@ -76,6 +158,45 @@ class AdultsViewer extends Component<Props, void> {
                       <PersonShowCase person={adult} removePerson={this.props.onRemoveClick} updatePerson={this.props.onUpdateClick}/>
                   ))}
                   <Grid item sm={12} className={"rightButton"}>
+=======
+								</Grid>
+							</Grid>
+						</Grid>
+					</Grid>
+					<Grid container wrap={"wrap"} className={"fixFlex"}>
+						<Grid className={"border-family"} item sm={12}>
+							<Grid container>
+								<Grid item xs sm={12}>
+									<span className={"titleTypePerson"}>Fills</span>
+								</Grid>
+								{adults.filter(adult => adult.rol === "fills").map(adult => (
+									<Grid item sm={4}>
+										<Grid container className={"FixPadding"}>
+											<li className={"ItemParent"} key={adult.id}>
+												<Grid item sm={12}>
+													<span
+														onClick={() => this.props.onUpdateClick(adult.id)}
+													>
+														{adult.nom}
+														<br />
+														{adult.data_naixement}
+													</span>
+												</Grid>
+												<Grid item sm={12}>
+													<button
+														className="littlebutton"
+														key={"delete" + adult.id}
+														onClick={() => this.props.onRemoveClick(adult.id)}
+													>
+														<i className="material-icons">delete</i>
+													</button>
+												</Grid>
+											</li>
+										</Grid>
+									</Grid>
+								))}
+								<Grid item sm={12} className={"rightButton"}>
+>>>>>>> Update buttons. temp fix
 									<span
                       id="AddChildButton"
                       onClick={() => this.props.onAddAdultClick("fill")}
@@ -93,6 +214,7 @@ class AdultsViewer extends Component<Props, void> {
 							<span>
 								Altres adults no familiars
 							</span>
+<<<<<<< HEAD
               </Grid>
               {adults
                   .filter(adult => esAltresNoFamiliars(adult))
@@ -100,6 +222,38 @@ class AdultsViewer extends Component<Props, void> {
                       <PersonShowCase person={adult} removePerson={this.props.onRemoveClick} updatePerson={this.props.onUpdateClick}/>
                   ))}
               <Grid item sm={12} className={"rightButton"}>
+=======
+						</Grid>
+						{adults
+							.filter(adult => adult.rol === "altres_adults")
+							.map(adult => (
+								<Grid item sm={12}>
+									<Grid container direction={"column"} className={"FixPadding"}>
+										<li className={"ItemParent"} key={adult.id}>
+											<Grid item sm={12}>
+												<span
+													onClick={() => this.props.onUpdateClick(adult.id)}
+												>
+													{adult.nom}
+													<br />
+													{adult.data_naixement}
+												</span>
+											</Grid>
+											<Grid item sm={12}>
+												<button
+													className="littlebutton"
+													key={"delete" + adult.id}
+													onClick={() => this.props.onRemoveClick(adult.id)}
+												>
+													<i className="material-icons">delete</i>
+												</button>
+											</Grid>
+										</li>
+									</Grid>
+								</Grid>
+							))}
+						<Grid item sm={12} className={"rightButton"}>
+>>>>>>> Update buttons. temp fix
 							<span
                   id="AddOtherAdultButton"
                   onClick={() => this.props.onAddAdultClick("altres_adults")}
