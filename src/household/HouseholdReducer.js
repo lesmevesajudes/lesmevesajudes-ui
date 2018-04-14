@@ -13,8 +13,8 @@ function addHouseholdData(
 
 function initHouseholdDataState(): HouseholdDataState {
   return {
-    tipus_familia_nombrosa: "No",
-    tipus_familia_monoparental: "No",
+    tipus_familia_nombrosa: "nop",
+    tipus_familia_monoparental: "nop",
     es_usuari_serveis_socials: false,
     custodies: null
   };

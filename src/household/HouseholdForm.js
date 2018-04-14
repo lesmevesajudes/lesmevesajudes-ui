@@ -34,9 +34,9 @@ let HouseholdForm = (props: Props) => {
               <Grid item>
                 <label>Tipus familia nombrosa:</label>
                 <Field name='tipus_familia_nombrosa' component={Select} fullWidth>
-                  <MenuItem value="No">No</MenuItem>
-                  <MenuItem value="General">General</MenuItem>
-                  <MenuItem value="Especial">Especial</MenuItem>
+                  <MenuItem value="nop">No</MenuItem>
+                  <MenuItem value="general">General</MenuItem>
+                  <MenuItem value="especial">Especial</MenuItem>
                 </Field>
               </Grid>}
 
@@ -44,9 +44,9 @@ let HouseholdForm = (props: Props) => {
               <Grid item>
                 <label>Disposa del carnet de familia monoparental:</label>
                 <Field name='tipus_familia_monoparental' component={Select} fullWidth>
-                  <MenuItem value="No">No</MenuItem>
-                  <MenuItem value="General">General</MenuItem>
-                  <MenuItem value="Especial">Especial</MenuItem>
+                  <MenuItem value="nop">No</MenuItem>
+                  <MenuItem value="general">General</MenuItem>
+                  <MenuItem value="especial">Especial</MenuItem>
                 </Field>
               </Grid>}
               {esMonoparental &&
