@@ -113,23 +113,25 @@ let PersonForm = (props: Props) => {
                       <label>
                         <Trans>Situació laboral</Trans>
                       </label>
-                      <Field name="situacio_laboral" component={Select} fullWidth>
-                        <MenuItem value="treball_compte_daltri_jornada_complerta">
+                      <Field data-test="situacio_laboral" name="situacio_laboral" component={Select} fullWidth>
+                        <MenuItem data-test="treball_compte_daltri_jornada_complerta"
+                                  value="treball_compte_daltri_jornada_complerta">
                           <Trans>Treballa per compte d'altri jornada complerta</Trans>
                         </MenuItem>
-                        <MenuItem value="treball_compte_alie_jornada_parcial">
+                        <MenuItem data-test="treball_compte_alie_jornada_parcial"
+                                  value="treball_compte_alie_jornada_parcial">
                           <Trans>Treballa per compte alié jornada parcial</Trans>
                         </MenuItem>
-                        <MenuItem value="treball_compte_propi">
+                        <MenuItem data-test="treball_compte_propi" value="treball_compte_propi">
                           <Trans>Treballa per compte propi</Trans>
                         </MenuItem>
-                        <MenuItem value="desocupat">
+                        <MenuItem data-test="desocupat" value="desocupat">
                           <Trans>Desocupat</Trans>
                         </MenuItem>
-                        <MenuItem value="estudiant">
+                        <MenuItem data-test="estudiant" value="estudiant">
                           <Trans>Estudiant</Trans>
                         </MenuItem>
-                        <MenuItem value="jubilat">
+                        <MenuItem data-test="jubilat" value="jubilat">
                           <Trans>Jubilat</Trans>
                         </MenuItem>
                       </Field>
