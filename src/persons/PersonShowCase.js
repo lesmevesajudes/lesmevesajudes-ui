@@ -16,7 +16,7 @@ class PersonShowCase extends Component <Props> {
         <Grid item sm={6} key={person.id}>
           <Grid container spacing={8}>
             <li className={"ItemParent"} key={person.id} data-test={person.nom}>
-              <Grid item sm={12} >
+              <Grid item sm={12} onClick={() => this.props.updatePerson(person.id)}>
                 <span>
                   {person.nom}<br/>
                   {person.data_naixement}
