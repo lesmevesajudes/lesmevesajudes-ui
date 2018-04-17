@@ -40,6 +40,7 @@
     "flow": "flow",
     "start": "react-scripts start",
     "serve": "serve -l -s build -p 3000",
+    "selenium_server": "java -jar node_modules/selenium-server-standalone/index.jar",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
