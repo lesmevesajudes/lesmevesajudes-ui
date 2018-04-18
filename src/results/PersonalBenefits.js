@@ -78,7 +78,7 @@ class PersonalBenefits extends React.Component<Props> {
             <Grid item sm={12}>
               <li className="ItemResult" key={benefit.ID}>
                 <Grid container justify="center" alignItems="center" wrap="wrap">
-                  <Grid className="benefitText" item xs={12} sm={7}>
+                  <Grid id={benefit.ID} className="benefitText" item xs={12} sm={7}>
                     <p>{benefit.name}</p>
                   </Grid>
                   <Grid item className="Separator" xs={6} sm={2}>

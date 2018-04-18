@@ -73,6 +73,8 @@ module.exports = {
         .waitForElementVisible("[data-test='di_dni']")
         .click("[data-test='di_dni']")
         .pause(waitForModalAnimationsToFinishIGuess)
+        .click("input[name='es_escolaritzat_entre_P3_i_4rt_ESO']")
+        .click("input[name='beneficiari_fons_infancia_2017']")
         .waitForElementVisible('button[name="ButtonValidar"]')
         .click('button[name="ButtonValidar"]')
         .waitForElementVisible('div.container-family')
@@ -97,12 +99,18 @@ module.exports = {
         .waitForElementVisible("#next-button")
         .click("#next-button")
   },
-  "results page": browser => {
+  "results page[llarga]": browser => {
     browser
-        .assert.containsText("p", "Renda activa d'inserció aturats de llarga durada")
-        .assert.containsText("p", "Renda activa d'inserció discapacitat 33%")
-        .assert.containsText("p", "Renda activa d'inserció per a emigrants retornats")
-        .assert.containsText("p", "Renda activa d'inserció per a víctimes de violència de gènere o ")
+        .waitForElementVisible(".ItemResult")
+        .assert.containsText('#GE_051_00_mensual', "Renda activa d'inserció aturats de llarga durada")
+
+  },
+    "results page[33%]": browser => {
+    browser
+        .waitForElementVisible(".ItemResult")
+        .assert.containsText('#GE_051_01_mensual', "Renda activa d'inserció discapacitat 33%")
+        .assert.containsText('#GE_051_02_mensual', "Renda activa d'inserció per a emigrants retornats")
+        .assert.containsText('#GE_051_03_mensual', "Renda activa d'inserció per a víctimes de violència de gènere o ")
   },
   after: function (browser) {
     browser.end();
