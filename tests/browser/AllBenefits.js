@@ -15,10 +15,10 @@ module.exports = {
     browser.assert.urlContains("wizard");
   },
   "can add an parent": browser => {
+          var parent = browser.page.AddParent();
+    browser.click("#AddParentButton")
+    parent.elSeuNom("Hola")
     browser
-        .click("#AddParentButton")
-        .waitForElementVisible('input[name="nom"]')
-        .setValue('input[name="nom"]', "Parent 1")
         .setValue('input[name="data_naixement"]', "15011970")
         .setValue('input[name="data_alta_padro"]', "15012010")
         .waitForElementVisible("div[data-test='genere']")
@@ -52,7 +52,7 @@ module.exports = {
         .waitForElementVisible('button[name="ButtonValidar"]')
         .click('button[name="ButtonValidar"]')
         .waitForElementVisible('div.container-family')
-        .assert.containsText('li[data-test="Parent 1"]', 'Parent 1');
+        .assert.containsText('li[data-test=Hola"]', 'Hola');
   },
   "can add an child": browser => {
     browser
