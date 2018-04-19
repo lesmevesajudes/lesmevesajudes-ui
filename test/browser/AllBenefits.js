@@ -99,15 +99,10 @@ module.exports = {
         .waitForElementVisible("#next-button")
         .click("#next-button")
   },
-  "results page[llarga]": browser => {
+  "results page": browser => {
     browser
         .waitForElementVisible(".ItemResult")
         .assert.containsText('#GE_051_00_mensual', "Renda activa d'inserció aturats de llarga durada")
-
-  },
-    "results page[33%]": browser => {
-    browser
-        .waitForElementVisible(".ItemResult")
         .assert.containsText('#GE_051_01_mensual', "Renda activa d'inserció discapacitat 33%")
         .assert.containsText('#GE_051_02_mensual', "Renda activa d'inserció per a emigrants retornats")
         .assert.containsText('#GE_051_03_mensual', "Renda activa d'inserció per a víctimes de violència de gènere o ")
