@@ -1,9 +1,9 @@
 {
   "src_folders": [
-    "tests/browser//"
+    "test/browser//"
   ],
   "output_folder": "reports",
-  "page_objects_path": "tests/browser/Pages",
+  "page_objects_path": "test/browser/Pages",
   "globals_path": "nightwatchGlobals.js",
   "test_settings": {
     "default": {
