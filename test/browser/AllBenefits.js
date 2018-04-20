@@ -27,7 +27,10 @@ module.exports = {
         .ambDataDePadro("15012010")
         .waitForElementVisible("@gender")
         .esDona()
-        .teDNI()
+    browser.pause(waitForModalAnimationsToFinishIGuess)
+    parent.teDNI()
+    browser.pause(waitForModalAnimationsToFinishIGuess)
+    parent
         .situacioLaboralDesocupat()
         .minusvaliaPercentatge(90)
         .victimaDeViolenciaDeGenere()
@@ -38,33 +41,37 @@ module.exports = {
         .treballatAlExtranger6MesosRetornatUltims12Mesos()
         .esgotatPrestacioDesocupacio()
         .InscritDemandantDesocupacio()
-        .DemandantDesocupacioDurant12Mesos()
+    browser.pause(waitForModalAnimationsToFinishIGuess)
+    parent.DemandantDesocupacioDurant12Mesos()
         .mesAnteriorSolicitudTreball()
     browser
         .waitForElementVisible('button[name="ButtonValidar"]')
         .click('button[name="ButtonValidar"]')
         .pause(waitForModalAnimationsToFinishIGuess)
         .waitForElementVisible('div.container-family')
-        .assert.containsText('li[data-test=Parent 1"]', 'Parent 1')
-        .end()
   },
   "can add an child": browser => {
-    var child = browser.page.addPerson();
-    browser
-        .click("#AddChildButton")
+    var parent = browser.page.AddPerson();
+    browser.click("#AddChildButton")
     parent
         .elSeuNom("Child 1")
         .ambDataDeNaixement("15012010")
         .ambDataDePadro("15012010")
         .esHome()
-        .teDNI()
+    browser.pause(waitForModalAnimationsToFinishIGuess)
+    parent.teDNI()
+    browser.pause(waitForModalAnimationsToFinishIGuess)
+    parent
         .escolaritzatEntreP3i4rtESO()
         .beneficiariFonsInfancia2017()
     browser
-        .assert.containsText('li[data-test="Child 1"]', 'Child 1');
+        .waitForElementVisible('button[name="ButtonValidar"]')
+        .click('button[name="ButtonValidar"]')
+        .pause(waitForModalAnimationsToFinishIGuess)
+        .waitForElementVisible('div.container-family')
   },
   "can set family settings": browser => {
-    var family = browser.page.FamiliySettings();
+    var family = browser.page.FamilySettings();
     browser
         .getLocationInView("#next-button")
         .click("#next-button")

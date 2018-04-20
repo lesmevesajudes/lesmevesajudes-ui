@@ -27,8 +27,7 @@ module.exports = {
       gender: 'div[data-test="genere"]',
       genderW: '[data-test="genere_dona"]',
       genderM: '[data-test="genere_home"]',
-      identity: '[data-test="document_identitat"]',
-      identityMenu: '#menu-tipus_document_identitat',
+      identity: '[data-test="identitat"]',
       identityDNI: '[data-test="di_dni"]',
       identityNIE: '[data-test="di_nie"]',
       identityPassport: '[data-test="passport"]',
@@ -58,76 +57,73 @@ module.exports = {
       occupationApplicant12Month: 'input[name="demandant_d_ocupacio_durant_12_mesos"]',
       recentSearchingOfWork: 'input[name="durant_el_mes_anterior_ha_presentat_solicituds_recerca_de_feina"]',
       schooledBeetwenP3and4thESO: 'input[name="es_escolaritzat_entre_P3_i_4rt_ESO"]',
-      childhoodBenefits2017: 'input[name="beneficiari_fons_infancia_2017"]',
+      childhoodBenefits2017: 'input[name="beneficiari_fons_infancia_2017"]'
   },
   commands: [{
       elSeuNom: Name,
       ambDataDeNaixement: dataDeNaixement,
       ambDataDePadro: ultimaInscripcioEnElPadro,
-      esDona: () => {
+      esDona: function() {
         return this.waitForElementVisible("@gender")
         .click("@gender")
         .waitForElementVisible("@genderW")
         .click("@genderW")
       },
-      esHome: () => {
+      esHome: function() {
         return this.waitForElementVisible("@gender")
         .click("@gender")
         .waitForElementVisible("@genderM")
         .click("@genderM")
       },
-      teDNI: () => {
+      teDNI: function() {
         return this.waitForElementVisible("@identity")
-        .click("@identity")
-        .waitForElementVisible("@identityMenu")
+        .click("@identity") 
         .waitForElementVisible("@identityDNI")
         .click("@identityDNI")
       },
-      teNIE: () => {
+      teNIE: function() {
         return this.waitForElementVisible("@identity")
         .click("@identity")
-        .waitForElementVisible("@identityMenu")
         .waitForElementVisible("@identityNIE")
         .click("@identityNIE")
       },
-      tePasaport: () => {
+      tePasaport: function() {
         return this.waitForElementVisible("@identity")
         .click("@identity")
-        .waitForElementVisible("@identityMenu")
         .waitForElementVisible("@identityPassport")
         .click("@identityPassport")
       },
-      situacioLaboralDesocupat: () => {
+      situacioLaboralDesocupat:function() {
         return this.waitForElementVisible("@laboralSituation")
         .click("@laboralSituation")
         .waitForElementVisible("@unemployed")
         .click("@unemployed")
       },
-      situacioLaboralEstudiant: () => {
+      situacioLaboralEstudiant: function() {
         return this.waitForElementVisible("@laboralSituation")
         .click("@laboralSituation")
         .waitForElementVisible("@isStudent")
         .click("@isStudent")
       },
-      situacioLaboralJubilat: () => {
+      situacioLaboralJubilat: function() {
         return this.waitForElementVisible("@laboralSituation")
         .click("@laboralSituation")
         .waitForElementVisible("[data-test='jubilat']")
         .click("@workRetiree")
       },
-      situacioLaboralAutonom: () => {
+      situacioLaboralAutonom: function() {
         return this.waitForElementVisible("@laboralSituation")
         .click("@laboralSituation")
         .waitForElementVisible("@workFreelance")
         .click("@workFreelance")
       },
-      situacioLaboralJornadaParcial: () => {
+      situacioLaboralJornadaParcial: function() {
         return this.waitForElementVisible("@laboralSituation")
         .click("@laboralSituation")
         .waitForElementVisible("@workParcialTime")
         .click("@workParcialTime")
       },
-      situacioLaboralJornadaCompleta: () => {
+      situacioLaboralJornadaCompleta: function() {
         return this.waitForElementVisible("@laboralSituation")
         .click("@laboralSituation")
         .waitForElementVisible("@workFullTime")
@@ -135,47 +131,47 @@ module.exports = {
       },
       IngresosBruts: rawIncomeActual,
       minusvaliaPercentatge: percentageDisability,
-      IngeresatACentrePeninteciari: () => {
+      IngeresatACentrePeninteciari: function() {
         return this.click("@joinedJail")
       },
-      IngeresatACentrePenitenciari: () => {
+      IngeresatACentrePenitenciari: function() {
         return this.click("@joinedJailCanWork")
       },
-      victimaDeViolenciaDeGenere: () => {
+      victimaDeViolenciaDeGenere: function() {
        return this.click("@genderViolence") 
       },
       
-      victimaDeViolenciaDomestica: () =>{
+      victimaDeViolenciaDomestica: function() {
         return this.click("@householdViolence")
       },
-      divorciadaFamiliaRegrupada: () => {
+      divorciadaFamiliaRegrupada: function() {
         return this.click("@divorced")
       },
-      orfeProgenitos: () => {
+      orfeProgenitos: function() {
         return this.click("@totalOrphan")
       },
-      treballatAlExtranger6Mesos: () => {
+      treballatAlExtranger6Mesos: function() {
         return this.click("@worked6MonthsAbroad")
       },
-      treballatAlExtranger6MesosRetornatUltims12Mesos: () => {
+      treballatAlExtranger6MesosRetornatUltims12Mesos: function() {
         return this.click("@worked6MonthsAbroadReturn12LastMonth")
       },
-      esgotatPrestacioDesocupacio: () => {
+      esgotatPrestacioDesocupacio: function() {
         return this.click("@finishedBenefitForUnemployed")
       },
-      InscritDemandantDesocupacio: () => {
-        return this.click("2occupationApplicant")
+      InscritDemandantDesocupacio: function() {
+        return this.click("@occupationApplicant")
       },
-      DemandantDesocupacioDurant12Mesos: () => {
+      DemandantDesocupacioDurant12Mesos: function() {
         return this.click("@occupationApplicant12Month")
       },
-      mesAnteriorSolicitudTreball: () => {
+      mesAnteriorSolicitudTreball: function() {
         return this.click("@recentSearchingOfWork")
       },
-      escolaritzatEntreP3i4rtESO: () => {
+      escolaritzatEntreP3i4rtESO: function() {
         return this.click("@schooledBeetwenP3and4thESO");
       },
-      beneficiariFonsInfancia2017: () => {
+      beneficiariFonsInfancia2017: function() {
         return this.click("@childhoodBenefits2017");
       }
   }]
