@@ -159,10 +159,13 @@ module.exports = {
       esgotatPrestacioDesocupacio: function() {
         return this.click("@finishedBenefitForUnemployed")
       },
-      InscritDemandantDesocupacio: function() {
+      beneficiariRaiUltims12Mesos: function() {
+        return this.click("@raiBenefit12Months")
+      },
+      inscritDemandantDesocupacio: function() {
         return this.click("@occupationApplicant")
       },
-      DemandantDesocupacioDurant12Mesos: function() {
+      demandantDesocupacioDurant12Mesos: function() {
         return this.click("@occupationApplicant12Month")
       },
       mesAnteriorSolicitudTreball: function() {
