@@ -16,9 +16,6 @@ function rawIncomeActual(money){
   return this.waitForElementVisible("@rawIncome").setValue("@rawIncome", money)
 }
 module.exports = {
-  url: function() { 
-		return this.api.launchUrl; 
-	},
   elements: {
       parentButton: "#AddParentButton",
       personName: 'input[name="nom"]',
@@ -27,7 +24,7 @@ module.exports = {
       gender: 'div[data-test="genere"]',
       genderW: '[data-test="genere_dona"]',
       genderM: '[data-test="genere_home"]',
-      identity: '[data-test="identitat"]',
+      identity: '[data-test="document_identitat"]',
       identityDNI: '[data-test="di_dni"]',
       identityNIE: '[data-test="di_nie"]',
       identityPassport: '[data-test="passport"]',
@@ -130,7 +127,7 @@ module.exports = {
         .click("@workFullTime")
       },
       IngresosBruts: rawIncomeActual,
-      minusvaliaPercentatge: percentageDisability,
+      teUnPercentatgeDeMinusvaliaDel: percentageDisability,
       IngeresatACentrePeninteciari: function() {
         return this.click("@joinedJail")
       },
@@ -162,13 +159,13 @@ module.exports = {
       beneficiariRaiUltims12Mesos: function() {
         return this.click("@raiBenefit12Months")
       },
-      inscritDemandantDesocupacio: function() {
+      InscritComADemanadantDOcupacio: function() {
         return this.click("@occupationApplicant")
       },
       demandantDesocupacioDurant12Mesos: function() {
         return this.click("@occupationApplicant12Month")
       },
-      mesAnteriorSolicitudTreball: function() {
+      HaRealitzatAccionsDeRecercaActivaDeFeinaEnElMesAnterior: function() {
         return this.click("@recentSearchingOfWork")
       },
       escolaritzatEntreP3i4rtESO: function() {

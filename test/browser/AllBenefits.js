@@ -32,7 +32,7 @@ module.exports = {
     browser.pause(waitForModalAnimationsToFinishIGuess)
     parent
         .situacioLaboralDesocupat()
-        .minusvaliaPercentatge(90)
+        .teUnPercentatgeDeMinusvaliaDel(90)
         .victimaDeViolenciaDeGenere()
         .victimaDeViolenciaDomestica()
         .divorciadaFamiliaRegrupada()
@@ -40,11 +40,11 @@ module.exports = {
         .treballatAlExtranger6Mesos()
         .treballatAlExtranger6MesosRetornatUltims12Mesos()
         .esgotatPrestacioDesocupacio()
-        .InscritDemandantDesocupacio()
+        .InscritComADemanadantDOcupacio()
     browser.pause(waitForModalAnimationsToFinishIGuess)
     parent
         .demandantDesocupacioDurant12Mesos()
-        .mesAnteriorSolicitudTreball()
+        .HaRealitzatAccionsDeRecercaActivaDeFeinaEnElMesAnterior()
     browser
         .waitForElementVisible('button[name="ButtonValidar"]')
         .click('button[name="ButtonValidar"]')
@@ -73,21 +73,16 @@ module.exports = {
   },
   "can set family settings": browser => {
     var family = browser.page.FamilySettings();
-    browser
-        .getLocationInView("#next-button")
-        .click("#next-button")
+    var utils = browser.page.UtilObject();
+    utils.nextPage()
     family.serveisSocials()
-    browser
-        .getLocationInView("#next-button")
-        .click("#next-button")
+    utils.nextPage()
   },
   "rent settings": browser => {
         var rent = browser.page.RentSettings();
+        var utils = browser.page.UtilObject();
         rent.codiPostalHabitatge("08004")
-        browser
-            .getLocationInView("#next-button")
-            .waitForElementVisible("#next-button")
-            .click("#next-button")
+        utils.nextPage()
   },
   "results page": browser => {
     browser

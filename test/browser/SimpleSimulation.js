@@ -29,7 +29,7 @@ module.exports = {
         .pause(waitForModalAnimationsToFinishIGuess)
         .waitForElementVisible("[data-test='document_identitat']")
         .click("[data-test='document_identitat']")
-        .waitForElementVisible("#menu-tipus_document_identitat")
+        .waitForElementVisible("#document_identitat")
         .waitForElementVisible("[data-test='di_dni']")
         .click("[data-test='di_dni']")
         .pause(waitForModalAnimationsToFinishIGuess)

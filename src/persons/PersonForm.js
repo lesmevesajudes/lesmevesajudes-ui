@@ -87,7 +87,7 @@ let PersonForm = (props: Props) => {
                     <label>
                       <Trans>Tipus de document de identitat</Trans>
                     </label>
-                    <Field data-test="identitat" name="identitat" fullWidth component={Select} >
+                    <Field data-test="document_identitat" name="document_identitat" component={Select} fullWidth>
                       <MenuItem data-test="di_dni" value="DNI">
                         <Trans>DNI</Trans>
                       </MenuItem>

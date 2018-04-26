@@ -33,12 +33,12 @@ module.exports = {
     browser.pause(waitForModalAnimationsToFinishIGuess)
     parent
         .situacioLaboralDesocupat()
-        .minusvaliaPercentatge(34)
+        .teUnPercentatgeDeMinusvaliaDel(34)
         .IngresosBruts(6000)
-        .inscritDemandantDesocupacio()
+        .InscritComADemanadantDOcupacio()
         .esgotatPrestacioDesocupacio()
         .demandantDesocupacioDurant12Mesos()
-        .mesAnteriorSolicitudTreball()
+        .HaRealitzatAccionsDeRecercaActivaDeFeinaEnElMesAnterior()
     browser.pause(waitForModalAnimationsToFinishIGuess)
     browser
         .waitForElementVisible('button[name="ButtonValidar"]')
@@ -47,18 +47,13 @@ module.exports = {
         .waitForElementVisible('div.container-family')
   },
   "can set family settings": browser => {
-    browser
-        .getLocationInView("#next-button")
-        .click("#next-button")
-    browser
-        .getLocationInView("#next-button")
-        .click("#next-button")
+    var utils = browser.page.UtilObject();
+    utils.nextPage()
+    utils.nextPage()
   },
   "rent settings": browser => {
-    browser
-        .getLocationInView("#next-button")
-        .waitForElementVisible("#next-button")
-        .click("#next-button")
+    var utils = browser.page.UtilObject();
+    utils.nextPage()
   },
   "results page": browser => {
     browser

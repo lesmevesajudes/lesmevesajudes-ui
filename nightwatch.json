@@ -3,7 +3,7 @@
     "test/browser//"
   ],
   "output_folder": "reports",
-  "page_objects_path": "test/browser/Pages",
+  "page_objects_path": "test/browser/PageObjects",
   "globals_path": "nightwatchGlobals.js",
   "test_settings": {
     "default": {

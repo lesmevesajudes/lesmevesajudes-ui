@@ -32,10 +32,11 @@ module.exports = {
     parent.teDNI()
     browser.pause(waitForModalAnimationsToFinishIGuess)
     parent
-        .treballatAlExtranger6MesosRetornatUltims12Mesos()
         .situacioLaboralDesocupat()
         .IngresosBruts(6000)
-        .inscritDemandantDesocupacio()
+        .InscritComADemanadantDOcupacio()
+        .treballatAlExtranger6Mesos()
+        .treballatAlExtranger6MesosRetornatUltims12Mesos()
     browser.pause(waitForModalAnimationsToFinishIGuess)
     browser
         .waitForElementVisible('button[name="ButtonValidar"]')
@@ -44,23 +45,18 @@ module.exports = {
         .waitForElementVisible('div.container-family')
   },
   "can set family settings": browser => {
-    browser
-        .getLocationInView("#next-button")
-        .click("#next-button")
-    browser
-        .getLocationInView("#next-button")
-        .click("#next-button")
+    var utils = browser.page.UtilObject();
+    utils.nextPage()
+    utils.nextPage()
   },
   "rent settings": browser => {
-    browser
-        .getLocationInView("#next-button")
-        .waitForElementVisible("#next-button")
-        .click("#next-button")
+    var utils = browser.page.UtilObject();
+    utils.nextPage()
   },
   "results page": browser => {
     browser
         .waitForElementVisible(".ItemResult")
-        .assert.containsText('#GE_051_00_mensual', "Renda activa d'inserció aturats de llarga durada")
+        .assert.containsText('#GE_051_02_mensual', "Renda activa d'inserció per a emigrants retornats")
   },
   after: function (browser) {
     browser.end();
