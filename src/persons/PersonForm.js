@@ -11,7 +11,7 @@ import {connect} from "react-redux";
 import {Button, Grid, MenuItem} from "material-ui";
 import edat from "../shared/Edat";
 import DescriptionText from "../components/Common/DescriptionText"
-
+import normalizeDate from "../components/Common/DateMask"
 export type PersonFormInitialValues = Person | { rol: String };
 
 type Props = {
@@ -70,7 +70,7 @@ let PersonForm = (props: Props) => {
                     <label>
                       <Trans>Data naixement</Trans>
                     </label>
-                    <Field name="data_naixement" placeholder="2005-01-21" type="date" fullWidth component={TextField}
+                    <Field name="data_naixement" placeholder="dd/mm/aaaa" normalize={normalizeDate} fullWidth component={TextField}
                            required/>
                     <Field name="rol" component={TextField} type="hidden" required/>
                     <label>
@@ -106,7 +106,7 @@ let PersonForm = (props: Props) => {
                         Data alta padró a l&apos;actual habitatge (sense interrupcions)
                       </Trans>
                     </label>
-                    <Field name="data_alta_padro" placeholder="2005-01-21" type="date" component={TextField} fullWidth
+                    <Field name="data_alta_padro" placeholder="dd/mm/aaaa" normalize={normalizeDate} component={TextField} fullWidth
                            required/>
                     {potTreballar &&
                     <Grid item>
