@@ -1,21 +1,19 @@
 const normalizeDate = value => {
   if (!value) {
-    return value
+    return value;
   }
 
-  const onlyNums = value.replace(/[^\d]/g, '')
+  const onlyNumbers = value.replace(/[^\d]/g, '');
 
-  if(onlyNums.length <=2){
-    return onlyNums
+  if (onlyNumbers.length <= 2) {
+    return onlyNumbers;
   }
-  if(onlyNums.length <= 4) {
-    return `${onlyNums.slice(0, 2)}/${onlyNums.slice(2)}`
+  if (onlyNumbers.length <= 4) {
+    return `${onlyNumbers.slice(0, 2)}/${onlyNumbers.slice(2)}`;
   }
-  if(onlyNums.length <= 8) {
-    return `${onlyNums.slice(0, 2)}/${onlyNums.slice(2,4)}/${onlyNums.slice(4, 12)}`
+  if (onlyNumbers.length <= 8) {
+    return `${onlyNumbers.slice(0, 2)}/${onlyNumbers.slice(2, 4)}/${onlyNumbers.slice(4, 12)}`;
   }
+};
 
-
-}
-
-export default normalizeDate
+export default normalizeDate;
