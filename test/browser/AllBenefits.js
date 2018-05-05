@@ -15,23 +15,25 @@ module.exports = {
     browser.assert.urlContains("wizard");
   },
   "can add an parent": browser => {
-    var parent = browser.page.AddPerson();
+    const parent = browser.page.AddPerson();
     browser
         .waitForElementVisible("#AddParentButton")
         .click("#AddParentButton")
         .waitForElementVisible('input[name="nom"]')
-        .pause(waitForModalAnimationsToFinishIGuess)
+        .pause(waitForModalAnimationsToFinishIGuess);
     parent
         .elSeuNom("Parent 1")
         .ambDataDeNaixement("15011970")
         .ambDataDePadro("15012010")
         .waitForElementVisible("@gender")
-        .esDona()
-    browser.pause(waitForModalAnimationsToFinishIGuess)
-    parent.teDNI()
-    browser.pause(waitForModalAnimationsToFinishIGuess)
+        .esDona();
+    browser.pause(waitForModalAnimationsToFinishIGuess);
+    parent.teDNI();
+    browser.pause(waitForModalAnimationsToFinishIGuess);
     parent
-        .situacioLaboralDesocupat()
+        .situacioLaboralDesocupat();
+    browser.pause(waitForModalAnimationsToFinishIGuess);
+    parent
         .teUnPercentatgeDeMinusvaliaDel(90)
         .victimaDeViolenciaDeGenere()
         .victimaDeViolenciaDomestica()
@@ -40,11 +42,12 @@ module.exports = {
         .treballatAlExtranger6Mesos()
         .treballatAlExtranger6MesosRetornatUltims12Mesos()
         .esgotatPrestacioDesocupacio()
-        .InscritComADemanadantDOcupacio()
-    browser.pause(waitForModalAnimationsToFinishIGuess)
+        .InscritComADemanadantDOcupacio();
+    browser.pause(waitForModalAnimationsToFinishIGuess);
     parent
         .demandantDesocupacioDurant12Mesos()
-        .HaRealitzatAccionsDeRecercaActivaDeFeinaEnElMesAnterior()
+        .HaRealitzatAccionsDeRecercaActivaDeFeinaEnElMesAnterior();
+    browser.pause(10000);
     browser
         .waitForElementVisible('button[name="ButtonValidar"]')
         .click('button[name="ButtonValidar"]')
@@ -52,19 +55,19 @@ module.exports = {
         .waitForElementVisible('div.container-family')
   },
   "can add an child": browser => {
-    var parent = browser.page.AddPerson();
-    browser.click("#AddChildButton")
+    const parent = browser.page.AddPerson();
+    browser.click("#AddChildButton");
     parent
         .elSeuNom("Child 1")
         .ambDataDeNaixement("15012010")
         .ambDataDePadro("15012010")
-        .esHome()
-    browser.pause(waitForModalAnimationsToFinishIGuess)
-    parent.teDNI()
-    browser.pause(waitForModalAnimationsToFinishIGuess)
+        .esHome();
+    browser.pause(waitForModalAnimationsToFinishIGuess);
+    parent.teDNI();
+    browser.pause(waitForModalAnimationsToFinishIGuess);
     parent
         .escolaritzatEntreP3i4rtESO()
-        .beneficiariFonsInfancia2017()
+        .beneficiariFonsInfancia2017();
     browser
         .waitForElementVisible('button[name="ButtonValidar"]')
         .click('button[name="ButtonValidar"]')
@@ -72,17 +75,17 @@ module.exports = {
         .waitForElementVisible('div.container-family')
   },
   "can set family settings": browser => {
-    var family = browser.page.FamilySettings();
-    var utils = browser.page.UtilObject();
-    utils.nextPage()
-    family.serveisSocials()
+    const family = browser.page.FamilySettings();
+    const utils = browser.page.UtilObject();
+    utils.nextPage();
+    family.serveisSocials();
     utils.nextPage()
   },
   "rent settings": browser => {
-        var rent = browser.page.RentSettings();
-        var utils = browser.page.UtilObject();
-        rent.codiPostalHabitatge("08004")
-        utils.nextPage()
+    const rent = browser.page.RentSettings();
+    const utils = browser.page.UtilObject();
+    rent.codiPostalHabitatge("08004");
+    utils.nextPage()
   },
   "results page": browser => {
     browser
