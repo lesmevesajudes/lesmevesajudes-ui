@@ -16,34 +16,28 @@ module.exports = {
     browser.assert.urlContains("wizard");
   },
   "can add an parent": browser => {
-    const parent = browser.page.AddPerson();
+    const persona = browser.page.AddPerson();
     browser
         .waitForElementVisible("#AddParentButton")
         .click("#AddParentButton")
         .waitForElementVisible('input[name="nom"]')
         .pause(waitForModalAnimationsToFinishIGuess);
-    parent
-        .elSeuNom("Adulto 1 RAI-1")
+    persona
+        .deNom("Adulto 1 RAI-1")
         .ambDataDeNaixement("15011961")
-        .ambDataDePadro("15011961")
-        .waitForElementVisible("@gender")
-        .esDona();
-    browser.pause(waitForModalAnimationsToFinishIGuess);
-    parent.teDNI();
-    browser.pause(waitForModalAnimationsToFinishIGuess);
-    parent
+        .ambDataDeUltimaIncripcioAlPadro("15011961")
+        .esDona()
+        .teDNI()
         .situacioLaboralDesocupat()
         .teUnPercentatgeDeMinusvaliaDel(34)
         .ingressosBruts(6000)
         .inscritComADemanadantDOcupacio()
         .esgotatPrestacioDesocupacio()
         .demandantDesocupacioDurant12Mesos()
-        .haRealitzatAccionsDeRecercaActivaDeFeinaEnElMesAnterior();
-    browser.pause(waitForModalAnimationsToFinishIGuess);
-    browser
+        .haRealitzatAccionsDeRecercaActivaDeFeinaEnElMesAnterior()
         .waitForElementVisible('button[name="ButtonValidar"]')
         .click('button[name="ButtonValidar"]')
-        .pause(waitForModalAnimationsToFinishIGuess)
+        .api.pause(waitForModalAnimationsToFinishIGuess)
         .waitForElementVisible('div.container-family')
   },
   "can set family settings": browser => {

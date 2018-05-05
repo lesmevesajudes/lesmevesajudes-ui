@@ -42,26 +42,34 @@ module.exports = {
       childhoodBenefits2017: 'input[name="beneficiari_fons_infancia_2017"]'
   },
   commands: [{
-    elSeuNom: function (name) {
+    deNom: function (name) {
       return this.waitForElementVisible('@personName').setValue('@personName', name)
     },
     ambDataDeNaixement: function (birth) {
       return this.waitForElementVisible("@dateBirth").setValue('@dateBirth', birth)
     },
-    ambDataDePadro: function (padro) {
+    ambDataDeUltimaIncripcioAlPadro: function (padro) {
       return this.waitForElementVisible("@datePadro").setValue('@datePadro', padro)
     },
       esDona: function() {
-        return this.waitForElementVisible("@gender")
+        this.waitForElementVisible("@gender")
         .click("@gender")
-        .waitForElementVisible("@genderW")
-        .click("@genderW")
+            .api.pause(waitForModalAnimationsToFinishIGuess);
+        this
+            .waitForElementVisible("@genderW")
+            .click("@genderW")
+            .api.pause(waitForModalAnimationsToFinishIGuess);
+        return this;
       },
       esHome: function() {
-        return this.waitForElementVisible("@gender")
+        this.waitForElementVisible("@gender")
         .click("@gender")
-        .waitForElementVisible("@genderM")
-        .click("@genderM")
+            .api.pause(waitForModalAnimationsToFinishIGuess);
+        this
+            .waitForElementVisible("@genderM")
+            .click("@genderM")
+            .api.pause(waitForModalAnimationsToFinishIGuess);
+        return this;
       },
       teDNI: function() {
         // This procedure is extremely fragile as it has an animation. I've added some pauses to improve

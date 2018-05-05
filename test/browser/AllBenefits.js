@@ -22,9 +22,9 @@ module.exports = {
         .waitForElementVisible('input[name="nom"]')
         .pause(waitForModalAnimationsToFinishIGuess);
     parent
-        .elSeuNom("Parent 1")
+        .deNom("Parent 1")
         .ambDataDeNaixement("15011970")
-        .ambDataDePadro("15012010")
+        .ambDataDeUltimaIncripcioAlPadro("15012010")
         .waitForElementVisible("@gender")
         .esDona();
     browser.pause(waitForModalAnimationsToFinishIGuess);
@@ -56,9 +56,9 @@ module.exports = {
     const parent = browser.page.AddPerson();
     browser.click("#AddChildButton");
     parent
-        .elSeuNom("Child 1")
+        .deNom("Child 1")
         .ambDataDeNaixement("15012010")
-        .ambDataDePadro("15012010")
+        .ambDataDeUltimaIncripcioAlPadro("15012010")
         .esHome();
     browser.pause(waitForModalAnimationsToFinishIGuess);
     parent.teDNI();

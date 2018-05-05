@@ -23,15 +23,12 @@ module.exports = {
         .waitForElementVisible('input[name="nom"]')
         .pause(waitForModalAnimationsToFinishIGuess);
     parent
-        .elSeuNom("Adulto 1 RAI-2")
+        .deNom("Adulto 1 RAI-2")
         .ambDataDeNaixement("01011960")
-        .ambDataDePadro("01011960")
+        .ambDataDeUltimaIncripcioAlPadro("01011960")
         .waitForElementVisible("@gender")
-        .esHome();
-    browser.pause(waitForModalAnimationsToFinishIGuess);
-    parent.teDNI();
-    browser.pause(waitForModalAnimationsToFinishIGuess);
-    parent
+        .esHome()
+        .teDNI()
         .situacioLaboralDesocupat()
         .ingressosBruts(6000)
         .inscritComADemanadantDOcupacio()

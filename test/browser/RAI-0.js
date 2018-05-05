@@ -16,22 +16,19 @@ module.exports = {
     browser.assert.urlContains("wizard");
   },
   "can add an parent": browser => {
-    const parent = browser.page.AddPerson();
+    const persona = browser.page.AddPerson();
     browser
         .waitForElementVisible("#AddParentButton")
         .click("#AddParentButton")
         .waitForElementVisible('input[name="nom"]')
         .pause(waitForModalAnimationsToFinishIGuess);
-    parent
-        .elSeuNom("Woman RAI-0")
+    persona
+        .deNom("Woman RAI-0")
         .ambDataDeNaixement("15011961")
-        .ambDataDePadro("15011961")
+        .ambDataDeUltimaIncripcioAlPadro("15011961")
         .waitForElementVisible("@gender")
-        .esDona();
-    browser.pause(waitForModalAnimationsToFinishIGuess);
-    parent.teDNI();
-    browser.pause(waitForModalAnimationsToFinishIGuess);
-    parent
+        .esDona()
+        .teDNI()
         .situacioLaboralDesocupat()
         .teUnPercentatgeDeMinusvaliaDel(34)
         .ingressosBruts(6000)
