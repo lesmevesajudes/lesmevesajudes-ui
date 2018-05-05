@@ -43,7 +43,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "browser_tests": "nightwatch",
+    "browser_tests": "ls test/browser/*.js |xargs -n 1 nightwatch -c nightwatch.json",
     "selenium_server": "java -jar node_modules/selenium-server-standalone/index.jar ",
     "selenium_windows": "java -jar node_modules/selenium-server-standalone/index.jar -Dwebdriver.chrome.driver=C:/Users/jserrano/Desktop/chromedriver.exe",
     "scan_for_translations": "i18next-scanner --config i18n.scanner.config.js \"src/**/*.{js,jsx}\""

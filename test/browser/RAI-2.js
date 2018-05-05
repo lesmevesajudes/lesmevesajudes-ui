@@ -16,28 +16,28 @@ module.exports = {
     browser.assert.urlContains("wizard");
   },
   "can add an parent": browser => {
-    var parent = browser.page.AddPerson();
+    const parent = browser.page.AddPerson();
     browser
         .waitForElementVisible("#AddParentButton")
         .click("#AddParentButton")
         .waitForElementVisible('input[name="nom"]')
-        .pause(waitForModalAnimationsToFinishIGuess)
+        .pause(waitForModalAnimationsToFinishIGuess);
     parent
         .elSeuNom("Adulto 1 RAI-2")
         .ambDataDeNaixement("01011960")
         .ambDataDePadro("01011960")
         .waitForElementVisible("@gender")
-        .esHome()
-    browser.pause(waitForModalAnimationsToFinishIGuess)
-    parent.teDNI()
-    browser.pause(waitForModalAnimationsToFinishIGuess)
+        .esHome();
+    browser.pause(waitForModalAnimationsToFinishIGuess);
+    parent.teDNI();
+    browser.pause(waitForModalAnimationsToFinishIGuess);
     parent
         .situacioLaboralDesocupat()
-        .IngresosBruts(6000)
-        .InscritComADemanadantDOcupacio()
+        .ingressosBruts(6000)
+        .inscritComADemanadantDOcupacio()
         .treballatAlExtranger6Mesos()
-        .treballatAlExtranger6MesosRetornatUltims12Mesos()
-    browser.pause(waitForModalAnimationsToFinishIGuess)
+        .treballatAlExtranger6MesosRetornatUltims12Mesos();
+    browser.pause(waitForModalAnimationsToFinishIGuess);
     browser
         .waitForElementVisible('button[name="ButtonValidar"]')
         .click('button[name="ButtonValidar"]')
@@ -45,12 +45,12 @@ module.exports = {
         .waitForElementVisible('div.container-family')
   },
   "can set family settings": browser => {
-    var utils = browser.page.UtilObject();
-    utils.nextPage()
+    const utils = browser.page.UtilObject();
+    utils.nextPage();
     utils.nextPage()
   },
   "rent settings": browser => {
-    var utils = browser.page.UtilObject();
+    const utils = browser.page.UtilObject();
     utils.nextPage()
   },
   "results page": browser => {

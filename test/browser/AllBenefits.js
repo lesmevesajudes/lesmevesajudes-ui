@@ -32,7 +32,6 @@ module.exports = {
     browser.pause(waitForModalAnimationsToFinishIGuess);
     parent
         .situacioLaboralDesocupat();
-    browser.pause(waitForModalAnimationsToFinishIGuess);
     parent
         .teUnPercentatgeDeMinusvaliaDel(90)
         .victimaDeViolenciaDeGenere()
@@ -42,12 +41,11 @@ module.exports = {
         .treballatAlExtranger6Mesos()
         .treballatAlExtranger6MesosRetornatUltims12Mesos()
         .esgotatPrestacioDesocupacio()
-        .InscritComADemanadantDOcupacio();
+        .inscritComADemanadantDOcupacio();
     browser.pause(waitForModalAnimationsToFinishIGuess);
     parent
         .demandantDesocupacioDurant12Mesos()
-        .HaRealitzatAccionsDeRecercaActivaDeFeinaEnElMesAnterior();
-    browser.pause(10000);
+        .haRealitzatAccionsDeRecercaActivaDeFeinaEnElMesAnterior();
     browser
         .waitForElementVisible('button[name="ButtonValidar"]')
         .click('button[name="ButtonValidar"]')

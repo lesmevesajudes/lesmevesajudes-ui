@@ -1,20 +1,5 @@
 const waitForModalAnimationsToFinishIGuess = 400;
 
-function Name(name) {
-    return this.waitForElementVisible('@personName').setValue('@personName', name)
-}
-function dataDeNaixement(birth) {
-    return this.waitForElementVisible("@dateBirth").setValue('@dateBirth', birth)
-}
-function ultimaInscripcioEnElPadro(padro){
-    return this.waitForElementVisible("@datePadro").setValue('@datePadro', padro)
-}
-function percentageDisability(percentage){
-    return this.waitForElementVisible("@disability").setValue("@disability", percentage)
-}
-function rawIncomeActual(money){
-  return this.waitForElementVisible("@rawIncome").setValue("@rawIncome", money)
-}
 module.exports = {
   elements: {
       parentButton: "#AddParentButton",
@@ -57,9 +42,15 @@ module.exports = {
       childhoodBenefits2017: 'input[name="beneficiari_fons_infancia_2017"]'
   },
   commands: [{
-      elSeuNom: Name,
-      ambDataDeNaixement: dataDeNaixement,
-      ambDataDePadro: ultimaInscripcioEnElPadro,
+    elSeuNom: function (name) {
+      return this.waitForElementVisible('@personName').setValue('@personName', name)
+    },
+    ambDataDeNaixement: function (birth) {
+      return this.waitForElementVisible("@dateBirth").setValue('@dateBirth', birth)
+    },
+    ambDataDePadro: function (padro) {
+      return this.waitForElementVisible("@datePadro").setValue('@datePadro', padro)
+    },
       esDona: function() {
         return this.waitForElementVisible("@gender")
         .click("@gender")
@@ -73,71 +64,40 @@ module.exports = {
         .click("@genderM")
       },
       teDNI: function() {
-        return this.waitForElementVisible("@identity")
-        .click("@identity") 
+        // This procedure is extremely fragile as it has an animation. I've added some pauses to improve
+        // reliability
+        this.waitForElementVisible("@identity")
+            .click("@identity");
+        this.api.pause(waitForModalAnimationsToFinishIGuess);
+        this
         .waitForElementVisible("@identityDNI")
         .click("@identityDNI")
-      },
-      teNIE: function() {
-        return this.waitForElementVisible("@identity")
-        .click("@identity")
-        .waitForElementVisible("@identityNIE")
-        .click("@identityNIE")
-      },
-      tePasaport: function() {
-        return this.waitForElementVisible("@identity")
-        .click("@identity")
-        .waitForElementVisible("@identityPassport")
-        .click("@identityPassport")
+            .api.pause(waitForModalAnimationsToFinishIGuess);
+        return this;
       },
       situacioLaboralDesocupat:function() {
-        return this.waitForElementVisible("@laboralSituation")
+        // This procedure is extremely fragile as it has an animation. I've added some pauses to improve
+        // reliability
+        this.waitForElementVisible("@laboralSituation")
         .click("@laboralSituation")
         .waitForElementVisible("@unemployed")
-        .click("@unemployed")
+            .api.pause(waitForModalAnimationsToFinishIGuess);
+        this
+            .click("@unemployed")
+            .api.pause(waitForModalAnimationsToFinishIGuess);
+        return this;
       },
-      situacioLaboralEstudiant: function() {
-        return this.waitForElementVisible("@laboralSituation")
-        .click("@laboralSituation")
-        .waitForElementVisible("@isStudent")
-        .click("@isStudent")
+    ingressosBruts: function (amount) {
+      return this.waitForElementVisible("@rawIncome").setValue("@rawIncome", amount)
       },
-      situacioLaboralJubilat: function() {
-        return this.waitForElementVisible("@laboralSituation")
-        .click("@laboralSituation")
-        .waitForElementVisible("[data-test='jubilat']")
-        .click("@workRetiree")
-      },
-      situacioLaboralAutonom: function() {
-        return this.waitForElementVisible("@laboralSituation")
-        .click("@laboralSituation")
-        .waitForElementVisible("@workFreelance")
-        .click("@workFreelance")
-      },
-      situacioLaboralJornadaParcial: function() {
-        return this.waitForElementVisible("@laboralSituation")
-        .click("@laboralSituation")
-        .waitForElementVisible("@workParcialTime")
-        .click("@workParcialTime")
-      },
-      situacioLaboralJornadaCompleta: function() {
-        return this.waitForElementVisible("@laboralSituation")
-        .click("@laboralSituation")
-        .waitForElementVisible("@workFullTime")
-        .click("@workFullTime")
-      },
-      IngresosBruts: rawIncomeActual,
-      teUnPercentatgeDeMinusvaliaDel: percentageDisability,
-      IngeresatACentrePeninteciari: function() {
-        return this.click("@joinedJail")
-      },
-      IngeresatACentrePenitenciari: function() {
-        return this.click("@joinedJailCanWork")
+    teUnPercentatgeDeMinusvaliaDel: function (percent) {
+      this.waitForElementVisible("@disability").setValue("@disability", percent);
+      return this;
       },
       victimaDeViolenciaDeGenere: function() {
-       return this.click("@genderViolence") 
+        return this.click("@genderViolence")
       },
-      
+
       victimaDeViolenciaDomestica: function() {
         return this.click("@householdViolence")
       },
@@ -156,16 +116,13 @@ module.exports = {
       esgotatPrestacioDesocupacio: function() {
         return this.click("@finishedBenefitForUnemployed")
       },
-      beneficiariRaiUltims12Mesos: function() {
-        return this.click("@raiBenefit12Months")
-      },
-      InscritComADemanadantDOcupacio: function() {
+    inscritComADemanadantDOcupacio: function () {
         return this.click("@occupationApplicant")
       },
       demandantDesocupacioDurant12Mesos: function() {
         return this.click("@occupationApplicant12Month")
       },
-      HaRealitzatAccionsDeRecercaActivaDeFeinaEnElMesAnterior: function() {
+    haRealitzatAccionsDeRecercaActivaDeFeinaEnElMesAnterior: function () {
         return this.click("@recentSearchingOfWork")
       },
       escolaritzatEntreP3i4rtESO: function() {

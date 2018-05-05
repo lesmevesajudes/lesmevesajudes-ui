@@ -30,10 +30,10 @@ class PersonShowCase extends Component <Props> {
                   <i className="material-icons">delete</i>
                 </button>
                 <button className="littlebutton"
-                        key={"delete" + person.id}
-                        onClick={() => this.props.removePerson(person.id)}
+                        key={"update" + person.id}
+                        onClick={() => this.props.updatePerson(person.id)}
                 >
-                <i className="material-icons"  onClick={() => this.props.updatePerson(person.id)}>mode_edit</i>
+                  <i className="material-icons">mode_edit</i>
                 </button>
               </Grid>
             </li>
