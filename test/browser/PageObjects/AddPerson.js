@@ -39,7 +39,7 @@ module.exports = {
     occupationApplicant12Month: 'input[name="demandant_d_ocupacio_durant_12_mesos"]',
     recentSearchingOfWork: 'input[name="durant_el_mes_anterior_ha_presentat_solicituds_recerca_de_feina"]',
     schooledBeetwenP3and4thESO: 'input[name="es_escolaritzat_entre_P3_i_4rt_ESO"]',
-    childhoodBenefits2017: 'input[name="beneficiari_fons_infancia_2017"]'
+    childhoodBenefits2017: 'input[name="beneficiari_fons_infancia_edicio_anterior"]'
   },
   commands: [{
     deNom: function (name) {

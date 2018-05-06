@@ -26,7 +26,6 @@ type Props = {
   onCancel: Function,
   potTreballar: Boolean,
   rol: PersonRole,
-  //teDNI: Boolean,
   victimaViolenciaDeGenere: Boolean
 };
 
@@ -39,7 +38,6 @@ const textesSegonsRol: { [PersonRole]: string } = {
 
 let PersonForm = (props: Props) => {
   const {
-    escolaritzat,
     esDesocupat,
     esDona,
     esFill,
@@ -49,7 +47,6 @@ let PersonForm = (props: Props) => {
     inscritComADemandantDocupacio,
     potTreballar,
     rol,
-    //teDNI,
     victimaViolenciaDeGenere
   } = props;
 
@@ -250,16 +247,8 @@ let PersonForm = (props: Props) => {
                     {esFill &&
                     <label>
                       <Field name="es_escolaritzat_entre_P3_i_4rt_ESO" component={Checkbox}/>
-                      <Trans>Està escolaritzat entre P4 i 4rt d&apos;ESO</Trans>
+                      <Trans>Escolatitzat entre P3 i 4rt d'ESO en una escola publica o concertada catalana?</Trans>
                     </label>
-                    }
-                    {esFill && escolaritzat &&
-                    <Grid item>
-                      <label>
-                        <Field name="te_beca_menjador" component={Checkbox}/>
-                        <Trans>Té beca menjador</Trans>
-                      </label>
-                    </Grid>
                     }
                     {esFill &&
                     <label>
@@ -268,7 +257,7 @@ let PersonForm = (props: Props) => {
                     }
                     {esFill &&
                     <label>
-                      <Field name="beneficiari_fons_infancia_2017" component={Checkbox}/>
+                      <Field name="beneficiari_fons_infancia_edicio_anterior" component={Checkbox}/>
                       <Trans>Beneficiari/a fons infància 2017</Trans>
                     </label>
                     }
@@ -295,7 +284,7 @@ let PersonForm = (props: Props) => {
   );
 };
 
-//El icono AddIcon, se deberia añadir Absolute, 25% y relative al button para probar si funciona bien el tema de align, pero es un parche.
+// TODO: El icono AddIcon, se deberia añadir Absolute, 25% y relative al button para probar si funciona bien el tema de align, pero es un parche.
 PersonForm = reduxForm({
   form: "PersonForm"
 })(PersonForm);
@@ -304,9 +293,7 @@ const selector = formValueSelector("PersonForm");
 
 PersonForm = connect(state => {
   const esDesocupat = selector(state, "situacio_laboral") === "desocupat";
-  //const teDNI = selector(state, "tipus_document_identitat") === "DNI";
   const esDona = selector(state, "genere") === "dona";
-  const escolaritzat = selector(state, "es_escolaritzat_entre_P3_i_4rt_ESO");
   const esFill =
       selector(state, "rol") === "fill" ||
       selector(state, "rol") === "infant_acollit";
@@ -316,13 +303,8 @@ PersonForm = connect(state => {
   const potTreballar = (edat(selector(state, "data_naixement")) || 0) >= 16;
   const rol = selector(state, "rol");
   const victimaViolenciaDeGenere = selector(state, "victima_violencia_de_genere");
-  console.log(potTreballar);
-  console.log(selector(state, "data_naixement"));
-  console.log(edat(selector(state, "data_naixement")));
   return {
-    escolaritzat,
     esDesocupat,
-    //teDNI,
     esDona,
     esFill,
     haTreballatALEstranger6Mesos,
