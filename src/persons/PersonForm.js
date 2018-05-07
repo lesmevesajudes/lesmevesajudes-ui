@@ -257,8 +257,8 @@ let PersonForm = (props: Props) => {
                     }
                     {esFill &&
                     <label>
-                      <Field name="beneficiari_fons_infancia_edicio_anterior" component={Checkbox}/>
-                      <Trans>Beneficiari/a fons infància 2017</Trans>
+                      <Field name="beneficiari_fons_infancia" component={Checkbox}/>
+                      <Trans>Beneficiari/a fons infància</Trans>
                     </label>
                     }
                   </Grid>

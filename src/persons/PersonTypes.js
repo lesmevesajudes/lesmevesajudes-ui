@@ -6,6 +6,7 @@ export type PersonID = string;
 export type PersonRole = 'pares'|'fill'|'altres_adults'|'altres_adults_familiars';
 
 export class Person {
+  beneficiari_fons_infancia: boolean = false;
   data_naixement: string;
   data_alta_padro: string;
   demandant_d_ocupacio_durant_12_mesos: boolean = false;
