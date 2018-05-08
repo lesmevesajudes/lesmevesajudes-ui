@@ -23,7 +23,7 @@ module.exports = {
     persona
         .deNom("Pare1")
         .ambDataDeNaixement("15011961")
-        .ambDataDeUltimaIncripcioAlPadro("31122015")
+        .ambDataDeUltimaIncripcioAlPadro("15122015")
         .esHome()
         .teDNI()
         .ingressosBruts(5799);
@@ -43,7 +43,7 @@ module.exports = {
     persona
         .deNom("Mare")
         .ambDataDeNaixement("15011961")
-        .ambDataDeUltimaIncripcioAlPadro("31122015")
+        .ambDataDeUltimaIncripcioAlPadro("15122015")
         .esDona()
         .teDNI()
         .ingressosBruts(2899);
@@ -61,7 +61,7 @@ module.exports = {
     persona
         .deNom("Grandparent")
         .ambDataDeNaixement("15011961")
-        .ambDataDeUltimaIncripcioAlPadro("31122015")
+        .ambDataDeUltimaIncripcioAlPadro("15122015")
         .waitForElementVisible("@gender")
         .esDona()
         .teDNI()
@@ -80,7 +80,7 @@ module.exports = {
     persona
         .deNom("Filla")
         .ambDataDeNaixement("15012002")
-        .ambDataDeUltimaIncripcioAlPadro("31122015")
+        .ambDataDeUltimaIncripcioAlPadro("15122015")
         .waitForElementVisible("@gender")
         .esDona()
         .teDNI()
