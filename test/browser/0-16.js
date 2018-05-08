@@ -24,7 +24,7 @@ module.exports = {
     persona
         .deNom("Pare1")
         .ambDataDeNaixement("15011961")
-        .ambDataDeUltimaIncripcioAlPadro("31122015")
+        .ambDataDeUltimaIncripcioAlPadro("15122015")
         .esHome()
         .teDNI()
         .ingressosBruts(7000);
@@ -43,7 +43,7 @@ module.exports = {
     persona
         .deNom("Mare")
         .ambDataDeNaixement("15011961")
-        .ambDataDeUltimaIncripcioAlPadro("31122015")
+        .ambDataDeUltimaIncripcioAlPadro("15122015")
         .esDona()
         .teDNI()
         .ingressosBruts(0);
@@ -62,7 +62,7 @@ module.exports = {
     persona
         .deNom("Filla")
         .ambDataDeNaixement("15012005")
-        .ambDataDeUltimaIncripcioAlPadro("31122015")
+        .ambDataDeUltimaIncripcioAlPadro("15122015")
         .esDona()
         .escolaritzatEntreP3i4rtESO()
         .teDNI();
@@ -70,7 +70,7 @@ module.exports = {
         .waitForElementVisible('button[name="ButtonValidar"]')
         .click('button[name="ButtonValidar"]')
         .pause(waitForModalAnimationsToFinishIGuess)
-        .waitForElementVisible('div.container-family')
+        .waitForElementVisible('div.container-family');
   },
   "can set family settings": browser => {
     const utils = browser.page.UtilObject();
