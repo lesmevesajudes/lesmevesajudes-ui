@@ -1,7 +1,7 @@
 const waitForModalAnimationsToFinishIGuess = 400;
 
 module.exports = {
-  "@tags": ['0-16'],
+  "@tags": ['menjador'],
   "load index page": browser => {
     browser
     // Load the page at the launch URL
@@ -17,7 +17,6 @@ module.exports = {
   },
   "add father": browser => {
     const persona = browser.page.AddPerson();
-
     browser
         .waitForElementVisible("#AddParentButton")
         .click("#AddParentButton");
@@ -27,26 +26,46 @@ module.exports = {
         .ambDataDeUltimaIncripcioAlPadro("15122015")
         .esHome()
         .teDNI()
-        .ingressosBruts(7000);
+        .ingressosBruts(5799);
     browser
         .waitForElementVisible('button[name="ButtonValidar"]')
         .click('button[name="ButtonValidar"]')
         .pause(waitForModalAnimationsToFinishIGuess)
-        .waitForElementVisible('div.container-family')
+        .waitForElementVisible('div.container-family');
   },
   "add mother": browser => {
     const persona = browser.page.AddPerson();
-
     browser
         .waitForElementVisible("#AddParentButton")
-        .click("#AddParentButton");
+        .click("#AddParentButton")
+        .waitForElementVisible('input[name="nom"]')
+        .pause(waitForModalAnimationsToFinishIGuess);
     persona
         .deNom("Mare")
         .ambDataDeNaixement("15011961")
         .ambDataDeUltimaIncripcioAlPadro("15122015")
         .esDona()
         .teDNI()
-        .ingressosBruts(0);
+        .ingressosBruts(2899);
+    browser
+        .waitForElementVisible('button[name="ButtonValidar"]')
+        .click('button[name="ButtonValidar"]')
+        .pause(waitForModalAnimationsToFinishIGuess)
+        .waitForElementVisible('div.container-family');
+  },
+  "add grandparent": browser => {
+    const persona = browser.page.AddPerson();
+    browser
+        .waitForElementVisible("#AddOtherFamilyButton")
+        .click("#AddOtherFamilyButton");
+    persona
+        .deNom("Grandparent")
+        .ambDataDeNaixement("15011961")
+        .ambDataDeUltimaIncripcioAlPadro("15122015")
+        .waitForElementVisible("@gender")
+        .esDona()
+        .teDNI()
+        .ingressosBruts(1449);
     browser
         .waitForElementVisible('button[name="ButtonValidar"]')
         .click('button[name="ButtonValidar"]')
@@ -55,22 +74,22 @@ module.exports = {
   },
   "add child": browser => {
     const persona = browser.page.AddPerson();
-
     browser
         .waitForElementVisible("#AddChildButton")
         .click("#AddChildButton");
     persona
         .deNom("Filla")
-        .ambDataDeNaixement("15012005")
+        .ambDataDeNaixement("15012002")
         .ambDataDeUltimaIncripcioAlPadro("15122015")
+        .waitForElementVisible("@gender")
         .esDona()
-        .escolaritzatEntreP3i4rtESO()
-        .teDNI();
+        .teDNI()
+        .escolaritzatEntreP3i4rtESO();
     browser
         .waitForElementVisible('button[name="ButtonValidar"]')
         .click('button[name="ButtonValidar"]')
         .pause(waitForModalAnimationsToFinishIGuess)
-        .waitForElementVisible('div.container-family');
+        .waitForElementVisible('div.container-family')
   },
   "can set family settings": browser => {
     const utils = browser.page.UtilObject();
@@ -81,15 +100,13 @@ module.exports = {
     utils.nextPage();
   },
   "rent settings": browser => {
-    const rent = browser.page.RentSettings();
-
-    rent.codiPostalHabitatge("08003");
-    rent.nextPage();
+    const utils = browser.page.UtilObject();
+    utils.nextPage();
   },
   "results page": browser => {
     browser
         .waitForElementVisible(".ItemResult")
-        .assert.containsText('#AE_230_mensual', "Fons infància")
+        .assert.containsText('#EG_233_mensual', "Ajuts individuals de menjador")
   },
   after: function (browser) {
     browser.end();
