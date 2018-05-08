@@ -29,7 +29,6 @@
     "i18next-scanner": "2.4.6",
     "jest": "22.4.3",
     "nightwatch": "0.9.16",
-    "prettier": "1.11.1",
     "react-scripts": "1.1.4",
     "redux-devtools-extension": "2.13.2",
     "selenium-server-standalone": "2.53.1",
