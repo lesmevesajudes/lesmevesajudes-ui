@@ -17,6 +17,7 @@ module.exports = {
   },
   "add father": browser => {
     const persona = browser.page.AddPerson();
+
     browser
         .waitForElementVisible("#AddParentButton")
         .click("#AddParentButton");
@@ -35,6 +36,7 @@ module.exports = {
   },
   "add mother": browser => {
     const persona = browser.page.AddPerson();
+
     browser
         .waitForElementVisible("#AddParentButton")
         .click("#AddParentButton");
@@ -53,6 +55,7 @@ module.exports = {
   },
   "add child": browser => {
     const persona = browser.page.AddPerson();
+
     browser
         .waitForElementVisible("#AddChildButton")
         .click("#AddChildButton");
@@ -71,14 +74,15 @@ module.exports = {
   },
   "can set family settings": browser => {
     const utils = browser.page.UtilObject();
-    utils.nextPage();
     const family = browser.page.FamilySettings();
-    browser.pause(1000);
+
+    utils.nextPage();
     family.serveisSocials();
     utils.nextPage();
   },
   "rent settings": browser => {
     const rent = browser.page.RentSettings();
+
     rent.codiPostalHabitatge("08003");
     rent.nextPage();
   },
