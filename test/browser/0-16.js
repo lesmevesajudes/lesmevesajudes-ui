@@ -19,18 +19,14 @@ module.exports = {
     const persona = browser.page.AddPerson();
     browser
         .waitForElementVisible("#AddParentButton")
-        .click("#AddParentButton")
-        .waitForElementVisible('input[name="nom"]')
-        .pause(waitForModalAnimationsToFinishIGuess);
+        .click("#AddParentButton");
     persona
         .deNom("Pare1")
         .ambDataDeNaixement("15011961")
         .ambDataDeUltimaIncripcioAlPadro("31122015")
-        .waitForElementVisible("@gender")
         .esHome()
         .teDNI()
-        .ingressosBruts(7000)
-    browser.pause(waitForModalAnimationsToFinishIGuess);
+        .ingressosBruts(7000);
     browser
         .waitForElementVisible('button[name="ButtonValidar"]')
         .click('button[name="ButtonValidar"]')
@@ -41,18 +37,14 @@ module.exports = {
     const persona = browser.page.AddPerson();
     browser
         .waitForElementVisible("#AddParentButton")
-        .click("#AddParentButton")
-        .waitForElementVisible('input[name="nom"]')
-        .pause(waitForModalAnimationsToFinishIGuess);
+        .click("#AddParentButton");
     persona
         .deNom("Mare")
         .ambDataDeNaixement("15011961")
         .ambDataDeUltimaIncripcioAlPadro("31122015")
-        .waitForElementVisible("@gender")
         .esDona()
         .teDNI()
-        .ingressosBruts(0)
-    browser.pause(waitForModalAnimationsToFinishIGuess);
+        .ingressosBruts(0);
     browser
         .waitForElementVisible('button[name="ButtonValidar"]')
         .click('button[name="ButtonValidar"]')
@@ -63,17 +55,14 @@ module.exports = {
     const persona = browser.page.AddPerson();
     browser
         .waitForElementVisible("#AddChildButton")
-        .click("#AddChildButton")
-        .waitForElementVisible('input[name="nom"]')
-        .pause(waitForModalAnimationsToFinishIGuess);
+        .click("#AddChildButton");
     persona
         .deNom("Filla")
-        .ambDataDeNaixement("15012002")
+        .ambDataDeNaixement("15012005")
         .ambDataDeUltimaIncripcioAlPadro("31122015")
-        .waitForElementVisible("@gender")
         .esDona()
-        .teDNI()
-    browser.pause(waitForModalAnimationsToFinishIGuess);
+        .escolaritzatEntreP3i4rtESO()
+        .teDNI();
     browser
         .waitForElementVisible('button[name="ButtonValidar"]')
         .click('button[name="ButtonValidar"]')
@@ -89,13 +78,14 @@ module.exports = {
     utils.nextPage();
   },
   "rent settings": browser => {
-    const utils = browser.page.UtilObject();
-    utils.nextPage();
+    const rent = browser.page.RentSettings();
+    rent.codiPostalHabitatge("08003");
+    rent.nextPage();
   },
   "results page": browser => {
     browser
         .waitForElementVisible(".ItemResult")
-        .assert.containsText('#AE_230_mensual', "Renda activa d'inserció aturats de llarga durada")
+        .assert.containsText('#AE_230_mensual', "Fons infància")
   },
   after: function (browser) {
     browser.end();

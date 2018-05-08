@@ -70,7 +70,12 @@ const RentForm = (props: Props) => {
                 <label>Import total del deute (&euro;)</label>
                 <Field name='import_del_deute_amb_el_propietari' component={TextField} placeholder='0' fullWidth/>
               </Grid>}
-
+              contracte_obtingut_a_traves_de_borsa_de_mediacio_o_gestionat_per_entitat_sense_anim_de_lucre
+              {esLlogater && existeixDeute &&
+              <Grid item>
+                <label>Import total del deute (&euro;)</label>
+                <Field name='import_del_deute_amb_el_propietari' component={TextField} placeholder='0' fullWidth/>
+              </Grid>}
               {esLlogater &&
               <label><Field name='lloguer_domiciliat' component={Checkbox}/> El pagament del lloguer està
                 domiciliat</label>
