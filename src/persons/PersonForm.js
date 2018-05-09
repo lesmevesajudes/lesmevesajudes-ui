@@ -142,10 +142,10 @@ let PersonForm = (props: Props) => {
                       <Trans>Grau discapacitat</Trans>
                     </label>
                     <Field name="grau_discapacitat" placeholder="0" type="number" component={TextField}/>
-                    {esDona && potTreballar &&
+                    {potTreballar &&
                     <label>
                       <Field name="victima_violencia_de_genere" checked={false} component={Checkbox}/>
-                      <Trans>Víctima violència de genere</Trans>
+                      <Trans>Víctima violència de genere o domèstica</Trans>
                     </label>
                     }
                     {esDona && victimaViolenciaDeGenere &&
@@ -153,12 +153,6 @@ let PersonForm = (props: Props) => {
                       <Field name="percep_prestacions_incompatibles_amb_la_feina" checked={false}
                              component={Checkbox}/>
                       <Trans>Perceb alguna ajuda que no li permeti treballar?</Trans>
-                    </label>
-                    }
-                    {potTreballar &&
-                    <label>
-                      <Field name="victima_violencia_domestica" checked={false} component={Checkbox}/>
-                      <Trans>Víctima violència de domèstica</Trans>
                     </label>
                     }
                     {esDona && !esFill &&
