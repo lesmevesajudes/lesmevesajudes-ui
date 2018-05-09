@@ -62,7 +62,7 @@ const RentForm = (props: Props) => {
               </Grid>}
               {esLlogater &&
               <Grid item>
-                <label>Titular del contracte de lloguer</label>
+                <label><Trans>Titular del contracte de lloguer</Trans></label>
                 <Field name='titular_contracte_de_lloguer_id' component={Select} fullWidth>
                   {props.personesQuePodenTenirContracteDeLloguer.valueSeq().map((persona) => (
                       <MenuItem key={persona.id} value={persona.id}>{persona.nom}</MenuItem>
@@ -110,17 +110,20 @@ const RentForm = (props: Props) => {
                 <RadioGroup
                     name="resultat_de_la_mediacio">
                   <FormControlLabel value="female" control={<Radio/>}
-                                    label="S'ha acordat una rebaixa mínima de 50€ mensuals en el rebut de lloguer"/>
+                                    label={<Trans>S'ha acordat una rebaixa mínima de 50€ mensuals en el rebut de
+                                      lloguer</Trans>}/>
                   <FormControlLabel value="male" control={<Radio/>}
-                                    label="Ha estat beneficiari de les prestacions econòmiques derivades de la mediació"/>
+                                    label={<Trans>Ha estat beneficiari de les prestacions econòmiques derivades de la
+                                      mediació</Trans>}/>
                   <FormControlLabel value="male" control={<Radio/>}
-                                    label="hagin estat beneficiàries de l’ajut temporal garantit i/o del servei del suport d’accés a l’habitatge que atorga l’Àrea de Drets Socials"/>
+                                    label={<Trans>Ha estat beneficiàries de l’ajut temporal garantit i/o del servei del
+                                      suport d’accés a l’habitatge que atorga l’Àrea de Drets Socials</Trans>}/>
                   <FormControlLabel value="male" control={<Radio/>}
-                                    label="formalitzin un contracte de lloguer d’un habitatge un cop finalitzada la seva estada i procés d’inclusió en un recurs residencial"/>
-                  <FormControlLabel value="other" control={<Radio/>} label="Altre"/>
+                                    label={<Trans>Ha formalitzat un contracte de lloguer d’un habitatge un cop
+                                      finalitzada la seva estada i procés d’inclusió en un recurs residencial</Trans>}/>
+                  <FormControlLabel value="other" control={<Radio/>} label={<Trans>Altre</Trans>}/>
                 </RadioGroup>
-              </Grid>
-              }
+              </Grid>}
 
               {esPropietari &&
               <Grid item>
