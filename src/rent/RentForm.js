@@ -7,12 +7,11 @@ import type {PersonID} from '../persons/PersonTypes';
 import {Person} from '../persons/PersonTypes';
 import {Map} from 'immutable';
 import {Field, formValueSelector, reduxForm} from 'redux-form';
-import {FormLabel, Grid, MenuItem, Radio, RadioGroup} from 'material-ui';
+import {FormControlLabel, FormLabel, Grid, MenuItem, Radio, RadioGroup} from 'material-ui';
 import {Checkbox, Select, TextField} from 'redux-form-material-ui';
 import {Trans} from 'react-i18next';
 import DescriptionText from "../components/Common/DescriptionText";
 import {esFill} from "../shared/selectorUtils";
-import FormControlLabel from "material-ui/es/Form/FormControlLabel";
 
 type Props = {
   addRent: Function,
