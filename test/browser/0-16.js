@@ -83,7 +83,8 @@ module.exports = {
   "rent settings": browser => {
     const rent = browser.page.RentSettings();
 
-    rent.codiPostalHabitatge("08003");
+    rent.esLlogater()
+        .codiPostalHabitatge("08003");
     rent.nextPage();
   },
   "results page": browser => {

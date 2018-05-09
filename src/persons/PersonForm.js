@@ -265,10 +265,10 @@ let PersonForm = (props: Props) => {
             <Grid item sm={12}>
               <Grid container justify={"space-around"}>
                 <Button variant="raised" color="secondary" onClick={props.onCancel}>
-                  <Trans>Cancelar <ClearInputIcon/></Trans>
+                  <Trans>Cancelar</Trans> <ClearInputIcon/>
                 </Button>
                 <Button variant="raised" color="primary" type="submit" name="ButtonValidar">
-                  <Trans>Validar <AddIcon/></Trans>
+                  <Trans>Validar</Trans> <AddIcon/>
                 </Button>
               </Grid>
             </Grid>
