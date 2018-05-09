@@ -44,7 +44,7 @@ const RentForm = (props: Props) => {
   } = props;
   return (
       <Grid container className="bg-container">
-        <h1>Afegir informació sobre el lloguer del domicili habitual</h1>
+        <h1><Trans>Afegir informació sobre el lloguer del domicili habitual</Trans></h1>
         <Grid container direction={'row'} justify={'space-around'}>
           <Grid item xs sm={5}>
             <form name='RentForm'>
@@ -67,17 +67,42 @@ const RentForm = (props: Props) => {
                   {props.personesQuePodenTenirContracteDeLloguer.valueSeq().map((persona) => (
                       <MenuItem key={persona.id} value={persona.id}>{persona.nom}</MenuItem>
                   ))}
-                  <MenuItem key='no-conviu' value='no-conviu'>Una persona que no viu a l'habitatge</MenuItem>
+                  <MenuItem key='no-conviu' value='no-conviu'><Trans>Una persona que no viu a
+                    l'habitatge</Trans></MenuItem>
                 </Field>
               </Grid>}
               {esLlogater &&
+              <Grid item>
+                <label><Trans>Data signatura del contracte d'arrendament</Trans></label>
+                <Field name='data_signatura_contracte_arrendament' placeholder='2005-01-21' type='date'
+                       component={TextField} fullWidth required/>
+              </Grid>}
+
+              {esLlogater &&
+              <Grid item>
+                <label><Trans>Import mensual del lloguer (&euro;)</Trans></label>
+                <Field name='import_del_lloguer' component={TextField} placeholder='0' fullWidth/>
+              </Grid>}
+
+              {esLlogater &&
               <label><Field name='ha_perdut_lhabitatge_en_els_ultims_2_anys' component={Checkbox}/>
-                Ha perdut el seu habitatge habitual degut a una execució hipotecària o desnonament en els ultims 2 anys?</label>
+                <Trans>Ha perdut el seu habitatge habitual degut a una execució hipotecària o desnonament en els ultims
+                  2 anys?</Trans></label>
               }
+
+              {haPerdutLHhabitatgeEnElsUltims2Anys &&
+              <Grid item>
+                <label><Trans>Data de pèrdua de l'habitatge</Trans></label>
+                <Field required name='data_perdua_habitatge' placeholder='2005-01-21' type='date' fullWidth
+                       component={TextField}/>
+              </Grid>
+              }
+
               {esLlogater &&
               <label><Field name='ha_participat_en_un_proces_de_mediacio' component={Checkbox}/>
-                Ha participat en un procés de mediació del servei de mediació de laXarxa d’Oficines d’Habitatge de
-                Barcelona</label>
+                <Trans>Ha participat en un procés de mediació del servei de mediació de laXarxa d’Oficines d’Habitatge
+                  de
+                  Barcelona</Trans></label>
               }
               {haParticipatEnMediacio &&
               <Grid item>
@@ -96,29 +121,16 @@ const RentForm = (props: Props) => {
                 </RadioGroup>
               </Grid>
               }
-              {haPerdutLHhabitatgeEnElsUltims2Anys &&
-              <Grid item>
-                <label><Trans>Data de pèrdua de l'habitatge</Trans></label>
-                <Field required name='data_perdua_habitatge' placeholder='2005-01-21' type='date' fullWidth
-                       component={TextField}/>
-              </Grid>
-              }
-              {esLlogater &&
-              <Grid item>
-                <label>Data signatura del contracte d'arrendament</label>
-                <Field name='data_signatura_contracte_arrendament' placeholder='2005-01-21' type='date'
-                       component={TextField} fullWidth required/>
-              </Grid>}
 
               {esPropietari &&
               <Grid item>
-                <label><Field name='existeix_hipoteca' component={Checkbox}/> Existeix una hipoteca sobre el domicili
-                  habitual</label>
+                <label><Field name='existeix_hipoteca' component={Checkbox}/>
+                  <Trans>Existeix una hipoteca sobre el domicili habitual</Trans></label>
               </Grid>}
 
               {teHipoteca &&
               <Grid item>
-                <label>Data signatura del contracte d'hipoteca</label>
+                <label><Trans>Data signatura del contracte d'hipoteca</Trans></label>
                 <Field name='data_signatura_contracte_de_hipoteca' placeholder='2005-01-21' type='date'
                        component={TextField}
                        fullWidth required/>
@@ -126,61 +138,53 @@ const RentForm = (props: Props) => {
 
               {esLlogater &&
               <label><Field name='relacio_de_parentiu_amb_el_propietari' component={Checkbox}/>
-                Algun membre de la família té relació de parentiu amb el propietari de l'habitatge</label>}
+                <Trans>Algun membre de la família té relació de parentiu amb el propietari de
+                  l'habitatge</Trans></label>}
 
               {esLlogater &&
 
               <label><Field name='existeix_deute_en_el_pagament_del_lloguer' component={Checkbox}/>
-                Existeix un deute en el pagament del lloguer</label>}
+                <Trans>Existeix un deute en el pagament del lloguer</Trans></label>}
 
               {teHipoteca &&
               <label><Field name='existeix_deute_en_el_pagament_de_la_hipoteca' component={Checkbox}/>
-                Existeix un deute en el pagament de la hipoteca</label>}
+                <Trans>Existeix un deute en el pagament de la hipoteca</Trans></label>}
 
               {esLlogater && existeixDeutePagamentLloguer &&
               <Grid item>
-                <label>Data de la primera quota de lloguer no pagada</label>
+                <label><Trans>Data de la primera quota de lloguer no pagada</Trans></label>
                 <Field name='data_de_la_primera_quota_de_lloguer_no_pagada' component={TextField}
                        placeholder='2005-01-21' type='date' fullWidth/>
               </Grid>}
 
               {esPropietari && existeixDeutePagamentHipoteca &&
               <Grid item>
-                <label>Data de la primera quota de hipoteca no pagada</label>
+                <label><Trans>Data de la primera quota de hipoteca no pagada</Trans></label>
                 <Field name='data_de_la_primera_quota_de_hipoteca_no_pagada' component={TextField}
                        placeholder='2005-01-21' type='date' fullWidth/>
               </Grid>}
 
               {esLlogater && existeixDeutePagamentLloguer &&
               <Grid item>
-                <label>Import total del deute (&euro;)</label>
+                <label><Trans>Import total del deute (&euro;)</Trans></label>
                 <Field name='import_del_deute_amb_el_propietari' component={TextField} placeholder='0' fullWidth/>
               </Grid>}
 
               {esPropietari && existeixDeutePagamentHipoteca &&
               <Grid item>
-                <label>Import total del deute (&euro;)</label>
+                <label><Trans>Import total del deute (&euro;)</Trans></label>
                 <Field name='import_del_deute_amb_el_propietari' component={TextField} placeholder='0' fullWidth/>
               </Grid>}
 
               {esLlogater &&
-              <label><Field name='lloguer_domiciliat' component={Checkbox}/> El pagament del lloguer està
-                domiciliat</label>
-              }
-
-              {esLlogater &&
               <label><Field name='habitatge_de_la_borsa_dhabitatge_barcelona' component={Checkbox}/>
-                Ha signat un contracte de lloguer a través de la Borsa d’Habitatge de Lloguer de Barcelona.</label>
+                <Trans>Ha signat un contracte de lloguer a través de la Borsa d’Habitatge de Lloguer de
+                  Barcelona.</Trans></label>
               }
 
-              {esLlogater &&
-              <Grid item>
-                <label>Import mensual del lloguer (&euro;)</label>
-                <Field name='import_del_lloguer' component={TextField} placeholder='0' fullWidth/>
-              </Grid>}
               {teHipoteca &&
               <Grid item>
-                <label>Import mensual de la quota de la hipoteca(&euro;)</label>
+                <label><Trans>Import mensual de la quota de la hipoteca(&euro;)</Trans></label>
                 <Field name='import_del_quota hipoteca' component={TextField} placeholder='0' fullWidth/>
               </Grid>}
 
@@ -191,12 +195,13 @@ const RentForm = (props: Props) => {
               {teHabitatgeHabitual &&
               <label>
                 <Field name='tinc_alguna_propietat_a_part_habitatge_habitual' component={Checkbox}/>
-                Alguna persona que conviu amb vosté té alguna propietat a part de l'habitatge habitual
+                <Trans>Alguna persona que conviu amb vosté té alguna propietat a part de l'habitatge habitual</Trans>
               </label>}
               {teAlgunaPropietat &&
               <label><Field name='tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusufructe'
                             component={Checkbox}/>
-                Disposa de l'usufructe d'aquesta propietat</label>
+                <Trans>Disposa de l'usufructe d'aquesta propietat</Trans>
+              </label>
               }
             </form>
           </Grid>
