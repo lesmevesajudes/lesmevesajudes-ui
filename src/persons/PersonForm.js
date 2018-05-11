@@ -11,8 +11,7 @@ import {connect} from "react-redux";
 import {Button, Grid, MenuItem} from "material-ui";
 import edat from "../shared/Edat";
 import DescriptionText from "../components/Common/DescriptionText"
-import normalizeDate from "../components/Common/DateMask"
-
+import DateBrowserCompatibles from "../components/Common/DateBrowserCompatibles"
 export type PersonFormInitialValues = Person | { rol: String };
 
 type Props = {
@@ -50,7 +49,7 @@ let PersonForm = (props: Props) => {
     rol,
     victimaViolenciaDeGenere
   } = props;
-  let isIE = /*@cc_on!@*/false || !!document.documentMode;
+  
   return (
     
       <Grid container className="bg-container">
@@ -72,11 +71,7 @@ let PersonForm = (props: Props) => {
                       <label>
                         <Trans>Data naixement</Trans>
                       </label>
-                      {isIE ? ( 
-                        <Field name="data_naixement" placeholder="dd/mm/aaaa" normalize={normalizeDate} type="date" component={TextField} fullWidth required/>
-                      ) : (
-                        <Field name="data_naixement" type="date" component={TextField} fullWidth required/>
-                      )}
+                        <DateBrowserCompatibles typeDate="data_naixement"/>
                         <Field name="rol" component={TextField} type="hidden" required/>
                       <label>
                         <Trans>Sexe</Trans>
@@ -111,11 +106,7 @@ let PersonForm = (props: Props) => {
                           Data alta padró a l&apos;actual habitatge (sense interrupcions)
                         </Trans>
                       </label>
-                      {isIE ? ( 
-                        <Field name="data_alta_padro" placeholder="dd/mm/aaaa" normalize={normalizeDate} type="date" component={TextField} fullWidth required/>
-                      ) : (
-                        <Field name="data_alta_padro" placeholder="dd/mm/aaaa" type="date" component={TextField} fullWidth required/>
-                      )}
+                      <DateBrowserCompatibles typeDate="data_alta_padro"/>
                       {potTreballar &&
                       <Grid item>
                         <label>
