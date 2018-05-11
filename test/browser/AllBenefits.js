@@ -35,7 +35,6 @@ module.exports = {
     parent
         .teUnPercentatgeDeMinusvaliaDel(90)
         .victimaDeViolenciaDeGenere()
-        .victimaDeViolenciaDomestica()
         .divorciadaFamiliaRegrupada()
         .orfeProgenitos()
         .treballatAlExtranger6Mesos()
@@ -82,7 +81,8 @@ module.exports = {
   "rent settings": browser => {
     const rent = browser.page.RentSettings();
     const utils = browser.page.UtilObject();
-    rent.codiPostalHabitatge("08004");
+    rent.esLlogater()
+        .codiPostalHabitatge("08004");
     utils.nextPage()
   },
   "results page": browser => {

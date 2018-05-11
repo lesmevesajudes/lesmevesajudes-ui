@@ -24,7 +24,6 @@ module.exports = {
     disability: 'input[name="grau_discapacitat"]',
     rawIncome: 'input[name="ingressos_bruts"]',
     genderViolence: 'input[name="victima_violencia_de_genere"]',
-    householdViolence: 'input[name="victima_violencia_domestica"]',
     joinedJail: 'input[name="ingressat_en_centre_penitenciari"]',
     joinedJailCanWork: 'input[name="ingressat_en_centre_penitenciari_pot_treballar"]',
     divorced: 'input[name="es_divorciada_de_familia_reagrupada"]',
@@ -104,10 +103,6 @@ module.exports = {
     },
     victimaDeViolenciaDeGenere: function () {
       return this.click("@genderViolence")
-    },
-
-    victimaDeViolenciaDomestica: function () {
-      return this.click("@householdViolence")
     },
     divorciadaFamiliaRegrupada: function () {
       return this.click("@divorced")
