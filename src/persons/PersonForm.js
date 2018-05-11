@@ -50,7 +50,7 @@ let PersonForm = (props: Props) => {
     rol,
     victimaViolenciaDeGenere
   } = props;
-
+  let isIE = /*@cc_on!@*/false || !!document.documentMode;
   return (
     
       <Grid container className="bg-container">
@@ -72,9 +72,12 @@ let PersonForm = (props: Props) => {
                       <label>
                         <Trans>Data naixement</Trans>
                       </label>
-                      <Field name="data_naixement"  type="date" component={TextField} fullWidth
-                            required/>
-                      <Field name="rol" component={TextField} type="hidden" required/>
+                      {isIE ? ( 
+                        <Field name="data_naixement" placeholder="dd/mm/aaaa" normalize={normalizeDate} type="date" component={TextField} fullWidth required/>
+                      ) : (
+                        <Field name="data_naixement" type="date" component={TextField} fullWidth required/>
+                      )}
+                        <Field name="rol" component={TextField} type="hidden" required/>
                       <label>
                         <Trans>Sexe</Trans>
                       </label>
@@ -108,8 +111,11 @@ let PersonForm = (props: Props) => {
                           Data alta padró a l&apos;actual habitatge (sense interrupcions)
                         </Trans>
                       </label>
-                      <Field name="data_alta_padro" placeholder="dd/mm/aaaa" type="date" component={TextField} fullWidth
-                            required/>
+                      {isIE ? ( 
+                        <Field name="data_alta_padro" placeholder="dd/mm/aaaa" normalize={normalizeDate} type="date" component={TextField} fullWidth required/>
+                      ) : (
+                        <Field name="data_alta_padro" placeholder="dd/mm/aaaa" type="date" component={TextField} fullWidth required/>
+                      )}
                       {potTreballar &&
                       <Grid item>
                         <label>

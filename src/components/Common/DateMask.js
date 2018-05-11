@@ -1,4 +1,5 @@
 const normalizeDate = value => {
+  
   if (!value) {
     return value;
   }
