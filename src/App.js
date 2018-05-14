@@ -7,6 +7,7 @@ import promise from "redux-promise";
 import IndexPage from "./indexPage/IndexPage";
 import WizardPage from "./pages/Wizard";
 import PersonsReducer from "./persons/PersonsReducer";
+import StepReducer from "./components/Steps/StepsReducer"
 import ResultsReducer from "./results/ResultsReducer";
 import RentReducer from "./rent/RentReducer";
 import isDevelopment from "./shared/isDevelopment";
@@ -34,6 +35,7 @@ const reducersCombined = combineReducers({
   persons: PersonsReducer,
   household: HouseholdReducer,
   rent: RentReducer,
+  step: StepReducer,
   form: reduxFormReducer // mounted under "form"
 });
 
