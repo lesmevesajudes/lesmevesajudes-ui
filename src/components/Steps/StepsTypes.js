@@ -1,6 +1,6 @@
 // @flow
-export const NEXTSTEP = 'NEXTSTEP';
-export const BACKSTEP = 'BACKSTEP';
+export const nextStep = 'nextStep';
+export const backStep = 'backStep';
 
 export type State = {
   ui: {
@@ -9,6 +9,6 @@ export type State = {
 };
 
 export type Action =
-    { type: 'NEXTSTEP' }
-  | { type: 'BACKSTEP' }
+    { type: 'nextStep' }
+  | { type: 'backStep' }
   ;

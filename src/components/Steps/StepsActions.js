@@ -1,20 +1,11 @@
-import {nextStep, backStep, actualStep} from './StepsTypes'
+//@flow
+import {nextStep, backStep} from './StepsTypes'
 
-type NextStep = {
-  type: "NEXT_STEP",
-  step: nextStep
-};
-type BackStep = {
-  type: "BACK_STEP",
-  step: backStep
-};
-type getActualStep = {
-  type: "ACTUAL_STEP",
-  step: actualStep
-}
+export type NextStep = {type: "NEXT_STEP",step: number};
+export type BackStep = {type: "BACK_STEP",step: number};
+
 export type StepActions =
     | NextStep
-    | getActualStep
     | BackStep;
     
 export type State = {
@@ -23,15 +14,10 @@ export type State = {
   },
 };
 
-export type Action =
-    { type: 'NEXT_STEP' }
-  | { type: 'BACK_STEP' }
-  ;
 
-export function NextStepAction(index): NextStep {
-  return {
-    type: "NEXT_STEP",
-    step: nextStep
-  };
+export function NextStepAction(value:number): NextStep {
+  return {type: "NEXT_STEP",step: value};
 }
-¡
+export function BackStepAction(value:number): BackStep {
+  return {type: "BACK_STEP",step: value};
+}

@@ -5,6 +5,8 @@ import Stepper, { Step, StepLabel } from 'material-ui/Stepper';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import PersonsPage from '../../persons/PersonsPage'
+import {connect} from "react-redux";
+import {BackStep, NextStep} from "./StepsActions";
 
 const styles = theme => ({
   root: {
@@ -112,4 +114,10 @@ StepsComponent.propTypes = {
   classes: PropTypes.object,
 };
 
-export default withStyles(styles)(StepsComponent);
+function mapStateToProps(state){
+  return {
+
+  };
+}
+
+export default connect(mapStateToProps, {BackStep, NextStep})(withStyles(styles)(StepsComponent));
