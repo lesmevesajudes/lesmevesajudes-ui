@@ -24,15 +24,23 @@ const normalizeDate = (value,previousValue) => {
     if(onlyNumbers.slice(4,5) > String(actualYear).charAt(0)){
       return `${onlyNumbers.slice(0, 2)}/${onlyNumbers.slice(2, 4)}/`;
     }
+    if(previousValue.slice(6,7) === "1"){
+      if(onlyNumbers.slice(5,6) > String(actualYear).charAt(1)){
+        return `${onlyNumbers.slice(0, 2)}/${onlyNumbers.slice(2, 4)}/${onlyNumbers.slice(4, 8)}`;
+      }
+    }
+    else {
       if(onlyNumbers.slice(5,6) > String(actualYear).charAt(1)){
         return `${onlyNumbers.slice(0, 2)}/${onlyNumbers.slice(2, 4)}/${onlyNumbers.slice(4, 5)}`;
       }
       if(onlyNumbers.slice(6,7) > String(actualYear).charAt(2)){
-        return `${onlyNumbers.slice(0, 2)}/${onlyNumbers.slice(2, 4)}/${onlyNumbers.slice(4, 6)}`;
+          return `${onlyNumbers.slice(0, 2)}/${onlyNumbers.slice(2, 4)}/${onlyNumbers.slice(4, 6)}`;
       }
       if(onlyNumbers.slice(7,8) > String(actualYear).charAt(3)){
-        return `${onlyNumbers.slice(0, 2)}/${onlyNumbers.slice(2, 4)}/${onlyNumbers.slice(4, 7)}`;
+          return `${onlyNumbers.slice(0, 2)}/${onlyNumbers.slice(2, 4)}/${onlyNumbers.slice(4, 7)}`;
       }
+    }
+
     return `${onlyNumbers.slice(0, 2)}/${onlyNumbers.slice(2, 4)}/${onlyNumbers.slice(4, 12)}`;
   }
 };
