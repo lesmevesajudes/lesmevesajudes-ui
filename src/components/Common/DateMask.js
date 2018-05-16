@@ -28,8 +28,10 @@ const normalizeDate = (value,previousValue) => {
         return `${onlyNumbers.slice(0, 2)}/${onlyNumbers.slice(2, 4)}/${onlyNumbers.slice(4, 5)}`;
       }
       if(onlyNumbers.slice(6,7) > String(actualYear).charAt(2)){
+        return `${onlyNumbers.slice(0, 2)}/${onlyNumbers.slice(2, 4)}/${onlyNumbers.slice(4, 6)}`;
       }
       if(onlyNumbers.slice(7,8) > String(actualYear).charAt(3)){
+        return `${onlyNumbers.slice(0, 2)}/${onlyNumbers.slice(2, 4)}/${onlyNumbers.slice(4, 7)}`;
       }
     return `${onlyNumbers.slice(0, 2)}/${onlyNumbers.slice(2, 4)}/${onlyNumbers.slice(4, 12)}`;
   }
