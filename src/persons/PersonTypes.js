@@ -34,6 +34,11 @@ export class Person {
   tipus_document_identitat: string;
   victima_violencia_de_genere: boolean = false;
   victima_violencia_domestica: boolean = false;
+  is_the_user_in_front_of_the_computer = false;
+}
+
+export class HowManyPersonsLiveTogetherType {
+  how_many_persons_live_together: number = 0;
 }
 
 export type PersonsState = Map<PersonID, Person>;

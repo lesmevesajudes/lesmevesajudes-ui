@@ -12,7 +12,7 @@ import {Button, Grid, MenuItem} from "material-ui";
 import edat from "../shared/Edat";
 import DescriptionText from "../components/Common/DescriptionText"
 
-export type PersonFormInitialValues = Person | { rol: String };
+export type PersonFormInitialValues = Person | { is_the_user_in_front_of_the_computer: boolean };
 
 type Props = {
   escolaritzat: Boolean,
@@ -55,6 +55,7 @@ let PersonForm = (props: Props) => {
         <h1>{`Afegir ${textesSegonsRol[rol]} a la unitat de convivència`}</h1>
         <form onSubmit={handleSubmit}>
           <Field component="input" name="id" type="hidden"/>
+          <Field component="input" name="is_the_user_in_front_of_the_computer" type="hidden"/>
           <Grid container>
             <Grid item xs={12}>
               <Grid container direction={"row"} justify={"space-around"} alignItems={"stretch"}>

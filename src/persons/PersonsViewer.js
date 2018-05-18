@@ -1,121 +1,68 @@
 //@flow
 import React, {Component} from "react";
-import type {Person, PersonRole} from "./PersonTypes";
+import type {Person} from "./PersonTypes";
 import {Trans, translate} from "react-i18next";
-import {Grid} from "material-ui";
-import Icon from "material-ui/Icon";
-import {esAltresFamiliars, esAltresNoFamiliars, esSustentador} from "../shared/selectorUtils";
-import PersonShowCase from "./PersonShowCase";
+import {Avatar, Card, Divider, Grid, List, ListItem, ListItemText} from 'material-ui';
+import {create} from '../shared/UUID';
 
 type Props = {
   persons: Array<Person>,
   onRemoveClick: Function,
   onUpdateClick: Function,
-  onAddPersonClick: (x: PersonRole) => void,
+  onAddPersonClick: Function,
+  expectedNumberOfPersons: number,
   classes: Object
 };
 
-class PersonsViewer extends Component<Props, void> {
-  renderPersonsList(persons: Array<Person>) {
-    return (
-        <Grid container alignItems={"stretch"}>
-          <Grid item xs sm={10}>
-            <Grid container wrap={"wrap"}>
-              <Grid className={"border-family"} item sm={6}>
-                <Grid container>
-                  <Grid item xs sm={12} className={"titleTypePerson"}>
-                    <span>Pares</span>
-                  </Grid>
-                  {persons.filter(person => esSustentador(person)).map(person => (
-                      <PersonShowCase key={person.id} person={person} removePerson={this.props.onRemoveClick}
-                                      updatePerson={this.props.onUpdateClick}/>
-                  ))}
-
-                  {persons.filter(person => esSustentador(person)).length !== 2 && (
-                      <Grid item sm={12} className={"rightButton"}>
-										<span
-                        id="AddParentButton"
-                        onClick={() => this.props.onAddPersonClick("pares")}
-                    >
-											<Icon>add_circle</Icon>
-										</span>
-                      </Grid>
-                  )}
-                </Grid>
-              </Grid>
-              <Grid className={"border-family"} item sm={6}>
-                <Grid container>
-                  <Grid item xs sm={12} className={"titleTypePerson"}>
-                    <span>Altres familiars</span>
-                  </Grid>
-                  {persons
-                      .filter(person => esAltresFamiliars(person))
-                      .map(person => (
-                          <PersonShowCase key={person.id} person={person} removePerson={this.props.onRemoveClick}
-                                          updatePerson={this.props.onUpdateClick}/>
-                      ))}
-                  <Grid item sm={12} className={"rightButton"}>
-									<span
-                      id="AddOtherFamilyButton"
-                      onClick={() =>
-                          this.props.onAddPersonClick("altres_adults_familiars")
-                      }
-                  >
-										<Icon>add_circle</Icon>
-									</span>
-                  </Grid>
-                </Grid>
-              </Grid>
-            </Grid>
-            <Grid container wrap={"wrap"} className={"fixFlex"}>
-              <Grid className={"border-family"} item sm={12}>
-                <Grid container>
-                  <Grid item xs sm={12} className={"titleTypePerson"}>
-                    <span>Fills</span>
-                  </Grid>
-                  {persons.filter(person => person.rol === "fill").map(person => (
-                      <PersonShowCase key={person.id} person={person} removePerson={this.props.onRemoveClick}
-                                      updatePerson={this.props.onUpdateClick}/>
-                  ))}
-                  <Grid item sm={12} className={"rightButton"}>
-									<span
-                      id="AddChildButton"
-                      onClick={() => this.props.onAddPersonClick("fill")}
-                  >
-										<Icon>add_circle</Icon>
-									</span>
-                  </Grid>
-                </Grid>
-              </Grid>
-            </Grid>
-          </Grid>
-          <Grid item xs sm={2} className={"border-family"}>
-            <Grid container justify={"space-between"} direction={"column"}>
-              <Grid item xs sm={12} className={"titleTypePerson"}>
-							<span>
-								Altres adults no familiars
-							</span>
-              </Grid>
-              {persons
-                  .filter(person => esAltresNoFamiliars(person))
-                  .map(person => (
-                      <PersonShowCase key={person.id} person={person} removePerson={this.props.onRemoveClick}
-                                      updatePerson={this.props.onUpdateClick}/>
-                  ))}
-              <Grid item sm={12} className={"rightButton"}>
-							<span
-                  id="AddOtherPersonButton"
-                  onClick={() => this.props.onAddPersonClick("altres_adults")}
-              >
-								<Icon>add_circle</Icon>
-							</span>
-              </Grid>
-            </Grid>
-          </Grid>
-        </Grid>
-    );
+const initials = (name: string) => {
+  const initials = name.replace(/[^a-zA-Z- ]/g, "").match(/\b\w/g);
+  if (initials instanceof Array) {
+    return initials.map(char => char.toUpperCase()).join('');
+  } else {
+    return "?";
   }
+};
 
+const repeat = (times: number, callback: Function) => {
+  if (typeof callback !== "function") {
+    throw new TypeError("Callback is not a function");
+  }
+  let response = Array();
+  for (let i = 0; i < times; i++) {
+    response.push(callback(i));
+  }
+  return response;
+};
+
+type PersonCardProps = {
+  person: Person,
+  updatePerson: Function,
+  removePerson: Function
+}
+const PersonCard = (props: PersonCardProps) => (
+    <ListItem button onClick={() => props.updatePerson(props.person.id)}>
+      <Avatar style={{backgroundColor: "#006600"}}>{initials(props.person.nom)}</Avatar>
+      <ListItemText
+          primary={props.person.is_the_user_in_front_of_the_computer ? `Vosté: ${props.person.nom}` : props.person.nom}
+          secondary={props.person.data_naixement}
+      />
+
+    </ListItem>
+);
+
+type UnknownPersonProps = {
+  onAddPersonClick: Function,
+  personNumber: number
+}
+const UnknownPersonCard = (props: UnknownPersonProps) => (
+    <ListItem button onClick={() => props.onAddPersonClick()}>
+      <Avatar>?</Avatar>
+      <ListItemText
+          primary={`Persona ${(props.personNumber + 1).toString()} - Premi per a introduïr la informació d'aquesta persona`}/>
+    </ListItem>
+);
+
+class PersonsViewer extends Component<Props, void> {
   render() {
     return (
         <Grid container className="container-family">
@@ -125,14 +72,24 @@ class PersonsViewer extends Component<Props, void> {
             </h1>
             <Grid container className="PersonsViewerPage">
               <Grid item xs={12}>
-                {this.renderPersonsList(this.props.persons)}
+                <Card>
+                  <List component="nav">
+                    {[...this.props.persons.map(person =>
+                        <PersonCard
+                            key={person.id}
+                            person={person}
+                            removePerson={this.props.onRemoveClick}
+                            updatePerson={this.props.onUpdateClick}/>
+                    ),
+                      ...repeat(
+                          this.props.expectedNumberOfPersons - this.props.persons.length,
+                          (i) => <UnknownPersonCard key={i} personNumber={i}
+                                                    onAddPersonClick={this.props.onAddPersonClick}/>)]
+                        .reduce((arr, current) => [...arr, current, <Divider key={create()}/>], []).slice(0, -1)}
+                  </List>
+                </Card>
               </Grid>
             </Grid>
-          </Grid>
-          <Grid item sm={12} xs={12} className="fixFlex">
-					<span>
-						<Icon>add_circle</Icon> <span>Afegir un altre família</span>
-					</span>
           </Grid>
         </Grid>
     );

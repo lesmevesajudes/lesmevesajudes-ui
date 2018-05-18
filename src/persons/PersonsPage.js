@@ -5,13 +5,16 @@ import type {PersonFormInitialValues} from "./PersonForm";
 import PersonForm from "./PersonForm";
 import {connect} from "react-redux";
 import type {Person, PersonID} from "./PersonTypes";
+import {HowManyPersonsLiveTogetherType} from "./PersonTypes";
 import {serialize} from "./PersonsReducer";
 import * as UUID from "../shared/UUID";
 import {addPerson, removePerson, updatePerson} from "./PersonsActions";
+import HowManyPersonsLiveTogetherPage from "./HowManyPersonsLiveTogetherPage";
 
 type State = {
-  editingPerson: boolean,
-  initialFormValues: ?PersonFormInitialValues
+  step: string,
+  initialFormValues: ?PersonFormInitialValues,
+  numberOfPersonsLivingTogether: number,
 };
 
 type Props = {
@@ -25,19 +28,22 @@ type Props = {
 
 class PersonsPage extends React.Component<Props, State> {
   state = {
-    editingPerson: false,
-    initialFormValues: undefined
+    step: "NumberOfPersonsLivingTogether",
+    initialFormValues: undefined,
+    numberOfPersonsLivingTogether: 0
   };
-  handleAddPersonClick = (rol: String) => {
+
+  handleAddPersonClick = () => {
     this.setState({
-      initialFormValues: { rol },
-      editingPerson: true
+      ...this.state,
+      step: "addPerson"
     });
   };
   handleUpdatePersonClick = (personID: PersonID) => {
     this.setState({
+      ...this.state,
       initialFormValues: this.props.persons.filter(e => e.id === personID)[0],
-      editingPerson: true
+      step: "addPerson"
     });
   };
   handleRemovePersonClick = (personID: PersonID) => {
@@ -45,17 +51,26 @@ class PersonsPage extends React.Component<Props, State> {
   };
   doneEditingPerson = () => {
     this.setState({
+      ...this.state,
       initialFormValues: undefined,
-      editingPerson: false
+      step: "personsList",
     });
   };
-  handleSubmitForm = (formValues: Person) => {
+  handleSubmitPersonForm = (formValues: Person) => {
     this.doneEditingPerson();
     if (formValues.id === undefined) {
       return this.props.addPerson({...formValues, id: UUID.create()});
     } else {
       return this.props.updatePerson(formValues);
     }
+  };
+  handleSubmitHowManyPersonsLiveTogether = (formValues: HowManyPersonsLiveTogetherType) => {
+    this.setState({
+      ...this.state,
+      numberOfPersonsLivingTogether: formValues.how_many_persons_live_together,
+      step: "addPerson",
+      initialFormValues: {is_the_user_in_front_of_the_computer: true}
+    });
   };
 
   constructor() {
@@ -64,33 +79,41 @@ class PersonsPage extends React.Component<Props, State> {
     this.doneEditingPerson = this.doneEditingPerson.bind(this);
     this.handleRemovePersonClick = this.handleRemovePersonClick.bind(this);
     this.handleUpdatePersonClick = this.handleUpdatePersonClick.bind(this);
-    this.handleSubmitForm = this.handleSubmitForm.bind(this);
+    this.handleSubmitPersonForm = this.handleSubmitPersonForm.bind(this);
+    this.handleSubmitHowManyPersonsLiveTogether = this.handleSubmitHowManyPersonsLiveTogether.bind(this);
   }
 
   render() {
-    const addingPerson = this.state.editingPerson;
+    const step = this.state.step;
+    const expectedNumberOfPersonsLivingTogether = this.state.numberOfPersonsLivingTogether;
     let component = undefined;
-    if (addingPerson) {
-      component = (
-          <PersonForm
-              initialValues={this.state.initialFormValues}
-              onSubmit={this.handleSubmitForm}
-              onCancel={this.doneEditingPerson}
-              onFinishAdding={() => this.doneEditingPerson()}
-        />
-      );
-    } else {
+    if (step === "NumberOfPersonsLivingTogether") {
+      component = (<HowManyPersonsLiveTogetherPage
+          onSubmit={this.handleSubmitHowManyPersonsLiveTogether}
+      />);
+    } else if (step === "personsList") {
       component = (
           <PersonsViewer
               persons={this.props.persons}
               onRemoveClick={this.handleRemovePersonClick}
               onUpdateClick={this.handleUpdatePersonClick}
               onAddPersonClick={this.handleAddPersonClick}
+              expectedNumberOfPersons={expectedNumberOfPersonsLivingTogether}
+          />);
+    } else if (step === "addPerson") {
+      component = (
+          <PersonForm
+              initialValues={this.state.initialFormValues}
+              onSubmit={this.handleSubmitPersonForm}
+              onCancel={this.doneEditingPerson}
+              onFinishAdding={() => this.doneEditingPerson()}
         />
       );
     }
     return component;
   }
+
+
 }
 
 function mapStateToProps(state) {
