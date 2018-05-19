@@ -8,7 +8,7 @@ import ClearInputIcon from "material-ui-icons/Clear";
 import {Trans} from "react-i18next";
 import {Field, formValueSelector, reduxForm} from "redux-form";
 import {connect} from "react-redux";
-import {Button, Grid, MenuItem} from "material-ui";
+import {Button, FormLabel, Grid, MenuItem} from "material-ui";
 import edat from "../shared/Edat";
 import DescriptionText from "../components/Common/DescriptionText"
 
@@ -23,6 +23,7 @@ type Props = {
   haTreballatALEstranger6Mesos: Boolean,
   ingressatEnCentrePenitenciari: Boolean,
   inscritComADemandantDocupacio: Boolean,
+  isTheUserInFrontOfTheComputer: Boolean,
   onCancel: Function,
   potTreballar: Boolean,
   rol: PersonRole,
@@ -45,6 +46,7 @@ let PersonForm = (props: Props) => {
     haTreballatALEstranger6Mesos,
     ingressatEnCentrePenitenciari,
     inscritComADemandantDocupacio,
+    isTheUserInFrontOfTheComputer,
     potTreballar,
     rol,
     victimaViolenciaDeGenere
@@ -62,26 +64,26 @@ let PersonForm = (props: Props) => {
                 <Grid item xs={12} md={5}>
                   <Grid container direction={"column"} alignItems={"stretch"}>
                     <label>
-                      <Trans>Com vol identificar a aquesta persona?</Trans>
+                      {isTheUserInFrontOfTheComputer ? <Trans>Identifiqui's amb un nom</Trans> :
+                          <Trans>Com vol referir-se a aquesta persona?</Trans>}
                     </label>
                     <Field name="nom" placeholder="Nom" component={TextField} fullWidth required/>
                     <label>
-                      <Trans>Data naixement</Trans>
+                      <Trans>Quina és la seva edat?</Trans>
                     </label>
-                    <Field name="data_naixement" placeholder="dd/mm/aaaa" type="date" component={TextField} fullWidth
-                           required/>
-                    <Field name="rol" component={TextField} type="hidden" required/>
+                    <Field name="edat" type="number" component={TextField} fullWidth required/>
                     <label>
                       <Trans>Sexe</Trans>
                     </label>
-                    <Field data-test="genere" name="genere" fullWidth component={Select}>
-                      <MenuItem data-test="genere_dona" value="dona">
+                    <Field data-test="sexe" name="sexe" fullWidth component={Select}>
+                      <MenuItem data-test="sexe_dona" value="dona">
                         <Trans>Dona</Trans>
                       </MenuItem>
-                      <MenuItem data-test="genere_home" value="home">
+                      <MenuItem data-test="sexe_home" value="home">
                         <Trans>Home</Trans>
                       </MenuItem>
                     </Field>
+                    <FormLabel component="legend">Informació sobre el padró</FormLabel>
                     <label>
                       <Trans>Tipus de document de identitat</Trans>
                     </label>
@@ -99,6 +101,11 @@ let PersonForm = (props: Props) => {
                         <Trans>Altres</Trans>
                       </MenuItem>
                     </Field>
+
+
+                    <Field name="rol" component={TextField} type="hidden" required/>
+
+
                     <label>
                       <Trans>
                         Data alta padró a l&apos;actual habitatge (sense interrupcions)
@@ -295,9 +302,11 @@ PersonForm = connect(state => {
   const haTreballatALEstranger6Mesos = selector(state, "ha_treballat_a_l_estranger_6_mesos");
   const ingressatEnCentrePenitenciari = selector(state, "ingressat_en_centre_penitenciari");
   const inscritComADemandantDocupacio = selector(state, "inscrit_com_a_demandant_docupacio");
+  const isTheUserInFrontOfTheComputer = selector(state, "is_the_user_in_front_of_the_computer");
   const potTreballar = (edat(selector(state, "data_naixement")) || 0) >= 16;
   const rol = selector(state, "rol");
   const victimaViolenciaDeGenere = selector(state, "victima_violencia_de_genere");
+
   return {
     esDesocupat,
     esDona,
@@ -305,6 +314,7 @@ PersonForm = connect(state => {
     haTreballatALEstranger6Mesos,
     ingressatEnCentrePenitenciari,
     inscritComADemandantDocupacio,
+    isTheUserInFrontOfTheComputer,
     potTreballar,
     rol,
     victimaViolenciaDeGenere
