@@ -20,7 +20,7 @@ let HowManyPersonsLiveTogetherPage = props => {
               </Grid>
               <Grid item>
                 <Field name="how_many_persons_live_together" placeholder="0" type="number" fullWidth
-                       component={TextField}/>
+                       component={TextField} autoFocus/>
               </Grid>
               <Grid item>
                 <Button variant="raised" color="primary" type="submit" name="ButtonValidar">

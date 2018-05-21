@@ -27,7 +27,7 @@ const repeat = (times: number, callback: Function) => {
   if (typeof callback !== "function") {
     throw new TypeError("Callback is not a function");
   }
-  let response = Array();
+  let response = [];
   for (let i = 0; i < times; i++) {
     response.push(callback(i));
   }
@@ -64,6 +64,7 @@ const UnknownPersonCard = (props: UnknownPersonProps) => (
 
 class PersonsViewer extends Component<Props, void> {
   render() {
+    const missingPersons = this.props.expectedNumberOfPersons - this.props.persons.length;
     return (
         <Grid container className="container-family">
           <Grid item sm={12} xs={12} className="bg-family">
@@ -81,8 +82,7 @@ class PersonsViewer extends Component<Props, void> {
                             removePerson={this.props.onRemoveClick}
                             updatePerson={this.props.onUpdateClick}/>
                     ),
-                      ...repeat(
-                          this.props.expectedNumberOfPersons - this.props.persons.length,
+                      ...repeat(missingPersons,
                           (i) => <UnknownPersonCard key={i} personNumber={i}
                                                     onAddPersonClick={this.props.onAddPersonClick}/>)]
                         .reduce((arr, current) => [...arr, current, <Divider key={create()}/>], []).slice(0, -1)}

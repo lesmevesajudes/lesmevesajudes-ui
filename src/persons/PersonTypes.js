@@ -15,7 +15,7 @@ export class Person {
   es_divorciada_de_familia_reagrupada: boolean = false;
   es_escolaritzat_entre_P3_i_4rt_ESO: boolean = false;
   es_orfe_dels_dos_progenitors: boolean = false;
-  genere: string;
+  gaudeix_de_prestacio_contributiva_o_subsidi_desocupacio: boolean = false;
   grau_discapacitat: number = 0;
   ha_estat_beneficiari_de_la_rai_en_els_ultims_12_mesos: boolean = false;
   ha_esgotat_prestacio_de_desocupacio: boolean = false;
@@ -26,10 +26,12 @@ export class Person {
   ingressat_en_centre_penitenciari: boolean = false;
   ingressat_en_centre_penitenciari_pot_treballar: boolean = false;
   ingressos_bruts: number = 0;
+  ingressos_per_pnc: number = 0;
   inscrit_com_a_demandant_docupacio: boolean = false;
+  membre_de_familia_reagrupada: boolean = false;
   nom: string;
   percep_prestacions_incompatibles_amb_la_feina: boolean = false;
-  rol: PersonRole;
+  porta_dos_anys_o_mes_empadronat_a_catalunya: boolean = false;
   sexe: string;
   situacio_laboral: string;
   tipus_document_identitat: string;
