@@ -1,14 +1,14 @@
 //@flow
-import React, { Fragment } from "react";
-import type { PersonRole } from "./PersonTypes";
-import { Person } from "./PersonTypes";
-import { Checkbox, Select, TextField } from "redux-form-material-ui";
+import React, {Fragment} from "react";
+import type {PersonRole} from "./PersonTypes";
+import {Person} from "./PersonTypes";
+import {Checkbox, Select, TextField} from "redux-form-material-ui";
 import AddIcon from "material-ui-icons/Add";
 import ClearInputIcon from "material-ui-icons/Clear";
-import { Trans } from "react-i18next";
-import { Field, formValueSelector, reduxForm } from "redux-form";
-import { connect } from "react-redux";
-import { Button, FormLabel, Grid, InputAdornment, MenuItem } from "material-ui";
+import {Trans} from "react-i18next";
+import {Field, formValueSelector, reduxForm} from "redux-form";
+import {connect} from "react-redux";
+import {Button, FormLabel, Grid, MenuItem} from "material-ui";
 import edat from "../shared/Edat";
 import DescriptionText from "../components/Common/DescriptionText";
 
@@ -16,11 +16,13 @@ export type PersonFormInitialValues = Person | { is_the_user_in_front_of_the_com
 
 type Props = {
   cobraAlgunTipusDePensioNoContributiva: Boolean,
+  edat: number,
   escolaritzat: Boolean,
   esDesocupat: Boolean,
   esDona: Boolean,
   esFamiliarOUsuari: Boolean,
   esFill: Boolean,
+  esFillastre: Boolean,
   handleSubmit: Function,
   haTreballatALEstranger6Mesos: Boolean,
   ingressatEnCentrePenitenciari: Boolean,
@@ -48,10 +50,12 @@ const textesSegonsRol: { [PersonRole]: string } = {
 let PersonForm = (props: Props) => {
   const {
     cobraAlgunTipusDePensioNoContributiva,
+    edat,
     esDesocupat,
     esDona,
     esFamiliarOUsuari,
     esFill,
+    esFillastre,
     handleSubmit,
     haTreballatALEstranger6Mesos,
     ingressatEnCentrePenitenciari,
@@ -88,6 +92,51 @@ let PersonForm = (props: Props) => {
                       <Trans>Com vol referir-se a aquesta persona?</Trans>}
                   </label>
                   <Field name="nom" placeholder="Nom" component={TextField} fullWidth required autoFocus/>
+
+                  {!isTheUserInFrontOfTheComputer &&
+                  <Fragment>
+                    <label>
+                      <Trans>Té alguna relació de prentiu amb aquesta persona?</Trans>
+                    </label>
+                    <Field data-test="relacio_parentiu" name="relacio_parentiu" component={Select} fullWidth>
+                      <MenuItem data-test="cap" value="cap">
+                        <Trans>Sense relació de parentiu</Trans>
+                      </MenuItem>
+                      <MenuItem data-test="parella" value="parella">
+                        <Trans>Cònjuge / parella</Trans>
+                      </MenuItem>
+                      <MenuItem data-test="fill" value="fill">
+                        <Trans>Fill/a</Trans>
+                      </MenuItem>
+                      <MenuItem data-test="fillastre" value="fillastre">
+                        <Trans>Fillastre/a (o fill/a de la parella actual)</Trans>
+                      </MenuItem>
+                      <MenuItem data-test="infant_acollit" value="infant_acollit">
+                        <Trans>Infant en acolliment</Trans>
+                      </MenuItem>
+                      <MenuItem data-test="pare" value="pare">
+                        <Trans>Pare o mare</Trans>
+                      </MenuItem>
+                      <MenuItem data-test="avi" value="avi">
+                        <Trans>Avi / Àvia</Trans>
+                      </MenuItem>
+                      <MenuItem data-test="sogre" value="sogre">
+                        <Trans>Sogre/a</Trans>
+                      </MenuItem>
+                      <MenuItem data-test="germa" value="germa">
+                        <Trans>Germà/germana</Trans>
+                      </MenuItem>
+                      <MenuItem data-test="cunyat" value="cunyat">
+                        <Trans>Cunyat/da</Trans>
+                      </MenuItem>
+                      <MenuItem data-test="gendre" value="gendre">
+                        <Trans>Gendre/Nora/Parella del meu fill/a</Trans>
+                      </MenuItem>
+                      <MenuItem data-test="altres" value="altres">
+                        <Trans>Altres familiars</Trans>
+                      </MenuItem>
+                    </Field>
+                  </Fragment>}
                   {esFamiliarOUsuari &&
                   <Fragment>
                     <label>
@@ -293,7 +342,7 @@ let PersonForm = (props: Props) => {
                       <Field name="victima_violencia_domestica" checked={false} component={Checkbox}/>
                       <Trans>Víctima violència domèstica</Trans>
                     </label>
-                    {(edat > 16 || edat < 23) && //TODO falta implementar controlar el rol
+                    {(edat > 16 && edat < 23) && !(esFill || esFillastre) &&
                     <label>
                       <Field name="es_orfe_dels_dos_progenitors" checked={false} component={Checkbox}/>
                       <Trans>És orfe dels dos progenitors</Trans>
@@ -331,15 +380,13 @@ PersonForm = reduxForm({
 const selector = formValueSelector("PersonForm");
 
 PersonForm = connect(state => {
-  console.log("1: ", selector(state, "relacio_familiar"));
-  console.log("3: ", selector(state, "is_the_user_in_front_of_the_computer"));
   const cobraAlgunTipusDePensioNoContributiva = selector(state, "cobra_algun_tipus_de_pensio_no_contributiva");
+  const edat = selector(state, "edat");
   const esDesocupat = selector(state, "situacio_laboral") === "desocupat";
   const esDona = selector(state, "genere") === "dona";
-  const esFamiliarOUsuari = (typeof selector(state, "relacio_familiar") !== "undefined" && selector(state, "relacio_familiar") !== "cap") || selector(state, "is_the_user_in_front_of_the_computer") === true;
-  const esFill =
-  selector(state, "rol") === "fill" ||
-  selector(state, "rol") === "infant_acollit";
+  const esFamiliarOUsuari = (typeof selector(state, "relacio_parentiu") !== "undefined" && selector(state, "relacio_parentiu") !== "cap") || selector(state, "is_the_user_in_front_of_the_computer") === true;
+  const esFill = selector(state, "relacio_parentiu") === "fill";
+  const esFillastre = selector(state, "relacio_parentiu") === "fillastre";
   const haTreballatALEstranger6Mesos = selector(state, "ha_treballat_a_l_estranger_6_mesos");
   const ingressatEnCentrePenitenciari = selector(state, "ingressat_en_centre_penitenciari");
   const inscritComADemandantDocupacio = selector(state, "inscrit_com_a_demandant_docupacio");
@@ -355,10 +402,12 @@ PersonForm = connect(state => {
   const victimaViolenciaDeGenere = selector(state, "victima_violencia_de_genere");
   return {
   cobraAlgunTipusDePensioNoContributiva,
+    edat,
   esDesocupat,
   esDona,
   esFamiliarOUsuari,
   esFill,
+    esFillastre,
   haTreballatALEstranger6Mesos,
   ingressatEnCentrePenitenciari,
   inscritComADemandantDocupacio,
