@@ -1,5 +1,5 @@
 //@flow
-import React from 'react';
+import React, {Fragment} from 'react';
 import {connect} from 'react-redux';
 import {addRent} from './RentActions';
 import type {Rent} from './RentTypes';
@@ -7,7 +7,7 @@ import type {PersonID} from '../persons/PersonTypes';
 import {Person} from '../persons/PersonTypes';
 import {Map} from 'immutable';
 import {Field, formValueSelector, reduxForm} from 'redux-form';
-import {FormControlLabel, FormLabel, Grid, MenuItem, Radio, RadioGroup} from 'material-ui';
+import {Grid, MenuItem} from 'material-ui';
 import {Checkbox, Select, TextField} from 'redux-form-material-ui';
 import {Trans} from 'react-i18next';
 import DescriptionText from "../components/Common/DescriptionText";
@@ -19,14 +19,12 @@ type Props = {
   esPropietari: boolean,
   existeixDeutePagamentLloguer: boolean,
   existeixDeutePagamentHipoteca: boolean,
-  haParticipatEnMediacio: boolean,
-  haPerdutLHhabitatgeEnElsUltims2Anys: boolean,
+  existeixHipoteca: boolean,
   initialValues: ?Rent,
   personesQuePodenTenirContracteDeLloguer: Map<PersonID, Person>,
   state: any,
   teAlgunaPropietat: boolean,
   teHabitatgeHabitual: boolean,
-  teHipoteca: boolean,
 };
 
 const RentForm = (props: Props) => {
@@ -35,11 +33,9 @@ const RentForm = (props: Props) => {
     esPropietari,
     existeixDeutePagamentHipoteca,
     existeixDeutePagamentLloguer,
-    haParticipatEnMediacio,
-    haPerdutLHhabitatgeEnElsUltims2Anys,
+    existeixHipoteca,
     teAlgunaPropietat,
     teHabitatgeHabitual,
-    teHipoteca,
   } = props;
   return (
       <Grid container className="bg-container">
@@ -49,10 +45,13 @@ const RentForm = (props: Props) => {
             <form name='RentForm'>
               <label><Trans>Relació amb l'habitatge</Trans></label>
               <Field name='relacio_habitatge' data-test='relacio_habitatge' component={Select} fullWidth>
-                <MenuItem value='propietari'><Trans>Propietari</Trans></MenuItem>
-                <MenuItem value='llogater' data-test='llogater'><Trans>Llogater</Trans></MenuItem>
-                <MenuItem value='usufructuari'><Trans>Usufructuari</Trans></MenuItem>
-                <MenuItem value='no_en_te'><Trans>No tinc habitatge habitual</Trans></MenuItem>
+                <MenuItem value='propietari'><Trans>Visc en un habitatge de propietat sense hipoteca</Trans></MenuItem>
+                <MenuItem value='propietari_hipoteca'><Trans>Visc en un habitatge de propietat amb
+                  hipoteca</Trans></MenuItem>
+                <MenuItem value='llogater' data-test='llogater'><Trans>Visc de lloguer</Trans></MenuItem>
+                <MenuItem value='cessio'><Trans>Cessió</Trans></MenuItem>
+                <MenuItem value='no_en_te'><Trans>No tinc un habitatge fixe</Trans></MenuItem>
+                <MenuItem value='altres'><Trans>Altres</Trans></MenuItem>
               </Field>
               {teHabitatgeHabitual &&
               <Grid item>
@@ -61,7 +60,7 @@ const RentForm = (props: Props) => {
               </Grid>}
               {esLlogater &&
               <Grid item>
-                <label><Trans>Titular del contracte de lloguer</Trans></label>
+                <label><Trans>Persona titular del contracte de lloguer</Trans></label>
                 <Field name='titular_contracte_de_lloguer_id' component={Select} fullWidth>
                   {props.personesQuePodenTenirContracteDeLloguer.valueSeq().map((persona) => (
                       <MenuItem key={persona.id} value={persona.id}>{persona.nom}</MenuItem>
@@ -70,12 +69,28 @@ const RentForm = (props: Props) => {
                     l'habitatge</Trans></MenuItem>
                 </Field>
               </Grid>}
-              {esLlogater &&
+              {existeixHipoteca &&
               <Grid item>
-                <label><Trans>Data signatura del contracte d'arrendament</Trans></label>
-                <Field name='data_signatura_contracte_arrendament' placeholder='2005-01-21' type='date'
-                       component={TextField} fullWidth required/>
+                <label><Trans>Persona titular de la hipoteca:</Trans></label>
+                <Field name='titular_hipoteca_id' component={Select} fullWidth>
+                  {props.personesQuePodenTenirContracteDeLloguer.valueSeq().map((persona) => (
+                      <MenuItem key={persona.id} value={persona.id}>{persona.nom}</MenuItem>
+                  ))}
+                  <MenuItem key='no-conviu' value='no-conviu'><Trans>Una persona que no viu a
+                    l'habitatge</Trans></MenuItem>
+                </Field>
               </Grid>}
+              {(esLlogater || existeixHipoteca) &&
+              <Fragment>
+                <label><Trans>Quant temps fa que [Nom titular convivent] està empadronat en aquest
+                  habitatge?</Trans></label>
+                <Field name='temps_empadronat' data-test='temps_empadronat' component={Select} fullWidth>
+                  <MenuItem value='no_empadronat'><Trans>No està empadronat</Trans></MenuItem>
+                  <MenuItem value='menys_9_mesos'><Trans>Menys de 9 mesos</Trans></MenuItem>
+                  <MenuItem value='9_mesos_o_mes' data-test='llogater'><Trans>9 mesos o més</Trans></MenuItem>
+                </Field>
+              </Fragment>
+              }
 
               {esLlogater &&
               <Grid item>
@@ -83,74 +98,76 @@ const RentForm = (props: Props) => {
                 <Field name='import_del_lloguer' component={TextField} placeholder='0' fullWidth/>
               </Grid>}
 
-              {esLlogater &&
-              <label><Field name='ha_perdut_lhabitatge_en_els_ultims_2_anys' component={Checkbox}/>
-                <Trans>Ha perdut el seu habitatge habitual degut a una execució hipotecària o desnonament en els ultims
-                  2 anys?</Trans></label>
-              }
-
-              {haPerdutLHhabitatgeEnElsUltims2Anys &&
+              {existeixHipoteca &&
               <Grid item>
-                <label><Trans>Data de pèrdua de l'habitatge</Trans></label>
-                <Field required name='data_perdua_habitatge' placeholder='2005-01-21' type='date' fullWidth
-                       component={TextField}/>
-              </Grid>
-              }
+                <label><Trans>Import mensual de la hipoteca (&euro;)</Trans></label>
+                <Field name='import_de_la_hipoteca' component={TextField} placeholder='0' fullWidth/>
+              </Grid>}
 
               {esLlogater &&
-              <label><Field name='ha_participat_en_un_proces_de_mediacio' component={Checkbox}/>
-                <Trans>Ha participat en un procés de mediació del servei de mediació de laXarxa d’Oficines d’Habitatge
-                  de
-                  Barcelona</Trans></label>
+              <label><Field name='existeix_deute_en_el_pagament_del_lloguer' component={Checkbox}/>
+                <Trans>Existeix un deute en el pagament del lloguer</Trans></label>}
+
+              {existeixHipoteca &&
+              <label><Field name='existeix_deute_en_el_pagament_de_la_hipoteca' component={Checkbox}/>
+                <Trans>Existeix un deute en el pagament de la hipoteca</Trans></label>}
+
+              {existeixDeutePagamentHipoteca &&
+              <label>
+                <Field name='ha_pagat_12_mesos_daquesta_hipoteca' component={Checkbox}/>
+                <Trans>Ha pagat com a mínim 12 quotes d’aquesta hipoteca?</Trans>
+              </label>}
+
+              {existeixDeutePagamentLloguer &&
+              <Fragment>
+                <label><Trans>Des de quan teniu deutes de pagament de lloguer?</Trans></label>
+                <Field name='des_de_quan_existeix_deute_lloguer' data-test='des_de_quan_existeix_deute_lloguer'
+                       component={Select} fullWidth>
+                  <MenuItem value='mes_dun_any'><Trans>Més d'un any</Trans></MenuItem>
+                  <MenuItem value='menys_dun_any'><Trans>Menys d'un any</Trans></MenuItem>
+                </Field>
+              </Fragment>
               }
-              {haParticipatEnMediacio &&
-              <Grid item>
-                <FormLabel component="legend">Resultat de la mediació</FormLabel>
-                <RadioGroup
-                    name="resultat_de_la_mediacio">
-                  <FormControlLabel value="female" control={<Radio/>}
-                                    label={<Trans>S'ha acordat una rebaixa mínima de 50€ mensuals en el rebut de
-                                      lloguer</Trans>}/>
-                  <FormControlLabel value="male" control={<Radio/>}
-                                    label={<Trans>Ha estat beneficiari de les prestacions econòmiques derivades de la
-                                      mediació</Trans>}/>
-                  <FormControlLabel value="male" control={<Radio/>}
-                                    label={<Trans>Ha estat beneficiàries de l’ajut temporal garantit i/o del servei del
-                                      suport d’accés a l’habitatge que atorga l’Àrea de Drets Socials</Trans>}/>
-                  <FormControlLabel value="male" control={<Radio/>}
-                                    label={<Trans>Ha formalitzat un contracte de lloguer d’un habitatge un cop
-                                      finalitzada la seva estada i procés d’inclusió en un recurs residencial</Trans>}/>
-                  <FormControlLabel value="other" control={<Radio/>} label={<Trans>Altre</Trans>}/>
-                </RadioGroup>
-              </Grid>}
 
-              {esPropietari &&
-              <Grid item>
-                <label><Field name='existeix_hipoteca' component={Checkbox}/>
-                  <Trans>Existeix una hipoteca sobre el domicili habitual</Trans></label>
-              </Grid>}
-
-              {teHipoteca &&
-              <Grid item>
-                <label><Trans>Data signatura del contracte d'hipoteca</Trans></label>
-                <Field name='data_signatura_contracte_de_hipoteca' placeholder='2005-01-21' type='date'
-                       component={TextField}
-                       fullWidth required/>
-              </Grid>}
+              {existeixDeutePagamentHipoteca &&
+              <Fragment>
+                <label><Trans>Des de quan teniu deutes de pagament de la hipoteca?</Trans></label>
+                <Field name='des_de_quan_existeix_deute_hipoteca' data-test='des_de_quan_existeix_deute_hipoteca'
+                       component={Select} fullWidth>
+                  <MenuItem value='mes_dun_any'><Trans>Més d'un any</Trans></MenuItem>
+                  <MenuItem value='menys_dun_any'><Trans>Menys d'un any</Trans></MenuItem>
+                </Field>
+              </Fragment>
+              }
 
               {esLlogater &&
               <label><Field name='relacio_de_parentiu_amb_el_propietari' component={Checkbox}/>
                 <Trans>Algun membre de la família té relació de parentiu amb el propietari de
                   l'habitatge</Trans></label>}
 
+              {teHabitatgeHabitual &&
+              <label>
+                <Field name='tinc_alguna_propietat_a_part_habitatge_habitual' component={Checkbox}/>
+                <Trans>Alguna persona que conviu amb vosté té alguna propietat a part de l'habitatge habitual</Trans>
+              </label>}
+              {teAlgunaPropietat &&
+              <label><Field name='tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusufructe'
+                            component={Checkbox}/>
+                <Trans>Disposa de l'usufructe d'aquesta propietat</Trans>
+              </label>
+              }
               {esLlogater &&
+              <label><Field name='ha_perdut_lhabitatge_en_els_ultims_2_anys' component={Checkbox}/>
+                <Trans>Ha perdut el seu habitatge habitual degut a una execució hipotecària o desnonament en els ultims
+                  2 anys?</Trans></label>
+              }
 
-              <label><Field name='existeix_deute_en_el_pagament_del_lloguer' component={Checkbox}/>
-                <Trans>Existeix un deute en el pagament del lloguer</Trans></label>}
-
-              {teHipoteca &&
-              <label><Field name='existeix_deute_en_el_pagament_de_la_hipoteca' component={Checkbox}/>
-                <Trans>Existeix un deute en el pagament de la hipoteca</Trans></label>}
+              {esLlogater &&
+              <label><Field name='ha_participat_en_un_proces_de_mediacio' component={Checkbox}/>
+                <Trans>Ha participat en un procés de mediació del servei de mediació de laXarxa d’Oficines d’Habitatge
+                  de Barcelona</Trans>
+              </label>
+              }
 
               {esLlogater && existeixDeutePagamentLloguer &&
               <Grid item>
@@ -165,46 +182,6 @@ const RentForm = (props: Props) => {
                 <Field name='data_de_la_primera_quota_de_hipoteca_no_pagada' component={TextField}
                        placeholder='2005-01-21' type='date' fullWidth/>
               </Grid>}
-
-              {esLlogater && existeixDeutePagamentLloguer &&
-              <Grid item>
-                <label><Trans>Import total del deute (&euro;)</Trans></label>
-                <Field name='import_del_deute_amb_el_propietari' component={TextField} placeholder='0' fullWidth/>
-              </Grid>}
-
-              {esPropietari && existeixDeutePagamentHipoteca &&
-              <Grid item>
-                <label><Trans>Import total del deute (&euro;)</Trans></label>
-                <Field name='import_del_deute_amb_el_propietari' component={TextField} placeholder='0' fullWidth/>
-              </Grid>}
-
-              {esLlogater &&
-              <label><Field name='habitatge_de_la_borsa_dhabitatge_barcelona' component={Checkbox}/>
-                <Trans>Ha signat un contracte de lloguer a través de la Borsa d’Habitatge de Lloguer de
-                  Barcelona.</Trans></label>
-              }
-
-              {teHipoteca &&
-              <Grid item>
-                <label><Trans>Import mensual de la quota de la hipoteca(&euro;)</Trans></label>
-                <Field name='import_del_quota hipoteca' component={TextField} placeholder='0' fullWidth/>
-              </Grid>}
-
-              {
-                //Preguntar si hi ha hipoteca
-                //              Preguntar titular hipoteca
-              }
-              {teHabitatgeHabitual &&
-              <label>
-                <Field name='tinc_alguna_propietat_a_part_habitatge_habitual' component={Checkbox}/>
-                <Trans>Alguna persona que conviu amb vosté té alguna propietat a part de l'habitatge habitual</Trans>
-              </label>}
-              {teAlgunaPropietat &&
-              <label><Field name='tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusufructe'
-                            component={Checkbox}/>
-                <Trans>Disposa de l'usufructe d'aquesta propietat</Trans>
-              </label>
-              }
             </form>
           </Grid>
           <Grid item xs sm={5}>
@@ -220,21 +197,20 @@ const selector = formValueSelector('RentForm');
 
 function mapStateToProps(state) {
   const esLlogater = selector(state, 'relacio_habitatge') === 'llogater';
-  const esPropietari = selector(state, 'relacio_habitatge') === 'propietari';
-  const esUsufructuari = selector(state, 'relacio_habitatge') === 'usufructuari';
+  const esPropietari = selector(state, 'relacio_habitatge') === 'propietari'
+      || selector(state, 'relacio_habitatge') === 'propietari_hipoteca';
+  const existeixHipoteca = selector(state, 'relacio_habitatge') === 'propietari_hipoteca';
+  const esCessio = selector(state, 'relacio_habitatge') === 'cessio';
   return {
     esLlogater: esLlogater,
     esPropietari: esPropietari,
-    esUsufructuari: esUsufructuari,
     existeixDeutePagamentLloguer: selector(state, 'existeix_deute_en_el_pagament_del_lloguer'),
     existeixDeutePagamentHipoteca: selector(state, 'existeix_deute_en_el_pagament_de_la_hipoteca'),
-    haParticipatEnMediacio: selector(state, 'ha_participat_en_un_proces_de_mediacio'),
-    haPerdutLHhabitatgeEnElsUltims2Anys: selector(state, 'ha_perdut_lhabitatge_en_els_ultims_2_anys'),
+    existeixHipoteca: existeixHipoteca,
     initialValues: state.rent,
     personesQuePodenTenirContracteDeLloguer: state.persons.filter((persona) => !esFill(persona)),
     teAlgunaPropietat: selector(state, 'tinc_alguna_propietat_a_part_habitatge_habitual'),
-    teHabitatgeHabitual: esLlogater || esPropietari || esUsufructuari,
-    teHipoteca: selector(state, 'existeix_hipoteca'),
+    teHabitatgeHabitual: esLlogater || esPropietari || esCessio,
 
   };
 }
