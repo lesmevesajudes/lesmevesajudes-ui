@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
-import type {BackStep,NextStep} from "./StepsActions";
 import {NextStepAction, BackStepAction} from './StepsActions'
 import { withStyles } from 'material-ui/styles';
 import Stepper, { Step, StepLabel } from 'material-ui/Stepper';
@@ -37,6 +36,8 @@ function getStepContent(stepIndex) {
       return <RentForm/>;
     case 2:
       return <HouseholdForm/>;
+      default:
+        return "patata"
   }
 }
 

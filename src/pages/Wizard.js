@@ -1,25 +1,12 @@
 import React, {Component} from "react";
-import StepZilla from "react-stepzilla";
-import PersonsPage from "../persons/PersonsPage";
-import RentForm from "../rent/RentForm";
-import ResultsPage from "../results/ResultsPage";
 import "./Wizard.css";
 import AppHeader from "../components/AppHeader/AppHeader";
 import {translate} from "react-i18next";
-import HouseholdForm from "../household/HouseholdForm";
 import {Grid} from 'material-ui'
 import StepsComponent from '../components/Steps/StepsComponent';
 
 class WizardPage extends Component {
   render() {
-    const { t } = this.props;
-
-    const steps = [
-      {name: t("Persones que conviuen"), component: <PersonsPage/>},
-      { name: t("Família"), component: <HouseholdForm /> },
-      { name: t("Domicili habitual"), component: <RentForm /> },
-      { name: t("Resultats"), component: <ResultsPage /> }
-    ];
 
     return (
       <Grid>
