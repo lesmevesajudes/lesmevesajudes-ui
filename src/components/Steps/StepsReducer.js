@@ -8,17 +8,17 @@ const initial = {
 
 export default (state: State.ui = initial, action: Action) => {
   switch (action.type) {
-    case nextStep: {
-      return {
-        ...state,
-        counter: state.counter + 1,
-      };
-    }
-    case backStep:
-      return {
-        ...state,
-        counter: state.counter - 1,
-      };
+      case nextStep: {
+        return {
+          ...state,
+          counter: state.counter + 1,
+        };
+      }
+      case backStep:
+        return {
+          ...state,
+          counter: state.counter - 1,
+        };
     default:
       return state;
   }

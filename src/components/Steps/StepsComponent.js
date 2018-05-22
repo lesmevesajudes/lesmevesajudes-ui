@@ -1,12 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {connect} from "react-redux";
+import type {BackStep,NextStep} from "./StepsActions";
+import {NextStepAction, BackStepAction} from './StepsActions'
 import { withStyles } from 'material-ui/styles';
 import Stepper, { Step, StepLabel } from 'material-ui/Stepper';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import PersonsPage from '../../persons/PersonsPage'
-import {connect} from "react-redux";
-import {BackStep, NextStep} from "./StepsActions";
+import HouseholdForm from '../../household/HouseholdForm';
+import RentForm from '../../rent/RentForm';
+import ResultsPage from '../../results/ResultsPage';
 
 const styles = theme => ({
   root: {
@@ -22,7 +26,7 @@ const styles = theme => ({
 });
 
 function getSteps() {
-  return ['Añadir un familiar', 'Familia','Domicili Habitual', 'Resultats'];
+  return ['Añadir un familiar', 'Familia','Domicili Habitual'];
 }
 
 function getStepContent(stepIndex) {
@@ -30,47 +34,22 @@ function getStepContent(stepIndex) {
     case 0:
       return <PersonsPage/>;
     case 1:
-      return 'What is an ad group anyways?';
+      return <RentForm/>;
     case 2:
-      return 'This is the bit I really care about!';
-    default:
-      return 'Uknown stepIndex';
+      return <HouseholdForm/>;
   }
 }
 
 class StepsComponent extends React.Component {
-  state = {
-    activeStep: 0,
-  };
-
-  handleNext = () => {
-    const { activeStep } = this.state;
-    this.setState({
-      activeStep: activeStep + 1,
-    });
-  };
-
-  handleBack = () => {
-    const { activeStep } = this.state;
-    this.setState({
-      activeStep: activeStep - 1,
-    });
-  };
-
-  handleReset = () => {
-    this.setState({
-      activeStep: 0,
-    });
-  };
 
   render() {
-    const { classes } = this.props;
+    const { classes, NextStepAction, counter } = this.props;
     const steps = getSteps();
-    const { activeStep } = this.state;
-
+    const actualStep = counter.step.counter;
     return (
       <div className={classes.root}>
-        <Stepper activeStep={activeStep} alternativeLabel>
+
+        <Stepper activeStep={actualStep} alternativeLabel>
           {steps.map(label => {
             return (
               <Step key={label}>
@@ -80,26 +59,21 @@ class StepsComponent extends React.Component {
           })}
         </Stepper>
         <div>
-          {this.state.activeStep === steps.length ? (
-            <div>
-              <Typography className={classes.instructions}>
-                All steps completed - you&quot;re finished
-              </Typography>
-              <Button onClick={this.handleReset}>Reset</Button>
-            </div>
+          {actualStep === steps.length ? (
+              <ResultsPage/>
           ) : (
             <div>
-              <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
+              <Typography className={classes.instructions}>{getStepContent(actualStep)}</Typography>
               <div>
                 <Button
-                  disabled={activeStep === 0}
-                  onClick={this.handleBack}
+                  disabled={actualStep === 0}
+                  onClick={(e)=> BackStepAction()}
                   className={classes.backButton}
                 >
-                  Back
+                  Back 
                 </Button>
-                <Button variant="raised" color="primary" onClick={this.handleNext}>
-                  {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+                <Button variant="raised" color="primary" onClick={(e)=> NextStepAction()}>
+                  {actualStep === steps.length - 1 ? 'Finish' : 'Next'}
                 </Button>
               </div>
             </div>
@@ -114,10 +88,10 @@ StepsComponent.propTypes = {
   classes: PropTypes.object,
 };
 
-function mapStateToProps(state){
+const mapStateToProps = (state) => {
   return {
-
-  };
+    counter: state
+  }
 }
 
-export default connect(mapStateToProps, {BackStep, NextStep})(withStyles(styles)(StepsComponent));
+export default connect(mapStateToProps, {NextStepAction, BackStepAction})(withStyles(styles)(StepsComponent));
