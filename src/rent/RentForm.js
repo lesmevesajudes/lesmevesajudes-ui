@@ -150,6 +150,7 @@ const RentForm = (props: Props) => {
                 <Field name='tinc_alguna_propietat_a_part_habitatge_habitual' component={Checkbox}/>
                 <Trans>Alguna persona que conviu amb vosté té alguna propietat a part de l'habitatge habitual</Trans>
               </label>}
+
               {teAlgunaPropietat &&
               <label><Field name='tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusufructe'
                             component={Checkbox}/>

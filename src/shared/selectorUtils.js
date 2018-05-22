@@ -3,8 +3,8 @@ import {Person} from "../persons/PersonTypes";
 import {Map} from "immutable";
 import type {HouseholdData} from "../household/HouseholdDataTypes";
 
-export const esFill = (persona: Person) => persona.rol === 'fill' || esInfantAcollit(persona);
-export const esSustentador = (persona: Person) => persona.rol === 'pares';
+export const esFill = (persona: Person) => persona.edat < 16 || persona.es_escolaritzat_entre_P3_i_4rt_ESO;
+export const esSustentador = (persona: Person) => persona.edat > 16;
 export const esFamiliaNombrosa = (persones: Map<PersonID, Person>) => {
   const tresFillsOMes: boolean = persones.filter((persona: Person) => esFill(persona)).count() >= 3;
   const dosFillsOMesAlgunAmbDiscapacitatSuperior33: boolean = persones.filter((persona: Person) =>
@@ -18,5 +18,3 @@ export const esInfantAcollit = (persona: Person) => persona.rol === 'infant_acol
 export const tipusCustodia = (persona: Person, familia: HouseholdData, esMonoparental: boolean) =>
     (familia.custodies !== null && typeof familia.custodies[persona.id] !== 'undefined') ?
         familia.custodies[persona.id].tipus : esMonoparental ? 'cap' : 'total';
-export const esAltresFamiliars = (persona: Person) => persona.rol === "altres_adults_familiars";
-export const esAltresNoFamiliars = (persona: Person) => persona.rol === "altres_adults";
