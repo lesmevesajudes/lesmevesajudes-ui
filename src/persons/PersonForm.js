@@ -11,7 +11,7 @@ import {connect} from "react-redux";
 import {Button, FormLabel, Grid, MenuItem} from "material-ui";
 import edat from "../shared/Edat";
 import DescriptionText from "../components/Common/DescriptionText";
-
+import {normalizeMoney} from '../components/Common/NormalizeCommon';
 export type PersonFormInitialValues = Person | { is_the_user_in_front_of_the_computer: boolean };
 
 type Props = {
@@ -278,7 +278,7 @@ let PersonForm = (props: Props) => {
                     <label>
                       <Trans>Indiqui els seus ingressos bruts anuals de l’any passat?</Trans>
                     </label>
-                    <Field name="ingressos_bruts" type="number" component={TextField} fullWidth required/>
+                    <Field name="ingressos_bruts" type="number" normalize={normalizeMoney} component={TextField} fullWidth required/>
                     {esFamiliarOUsuari &&
                     <label>
                       Cobra algun tipus de pensió no contributiva?

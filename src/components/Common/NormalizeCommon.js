@@ -16,4 +16,15 @@ const normalizeDate = value => {
   }
 };
 
-export default normalizeDate;
+const normalizeMoney = value => {
+  if(value < 0) {
+    return 0
+  } else {
+    return value
+  }
+}
+
+export {
+  normalizeMoney,
+  normalizeDate
+}
