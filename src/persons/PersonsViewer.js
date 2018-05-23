@@ -58,7 +58,7 @@ const UnknownPersonCard = (props: UnknownPersonProps) => (
     <ListItem button onClick={() => props.onAddPersonClick()}>
       <Avatar>?</Avatar>
       <ListItemText
-          primary={`Persona ${(props.personNumber + 1).toString()} - Premi per a introduïr la informació d'aquesta persona`}/>
+          primary={`Persona ${(props.personNumber + 1).toString()} - Premi aquí per a introduir la informació d'aquesta persona`}/>
     </ListItem>
 );
 

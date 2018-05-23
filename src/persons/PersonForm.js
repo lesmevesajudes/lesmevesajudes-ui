@@ -11,7 +11,7 @@ import {connect} from "react-redux";
 import {Button, FormLabel, Grid, MenuItem} from "material-ui";
 import edat from "../shared/Edat";
 import DescriptionText from "../components/Common/DescriptionText";
-import {normalizeMoney} from '../components/Common/NormalizeCommon';
+
 export type PersonFormInitialValues = Person | { is_the_user_in_front_of_the_computer: boolean };
 
 type Props = {
@@ -73,24 +73,21 @@ let PersonForm = (props: Props) => {
           <Field component="input" name="is_the_user_in_front_of_the_computer" type="hidden"/>
           <Grid container>
             <Grid item xs={12}>
-              <Grid container direction={"row"} justify={"space-around"} alignItems={"stretch"}>
+              <Grid container direction="row" justify="space-around" alignItems="stretch">
                 <Grid item xs={12} md={5}>
-                  <Grid container direction={"column"} alignItems={"stretch"}>
+                  <Grid container direction="column" alignItems="stretch">
                     <label>
                       {isTheUserInFrontOfTheComputer ? <Trans>Identifiqui's amb un nom</Trans> :
-                          <Trans>Com vol referir-se a aquesta persona?</Trans>}
+                          <Trans>Identifiqui'l amb un nom</Trans>}
                     </label>
                     <Field name="nom" placeholder="Nom" component={TextField} fullWidth required autoFocus/>
 
                     {!isTheUserInFrontOfTheComputer &&
                     <Fragment>
                       <label>
-                        <Trans>Té alguna relació de prentiu amb aquesta persona?</Trans>
+                        <Trans>Aquesta persona és el/la seu/va?</Trans>
                       </label>
                       <Field data-test="relacio_parentiu" name="relacio_parentiu" component={Select} fullWidth>
-                        <MenuItem data-test="cap" value="cap">
-                          <Trans>Sense relació de parentiu</Trans>
-                        </MenuItem>
                         <MenuItem data-test="parella" value="parella">
                           <Trans>Cònjuge / parella</Trans>
                         </MenuItem>
@@ -99,6 +96,9 @@ let PersonForm = (props: Props) => {
                         </MenuItem>
                         <MenuItem data-test="fillastre" value="fillastre">
                           <Trans>Fillastre/a (o fill/a de la parella actual)</Trans>
+                        </MenuItem>
+                        <MenuItem data-test="net" value="net">
+                          <Trans>Nét/a</Trans>
                         </MenuItem>
                         <MenuItem data-test="infant_acollit" value="infant_acollit">
                           <Trans>Infant en acolliment</Trans>
@@ -124,16 +124,20 @@ let PersonForm = (props: Props) => {
                         <MenuItem data-test="altres" value="altres">
                           <Trans>Altres familiars</Trans>
                         </MenuItem>
+                        <MenuItem data-test="cap" value="cap">
+                          <Trans>Sense relació de parentiu</Trans>
+                        </MenuItem>
                       </Field>
                     </Fragment>}
+
                     {esFamiliarOUsuari &&
                     <Fragment>
                       <label>
                         <Trans>Quina és la seva edat?</Trans>
                       </label>
                       < Field name="edat" type="number" component={TextField} fullWidth required/>
-                    </Fragment>
-                    }
+                    </Fragment>}
+
                     {esFamiliarOUsuari &&
                     <Fragment>
                       <label>
@@ -147,8 +151,8 @@ let PersonForm = (props: Props) => {
                           <Trans>Home</Trans>
                         </MenuItem>
                       </Field>
-                    </Fragment>
-                    }
+                    </Fragment>}
+
                     {esFamiliarOUsuari &&
                     <Fragment>
                       <FormLabel>Informació sobre el padró</FormLabel>
@@ -169,35 +173,34 @@ let PersonForm = (props: Props) => {
                           <Trans>Altres</Trans>
                         </MenuItem>
                       </Field>
-                    </Fragment>
-                    }
+                    </Fragment>}
+
                     {esFamiliarOUsuari &&
                     <Fragment>
                       <label>
                         Porta dos anys o més empadronat a Catalunya?
                         <Field name="porta_dos_anys_o_mes_empadronat_a_catalunya" checked={false} component={Checkbox}/>
                       </label>
-                    </Fragment>
-                    }
+                    </Fragment>}
+
                     {esFamiliarOUsuari && esDona && tipusDocumentIdentitat === "passaport" && portaDosAnysOMesEmpadronatACatalunya &&
                     <label>
                       És membre d'una família reagrupada?
                       <Field name="membre_de_familia_reagrupada" checked={false} component={Checkbox}/>
-                    </label>
-                    }
+                    </label>}
+
                     {esFamiliarOUsuari && membreDeFamiliaReagrupada &&
                     <label>
                       És una persona divorciada?
                       <Field name="es_una_persona_divorciada" checked={false} component={Checkbox}/>
-                    </label>
-                    }
+                    </label>}
+
                     {esFamiliarOUsuari &&
                     <Fragment>
                       <label>
                         En quin municipi està empadronat actualment?
                       </label>
-                      <Field data-test="municipi_empadronament" name="municipi_empadronament" component={Select}
-                             fullWidth>
+                      <Field data-test="municipi_empadronament" name="municipi_empadronament" component={Select} fullWidth>
                         <MenuItem data-test="barcelona" value="barcelona">
                           <Trans>Barcelona</Trans>
                         </MenuItem>
@@ -205,17 +208,16 @@ let PersonForm = (props: Props) => {
                           <Trans>Altres</Trans>
                         </MenuItem>
                       </Field>
-                    </Fragment>
-                    }
+                    </Fragment>}
+
                     {municipiEmpadronament === "barcelona" &&
                     <Fragment>
                       <label>
                         Quants anys porta empadronat a Barcelona?
                       </label>
-                      <Field name="anys_empadronat_a_barcelona" type="number" placeholder="0" component={TextField}
-                             fullWidth required/>
-                    </Fragment>
-                    }
+                      <Field name="anys_empadronat_a_barcelona" type="number" placeholder="0" component={TextField} fullWidth required/>
+                    </Fragment>}
+
                     {esFamiliarOUsuari && potTreballar &&
                     <Fragment>
                       <FormLabel>Situació laboral</FormLabel>
@@ -244,6 +246,7 @@ let PersonForm = (props: Props) => {
                           <Trans>Jubilat</Trans>
                         </MenuItem>
                       </Field>
+
                       {esFamiliarOUsuari && esDesocupat &&
                       <Fragment>
                         <label>
@@ -255,8 +258,8 @@ let PersonForm = (props: Props) => {
                           <Field name="en_els_ultims_12_mesos_ha_fet_baixa_voluntaria_de_la_feina" checked={false}
                                  component={Checkbox}/>
                         </label>
-                      </Fragment>
-                      }
+                      </Fragment>}
+
                       {esFamiliarOUsuari && (esDesocupat || treballaPerCompteDAltriParcial) &&
                       <Fragment>
                         <label>
@@ -268,17 +271,17 @@ let PersonForm = (props: Props) => {
                           Ha retornat d’aquest període de treball en els últims 12 mesos?
                           <Field name="ha_treballat_a_l_estranger_6_mesos_i_ha_retornat_en_els_ultims_12_mesos"
                                  checked={false} component={Checkbox}/>
-                        </label>
-                        }
-                      </Fragment>
-                      }
-                    </Fragment>
-                    }
+                        </label>}
+                      </Fragment>}
+
+                    </Fragment>}
+
                     <FormLabel>Ingressos</FormLabel>
                     <label>
-                      <Trans>Indiqui els seus ingressos bruts anuals de l’any passat?</Trans>
+                    <Trans>Indiqui els seus ingressos bruts anuals de l’any passat?</Trans>
                     </label>
-                    <Field name="ingressos_bruts" type="number" normalize={normalizeMoney} component={TextField} fullWidth required/>
+                        <Field name="ingressos_bruts" type="number" component={TextField} fullWidth required/>
+
                     {esFamiliarOUsuari &&
                     <label>
                       Cobra algun tipus de pensió no contributiva?
@@ -290,15 +293,14 @@ let PersonForm = (props: Props) => {
                         <Trans>Indiqui la suma dels imports de totes les pensions no contributives que cobri</Trans>
                       </label>
                       <Field name="ingressos_per_pnc" type="number" component={TextField} fullWidth required/>
-                    </Fragment>
-                    }
+                    </Fragment>}
+
                     {esFamiliarOUsuari && inscritComADemandantDocupacio &&
                     <label>
                       Gaudeix actualment d’una prestació contributiva o subsidi per desocupació?
-                      <Field name="gaudeix_de_prestacio_contributiva_o_subsidi_desocupacio" checked={false}
-                             component={Checkbox}/>
-                    </label>
-                    }
+                      <Field name="gaudeix_de_prestacio_contributiva_o_subsidi_desocupacio" checked={false} component={Checkbox}/>
+                    </label>}
+
                     {esFamiliarOUsuari &&
                     <Fragment>
                       <FormLabel>Situació personal</FormLabel>
@@ -312,31 +314,32 @@ let PersonForm = (props: Props) => {
                           <Trans>Grau discapacitat</Trans>
                         </label>
                         <Field name="grau_discapacitat" placeholder="0" type="number" component={TextField}/>
-                      </Fragment>
-                      }
+                      </Fragment>}
+
                       {potTreballar &&
                       <label>
                         <Field name="victima_violencia_de_genere" checked={false} component={Checkbox}/>
                         <Trans>Víctima violència de gènere</Trans>
-                      </label>
-                      }
+                      </label>}
+
                       {esDona && victimaViolenciaDeGenere &&
                       <label>
                         <Field name="percep_prestacions_incompatibles_amb_la_feina" checked={false}
                                component={Checkbox}/>
                         <Trans>Perceb alguna ajuda que no li permeti treballar?</Trans>
-                      </label>
-                      }
+                      </label>}
+
                       <label>
                         <Field name="victima_violencia_domestica" checked={false} component={Checkbox}/>
                         <Trans>Víctima violència domèstica</Trans>
                       </label>
-                      {(edat > 16 && edat < 23) && !(esFill || esFillastre) &&
+
+                      {(edat > 18 && edat < 23) && !(esFill || esFillastre) &&
                       <label>
                         <Field name="es_orfe_dels_dos_progenitors" checked={false} component={Checkbox}/>
                         <Trans>És orfe dels dos progenitors</Trans>
-                      </label>
-                      }
+                      </label>}
+
                     </Fragment>}
                   </Grid>
                 </Grid>
