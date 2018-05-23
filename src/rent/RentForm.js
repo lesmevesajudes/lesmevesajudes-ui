@@ -41,7 +41,7 @@ const RentForm = (props: Props) => {
     <Grid container className="bg-container">
       <h1><Trans>Afegeixi informació del seu domicili habitual</Trans></h1>
       <Grid container direction={"row"} justify={"space-around"}>
-        <Grid item xs sm={5}>
+        <Grid item xs={12} sm={6}>
           <form name='RentForm'>
             <label><Trans>Relació amb l'habitatge</Trans></label>
             <Field name='relacio_habitatge' data-test='relacio_habitatge' component={Select} fullWidth>
@@ -184,7 +184,7 @@ const RentForm = (props: Props) => {
 
           </form>
         </Grid>
-        <Grid item xs sm={5}>
+        <Grid item xs={0} sm={6}>
           <DescriptionText/>
         </Grid>
 
