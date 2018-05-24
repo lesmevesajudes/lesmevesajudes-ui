@@ -28,16 +28,17 @@ export class Person {
   ingressos_bruts: number = 0;
   ingressos_per_pnc: number = 0;
   inscrit_com_a_demandant_docupacio: boolean = false;
+  is_the_user_in_front_of_the_computer = false;
   membre_de_familia_reagrupada: boolean = false;
   nom: string;
   percep_prestacions_incompatibles_amb_la_feina: boolean = false;
   porta_dos_anys_o_mes_empadronat_a_catalunya: boolean = false;
+  relacio_parentiu: string;
   sexe: string;
   situacio_laboral: string;
   tipus_document_identitat: string;
   victima_violencia_de_genere: boolean = false;
   victima_violencia_domestica: boolean = false;
-  is_the_user_in_front_of_the_computer = false;
 }
 
 export class HowManyPersonsLiveTogetherType {
