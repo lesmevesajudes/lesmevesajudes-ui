@@ -147,7 +147,7 @@ let PersonForm = (props: Props) => {
                     </Fragment>}
                     {esFamiliarOUsuari &&
                     <Fragment>
-                      <FormLabel>Informació sobre el padró</FormLabel>
+                      <FormLabel style={{marginTop:30 + 'px', marginBottom: 10 + 'px', fontSize: 3 + 'vh'}}>Informació sobre el padró</FormLabel>
                       <label>
                         <Trans>Tipus de document de identitat</Trans>
                       </label>
@@ -211,7 +211,7 @@ let PersonForm = (props: Props) => {
 
                     {esFamiliarOUsuari && potTreballar &&
                     <Fragment>
-                      <FormLabel>Situació laboral</FormLabel>
+                      <FormLabel style={{marginTop:30 + 'px', marginBottom: 10 + 'px', fontSize: 3 + 'vh'}}>Situació laboral</FormLabel>
                       <label>
                         Indiqui la seva situació laboral:
                       </label>
@@ -267,7 +267,7 @@ let PersonForm = (props: Props) => {
 
                     </Fragment>}
 
-                    <FormLabel>Ingressos</FormLabel>
+                    <FormLabel style={{marginTop:30 + 'px', marginBottom: 10 + 'px', fontSize: 3 + 'vh'}}>Ingressos</FormLabel>
                     <label>
                     <Trans>Indiqui els seus ingressos bruts anuals de l’any passat?</Trans>
                     </label>
@@ -294,7 +294,7 @@ let PersonForm = (props: Props) => {
 
                     {esFamiliarOUsuari &&
                     <Fragment>
-                      <FormLabel>Situació personal</FormLabel>
+                      <FormLabel >Situació personal</FormLabel>
                       <label>
                         Té vostè algun grau de discapacitat reconegut?
                         <Field name="te_algun_grau_de_discapacitat_reconegut" checked={false} component={Checkbox}/>
