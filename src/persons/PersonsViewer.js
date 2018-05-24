@@ -39,14 +39,33 @@ type PersonCardProps = {
   updatePerson: Function,
   removePerson: Function
 }
+const relacioDeParentiuATextDelLListatDePersones = (relacioDeParentiu: string) => {
+  const textos = {
+    parella: 'és la seva parella',
+    fill: 'és el seu fill/a',
+    fillastre: 'és el seu fillastre/a',
+    infant_acollit: 'és un infant acollit',
+    pare: 'és el seu pare',
+    avi: 'és el seu avi/a',
+    sogre: 'és el seu sogre/a',
+    germa: 'és el seu germà/na',
+    cunyat: 'és el seu cunyat/da',
+    gendre: 'és el su gendre/jove',
+    altres: 'és un familiar',
+    cap: 'és una persona que conviu amb vosté',
+    undefined: ''
+  };
+  return textos[relacioDeParentiu];
+};
+
+
 const PersonCard = (props: PersonCardProps) => (
     <ListItem button onClick={() => props.updatePerson(props.person.id)}>
       <Avatar style={{backgroundColor: "#006600"}}>{initials(props.person.nom)}</Avatar>
       <ListItemText
           primary={props.person.is_the_user_in_front_of_the_computer ? `Vosté: ${props.person.nom}` : props.person.nom}
-          secondary={props.person.data_naixement}
+          secondary={props.person.is_the_user_in_front_of_the_computer ? '' : `${props.person.edat} anys ${relacioDeParentiuATextDelLListatDePersones(props.person.relacio_parentiu)}`}
       />
-
     </ListItem>
 );
 
