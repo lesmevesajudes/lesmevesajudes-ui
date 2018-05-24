@@ -11,7 +11,7 @@ import {connect} from "react-redux";
 import {Button, FormLabel, Grid, MenuItem} from "material-ui";
 import edat from "../shared/Edat";
 import DescriptionText from "../components/Common/DescriptionText";
-
+import { normalizeMoney }from '../components/Common/NormalizeCommon'
 export type PersonFormInitialValues = Person | { is_the_user_in_front_of_the_computer: boolean };
 
 type Props = {
@@ -63,11 +63,7 @@ let PersonForm = (props: Props) => {
 
   return (
       <Grid container className="bg-container">
-        {isTheUserInFrontOfTheComputer ?
-            <h1>Informació sobre vosté</h1>
-            :
-            <h1>Dades sobre una persona que conviu amb vosté</h1>
-        }
+        {isTheUserInFrontOfTheComputer ? <h1>Informació sobre vosté</h1> : <h1>Dades sobre una persona que conviu amb vosté</h1>}
         <form onSubmit={handleSubmit}>
           <Field component="input" name="id" type="hidden"/>
           <Field component="input" name="is_the_user_in_front_of_the_computer" type="hidden"/>
@@ -81,7 +77,6 @@ let PersonForm = (props: Props) => {
                           <Trans>Identifiqui'l amb un nom</Trans>}
                     </label>
                     <Field name="nom" placeholder="Nom" component={TextField} fullWidth required autoFocus/>
-
                     {!isTheUserInFrontOfTheComputer &&
                     <Fragment>
                       <label>
@@ -129,7 +124,6 @@ let PersonForm = (props: Props) => {
                         </MenuItem>
                       </Field>
                     </Fragment>}
-
                     {esFamiliarOUsuari &&
                     <Fragment>
                       <label>
@@ -137,7 +131,6 @@ let PersonForm = (props: Props) => {
                       </label>
                       < Field name="edat" type="number" component={TextField} fullWidth required/>
                     </Fragment>}
-
                     {esFamiliarOUsuari &&
                     <Fragment>
                       <label>
@@ -152,7 +145,6 @@ let PersonForm = (props: Props) => {
                         </MenuItem>
                       </Field>
                     </Fragment>}
-
                     {esFamiliarOUsuari &&
                     <Fragment>
                       <FormLabel>Informació sobre el padró</FormLabel>
@@ -174,7 +166,6 @@ let PersonForm = (props: Props) => {
                         </MenuItem>
                       </Field>
                     </Fragment>}
-
                     {esFamiliarOUsuari &&
                     <Fragment>
                       <label>
@@ -280,7 +271,7 @@ let PersonForm = (props: Props) => {
                     <label>
                     <Trans>Indiqui els seus ingressos bruts anuals de l’any passat?</Trans>
                     </label>
-                        <Field name="ingressos_bruts" type="number" component={TextField} fullWidth required/>
+                        <Field name="ingressos_bruts" type="number"normalize={normalizeMoney} component={TextField} fullWidth required/>
 
                     {esFamiliarOUsuari &&
                     <label>

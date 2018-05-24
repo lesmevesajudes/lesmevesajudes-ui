@@ -184,7 +184,7 @@ const RentForm = (props: Props) => {
 
           </form>
         </Grid>
-        <Grid item xs={0} sm={6}>
+        <Grid item xs={0} sm={6} hidden={{smDown: true}}>
           <DescriptionText/>
         </Grid>
 
