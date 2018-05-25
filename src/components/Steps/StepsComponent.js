@@ -44,7 +44,7 @@ function getStepContent(stepIndex) {
 class StepsComponent extends React.Component {
 
   render() {
-    const { classes, NextStepAction, counter } = this.props;
+    const { classes, NextStepAction, BackStepAction, counter } = this.props;
     const steps = getSteps();
     const actualStep = counter.step.counter;
     return (
