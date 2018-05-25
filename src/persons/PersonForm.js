@@ -146,7 +146,7 @@ let PersonForm = (props: Props) => {
                         <Trans>Home</Trans>
                       </MenuItem>
                     </Field>
-                    <FormLabel style={{marginTop: 30 + 'px', marginBottom: 10 + 'px', fontSize: 2 + 'vh'}}>Informació
+                    <FormLabel className="sectionTitle">Informació
                       sobre el padró</FormLabel>
                     <label>
                       <Trans>Tipus de document de identitat</Trans>
@@ -205,65 +205,6 @@ let PersonForm = (props: Props) => {
                     </label>
                     <Field name="anys_empadronat_a_barcelona" type="number" placeholder="0" component={TextField}
                            fullWidth required/>
-                  </Fragment>}
-
-                  {esFamiliarOUsuari && potTreballar &&
-                  <Fragment>
-                    <FormLabel style={{marginTop: 30 + 'px', marginBottom: 10 + 'px', fontSize: 2 + 'vh'}}>Situació
-                      laboral</FormLabel>
-
-                    <label>
-                      Indiqui la seva situació laboral:
-                    </label>
-                    <Field data-test="situacio_laboral" name="situacio_laboral" component={Select} fullWidth>
-                      <MenuItem data-test="treball_compte_daltri_jornada_complerta"
-                                value="treball_compte_daltri_jornada_complerta">
-                        <Trans>Treballa per compte d'altri jornada complerta</Trans>
-                      </MenuItem>
-                      <MenuItem data-test="treball_compte_daltri_jornada_parcial"
-                                value="treball_compte_daltri_jornada_parcial">
-                        <Trans>Treballa per compte d'altri jornada parcial</Trans>
-                      </MenuItem>
-                      <MenuItem data-test="treball_compte_propi" value="treball_compte_propi">
-                        <Trans>Treballa per compte propi</Trans>
-                      </MenuItem>
-                      <MenuItem data-test="desocupat" value="desocupat">
-                        <Trans>Desocupat</Trans>
-                      </MenuItem>
-                      <MenuItem data-test="estudiant" value="estudiant">
-                        <Trans>Estudiant</Trans>
-                      </MenuItem>
-                      <MenuItem data-test="jubilat" value="jubilat">
-                        <Trans>Jubilat</Trans>
-                      </MenuItem>
-                    </Field>
-
-                    {esFamiliarOUsuari && esDesocupat &&
-                    <Fragment>
-                      <label>
-                        Està inscrit com a demandant d’ocupació?
-                        <Field name="inscrit_com_a_demandant_docupacio" checked={false} component={Checkbox}/>
-                      </label>
-                      <label>
-                        Ha deixat la feina de forma voluntària en els darrers 12 mesos?
-                        <Field name="en_els_ultims_12_mesos_ha_fet_baixa_voluntaria_de_la_feina" checked={false}
-                               component={Checkbox}/>
-                      </label>
-                    </Fragment>}
-
-                    {esFamiliarOUsuari && (esDesocupat || treballaPerCompteDAltriParcial) &&
-                    <Fragment>
-                      <label>
-                        Ha treballat a l’estranger un mínim de 6 mesos?
-                        <Field name="ha_treballat_a_l_estranger_6_mesos" checked={false} component={Checkbox}/>
-                      </label>
-                      {haTreballatALEstranger6Mesos &&
-                      <label>
-                        Ha retornat d’aquest període de treball en els últims 12 mesos?
-                        <Field name="ha_treballat_a_l_estranger_6_mesos_i_ha_retornat_en_els_ultims_12_mesos"
-                               checked={false} component={Checkbox}/>
-                      </label>}
-                    </Fragment>}
                   </Fragment>}
 
                   {esFamiliarOUsuari && potTreballar &&

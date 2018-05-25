@@ -116,8 +116,8 @@ class PersonsViewer extends Component<Props, void> {
             <h1>
               <Trans>Persones de la unitat de convivència</Trans>
             </h1>
-            <Grid container className="PersonsViewerPage" spacing={16}>
-              <Grid item xs={12}>
+            <Grid container direction="column" className="PersonsViewerPage" spacing={16} alignItems="flex-end">
+              <Grid item xs={12} sm={12}>
                 <Card>
                   <List component="nav">
                     {[...this.props.persons.map(person =>
@@ -135,12 +135,10 @@ class PersonsViewer extends Component<Props, void> {
                   </List>
                 </Card>
               </Grid>
-            </Grid>
-            <Grid container spacing={16} justify="flex-end">
-                <Grid item>
-                  <Button variant="raised" color="secondary" onClick={this.props.onAddPersonClick}>Afegir una persona
-                    convivent</Button>
-                </Grid>
+              <Grid item>
+                <Button variant="raised" color="secondary" onClick={this.props.onAddPersonClick}>Afegir una persona
+                  convivent</Button>
+              </Grid>
             </Grid>
           </Grid>
         </Grid>
