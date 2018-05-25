@@ -116,7 +116,7 @@ class PersonsViewer extends Component<Props, void> {
             <h1>
               <Trans>Persones de la unitat de convivència</Trans>
             </h1>
-            <Grid container className="PersonsViewerPage">
+            <Grid container className="PersonsViewerPage" spacing={16}>
               <Grid item xs={12}>
                 <Card>
                   <List component="nav">
@@ -135,12 +135,12 @@ class PersonsViewer extends Component<Props, void> {
                   </List>
                 </Card>
               </Grid>
-              <Grid container justify="flex-end">
+            </Grid>
+            <Grid container spacing={16} justify="flex-end">
                 <Grid item>
                   <Button variant="raised" color="secondary" onClick={this.props.onAddPersonClick}>Afegir una persona
                     convivent</Button>
                 </Grid>
-              </Grid>
             </Grid>
           </Grid>
         </Grid>
