@@ -2,12 +2,26 @@
 import React, {Component} from "react";
 import type {Person} from "./PersonTypes";
 import {Trans, translate} from "react-i18next";
-import {Avatar, Card, Divider, Grid, List, ListItem, ListItemText} from 'material-ui';
+import {
+  Avatar,
+  Button,
+  Card,
+  Divider,
+  Grid,
+  IconButton,
+  List,
+  ListItem,
+  ListItemSecondaryAction,
+  ListItemText
+} from 'material-ui';
 import {create} from '../shared/UUID';
+import ClearIcon from 'material-ui-icons/Clear';
 
 type Props = {
   persons: Array<Person>,
   onRemoveClick: Function,
+  onRemoveUnknownClick: Function,
+  onAddUnknownClick: Function,
   onUpdateClick: Function,
   onAddPersonClick: Function,
   expectedNumberOfPersons: number,
@@ -37,7 +51,7 @@ const repeat = (times: number, callback: Function) => {
 type PersonCardProps = {
   person: Person,
   updatePerson: Function,
-  removePerson: Function
+  onRemoveClick: Function,
 }
 const relacioDeParentiuATextDelLListatDePersones = (relacioDeParentiu: string) => {
   const textos = {
@@ -66,11 +80,18 @@ const PersonCard = (props: PersonCardProps) => (
           primary={props.person.is_the_user_in_front_of_the_computer ? `Vosté: ${props.person.nom}` : props.person.nom}
           secondary={props.person.is_the_user_in_front_of_the_computer ? '' : `${props.person.edat} anys ${relacioDeParentiuATextDelLListatDePersones(props.person.relacio_parentiu)}`}
       />
+      {!props.person.is_the_user_in_front_of_the_computer &&
+      <ListItemSecondaryAction onClick={() => props.onRemoveClick(props.person.id)}>
+        <IconButton aria-label="Delete">
+          <ClearIcon/>
+        </IconButton>
+      </ListItemSecondaryAction>}
     </ListItem>
 );
 
 type UnknownPersonProps = {
   onAddPersonClick: Function,
+  onRemoveClick: Function,
   personNumber: number
 }
 const UnknownPersonCard = (props: UnknownPersonProps) => (
@@ -78,6 +99,11 @@ const UnknownPersonCard = (props: UnknownPersonProps) => (
       <Avatar>?</Avatar>
       <ListItemText
           primary={`Persona ${(props.personNumber + 1).toString()} - Premi aquí per a introduir la informació d'aquesta persona`}/>
+      <ListItemSecondaryAction onClick={() => props.onRemoveClick()}>
+        <IconButton aria-label="Delete">
+          <ClearIcon/>
+        </IconButton>
+      </ListItemSecondaryAction>
     </ListItem>
 );
 
@@ -98,15 +124,22 @@ class PersonsViewer extends Component<Props, void> {
                         <PersonCard
                             key={person.id}
                             person={person}
-                            removePerson={this.props.onRemoveClick}
+                            onRemoveClick={this.props.onRemoveClick}
                             updatePerson={this.props.onUpdateClick}/>
                     ),
                       ...repeat(missingPersons,
                           (i) => <UnknownPersonCard key={i} personNumber={i}
+                                                    onRemoveClick={this.props.onRemoveUnknownClick}
                                                     onAddPersonClick={this.props.onAddPersonClick}/>)]
                         .reduce((arr, current) => [...arr, current, <Divider key={create()}/>], []).slice(0, -1)}
                   </List>
                 </Card>
+              </Grid>
+              <Grid container justify="flex-end">
+                <Grid item>
+                  <Button variant="raised" color="secondary" onClick={this.props.onAddPersonClick}>Afegir una persona
+                    convivent</Button>
+                </Grid>
               </Grid>
             </Grid>
           </Grid>

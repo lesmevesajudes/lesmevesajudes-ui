@@ -3,15 +3,15 @@ import React, {Fragment} from "react";
 import type {PersonRole} from "./PersonTypes";
 import {Person} from "./PersonTypes";
 import {Checkbox, Select, TextField} from "redux-form-material-ui";
-import AddIcon from "material-ui-icons/Add";
-import ClearInputIcon from "material-ui-icons/Clear";
-import {Trans} from "react-i18next";
 import {Field, formValueSelector, reduxForm} from "redux-form";
 import {connect} from "react-redux";
-import {Button, FormLabel, Grid, MenuItem} from "material-ui";
-import edat from "../shared/Edat";
-import DescriptionText from "../components/Common/DescriptionText";
-import { normalizeMoney }from '../components/Common/NormalizeCommon'
+import {Trans} from "react-i18next";
+import {FormLabel, Grid, MenuItem} from "material-ui";
+import {ClearInputIcon} from "material-ui-icons/Clear";
+import {AddIcon} from "material-ui-icons/Add";
+import {normalizeMoney} from '../components/Common/NormalizeCommon';
+import {DescriptionText} from '../components/Common/DescriptionText';
+
 export type PersonFormInitialValues = Person | { is_the_user_in_front_of_the_computer: boolean };
 
 type Props = {
@@ -63,290 +63,335 @@ let PersonForm = (props: Props) => {
 
   return (
       <Grid container className="bg-container">
-        {isTheUserInFrontOfTheComputer ? <h1>Informació sobre vosté</h1> : <h1>Dades sobre una persona que conviu amb vosté</h1>}
+        {isTheUserInFrontOfTheComputer ? <h1>Informació sobre vosté</h1> :
+            <h1>Dades sobre una persona que conviu amb vosté</h1>}
         <form onSubmit={handleSubmit}>
           <Field component="input" name="id" type="hidden"/>
           <Field component="input" name="is_the_user_in_front_of_the_computer" type="hidden"/>
-          <Grid container>
-            <Grid item xs={12}>
-              <Grid container direction="row" justify="space-around" alignItems="stretch">
-                <Grid item xs={12} md={5}>
-                  <Grid container direction="column" alignItems="stretch">
+          <Grid container direction="row" justify="space-around" alignItems="stretch">
+            <Grid item xs={12} md={5}>
+              <Grid container direction="column" alignItems="stretch">
+                <label>
+                  <Trans>
+                    {isTheUserInFrontOfTheComputer ? "Identifiqui's amb un nom" : "Identifiqui'l amb un nom"}
+                  </Trans>
+                </label>
+                <Field name="nom" placeholder="Nom" component={TextField} fullWidth required autoFocus/>
+
+                {!isTheUserInFrontOfTheComputer &&
+                <Fragment>
+                  <label>
+                    <Trans>Aquesta persona és el/la seu/va?</Trans>
+                  </label>
+                  <Field data-test="relacio_parentiu" name="relacio_parentiu" component={Select} fullWidth>
+                    <MenuItem data-test="parella" value="parella">
+                      <Trans>Cònjuge / parella</Trans>
+                    </MenuItem>
+                    <MenuItem data-test="fill" value="fill">
+                      <Trans>Fill/a</Trans>
+                    </MenuItem>
+                    <MenuItem data-test="fillastre" value="fillastre">
+                      <Trans>Fillastre/a (o fill/a de la parella actual)</Trans>
+                    </MenuItem>
+                    <MenuItem data-test="net" value="net">
+                      <Trans>Nét/a</Trans>
+                    </MenuItem>
+                    <MenuItem data-test="infant_acollit" value="infant_acollit">
+                      <Trans>Infant en acolliment</Trans>
+                    </MenuItem>
+                    <MenuItem data-test="pare" value="pare">
+                      <Trans>Pare o mare</Trans>
+                    </MenuItem>
+                    <MenuItem data-test="avi" value="avi">
+                      <Trans>Avi / Àvia</Trans>
+                    </MenuItem>
+                    <MenuItem data-test="sogre" value="sogre">
+                      <Trans>Sogre/a</Trans>
+                    </MenuItem>
+                    <MenuItem data-test="germa" value="germa">
+                      <Trans>Germà/germana</Trans>
+                    </MenuItem>
+                    <MenuItem data-test="cunyat" value="cunyat">
+                      <Trans>Cunyat/da</Trans>
+                    </MenuItem>
+                    <MenuItem data-test="gendre" value="gendre">
+                      <Trans>Gendre/Nora/Parella del meu fill/a</Trans>
+                    </MenuItem>
+                    <MenuItem data-test="altres" value="altres">
+                      <Trans>Altres familiars</Trans>
+                    </MenuItem>
+                    <MenuItem data-test="cap" value="cap">
+                      <Trans>Sense relació de parentiu</Trans>
+                    </MenuItem>
+                  </Field>
+                </Fragment>
+                }
+
+                {esFamiliarOUsuari &&
+                <Fragment>
+                  <label>
+                    <Trans>Quina és la seva edat?</Trans>
+                  </label>
+                  < Field name="edat" type="number" component={TextField} fullWidth required/>
+                  <label>
+                    <Trans>Sexe</Trans>
+                  </label>
+                  <Field data-test="sexe" name="sexe" fullWidth component={Select}>
+                    <MenuItem data-test="sexe_dona" value="dona">
+                      <Trans>Dona</Trans>
+                    </MenuItem>
+                    <MenuItem data-test="sexe_home" value="home">
+                      <Trans>Home</Trans>
+                    </MenuItem>
+                  </Field>
+                  <FormLabel style={{marginTop: 30 + 'px', marginBottom: 10 + 'px', fontSize: 2 + 'vh'}}>Informació
+                    sobre el padró</FormLabel>
+                  <label>
+                    <Trans>Tipus de document de identitat</Trans>
+                  </label>
+                  <Field data-test="document_identitat" name="document_identitat" component={Select} fullWidth>
+                    <MenuItem data-test="di_dni" value="DNI">
+                      <Trans>DNI</Trans>
+                    </MenuItem>
+                    <MenuItem data-test="di_nie" value="NIE">
+                      <Trans>NIE</Trans>
+                    </MenuItem>
+                    <MenuItem data-test="di_pass" value="passaport">
+                      <Trans>Passaport</Trans>
+                    </MenuItem>
+                    <MenuItem data-test="di_altres" value="altres">
+                      <Trans>Altres</Trans>
+                    </MenuItem>
+                  </Field>
+                  <label>
+                    Porta dos anys o més empadronat a Catalunya?
+                    <Field name="porta_dos_anys_o_mes_empadronat_a_catalunya" checked={false} component={Checkbox}/>
+                  </label>
+                </Fragment>}
+
+                {esFamiliarOUsuari && esDona && tipusDocumentIdentitat === "passaport" && portaDosAnysOMesEmpadronatACatalunya &&
+                <label>
+                  És membre d'una família reagrupada?
+                  <Field name="membre_de_familia_reagrupada" checked={false} component={Checkbox}/>
+                </label>}
+
+                {esFamiliarOUsuari && membreDeFamiliaReagrupada &&
+                <label>
+                  És una persona divorciada?
+                  <Field name="es_una_persona_divorciada" checked={false} component={Checkbox}/>
+                </label>}
+
+                {esFamiliarOUsuari &&
+                <Fragment>
+                  <label>
+                    En quin municipi està empadronat actualment?
+                  </label>
+                  <Field data-test="municipi_empadronament" name="municipi_empadronament" component={Select} fullWidth>
+                    <MenuItem data-test="barcelona" value="barcelona">
+                      <Trans>Barcelona</Trans>
+                    </MenuItem>
+                    <MenuItem data-test="altres" value="altres">
+                      <Trans>Altres</Trans>
+                    </MenuItem>
+                  </Field>
+                </Fragment>}
+
+                {municipiEmpadronament === "barcelona" &&
+                <Fragment>
+                  <label>
+                    Quants anys porta empadronat a Barcelona?
+                  </label>
+                  <Field name="anys_empadronat_a_barcelona" type="number" placeholder="0" component={TextField}
+                         fullWidth required/>
+                </Fragment>}
+
+                {esFamiliarOUsuari && potTreballar &&
+                <Fragment>
+                  <FormLabel style={{marginTop: 30 + 'px', marginBottom: 10 + 'px', fontSize: 2 + 'vh'}}>Situació
+                    laboral</FormLabel>
+
+                  <label>
+                    Indiqui la seva situació laboral:
+                  </label>
+                  <Field data-test="situacio_laboral" name="situacio_laboral" component={Select} fullWidth>
+                    <MenuItem data-test="treball_compte_daltri_jornada_complerta"
+                              value="treball_compte_daltri_jornada_complerta">
+                      <Trans>Treballa per compte d'altri jornada complerta</Trans>
+                    </MenuItem>
+                    <MenuItem data-test="treball_compte_daltri_jornada_parcial"
+                              value="treball_compte_daltri_jornada_parcial">
+                      <Trans>Treballa per compte d'altri jornada parcial</Trans>
+                    </MenuItem>
+                    <MenuItem data-test="treball_compte_propi" value="treball_compte_propi">
+                      <Trans>Treballa per compte propi</Trans>
+                    </MenuItem>
+                    <MenuItem data-test="desocupat" value="desocupat">
+                      <Trans>Desocupat</Trans>
+                    </MenuItem>
+                    <MenuItem data-test="estudiant" value="estudiant">
+                      <Trans>Estudiant</Trans>
+                    </MenuItem>
+                    <MenuItem data-test="jubilat" value="jubilat">
+                      <Trans>Jubilat</Trans>
+                    </MenuItem>
+                  </Field>
+
+                  {esFamiliarOUsuari && esDesocupat &&
+                  <Fragment>
                     <label>
-                      {isTheUserInFrontOfTheComputer ? <Trans>Identifiqui's amb un nom</Trans> :
-                          <Trans>Identifiqui'l amb un nom</Trans>}
+                      Està inscrit com a demandant d’ocupació?
+                      <Field name="inscrit_com_a_demandant_docupacio" checked={false} component={Checkbox}/>
                     </label>
-                    <Field name="nom" placeholder="Nom" component={TextField} fullWidth required autoFocus/>
-                    {!isTheUserInFrontOfTheComputer &&
-                    <Fragment>
-                      <label>
-                        <Trans>Aquesta persona és el/la seu/va?</Trans>
-                      </label>
-                      <Field data-test="relacio_parentiu" name="relacio_parentiu" component={Select} fullWidth>
-                        <MenuItem data-test="parella" value="parella">
-                          <Trans>Cònjuge / parella</Trans>
-                        </MenuItem>
-                        <MenuItem data-test="fill" value="fill">
-                          <Trans>Fill/a</Trans>
-                        </MenuItem>
-                        <MenuItem data-test="fillastre" value="fillastre">
-                          <Trans>Fillastre/a (o fill/a de la parella actual)</Trans>
-                        </MenuItem>
-                        <MenuItem data-test="net" value="net">
-                          <Trans>Nét/a</Trans>
-                        </MenuItem>
-                        <MenuItem data-test="infant_acollit" value="infant_acollit">
-                          <Trans>Infant en acolliment</Trans>
-                        </MenuItem>
-                        <MenuItem data-test="pare" value="pare">
-                          <Trans>Pare o mare</Trans>
-                        </MenuItem>
-                        <MenuItem data-test="avi" value="avi">
-                          <Trans>Avi / Àvia</Trans>
-                        </MenuItem>
-                        <MenuItem data-test="sogre" value="sogre">
-                          <Trans>Sogre/a</Trans>
-                        </MenuItem>
-                        <MenuItem data-test="germa" value="germa">
-                          <Trans>Germà/germana</Trans>
-                        </MenuItem>
-                        <MenuItem data-test="cunyat" value="cunyat">
-                          <Trans>Cunyat/da</Trans>
-                        </MenuItem>
-                        <MenuItem data-test="gendre" value="gendre">
-                          <Trans>Gendre/Nora/Parella del meu fill/a</Trans>
-                        </MenuItem>
-                        <MenuItem data-test="altres" value="altres">
-                          <Trans>Altres familiars</Trans>
-                        </MenuItem>
-                        <MenuItem data-test="cap" value="cap">
-                          <Trans>Sense relació de parentiu</Trans>
-                        </MenuItem>
-                      </Field>
-                    </Fragment>}
-                    {esFamiliarOUsuari &&
-                    <Fragment>
-                      <label>
-                        <Trans>Quina és la seva edat?</Trans>
-                      </label>
-                      < Field name="edat" type="number" component={TextField} fullWidth required/>
-                    </Fragment>}
-                    {esFamiliarOUsuari &&
-                    <Fragment>
-                      <label>
-                        <Trans>Sexe</Trans>
-                      </label>
-                      <Field data-test="sexe" name="sexe" fullWidth component={Select}>
-                        <MenuItem data-test="sexe_dona" value="dona">
-                          <Trans>Dona</Trans>
-                        </MenuItem>
-                        <MenuItem data-test="sexe_home" value="home">
-                          <Trans>Home</Trans>
-                        </MenuItem>
-                      </Field>
-                    </Fragment>}
-                    {esFamiliarOUsuari &&
-                    <Fragment>
-                      <FormLabel style={{marginTop:30 + 'px', marginBottom: 10 + 'px', fontSize: 3 + 'vh'}}>Informació sobre el padró</FormLabel>
-                      <label>
-                        <Trans>Tipus de document de identitat</Trans>
-                      </label>
-                      <Field data-test="document_identitat" name="document_identitat" component={Select} fullWidth>
-                        <MenuItem data-test="di_dni" value="DNI">
-                          <Trans>DNI</Trans>
-                        </MenuItem>
-                        <MenuItem data-test="di_nie" value="NIE">
-                          <Trans>NIE</Trans>
-                        </MenuItem>
-                        <MenuItem data-test="di_pass" value="passaport">
-                          <Trans>Passaport</Trans>
-                        </MenuItem>
-                        <MenuItem data-test="di_altres" value="altres">
-                          <Trans>Altres</Trans>
-                        </MenuItem>
-                      </Field>
-                    </Fragment>}
-                    {esFamiliarOUsuari &&
-                    <Fragment>
-                      <label>
-                        Porta dos anys o més empadronat a Catalunya?
-                        <Field name="porta_dos_anys_o_mes_empadronat_a_catalunya" checked={false} component={Checkbox}/>
-                      </label>
-                    </Fragment>}
-
-                    {esFamiliarOUsuari && esDona && tipusDocumentIdentitat === "passaport" && portaDosAnysOMesEmpadronatACatalunya &&
                     <label>
-                      És membre d'una família reagrupada?
-                      <Field name="membre_de_familia_reagrupada" checked={false} component={Checkbox}/>
-                    </label>}
-
-                    {esFamiliarOUsuari && membreDeFamiliaReagrupada &&
-                    <label>
-                      És una persona divorciada?
-                      <Field name="es_una_persona_divorciada" checked={false} component={Checkbox}/>
-                    </label>}
-
-                    {esFamiliarOUsuari &&
-                    <Fragment>
-                      <label>
-                        En quin municipi està empadronat actualment?
-                      </label>
-                      <Field data-test="municipi_empadronament" name="municipi_empadronament" component={Select} fullWidth>
-                        <MenuItem data-test="barcelona" value="barcelona">
-                          <Trans>Barcelona</Trans>
-                        </MenuItem>
-                        <MenuItem data-test="altres" value="altres">
-                          <Trans>Altres</Trans>
-                        </MenuItem>
-                      </Field>
-                    </Fragment>}
-
-                    {municipiEmpadronament === "barcelona" &&
-                    <Fragment>
-                      <label>
-                        Quants anys porta empadronat a Barcelona?
-                      </label>
-                      <Field name="anys_empadronat_a_barcelona" type="number" placeholder="0" component={TextField} fullWidth required/>
-                    </Fragment>}
-
-                    {esFamiliarOUsuari && potTreballar &&
-                    <Fragment>
-                      <FormLabel style={{marginTop:30 + 'px', marginBottom: 10 + 'px', fontSize: 3 + 'vh'}}>Situació laboral</FormLabel>
-                      <label>
-                        Indiqui la seva situació laboral:
-                      </label>
-                      <Field data-test="situacio_laboral" name="situacio_laboral" component={Select} fullWidth>
-                        <MenuItem data-test="treball_compte_daltri_jornada_complerta"
-                                  value="treball_compte_daltri_jornada_complerta">
-                          <Trans>Treballa per compte d'altri jornada complerta</Trans>
-                        </MenuItem>
-                        <MenuItem data-test="treball_compte_daltri_jornada_parcial"
-                                  value="treball_compte_daltri_jornada_parcial">
-                          <Trans>Treballa per compte d'altri jornada parcial</Trans>
-                        </MenuItem>
-                        <MenuItem data-test="treball_compte_propi" value="treball_compte_propi">
-                          <Trans>Treballa per compte propi</Trans>
-                        </MenuItem>
-                        <MenuItem data-test="desocupat" value="desocupat">
-                          <Trans>Desocupat</Trans>
-                        </MenuItem>
-                        <MenuItem data-test="estudiant" value="estudiant">
-                          <Trans>Estudiant</Trans>
-                        </MenuItem>
-                        <MenuItem data-test="jubilat" value="jubilat">
-                          <Trans>Jubilat</Trans>
-                        </MenuItem>
-                      </Field>
-
-                      {esFamiliarOUsuari && esDesocupat &&
-                      <Fragment>
-                        <label>
-                          Està inscrit com a demandant d’ocupació?
-                          <Field name="inscrit_com_a_demandant_docupacio" checked={false} component={Checkbox}/>
-                        </label>
-                        <label>
-                          Ha deixat la feina de forma voluntària en els darrers 12 mesos?
-                          <Field name="en_els_ultims_12_mesos_ha_fet_baixa_voluntaria_de_la_feina" checked={false}
-                                 component={Checkbox}/>
-                        </label>
-                      </Fragment>}
-
-                      {esFamiliarOUsuari && (esDesocupat || treballaPerCompteDAltriParcial) &&
-                      <Fragment>
-                        <label>
-                          Ha treballat a l’estranger un mínim de 6 mesos?
-                          <Field name="ha_treballat_a_l_estranger_6_mesos" checked={false} component={Checkbox}/>
-                        </label>
-                        {haTreballatALEstranger6Mesos &&
-                        <label>
-                          Ha retornat d’aquest període de treball en els últims 12 mesos?
-                          <Field name="ha_treballat_a_l_estranger_6_mesos_i_ha_retornat_en_els_ultims_12_mesos"
-                                 checked={false} component={Checkbox}/>
-                        </label>}
-                      </Fragment>}
-
-                    </Fragment>}
-
-                    <FormLabel style={{marginTop:30 + 'px', marginBottom: 10 + 'px', fontSize: 3 + 'vh'}}>Ingressos</FormLabel>
-                    <label>
-                    <Trans>Indiqui els seus ingressos bruts anuals de l’any passat?</Trans>
+                      Ha deixat la feina de forma voluntària en els darrers 12 mesos?
+                      <Field name="en_els_ultims_12_mesos_ha_fet_baixa_voluntaria_de_la_feina" checked={false}
+                             component={Checkbox}/>
                     </label>
-                        <Field name="ingressos_bruts" type="number"normalize={normalizeMoney} component={TextField} fullWidth required/>
+                  </Fragment>}
 
-                    {esFamiliarOUsuari &&
+                  {esFamiliarOUsuari && (esDesocupat || treballaPerCompteDAltriParcial) &&
+                  <Fragment>
                     <label>
-                      Cobra algun tipus de pensió no contributiva?
-                      <Field name="cobra_algun_tipus_de_pensio_no_contributiva" checked={false} component={Checkbox}/>
-                    </label>}
-                    {esFamiliarOUsuari && cobraAlgunTipusDePensioNoContributiva &&
-                    <Fragment>
-                      <label>
-                        <Trans>Indiqui la suma dels imports de totes les pensions no contributives que cobri</Trans>
-                      </label>
-                      <Field name="ingressos_per_pnc" type="number" component={TextField} fullWidth required/>
-                    </Fragment>}
-
-                    {esFamiliarOUsuari && inscritComADemandantDocupacio &&
+                      Ha treballat a l’estranger un mínim de 6 mesos?
+                      <Field name="ha_treballat_a_l_estranger_6_mesos" checked={false} component={Checkbox}/>
+                    </label>
+                    {haTreballatALEstranger6Mesos &&
                     <label>
-                      Gaudeix actualment d’una prestació contributiva o subsidi per desocupació?
-                      <Field name="gaudeix_de_prestacio_contributiva_o_subsidi_desocupacio" checked={false} component={Checkbox}/>
+                      Ha retornat d’aquest període de treball en els últims 12 mesos?
+                      <Field name="ha_treballat_a_l_estranger_6_mesos_i_ha_retornat_en_els_ultims_12_mesos"
+                             checked={false} component={Checkbox}/>
                     </label>}
+                  </Fragment>}
+                </Fragment>}
 
-                    {esFamiliarOUsuari &&
-                    <Fragment>
-                      <FormLabel >Situació personal</FormLabel>
-                      <label>
-                        Té vostè algun grau de discapacitat reconegut?
-                        <Field name="te_algun_grau_de_discapacitat_reconegut" checked={false} component={Checkbox}/>
-                      </label>
-                      {teAlgunGrauDeDiscapacitatReconegut &&
-                      <Fragment>
-                        <label>
-                          <Trans>Grau discapacitat</Trans>
-                        </label>
-                        <Field name="grau_discapacitat" placeholder="0" type="number" component={TextField}/>
-                      </Fragment>}
+                {esFamiliarOUsuari && potTreballar &&
+                <Fragment>
+                  <FormLabel className="sectionTitle">Situació
+                    laboral</FormLabel>
+                  <label>
+                    Indiqui la seva situació laboral:
+                  </label>
+                  <Field data-test="situacio_laboral" name="situacio_laboral" component={Select} fullWidth>
+                    <MenuItem data-test="treball_compte_daltri_jornada_complerta"
+                              value="treball_compte_daltri_jornada_complerta">
+                      <Trans>Treballa per compte d'altri jornada complerta</Trans>
+                    </MenuItem>
+                    <MenuItem data-test="treball_compte_daltri_jornada_parcial"
+                              value="treball_compte_daltri_jornada_parcial">
+                      <Trans>Treballa per compte d'altri jornada parcial</Trans>
+                    </MenuItem>
+                    <MenuItem data-test="treball_compte_propi" value="treball_compte_propi">
+                      <Trans>Treballa per compte propi</Trans>
+                    </MenuItem>
+                    <MenuItem data-test="desocupat" value="desocupat">
+                      <Trans>Desocupat</Trans>
+                    </MenuItem>
+                    <MenuItem data-test="estudiant" value="estudiant">
+                      <Trans>Estudiant</Trans>
+                    </MenuItem>
+                    <MenuItem data-test="jubilat" value="jubilat">
+                      <Trans>Jubilat</Trans>
+                    </MenuItem>
+                  </Field>
 
-                      {potTreballar &&
-                      <label>
-                        <Field name="victima_violencia_de_genere" checked={false} component={Checkbox}/>
-                        <Trans>Víctima violència de gènere</Trans>
-                      </label>}
+                  {esFamiliarOUsuari && esDesocupat &&
+                  <Fragment>
+                    <label>
+                      Està inscrit com a demandant d’ocupació?
+                      <Field name="inscrit_com_a_demandant_docupacio" checked={false} component={Checkbox}/>
+                    </label>
+                    <label>
+                      Ha deixat la feina de forma voluntària en els darrers 12 mesos?
+                      <Field name="en_els_ultims_12_mesos_ha_fet_baixa_voluntaria_de_la_feina" checked={false}
+                             component={Checkbox}/>
+                    </label>
+                  </Fragment>}
 
-                      {esDona && victimaViolenciaDeGenere &&
-                      <label>
-                        <Field name="percep_prestacions_incompatibles_amb_la_feina" checked={false}
-                               component={Checkbox}/>
-                        <Trans>Perceb alguna ajuda que no li permeti treballar?</Trans>
-                      </label>}
+                  {esFamiliarOUsuari && (esDesocupat || treballaPerCompteDAltriParcial) &&
+                  <Fragment>
+                    <label>
+                      Ha treballat a l’estranger un mínim de 6 mesos?
+                      <Field name="ha_treballat_a_l_estranger_6_mesos" checked={false} component={Checkbox}/>
+                    </label>
+                    {haTreballatALEstranger6Mesos &&
+                    <label>
+                      Ha retornat d’aquest període de treball en els últims 12 mesos?
+                      <Field name="ha_treballat_a_l_estranger_6_mesos_i_ha_retornat_en_els_ultims_12_mesos"
+                             checked={false} component={Checkbox}/>
+                    </label>}
+                  </Fragment>}
 
-                      <label>
-                        <Field name="victima_violencia_domestica" checked={false} component={Checkbox}/>
-                        <Trans>Víctima violència domèstica</Trans>
-                      </label>
+                </Fragment>}
 
-                      {(edat > 18 && edat < 23) && !(esFill || esFillastre) &&
-                      <label>
-                        <Field name="es_orfe_dels_dos_progenitors" checked={false} component={Checkbox}/>
-                        <Trans>És orfe dels dos progenitors</Trans>
-                      </label>}
+                <FormLabel className="sectionTitle">
+                  Ingressos
+                </FormLabel>
+                <label>
+                  <Trans>Indiqui els seus ingressos bruts anuals de l’any passat?</Trans>
+                </label>
+                <Field name="ingressos_bruts" type="number" normalize={normalizeMoney} component={TextField} fullWidth
+                       required/>
 
-                    </Fragment>}
-                  </Grid>
-                </Grid>
-                <Grid item md={5} hidden={{smDown: true}}>
-                  <DescriptionText/>
-                </Grid>
-              </Grid>
-            </Grid>
-            <Grid item sm={12}>
-              <Grid container justify={"space-around"}>
-                <Button variant="raised" color="secondary" onClick={props.onCancel}>
-                  <Trans>Cancelar</Trans> <ClearInputIcon/>
-                </Button>
-                <Button variant="raised" color="primary" type="submit" name="ButtonValidar">
-                  <Trans>Validar</Trans> <AddIcon/>
-                </Button>
+                {esFamiliarOUsuari &&
+                <label>
+                  Cobra algun tipus de pensió no contributiva?
+                  <Field name="cobra_algun_tipus_de_pensio_no_contributiva" checked={false} component={Checkbox}/>
+                </label>}
+                {esFamiliarOUsuari && cobraAlgunTipusDePensioNoContributiva &&
+                <Fragment>
+                  <label>
+                    <Trans>Indiqui la suma dels imports de totes les pensions no contributives que cobri</Trans>
+                  </label>
+                  <Field name="ingressos_per_pnc" type="number" component={TextField} fullWidth required/>
+                </Fragment>}
+
+                {esFamiliarOUsuari && inscritComADemandantDocupacio &&
+                <label>
+                  Gaudeix actualment d’una prestació contributiva o subsidi per desocupació?
+                  <Field name="gaudeix_de_prestacio_contributiva_o_subsidi_desocupacio" checked={false}
+                         component={Checkbox}/>
+                </label>}
+
+                {esFamiliarOUsuari &&
+                <Fragment>
+                  <FormLabel className="sectionTitle">Situació personal</FormLabel>
+                  <label>
+                    Té vostè algun grau de discapacitat reconegut?
+                    <Field name="te_algun_grau_de_discapacitat_reconegut" checked={false} component={Checkbox}/>
+                  </label>
+                  {teAlgunGrauDeDiscapacitatReconegut &&
+                  <Fragment>
+                    <label>
+                      <Trans>Grau discapacitat</Trans>
+                    </label>
+                    <Field name="grau_discapacitat" placeholder="0" type="number" component={TextField}/>
+                  </Fragment>}
+
+                  {potTreballar &&
+                  <label>
+                    <Field name="victima_violencia_de_genere" checked={false} component={Checkbox}/>
+                    <Trans>Víctima violència de gènere</Trans>
+                  </label>}
+
+                  {esDona && victimaViolenciaDeGenere &&
+                  <label>
+                    <Field name="percep_prestacions_incompatibles_amb_la_feina" checked={false}
+                           component={Checkbox}/>
+                    <Trans>Perceb alguna ajuda que no li permeti treballar?</Trans>
+                  </label>}
+
+                  <label>
+                    <Field name="victima_violencia_domestica" checked={false} component={Checkbox}/>
+                    <Trans>Víctima violència domèstica</Trans>
+                  </label>
+
+                  {(edat > 18 && edat < 23) && !(esFill || esFillastre) &&
+                  <label>
+                    <Field name="es_orfe_dels_dos_progenitors" checked={false} component={Checkbox}/>
+                    <Trans>És orfe dels dos progenitors</Trans>
+                  </label>}
+                </Fragment>}
+
               </Grid>
             </Grid>
           </Grid>

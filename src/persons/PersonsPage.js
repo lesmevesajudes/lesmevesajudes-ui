@@ -27,11 +27,12 @@ type Props = {
 };
 
 class PersonsPage extends React.Component<Props, State> {
-  state = {
-    step: "NumberOfPersonsLivingTogether",
-    initialFormValues: undefined,
-    numberOfPersonsLivingTogether: 0
-  };
+
+  handleRemoveUnknownPerson = () =>
+      this.setState({
+        ...this.state,
+        numberOfPersonsLivingTogether: this.state.numberOfPersonsLivingTogether - 1
+      });
 
   handleAddPersonClick = () => {
     this.setState({
@@ -39,6 +40,7 @@ class PersonsPage extends React.Component<Props, State> {
       step: "addPerson"
     });
   };
+
   handleUpdatePersonClick = (personID: PersonID) => {
     this.setState({
       ...this.state,
@@ -46,9 +48,11 @@ class PersonsPage extends React.Component<Props, State> {
       step: "addPerson"
     });
   };
+
   handleRemovePersonClick = (personID: PersonID) => {
     this.props.removePerson(personID);
   };
+
   doneEditingPerson = () => {
     this.setState({
       ...this.state,
@@ -56,6 +60,7 @@ class PersonsPage extends React.Component<Props, State> {
       step: "personsList",
     });
   };
+
   handleSubmitPersonForm = (formValues: Person) => {
     this.doneEditingPerson();
     if (formValues.id === undefined) {
@@ -64,6 +69,7 @@ class PersonsPage extends React.Component<Props, State> {
       return this.props.updatePerson(formValues);
     }
   };
+
   handleSubmitHowManyPersonsLiveTogether = (formValues: HowManyPersonsLiveTogetherType) => {
     this.setState({
       ...this.state,
@@ -73,20 +79,27 @@ class PersonsPage extends React.Component<Props, State> {
     });
   };
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.handleAddPersonClick = this.handleAddPersonClick.bind(this);
     this.doneEditingPerson = this.doneEditingPerson.bind(this);
     this.handleRemovePersonClick = this.handleRemovePersonClick.bind(this);
     this.handleUpdatePersonClick = this.handleUpdatePersonClick.bind(this);
     this.handleSubmitPersonForm = this.handleSubmitPersonForm.bind(this);
     this.handleSubmitHowManyPersonsLiveTogether = this.handleSubmitHowManyPersonsLiveTogether.bind(this);
+    this.state = {
+      step: (typeof this.props.persons !== "undefined" && this.props.persons.length > 0) ?
+          "personsList" : "NumberOfPersonsLivingTogether",
+      initialFormValues: undefined,
+      numberOfPersonsLivingTogether: 0
+    };
   }
 
   render() {
-    const step = this.state.step;
     const expectedNumberOfPersonsLivingTogether = this.state.numberOfPersonsLivingTogether;
+    const step = this.state.step;
     let component = undefined;
+
     if (step === "NumberOfPersonsLivingTogether") {
       component = (<HowManyPersonsLiveTogetherPage
           onSubmit={this.handleSubmitHowManyPersonsLiveTogether}
@@ -98,6 +111,7 @@ class PersonsPage extends React.Component<Props, State> {
               onRemoveClick={this.handleRemovePersonClick}
               onUpdateClick={this.handleUpdatePersonClick}
               onAddPersonClick={this.handleAddPersonClick}
+              onRemoveUnknownClick={this.handleRemoveUnknownPerson}
               expectedNumberOfPersons={expectedNumberOfPersonsLivingTogether}
           />);
     } else if (step === "addPerson") {
@@ -107,13 +121,11 @@ class PersonsPage extends React.Component<Props, State> {
               onSubmit={this.handleSubmitPersonForm}
               onCancel={this.doneEditingPerson}
               onFinishAdding={() => this.doneEditingPerson()}
-        />
+          />
       );
     }
     return component;
   }
-
-
 }
 
 function mapStateToProps(state) {
