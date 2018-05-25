@@ -1,16 +1,15 @@
 //@flow
 import React, {Fragment} from "react";
+import {Button, FormLabel, Grid, MenuItem} from "material-ui";
 import type {PersonRole} from "./PersonTypes";
 import {Person} from "./PersonTypes";
 import {Checkbox, Select, TextField} from "redux-form-material-ui";
 import {Field, formValueSelector, reduxForm} from "redux-form";
 import {connect} from "react-redux";
 import {Trans} from "react-i18next";
-import {FormLabel, Grid, MenuItem} from "material-ui";
-import {ClearInputIcon} from "material-ui-icons/Clear";
-import {AddIcon} from "material-ui-icons/Add";
 import {normalizeMoney} from '../components/Common/NormalizeCommon';
 import DescriptionText from '../components/Common/DescriptionText';
+import ClearIcon from 'material-ui-icons/Clear';
 
 export type PersonFormInitialValues = Person | { is_the_user_in_front_of_the_computer: boolean };
 
@@ -63,7 +62,7 @@ let PersonForm = (props: Props) => {
 
   return (
       <Grid container className="bg-container">
-        <Grid item sm={12} xs={12}>
+        <Grid item xs={12}>
                 {isTheUserInFrontOfTheComputer ? <h1>Informació sobre vosté</h1> :
               <h1>Dades sobre una persona que conviu amb vosté</h1>}
         </Grid>
@@ -72,7 +71,7 @@ let PersonForm = (props: Props) => {
             <Field component="input" name="id" type="hidden"/>
             <Field component="input" name="is_the_user_in_front_of_the_computer" type="hidden"/>
             <Grid container direction="row" justify="space-around" alignItems="stretch">
-              <Grid item xs={12} md={6}>
+              <Grid item xs={12} md={5}>
                 <Grid container direction="column" alignItems="stretch">
                   <label>
                     <Trans>
@@ -205,7 +204,7 @@ let PersonForm = (props: Props) => {
                       Quants anys porta empadronat a Barcelona?
                     </label>
                     <Field name="anys_empadronat_a_barcelona" type="number" placeholder="0" component={TextField}
-                          fullWidth required/>
+                           fullWidth required/>
                   </Fragment>}
 
                   {esFamiliarOUsuari && potTreballar &&
@@ -248,7 +247,7 @@ let PersonForm = (props: Props) => {
                       <label>
                         Ha deixat la feina de forma voluntària en els darrers 12 mesos?
                         <Field name="en_els_ultims_12_mesos_ha_fet_baixa_voluntaria_de_la_feina" checked={false}
-                              component={Checkbox}/>
+                               component={Checkbox}/>
                       </label>
                     </Fragment>}
 
@@ -262,7 +261,7 @@ let PersonForm = (props: Props) => {
                       <label>
                         Ha retornat d’aquest període de treball en els últims 12 mesos?
                         <Field name="ha_treballat_a_l_estranger_6_mesos_i_ha_retornat_en_els_ultims_12_mesos"
-                              checked={false} component={Checkbox}/>
+                               checked={false} component={Checkbox}/>
                       </label>}
                     </Fragment>}
                   </Fragment>}
@@ -306,7 +305,7 @@ let PersonForm = (props: Props) => {
                       <label>
                         Ha deixat la feina de forma voluntària en els darrers 12 mesos?
                         <Field name="en_els_ultims_12_mesos_ha_fet_baixa_voluntaria_de_la_feina" checked={false}
-                              component={Checkbox}/>
+                               component={Checkbox}/>
                       </label>
                     </Fragment>}
 
@@ -320,7 +319,7 @@ let PersonForm = (props: Props) => {
                       <label>
                         Ha retornat d’aquest període de treball en els últims 12 mesos?
                         <Field name="ha_treballat_a_l_estranger_6_mesos_i_ha_retornat_en_els_ultims_12_mesos"
-                              checked={false} component={Checkbox}/>
+                               checked={false} component={Checkbox}/>
                       </label>}
                     </Fragment>}
 
@@ -333,7 +332,7 @@ let PersonForm = (props: Props) => {
                     <Trans>Indiqui els seus ingressos bruts anuals de l’any passat?</Trans>
                   </label>
                   <Field name="ingressos_bruts" type="number" normalize={normalizeMoney} component={TextField} fullWidth
-                        required/>
+                         required/>
 
                   {esFamiliarOUsuari &&
                   <label>
@@ -352,7 +351,7 @@ let PersonForm = (props: Props) => {
                   <label>
                     Gaudeix actualment d’una prestació contributiva o subsidi per desocupació?
                     <Field name="gaudeix_de_prestacio_contributiva_o_subsidi_desocupacio" checked={false}
-                          component={Checkbox}/>
+                           component={Checkbox}/>
                   </label>}
 
                   {esFamiliarOUsuari &&
@@ -379,7 +378,7 @@ let PersonForm = (props: Props) => {
                     {esDona && victimaViolenciaDeGenere &&
                     <label>
                       <Field name="percep_prestacions_incompatibles_amb_la_feina" checked={false}
-                            component={Checkbox}/>
+                             component={Checkbox}/>
                       <Trans>Perceb alguna ajuda que no li permeti treballar?</Trans>
                     </label>}
 
@@ -399,6 +398,17 @@ let PersonForm = (props: Props) => {
               </Grid>
               <Grid item xs={12} md={5}>
                 <DescriptionText/>
+              </Grid>
+            </Grid>
+
+            <Grid item sm={12}>
+              <Grid container justify={"space-around"}>
+                <Button variant="raised" color="secondary" onClick={props.onCancel}>
+                  <Trans>Cancelar</Trans> <ClearIcon/>
+                </Button>
+                <Button variant="raised" color="primary" type="submit" name="ButtonValidar">
+                  <Trans>Validar</Trans>
+                </Button>
               </Grid>
             </Grid>
           </form>
