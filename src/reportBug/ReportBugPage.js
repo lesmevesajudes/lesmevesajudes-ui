@@ -4,8 +4,8 @@ import {connect} from 'react-redux';
 import {reportBug} from './ReportBugActions';
 import {withRouter} from 'react-router-dom';
 import {Field, formValueSelector, reduxForm} from 'redux-form';
-import {TextField, Checkbox} from 'redux-form-material-ui';
-import {Button, Grid} from 'material-ui';
+import {Checkbox, TextField} from 'redux-form-material-ui';
+import {Button, Grid} from '@material-ui/core';
 
 type Props = {
   currentState: any,

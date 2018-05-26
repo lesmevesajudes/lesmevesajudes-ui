@@ -1,7 +1,8 @@
 import React from "react";
 import "./InfoPage.css";
 import AppHeader from "../components/AppHeader/AppHeader";
-import {Grid} from 'material-ui'
+import Grid from '@material-ui/core/Grid';
+
 class InfoRAI extends React.Component {
   render() {
     return (

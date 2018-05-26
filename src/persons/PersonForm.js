@@ -1,15 +1,16 @@
 //@flow
 import React, {Fragment} from "react";
-import {Button, FormLabel, Grid, MenuItem} from "material-ui";
 import type {PersonRole} from "./PersonTypes";
 import {Person} from "./PersonTypes";
 import {Checkbox, Select, TextField} from "redux-form-material-ui";
+import ClearIcon from "@material-ui/icons/Clear";
+import {Trans} from "react-i18next";
 import {Field, formValueSelector, reduxForm} from "redux-form";
 import {connect} from "react-redux";
-import {Trans} from "react-i18next";
-import {normalizeMoney} from '../components/Common/NormalizeCommon';
-import DescriptionText from '../components/Common/DescriptionText';
-import ClearIcon from 'material-ui-icons/Clear';
+import {Button, FormLabel, Grid, MenuItem} from "@material-ui/core";
+import edat from "../shared/Edat";
+import DescriptionText from "../components/Common/DescriptionText";
+import {normalizeMoney} from '../components/Common/NormalizeCommon'
 
 export type PersonFormInitialValues = Person | { is_the_user_in_front_of_the_computer: boolean };
 

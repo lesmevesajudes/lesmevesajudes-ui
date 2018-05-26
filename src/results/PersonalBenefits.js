@@ -3,7 +3,7 @@ import Link from "react-router-dom/es/Link";
 import {Map} from "immutable";
 import type {PersonID} from "../persons/PersonTypes";
 import {Person} from "../persons/PersonTypes";
-import {Grid} from "material-ui";
+import {Grid} from "@material-ui/core";
 
 type Props = {
   benefitsForPersons: any,

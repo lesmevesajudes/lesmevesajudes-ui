@@ -1,7 +1,7 @@
 //@flow
 import React from "react";
 import {TextField} from "redux-form-material-ui";
-import {Button, Grid} from "material-ui";
+import {Button, Grid} from "@material-ui/core";
 import {Trans} from "react-i18next";
 import Field from "redux-form/es/Field";
 import {reduxForm} from "redux-form";

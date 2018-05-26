@@ -6,7 +6,7 @@ import FamilyBenefits from "./FamilyBenefits";
 import type {Person, PersonID} from "../persons/PersonTypes";
 import ReportBug from "../reportBug/ReportBugPage";
 import axios from "axios/index";
-import {Grid} from "material-ui";
+import {Grid} from "@material-ui/core";
 
 type Props = {
   isError: boolean,

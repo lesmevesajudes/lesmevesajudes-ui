@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import "./Footer.css";
-import {Grid} from 'material-ui';
+import Grid from '@material-ui/core/Grid';
 
 class AppFooter extends Component {
   render() {

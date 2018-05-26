@@ -1,7 +1,7 @@
 import React from "react";
 import "./InfoPage.css";
 import AppHeader from "../components/AppHeader/AppHeader";
-import {Grid} from 'material-ui'
+import Grid from '@material-ui/core/Grid';
 
 class InfoLloguer extends React.Component {
   render() {

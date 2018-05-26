@@ -2,20 +2,12 @@
 import React, {Component} from "react";
 import type {Person} from "./PersonTypes";
 import {Trans, translate} from "react-i18next";
-import {
-  Avatar,
-  Button,
-  Card,
-  Divider,
-  Grid,
-  IconButton,
-  List,
-  ListItem,
-  ListItemSecondaryAction,
-  ListItemText
-} from 'material-ui';
+import {Avatar, Card, Divider, Grid, List, ListItem, ListItemText} from '@material-ui/core';
 import {create} from '../shared/UUID';
-import ClearIcon from 'material-ui-icons/Clear';
+import ListItemSecondaryAction from "@material-ui/core/es/ListItemSecondaryAction";
+import Button from "@material-ui/core/es/Button";
+import IconButton from "@material-ui/core/es/IconButton/IconButton";
+import ClearIcon from "@material-ui/icons/Clear";
 
 type Props = {
   persons: Array<Person>,

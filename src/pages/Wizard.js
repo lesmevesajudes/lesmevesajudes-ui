@@ -7,7 +7,7 @@ import "./Wizard.css";
 import AppHeader from "../components/AppHeader/AppHeader";
 import {translate} from "react-i18next";
 import HouseholdForm from "../household/HouseholdForm";
-import {Grid} from 'material-ui'
+import Grid from '@material-ui/core/Grid';
 
 class WizardPage extends Component {
   render() {

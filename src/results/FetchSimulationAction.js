@@ -25,7 +25,6 @@ function buildRequest(simulationData: SimulationData) {
         acc[person.id] = {
           beneficiari_fons_infancia: thisYear(person.beneficiari_fons_infancia),
           data_alta_padro: currentMonth(person.data_alta_padro),
-          data_naixement: currentMonth(person.data_naixement),
           demandant_d_ocupacio_durant_12_mesos: currentMonth(person.demandant_d_ocupacio_durant_12_mesos),
           durant_el_mes_anterior_ha_presentat_solicituds_recerca_de_feina: currentMonth(
               person.durant_el_mes_anterior_ha_presentat_solicituds_recerca_de_feina
