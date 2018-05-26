@@ -108,7 +108,7 @@ class PersonsViewer extends Component<Props, void> {
             <h1>
               <Trans>Persones de la unitat de convivència</Trans>
             </h1>
-            <Grid container direction="column" className="PersonsViewerPage" spacing={16} alignItems="flex-end">
+            <Grid container direction="column" className="PersonsViewerPage" spacing={16} alignItems="stretch">
               <Grid item xs={12} sm={12}>
                 <Card>
                   <List component="nav">
