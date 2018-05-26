@@ -16,39 +16,34 @@ type SimulationData = {
 };
 
 const currentMonth = value => ({"2017-01": value});
-const thisYear = value => ({"2017": value});
 const lastYear = value => ({"2016": value});
 
 function buildRequest(simulationData: SimulationData) {
   const personalData = simulationData.persons.reduce(
       (acc, person: Person) => {
         acc[person.id] = {
-          beneficiari_fons_infancia: thisYear(person.beneficiari_fons_infancia),
-          data_alta_padro: currentMonth(person.data_alta_padro),
-          demandant_d_ocupacio_durant_12_mesos: currentMonth(person.demandant_d_ocupacio_durant_12_mesos),
-          durant_el_mes_anterior_ha_presentat_solicituds_recerca_de_feina: currentMonth(
-              person.durant_el_mes_anterior_ha_presentat_solicituds_recerca_de_feina
-          ),
-          es_divorciada_de_familia_reagrupada: currentMonth(person.es_divorciada_de_familia_reagrupada),
+          anys_empadronat_a_barcelona: currentMonth(person.anys_empadronat_a_barcelona),
+          edat: currentMonth(person.edat),
           en_acolliment: currentMonth(esInfantAcollit(person)),
           en_els_ultims_12_mesos_ha_fet_baixa_voluntaria_de_la_feina: currentMonth(
               person.en_els_ultims_12_mesos_ha_fet_baixa_voluntaria_de_la_feina
           ),
-          es_orfe_dels_dos_progenitors: currentMonth(person.es_orfe_dels_dos_progenitors),
           es_escolaritzat_entre_P3_i_4rt_ESO: currentMonth(person.es_escolaritzat_entre_P3_i_4rt_ESO),
+          es_orfe_dels_dos_progenitors: currentMonth(person.es_orfe_dels_dos_progenitors),
+          es_divorciada_de_familia_reagrupada: currentMonth(person.es_una_persona_divorciada && person.membre_de_familia_reagrupada),
+          gaudeix_de_prestacio_contributiva_o_subsidi_desocupacio: currentMonth(person.gaudeix_de_prestacio_contributiva_o_subsidi_desocupacio),
           grau_discapacitat: currentMonth(person.grau_discapacitat),
-          ha_esgotat_prestacio_de_desocupacio: currentMonth(person.ha_esgotat_prestacio_de_desocupacio),
-          ha_estat_beneficiari_de_la_rai_en_els_ultims_12_mesos: currentMonth(person.ha_estat_beneficiari_de_la_rai_en_els_ultims_12_mesos),
-          ha_estat_beneficiari_de_les_tres_rai_anteriors: currentMonth(person.ha_estat_beneficiari_de_les_tres_rai_anteriors),
           ha_treballat_a_l_estranger_6_mesos: currentMonth(person.ha_treballat_a_l_estranger_6_mesos),
           ha_treballat_a_l_estranger_6_mesos_i_ha_retornat_en_els_ultims_12_mesos: currentMonth(
               person.ha_treballat_a_l_estranger_6_mesos_i_ha_retornat_en_els_ultims_12_mesos
           ),
-          ingressat_en_centre_penitenciari: currentMonth(person.ingressat_en_centre_penitenciari),
-          ingressat_en_centre_penitenciari_pot_treballar: currentMonth(person.ingressat_en_centre_penitenciari_pot_treballar),
           ingressos_bruts: lastYear(person.ingressos_bruts),
+          ingressos_per_pnc: lastYear(person.ingressos_per_pnc),
           inscrit_com_a_demandant_docupacio: currentMonth(person.inscrit_com_a_demandant_docupacio),
+          municipi_empadronament: currentMonth(person.municipi_empadronament),
           percep_prestacions_incompatibles_amb_la_feina: currentMonth(person.percep_prestacions_incompatibles_amb_la_feina),
+          porta_dos_anys_o_mes_empadronat_a_catalunya: currentMonth(person.porta_dos_anys_o_mes_empadronat_a_catalunya),
+          sexe: currentMonth(person.sexe),
           situacio_laboral: currentMonth(person.situacio_laboral),
           tipus_custodia: currentMonth(
               tipusCustodia(

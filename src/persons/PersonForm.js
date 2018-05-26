@@ -147,12 +147,12 @@ let PersonForm = (props: Props) => {
                         <Trans>Home</Trans>
                       </MenuItem>
                     </Field>
-                    <FormLabel className="sectionTitle">Informació
-                      sobre el padró</FormLabel>
+                    <FormLabel className="sectionTitle">Informació sobre el padró</FormLabel>
                     <label>
                       <Trans>Tipus de document de identitat</Trans>
                     </label>
-                    <Field data-test="document_identitat" name="document_identitat" component={Select} fullWidth>
+                    <Field data-test="tipus_document_identitat" name="tipus_document_identitat" component={Select}
+                           fullWidth>
                       <MenuItem data-test="di_dni" value="DNI">
                         <Trans>DNI</Trans>
                       </MenuItem>
@@ -375,7 +375,6 @@ PersonForm = connect(state => {
   const esFill = selector(state, "relacio_parentiu") === "fill";
   const esFillastre = selector(state, "relacio_parentiu") === "fillastre";
   const haTreballatALEstranger6Mesos = selector(state, "ha_treballat_a_l_estranger_6_mesos");
-  const ingressatEnCentrePenitenciari = selector(state, "ingressat_en_centre_penitenciari");
   const inscritComADemandantDocupacio = selector(state, "inscrit_com_a_demandant_docupacio");
   const isTheUserInFrontOfTheComputer = selector(state, "is_the_user_in_front_of_the_computer");
   const membreDeFamiliaReagrupada = selector(state, "membre_de_familia_reagrupada");
@@ -396,7 +395,6 @@ PersonForm = connect(state => {
     esFill,
     esFillastre,
     haTreballatALEstranger6Mesos,
-    ingressatEnCentrePenitenciari,
     inscritComADemandantDocupacio,
     isTheUserInFrontOfTheComputer,
     membreDeFamiliaReagrupada,
