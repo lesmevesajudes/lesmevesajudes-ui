@@ -10,7 +10,7 @@ export default function configureStore(initialState) {
       ? createStore(rootReducer, initialState, composeWithDevTools(middlewares))
       : createStore(rootReducer, initialState, middlewares);
 
-  if (module.hot) {
+  if (module.hot && isDevelopment) {
     // Enable Webpack hot module replacement for reducers
     module.hot.accept('./RootReducer', () => {
       store.replaceReducer(rootReducer);
