@@ -1,14 +1,9 @@
 import React, {Component} from "react";
-import {applyMiddleware, combineReducers, createStore} from "redux";
 import {Provider} from "react-redux";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
-import promise from "redux-promise";
 
 import IndexPage from "./indexPage/IndexPage";
 import WizardPage from "./pages/Wizard";
-import PersonsReducer from "./persons/PersonsReducer";
-import ResultsReducer from "./results/ResultsReducer";
-import RentReducer from "./rent/RentReducer";
 import isDevelopment from "./shared/isDevelopment";
 import "./styles/styles.css";
 import CorporateHeader from "./components/Header/CorporateHeader";
@@ -20,28 +15,13 @@ import InfoMenjador from "./pages/InfoMenjador";
 import InfoFonsInfancia from "./pages/InfoFonsInfancia";
 import ScrollToTop from "./components/Common/ScrollToTop";
 import CssBaseline from '@material-ui/core/CssBaseline';
-import {reducer as reduxFormReducer} from "redux-form";
-import HouseholdReducer from "./household/HouseholdReducer";
-import {composeWithDevTools} from "redux-devtools-extension";
+import configureStore from "./Store";
 
 if (isDevelopment) {
-  //module.hot.accept();
   console.log("Environment: " + process.env.NODE_ENV);
 }
 
-const reducersCombined = combineReducers({
-  results: ResultsReducer,
-  persons: PersonsReducer,
-  household: HouseholdReducer,
-  rent: RentReducer,
-  form: reduxFormReducer // mounted under "form"
-});
-
-const middlewares = applyMiddleware(promise);
-
-const store = isDevelopment
-    ? createStore(reducersCombined, composeWithDevTools(middlewares))
-    : createStore(reducersCombined, middlewares);
+const store = configureStore();
 
 class App extends Component {
   render() {
