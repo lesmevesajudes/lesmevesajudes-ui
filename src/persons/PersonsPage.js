@@ -61,8 +61,6 @@ class PersonsPage extends React.Component<Props, State> {
   };
 
   handleSubmitPersonForm = (formValues: Person) => {
-    console.log("lenght: ", this.props.persons.length);
-    console.log("expected: ", this.state.numberOfPersonsLivingTogether);
     this.doneEditingPerson();
     if (this.props.persons.length >= this.state.numberOfPersonsLivingTogether - 1) {
       this.props.dispatch(enableButtons());

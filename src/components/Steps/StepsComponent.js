@@ -28,8 +28,7 @@ type Props = {
 let StepsComponent = (props: Props) => {
   const {classes, steps, currentStep, buttonEnabled, buttonVisible, backStep, nextStep} = props;
   const childComponent = steps[currentStep].component;
-  console.log("currentStep: ", currentStep);
-  console.log("total: ", steps.length);
+
   return (
       <div className={classes.root}>
 

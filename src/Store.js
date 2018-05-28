@@ -10,8 +10,8 @@ export default function configureStore(initialState) {
   const store = isDevelopment
       ? createStore(rootReducer, initialState, composeWithDevTools(middlewares))
       : createStore(rootReducer, initialState, middlewares);
-  console.log("HRM: ", module.hot);
-  if (module.hot) {
+
+  if (module.hot && isDevelopment) {
     console.log("HRM enabled");
     // Enable Webpack hot module replacement for reducers
     module.hot.accept('./RootReducer', () => {

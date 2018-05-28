@@ -7,7 +7,7 @@ import type {PersonID} from "../persons/PersonTypes";
 import {Person} from "../persons/PersonTypes";
 import {Map} from "immutable";
 import {Field, formValueSelector, reduxForm} from "redux-form";
-import {Grid, MenuItem} from "@material-ui/core";
+import {Grid, MenuItem, Hidden} from "@material-ui/core";
 import {Checkbox, Select, TextField} from "redux-form-material-ui";
 import {Trans} from "react-i18next";
 import DescriptionText from "../components/Common/DescriptionText";
@@ -180,10 +180,11 @@ const RentForm = (props: Props) => {
             </label>}
           </form>
         </Grid>
-        <Grid item md={5} hidden={{smDown: true}}>
-          <DescriptionText/>
-        </Grid>
-
+        <Hidden smDown>
+          <Grid item md={5}>
+            <DescriptionText/>
+          </Grid>
+        </Hidden>
       </Grid>
     </Grid>
   );
@@ -197,10 +198,9 @@ function mapStateToProps(state) {
     || selector(state, "relacio_habitatge") === "propietari_hipoteca";
   const existeixHipoteca = selector(state, "relacio_habitatge") === "propietari_hipoteca";
   const esCessio = selector(state, "relacio_habitatge") === "cessio";
-  const titularContracteLloguer = state.persons[selector(state, "titular_contracte_de_lloguer_id")];
-  const titularContracteHipoteca = state.persons[selector(state, "titular_hipoteca_id")];
-  console.log("Titular: ", selector(state, "titular_contracte_de_lloguer_id"));
-  console.log("titular persona: ", state.persons[selector(state, "titular_contracte_de_lloguer_id")]);
+  const titularContracteLloguer = state.persons.get(selector(state, "titular_contracte_de_lloguer_id"));
+  const titularContracteHipoteca = state.persons.get(selector(state, "titular_hipoteca_id"));
+
   return {
     esLlogater: esLlogater,
     esPropietari: esPropietari,
