@@ -4,7 +4,7 @@ import {nextStep, backStep,buttonsOkey, buttonsDisabled, buttonsHidden} from './
 
 const initial = {
   counter: 0,
-  buttons_status: 'okey'
+  buttons_status: 'hidden'
 };
 
 export default (state: State = initial, action: Action) => {

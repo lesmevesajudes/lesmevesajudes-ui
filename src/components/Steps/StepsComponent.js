@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from "react-redux";
 import {BackStepAction, NextStepAction} from './StepsActions'
 import {withStyles} from '@material-ui/core/styles';
-import {Button, Typography, Step, Grid, Stepper, StepLabel} from "@material-ui/core";
+import {Typography, Step, Grid, Stepper, StepLabel} from "@material-ui/core";
 import PersonsPage from '../../persons/PersonsPage'
 import HouseholdForm from '../../household/HouseholdForm';
 import RentForm from '../../rent/RentForm';
@@ -46,12 +46,10 @@ type Props = {
 }
 
 let StepsComponent = (props: Props) => {
-  const {classes, NextStepAction, BackStepAction, counter, button_status} = props;
+  const {classes, NextStepAction, BackStepAction, counter} = props;
   const steps = getSteps();
   const actualStep = counter.step.counter;
-
-
-
+  const statusButtons = counter.step.buttons_status;
   return (
       <div className={classes.root}>
 
@@ -72,7 +70,13 @@ let StepsComponent = (props: Props) => {
                     <Typography className={classes.instructions}>{getStepContent(actualStep)}</Typography>
                   </Grid>
                   <Grid item sm={12} xs={12} md={12}>
-                  <ButtonsSteps nextAction={NextStepAction} backAction={BackStepAction} classes={classes} stepsTotal={steps} actualStep={actualStep} statusButtons={"tests"}/>
+                  <ButtonsSteps 
+                  nextAction={NextStepAction} 
+                  backAction={BackStepAction}
+                  classes={classes} 
+                  stepsTotal={steps}
+                  actualStep={actualStep} 
+                  statusButtons={statusButtons}/>
                   </Grid>
                 </Grid>
           )}
