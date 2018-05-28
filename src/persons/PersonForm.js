@@ -7,10 +7,9 @@ import ClearIcon from "@material-ui/icons/Clear";
 import {Trans} from "react-i18next";
 import {Field, formValueSelector, reduxForm} from "redux-form";
 import {connect} from "react-redux";
-import {Button, FormLabel, Grid, MenuItem} from "@material-ui/core";
+import {Button, FormLabel, Grid, Hidden, MenuItem} from "@material-ui/core";
 import DescriptionText from "../components/Common/DescriptionText";
 import {allowOnlyPositive} from '../components/Common/NormalizeCommon'
-import Hidden from "@material-ui/core/es/Hidden/Hidden";
 
 export type PersonFormInitialValues = Person | { is_the_user_in_front_of_the_computer: boolean };
 
