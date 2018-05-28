@@ -25,7 +25,7 @@ const styles = theme => ({
 });
 
 function getSteps() {
-  return ['Añadir un familiar', 'Familia','Domicili Habitual'];
+  return ['Añadir un familiar', 'Familia','Domicili Habitual', 'Resultats'];
 }
 
 function getStepContent(stepIndex) {
@@ -36,8 +36,10 @@ function getStepContent(stepIndex) {
       return <RentForm/>;
     case 2:
       return <HouseholdForm/>;
-      default:
-        return "patata"
+    case 3:
+      return <ResultsPage/>;
+    default:
+      throw "Invalid Step";
   }
 }
 
