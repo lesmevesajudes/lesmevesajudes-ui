@@ -71,7 +71,7 @@ let PersonForm = (props: Props) => {
             <Field component="input" name="id" type="hidden"/>
             <Field component="input" name="is_the_user_in_front_of_the_computer" type="hidden"/>
             <Grid container direction="row" justify="space-around" alignItems="stretch">
-              <Grid item xs={12} md={5}>
+              <Grid item xs={12} sm={6}>
                 <Grid container direction="column" alignItems="stretch">
                   <label>
                     <Trans>
@@ -132,7 +132,7 @@ let PersonForm = (props: Props) => {
                   {esFamiliarOUsuari &&
                   <Fragment>
                     <label>
-                      <Trans>Quina és la seva edat?</Trans>
+                      <Trans>Quina és la seva edat?aa1</Trans>
                     </label>
                     <Field name="edat" type="number" normalize={allowOnlyPositive} component={TextField} fullWidth
                            required/>

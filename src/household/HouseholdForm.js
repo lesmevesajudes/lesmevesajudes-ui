@@ -38,16 +38,17 @@ let HouseholdForm = (props: Props) => {
                     <label><Trans>Qui té la custodia de </Trans>{infant.nom}</label>
                     <Field name={'custodies.' + infant.id + '.primer'} component={Select} fullWidth>
                       {possiblesSustentadors.valueSeq().map((sustentador: Person) =>
-                          <MenuItem value={sustentador.id}><Trans>{sustentador.nom}</Trans></MenuItem>
+                          <MenuItem key={`primer-${sustentador.id}`}
+                                    value={sustentador.id}><Trans>{sustentador.nom}</Trans></MenuItem>
                       )}
-                      <MenuItem value="exitus"><Trans>Exitus</Trans></MenuItem>
                       <MenuItem value="no_convivent"><Trans>Una persona que no conviu</Trans></MenuItem>
                       </Field>
                     <Field name={'custodies.' + infant.id + '.segon'} component={Select} fullWidth>
                       {possiblesSustentadors.valueSeq().map((sustentador: Person) =>
-                          <MenuItem value={sustentador.id}><Trans>{sustentador.nom}</Trans></MenuItem>
+                          <MenuItem key={`segon-${sustentador.id}`}
+                                    value={sustentador.id}><Trans>{sustentador.nom}</Trans></MenuItem>
                       )}
-                      <MenuItem value="exitus"><Trans>Exitus</Trans></MenuItem>
+                      <MenuItem value="ningu_mes"><Trans>Ningú més</Trans></MenuItem>
                       <MenuItem value="no_convivent"><Trans>Una persona que no conviu</Trans></MenuItem>
                     </Field>
                   </Grid>)}
