@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import {NextStepAction, BackStepAction} from './StepsActions'
-import { withStyles } from 'material-ui/styles';
-import Stepper, { Step, StepLabel } from 'material-ui/Stepper';
-import Button from 'material-ui/Button';
-import Typography from 'material-ui/Typography';
+import { withStyles } from '@material-ui/core/styles';
+import Stepper, { Step, StepLabel } from '@material-ui/core/Stepper';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 import PersonsPage from '../../persons/PersonsPage'
 import HouseholdForm from '../../household/HouseholdForm';
 import RentForm from '../../rent/RentForm';
@@ -39,7 +39,8 @@ function getStepContent(stepIndex) {
     case 3:
       return <ResultsPage/>;
     default:
-      throw "Invalid Step";
+    let err = "Invalid Step";
+      throw err;
   }
 }
 

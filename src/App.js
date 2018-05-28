@@ -4,7 +4,6 @@ import {BrowserRouter, Route, Switch} from "react-router-dom";
 
 import IndexPage from "./indexPage/IndexPage";
 import WizardPage from "./pages/Wizard";
-import StepReducer from "./components/Steps/StepsReducer"
 import isDevelopment from "./shared/isDevelopment";
 import "./styles/styles.css";
 import CorporateHeader from "./components/Header/CorporateHeader";
@@ -23,7 +22,7 @@ if (isDevelopment) {
 }
 
 const store = configureStore();
-  step: StepReducer,
+
 
 class App extends Component {
   render() {
