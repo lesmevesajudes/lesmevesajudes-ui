@@ -4,11 +4,13 @@ import {reducer as reduxFormReducer} from "redux-form";
 import PersonsReducer from "./persons/PersonsReducer";
 import HouseholdReducer from "./household/HouseholdReducer";
 import RentReducer from "./rent/RentReducer";
+import StepReducer from "./components/Steps/StepsReducer";
 
 export const rootReducer = combineReducers({
   results: ResultsReducer,
   persons: PersonsReducer,
   household: HouseholdReducer,
   rent: RentReducer,
-  form: reduxFormReducer // mounted under "form"
+  form: reduxFormReducer,
+  step: StepReducer,
 });

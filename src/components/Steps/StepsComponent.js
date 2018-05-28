@@ -1,11 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {connect} from "react-redux";
-import {NextStepAction, BackStepAction} from './StepsActions'
-import { withStyles } from 'material-ui/styles';
-import Stepper, { Step, StepLabel } from 'material-ui/Stepper';
-import Button from 'material-ui/Button';
-import Typography from 'material-ui/Typography';
+import {BackStepAction, NextStepAction} from './StepsActions'
+import {withStyles} from '@material-ui/core/styles';
+import Stepper from '@material-ui/core/Stepper';
+import Step from '@material-ui/core/Step';
+import StepLabel from '@material-ui/core/StepLabel';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 import PersonsPage from '../../persons/PersonsPage'
 import HouseholdForm from '../../household/HouseholdForm';
 import RentForm from '../../rent/RentForm';
@@ -25,7 +26,7 @@ const styles = theme => ({
 });
 
 function getSteps() {
-  return ['Añadir un familiar', 'Familia','Domicili Habitual', 'Resultats'];
+  return ['Añadir un familiar', 'Familia', 'Domicili Habitual', 'Resultats'];
 }
 
 function getStepContent(stepIndex) {
@@ -43,21 +44,23 @@ function getStepContent(stepIndex) {
   }
 }
 
-class StepsComponent extends React.Component {
+type Props = {
+  classes: Object
+}
 
-  render() {
-    const { classes, NextStepAction, BackStepAction, counter } = this.props;
-    const steps = getSteps();
-    const actualStep = counter.step.counter;
-    return (
+let StepsComponent = (props: Props) => {
+  const {classes, NextStepAction, BackStepAction, counter} = props;
+  const steps = getSteps();
+  const actualStep = counter.step.counter;
+  return (
       <div className={classes.root}>
 
         <Stepper activeStep={actualStep} alternativeLabel>
           {steps.map(label => {
             return (
-              <Step key={label}>
-                <StepLabel>{label}</StepLabel>
-              </Step>
+                <Step key={label}>
+                  <StepLabel>{label}</StepLabel>
+                </Step>
             );
           })}
         </Stepper>
@@ -65,36 +68,31 @@ class StepsComponent extends React.Component {
           {actualStep === steps.length ? (
               <ResultsPage/>
           ) : (
-            <div>
-              <Typography className={classes.instructions}>{getStepContent(actualStep)}</Typography>
               <div>
-                <Button
-                  disabled={actualStep === 0}
-                  onClick={(e)=> BackStepAction()}
-                  className={classes.backButton}
-                >
-                  Back 
-                </Button>
-                <Button variant="raised" color="primary" onClick={(e)=> NextStepAction()}>
-                  {actualStep === steps.length - 1 ? 'Finish' : 'Next'}
-                </Button>
+                <Typography className={classes.instructions}>{getStepContent(actualStep)}</Typography>
+                <div>
+                  <Button
+                      disabled={actualStep === 0}
+                      onClick={(e) => BackStepAction()}
+                      className={classes.backButton}
+                  >
+                    Back
+                  </Button>
+                  <Button variant="raised" color="primary" onClick={(e) => NextStepAction()}>
+                    {actualStep === steps.length - 1 ? 'Finish' : 'Next'}
+                  </Button>
+                </div>
               </div>
-            </div>
           )}
         </div>
       </div>
-    );
-  }
-}
-
-StepsComponent.propTypes = {
-  classes: PropTypes.object,
+  );
 };
 
 const mapStateToProps = (state) => {
   return {
     counter: state
   }
-}
+};
 
 export default connect(mapStateToProps, {NextStepAction, BackStepAction})(withStyles(styles)(StepsComponent));
