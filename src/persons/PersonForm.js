@@ -132,7 +132,7 @@ let PersonForm = (props: Props) => {
                   {esFamiliarOUsuari &&
                   <Fragment>
                     <label>
-                      <Trans>Quina és la seva edat?aa1</Trans>
+                      <Trans>Quina és la seva edat?</Trans>
                     </label>
                     <Field name="edat" type="number" normalize={allowOnlyPositive} component={TextField} fullWidth
                            required/>

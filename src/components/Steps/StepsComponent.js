@@ -34,9 +34,9 @@ function getStepContent(stepIndex) {
     case 0:
       return <PersonsPage/>;
     case 1:
-      return <RentForm/>;
-    case 2:
       return <HouseholdForm/>;
+    case 2:
+      return <RentForm/>;
     case 3:
       return <ResultsPage/>;
     default:
@@ -73,12 +73,12 @@ let StepsComponent = (props: Props) => {
                 <div>
                   <Button
                       disabled={actualStep === 0}
-                      onClick={(e) => BackStepAction()}
+                      onClick={() => BackStepAction()}
                       className={classes.backButton}
                   >
                     Back
                   </Button>
-                  <Button variant="raised" color="primary" onClick={(e) => NextStepAction()}>
+                  <Button variant="raised" color="primary" onClick={() => NextStepAction()}>
                     {actualStep === steps.length - 1 ? 'Finish' : 'Next'}
                   </Button>
                 </div>
