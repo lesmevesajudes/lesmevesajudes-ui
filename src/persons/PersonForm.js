@@ -8,9 +8,9 @@ import {Trans} from "react-i18next";
 import {Field, formValueSelector, reduxForm} from "redux-form";
 import {connect} from "react-redux";
 import {Button, FormLabel, Grid, MenuItem} from "@material-ui/core";
-import edat from "../shared/Edat";
 import DescriptionText from "../components/Common/DescriptionText";
-import {normalizeMoney} from '../components/Common/NormalizeCommon'
+import {allowOnlyPositive} from '../components/Common/NormalizeCommon'
+import Hidden from "@material-ui/core/es/Hidden/Hidden";
 
 export type PersonFormInitialValues = Person | { is_the_user_in_front_of_the_computer: boolean };
 
@@ -67,7 +67,7 @@ let PersonForm = (props: Props) => {
                 {isTheUserInFrontOfTheComputer ? <h1>Informació sobre vosté</h1> :
               <h1>Dades sobre una persona que conviu amb vosté</h1>}
         </Grid>
-        <Grid item sm={12} xs={12}>
+        <Grid item xs={12}>
           <form onSubmit={handleSubmit}>
             <Field component="input" name="id" type="hidden"/>
             <Field component="input" name="is_the_user_in_front_of_the_computer" type="hidden"/>
@@ -135,7 +135,8 @@ let PersonForm = (props: Props) => {
                     <label>
                       <Trans>Quina és la seva edat?</Trans>
                     </label>
-                    < Field name="edat" type="number" component={TextField} fullWidth required/>
+                    <Field name="edat" type="number" normalize={allowOnlyPositive} component={TextField} fullWidth
+                           required/>
                     <label>
                       <Trans>Sexe</Trans>
                     </label>
@@ -205,7 +206,7 @@ let PersonForm = (props: Props) => {
                       Quants anys porta empadronat a Barcelona?
                     </label>
                     <Field name="anys_empadronat_a_barcelona" type="number" placeholder="0" component={TextField}
-                           fullWidth required/>
+                           normalize={allowOnlyPositive} fullWidth required/>
                   </Fragment>}
 
                   {esFamiliarOUsuari && potTreballar &&
@@ -273,7 +274,8 @@ let PersonForm = (props: Props) => {
                   <label>
                     <Trans>Indiqui els seus ingressos bruts anuals de l’any passat?</Trans>
                   </label>
-                  <Field name="ingressos_bruts" type="number" normalize={normalizeMoney} component={TextField} fullWidth
+                  <Field name="ingressos_bruts" type="number" normalize={allowOnlyPositive} component={TextField}
+                         fullWidth
                          required/>
 
                   {esFamiliarOUsuari &&
@@ -286,7 +288,8 @@ let PersonForm = (props: Props) => {
                     <label>
                       <Trans>Indiqui la suma dels imports de totes les pensions no contributives que cobri</Trans>
                     </label>
-                    <Field name="ingressos_per_pnc" type="number" component={TextField} fullWidth required/>
+                    <Field name="ingressos_per_pnc" type="number" component={TextField} normalize={allowOnlyPositive}
+                           fullWidth required/>
                   </Fragment>}
 
                   {esFamiliarOUsuari && inscritComADemandantDocupacio &&
@@ -308,7 +311,8 @@ let PersonForm = (props: Props) => {
                       <label>
                         <Trans>Grau discapacitat</Trans>
                       </label>
-                      <Field name="grau_discapacitat" placeholder="0" type="number" component={TextField}/>
+                      <Field name="grau_discapacitat" placeholder="0" type="number" normalize={allowOnlyPositive}
+                             component={TextField}/>
                     </Fragment>}
 
                     {potTreballar &&
@@ -338,9 +342,11 @@ let PersonForm = (props: Props) => {
 
                 </Grid>
               </Grid>
-              <Grid item xs={12} md={5}>
-                <DescriptionText/>
-              </Grid>
+              <Hidden smDown>
+                <Grid item md={5}>
+                  <DescriptionText/>
+                </Grid>
+              </Hidden>
             </Grid>
 
             <Grid item sm={12}>
