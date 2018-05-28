@@ -1,18 +1,6 @@
 // @flow
-export const nextStep = 'nextStep';
-export const backStep = 'backStep';
-export const buttonsHidden = 'hiddenButtons';
-export const buttonsDisabled = 'buttonsDisabled';
-export const buttonsOkey = 'buttonsOkey';
-export type State = {
-  counter: number,
-  buttons_status: string,
+export type StepsState = {
+  current_step: number,
+  button_visible: boolean,
+  button_enabled: boolean
 };
-
-export type Action =
-    { type: 'nextStep' }
-  | { type: 'backStep' }
-  | { type: 'buttonsHidden'}
-  | { type: 'buttonsDisabled'}
-  | { type: 'buttonsOkey'}
-  ;

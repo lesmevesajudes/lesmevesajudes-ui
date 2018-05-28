@@ -21,7 +21,9 @@ if (isDevelopment) {
   console.log("Environment: " + process.env.NODE_ENV);
 }
 
-const store = configureStore();
+const preloadedState = window.__PRELOADED_STATE__;
+
+const store = configureStore(preloadedState);
 
 class App extends Component {
   render() {

@@ -15,7 +15,7 @@ export default function configureStore(initialState) {
     console.log("HRM enabled");
     // Enable Webpack hot module replacement for reducers
     module.hot.accept('./RootReducer', () => {
-      console.log("Reloading...");
+      console.log("Reloading reducers...");
       store.replaceReducer(rootReducer);
     });
   }

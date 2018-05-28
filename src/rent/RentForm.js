@@ -199,6 +199,8 @@ function mapStateToProps(state) {
   const esCessio = selector(state, "relacio_habitatge") === "cessio";
   const titularContracteLloguer = state.persons[selector(state, "titular_contracte_de_lloguer_id")];
   const titularContracteHipoteca = state.persons[selector(state, "titular_hipoteca_id")];
+  console.log("Titular: ", selector(state, "titular_contracte_de_lloguer_id"));
+  console.log("titular persona: ", state.persons[selector(state, "titular_contracte_de_lloguer_id")]);
   return {
     esLlogater: esLlogater,
     esPropietari: esPropietari,

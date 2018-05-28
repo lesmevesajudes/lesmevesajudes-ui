@@ -1,39 +1,46 @@
 // @flow
-import type {Action, State} from './StepsTypes';
-import {nextStep, backStep,buttonsOkey, buttonsDisabled, buttonsHidden} from './StepsTypes';
+import type {StepsActions} from "./StepsActions";
+import type {StepsState} from "./StepsTypes";
 
-const initial = {
-  counter: 0,
-  buttons_status: 'okey'
+
+const initial: StepsState = {
+  current_step: 0,
+  button_enabled: false,
+  button_visible: false
 };
 
-export default (state: State = initial, action: Action) => {
+export default (state: StepsState = initial, action: StepsActions): StepsState => {
   switch (action.type) {
-    case nextStep: {
+    case "NEXT_STEP": {
       return {
         ...state,
-        counter: state.counter + 1,
+        current_step: state.current_step + 1,
       };
     }
-    case backStep:
+    case "BACK_STEP":
       return {
         ...state,
-        counter: state.counter - 1,
+        current_step: state.current_step - 1,
       };
-    case buttonsOkey:
+    case "BUTTONS_VISIBLE":
       return {
         ...state,
-        buttons_status: 'okey'
+        button_visible: true
       };
-    case buttonsDisabled:
+    case "BUTTONS_DISABLED":
       return {
         ...state,
-        buttons_status: 'disabled'
+        button_enabled: false
       };
-    case buttonsHidden:
+    case "BUTTONS_ENABLED":
       return {
         ...state,
-        buttons_status: 'hidden'
+        button_enabled: true
+      };
+    case "BUTTONS_HIDDEN":
+      return {
+        ...state,
+        button_visible: false
       };
     default:
       return state;

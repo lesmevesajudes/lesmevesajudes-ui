@@ -10,21 +10,18 @@ import {serialize} from "./PersonsReducer";
 import * as UUID from "../shared/UUID";
 import {addPerson, removePerson, updatePerson} from "./PersonsActions";
 import HowManyPersonsLiveTogetherPage from "./HowManyPersonsLiveTogetherPage";
+import {enableButtons, hideButtons, showButtons} from "../components/Steps/StepsActions";
 
 type State = {
   step: string,
   initialFormValues: ?PersonFormInitialValues,
   numberOfPersonsLivingTogether: number,
-  button_status: string
 };
 
 type Props = {
   persons: Array<Person>,
-  removePerson: Function,
-  addPerson: Function,
-  updatePerson: Function,
-  jumpToStep: Function,
-  PersonRole: String
+  PersonRole: String,
+  dispatch: Function
 };
 
 class PersonsPage extends React.Component<Props, State> {
@@ -36,6 +33,7 @@ class PersonsPage extends React.Component<Props, State> {
       });
 
   handleAddPersonClick = () => {
+    this.props.dispatch(hideButtons());
     this.setState({
       ...this.state,
       step: "addPerson"
@@ -51,7 +49,7 @@ class PersonsPage extends React.Component<Props, State> {
   };
 
   handleRemovePersonClick = (personID: PersonID) => {
-    this.props.removePerson(personID);
+    this.props.dispatch(removePerson(personID));
   };
 
   doneEditingPerson = () => {
@@ -63,11 +61,17 @@ class PersonsPage extends React.Component<Props, State> {
   };
 
   handleSubmitPersonForm = (formValues: Person) => {
+    console.log("lenght: ", this.props.persons.length);
+    console.log("expected: ", this.state.numberOfPersonsLivingTogether);
     this.doneEditingPerson();
+    if (this.props.persons.length >= this.state.numberOfPersonsLivingTogether - 1) {
+      this.props.dispatch(enableButtons());
+    }
+    this.props.dispatch(showButtons());
     if (formValues.id === undefined) {
-      return this.props.addPerson({...formValues, id: UUID.create()});
+      this.props.dispatch(addPerson({...formValues, id: UUID.create()}));
     } else {
-      return this.props.updatePerson(formValues);
+      this.props.dispatch(updatePerson(formValues));
     }
   };
 
@@ -116,6 +120,7 @@ class PersonsPage extends React.Component<Props, State> {
               expectedNumberOfPersons={expectedNumberOfPersonsLivingTogether}
           />);
     } else if (step === "addPerson") {
+
       component = (
           <PersonForm
               initialValues={this.state.initialFormValues}
@@ -135,6 +140,6 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, {addPerson: addPerson, updatePerson: updatePerson, removePerson: removePerson})(
+export default connect(mapStateToProps)(
     PersonsPage
 );

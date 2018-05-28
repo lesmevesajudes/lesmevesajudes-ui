@@ -1,13 +1,10 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {BackStepAction, NextStepAction} from './StepsActions'
+import {backStep, nextStep} from './StepsActions'
 import {withStyles} from '@material-ui/core/styles';
-import {Button, Typography, Step, Grid, Stepper, StepLabel} from "@material-ui/core";
-import PersonsPage from '../../persons/PersonsPage'
-import HouseholdForm from '../../household/HouseholdForm';
-import RentForm from '../../rent/RentForm';
-import ResultsPage from '../../results/ResultsPage';
-import ButtonsSteps from './Buttons/ButtonsSteps';
+import {Grid, Step, StepLabel, Stepper} from "@material-ui/core";
+import StepperButtons from './StepperButtons';
+
 const styles = theme => ({
   root: {
     width: '100%',
@@ -21,69 +18,50 @@ const styles = theme => ({
   },
 });
 
-function getSteps() {
-  return ['Añadir un familiar', 'Familia', 'Domicili Habitual', 'Resultats'];
-}
-
-function getStepContent(stepIndex) {
-  switch (stepIndex) {
-    case 0:
-      return <PersonsPage/>;
-    case 1:
-      return <HouseholdForm/>;
-    case 2:
-      return <RentForm/>;
-    case 3:
-      return <ResultsPage/>;
-    default:
-      let err = "Invalid Step"
-      throw err;
-  }
-}
-
 type Props = {
-  classes: Object
+  classes: Object,
+  steps: Array,
+  nextStep: Function,
+  backStep: Function
 }
 
 let StepsComponent = (props: Props) => {
-  const {classes, NextStepAction, BackStepAction, counter, button_status} = props;
-  const steps = getSteps();
-  const actualStep = counter.step.counter;
-
-
-
+  const {classes, steps, currentStep, buttonEnabled, buttonVisible, backStep, nextStep} = props;
+  const childComponent = steps[currentStep].component;
+  console.log("currentStep: ", currentStep);
+  console.log("total: ", steps.length);
   return (
       <div className={classes.root}>
 
-        <Stepper activeStep={actualStep} alternativeLabel>
-          {steps.map(label => {
-            return (
-                <Step key={label}>
-                  <StepLabel>{label}</StepLabel>
-                </Step>
-            );
-          })}
+        <Stepper activeStep={currentStep} alternativeLabel>
+          {steps.map(step =>
+              <Step key={step.label}>
+                <StepLabel>{step.label}</StepLabel>
+              </Step>)
+          }
         </Stepper>
-          {actualStep === steps.length ? (
-              <ResultsPage/>
-          ) : (
-                <Grid container>
-                  <Grid item sm={12} xs={12} md={12}>
-                    <Typography className={classes.instructions}>{getStepContent(actualStep)}</Typography>
-                  </Grid>
-                  <Grid item sm={12} xs={12} md={12}>
-                  <ButtonsSteps nextAction={NextStepAction} backAction={BackStepAction} classes={classes} stepsTotal={steps} actualStep={actualStep} statusButtons={"tests"}/>
-                  </Grid>
-                </Grid>
-          )}
+        <Grid container>
+          <Grid item sm={12} xs={12} md={12}>
+            {childComponent}
+          </Grid>
+          <Grid item sm={12} xs={12} md={12}>
+            <StepperButtons nextAction={(currentStep === steps.length - 1) ? undefined : nextStep}
+                            backAction={(currentStep === 0) ? undefined : backStep} classes={classes}
+                            buttonEnabled={buttonEnabled} buttonVisible={buttonVisible}
+                            nextIsResults={currentStep === steps.length - 2}/>
+          </Grid>
+        </Grid>
       </div>
   );
 };
 
 const mapStateToProps = (state) => {
   return {
-    counter: state
+    currentStep: state.step.current_step,
+    buttonEnabled: state.step.button_enabled,
+    buttonVisible: state.step.button_visible
+
   }
 };
 
-export default connect(mapStateToProps, {NextStepAction, BackStepAction})(withStyles(styles)(StepsComponent));
+export default connect(mapStateToProps, {nextStep, backStep})(withStyles(styles)(StepsComponent));

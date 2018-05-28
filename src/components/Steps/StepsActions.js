@@ -1,39 +1,40 @@
 //@flow
-import {nextStep, backStep,buttonsOkey, buttonsDisabled, buttonsHidden} from './StepsTypes'
 
-export type NextStep = {type: "NEXT_STEP",step: number};
-export type BackStep = {type: "BACK_STEP",step: number};
-export type ButtonsOkey = {type: 'BUTTONS_OKEY', buttons_status: string};
-export type ButtonsDisabled = {type: 'BUTTONS_DISABLED', buttons_status: string};
-export type ButtonsHidden = {type: 'BUTTONS_HIDDEN', buttons_status: string};
+type NextStepAction = { type: "NEXT_STEP" };
+type BackStepAction = { type: "BACK_STEP" };
+type ButtonsShowAction = { type: 'BUTTONS_VISIBLE' };
+type ButtonsDisabledAction = { type: 'BUTTONS_DISABLED' };
+type ButtonsEnabledAction = { type: 'BUTTONS_ENABLED' };
+type ButtonsHiddenAction = { type: 'BUTTONS_HIDDEN' };
 
+export type StepsActions =
+    | ButtonsShowAction
+    | ButtonsHiddenAction
+    | ButtonsDisabledAction
+    | ButtonsEnabledAction
+    | NextStepAction
+    | BackStepAction;
 
-export type StepActions =
-    | NextStep
-    | BackStep;
-export type ButtonActions =
-    | ButtonsOkey
-    | ButtonsDisabled
-    | ButtonsHidden;
-    
-export type State = {
-  ui: {
-    counter: number,
-    buttons_status: string,
-  },
-};
-export function ButtonOkeyAction(): ButtonsOkey {
-  return {type: buttonsOkey};
+export function showButtons(): StepsActions {
+  return {type: 'BUTTONS_VISIBLE'};
 }
-export function ButtonsHiddenAction(): ButtonsOkey {
-  return {type: buttonsHidden};
+
+export function hideButtons(): StepsActions {
+  return {type: 'BUTTONS_HIDDEN'};
 }
-export function ButtonsDisabledAction(): ButtonsOkey {
-  return {type: buttonsDisabled};
+
+export function disableButtons(): StepsActions {
+  return {type: 'BUTTONS_DISABLED'};
 }
-export function NextStepAction(): NextStep {
-  return {type: nextStep};
+
+export function enableButtons(): StepsActions {
+  return {type: 'BUTTONS_ENABLED'};
 }
-export function BackStepAction(): BackStep {
-  return {type: backStep};
+
+export function nextStep(): StepsActions {
+  return {type: "NEXT_STEP"};
+}
+
+export function backStep(): StepsActions {
+  return {type: "BACK_STEP"};
 }
