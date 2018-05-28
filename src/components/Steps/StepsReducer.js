@@ -1,9 +1,10 @@
-import type {Action, State} from './StepsTypes';
 // @flow
-import {backStep, nextStep} from './StepsTypes';
+import type {Action, State} from './StepsTypes';
+import {nextStep, backStep,buttonsOkey, buttonsDisabled, buttonsHidden} from './StepsTypes';
 
 const initial = {
   counter: 0,
+  buttons_status: 'okey'
 };
 
 export default (state: State = initial, action: Action) => {
@@ -18,6 +19,21 @@ export default (state: State = initial, action: Action) => {
       return {
         ...state,
         counter: state.counter - 1,
+      };
+    case buttonsOkey:
+      return {
+        ...state,
+        buttons_status: 'okey'
+      };
+    case buttonsDisabled:
+      return {
+        ...state,
+        buttons_status: 'disabled'
+      };
+    case buttonsHidden:
+      return {
+        ...state,
+        buttons_status: 'hidden'
       };
     default:
       return state;

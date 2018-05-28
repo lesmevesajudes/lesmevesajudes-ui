@@ -15,6 +15,7 @@ type State = {
   step: string,
   initialFormValues: ?PersonFormInitialValues,
   numberOfPersonsLivingTogether: number,
+  button_status: string
 };
 
 type Props = {
