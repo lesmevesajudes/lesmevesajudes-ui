@@ -9,6 +9,9 @@ const styles = theme => ({
   root: {
     width: '100%',
   },
+  marginButtons: {
+    marginBottom: 30 + 'px'
+  },
   backButton: {
     marginRight: theme.spacing.unit,
   },
@@ -43,7 +46,7 @@ let StepsComponent = (props: Props) => {
           <Grid item sm={12} xs={12} md={12}>
             {childComponent}
           </Grid>
-          <Grid item sm={12} xs={12} md={12}>
+          <Grid item sm={12} xs={12} md={12} className={classes.backButton}>
             <StepperButtons nextAction={(currentStep === steps.length - 1) ? undefined : nextStep}
                             backAction={(currentStep === 0) ? undefined : backStep} classes={classes}
                             buttonEnabled={buttonEnabled} buttonVisible={buttonVisible}

@@ -12,16 +12,20 @@ type Props = {
 
 let StepperButtons = (props: Props) => {
   const content = (
-      <Grid container justify={'center'}>
-        {typeof props.backAction !== "undefined" &&
-        <Button
-            disabled={!props.buttonEnabled} onClick={props.backAction} className={props.classes.backButton}>
-          <Trans>Anterior</Trans>
-        </Button>}
-        {typeof props.nextAction !== "undefined" &&
-        <Button variant="raised" color="primary" onClick={props.nextAction} disabled={!props.buttonEnabled}>
-          {props.nextIsResults ? <Trans>Veure resultats</Trans> : <Trans>Següent</Trans>}
-        </Button>}
+      <Grid container justify={'center'} className="buttons-container">
+        <Grid item sm={6} md={6}>
+                {typeof props.backAction !== "undefined" &&
+          <Button variant="raised" 
+              disabled={!props.buttonEnabled} onClick={props.backAction} className={props.classes.backButton} className="left-button">
+            <Trans>Anterior</Trans>
+          </Button>}
+        </Grid>
+        <Grid item sm={6} md={6} >
+          {typeof props.nextAction !== "undefined" &&
+          <Button variant="raised" color="primary" onClick={props.nextAction} disabled={!props.buttonEnabled} className="right-button">
+            {props.nextIsResults ? <Trans>Veure resultats</Trans> : <Trans>Següent</Trans>}
+          </Button>}
+        </Grid>
       </Grid>
   );
   return props.buttonVisible ? content : null;
