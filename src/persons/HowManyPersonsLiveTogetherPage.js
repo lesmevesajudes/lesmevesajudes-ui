@@ -7,6 +7,24 @@ import Field from "redux-form/es/Field";
 import {reduxForm} from "redux-form";
 import {allowOnlyPositive} from "../components/Common/NormalizeCommon";
 
+const validate = values => {
+  const errors = {}
+  const requiredFields = [
+    'how_many_persons_live_together',
+  ]
+  requiredFields.forEach(field => {
+    if (!values[field]) {
+      errors[field] = 'Requerit'
+    }
+  })
+  console.log(values)
+  if (
+  values.how_many_persons_live_together <= 0
+  ) {
+    errors.how_many_persons_live_together = 'Introdueixi un valor superior a 0.'
+  }
+  return errors
+}
 let HowManyPersonsLiveTogetherPage = props => {
   const {handleSubmit} = props;
   return (
@@ -36,7 +54,8 @@ let HowManyPersonsLiveTogetherPage = props => {
 };
 
 HowManyPersonsLiveTogetherPage = reduxForm({
-  form: "HowManyPersonsLiveTogetherForm"
+  form: "HowManyPersonsLiveTogetherForm",
+  validate
 })(HowManyPersonsLiveTogetherPage);
 
 export default HowManyPersonsLiveTogetherPage;
