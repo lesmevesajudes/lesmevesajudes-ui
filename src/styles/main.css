@@ -126,3 +126,20 @@ input.cercabcn {
 .buttons-container .right-button {
   float: right
 }
+.checkOption {
+  padding:5px;
+  text-align: center;
+  width: 35px;
+  display: inline-block;
+  height: auto;
+  border-radius: 6px;
+  border: #c2c2c2 1px solid;
+  cursor: default;
+}
+.checkOption:first-child {
+  margin-right: 5px;
+}
+.checkOption.active {
+  background: rgb(194, 98, 170);
+  border: rgb(170, 82, 148)1px solid;
+}

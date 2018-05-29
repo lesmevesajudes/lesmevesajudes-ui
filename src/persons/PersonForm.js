@@ -10,7 +10,7 @@ import {connect} from "react-redux";
 import {Button, FormLabel, Grid, Hidden, MenuItem} from "@material-ui/core";
 import DescriptionText from "../components/Common/DescriptionText";
 import {allowOnlyPositive} from '../components/Common/NormalizeCommon'
-
+import CheckOptionComponent from '../components/CheckOption/CheckOptionComponent'
 export type PersonFormInitialValues = Person | { is_the_user_in_front_of_the_computer: boolean };
 
 type Props = {
@@ -338,7 +338,7 @@ let PersonForm = (props: Props) => {
                       <Trans>És orfe dels dos progenitors</Trans>
                     </label>}
                   </Fragment>}
-
+                  <CheckOptionComponent/>
                 </Grid>
               </Grid>
               <Hidden smDown>
