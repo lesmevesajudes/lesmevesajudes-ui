@@ -23,7 +23,6 @@ const styles = theme => ({
 
 
 type Props = {
-  si: ?boolean,
   setup: Object,
   optionSelected: Function
 }
@@ -36,12 +35,13 @@ class ToggleButton extends Component<Props> {
   render() {
     const {classes} = this.props;
     return (
-        <Grid container direction="row" xs={12}>
+        <Grid container direction="row">
           {this.props.setup.map((currentElement) => {
             return (
                 <Button variant="outlined"
                         className={currentElement.name === this.props.currentState ? classNames(classes.margin, classes.cssRoot) : null}
                         onClick={() => this.props.optionSelected(currentElement.name)}
+                        key={currentElement.name}
                 >
                   {currentElement.name}
                 </Button>

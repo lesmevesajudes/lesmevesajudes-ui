@@ -10,7 +10,7 @@ import {connect} from "react-redux";
 import {Button, FormLabel, Grid, Hidden, MenuItem} from "@material-ui/core";
 import DescriptionText from "../components/Common/DescriptionText";
 import {allowOnlyPositive} from '../components/Common/NormalizeCommon'
-import ToggleButton from '../components/ToggleButton/index'
+import YesNo from '../components/redux-form-material-ui/YesNo';
 
 export type PersonFormInitialValues = Person | { is_the_user_in_front_of_the_computer: boolean };
 
@@ -281,7 +281,7 @@ let PersonForm = (props: Props) => {
                   {esFamiliarOUsuari &&
                   <label>
                     Cobra algun tipus de pensió no contributiva?
-                    <Field name="cobra_algun_tipus_de_pensio_no_contributiva" checked={false} component={Checkbox}/>
+                    <Field name="cobra_algun_tipus_de_pensio_no_contributiva" checked={false} component={YesNo}/>
                   </label>}
                   {esFamiliarOUsuari && cobraAlgunTipusDePensioNoContributiva &&
                   <Fragment>
@@ -339,7 +339,6 @@ let PersonForm = (props: Props) => {
                       <Trans>És orfe dels dos progenitors</Trans>
                     </label>}
                   </Fragment>}
-                  <ToggleButton/>
                 </Grid>
               </Grid>
               <Hidden smDown>
