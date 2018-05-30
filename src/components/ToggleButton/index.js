@@ -1,5 +1,32 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import Button from "@material-ui/core/Button";
+import purple from '@material-ui/core/colors/purple';
+import classNames from 'classnames';
+import {withStyles} from '@material-ui/core/styles';
+import Grid from "@material-ui/core/Grid/Grid";
+
+const styles = theme => ({
+  button: {
+    margin: theme.spacing.unit,
+  },
+  cssRoot: {
+    color: theme.palette.getContrastText(purple[500]),
+    backgroundColor: purple[500],
+    '&:hover': {
+      backgroundColor: purple[700],
+    },
+  },
+  input: {
+    display: 'none',
+  },
+});
+
+
+type Props = {
+  si: ?boolean,
+  setup: Object,
+  optionSelected: Function
+}
 
 class ToggleButton extends Component<Props> {
   constructor(props: Props) {
@@ -7,19 +34,22 @@ class ToggleButton extends Component<Props> {
   }
 
   render() {
+    const {classes} = this.props;
     return (
-        <div>
-          <Button className="checkOption">
-            Si
-          </Button>
-
-          <Button className="checkOption">
-            No
-          </Button>
-        </div>
-    );
+        <Grid container direction="row" xs={12}>
+          {this.props.setup.map((currentElement) => {
+            return (
+                <Button variant="outlined"
+                        className={currentElement.name === this.props.currentState ? classNames(classes.margin, classes.cssRoot) : null}
+                        onClick={() => this.props.optionSelected(currentElement.name)}
+                >
+                  {currentElement.name}
+                </Button>
+            )
+          })}
+        </Grid>)
   }
 }
 
 
-export default ToggleButton;
+export default withStyles(styles)(ToggleButton);
