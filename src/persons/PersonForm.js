@@ -36,7 +36,8 @@ type Props = {
   teAlgunGrauDeDiscapacitatReconegut: Boolean,
   tipusDocumentIdentitat: Boolean,
   treballaPerCompteDAltriParcial: Boolean,
-  victimaViolenciaDeGenere: Boolean
+  victimaViolenciaDeGenere: Boolean,
+  updating: Boolean
 };
 
 let PersonForm = (props: Props) => {
@@ -59,6 +60,7 @@ let PersonForm = (props: Props) => {
     teAlgunGrauDeDiscapacitatReconegut,
     tipusDocumentIdentitat,
     treballaPerCompteDAltriParcial,
+    updating,
     victimaViolenciaDeGenere
   } = props;
 
@@ -382,9 +384,10 @@ let PersonForm = (props: Props) => {
 
             <Grid item sm={12}>
               <Grid container justify="space-around">
+                {(isTheUserInFrontOfTheComputer !== true || updating === true) &&
                 <Button variant="raised" color="secondary" onClick={props.onCancel}>
                   <Trans>Cancelar</Trans> <ClearIcon/>
-                </Button>
+                </Button>}
                 <Button variant="raised" color="primary" type="submit" name="ButtonValidar">
                   <Trans>Validar</Trans>
                 </Button>
