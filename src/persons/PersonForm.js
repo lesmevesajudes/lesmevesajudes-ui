@@ -393,25 +393,25 @@ PersonForm = reduxForm({
 const selector = formValueSelector("PersonForm");
 
 PersonForm = connect(state => {
-  const cobraAlgunTipusDePensioNoContributiva = selector(state, "cobra_algun_tipus_de_pensio_no_contributiva") === 'Si';
+  const cobraAlgunTipusDePensioNoContributiva = selector(state, "cobra_algun_tipus_de_pensio_no_contributiva");
   const edat = selector(state, "edat");
   const esDesocupat = selector(state, "situacio_laboral") === "desocupat";
   const esDona = selector(state, "genere") === "dona";
   const esFamiliarOUsuari = (typeof selector(state, "relacio_parentiu") !== "undefined" && selector(state, "relacio_parentiu") !== "cap") || selector(state, "is_the_user_in_front_of_the_computer") === true;
   const esFill = selector(state, "relacio_parentiu") === "fill";
   const esFillastre = selector(state, "relacio_parentiu") === "fillastre";
-  const haTreballatALEstranger6Mesos = selector(state, "ha_treballat_a_l_estranger_6_mesos") === 'Si';
-  const inscritComADemandantDocupacio = selector(state, "inscrit_com_a_demandant_docupacio") === 'Si';
+  const haTreballatALEstranger6Mesos = selector(state, "ha_treballat_a_l_estranger_6_mesos");
+  const inscritComADemandantDocupacio = selector(state, "inscrit_com_a_demandant_docupacio");
   const isTheUserInFrontOfTheComputer = selector(state, "is_the_user_in_front_of_the_computer");
-  const membreDeFamiliaReagrupada = selector(state, "membre_de_familia_reagrupada") === 'Si';
+  const membreDeFamiliaReagrupada = selector(state, "membre_de_familia_reagrupada");
   const municipiEmpadronament = selector(state, "municipi_empadronament");
   const potTreballar = selector(state, "edat") >= 16;
-  const portaDosAnysOMesEmpadronatACatalunya = selector(state, "porta_dos_anys_o_mes_empadronat_a_catalunya") === 'Si';
+  const portaDosAnysOMesEmpadronatACatalunya = selector(state, "porta_dos_anys_o_mes_empadronat_a_catalunya");
   const rol = selector(state, "rol");
-  const teAlgunGrauDeDiscapacitatReconegut = selector(state, "te_algun_grau_de_discapacitat_reconegut") === 'Si';
+  const teAlgunGrauDeDiscapacitatReconegut = selector(state, "te_algun_grau_de_discapacitat_reconegut");
   const tipusDocumentIdentitat = selector(state, "document_identitat");
   const treballaPerCompteDAltriParcial = selector(state, "situacio_laboral") === "treball_compte_daltri_jornada_parcial";
-  const victimaViolenciaDeGenere = selector(state, "victima_violencia_de_genere") === 'Si';
+  const victimaViolenciaDeGenere = selector(state, "victima_violencia_de_genere");
   return {
     cobraAlgunTipusDePensioNoContributiva,
     edat,
