@@ -1,15 +1,10 @@
 //@flow
 import React, {Component} from "react";
-import ToggleButton from "../components/ToggleButton/index";
+import MultipleChoice from "../components/MultipleChoice";
+import {Choice} from "../components/Choice";
 import Grid from "@material-ui/core/Grid";
 import {formValueSelector, reduxForm} from "redux-form";
 import {connect} from "react-redux";
-
-const toggleElements = [
-  {name: "Si"},
-  {name: "No"},
-  {name: "Potser"}
-];
 
 
 type State = {
@@ -35,8 +30,18 @@ class TogglePage extends Component<Props, State> {
     return (
         <Grid container>
           <form onSubmit={this.props.handleSubmit}>
-            <ToggleButton currentState={this.state.toggleState} setup={toggleElements}
-                          optionSelected={this.ontoggleClick}/>
+            <MultipleChoice currentState={this.state.toggleState}
+                            optionSelected={this.ontoggleClick}>
+              <Choice name="Si" variant="outlined">
+                Si
+              </Choice>
+              <Choice name="No" variant="outlined">
+                No
+              </Choice>
+              <Choice name="Potser" variant="outlined">
+                Potser
+              </Choice>
+            </MultipleChoice>
           </form>
         </Grid>);
   }

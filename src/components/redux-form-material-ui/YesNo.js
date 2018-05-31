@@ -1,17 +1,21 @@
 import React from 'react';
-import ToggleButton from '../ToggleButton';
-
-const toggleElements = [
-  {name: "Si"},
-  {name: "No"},
-  {name: "Potser"}
-];
+import MultipleChoice from '../MultipleChoice';
+import {Choice} from "../Choice";
+import {Grid} from "@material-ui/core/es/index";
 
 const YesNo = ({input}) => (
-    <ToggleButton
-        setup={toggleElements}
+    <Grid container direction="row">
+      <MultipleChoice
         currentState={input.value}
         optionSelected={input.onChange}
-    />
+      >
+        <Choice name="Si" variant="outlined">
+          Si
+        </Choice>
+        <Choice name="No" variant="outlined">
+          No
+        </Choice>
+      </MultipleChoice>
+    </Grid>
 );
 export default YesNo;
