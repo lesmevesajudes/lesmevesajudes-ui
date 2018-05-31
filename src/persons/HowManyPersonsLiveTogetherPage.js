@@ -17,10 +17,7 @@ const validate = values => {
       errors[field] = 'Requerit'
     }
   });
-  console.log(values);
-  if (
-  values.how_many_persons_live_together <= 0
-  ) {
+  if (values.how_many_persons_live_together <= 0) {
     errors.how_many_persons_live_together = 'Introdueixi un valor superior a 0.'
   }
   return errors
