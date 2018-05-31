@@ -6,6 +6,7 @@ import {Trans} from "react-i18next";
 import {Field} from "redux-form/";
 import {reduxForm} from "redux-form";
 import {allowOnlyPositive} from "../components/Common/NormalizeCommon";
+import FormLabel from "@material-ui/core/FormLabel";
 
 const validate = values => {
   const errors = {};
@@ -18,7 +19,7 @@ const validate = values => {
     }
   });
   if (values.how_many_persons_live_together <= 0) {
-    errors.how_many_persons_live_together = 'Introdueixi un valor superior a 0.'
+    errors.how_many_persons_live_together = 'Introdueixi un valor superior a 0'
   }
   return errors
 };
@@ -30,9 +31,9 @@ let HowManyPersonsLiveTogetherPage = props => {
           <form onSubmit={handleSubmit}>
             <Grid container direction='column' justify='center' spacing={24}>
               <Grid item>
-                <label>
+                <FormLabel className="sectionTitle">
                   <Trans>Quantes persones viuen en el seu domicili? (amb vostè inclòs)</Trans>
-                </label>
+                </FormLabel>
               </Grid>
               <Grid item>
                 <Field name="how_many_persons_live_together" placeholder="0" type="number" fullWidth

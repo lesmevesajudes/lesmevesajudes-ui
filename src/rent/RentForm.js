@@ -7,12 +7,13 @@ import type {PersonID} from "../persons/PersonTypes";
 import {Person} from "../persons/PersonTypes";
 import {Map} from "immutable";
 import {Field, formValueSelector, reduxForm} from "redux-form";
-import {Grid, MenuItem, Hidden} from "@material-ui/core";
+import {Grid, Hidden, MenuItem} from "@material-ui/core";
 import {Checkbox, Select, TextField} from "redux-form-material-ui";
 import {Trans} from "react-i18next";
 import DescriptionText from "../components/Common/DescriptionText";
 import {esFill} from "../shared/selectorUtils";
 import {allowOnlyPositive} from "../components/Common/NormalizeCommon";
+import InputAdornment from "@material-ui/core/InputAdornment";
 
 type Props = {
   addRent: Function,
@@ -70,8 +71,9 @@ const RentForm = (props: Props) => {
                 {props.personesQuePodenTenirContracte.valueSeq().map((persona) => (
                   <MenuItem key={persona.id} value={persona.id}>{persona.nom}</MenuItem>
                 ))}
-                <MenuItem key='no-conviu' value='no-conviu'><Trans>Una persona que no viu a
-                  l'habitatge</Trans></MenuItem>
+                <MenuItem key='no-conviu' value='no-conviu'>
+                  <Trans>Una persona que no viu a l'habitatge</Trans>
+                </MenuItem>
               </Field>
             </Grid>}
 
@@ -82,8 +84,9 @@ const RentForm = (props: Props) => {
                 {props.personesQuePodenTenirContracte.valueSeq().map((persona) => (
                   <MenuItem key={persona.id} value={persona.id}>{persona.nom}</MenuItem>
                 ))}
-                <MenuItem key='no-conviu' value='no-conviu'><Trans>Una persona que no viu a
-                  l'habitatge</Trans></MenuItem>
+                <MenuItem key='no-conviu' value='no-conviu'>
+                  <Trans>Una persona que no viu a l'habitatge</Trans>
+                </MenuItem>
               </Field>
             </Grid>}
 
@@ -115,7 +118,11 @@ const RentForm = (props: Props) => {
             <Grid item>
               <label><Trans>Quina és la quota mensual d’aquest lloguer? (&euro;)</Trans></label>
               <Field name='import_del_lloguer' component={TextField} type="number" normalize={allowOnlyPositive}
-                     placeholder='0' fullWidth/>
+                     placeholder='0' fullWidth
+                     InputProps={{
+                       endAdornment: <InputAdornment position="end">€</InputAdornment>,
+                     }}
+              />
             </Grid>}
 
             {existeixHipoteca &&

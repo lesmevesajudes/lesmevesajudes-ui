@@ -11,6 +11,7 @@ import {Button, FormLabel, Grid, Hidden, MenuItem} from "@material-ui/core";
 import DescriptionText from "../components/Common/DescriptionText";
 import {allowOnlyPositive} from '../components/Common/NormalizeCommon'
 import YesNo from '../components/redux-form-material-ui/YesNo';
+import InputAdornment from "@material-ui/core/InputAdornment/InputAdornment";
 
 export type PersonFormInitialValues = Person | { is_the_user_in_front_of_the_computer: boolean };
 
@@ -72,7 +73,7 @@ let PersonForm = (props: Props) => {
             <Field component="input" name="id" type="hidden"/>
             <Field component="input" name="is_the_user_in_front_of_the_computer" type="hidden"/>
             <Grid container direction="row" justify="space-around" alignItems="stretch">
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} sm={5}>
                 <Grid container direction="column" alignItems="stretch" spacing={16}>
                   <label>
                     <Trans>
@@ -170,9 +171,7 @@ let PersonForm = (props: Props) => {
                     <label>
                       <Trans>Porta dos anys o més empadronat a Catalunya?</Trans>
                     </label>
-
                     <Field name="porta_dos_anys_o_mes_empadronat_a_catalunya" checked={false} component={YesNo}/>
-
                   </Fragment>}
 
                   {esFamiliarOUsuari && esDona && tipusDocumentIdentitat === "passaport" && portaDosAnysOMesEmpadronatACatalunya &&
@@ -285,7 +284,11 @@ let PersonForm = (props: Props) => {
                   </label>
                   <Field name="ingressos_bruts" type="number" normalize={allowOnlyPositive} component={TextField}
                          fullWidth
-                         required/>
+                         required
+                         InputProps={{
+                           endAdornment: <InputAdornment position="end">€ </InputAdornment>,
+                         }}
+                  />
 
                   {esFamiliarOUsuari &&
                   <Fragment>
@@ -300,7 +303,11 @@ let PersonForm = (props: Props) => {
                       <Trans>Indiqui la suma dels imports de totes les pensions no contributives que cobri</Trans>
                     </label>
                     <Field name="ingressos_per_pnc" type="number" component={TextField} normalize={allowOnlyPositive}
-                           fullWidth required/>
+                           fullWidth required
+                           InputProps={{
+                             endAdornment: <InputAdornment position="end">€</InputAdornment>,
+                           }}
+                    />
                   </Fragment>}
 
                   {esFamiliarOUsuari && inscritComADemandantDocupacio &&
@@ -326,7 +333,11 @@ let PersonForm = (props: Props) => {
                         <Trans>Grau discapacitat</Trans>
                       </label>
                       <Field name="grau_discapacitat" placeholder="0" type="number" normalize={allowOnlyPositive}
-                             component={TextField} fullWidth/>
+                             component={TextField} fullWidth
+                             InputProps={{
+                               endAdornment: <InputAdornment position="end"> %</InputAdornment>,
+                             }}
+                      />
                     </Fragment>}
 
                     {potTreballar && esDona &&
