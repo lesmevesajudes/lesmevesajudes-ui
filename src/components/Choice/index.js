@@ -3,7 +3,7 @@ import React from 'react';
 import ButtonBase from "@material-ui/core/Button";
 
 type Props = {
-  name: string,
+  value: any,
   children: any,
   className?: ?string,
   onClick?: Function,

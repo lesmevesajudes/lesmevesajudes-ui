@@ -9,10 +9,10 @@ const YesNo = ({input}) => (
         currentState={input.value}
         optionSelected={input.onChange}
       >
-        <Choice name="Si" variant="outlined">
+        <Choice value={true} variant="outlined">
           Si
         </Choice>
-        <Choice name="No" variant="outlined">
+        <Choice value={false} variant="outlined">
           No
         </Choice>
       </MultipleChoice>

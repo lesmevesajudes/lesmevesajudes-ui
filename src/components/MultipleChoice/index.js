@@ -36,7 +36,7 @@ const styles = theme => ({
 
 
 type Props = {
-  currentState: string,
+  currentState: any,
   optionSelected: Function,
   children: ChildrenArray<Element<typeof Choice>>,
   classes: Object
@@ -47,9 +47,9 @@ const MultipleChoice = (props: Props) => {
 
   return React.Children.map(props.children, (child: Element<typeof Choice>) => {
     return cloneElement(child, {
-      className: child.props.name === props.currentState ? classNames(classes.button, classes.selected) : classes.button,
+      className: child.props.value === props.currentState ? classNames(classes.button, classes.selected) : classes.button,
       onClick: () => {
-        props.optionSelected(child.props.name)
+        props.optionSelected(child.props.value)
       }
     });
   })
