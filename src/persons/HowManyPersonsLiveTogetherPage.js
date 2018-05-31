@@ -3,28 +3,28 @@ import React from "react";
 import {TextField} from "redux-form-material-ui";
 import {Button, Grid} from "@material-ui/core";
 import {Trans} from "react-i18next";
-import Field from "redux-form/es/Field";
+import {Field} from "redux-form/";
 import {reduxForm} from "redux-form";
 import {allowOnlyPositive} from "../components/Common/NormalizeCommon";
 
 const validate = values => {
-  const errors = {}
+  const errors = {};
   const requiredFields = [
     'how_many_persons_live_together',
-  ]
+  ];
   requiredFields.forEach(field => {
     if (!values[field]) {
       errors[field] = 'Requerit'
     }
-  })
-  console.log(values)
+  });
+  console.log(values);
   if (
   values.how_many_persons_live_together <= 0
   ) {
     errors.how_many_persons_live_together = 'Introdueixi un valor superior a 0.'
   }
   return errors
-}
+};
 let HowManyPersonsLiveTogetherPage = props => {
   const {handleSubmit} = props;
   return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import MultipleChoice from '../MultipleChoice';
 import {Choice} from "../Choice";
-import {Grid} from "@material-ui/core/es/index";
+import {Grid} from "@material-ui/core";
 
 const YesNo = ({input}) => (
     <Grid container direction="row">
