@@ -9,12 +9,15 @@ import {Field, formValueSelector, reduxForm} from "redux-form";
 import {connect} from "react-redux";
 import {Button, FormLabel, Grid, Hidden, MenuItem} from "@material-ui/core";
 import DescriptionText from "../components/Common/DescriptionText";
-import {allowOnlyPositive} from '../components/Common/NormalizeCommon'
-import YesNo from '../components/redux-form-material-ui/YesNo';
-import InputAdornment from "@material-ui/core/InputAdornment/InputAdornment";
 import {RelacioFamiliar} from "./components/RelacioFamiliar";
 import {SituacioLaboral} from "./components/SituacioLaboral";
 import {TipusDocumentIdentitat} from "./components/TipusDocumentIdentitat";
+import {Question} from "./components/Question";
+import {YesNoQuestion} from "./components/YesNoQuestion";
+import {MoneyQuestion} from "./components/MoneyQuestion";
+import {PercentageQuestion} from "./components/PercentageQuestion";
+import {TimePeriodQuestion} from "./components/TimePeriodQuestion";
+import {MunicipiEmpadronament} from "./components/MunicipiEmpadronament";
 
 export type PersonFormInitialValues = Person | { is_the_user_in_front_of_the_computer: boolean };
 
@@ -80,22 +83,20 @@ let PersonForm = (props: Props) => {
             <Grid container direction="row" justify="space-around" alignItems="stretch">
               <Grid item xs={12} sm={5}>
                 <Grid container direction="column" alignItems="stretch" spacing={16}>
-                  <label>
+                  <Question name="nom" placeholder="Nom" component={TextField} required autoFocus>
                     <Trans>
                       {isTheUserInFrontOfTheComputer ? "Identifiqui's amb un nom" : "Identifiqui'l amb un nom"}
                     </Trans>
-                  </label>
-                  <Field name="nom" placeholder="Nom" component={TextField} fullWidth required autoFocus/>
+                  </Question>
 
                   {!isTheUserInFrontOfTheComputer && <RelacioFamiliar/>}
 
                   {esFamiliarOUsuari &&
                   <Fragment>
-                    <label>
+                    <TimePeriodQuestion name="edat" required>
                       <Trans>Quina és la seva edat?</Trans>
-                    </label>
-                    <Field name="edat" type="number" normalize={allowOnlyPositive} component={TextField} fullWidth
-                           required/>
+                    </TimePeriodQuestion>
+
                     <label>
                       <Trans>Sexe</Trans>
                     </label>
@@ -107,186 +108,113 @@ let PersonForm = (props: Props) => {
                         <Trans>Home</Trans>
                       </MenuItem>
                     </Field>
+
                     <FormLabel className="sectionTitle">Informació sobre el padró</FormLabel>
+
                     <TipusDocumentIdentitat/>
 
-                    <label>
+                    <YesNoQuestion name="porta_dos_anys_o_mes_empadronat_a_catalunya">
                       <Trans>Porta dos anys o més empadronat a Catalunya?</Trans>
-                    </label>
-                    <Field name="porta_dos_anys_o_mes_empadronat_a_catalunya" component={YesNo}/>
+                    </YesNoQuestion>
                   </Fragment>}
 
                   {esFamiliarOUsuari && esDona && tipusDocumentIdentitat === "passaport" && portaDosAnysOMesEmpadronatACatalunya &&
-                  <Fragment>
-                    <label>
-                      <Trans>És membre d'una família reagrupada?</Trans>
-                    </label>
-                    <Field name="membre_de_familia_reagrupada" component={YesNo}/>
-                  </Fragment>}
+                  <YesNoQuestion name="membre_de_familia_reagrupada">
+                    <Trans>És membre d'una família reagrupada?</Trans>
+                  </YesNoQuestion>}
 
                   {esFamiliarOUsuari && membreDeFamiliaReagrupada &&
-                  <Fragment>
-                    <label>
-                      <Trans>És una persona divorciada?</Trans>
-                    </label>
-                    <Field name="es_una_persona_divorciada" component={YesNo}/>
-                  </Fragment>}
+                  <YesNoQuestion name="es_una_persona_divorciada">
+                    <Trans>És una persona divorciada?</Trans>
+                  </YesNoQuestion>}
 
-                  {esFamiliarOUsuari &&
-                  <Fragment>
-                    <label>
-                      En quin municipi està empadronat actualment?
-                    </label>
-                    <Field data-test="municipi_empadronament" name="municipi_empadronament" component={Select}
-                           fullWidth>
-                      <MenuItem data-test="barcelona" value="barcelona">
-                        <Trans>Barcelona</Trans>
-                      </MenuItem>
-                      <MenuItem data-test="altres" value="altres">
-                        <Trans>Altres</Trans>
-                      </MenuItem>
-                    </Field>
-                  </Fragment>}
+                  {esFamiliarOUsuari && <MunicipiEmpadronament/>}
 
                   {municipiEmpadronament === "barcelona" &&
-                  <Fragment>
-                    <label>
-                      Quants anys porta empadronat a Barcelona?
-                    </label>
-                    <Field name="anys_empadronat_a_barcelona" type="number" placeholder="0" component={TextField}
-                           normalize={allowOnlyPositive} fullWidth required/>
-                  </Fragment>}
+                  <TimePeriodQuestion name="anys_empadronat_a_barcelona" required>
+                    <Trans>Quants anys porta empadronat a Barcelona?</Trans>
+                  </TimePeriodQuestion>}
 
                   {esFamiliarOUsuari && potTreballar &&
                   <Fragment>
                     <FormLabel className="sectionTitle"><Trans>Situació laboral</Trans></FormLabel>
+
                     <SituacioLaboral/>
 
                     {esFamiliarOUsuari && esDesocupat &&
                     <Fragment>
-                      <label>
+                      <YesNoQuestion name="inscrit_com_a_demandant_docupacio">
                         <Trans>Està inscrit com a demandant d’ocupació?</Trans>
-                      </label>
-                      <Field name="inscrit_com_a_demandant_docupacio" component={YesNo}/>
+                      </YesNoQuestion>
 
-                      <label>
+                      <YesNoQuestion name="en_els_ultims_12_mesos_ha_fet_baixa_voluntaria_de_la_feina">
                         <Trans>Ha deixat la feina de forma voluntària en els darrers 12 mesos?</Trans>
-                      </label>
-                      <Field name="en_els_ultims_12_mesos_ha_fet_baixa_voluntaria_de_la_feina" checked={false}
-                             component={YesNo}/>
+                      </YesNoQuestion>
                     </Fragment>}
 
                     {esFamiliarOUsuari && (esDesocupat || treballaPerCompteDAltriParcial) &&
-                    <Fragment>
-                      <label>
-                        <Trans>Ha treballat a l’estranger un mínim de 6 mesos?</Trans>
-                      </label>
-                      <Field name="ha_treballat_a_l_estranger_6_mesos" component={YesNo}/>
-                    </Fragment>}
+                    <YesNoQuestion name="ha_treballat_a_l_estranger_6_mesos">
+                      <Trans>Ha treballat a l’estranger un mínim de 6 mesos?</Trans>
+                    </YesNoQuestion>}
 
                     {haTreballatALEstranger6Mesos &&
-                    <Fragment>
-                      <label>
-                        <Trans>Ha retornat d’aquest període de treball en els últims 12 mesos?</Trans>
-                      </label>
-                      <Field name="ha_treballat_a_l_estranger_6_mesos_i_ha_retornat_en_els_ultims_12_mesos"
-                             component={YesNo}/>
-                    </Fragment>}
+                    <YesNoQuestion name="ha_treballat_a_l_estranger_6_mesos_i_ha_retornat_en_els_ultims_12_mesos">
+                      <Trans>Ha retornat d’aquest període de treball en els últims 12 mesos?</Trans>
+                    </YesNoQuestion>}
                   </Fragment>}
 
-                  <FormLabel className="sectionTitle">
-                    Ingressos
-                  </FormLabel>
-                  <label>
+                  <FormLabel className="sectionTitle">Ingressos</FormLabel>
+                  <MoneyQuestion name="ingressos_bruts" required>
                     <Trans>Indiqui els seus ingressos bruts anuals de l’any passat?</Trans>
-                  </label>
-                  <Field name="ingressos_bruts" type="number" normalize={allowOnlyPositive} component={TextField}
-                         fullWidth
-                         required
-                         InputProps={{
-                           endAdornment: <InputAdornment position="end">€ </InputAdornment>,
-                         }}
-                  />
+                  </MoneyQuestion>
 
                   {esFamiliarOUsuari &&
-                  <Fragment>
-                    <label>
-                      <Trans>Cobra algun tipus de pensió no contributiva?</Trans>
-                    </label>
-                    <Field name="cobra_algun_tipus_de_pensio_no_contributiva" component={YesNo}/>
-                  </Fragment>}
+                  <YesNoQuestion name="cobra_algun_tipus_de_pensio_no_contributiva">
+                    <Trans>Cobra algun tipus de pensió no contributiva?</Trans>
+                  </YesNoQuestion>}
+
                   {esFamiliarOUsuari && cobraAlgunTipusDePensioNoContributiva &&
                   <Fragment>
-                    <label>
+                    <MoneyQuestion name="ingressos_per_pnc">
                       <Trans>Indiqui la suma dels imports de totes les pensions no contributives que cobri</Trans>
-                    </label>
-                    <Field name="ingressos_per_pnc" type="number" component={TextField} normalize={allowOnlyPositive}
-                           fullWidth required
-                           InputProps={{
-                             endAdornment: <InputAdornment position="end">€</InputAdornment>,
-                           }}
-                    />
+                    </MoneyQuestion>
                   </Fragment>}
 
                   {esFamiliarOUsuari && inscritComADemandantDocupacio &&
-                  <Fragment>
-                    <label>
-                      <Trans>Gaudeix actualment d’una prestació contributiva o subsidi per desocupació?</Trans>
-                    </label>
-                    <Field name="gaudeix_de_prestacio_contributiva_o_subsidi_desocupacio" checked={false}
-                           component={YesNo}/>
-                  </Fragment>}
+                  <YesNoQuestion name="gaudeix_de_prestacio_contributiva_o_subsidi_desocupacio">
+                    <Trans>Gaudeix actualment d’una prestació contributiva o subsidi per desocupació?</Trans>
+                  </YesNoQuestion>}
 
                   {esFamiliarOUsuari &&
                   <Fragment>
                     <FormLabel className="sectionTitle">Situació personal</FormLabel>
-                    <label>
+                    <YesNoQuestion name="te_algun_grau_de_discapacitat_reconegut">
                       <Trans>Té vostè algun grau de discapacitat reconegut?</Trans>
-                    </label>
-                    <Field name="te_algun_grau_de_discapacitat_reconegut" component={YesNo}/>
+                    </YesNoQuestion>
 
                     {teAlgunGrauDeDiscapacitatReconegut &&
-                    <Fragment>
-                      <label>
-                        <Trans>Grau discapacitat</Trans>
-                      </label>
-                      <Field name="grau_discapacitat" placeholder="0" type="number" normalize={allowOnlyPositive}
-                             component={TextField} fullWidth
-                             InputProps={{
-                               endAdornment: <InputAdornment position="end"> %</InputAdornment>,
-                             }}
-                      />
-                    </Fragment>}
+                    <PercentageQuestion name="grau_discapacitat">
+                      <Trans>Grau discapacitat</Trans>
+                    </PercentageQuestion>}
 
                     {potTreballar && esDona &&
-                    <Fragment>
-                      <label>
-                        <Trans>Víctima violència de gènere</Trans>
-                      </label>
-                      <Field name="victima_violencia_de_genere" component={YesNo}/>
-                    </Fragment>}
+                    <YesNoQuestion name="victima_violencia_de_genere">
+                      <Trans>Víctima violència de gènere</Trans>
+                    </YesNoQuestion>}
 
                     {victimaViolenciaDeGenere &&
-                    <Fragment>
-                      <label>
-                        <Trans>Perceb alguna ajuda que no li permeti treballar?</Trans>
-                      </label>
-                      <Field name="percep_prestacions_incompatibles_amb_la_feina" checked={false}
-                             component={YesNo}/>
-                    </Fragment>}
+                    <YesNoQuestion name="percep_prestacions_incompatibles_amb_la_feina">
+                      <Trans>Perceb alguna ajuda que no li permeti treballar?</Trans>
+                    </YesNoQuestion>}
 
-                    <label>
+                    <YesNoQuestion name="victima_violencia_domestica">
                       <Trans>Víctima violència domèstica</Trans>
-                    </label>
-                    <Field name="victima_violencia_domestica" component={YesNo}/>
+                    </YesNoQuestion>
 
                     {(edat > 18 && edat < 23) && !(esFill || esFillastre) &&
-                    <Fragment>
-                      <label>
-                        <Trans>És orfe dels dos progenitors</Trans>
-                      </label>
-                      <Field name="es_orfe_dels_dos_progenitors" component={YesNo}/>
-                    </Fragment>}
+                    <YesNoQuestion name="es_orfe_dels_dos_progenitors">
+                      <Trans>És orfe dels dos progenitors</Trans>
+                    </YesNoQuestion>}
                   </Fragment>}
                   <br/>
                 </Grid>
