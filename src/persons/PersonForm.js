@@ -2,7 +2,7 @@
 import React, {Fragment} from "react";
 import type {PersonRole} from "./PersonTypes";
 import {Person} from "./PersonTypes";
-import {Checkbox, Select, TextField} from "redux-form-material-ui";
+import {Select, TextField} from "redux-form-material-ui";
 import ClearIcon from "@material-ui/icons/Clear";
 import {Trans} from "react-i18next";
 import {Field, formValueSelector, reduxForm} from "redux-form";
@@ -10,6 +10,7 @@ import {connect} from "react-redux";
 import {Button, FormLabel, Grid, Hidden, MenuItem} from "@material-ui/core";
 import DescriptionText from "../components/Common/DescriptionText";
 import {allowOnlyPositive} from '../components/Common/NormalizeCommon'
+import YesNo from '../components/redux-form-material-ui/YesNo';
 
 export type PersonFormInitialValues = Person | { is_the_user_in_front_of_the_computer: boolean };
 
@@ -63,16 +64,16 @@ let PersonForm = (props: Props) => {
   return (
       <Grid container className="bg-container">
         <Grid item xs={12}>
-                {isTheUserInFrontOfTheComputer ? <h1>Informació sobre vosté</h1> :
+          {isTheUserInFrontOfTheComputer ? <h1>Informació sobre vosté</h1> :
               <h1>Dades sobre una persona que conviu amb vosté</h1>}
         </Grid>
-        <Grid item xs={12}>
+        <Grid container direction="column">
           <form onSubmit={handleSubmit}>
             <Field component="input" name="id" type="hidden"/>
             <Field component="input" name="is_the_user_in_front_of_the_computer" type="hidden"/>
             <Grid container direction="row" justify="space-around" alignItems="stretch">
               <Grid item xs={12} sm={6}>
-                <Grid container direction="column" alignItems="stretch">
+                <Grid container direction="column" alignItems="stretch" spacing={16}>
                   <label>
                     <Trans>
                       {isTheUserInFrontOfTheComputer ? "Identifiqui's amb un nom" : "Identifiqui'l amb un nom"}
@@ -167,29 +168,36 @@ let PersonForm = (props: Props) => {
                       </MenuItem>
                     </Field>
                     <label>
-                      Porta dos anys o més empadronat a Catalunya?
-                      <Field name="porta_dos_anys_o_mes_empadronat_a_catalunya" checked={false} component={Checkbox}/>
+                      <Trans>Porta dos anys o més empadronat a Catalunya?</Trans>
                     </label>
+
+                    <Field name="porta_dos_anys_o_mes_empadronat_a_catalunya" checked={false} component={YesNo}/>
+
                   </Fragment>}
 
                   {esFamiliarOUsuari && esDona && tipusDocumentIdentitat === "passaport" && portaDosAnysOMesEmpadronatACatalunya &&
-                  <label>
-                    És membre d'una família reagrupada?
-                    <Field name="membre_de_familia_reagrupada" checked={false} component={Checkbox}/>
-                  </label>}
+                  <Fragment>
+                    <label>
+                      <Trans>És membre d'una família reagrupada?</Trans>
+                    </label>
+                    <Field name="membre_de_familia_reagrupada" checked={false} component={YesNo}/>
+                  </Fragment>}
 
                   {esFamiliarOUsuari && membreDeFamiliaReagrupada &&
-                  <label>
-                    És una persona divorciada?
-                    <Field name="es_una_persona_divorciada" checked={false} component={Checkbox}/>
-                  </label>}
+                  <Fragment>
+                    <label>
+                      <Trans>És una persona divorciada?</Trans>
+                    </label>
+                    <Field name="es_una_persona_divorciada" checked={false} component={YesNo}/>
+                  </Fragment>}
 
                   {esFamiliarOUsuari &&
                   <Fragment>
                     <label>
                       En quin municipi està empadronat actualment?
                     </label>
-                    <Field data-test="municipi_empadronament" name="municipi_empadronament" component={Select} fullWidth>
+                    <Field data-test="municipi_empadronament" name="municipi_empadronament" component={Select}
+                           fullWidth>
                       <MenuItem data-test="barcelona" value="barcelona">
                         <Trans>Barcelona</Trans>
                       </MenuItem>
@@ -210,10 +218,9 @@ let PersonForm = (props: Props) => {
 
                   {esFamiliarOUsuari && potTreballar &&
                   <Fragment>
-                    <FormLabel className="sectionTitle">Situació
-                      laboral</FormLabel>
+                    <FormLabel className="sectionTitle"><Trans>Situació laboral</Trans></FormLabel>
                     <label>
-                      Indiqui la seva situació laboral:
+                      <Trans>Indiqui la seva situació laboral:</Trans>
                     </label>
                     <Field data-test="situacio_laboral" name="situacio_laboral" component={Select} fullWidth>
                       <MenuItem data-test="treball_compte_daltri_jornada_complerta"
@@ -241,30 +248,33 @@ let PersonForm = (props: Props) => {
                     {esFamiliarOUsuari && esDesocupat &&
                     <Fragment>
                       <label>
-                        Està inscrit com a demandant d’ocupació?
-                        <Field name="inscrit_com_a_demandant_docupacio" checked={false} component={Checkbox}/>
+                        <Trans>Està inscrit com a demandant d’ocupació?</Trans>
                       </label>
+                      <Field name="inscrit_com_a_demandant_docupacio" checked={false} component={YesNo}/>
+
                       <label>
-                        Ha deixat la feina de forma voluntària en els darrers 12 mesos?
-                        <Field name="en_els_ultims_12_mesos_ha_fet_baixa_voluntaria_de_la_feina" checked={false}
-                               component={Checkbox}/>
+                        <Trans>Ha deixat la feina de forma voluntària en els darrers 12 mesos?</Trans>
                       </label>
+                      <Field name="en_els_ultims_12_mesos_ha_fet_baixa_voluntaria_de_la_feina" checked={false}
+                             component={YesNo}/>
                     </Fragment>}
 
                     {esFamiliarOUsuari && (esDesocupat || treballaPerCompteDAltriParcial) &&
                     <Fragment>
                       <label>
-                        Ha treballat a l’estranger un mínim de 6 mesos?
-                        <Field name="ha_treballat_a_l_estranger_6_mesos" checked={false} component={Checkbox}/>
+                        <Trans>Ha treballat a l’estranger un mínim de 6 mesos?</Trans>
                       </label>
-                      {haTreballatALEstranger6Mesos &&
-                      <label>
-                        Ha retornat d’aquest període de treball en els últims 12 mesos?
-                        <Field name="ha_treballat_a_l_estranger_6_mesos_i_ha_retornat_en_els_ultims_12_mesos"
-                               checked={false} component={Checkbox}/>
-                      </label>}
+                      <Field name="ha_treballat_a_l_estranger_6_mesos" checked={false} component={YesNo}/>
                     </Fragment>}
 
+                    {haTreballatALEstranger6Mesos &&
+                    <Fragment>
+                      <label>
+                        <Trans>Ha retornat d’aquest període de treball en els últims 12 mesos?</Trans>
+                      </label>
+                      <Field name="ha_treballat_a_l_estranger_6_mesos_i_ha_retornat_en_els_ultims_12_mesos"
+                             checked={false} component={YesNo}/>
+                    </Fragment>}
                   </Fragment>}
 
                   <FormLabel className="sectionTitle">
@@ -278,10 +288,12 @@ let PersonForm = (props: Props) => {
                          required/>
 
                   {esFamiliarOUsuari &&
-                  <label>
-                    Cobra algun tipus de pensió no contributiva?
-                    <Field name="cobra_algun_tipus_de_pensio_no_contributiva" checked={false} component={Checkbox}/>
-                  </label>}
+                  <Fragment>
+                    <label>
+                      <Trans>Cobra algun tipus de pensió no contributiva?</Trans>
+                    </label>
+                    <Field name="cobra_algun_tipus_de_pensio_no_contributiva" checked={false} component={YesNo}/>
+                  </Fragment>}
                   {esFamiliarOUsuari && cobraAlgunTipusDePensioNoContributiva &&
                   <Fragment>
                     <label>
@@ -292,52 +304,62 @@ let PersonForm = (props: Props) => {
                   </Fragment>}
 
                   {esFamiliarOUsuari && inscritComADemandantDocupacio &&
-                  <label>
-                    Gaudeix actualment d’una prestació contributiva o subsidi per desocupació?
+                  <Fragment>
+                    <label>
+                      <Trans>Gaudeix actualment d’una prestació contributiva o subsidi per desocupació?</Trans>
+                    </label>
                     <Field name="gaudeix_de_prestacio_contributiva_o_subsidi_desocupacio" checked={false}
-                           component={Checkbox}/>
-                  </label>}
+                           component={YesNo}/>
+                  </Fragment>}
 
                   {esFamiliarOUsuari &&
                   <Fragment>
                     <FormLabel className="sectionTitle">Situació personal</FormLabel>
                     <label>
-                      Té vostè algun grau de discapacitat reconegut?
-                      <Field name="te_algun_grau_de_discapacitat_reconegut" checked={false} component={Checkbox}/>
+                      <Trans>Té vostè algun grau de discapacitat reconegut?</Trans>
                     </label>
+                    <Field name="te_algun_grau_de_discapacitat_reconegut" checked={false} component={YesNo}/>
+
                     {teAlgunGrauDeDiscapacitatReconegut &&
                     <Fragment>
                       <label>
                         <Trans>Grau discapacitat</Trans>
                       </label>
                       <Field name="grau_discapacitat" placeholder="0" type="number" normalize={allowOnlyPositive}
-                             component={TextField}/>
+                             component={TextField} fullWidth/>
                     </Fragment>}
 
                     {potTreballar &&
-                    <label>
-                      <Field name="victima_violencia_de_genere" checked={false} component={Checkbox}/>
-                      <Trans>Víctima violència de gènere</Trans>
-                    </label>}
+                    <Fragment>
+                      <label>
+                        <Trans>Víctima violència de gènere</Trans>
+                      </label>
+                      <Field name="victima_violencia_de_genere" checked={false} component={YesNo}/>
+                    </Fragment>}
 
                     {esDona && victimaViolenciaDeGenere &&
-                    <label>
+                    <Fragment>
+                      <label>
+                        <Trans>Perceb alguna ajuda que no li permeti treballar?</Trans>
+                      </label>
                       <Field name="percep_prestacions_incompatibles_amb_la_feina" checked={false}
-                             component={Checkbox}/>
-                      <Trans>Perceb alguna ajuda que no li permeti treballar?</Trans>
-                    </label>}
+                             component={YesNo}/>
+                    </Fragment>}
 
                     <label>
-                      <Field name="victima_violencia_domestica" checked={false} component={Checkbox}/>
                       <Trans>Víctima violència domèstica</Trans>
                     </label>
+                    <Field name="victima_violencia_domestica" checked={false} component={YesNo}/>
 
                     {(edat > 18 && edat < 23) && !(esFill || esFillastre) &&
-                    <label>
-                      <Field name="es_orfe_dels_dos_progenitors" checked={false} component={Checkbox}/>
-                      <Trans>És orfe dels dos progenitors</Trans>
-                    </label>}
+                    <Fragment>
+                      <label>
+                        <Trans>És orfe dels dos progenitors</Trans>
+                      </label>
+                      <Field name="es_orfe_dels_dos_progenitors" checked={false} component={YesNo}/>
+                    </Fragment>}
                   </Fragment>}
+                  <br/>
                 </Grid>
               </Grid>
               <Hidden smDown>
@@ -348,7 +370,7 @@ let PersonForm = (props: Props) => {
             </Grid>
 
             <Grid item sm={12}>
-              <Grid container justify={"space-around"}>
+              <Grid container justify="space-around">
                 <Button variant="raised" color="secondary" onClick={props.onCancel}>
                   <Trans>Cancelar</Trans> <ClearIcon/>
                 </Button>
@@ -371,25 +393,25 @@ PersonForm = reduxForm({
 const selector = formValueSelector("PersonForm");
 
 PersonForm = connect(state => {
-  const cobraAlgunTipusDePensioNoContributiva = selector(state, "cobra_algun_tipus_de_pensio_no_contributiva");
+  const cobraAlgunTipusDePensioNoContributiva = selector(state, "cobra_algun_tipus_de_pensio_no_contributiva") === 'Si';
   const edat = selector(state, "edat");
   const esDesocupat = selector(state, "situacio_laboral") === "desocupat";
   const esDona = selector(state, "genere") === "dona";
   const esFamiliarOUsuari = (typeof selector(state, "relacio_parentiu") !== "undefined" && selector(state, "relacio_parentiu") !== "cap") || selector(state, "is_the_user_in_front_of_the_computer") === true;
   const esFill = selector(state, "relacio_parentiu") === "fill";
   const esFillastre = selector(state, "relacio_parentiu") === "fillastre";
-  const haTreballatALEstranger6Mesos = selector(state, "ha_treballat_a_l_estranger_6_mesos");
-  const inscritComADemandantDocupacio = selector(state, "inscrit_com_a_demandant_docupacio");
+  const haTreballatALEstranger6Mesos = selector(state, "ha_treballat_a_l_estranger_6_mesos") === 'Si';
+  const inscritComADemandantDocupacio = selector(state, "inscrit_com_a_demandant_docupacio") === 'Si';
   const isTheUserInFrontOfTheComputer = selector(state, "is_the_user_in_front_of_the_computer");
-  const membreDeFamiliaReagrupada = selector(state, "membre_de_familia_reagrupada");
+  const membreDeFamiliaReagrupada = selector(state, "membre_de_familia_reagrupada") === 'Si';
   const municipiEmpadronament = selector(state, "municipi_empadronament");
   const potTreballar = selector(state, "edat") >= 16;
-  const portaDosAnysOMesEmpadronatACatalunya = selector(state, "porta_dos_anys_o_mes_empadronat_a_catalunya");
+  const portaDosAnysOMesEmpadronatACatalunya = selector(state, "porta_dos_anys_o_mes_empadronat_a_catalunya") === 'Si';
   const rol = selector(state, "rol");
-  const teAlgunGrauDeDiscapacitatReconegut = selector(state, "te_algun_grau_de_discapacitat_reconegut");
+  const teAlgunGrauDeDiscapacitatReconegut = selector(state, "te_algun_grau_de_discapacitat_reconegut") === 'Si';
   const tipusDocumentIdentitat = selector(state, "document_identitat");
   const treballaPerCompteDAltriParcial = selector(state, "situacio_laboral") === "treball_compte_daltri_jornada_parcial";
-  const victimaViolenciaDeGenere = selector(state, "victima_violencia_de_genere");
+  const victimaViolenciaDeGenere = selector(state, "victima_violencia_de_genere") === 'Si';
   return {
     cobraAlgunTipusDePensioNoContributiva,
     edat,
