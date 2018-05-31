@@ -329,7 +329,7 @@ let PersonForm = (props: Props) => {
                              component={TextField} fullWidth/>
                     </Fragment>}
 
-                    {potTreballar &&
+                    {potTreballar && esDona &&
                     <Fragment>
                       <label>
                         <Trans>Víctima violència de gènere</Trans>
@@ -337,7 +337,7 @@ let PersonForm = (props: Props) => {
                       <Field name="victima_violencia_de_genere" checked={false} component={YesNo}/>
                     </Fragment>}
 
-                    {esDona && victimaViolenciaDeGenere &&
+                    {victimaViolenciaDeGenere &&
                     <Fragment>
                       <label>
                         <Trans>Perceb alguna ajuda que no li permeti treballar?</Trans>
