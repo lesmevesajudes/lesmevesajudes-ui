@@ -113,7 +113,7 @@ let PersonForm = (props: Props) => {
                     <label>
                       <Trans>Porta dos anys o més empadronat a Catalunya?</Trans>
                     </label>
-                    <Field name="porta_dos_anys_o_mes_empadronat_a_catalunya" checked={false} component={YesNo}/>
+                    <Field name="porta_dos_anys_o_mes_empadronat_a_catalunya" component={YesNo}/>
                   </Fragment>}
 
                   {esFamiliarOUsuari && esDona && tipusDocumentIdentitat === "passaport" && portaDosAnysOMesEmpadronatACatalunya &&
@@ -121,7 +121,7 @@ let PersonForm = (props: Props) => {
                     <label>
                       <Trans>És membre d'una família reagrupada?</Trans>
                     </label>
-                    <Field name="membre_de_familia_reagrupada" checked={false} component={YesNo}/>
+                    <Field name="membre_de_familia_reagrupada" component={YesNo}/>
                   </Fragment>}
 
                   {esFamiliarOUsuari && membreDeFamiliaReagrupada &&
@@ -129,7 +129,7 @@ let PersonForm = (props: Props) => {
                     <label>
                       <Trans>És una persona divorciada?</Trans>
                     </label>
-                    <Field name="es_una_persona_divorciada" checked={false} component={YesNo}/>
+                    <Field name="es_una_persona_divorciada" component={YesNo}/>
                   </Fragment>}
 
                   {esFamiliarOUsuari &&
@@ -167,7 +167,7 @@ let PersonForm = (props: Props) => {
                       <label>
                         <Trans>Està inscrit com a demandant d’ocupació?</Trans>
                       </label>
-                      <Field name="inscrit_com_a_demandant_docupacio" checked={false} component={YesNo}/>
+                      <Field name="inscrit_com_a_demandant_docupacio" component={YesNo}/>
 
                       <label>
                         <Trans>Ha deixat la feina de forma voluntària en els darrers 12 mesos?</Trans>
@@ -181,7 +181,7 @@ let PersonForm = (props: Props) => {
                       <label>
                         <Trans>Ha treballat a l’estranger un mínim de 6 mesos?</Trans>
                       </label>
-                      <Field name="ha_treballat_a_l_estranger_6_mesos" checked={false} component={YesNo}/>
+                      <Field name="ha_treballat_a_l_estranger_6_mesos" component={YesNo}/>
                     </Fragment>}
 
                     {haTreballatALEstranger6Mesos &&
@@ -190,7 +190,7 @@ let PersonForm = (props: Props) => {
                         <Trans>Ha retornat d’aquest període de treball en els últims 12 mesos?</Trans>
                       </label>
                       <Field name="ha_treballat_a_l_estranger_6_mesos_i_ha_retornat_en_els_ultims_12_mesos"
-                             checked={false} component={YesNo}/>
+                             component={YesNo}/>
                     </Fragment>}
                   </Fragment>}
 
@@ -213,7 +213,7 @@ let PersonForm = (props: Props) => {
                     <label>
                       <Trans>Cobra algun tipus de pensió no contributiva?</Trans>
                     </label>
-                    <Field name="cobra_algun_tipus_de_pensio_no_contributiva" checked={false} component={YesNo}/>
+                    <Field name="cobra_algun_tipus_de_pensio_no_contributiva" component={YesNo}/>
                   </Fragment>}
                   {esFamiliarOUsuari && cobraAlgunTipusDePensioNoContributiva &&
                   <Fragment>
@@ -243,7 +243,7 @@ let PersonForm = (props: Props) => {
                     <label>
                       <Trans>Té vostè algun grau de discapacitat reconegut?</Trans>
                     </label>
-                    <Field name="te_algun_grau_de_discapacitat_reconegut" checked={false} component={YesNo}/>
+                    <Field name="te_algun_grau_de_discapacitat_reconegut" component={YesNo}/>
 
                     {teAlgunGrauDeDiscapacitatReconegut &&
                     <Fragment>
@@ -263,7 +263,7 @@ let PersonForm = (props: Props) => {
                       <label>
                         <Trans>Víctima violència de gènere</Trans>
                       </label>
-                      <Field name="victima_violencia_de_genere" checked={false} component={YesNo}/>
+                      <Field name="victima_violencia_de_genere" component={YesNo}/>
                     </Fragment>}
 
                     {victimaViolenciaDeGenere &&
@@ -278,14 +278,14 @@ let PersonForm = (props: Props) => {
                     <label>
                       <Trans>Víctima violència domèstica</Trans>
                     </label>
-                    <Field name="victima_violencia_domestica" checked={false} component={YesNo}/>
+                    <Field name="victima_violencia_domestica" component={YesNo}/>
 
                     {(edat > 18 && edat < 23) && !(esFill || esFillastre) &&
                     <Fragment>
                       <label>
                         <Trans>És orfe dels dos progenitors</Trans>
                       </label>
-                      <Field name="es_orfe_dels_dos_progenitors" checked={false} component={YesNo}/>
+                      <Field name="es_orfe_dels_dos_progenitors" component={YesNo}/>
                     </Fragment>}
                   </Fragment>}
                   <br/>
