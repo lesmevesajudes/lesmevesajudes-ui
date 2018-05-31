@@ -12,6 +12,9 @@ import DescriptionText from "../components/Common/DescriptionText";
 import {allowOnlyPositive} from '../components/Common/NormalizeCommon'
 import YesNo from '../components/redux-form-material-ui/YesNo';
 import InputAdornment from "@material-ui/core/InputAdornment/InputAdornment";
+import {RelacioFamiliar} from "./components/RelacioFamiliar";
+import {SituacioLaboral} from "./components/SituacioLaboral";
+import {TipusDocumentIdentitat} from "./components/TipusDocumentIdentitat";
 
 export type PersonFormInitialValues = Person | { is_the_user_in_front_of_the_computer: boolean };
 
@@ -84,54 +87,7 @@ let PersonForm = (props: Props) => {
                   </label>
                   <Field name="nom" placeholder="Nom" component={TextField} fullWidth required autoFocus/>
 
-                  {!isTheUserInFrontOfTheComputer &&
-                  <Fragment>
-                    <label>
-                      <Trans>Aquesta persona és el/la seu/va?</Trans>
-                    </label>
-                    <Field data-test="relacio_parentiu" name="relacio_parentiu" component={Select} fullWidth>
-                      <MenuItem data-test="parella" value="parella">
-                        <Trans>Cònjuge / parella</Trans>
-                      </MenuItem>
-                      <MenuItem data-test="fill" value="fill">
-                        <Trans>Fill/a</Trans>
-                      </MenuItem>
-                      <MenuItem data-test="fillastre" value="fillastre">
-                        <Trans>Fillastre/a (o fill/a de la parella actual)</Trans>
-                      </MenuItem>
-                      <MenuItem data-test="net" value="net">
-                        <Trans>Nét/a</Trans>
-                      </MenuItem>
-                      <MenuItem data-test="infant_acollit" value="infant_acollit">
-                        <Trans>Infant en acolliment</Trans>
-                      </MenuItem>
-                      <MenuItem data-test="pare" value="pare">
-                        <Trans>Pare o mare</Trans>
-                      </MenuItem>
-                      <MenuItem data-test="avi" value="avi">
-                        <Trans>Avi / Àvia</Trans>
-                      </MenuItem>
-                      <MenuItem data-test="sogre" value="sogre">
-                        <Trans>Sogre/a</Trans>
-                      </MenuItem>
-                      <MenuItem data-test="germa" value="germa">
-                        <Trans>Germà/germana</Trans>
-                      </MenuItem>
-                      <MenuItem data-test="cunyat" value="cunyat">
-                        <Trans>Cunyat/da</Trans>
-                      </MenuItem>
-                      <MenuItem data-test="gendre" value="gendre">
-                        <Trans>Gendre/Nora/Parella del meu fill/a</Trans>
-                      </MenuItem>
-                      <MenuItem data-test="altres" value="altres">
-                        <Trans>Altres familiars</Trans>
-                      </MenuItem>
-                      <MenuItem data-test="cap" value="cap">
-                        <Trans>Sense relació de parentiu</Trans>
-                      </MenuItem>
-                    </Field>
-                  </Fragment>
-                  }
+                  {!isTheUserInFrontOfTheComputer && <RelacioFamiliar/>}
 
                   {esFamiliarOUsuari &&
                   <Fragment>
@@ -152,24 +108,8 @@ let PersonForm = (props: Props) => {
                       </MenuItem>
                     </Field>
                     <FormLabel className="sectionTitle">Informació sobre el padró</FormLabel>
-                    <label>
-                      <Trans>Tipus de document de identitat</Trans>
-                    </label>
-                    <Field data-test="tipus_document_identitat" name="tipus_document_identitat" component={Select}
-                           fullWidth>
-                      <MenuItem data-test="di_dni" value="DNI">
-                        <Trans>DNI</Trans>
-                      </MenuItem>
-                      <MenuItem data-test="di_nie" value="NIE">
-                        <Trans>NIE</Trans>
-                      </MenuItem>
-                      <MenuItem data-test="di_pass" value="passaport">
-                        <Trans>Passaport</Trans>
-                      </MenuItem>
-                      <MenuItem data-test="di_altres" value="altres">
-                        <Trans>Altres</Trans>
-                      </MenuItem>
-                    </Field>
+                    <TipusDocumentIdentitat/>
+
                     <label>
                       <Trans>Porta dos anys o més empadronat a Catalunya?</Trans>
                     </label>
@@ -220,31 +160,7 @@ let PersonForm = (props: Props) => {
                   {esFamiliarOUsuari && potTreballar &&
                   <Fragment>
                     <FormLabel className="sectionTitle"><Trans>Situació laboral</Trans></FormLabel>
-                    <label>
-                      <Trans>Indiqui la seva situació laboral:</Trans>
-                    </label>
-                    <Field data-test="situacio_laboral" name="situacio_laboral" component={Select} fullWidth>
-                      <MenuItem data-test="treball_compte_daltri_jornada_complerta"
-                                value="treball_compte_daltri_jornada_complerta">
-                        <Trans>Treballa per compte d'altri jornada complerta</Trans>
-                      </MenuItem>
-                      <MenuItem data-test="treball_compte_daltri_jornada_parcial"
-                                value="treball_compte_daltri_jornada_parcial">
-                        <Trans>Treballa per compte d'altri jornada parcial</Trans>
-                      </MenuItem>
-                      <MenuItem data-test="treball_compte_propi" value="treball_compte_propi">
-                        <Trans>Treballa per compte propi</Trans>
-                      </MenuItem>
-                      <MenuItem data-test="desocupat" value="desocupat">
-                        <Trans>Desocupat</Trans>
-                      </MenuItem>
-                      <MenuItem data-test="estudiant" value="estudiant">
-                        <Trans>Estudiant</Trans>
-                      </MenuItem>
-                      <MenuItem data-test="jubilat" value="jubilat">
-                        <Trans>Jubilat</Trans>
-                      </MenuItem>
-                    </Field>
+                    <SituacioLaboral/>
 
                     {esFamiliarOUsuari && esDesocupat &&
                     <Fragment>
