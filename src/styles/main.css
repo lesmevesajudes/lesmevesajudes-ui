@@ -145,7 +145,16 @@ input.cercabcn {
   background: rgb(194, 98, 170);
   border: rgb(170, 82, 148)1px solid;
 }
-.iconHelp {
-  font-size: 22px !important;
-  
+
+@media (min-width: 800px){
+  .iconHelp {
+    font-size: 0px !important;
+    display: inline;
+  }
+}
+@media (max-width: 600px) {
+  .iconHelp {
+    font-size: 22px !important;
+    display: inline;
+}
 }
