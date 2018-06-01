@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Grid from '@material-ui/core/Grid';
-import {connect} from 'react-redux';
+
 
 class DescriptionText extends Component {
   render() {
@@ -12,9 +12,5 @@ class DescriptionText extends Component {
     );
   }
 }
-function mapStateToProps(state){
-  return{
-        active: state.form.PersonForm.active
-  };
-}
-export default connect(mapStateToProps)(DescriptionText);
+
+export default (DescriptionText);
