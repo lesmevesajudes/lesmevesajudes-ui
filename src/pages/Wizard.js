@@ -1,41 +1,38 @@
-import React, {Component} from "react";
-import StepZilla from "react-stepzilla";
-import PersonsPage from "../persons/PersonsPage";
-import RentForm from "../rent/RentForm";
-import ResultsPage from "../results/ResultsPage";
+import React from "react";
 import "./Wizard.css";
 import AppHeader from "../components/AppHeader/AppHeader";
 import {translate} from "react-i18next";
-import HouseholdForm from "../household/HouseholdForm";
 import Grid from '@material-ui/core/Grid';
+import StepsComponent from '../components/Steps/StepsComponent';
+import PersonsPage from '../persons/PersonsPage'
+import HouseholdForm from '../household/HouseholdForm';
+import RentForm from '../rent/RentForm';
+import ResultsPage from '../results/ResultsPage';
 
-class WizardPage extends Component {
-  render() {
-    const { t } = this.props;
+const steps = [
+  {
+    label: 'Persones que conviuen',
+    component: <PersonsPage/>
+  },
+  {
+    label: 'Families',
+    component: <HouseholdForm/>
+  },
+  {
+    label: 'Domicili Habitual',
+    component: <RentForm/>
+  },
+  {
+    label: 'Resultats',
+    component: <ResultsPage/>
+  }
+];
 
-    const steps = [
-      {name: t("Persones que conviuen"), component: <PersonsPage/>},
-      { name: t("Família"), component: <HouseholdForm /> },
-      { name: t("Domicili habitual"), component: <RentForm /> },
-      { name: t("Resultats"), component: <ResultsPage /> }
-    ];
 
-    return (
+const WizardPage = () =>
       <Grid>
         <AppHeader />
-        <StepZilla
-            steps={steps}
-            preventEnterSubmission={true}
-            prevBtnOnLastStep={true}
-            nextTextOnFinalActionStep={"Veure resultats"}
-            nextButtonText="Següent"
-            backButtonText="Anterior"
-            nextButtonCls="btn btn-next btn-primary btn-lg nextButton"
-            backButtonCls="btn btn-prev btn-primary btn-lg backButton"
-        />
-      </Grid>
-    );
-  }
-}
+        <StepsComponent steps={steps}/>
+      </Grid>;
 
 export default translate("translations")(WizardPage);

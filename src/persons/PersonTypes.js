@@ -8,7 +8,7 @@ export type PersonRole = 'pares'|'fill'|'altres_adults'|'altres_adults_familiars
 export class Person {
   anys_empadronat_a_barcelona: number = 0;
   cobra_algun_tipus_de_pensio_no_contributiva: boolean = false;
-  edat: number = 0;
+  edat: number = undefined;
   en_els_ultims_12_mesos_ha_fet_baixa_voluntaria_de_la_feina: boolean = false;
   es_escolaritzat_entre_P3_i_4rt_ESO: boolean = false;
   es_orfe_dels_dos_progenitors: boolean = false;

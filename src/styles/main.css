@@ -65,14 +65,15 @@ button {
 }
 
 .bg-container {
-    background: #f2f2f2;
-    border: #dbdbdb 1px solid;
-    border-radius: 4px;
-    min-height: 180px;
-    max-width: 960px;
-    margin: 30px auto;
-    padding: 20px;
+  background: #f2f2f2;
+  border: #dbdbdb 1px solid;
+  border-radius: 4px;
+  min-height: 180px;
+  max-width: 960px;
+  margin: 30px auto;
+  padding: 20px;
 }
+
 
 .border-family {
     border: #dbdbdb 1px solid;
@@ -112,4 +113,33 @@ button {
 
 input.cercabcn {
     min-width: 190px;
+}
+.buttons-container {
+  border-radius: 4px;
+  min-height: 180px;
+  max-width: 950px;
+  margin: 0px auto;
+}
+.buttons-container .left-button {
+  float: left
+}
+.buttons-container .right-button {
+  float: right
+}
+.checkOption {
+  padding:5px;
+  text-align: center;
+  width: 35px;
+  display: inline-block;
+  height: auto;
+  border-radius: 6px;
+  border: #c2c2c2 1px solid;
+  cursor: default;
+}
+.checkOption:first-child {
+  margin-right: 5px;
+}
+.checkOption.active {
+  background: rgb(194, 98, 170);
+  border: rgb(170, 82, 148)1px solid;
 }

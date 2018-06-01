@@ -14,6 +14,7 @@ import InfoLloguer from "./pages/InfoLloguer";
 import InfoMenjador from "./pages/InfoMenjador";
 import InfoFonsInfancia from "./pages/InfoFonsInfancia";
 import ScrollToTop from "./components/Common/ScrollToTop";
+import TogglePage from "./pages/TogglePage";
 import CssBaseline from '@material-ui/core/CssBaseline';
 import configureStore from "./Store";
 
@@ -21,7 +22,9 @@ if (isDevelopment) {
   console.log("Environment: " + process.env.NODE_ENV);
 }
 
-const store = configureStore();
+const preloadedState = window.__PRELOADED_STATE__;
+
+const store = configureStore(preloadedState);
 
 class App extends Component {
   render() {
@@ -35,6 +38,7 @@ class App extends Component {
                 <ScrollToTop>
                   <Route exact={true} path="/" component={IndexPage}/>
                   <Route path="/wizard" component={WizardPage}/>
+                  <Route path="/toggle" component={TogglePage}/>
                   <Route path="/reportBug" component={ReportBugPage}/>
                   <Route path="/ajuts/rai" component={InfoRAI}/>
                   <Route path="/ajuts/rgc" component={InfoRGC}/>
