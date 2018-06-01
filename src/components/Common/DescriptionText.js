@@ -4,10 +4,10 @@ import {connect} from 'react-redux';
 
 class DescriptionText extends Component {
   render() {
-
+    const {selectInput} = this.props
     return (
         <Grid item>
-          Input seleccionat: {this.props.active}
+          Input seleccionat: {this.props.selectInput}
         </Grid>
     );
   }
