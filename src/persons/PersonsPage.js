@@ -41,10 +41,11 @@ class PersonsPage extends React.Component<Props, State> {
   };
 
   handleUpdatePersonClick = (personID: PersonID) => {
+    this.props.dispatch(hideButtons());
     this.setState({
       ...this.state,
-      initialFormValues: this.props.persons.filter(e => e.id === personID)[0],
-      step: "addPerson"
+      initialFormValues: {...this.props.persons.filter(e => e.id === personID)[0]},
+      step: "updatePerson"
     });
   };
 
@@ -53,6 +54,7 @@ class PersonsPage extends React.Component<Props, State> {
   };
 
   doneEditingPerson = () => {
+    this.props.dispatch(showButtons());
     this.setState({
       ...this.state,
       initialFormValues: undefined,
@@ -65,7 +67,6 @@ class PersonsPage extends React.Component<Props, State> {
     if (this.props.persons.length >= this.state.numberOfPersonsLivingTogether - 1) {
       this.props.dispatch(enableButtons());
     }
-    this.props.dispatch(showButtons());
     if (formValues.id === undefined) {
       this.props.dispatch(addPerson({...formValues, id: UUID.create()}));
     } else {
@@ -117,14 +118,14 @@ class PersonsPage extends React.Component<Props, State> {
               onRemoveUnknownClick={this.handleRemoveUnknownPerson}
               expectedNumberOfPersons={expectedNumberOfPersonsLivingTogether}
           />);
-    } else if (step === "addPerson") {
+    } else if (step === "addPerson" || step === "updatePerson") {
 
       component = (
           <PersonForm
               initialValues={this.state.initialFormValues}
               onSubmit={this.handleSubmitPersonForm}
               onCancel={this.doneEditingPerson}
-              onFinishAdding={() => this.doneEditingPerson()}
+              updating={step === "updatePerson"}
           />
       );
     }
