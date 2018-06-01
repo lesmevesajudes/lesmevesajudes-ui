@@ -10,6 +10,11 @@ import {connect} from "react-redux";
 import {Button, FormLabel, Grid, Hidden, MenuItem} from "@material-ui/core";
 import DescriptionText from "../components/Common/DescriptionText";
 import {allowOnlyPositive} from '../components/Common/NormalizeCommon'
+<<<<<<< Updated upstream
+=======
+import YesNo from '../components/redux-form-material-ui/YesNo';
+import Icon from '@material-ui/core/Icon';
+>>>>>>> Stashed changes
 
 export type PersonFormInitialValues = Person | { is_the_user_in_front_of_the_computer: boolean };
 
@@ -76,7 +81,7 @@ let PersonForm = (props: Props) => {
                   <label>
                     <Trans>
                       {isTheUserInFrontOfTheComputer ? "Identifiqui's amb un nom" : "Identifiqui'l amb un nom"}
-                    </Trans>
+                    </Trans><Icon className="iconHelp" color="action">info</Icon>
                   </label>
                   <Field name="nom" placeholder="Nom" component={TextField} fullWidth required autoFocus/>
 
