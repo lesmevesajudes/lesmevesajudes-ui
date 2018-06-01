@@ -49,7 +49,6 @@ type Props = {
 
 let PersonForm = (props: Props) => {
   const {
-    active,
     cobraAlgunTipusDePensioNoContributiva,
     edat,
     esDesocupat,
