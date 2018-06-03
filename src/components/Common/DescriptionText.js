@@ -1,10 +1,12 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Grid from '@material-ui/core/Grid';
 
-class DescriptionText extends Component {
-  render() {
-    return (
+type Props = {
+  currentField: string
+}
+const DescriptionText = (props: Props) =>
         <Grid item>
+          {props.currentField}<br/>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
           quis gravida erat. Donec ac nulla et ligula facilisis auctor sed
           eu enim. In hac habitasse platea dictumst. In ultrices rhoncus
@@ -16,9 +18,6 @@ class DescriptionText extends Component {
           condimentum velit malesuada. In ac diam quis dolor lacinia
           varius ut sit amet ligula. Nulla facilisi. Integer vestibulum
           neque ac sagittis consequat. Morbi non odio lorem.
-        </Grid>
-    );
-  }
-}
+        </Grid>;
 
 export default DescriptionText;

@@ -23,6 +23,7 @@ export type PersonFormInitialValues = Person | { is_the_user_in_front_of_the_com
 
 type Props = {
   cobraAlgunTipusDePensioNoContributiva: Boolean,
+  currentField: string,
   edat: number,
   esDesocupat: Boolean,
   esDona: Boolean,
@@ -49,6 +50,7 @@ type Props = {
 let PersonForm = (props: Props) => {
   const {
     cobraAlgunTipusDePensioNoContributiva,
+    currentField,
     edat,
     esDesocupat,
     esDona,
@@ -221,7 +223,7 @@ let PersonForm = (props: Props) => {
               </Grid>
               <Hidden smDown>
                 <Grid item md={5}>
-                  <DescriptionText/>
+                  <DescriptionText currentField={currentField}/>
                 </Grid>
               </Hidden>
             </Grid>
@@ -247,8 +249,9 @@ let PersonForm = (props: Props) => {
 PersonForm = reduxForm({
   form: "PersonForm"
 })(PersonForm);
-
+const currentFocussedFieldSelector = (formName: string): Function => (state): ?string => (typeof state.form[formName] === "undefined") ? undefined : state.form[formName].active;
 const selector = formValueSelector("PersonForm");
+const currentFocussedField = currentFocussedFieldSelector("PersonForm");
 
 PersonForm = connect(state => {
   const cobraAlgunTipusDePensioNoContributiva = selector(state, "cobra_algun_tipus_de_pensio_no_contributiva");
@@ -270,8 +273,11 @@ PersonForm = connect(state => {
   const tipusDocumentIdentitat = selector(state, "document_identitat");
   const treballaPerCompteDAltriParcial = selector(state, "situacio_laboral") === "treball_compte_daltri_jornada_parcial";
   const victimaViolenciaDeGenere = selector(state, "victima_violencia_de_genere");
+  const currentField = currentFocussedField(state);
+
   return {
     cobraAlgunTipusDePensioNoContributiva,
+    currentField,
     edat,
     esDesocupat,
     esDona,
