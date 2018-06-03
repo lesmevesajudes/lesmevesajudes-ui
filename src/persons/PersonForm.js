@@ -22,6 +22,7 @@ import {MunicipiEmpadronament} from "./components/MunicipiEmpadronament";
 export type PersonFormInitialValues = Person | { is_the_user_in_front_of_the_computer: boolean };
 
 type Props = {
+  active: string,
   cobraAlgunTipusDePensioNoContributiva: Boolean,
   edat: number,
   esDesocupat: Boolean,
@@ -221,7 +222,7 @@ let PersonForm = (props: Props) => {
               </Grid>
               <Hidden smDown>
                 <Grid item md={5}>
-                  <DescriptionText/>
+                  <DescriptionText selectInput={props.active} />
                 </Grid>
               </Hidden>
             </Grid>
@@ -249,8 +250,18 @@ PersonForm = reduxForm({
 })(PersonForm);
 
 const selector = formValueSelector("PersonForm");
+function mapStateToProps(state){
+  if( typeof state.form.PersonForm === "undefined"){
 
-PersonForm = connect(state => {
+  }
+  else {
+      console.log(state.form.PersonForm.active)
+      return{
+        active: state.form.PersonForm.active
+      };
+  }
+}
+PersonForm = connect(mapStateToProps,state => {
   const cobraAlgunTipusDePensioNoContributiva = selector(state, "cobra_algun_tipus_de_pensio_no_contributiva");
   const edat = selector(state, "edat");
   const esDesocupat = selector(state, "situacio_laboral") === "desocupat";

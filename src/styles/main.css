@@ -143,3 +143,6 @@ input.cercabcn {
   background: rgb(194, 98, 170);
   border: rgb(170, 82, 148)1px solid;
 }
+.follow_scroll {
+  position: fixed;
+}
