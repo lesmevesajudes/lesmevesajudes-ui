@@ -218,7 +218,6 @@ let PersonForm = (props: Props) => {
                       <Trans>És orfe dels dos progenitors</Trans>
                     </YesNoQuestion>}
                   </Fragment>}
-                  <br/>
                 </Grid>
               </Grid>
               <Hidden smDown>
