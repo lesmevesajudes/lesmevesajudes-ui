@@ -68,7 +68,7 @@ class PersonsPage extends React.Component<Props, State> {
       this.props.dispatch(enableButtons());
     }
     if (formValues.id === undefined) {
-      this.props.dispatch(addPerson({...formValues, id: UUID.create()}));
+      this.props.dispatch(addPerson({...formValues, id: UUID.create(),show_initial_tip: false}));
     } else {
       this.props.dispatch(updatePerson(formValues));
     }
@@ -79,7 +79,7 @@ class PersonsPage extends React.Component<Props, State> {
       ...this.state,
       numberOfPersonsLivingTogether: formValues.how_many_persons_live_together,
       step: "addPerson",
-      initialFormValues: {is_the_user_in_front_of_the_computer: true}
+      initialFormValues: {is_the_user_in_front_of_the_computer: true, show_initial_tip: true}
     });
   };
 

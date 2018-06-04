@@ -34,6 +34,7 @@ export class Person {
   tipus_document_identitat: string;
   victima_violencia_de_genere: boolean = false;
   victima_violencia_domestica: boolean = false;
+  show_initial_tip: boolean = false;
 }
 
 export class HowManyPersonsLiveTogetherType {

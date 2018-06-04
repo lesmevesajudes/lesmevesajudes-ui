@@ -44,7 +44,8 @@ type Props = {
   tipusDocumentIdentitat: Boolean,
   treballaPerCompteDAltriParcial: Boolean,
   victimaViolenciaDeGenere: Boolean,
-  updating: Boolean
+  updating: Boolean,
+  showInitialTip: Boolean
 };
 
 let PersonForm = (props: Props) => {
@@ -69,15 +70,24 @@ let PersonForm = (props: Props) => {
     tipusDocumentIdentitat,
     treballaPerCompteDAltriParcial,
     updating,
-    victimaViolenciaDeGenere
+    victimaViolenciaDeGenere,
+    showInitialTip
   } = props;
 
   return (
-      <Grid container className="bg-container">
-        <Grid item xs={12}>
+      <Grid container justify={"center"} className="bg-container">
+        <Grid item  xs={12} sm={12} md={12}>
           {isTheUserInFrontOfTheComputer ? <h1>Informació sobre vosté</h1> :
               <h1>Dades sobre una persona que conviu amb vosté</h1>}
         </Grid>
+        {showInitialTip &&
+          <Grid item xs={12} sm={10} md={10}>
+            <div className="message-tip danger-message">
+            hello
+            </div>
+          </Grid>
+        }
+
         <Grid container direction="column">
           <form onSubmit={handleSubmit}>
             <Field component="input" name="id" type="hidden"/>
@@ -274,7 +284,8 @@ PersonForm = connect(state => {
   const treballaPerCompteDAltriParcial = selector(state, "situacio_laboral") === "treball_compte_daltri_jornada_parcial";
   const victimaViolenciaDeGenere = selector(state, "victima_violencia_de_genere");
   const currentField = currentFocussedField(state);
-
+  const showInitialTip = selector(state, "show_initial_tip") === true;
+  console.log(showInitialTip)
   return {
     cobraAlgunTipusDePensioNoContributiva,
     currentField,
@@ -295,7 +306,8 @@ PersonForm = connect(state => {
     teAlgunGrauDeDiscapacitatReconegut,
     tipusDocumentIdentitat,
     treballaPerCompteDAltriParcial,
-    victimaViolenciaDeGenere
+    victimaViolenciaDeGenere,
+    showInitialTip
   };
 })(PersonForm);
 

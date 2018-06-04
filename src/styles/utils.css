@@ -48,3 +48,14 @@
 .rightButton {
     text-align: right;
 }
+.message-tip {
+  padding: 5px;
+  border-radius: 6px;
+  margin: 30px;
+  margin-top: 0px;
+  color: #333333
+}
+.danger-message{
+  background: rgba(207, 64, 64,0.4);
+  border: 1px solid rgba(199, 73, 73,0.7);
+}
