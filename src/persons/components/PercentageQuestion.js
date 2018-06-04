@@ -6,8 +6,8 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 
 // TODO Max 100
 const max100 = value =>
-  value && value >= 100
-    ? 'No pots tenir més de 120 anys, ho sento!'
+  value && value >= 100 && value < 0
+    ? 'El grau de discapacitat sol pot ser entre el interval de 0 i 100.'
     : undefined;
 
 export const PercentageQuestion = (props) =>
