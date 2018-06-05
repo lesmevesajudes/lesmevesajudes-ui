@@ -3,12 +3,7 @@ import {Question} from "./Question";
 import {TextField} from "redux-form-material-ui";
 import {allowOnlyPositive} from "../../components/Common/NormalizeCommon";
 
-
-const tooOld = value =>
-  value && value >= 120
-    ? 'No pots tenir més de 120 anys, ho sento!'
-    : undefined;
 export const TimePeriodQuestion = (props) =>
-    <Question {...props} type="number" normalize={allowOnlyPositive} component={TextField} placeholder="0" validate={tooOld}>
+    <Question {...props} type="number" normalize={allowOnlyPositive} component={TextField} placeholder="0" >
       {props.children}
     </Question>;

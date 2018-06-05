@@ -21,6 +21,19 @@ import {MunicipiEmpadronament} from "./components/MunicipiEmpadronament";
 
 export type PersonFormInitialValues = Person | { is_the_user_in_front_of_the_computer: boolean };
 
+const checkMoney  = (value,props) => 
+  (props.ingressos_per_pnc) && props.ingressos_bruts < props.ingressos_per_pnc
+    ? 'La suma de totes les pensiones contributives no pot ser superior al Ingressors bruts anuals!'
+    : undefined;
+const checkEdatBeetweenPadroAndPersonalAge = (value,props) =>
+  (props.anys_empadronat_a_barcelona) && props.edat < props.anys_empadronat_a_barcelona
+    ? 'No pot ser més gran el temps que has estat empadronat que el que has estat viu!'
+    : undefined; 
+const tooOld = (value,props) => {
+    props.edat && props.edat >= 120
+    ? 'No pots tenir més de 120 anys, ho sento!'
+    : undefined;
+}
 type Props = {
   cobraAlgunTipusDePensioNoContributiva: Boolean,
   currentField: string,
@@ -95,7 +108,7 @@ let PersonForm = (props: Props) => {
 
                   {esFamiliarOUsuari &&
                   <Fragment>
-                    <TimePeriodQuestion name="edat" required>
+                    <TimePeriodQuestion name="edat" required validate={tooOld}>
                       <Trans>Quina és la seva edat?</Trans>
                     </TimePeriodQuestion>
 
@@ -130,10 +143,10 @@ let PersonForm = (props: Props) => {
                     <Trans>És una persona divorciada?</Trans>
                   </YesNoQuestion>}
 
-                  {esFamiliarOUsuari && <MunicipiEmpadronament/>}
+                  {esFamiliarOUsuari && <MunicipiEmpadronament />}
 
                   {municipiEmpadronament === "barcelona" &&
-                  <TimePeriodQuestion name="anys_empadronat_a_barcelona" required>
+                  <TimePeriodQuestion name="anys_empadronat_a_barcelona" validate={[checkEdatBeetweenPadroAndPersonalAge, tooOld]} required>
                     <Trans>Quants anys porta empadronat a Barcelona?</Trans>
                   </TimePeriodQuestion>}
 
@@ -177,7 +190,7 @@ let PersonForm = (props: Props) => {
 
                   {esFamiliarOUsuari && cobraAlgunTipusDePensioNoContributiva &&
                   <Fragment>
-                    <MoneyQuestion name="ingressos_per_pnc">
+                    <MoneyQuestion name="ingressos_per_pnc" validate={checkMoney} >
                       <Trans>Indiqui la suma dels imports de totes les pensions no contributives que cobri</Trans>
                     </MoneyQuestion>
                   </Fragment>}
