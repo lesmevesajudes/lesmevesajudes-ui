@@ -29,11 +29,11 @@ const checkEdatBeetweenPadroAndPersonalAge = (value,props) =>
   (props.anys_empadronat_a_barcelona) && props.edat < props.anys_empadronat_a_barcelona
     ? 'No pot ser més gran el temps que has estat empadronat que el que has estat viu!'
     : undefined; 
-const tooOld = (value,props) => {
+const tooOld = (value,props) => 
     props.edat && props.edat >= 120
     ? 'No pots tenir més de 120 anys, ho sento!'
     : undefined;
-}
+
 type Props = {
   cobraAlgunTipusDePensioNoContributiva: Boolean,
   currentField: string,
