@@ -6,6 +6,7 @@ import {closeModal} from "./ModalActions";
 import {connect} from "react-redux";
 import {withStyles} from '@material-ui/core/styles';
 import {compose} from "redux";
+import Icon from '@material-ui/core/Icon';
 
 type Props = {
   open: Boolean,
@@ -14,36 +15,50 @@ type Props = {
   classes: Object,
   closeModal: Function
 }
+const rand = ()  => {
+  return Math.round(Math.random() * 20) - 10;
+}
 
+const getModalStyle = () => {
+  const top = 50;
+  const left = 50;
+
+  return {
+    top: `${top}%`,
+    left: `${left}%`,
+    transform: `translate(-${top}%, -${left}%)`,
+  };
+}
 const styles = theme => ({
   paper: {
     position: 'absolute',
     width: theme.spacing.unit * 50,
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
-    padding: theme.spacing.unit * 4,
+    padding: theme.spacing.unit * 2,
     borderRadius: 6 + 'px',
-    borderTopLeftRadius: 0 + 'px',
     maxWidth: 345 + 'px'
+  },
+  title: {
+    fontWeight: 'bold',
+    fontSize: '1.1em'
   }
 });
-
+let closeImg = {cursor:'pointer', float:'right', marginTop: '5px', width: '20px'};
 const HelpModal = (props: Props) =>
     <Modal
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
         open={props.open}
         onClose={() => props.closeModal("HelpModal")}
-        BackdropProps={{
-          style: {
-            backgroundColor: 'transparent'
-          }
-        }}
     >
-      <div className={props.classes.paper}>
-        <Typography variant="title" id="modal-title">
-          {props.title}
-        </Typography>
+      <div style={getModalStyle()} className={props.classes.paper}>
+        <div>
+          <span className={props.classes.title}>{props.title}</span>
+          <Icon onClick={() => props.closeModal("HelpModal")} style={closeImg} color="primary">
+            close
+          </Icon>
+        </div>
         <Typography variant="subheading" id="simple-modal-description">
           {props.body}
         </Typography>
