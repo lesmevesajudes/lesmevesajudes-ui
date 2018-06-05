@@ -15,6 +15,10 @@ import {esFill} from "../shared/selectorUtils";
 import {allowOnlyPositive} from "../components/Common/NormalizeCommon";
 import InputAdornment from "@material-ui/core/InputAdornment";
 
+const isNumber = value =>
+  value && isNaN(Number(value)) && value.length >= 6 ? 'Must be a number' : undefined;
+
+  
 type Props = {
   addRent: Function,
   esLlogater: boolean,
@@ -61,7 +65,7 @@ const RentForm = (props: Props) => {
             {teHabitatgeHabitual &&
             <Grid item>
               <label><Trans>Codi postal on es troba l'habitatge</Trans></label>
-              <Field required name='codi_postal_habitatge' placeholder='08000' fullWidth component={TextField}/>
+              <Field required name='codi_postal_habitatge' placeholder='08000' fullWidth component={TextField} validate={isNumber}/>
             </Grid>}
 
             {esLlogater &&
