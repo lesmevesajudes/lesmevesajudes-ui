@@ -1,5 +1,4 @@
 //@flow
-import React from 'react';
 import HelpTextMap from './HelpTextMap';
 
 type Props = {

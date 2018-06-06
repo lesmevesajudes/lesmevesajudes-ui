@@ -8,7 +8,7 @@ export default function (
 ): ModalState {
   switch (action.type) {
     case "OPEN_MODAL":
-      if (typeof state.currentModalName !== "undefined") throw `A modal is already open: ${state.currentModalName}`;
+      if (typeof state.currentModalName !== "undefined") throw new Error(`A modal is already open: ${state.currentModalName}`);
       return {currentModalName: action.modalName, top: action.top, left: action.left};
     case "CLOSE_MODAL":
       return {};
