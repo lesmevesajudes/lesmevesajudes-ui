@@ -105,7 +105,7 @@ const UnknownPersonCard = (props: UnknownPersonProps) => (
 
 class PersonsViewer extends Component<Props, void> {
   render() {
-    const missingPersons = this.props.expectedNumberOfPersons - this.props.persons.length;
+    const missingPersons = Math.max(this.props.expectedNumberOfPersons - this.props.persons.length, 0);
     return (
         <Grid container className="container-family">
           <Grid item sm={12} xs={12} className="bg-family">
@@ -131,10 +131,11 @@ class PersonsViewer extends Component<Props, void> {
                   </List>
                 </Card>
               </Grid>
+              {missingPersons === 0 &&
               <Grid item>
-                <Button variant="raised" color="secondary" onClick={this.props.onAddPersonClick}>Afegir una persona
+                <Button variant="raised" onClick={this.props.onAddPersonClick}>Afegir una persona
                   convivent</Button>
-              </Grid>
+              </Grid>}
             </Grid>
           </Grid>
         </Grid>
