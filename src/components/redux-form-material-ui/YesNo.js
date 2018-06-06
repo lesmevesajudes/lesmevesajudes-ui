@@ -6,8 +6,9 @@ import {Grid} from "@material-ui/core";
 const YesNo = ({input}) => (
     <Grid container direction="row">
       <MultipleChoice
-        currentState={input.value}
-        optionSelected={input.onChange}
+          currentState={input.value}
+          onFocus={input.onFocus}
+          optionSelected={input.onChange}
       >
         <Choice value={true} variant="outlined">
           Si

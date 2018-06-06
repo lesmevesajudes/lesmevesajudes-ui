@@ -15,7 +15,6 @@ const HelpIcon = (props: Props) =>
       <Icon onClick={(e) => props.openModal("HelpModal", e.clientY - 9, e.clientX + 11)} className="helpIcon"
             color="action">info</Icon>
       <HelpModal>
-        {console.log("HelpTetxt: ", props.name)}
         <HelpText id={props.name}/>
       </HelpModal>
     </Fragment>;

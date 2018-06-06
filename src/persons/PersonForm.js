@@ -2,12 +2,12 @@
 import React, {Fragment} from "react";
 import type {PersonRole} from "./PersonTypes";
 import {Person} from "./PersonTypes";
-import {Select, TextField} from "redux-form-material-ui";
+import {TextField} from "redux-form-material-ui";
 import ClearIcon from "@material-ui/icons/Clear";
 import {Trans} from "react-i18next";
 import {Field, formValueSelector, reduxForm} from "redux-form";
 import {connect} from "react-redux";
-import {Button, FormLabel, Grid, Hidden, MenuItem} from "@material-ui/core";
+import {Button, Grid, Hidden, MenuItem} from "@material-ui/core";
 import DescriptionText from "../components/Common/DescriptionText";
 import {RelacioFamiliar} from "./components/RelacioFamiliar";
 import {SituacioLaboral} from "./components/SituacioLaboral";
@@ -18,6 +18,9 @@ import {MoneyQuestion} from "./components/MoneyQuestion";
 import {PercentageQuestion} from "./components/PercentageQuestion";
 import {TimePeriodQuestion} from "./components/TimePeriodQuestion";
 import {MunicipiEmpadronament} from "./components/MunicipiEmpadronament";
+import Typography from "@material-ui/core/Typography";
+import MultipleAnswerQuestion from "./components/MultipleAnswerQuestion";
+import FormSubTitle from "./components/FormSubTitle";
 
 
 export type PersonFormInitialValues = Person | { is_the_user_in_front_of_the_computer: boolean };
@@ -57,7 +60,6 @@ type Props = {
   teAlgunGrauDeDiscapacitatReconegut: Boolean,
   tipusDocumentIdentitat: Boolean,
   treballaPerCompteDAltriParcial: Boolean,
-  victimaViolenciaDeGenere: Boolean,
   updating: Boolean
 };
 
@@ -83,14 +85,14 @@ let PersonForm = (props: Props) => {
     tipusDocumentIdentitat,
     treballaPerCompteDAltriParcial,
     updating,
-    victimaViolenciaDeGenere
   } = props;
 
   return (
       <Grid container className="bg-container">
         <Grid item xs={12}>
-          {isTheUserInFrontOfTheComputer ? <h1>Informació sobre vosté</h1> :
-              <h1>Dades sobre una persona que conviu amb vosté</h1>}
+          {isTheUserInFrontOfTheComputer ?
+              <Typography variant="headline" gutterBottom>Informació sobre vosté</Typography> :
+              <Typography variant="headline" gutterBottom>Dades sobre una persona que conviu amb vosté</Typography>}
         </Grid>
         <Grid container direction="column">
           <form onSubmit={handleSubmit}>
@@ -100,9 +102,8 @@ let PersonForm = (props: Props) => {
               <Grid item xs={12} sm={5}>
                 <Grid container direction="column" alignItems="stretch" spacing={16}>
                   <Question name="nom" placeholder="Nom" component={TextField} required autoFocus>
-                    <Trans>
-                      {isTheUserInFrontOfTheComputer ? "Identifiqui's amb un nom" : "Identifiqui'l amb un nom"}
-                    </Trans>
+                    {isTheUserInFrontOfTheComputer ? <Trans>Identifiqui's amb un nom</Trans> :
+                        <Trans>Identifiqui'l amb un nom</Trans>}
                   </Question>
 
                   {!isTheUserInFrontOfTheComputer && <RelacioFamiliar/>}
@@ -113,19 +114,17 @@ let PersonForm = (props: Props) => {
                       <Trans>Quina és la seva edat?</Trans>
                     </TimePeriodQuestion>
 
-                    <label>
-                      <Trans>Sexe</Trans>
-                    </label>
-                    <Field data-test="sexe" name="sexe" fullWidth component={Select}>
+                    <MultipleAnswerQuestion label={<Trans>Sexe</Trans>} name="sexe">
                       <MenuItem data-test="sexe_dona" value="dona">
                         <Trans>Dona</Trans>
                       </MenuItem>
                       <MenuItem data-test="sexe_home" value="home">
                         <Trans>Home</Trans>
                       </MenuItem>
-                    </Field>
+                    </MultipleAnswerQuestion>
 
-                    <FormLabel className="sectionTitle">Informació sobre el padró</FormLabel>
+                    <Typography gutterBottom/>
+                    <FormSubTitle>Informació sobre el padró</FormSubTitle>
 
                     <TipusDocumentIdentitat/>
 
@@ -141,7 +140,7 @@ let PersonForm = (props: Props) => {
 
                   {esFamiliarOUsuari && membreDeFamiliaReagrupada &&
                   <YesNoQuestion name="es_una_persona_divorciada">
-                    <Trans>És una persona divorciada?</Trans>
+                    <Trans>És una persona divorciada legalment?</Trans>
                   </YesNoQuestion>}
 
                   {esFamiliarOUsuari && <MunicipiEmpadronament/>}
@@ -154,7 +153,7 @@ let PersonForm = (props: Props) => {
 
                   {esFamiliarOUsuari && potTreballar &&
                   <Fragment>
-                    <FormLabel className="sectionTitle"><Trans>Situació laboral</Trans></FormLabel>
+                    <FormSubTitle><Trans>Situació laboral</Trans></FormSubTitle>
 
                     <SituacioLaboral/>
 
@@ -163,10 +162,16 @@ let PersonForm = (props: Props) => {
                       <YesNoQuestion name="inscrit_com_a_demandant_docupacio">
                         <Trans>Està inscrit com a demandant d’ocupació?</Trans>
                       </YesNoQuestion>
+                      {inscritComADemandantDocupacio &&
+                      <YesNoQuestion name="inscrit_com_a_demandant_docupacio_mes_de_12_mesos">
+                        <Trans>Ha estat inscrit de forma continuada com a demandant d'ocupació més de 12 mesos?</Trans>
+                      </YesNoQuestion>
+                      }
 
+                      {!inscritComADemandantDocupacio &&
                       <YesNoQuestion name="en_els_ultims_12_mesos_ha_fet_baixa_voluntaria_de_la_feina">
                         <Trans>Ha deixat la feina de forma voluntària en els darrers 12 mesos?</Trans>
-                      </YesNoQuestion>
+                      </YesNoQuestion>}
                     </Fragment>}
 
                     {esFamiliarOUsuari && (esDesocupat || treballaPerCompteDAltriParcial) &&
@@ -180,7 +185,7 @@ let PersonForm = (props: Props) => {
                     </YesNoQuestion>}
                   </Fragment>}
 
-                  <FormLabel className="sectionTitle">Ingressos</FormLabel>
+                  <FormSubTitle>Ingressos</FormSubTitle>
                   <MoneyQuestion name="ingressos_bruts" required>
                     <Trans>Indiqui els seus ingressos bruts anuals de l’any passat?</Trans>
                   </MoneyQuestion>
@@ -202,9 +207,15 @@ let PersonForm = (props: Props) => {
                     <Trans>Gaudeix actualment d’una prestació contributiva o subsidi per desocupació?</Trans>
                   </YesNoQuestion>}
 
+                  {esFamiliarOUsuari && inscritComADemandantDocupacio &&
+                  <YesNoQuestion name="percep_prestacions_incompatibles_amb_la_feina">
+                    <Trans> Perceb alguna ajuda i/o prestació econòmica de la seguretat social que no li permeti
+                      treballar?</Trans>
+                  </YesNoQuestion>}
+
                   {esFamiliarOUsuari &&
                   <Fragment>
-                    <FormLabel className="sectionTitle">Situació personal</FormLabel>
+                    <FormSubTitle>Situació personal</FormSubTitle>
                     <YesNoQuestion name="te_algun_grau_de_discapacitat_reconegut">
                       <Trans>Té vostè algun grau de discapacitat reconegut?</Trans>
                     </YesNoQuestion>
@@ -219,11 +230,6 @@ let PersonForm = (props: Props) => {
                       <Trans>Víctima violència de gènere</Trans>
                     </YesNoQuestion>}
 
-                    {victimaViolenciaDeGenere &&
-                    <YesNoQuestion name="percep_prestacions_incompatibles_amb_la_feina">
-                      <Trans>Perceb alguna ajuda que no li permeti treballar?</Trans>
-                    </YesNoQuestion>}
-
                     <YesNoQuestion name="victima_violencia_domestica">
                       <Trans>Víctima violència domèstica</Trans>
                     </YesNoQuestion>
@@ -232,6 +238,10 @@ let PersonForm = (props: Props) => {
                     <YesNoQuestion name="es_orfe_dels_dos_progenitors">
                       <Trans>És orfe dels dos progenitors</Trans>
                     </YesNoQuestion>}
+
+                    <YesNoQuestion name="beneficiari_de_prestacio_residencial">
+                      <Trans>És beneficiari d’una prestació pública o privada de servei residencial permanent? </Trans>
+                    </YesNoQuestion>
                   </Fragment>}
                 </Grid>
               </Grid>
@@ -286,7 +296,6 @@ PersonForm = connect(state => {
   const teAlgunGrauDeDiscapacitatReconegut = selector(state, "te_algun_grau_de_discapacitat_reconegut");
   const tipusDocumentIdentitat = selector(state, "document_identitat");
   const treballaPerCompteDAltriParcial = selector(state, "situacio_laboral") === "treball_compte_daltri_jornada_parcial";
-  const victimaViolenciaDeGenere = selector(state, "victima_violencia_de_genere");
   const currentField = currentFocussedField(state);
 
   return {
@@ -309,7 +318,6 @@ PersonForm = connect(state => {
     teAlgunGrauDeDiscapacitatReconegut,
     tipusDocumentIdentitat,
     treballaPerCompteDAltriParcial,
-    victimaViolenciaDeGenere
   };
 })(PersonForm);
 

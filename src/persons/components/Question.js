@@ -1,19 +1,23 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import {Field} from "redux-form";
 import HelpIcon from "../../components/HelpIcon";
 import {isHelpAvailable} from "../../components/HelpText";
 import Hidden from "@material-ui/core/Hidden";
+import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/es/Grid/Grid";
 
 type Props = {
   name: string
 }
 export const Question = (props: Props) =>
-    <Fragment>
+    <Grid item>
       <label>
-        {props.children}
-        {isHelpAvailable(props.name) &&
-        <Hidden smUp> <HelpIcon name={props.name}/> </Hidden>
-        }
+        <Typography gutterBottom>
+          {props.children}
+          {isHelpAvailable(props.name) &&
+          <Hidden smUp> <HelpIcon name={props.name}/> </Hidden>
+          }
+        </Typography>
       </label>
-      <Field {...props} />
-    </Fragment>;
+      <Field {...props} fullWidth/>
+    </Grid>;

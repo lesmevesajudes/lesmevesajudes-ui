@@ -6,7 +6,7 @@ import {Trans} from "react-i18next";
 import {Field} from "redux-form/";
 import {reduxForm} from "redux-form";
 import {allowOnlyPositive} from "../components/Common/NormalizeCommon";
-import FormLabel from "@material-ui/core/FormLabel";
+import Typography from "@material-ui/core/Typography";
 
 const validate = values => {
   const errors = {};
@@ -29,16 +29,18 @@ let HowManyPersonsLiveTogetherPage = props => {
       <Grid container className="bg-container" justify='center'>
         <Grid item>
           <form onSubmit={handleSubmit}>
-            <Grid container direction='column' justify='center' spacing={24}>
+            <Grid container direction='column' alignItems="center" justify='center' spacing={16}>
+
               <Grid item>
-                <FormLabel className="sectionTitle">
+                <Typography variant="headline" gutterBottom>
                   <Trans>Quantes persones viuen en el seu domicili? (amb vostè inclòs)</Trans>
-                </FormLabel>
+                </Typography>
               </Grid>
               <Grid item>
-                <Field name="how_many_persons_live_together" placeholder="0" type="number" fullWidth
+                <Field name="how_many_persons_live_together" placeholder="0" type="number"
                        component={TextField} normalize={allowOnlyPositive} autoFocus/>
               </Grid>
+
               <Grid item>
                 <Button variant="raised" color="primary" type="submit" name="ButtonValidar">
                   <Trans>Validar</Trans>
