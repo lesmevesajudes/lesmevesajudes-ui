@@ -197,5 +197,11 @@
   "Ha retornat d’aquest període de treball en els últims 12 mesos?": "Ha retornat d’aquest període de treball en els últims 12 mesos?",
   "Cobra algun tipus de pensió no contributiva?": "Cobra algun tipus de pensió no contributiva?",
   "Gaudeix actualment d’una prestació contributiva o subsidi per desocupació?": "Gaudeix actualment d’una prestació contributiva o subsidi per desocupació?",
-  "Té vostè algun grau de discapacitat reconegut?": "Té vostè algun grau de discapacitat reconegut?"
+  "Té vostè algun grau de discapacitat reconegut?": "Té vostè algun grau de discapacitat reconegut?",
+  "Només s'admeten valors entre 0 i 100": "Només s'admeten valors entre 0 i 100",
+  "Els ingressos per pensions no contributives has d'estar inclosos en els ingressos bruts": "Els ingressos per pensions no contributives has d'estar inclosos en els ingressos bruts",
+  "Els anys d'empadronament han de ser iguals o inferiors a l'edat": "Els anys d'empadronament han de ser iguals o inferiors a l'edat",
+  "No es contemplen edats superiors als 120 anys": "No es contemplen edats superiors als 120 anys",
+  "Quants anys porta empadronat a Barcelona?": "Quants anys porta empadronat a Barcelona?",
+  "Els codis postals han de tenir un màxim de 5 xifres": "Els codis postals han de tenir un màxim de 5 xifres"
 }
