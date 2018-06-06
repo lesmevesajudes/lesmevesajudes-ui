@@ -7,6 +7,7 @@ type Props = {
   children: any,
   className?: ?string,
   onClick?: Function,
+  onFocus?: Function,
   variant?: string
 }
 export const Choice = (props: Props) =>

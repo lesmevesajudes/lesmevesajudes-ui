@@ -39,7 +39,8 @@ type Props = {
   currentState: any,
   optionSelected: Function,
   children: ChildrenArray<Element<typeof Choice>>,
-  classes: Object
+  classes: Object,
+  onFocus: Function
 }
 
 const MultipleChoice = (props: Props) => {
@@ -50,6 +51,9 @@ const MultipleChoice = (props: Props) => {
       className: child.props.value === props.currentState ? classNames(classes.button, classes.selected) : classes.button,
       onClick: () => {
         props.optionSelected(child.props.value)
+      },
+      onFocus: () => {
+        props.onFocus()
       }
     });
   })
