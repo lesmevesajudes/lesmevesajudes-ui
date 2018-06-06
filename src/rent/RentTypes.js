@@ -1,16 +1,22 @@
 // @flow
 
 export type Rent = {
-  relacio_habitatge: string,
   codi_postal_habitatge: string,
-  titular_contracte_de_lloguer_id: string,
-  data_signatura_contracte_arrendament: string,
-  relacio_de_parentiu_amb_el_propietari: boolean,
   existeix_deute_en_el_pagament_del_lloguer: boolean,
-  import_del_deute_amb_el_propietari: number,
-  lloguer_domiciliat: boolean,
+  existeix_deute_en_el_pagament_de_la_hipoteca: boolean,
+  fa_mes_de_12_mesos_que_existeix_el_deute_de_hipoteca: boolean,
+  fa_mes_de_12_mesos_que_existeix_el_deute_de_lloguer: boolean,
+  ha_perdut_lhabitatge_en_els_ultims_2_anys: boolean,
+  ha_pagat_12_mesos_daquesta_hipoteca: boolean,
+  ha_participat_en_un_proces_de_mediacio: boolean,
   import_del_lloguer: number,
+  import_de_la_hipoteca: number,
+  relacio_habitatge: string,
+  relacio_de_parentiu_amb_el_propietari: boolean,
+  titular_contracte_lloguer_temps_empadronat: string,
+  titular_hipoteca_temps_empadronat: string,
   tinc_alguna_propietat_a_part_habitatge_habitual: boolean,
-  valor_cadastral_finques_rustiques: number,
-  valor_cadastral_finques_urbanes: number
+  tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusufructe: boolean,
+  titular_contracte_de_lloguer_id: string,
+  titular_hipoteca_id: string,
 };

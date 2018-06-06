@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import "./AppHeader.css";
-import Link from "react-router-dom/es/Link";
+import Link from "react-router-dom/Link";
 import Grid from '@material-ui/core/Grid';
 
 class AppHeader extends Component {

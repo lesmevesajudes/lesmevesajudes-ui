@@ -7,13 +7,22 @@ import type {PersonID} from "../persons/PersonTypes";
 import {Person} from "../persons/PersonTypes";
 import {Map} from "immutable";
 import {Field, formValueSelector, reduxForm} from "redux-form";
-import {Grid, MenuItem} from "@material-ui/core";
+import {Grid, Hidden, MenuItem} from "@material-ui/core";
 import {Checkbox, Select, TextField} from "redux-form-material-ui";
 import {Trans} from "react-i18next";
 import DescriptionText from "../components/Common/DescriptionText";
 import {esFill} from "../shared/selectorUtils";
 import {allowOnlyPositive} from "../components/Common/NormalizeCommon";
+import InputAdornment from "@material-ui/core/InputAdornment";
 
+const seemsPostalCode = value =>
+    value && (isNaN(Number(value)) || value.length !== 5)
+        ? <Trans>Els codis postals han de tenir un màxim de 5 xifres</Trans>
+        : undefined;
+
+const onlyNumbers = value =>
+    value.replace(/[^\d]/, '');
+  
 type Props = {
   addRent: Function,
   esLlogater: boolean,
@@ -26,17 +35,20 @@ type Props = {
   state: any,
   teAlgunaPropietat: boolean,
   teHabitatgeHabitual: boolean,
+  titularContracteLloguer: Person,
+  titularContracteHipoteca: Person
 };
 
 const RentForm = (props: Props) => {
   const {
     esLlogater,
-    esPropietari,
     existeixDeutePagamentHipoteca,
     existeixDeutePagamentLloguer,
     existeixHipoteca,
     teAlgunaPropietat,
-    teHabitatgeHabitual
+    teHabitatgeHabitual,
+    titularContracteLloguer,
+    titularContracteHipoteca
   } = props;
   return (
     <Grid container className="bg-container">
@@ -46,18 +58,19 @@ const RentForm = (props: Props) => {
           <form name='RentForm'>
             <label><Trans>Relació amb l'habitatge</Trans></label>
             <Field name='relacio_habitatge' data-test='relacio_habitatge' component={Select} fullWidth>
+              <MenuItem value='llogater' data-test='llogater'><Trans>Visc de lloguer</Trans></MenuItem>
               <MenuItem value='propietari'><Trans>Visc en un habitatge de propietat sense hipoteca</Trans></MenuItem>
               <MenuItem value='propietari_hipoteca'><Trans>Visc en un habitatge de propietat amb
                 hipoteca</Trans></MenuItem>
-              <MenuItem value='llogater' data-test='llogater'><Trans>Visc de lloguer</Trans></MenuItem>
-              <MenuItem value='cessio'><Trans>Cessió</Trans></MenuItem>
               <MenuItem value='no_en_te'><Trans>No tinc un habitatge fixe</Trans></MenuItem>
+              <MenuItem value='cessio'><Trans>Cessió</Trans></MenuItem>
               <MenuItem value='altres'><Trans>Altres</Trans></MenuItem>
             </Field>
             {teHabitatgeHabitual &&
             <Grid item>
               <label><Trans>Codi postal on es troba l'habitatge</Trans></label>
-              <Field required name='codi_postal_habitatge' placeholder='08000' fullWidth component={TextField}/>
+              <Field required name='codi_postal_habitatge' placeholder='08000' fullWidth component={TextField}
+                     normalize={onlyNumbers} validate={seemsPostalCode}/>
             </Grid>}
 
             {esLlogater &&
@@ -67,8 +80,9 @@ const RentForm = (props: Props) => {
                 {props.personesQuePodenTenirContracte.valueSeq().map((persona) => (
                   <MenuItem key={persona.id} value={persona.id}>{persona.nom}</MenuItem>
                 ))}
-                <MenuItem key='no-conviu' value='no-conviu'><Trans>Una persona que no viu a
-                  l'habitatge</Trans></MenuItem>
+                <MenuItem key='no-conviu' value='no-conviu'>
+                  <Trans>Una persona que no viu a l'habitatge</Trans>
+                </MenuItem>
               </Field>
             </Grid>}
 
@@ -79,16 +93,30 @@ const RentForm = (props: Props) => {
                 {props.personesQuePodenTenirContracte.valueSeq().map((persona) => (
                   <MenuItem key={persona.id} value={persona.id}>{persona.nom}</MenuItem>
                 ))}
-                <MenuItem key='no-conviu' value='no-conviu'><Trans>Una persona que no viu a
-                  l'habitatge</Trans></MenuItem>
+                <MenuItem key='no-conviu' value='no-conviu'>
+                  <Trans>Una persona que no viu a l'habitatge</Trans>
+                </MenuItem>
               </Field>
             </Grid>}
 
-            {(esLlogater || existeixHipoteca) &&
+            {esLlogater && typeof titularContracteLloguer !== "undefined" &&
             <Fragment>
-              <label><Trans>Quant temps fa que [Nom titular convivent] està empadronat en aquest
+              <label><Trans>Quant temps fa que {titularContracteLloguer.nom} està empadronat en aquest
                 habitatge?</Trans></label>
-              <Field name='temps_empadronat' data-test='temps_empadronat' component={Select} fullWidth>
+              <Field name='titular_contracte_lloguer_temps_empadronat'
+                     data-test='titular_contracte_lloguer_temps_empadronat' component={Select} fullWidth>
+                <MenuItem value='no_empadronat'><Trans>No està empadronat</Trans></MenuItem>
+                <MenuItem value='menys_9_mesos'><Trans>Menys de 9 mesos</Trans></MenuItem>
+                <MenuItem value='9_mesos_o_mes' data-test='llogater'><Trans>9 mesos o més</Trans></MenuItem>
+              </Field>
+            </Fragment>}
+
+            {existeixHipoteca && typeof titularContracteHipoteca !== "undefined" &&
+            <Fragment>
+              <label><Trans>Quant temps fa que {titularContracteHipoteca.nom} està empadronat en aquest
+                habitatge?</Trans></label>
+              <Field name='titular_hipoteca_temps_empadronat' data-test='titular_hipoteca_temps_empadronat'
+                     component={Select} fullWidth>
                 <MenuItem value='no_empadronat'><Trans>No està empadronat</Trans></MenuItem>
                 <MenuItem value='menys_9_mesos'><Trans>Menys de 9 mesos</Trans></MenuItem>
                 <MenuItem value='9_mesos_o_mes' data-test='llogater'><Trans>9 mesos o més</Trans></MenuItem>
@@ -97,14 +125,18 @@ const RentForm = (props: Props) => {
 
             {esLlogater &&
             <Grid item>
-              <label><Trans>Import mensual del lloguer (&euro;)</Trans></label>
+              <label><Trans>Quina és la quota mensual d’aquest lloguer? (&euro;)</Trans></label>
               <Field name='import_del_lloguer' component={TextField} type="number" normalize={allowOnlyPositive}
-                     placeholder='0' fullWidth/>
+                     placeholder='0' fullWidth
+                     InputProps={{
+                       endAdornment: <InputAdornment position="end">€</InputAdornment>,
+                     }}
+              />
             </Grid>}
 
             {existeixHipoteca &&
             <Grid item>
-              <label><Trans>Import mensual de la hipoteca (&euro;)</Trans></label>
+              <label><Trans>Quina és la quota mensual de la seva hipoteca? (&euro;)</Trans></label>
               <Field name='import_de_la_hipoteca' component={TextField} type="number" normalize={allowOnlyPositive}
                      placeholder='0' fullWidth/>
             </Grid>}
@@ -123,24 +155,16 @@ const RentForm = (props: Props) => {
               <Trans>Ha pagat com a mínim 12 quotes d’aquesta hipoteca?</Trans>
             </label>}
 
-            {existeixDeutePagamentLloguer &&
-            <Fragment>
-              <label><Trans>Des de quan teniu deutes de pagament de lloguer?</Trans></label>
-              <Field name='des_de_quan_existeix_deute_lloguer' data-test='des_de_quan_existeix_deute_lloguer'
-                     component={Select} fullWidth>
-                <MenuItem value='mes_dun_any'><Trans>Més d'un any</Trans></MenuItem>
-                <MenuItem value='menys_dun_any'><Trans>Menys d'un any</Trans></MenuItem>
-              </Field>
-            </Fragment>}
-
             {existeixDeutePagamentHipoteca &&
             <Fragment>
-              <label><Trans>Des de quan teniu deutes de pagament de la hipoteca?</Trans></label>
-              <Field name='des_de_quan_existeix_deute_hipoteca' data-test='des_de_quan_existeix_deute_hipoteca'
-                     component={Select} fullWidth>
-                <MenuItem value='mes_dun_any'><Trans>Més d'un any</Trans></MenuItem>
-                <MenuItem value='menys_dun_any'><Trans>Menys d'un any</Trans></MenuItem>
-              </Field>
+              <label><Trans>Fa més de 12 mesos que no paga les quotes de la hipoteca?</Trans></label>
+              <Field name='fa_mes_de_12_mesos_que_existeix_el_deute_de_hipoteca' component={Checkbox}/>
+            </Fragment>}
+
+            {existeixDeutePagamentLloguer &&
+            <Fragment>
+              <label><Trans>Fa més de 12 mesos que no paga les quotes del lloguer?</Trans></label>
+              <Field name='fa_mes_de_12_mesos_que_existeix_el_deute_de_lloguer' component={Checkbox}/>
             </Fragment>}
 
             {esLlogater &&
@@ -170,20 +194,13 @@ const RentForm = (props: Props) => {
               <Trans>Ha participat en un procés de mediació del servei de mediació de laXarxa d’Oficines d’Habitatge
                 de Barcelona</Trans>
             </label>}
-
-            {esPropietari && existeixDeutePagamentHipoteca &&
-            <Grid item>
-              <label><Trans>Data de la primera quota de hipoteca no pagada</Trans></label>
-              <Field name='data_de_la_primera_quota_de_hipoteca_no_pagada' component={TextField}
-                     placeholder='2005-01-21' type='date' fullWidth/>
-            </Grid>}
-
           </form>
         </Grid>
-        <Grid item md={5} hidden={{smDown: true}}>
-          <DescriptionText/>
-        </Grid>
-
+        <Hidden smDown>
+          <Grid item md={5}>
+            <DescriptionText/>
+          </Grid>
+        </Hidden>
       </Grid>
     </Grid>
   );
@@ -197,6 +214,9 @@ function mapStateToProps(state) {
     || selector(state, "relacio_habitatge") === "propietari_hipoteca";
   const existeixHipoteca = selector(state, "relacio_habitatge") === "propietari_hipoteca";
   const esCessio = selector(state, "relacio_habitatge") === "cessio";
+  const titularContracteLloguer = state.persons.get(selector(state, "titular_contracte_de_lloguer_id"));
+  const titularContracteHipoteca = state.persons.get(selector(state, "titular_hipoteca_id"));
+
   return {
     esLlogater: esLlogater,
     esPropietari: esPropietari,
@@ -206,7 +226,9 @@ function mapStateToProps(state) {
     initialValues: state.rent,
     personesQuePodenTenirContracte: state.persons.filter((persona) => !esFill(persona)),
     teAlgunaPropietat: selector(state, "tinc_alguna_propietat_a_part_habitatge_habitual"),
-    teHabitatgeHabitual: esLlogater || esPropietari || esCessio
+    teHabitatgeHabitual: esLlogater || esPropietari || esCessio,
+    titularContracteLloguer: titularContracteLloguer,
+    titularContracteHipoteca: titularContracteHipoteca
 
   };
 }

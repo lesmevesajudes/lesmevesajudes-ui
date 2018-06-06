@@ -10,6 +10,7 @@ import {serialize} from "./PersonsReducer";
 import * as UUID from "../shared/UUID";
 import {addPerson, removePerson, updatePerson} from "./PersonsActions";
 import HowManyPersonsLiveTogetherPage from "./HowManyPersonsLiveTogetherPage";
+import {enableButtons, hideButtons, showButtons} from "../components/Steps/StepsActions";
 
 type State = {
   step: string,
@@ -19,11 +20,8 @@ type State = {
 
 type Props = {
   persons: Array<Person>,
-  removePerson: Function,
-  addPerson: Function,
-  updatePerson: Function,
-  jumpToStep: Function,
-  PersonRole: String
+  PersonRole: String,
+  dispatch: Function
 };
 
 class PersonsPage extends React.Component<Props, State> {
@@ -32,9 +30,10 @@ class PersonsPage extends React.Component<Props, State> {
       this.setState({
         ...this.state,
         numberOfPersonsLivingTogether: this.state.numberOfPersonsLivingTogether - 1
-      });
+      }, this.enableButtonsIfNeeded);
 
   handleAddPersonClick = () => {
+    this.props.dispatch(hideButtons());
     this.setState({
       ...this.state,
       step: "addPerson"
@@ -42,18 +41,20 @@ class PersonsPage extends React.Component<Props, State> {
   };
 
   handleUpdatePersonClick = (personID: PersonID) => {
+    this.props.dispatch(hideButtons());
     this.setState({
       ...this.state,
-      initialFormValues: this.props.persons.filter(e => e.id === personID)[0],
-      step: "addPerson"
+      initialFormValues: {...this.props.persons.filter(e => e.id === personID)[0]},
+      step: "updatePerson"
     });
   };
 
   handleRemovePersonClick = (personID: PersonID) => {
-    this.props.removePerson(personID);
+    this.props.dispatch(removePerson(personID));
   };
 
   doneEditingPerson = () => {
+    this.props.dispatch(showButtons());
     this.setState({
       ...this.state,
       initialFormValues: undefined,
@@ -63,10 +64,17 @@ class PersonsPage extends React.Component<Props, State> {
 
   handleSubmitPersonForm = (formValues: Person) => {
     this.doneEditingPerson();
+    this.enableButtonsIfNeeded();
     if (formValues.id === undefined) {
-      return this.props.addPerson({...formValues, id: UUID.create()});
+      this.props.dispatch(addPerson({...formValues, id: UUID.create()}));
     } else {
-      return this.props.updatePerson(formValues);
+      this.props.dispatch(updatePerson(formValues));
+    }
+  };
+
+  enableButtonsIfNeeded = () => {
+    if (this.props.persons.length >= this.state.numberOfPersonsLivingTogether - 1) {
+      this.props.dispatch(enableButtons());
     }
   };
 
@@ -114,13 +122,14 @@ class PersonsPage extends React.Component<Props, State> {
               onRemoveUnknownClick={this.handleRemoveUnknownPerson}
               expectedNumberOfPersons={expectedNumberOfPersonsLivingTogether}
           />);
-    } else if (step === "addPerson") {
+    } else if (step === "addPerson" || step === "updatePerson") {
+
       component = (
           <PersonForm
               initialValues={this.state.initialFormValues}
               onSubmit={this.handleSubmitPersonForm}
               onCancel={this.doneEditingPerson}
-              onFinishAdding={() => this.doneEditingPerson()}
+              updating={step === "updatePerson"}
           />
       );
     }
@@ -134,6 +143,6 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, {addPerson: addPerson, updatePerson: updatePerson, removePerson: removePerson})(
+export default connect(mapStateToProps)(
     PersonsPage
 );
