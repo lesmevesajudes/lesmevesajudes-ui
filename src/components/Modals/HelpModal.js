@@ -13,6 +13,8 @@ type Props = {
   title: string,
   children: Object,
   classes: Object,
+  currentOpenedModal: string,
+  name: string,
   closeModal: Function
 }
 
@@ -45,7 +47,7 @@ const HelpModal = (props: Props) =>
     <Modal
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
-        open={props.open}
+        open={props.open && props.currentOpenedModal === props.name}
         onClose={() => props.closeModal("HelpModal")}
     >
       <div style={getModalStyle()} className={props.classes.paper}>
@@ -61,15 +63,16 @@ const HelpModal = (props: Props) =>
       </div>
     </Modal>;
 
-const isModalOpen = (state, modalName: string): boolean =>
-    typeof state.modals.currentModalName !== "undefined" && state.modals.currentModalName === modalName;
+const isModalOpen = (state): boolean =>
+    typeof state.modals.currentModalName !== "undefined";
 
 
 export default compose(
     withStyles(styles),
     connect(state => ({
-      open: isModalOpen(state, "HelpModal"),
-      top: isModalOpen(state, "HelpModal") ? state.modals.top : 0,
-      left: isModalOpen(state, "HelpModal") ? state.modals.left : 0
+      open: isModalOpen(state),
+      currentOpenedModal: state.modals.currentModalName,
+      top: isModalOpen(state) ? state.modals.top : 0,
+      left: isModalOpen(state) ? state.modals.left : 0
     }), {closeModal})
 )(HelpModal);
