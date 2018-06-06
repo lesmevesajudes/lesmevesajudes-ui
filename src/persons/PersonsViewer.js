@@ -70,19 +70,19 @@ const PersonCard = (props: PersonCardProps) => {
   const anysText = props.person.edat != null ? `${props.person.edat} anys ` : "";
   const secondaryText = `${anysText}${relacioDeParentiuATextDelLListatDePersones(props.person.relacio_parentiu)}`;
   return (
-    <ListItem button onClick={() => props.updatePerson(props.person.id)}>
-      <Avatar style={{backgroundColor: "#006600"}}>{initials(props.person.nom)}</Avatar>
-      <ListItemText
-          primary={props.person.is_the_user_in_front_of_the_computer ? `Vosté: ${props.person.nom}` : props.person.nom}
-          secondary={props.person.is_the_user_in_front_of_the_computer ? '' : secondaryText}
-      />
-      {!props.person.is_the_user_in_front_of_the_computer &&
-      <ListItemSecondaryAction onClick={() => props.onRemoveClick(props.person.id)}>
-        <IconButton aria-label="Delete">
-          <ClearIcon/>
-        </IconButton>
-      </ListItemSecondaryAction>}
-    </ListItem>);
+      <ListItem button onClick={() => props.updatePerson(props.person.id)}>
+        <Avatar style={{backgroundColor: "#006600"}}>{initials(props.person.nom)}</Avatar>
+        <ListItemText
+            primary={props.person.is_the_user_in_front_of_the_computer ? `Vosté: ${props.person.nom}` : props.person.nom}
+            secondary={props.person.is_the_user_in_front_of_the_computer ? '' : secondaryText}
+        />
+        {!props.person.is_the_user_in_front_of_the_computer &&
+        <ListItemSecondaryAction onClick={() => props.onRemoveClick(props.person.id)}>
+          <IconButton aria-label="Delete">
+            <ClearIcon/>
+          </IconButton>
+        </ListItemSecondaryAction>}
+      </ListItem>);
 };
 
 type UnknownPersonProps = {
@@ -133,8 +133,7 @@ class PersonsViewer extends Component<Props, void> {
               </Grid>
               {missingPersons === 0 &&
               <Grid item>
-                <Button variant="raised" onClick={this.props.onAddPersonClick}>Afegir una persona
-                  convivent</Button>
+                <Button variant="raised" onClick={this.props.onAddPersonClick}>Afegir una persona convivent</Button>
               </Grid>}
             </Grid>
           </Grid>
