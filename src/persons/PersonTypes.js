@@ -3,7 +3,7 @@ import {Map} from "immutable";
 
 export type PersonID = string;
 
-export type PersonRole = 'pares'|'fill'|'altres_adults'|'altres_adults_familiars';
+export type PersonRole = 'pares' | 'fill' | 'altres_adults' | 'altres_adults_familiars';
 
 export class Person {
   anys_empadronat_a_barcelona: number = 0;

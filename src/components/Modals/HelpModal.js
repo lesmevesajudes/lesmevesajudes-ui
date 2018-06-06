@@ -11,7 +11,7 @@ import Icon from '@material-ui/core/Icon';
 type Props = {
   open: Boolean,
   title: string,
-  body: string,
+  children: Object,
   classes: Object,
   closeModal: Function
 }
@@ -24,7 +24,7 @@ const getModalStyle = () => {
     left: `${left}%`,
     transform: `translate(-${top}%, -${left}%)`,
   };
-}
+};
 const styles = theme => ({
   paper: {
     position: 'absolute',
@@ -40,7 +40,7 @@ const styles = theme => ({
     fontSize: '1.1em'
   }
 });
-let closeImg = {cursor:'pointer', float:'right', marginTop: '5px', width: '20px'};
+const closeImg = {cursor: 'pointer', float: 'right', marginTop: '5px', width: '20px'};
 const HelpModal = (props: Props) =>
     <Modal
         aria-labelledby="simple-modal-title"
@@ -56,7 +56,7 @@ const HelpModal = (props: Props) =>
           </Icon>
         </div>
         <Typography variant="subheading" id="simple-modal-description">
-          {props.body}
+          {props.children}
         </Typography>
       </div>
     </Modal>;

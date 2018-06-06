@@ -18,7 +18,6 @@ import {MoneyQuestion} from "./components/MoneyQuestion";
 import {PercentageQuestion} from "./components/PercentageQuestion";
 import {TimePeriodQuestion} from "./components/TimePeriodQuestion";
 import {MunicipiEmpadronament} from "./components/MunicipiEmpadronament";
-import HelpIcon from "../components/HelpIcon";
 
 
 export type PersonFormInitialValues = Person | { is_the_user_in_front_of_the_computer: boolean };
@@ -91,7 +90,6 @@ let PersonForm = (props: Props) => {
                     <Trans>
                       {isTheUserInFrontOfTheComputer ? "Identifiqui's amb un nom" : "Identifiqui'l amb un nom"}
                     </Trans>
-                   <Hidden smUp> <HelpIcon/></Hidden>
                   </Question>
 
                   {!isTheUserInFrontOfTheComputer && <RelacioFamiliar/>}
