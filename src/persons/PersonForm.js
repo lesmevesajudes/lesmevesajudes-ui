@@ -22,6 +22,19 @@ import {MunicipiEmpadronament} from "./components/MunicipiEmpadronament";
 
 export type PersonFormInitialValues = Person | { is_the_user_in_front_of_the_computer: boolean };
 
+const pncInclosAIngressosBruts = (value, allValues) =>
+    value && value > allValues.ingressos_bruts
+        ? <Trans>Els ingressos per pensions no contributives has d'estar inclosos en els ingressos bruts</Trans>
+        : undefined;
+const anysEmpadronatInferiorAEdat = (value, allValues) =>
+    value && value > allValues.edat
+        ? <Trans>Els anys d'empadronament han de ser iguals o inferiors a l'edat</Trans>
+        : undefined;
+const menorDe120 = (value) =>
+    value && value >= 120
+        ? <Trans>No es contemplen edats superiors als 120 anys</Trans>
+        : undefined;
+
 type Props = {
   cobraAlgunTipusDePensioNoContributiva: Boolean,
   currentField: string,
@@ -96,7 +109,7 @@ let PersonForm = (props: Props) => {
 
                   {esFamiliarOUsuari &&
                   <Fragment>
-                    <TimePeriodQuestion name="edat" required>
+                    <TimePeriodQuestion name="edat" required validate={menorDe120}>
                       <Trans>Quina és la seva edat?</Trans>
                     </TimePeriodQuestion>
 
@@ -134,7 +147,8 @@ let PersonForm = (props: Props) => {
                   {esFamiliarOUsuari && <MunicipiEmpadronament/>}
 
                   {municipiEmpadronament === "barcelona" &&
-                  <TimePeriodQuestion name="anys_empadronat_a_barcelona" required>
+                  <TimePeriodQuestion name="anys_empadronat_a_barcelona"
+                                      validate={[anysEmpadronatInferiorAEdat, menorDe120]} required>
                     <Trans>Quants anys porta empadronat a Barcelona?</Trans>
                   </TimePeriodQuestion>}
 
@@ -178,7 +192,7 @@ let PersonForm = (props: Props) => {
 
                   {esFamiliarOUsuari && cobraAlgunTipusDePensioNoContributiva &&
                   <Fragment>
-                    <MoneyQuestion name="ingressos_per_pnc">
+                    <MoneyQuestion name="ingressos_per_pnc" validate={pncInclosAIngressosBruts}>
                       <Trans>Indiqui la suma dels imports de totes les pensions no contributives que cobri</Trans>
                     </MoneyQuestion>
                   </Fragment>}
@@ -219,7 +233,6 @@ let PersonForm = (props: Props) => {
                       <Trans>És orfe dels dos progenitors</Trans>
                     </YesNoQuestion>}
                   </Fragment>}
-                  <br/>
                 </Grid>
               </Grid>
               <Hidden smDown>

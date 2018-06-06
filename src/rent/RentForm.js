@@ -15,6 +15,14 @@ import {esFill} from "../shared/selectorUtils";
 import {allowOnlyPositive} from "../components/Common/NormalizeCommon";
 import InputAdornment from "@material-ui/core/InputAdornment";
 
+const seemsPostalCode = value =>
+    value && (isNaN(Number(value)) || value.length !== 5)
+        ? <Trans>Els codis postals han de tenir un màxim de 5 xifres</Trans>
+        : undefined;
+
+const onlyNumbers = value =>
+    value.replace(/[^\d]/, '');
+  
 type Props = {
   addRent: Function,
   esLlogater: boolean,
@@ -61,7 +69,8 @@ const RentForm = (props: Props) => {
             {teHabitatgeHabitual &&
             <Grid item>
               <label><Trans>Codi postal on es troba l'habitatge</Trans></label>
-              <Field required name='codi_postal_habitatge' placeholder='08000' fullWidth component={TextField}/>
+              <Field required name='codi_postal_habitatge' placeholder='08000' fullWidth component={TextField}
+                     normalize={onlyNumbers} validate={seemsPostalCode}/>
             </Grid>}
 
             {esLlogater &&
