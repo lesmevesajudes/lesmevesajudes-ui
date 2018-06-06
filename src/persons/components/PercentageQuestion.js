@@ -3,11 +3,12 @@ import {Question} from "./Question";
 import {TextField} from "redux-form-material-ui";
 import {allowOnlyPositive} from "../../components/Common/NormalizeCommon";
 import InputAdornment from "@material-ui/core/InputAdornment";
+import {Trans} from "react-i18next";
 
 // TODO Max 100
 const max100 = value =>
-  value && value >= 100 && value < 0
-    ? 'El grau de discapacitat sol pot ser entre el interval de 0 i 100.'
+    value && (value > 100 || value < 0)
+        ? <Trans>Només s'admeten valors entre 0 i 100</Trans>
     : undefined;
 
 export const PercentageQuestion = (props) =>
