@@ -19,6 +19,7 @@ import {PercentageQuestion} from "./components/PercentageQuestion";
 import {TimePeriodQuestion} from "./components/TimePeriodQuestion";
 import {MunicipiEmpadronament} from "./components/MunicipiEmpadronament";
 
+
 export type PersonFormInitialValues = Person | { is_the_user_in_front_of_the_computer: boolean };
 
 type Props = {
