@@ -9,10 +9,10 @@ export const MunicipiEmpadronament = () =>
       <MenuItem data-test="barcelona" value="barcelona">
         <Trans>Barcelona</Trans>
       </MenuItem>
-      <MenuItem data-test="altres" value="barcelona">
+      <MenuItem data-test="altres" value="altres">
         <Trans>altres</Trans>
       </MenuItem>
       <MenuItem data-test="no_empadronat_a_cat" value="no_empadronat_a_cat">
-        <Trans>Noe estic empadronat a Catalunya</Trans>
+        <Trans>No estic empadronat a Catalunya</Trans>
       </MenuItem>
     </MultipleAnswerQuestion>;
