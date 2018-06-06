@@ -1,5 +1,5 @@
 //@flow
-import Typography from "@material-ui/core/es/Typography/Typography";
+import Typography from "@material-ui/core/Typography";
 import React from "react";
 import Modal from "@material-ui/core/Modal";
 import {closeModal} from "./ModalActions";

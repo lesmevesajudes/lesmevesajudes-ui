@@ -1,5 +1,5 @@
 import React from "react";
-import Link from "react-router-dom/es/Link";
+import Link from "react-router-dom/Link";
 import {Map} from "immutable";
 import type {PersonID} from "../persons/PersonTypes";
 import {Person} from "../persons/PersonTypes";
