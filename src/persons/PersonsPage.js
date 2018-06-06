@@ -30,7 +30,7 @@ class PersonsPage extends React.Component<Props, State> {
       this.setState({
         ...this.state,
         numberOfPersonsLivingTogether: this.state.numberOfPersonsLivingTogether - 1
-      });
+      }, this.enableButtonsIfNeeded);
 
   handleAddPersonClick = () => {
     this.props.dispatch(hideButtons());
@@ -64,13 +64,17 @@ class PersonsPage extends React.Component<Props, State> {
 
   handleSubmitPersonForm = (formValues: Person) => {
     this.doneEditingPerson();
-    if (this.props.persons.length >= this.state.numberOfPersonsLivingTogether - 1) {
-      this.props.dispatch(enableButtons());
-    }
+    this.enableButtonsIfNeeded();
     if (formValues.id === undefined) {
       this.props.dispatch(addPerson({...formValues, id: UUID.create()}));
     } else {
       this.props.dispatch(updatePerson(formValues));
+    }
+  };
+
+  enableButtonsIfNeeded = () => {
+    if (this.props.persons.length >= this.state.numberOfPersonsLivingTogether - 1) {
+      this.props.dispatch(enableButtons());
     }
   };
 
