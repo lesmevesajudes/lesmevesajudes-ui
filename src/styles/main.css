@@ -117,11 +117,13 @@ input.cercabcn {
 .buttons-container {
   border-radius: 4px;
   min-height: 180px;
-  max-width: 950px;
+  max-width: 970px;
   margin: 0px auto;
 }
+
 .buttons-container .left-button {
-  float: left
+  float: left;
+  margin-left:11px;
 }
 .buttons-container .right-button {
   float: right
@@ -142,4 +144,17 @@ input.cercabcn {
 .checkOption.active {
   background: rgb(194, 98, 170);
   border: rgb(170, 82, 148)1px solid;
+}
+
+@media (min-width: 800px){
+  .iconHelp {
+    font-size: 0px !important;
+    display: inline;
+  }
+}
+@media (max-width: 600px) {
+  .iconHelp {
+    font-size: 22px !important;
+    display: inline;
+}
 }
