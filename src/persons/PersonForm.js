@@ -21,18 +21,18 @@ import {MunicipiEmpadronament} from "./components/MunicipiEmpadronament";
 
 export type PersonFormInitialValues = Person | { is_the_user_in_front_of_the_computer: boolean };
 
-const checkMoney  = (value,props) => 
-  (props.ingressos_per_pnc) && props.ingressos_bruts < props.ingressos_per_pnc
-    ? 'La suma de totes les pensiones contributives no pot ser superior al Ingressors bruts anuals!'
-    : undefined;
-const checkEdatBeetweenPadroAndPersonalAge = (value,props) =>
-  (props.anys_empadronat_a_barcelona) && props.edat < props.anys_empadronat_a_barcelona
-    ? 'No pot ser més gran el temps que has estat empadronat que el que has estat viu!'
-    : undefined; 
-const tooOld = (value,props) => 
-    props.edat && props.edat >= 120
-    ? 'No pots tenir més de 120 anys, ho sento!'
-    : undefined;
+const pncInclosAIngressosBruts = (value, allValues) =>
+    value && value > allValues.ingressos_bruts
+        ? <Trans>Els ingressos per pensions no contributives has d'estar inclosos en els ingressos bruts</Trans>
+        : undefined;
+const anysEmpadronatInferiorAEdat = (value, allValues) =>
+    value && value > allValues.edat
+        ? <Trans>Els anys d'empadronament han de ser iguals o inferiors a l'edat</Trans>
+        : undefined;
+const menorDe120 = (value) =>
+    value && value >= 120
+        ? <Trans>No es contemplen edats superiors als 120 anys</Trans>
+        : undefined;
 
 type Props = {
   cobraAlgunTipusDePensioNoContributiva: Boolean,
@@ -108,7 +108,7 @@ let PersonForm = (props: Props) => {
 
                   {esFamiliarOUsuari &&
                   <Fragment>
-                    <TimePeriodQuestion name="edat" required validate={tooOld}>
+                    <TimePeriodQuestion name="edat" required validate={menorDe120}>
                       <Trans>Quina és la seva edat?</Trans>
                     </TimePeriodQuestion>
 
@@ -143,10 +143,11 @@ let PersonForm = (props: Props) => {
                     <Trans>És una persona divorciada?</Trans>
                   </YesNoQuestion>}
 
-                  {esFamiliarOUsuari && <MunicipiEmpadronament />}
+                  {esFamiliarOUsuari && <MunicipiEmpadronament/>}
 
                   {municipiEmpadronament === "barcelona" &&
-                  <TimePeriodQuestion name="anys_empadronat_a_barcelona" validate={[checkEdatBeetweenPadroAndPersonalAge, tooOld]} required>
+                  <TimePeriodQuestion name="anys_empadronat_a_barcelona"
+                                      validate={[anysEmpadronatInferiorAEdat, menorDe120]} required>
                     <Trans>Quants anys porta empadronat a Barcelona?</Trans>
                   </TimePeriodQuestion>}
 
@@ -190,7 +191,7 @@ let PersonForm = (props: Props) => {
 
                   {esFamiliarOUsuari && cobraAlgunTipusDePensioNoContributiva &&
                   <Fragment>
-                    <MoneyQuestion name="ingressos_per_pnc" validate={checkMoney} >
+                    <MoneyQuestion name="ingressos_per_pnc" validate={pncInclosAIngressosBruts}>
                       <Trans>Indiqui la suma dels imports de totes les pensions no contributives que cobri</Trans>
                     </MoneyQuestion>
                   </Fragment>}
