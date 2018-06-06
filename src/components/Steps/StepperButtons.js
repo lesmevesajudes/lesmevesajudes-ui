@@ -1,6 +1,7 @@
 import React from 'react';
 import {Button, Grid} from "@material-ui/core";
 import {Trans} from "react-i18next";
+import classNames from "classnames";
 
 type Props = {
   nextIsResults: boolean,
@@ -15,8 +16,9 @@ let StepperButtons = (props: Props) => {
       <Grid container justify={'center'} className="buttons-container">
         <Grid item sm={6} md={6}>
                 {typeof props.backAction !== "undefined" &&
-          <Button variant="raised" 
-              disabled={!props.buttonEnabled} onClick={props.backAction} className={props.classes.backButton} className="left-button">
+          <Button variant="raised"
+                  disabled={!props.buttonEnabled} onClick={props.backAction}
+                  className={classNames(props.classes.backButton, "left-button")}>
             <Trans>Anterior</Trans>
           </Button>}
         </Grid>
