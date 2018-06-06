@@ -1,15 +1,13 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import {Select} from "redux-form-material-ui";
-import {Field} from "redux-form";
 import MenuItem from "@material-ui/core/MenuItem";
 import {Trans} from "react-i18next";
+import Grid from "@material-ui/core/Grid";
+import MultipleAnswerQuestion from "./MultipleAnswerQuestion";
 
 export const RelacioFamiliar = () =>
-    <Fragment>
-      <label>
-        <Trans>Aquesta persona és el/la seu/va?</Trans>
-      </label>
-      <Field data-test="relacio_parentiu" name="relacio_parentiu" component={Select} fullWidth>
+    <Grid item>
+      <MultipleAnswerQuestion name="relacio_parentiu" label={<Trans>Aquesta persona és el/la seu/va?</Trans>}>
         <MenuItem data-test="parella" value="parella">
           <Trans>Cònjuge / parella</Trans>
         </MenuItem>
@@ -49,5 +47,5 @@ export const RelacioFamiliar = () =>
         <MenuItem data-test="cap" value="cap">
           <Trans>Sense relació de parentiu</Trans>
         </MenuItem>
-      </Field>
-    </Fragment>;
+      </MultipleAnswerQuestion>
+    </Grid>;
