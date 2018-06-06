@@ -67,7 +67,7 @@ const relacioDeParentiuATextDelLListatDePersones = (relacioDeParentiu: string) =
 
 
 const PersonCard = (props: PersonCardProps) => {
-  const anysText = typeof props.person.edat !== "undefined" ? `${props.person.edat} anys `: "";
+  const anysText = props.person.edat != null ? `${props.person.edat} anys ` : "";
   const secondaryText = `${anysText}${relacioDeParentiuATextDelLListatDePersones(props.person.relacio_parentiu)}`;
   return (
     <ListItem button onClick={() => props.updatePerson(props.person.id)}>
