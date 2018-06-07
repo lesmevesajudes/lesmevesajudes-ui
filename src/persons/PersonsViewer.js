@@ -59,7 +59,7 @@ const relacioDeParentiuATextDelLListatDePersones = (relacioDeParentiu: string) =
     cunyat: 'és el seu cunyat/da',
     gendre: 'és el su gendre/jove',
     altres: 'és un familiar',
-    cap: 'és una persona que conviu amb vosté',
+    cap: 'és una persona que conviu amb vostè',
     undefined: ''
   };
   return textos[relacioDeParentiu];
