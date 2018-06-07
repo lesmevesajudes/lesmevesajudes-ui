@@ -26,7 +26,7 @@ type Props = {
 
 class PersonsPage extends React.Component<Props, State> {
 
-  handleRemoveUnknownPerson = () =>
+  removeOnePersonLivingTogether = () =>
       this.setState({
         ...this.state,
         numberOfPersonsLivingTogether: this.state.numberOfPersonsLivingTogether - 1
@@ -51,6 +51,7 @@ class PersonsPage extends React.Component<Props, State> {
 
   handleRemovePersonClick = (personID: PersonID) => {
     this.props.dispatch(removePerson(personID));
+    this.removeOnePersonLivingTogether();
   };
 
   doneEditingPerson = () => {
@@ -63,17 +64,20 @@ class PersonsPage extends React.Component<Props, State> {
   };
 
   handleSubmitPersonForm = (formValues: Person) => {
+
+    this.props.dispatch(
+        (formValues.id === undefined)
+            ? addPerson({...formValues, id: UUID.create()})
+            : updatePerson(formValues)
+    );
+    this.enableButtonsIfNeeded(this.props.persons.length + 1);
     this.doneEditingPerson();
-    this.enableButtonsIfNeeded();
-    if (formValues.id === undefined) {
-      this.props.dispatch(addPerson({...formValues, id: UUID.create()}));
-    } else {
-      this.props.dispatch(updatePerson(formValues));
-    }
   };
 
-  enableButtonsIfNeeded = () => {
-    if (this.props.persons.length >= this.state.numberOfPersonsLivingTogether - 1) {
+  enableButtonsIfNeeded = (persons: ?number) => {
+    // FIXME terrible hack to fix that I don't know how to execute functions after actions
+    const personsToCheck: number = typeof persons === 'number' ? persons : this.props.persons.length;
+    if (personsToCheck >= this.state.numberOfPersonsLivingTogether) {
       this.props.dispatch(enableButtons());
     }
   };
@@ -119,7 +123,7 @@ class PersonsPage extends React.Component<Props, State> {
               onRemoveClick={this.handleRemovePersonClick}
               onUpdateClick={this.handleUpdatePersonClick}
               onAddPersonClick={this.handleAddPersonClick}
-              onRemoveUnknownClick={this.handleRemoveUnknownPerson}
+              onRemoveUnknownClick={this.removeOnePersonLivingTogether}
               expectedNumberOfPersons={expectedNumberOfPersonsLivingTogether}
           />);
     } else if (step === "addPerson" || step === "updatePerson") {
