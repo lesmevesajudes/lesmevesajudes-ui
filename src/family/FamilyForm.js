@@ -1,19 +1,19 @@
 //@flow
 import React from "react";
-import { addHouseholdData } from "./HouseholdDataActions";
-import { connect } from "react-redux";
-import type { HouseholdData } from "./HouseholdDataTypes";
-import { Checkbox, Select } from "redux-form-material-ui";
-import { Field, reduxForm } from "redux-form";
+import {addHouseholdData} from "./FamilyDataActions";
+import {connect} from "react-redux";
+import type {HouseholdData} from "./FamilyDataTypes";
+import {Checkbox, Select} from "redux-form-material-ui";
+import {Field, reduxForm} from "redux-form";
 import Grid from "@material-ui/core/Grid";
 import MenuItem from "@material-ui/core/MenuItem";
 import Hidden from "@material-ui/core/Hidden";
-import type { PersonID } from "../persons/PersonTypes";
-import { Person } from "../persons/PersonTypes";
-import { Map } from "immutable";
-import { esFill, esMonoparental, esSustentador } from "../shared/selectorUtils";
+import type {PersonID} from "../persons/PersonTypes";
+import {Person} from "../persons/PersonTypes";
+import {Map} from "immutable";
+import {esFill, esMonoparental, esSustentador} from "../shared/selectorUtils";
 import DescriptionText from "../components/Common/DescriptionText";
-import { Trans } from "react-i18next";
+import {Trans} from "react-i18next";
 
 type Props = {
   initialValues: HouseholdData,
@@ -26,7 +26,7 @@ type Props = {
   custodies: Object
 };
 
-let HouseholdForm = (props: Props) => {
+let FamilyForm = (props: Props) => {
   const { esMonoparental, possiblesSustentadors, fills } = props;
   return (
     <Grid container className="bg-container">
@@ -97,4 +97,4 @@ export default connect(mapStateToProps, { addHouseholdData })(
       onChange: (values, dispatch) => {
         dispatch(addHouseholdData(values));
       }
-    })(HouseholdForm));
+    })(FamilyForm));

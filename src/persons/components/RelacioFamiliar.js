@@ -1,5 +1,4 @@
 import React from 'react';
-import {Select} from "redux-form-material-ui";
 import MenuItem from "@material-ui/core/MenuItem";
 import {Trans} from "react-i18next";
 import Grid from "@material-ui/core/Grid";

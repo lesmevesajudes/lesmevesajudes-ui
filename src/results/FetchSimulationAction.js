@@ -1,7 +1,7 @@
 //@flow
 import {serialize as serialize_adult} from "../persons/PersonsReducer";
 import type {Person, PersonsState} from "../persons/PersonTypes";
-import type {HouseholdData} from "../household/householdDataTypes";
+import type {HouseholdData} from "../family/FamilyDataTypes";
 import type {Rent} from "../rent/rentTypes";
 import OpenFiscaAPIClient from "../shared/OpenFiscaAPIClient";
 import {esFill, esInfantAcollit, esMonoparental, esSustentador, tipusCustodia} from "../shared/selectorUtils";

@@ -5,7 +5,7 @@ import {translate} from "react-i18next";
 import Grid from '@material-ui/core/Grid';
 import StepsComponent from '../components/Steps/StepsComponent';
 import PersonsPage from '../persons/PersonsPage'
-import HouseholdForm from '../household/HouseholdForm';
+import HouseholdForm from '../family/FamilyForm';
 import RentForm from '../rent/RentForm';
 import ResultsPage from '../results/ResultsPage';
 
