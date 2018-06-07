@@ -26,11 +26,11 @@ import FormSubTitle from "./components/FormSubTitle";
 export type PersonFormInitialValues = Person | { is_the_user_in_front_of_the_computer: boolean };
 
 const pncInclosAIngressosBruts = (value, allValues) =>
-    value && value > allValues.ingressos_bruts
+    value && value > parseInt(allValues.ingressos_bruts, 10)
         ? <Trans>Els ingressos per pensions no contributives has d'estar inclosos en els ingressos bruts</Trans>
         : undefined;
 const anysEmpadronatInferiorAEdat = (value, allValues) =>
-    value && value > allValues.edat
+    value && value > parseInt(allValues.edat, 10)
         ? <Trans>Els anys d'empadronament han de ser iguals o inferiors a l'edat</Trans>
         : undefined;
 const menorDe120 = (value) =>
