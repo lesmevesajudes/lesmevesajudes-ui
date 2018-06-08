@@ -11,17 +11,8 @@ function addHouseholdData(
   return {...householdDataToBeAdded};
 }
 
-function initHouseholdDataState(): HouseholdDataState {
-  return {
-    tipus_familia_nombrosa: "nop",
-    tipus_familia_monoparental: "nop",
-    es_usuari_serveis_socials: false,
-    custodies: null
-  };
-}
-
 export default function (
-    state: HouseholdDataState = initHouseholdDataState(),
+    state: HouseholdDataState = {},
     action: FamilyDataActions
 ): HouseholdDataState {
   switch (action.type) {

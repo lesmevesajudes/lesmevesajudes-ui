@@ -8,12 +8,8 @@ function addRent(state: RentState, rentToBeAdded: Rent): RentState {
   return rentToBeAdded;
 }
 
-function initRentState(): RentState {
-  return {};
-}
-
 export default function (
-    state: RentState = initRentState(),
+    state: RentState = {},
     action: RentActions
 ): RentState {
   switch (action.type) {
