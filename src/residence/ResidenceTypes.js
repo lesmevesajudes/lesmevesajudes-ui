@@ -1,6 +1,6 @@
 // @flow
 
-export type Rent = {
+export type ResidenceData = {
   codi_postal_habitatge: string,
   existeix_deute_en_el_pagament_del_lloguer: boolean,
   existeix_deute_en_el_pagament_de_la_hipoteca: boolean,

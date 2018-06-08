@@ -5,8 +5,8 @@ import {translate} from "react-i18next";
 import Grid from '@material-ui/core/Grid';
 import StepsComponent from '../components/Steps/StepsComponent';
 import PersonsPage from '../persons/PersonsPage'
-import HouseholdForm from '../family/FamilyForm';
-import RentForm from '../rent/RentForm';
+import FamilyForm from '../family/FamilyForm';
+import ResidenceForm from '../residence/ResidenceForm';
 import ResultsPage from '../results/ResultsPage';
 
 const steps = [
@@ -16,11 +16,11 @@ const steps = [
   },
   {
     label: 'Families',
-    component: <HouseholdForm/>
+    component: <FamilyForm/>
   },
   {
     label: 'Domicili Habitual',
-    component: <RentForm/>
+    component: <ResidenceForm/>
   },
   {
     label: 'Resultats',

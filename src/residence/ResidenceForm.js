@@ -1,8 +1,8 @@
 //@flow
 import React from "react";
 import {connect} from "react-redux";
-import {addRent} from "./RentActions";
-import type {Rent} from "./RentTypes";
+import {addResidenceData} from "./ResidenceActions";
+import type {ResidenceData} from "./ResidenceTypes";
 import type {PersonID} from "../persons/PersonTypes";
 import {Person} from "../persons/PersonTypes";
 import {Map} from "immutable";
@@ -32,7 +32,8 @@ type Props = {
   existeixDeutePagamentLloguer: boolean,
   existeixDeutePagamentHipoteca: boolean,
   existeixHipoteca: boolean,
-  initialValues: ?Rent,
+  haSeleccionatAlgunaRelacioAmbLHabitatge: boolean,
+  initialValues: ?ResidenceData,
   personesQuePodenTenirContracte: Map<PersonID, Person>,
   state: any,
   teAlgunaPropietat: boolean,
@@ -41,13 +42,14 @@ type Props = {
   titularContracteHipoteca: Person
 };
 
-const RentForm = (props: Props) => {
+const ResidenceForm = (props: Props) => {
   const {
     esLlogater,
     esPropietari,
     existeixDeutePagamentHipoteca,
     existeixDeutePagamentLloguer,
     existeixHipoteca,
+    haSeleccionatAlgunaRelacioAmbLHabitatge,
     teAlgunaPropietat,
     teHabitatgeHabitual,
     titularContracteLloguer,
@@ -56,10 +58,10 @@ const RentForm = (props: Props) => {
   return (
       <Grid container className="bg-container">
         <h1><Trans>Afegeixi informació del seu domicili habitual</Trans></h1>
-        <Grid container direction="row" justify="space-around">
+        <Grid container direction="row" justify="space-around" alignItems="stretch">
           <Grid item xs={12} sm={6}>
-            <Grid container direction="column" spacing={16}>
-              <form name='RentForm'>
+            <Grid container direction="column" alignItems="stretch" spacing={16}>
+              <form name='ResidenceForm'>
                 <MultipleAnswerQuestion name='relacio_habitatge' label={<Trans>Relació amb l'habitatge</Trans>}>
                   <MenuItem value='llogater' data-test='llogater'><Trans>Visc de lloguer</Trans></MenuItem>
                   <MenuItem value='propietari'><Trans>Visc en un habitatge de propietat sense
@@ -173,7 +175,7 @@ const RentForm = (props: Props) => {
                   <Trans>Disposa de l’usdefruit d’aquesta propietat?</Trans>
                 </YesNoQuestion>}
 
-                {!esPropietari &&
+                {haSeleccionatAlgunaRelacioAmbLHabitatge && !esPropietari &&
                 <YesNoQuestion name='ha_perdut_lhabitatge_en_els_ultims_2_anys'>
                   <Trans>Ha perdut el seu habitatge habitual degut a una execució hipotecària o desnonament en els
                     ultims
@@ -211,14 +213,15 @@ const RentForm = (props: Props) => {
   );
 };
 
-const selector = formValueSelector("RentForm");
+const selector = formValueSelector("ResidenceForm");
 
 function mapStateToProps(state) {
   const esLlogater = selector(state, "relacio_habitatge") === "llogater";
-  const esPropietari = selector(state, "relacio_habitatge") === "propietari"
-      || selector(state, "relacio_habitatge") === "propietari_hipoteca";
+  const esPropietari = (selector(state, "relacio_habitatge") === "propietari"
+      || selector(state, "relacio_habitatge") === "propietari_hipoteca");
   const existeixHipoteca = selector(state, "relacio_habitatge") === "propietari_hipoteca";
   const esCessio = selector(state, "relacio_habitatge") === "cessio";
+  const haSeleccionatAlgunaRelacioAmbLHabitatge = selector(state, "relacio_habitatge") != null;
   const titularContracteLloguer = state.persons.get(selector(state, "titular_contracte_de_lloguer_id"));
   const titularContracteHipoteca = state.persons.get(selector(state, "titular_hipoteca_id"));
 
@@ -228,7 +231,8 @@ function mapStateToProps(state) {
     existeixDeutePagamentLloguer: selector(state, "existeix_deute_en_el_pagament_del_lloguer"),
     existeixDeutePagamentHipoteca: selector(state, "existeix_deute_en_el_pagament_de_la_hipoteca"),
     existeixHipoteca: existeixHipoteca,
-    initialValues: state.rent,
+    haSeleccionatAlgunaRelacioAmbLHabitatge: haSeleccionatAlgunaRelacioAmbLHabitatge,
+    initialValues: state.residence,
     personesQuePodenTenirContracte: state.persons.filter((persona) => !esFill(persona)),
     teAlgunaPropietat: selector(state, "tinc_alguna_propietat_a_part_habitatge_habitual"),
     teHabitatgeHabitual: esLlogater || esPropietari || esCessio,
@@ -240,8 +244,8 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps)(reduxForm(
     {
-      form: "RentForm",
+      form: "ResidenceForm",
       onChange: (values, dispatch) => {
-        dispatch(addRent(values));
+        dispatch(addResidenceData(values));
       }
-    })(RentForm));
+    })(ResidenceForm));

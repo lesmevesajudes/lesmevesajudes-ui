@@ -35,7 +35,7 @@ let FamilyForm = (props: Props) => {
         <Typography variant="headline" gutterBottom><Trans>Informació sobre la seva família</Trans></Typography>
         <Grid container direction="row" justify="space-around" alignItems="stretch">
           <Grid item xs={12} sm={6}>
-            <form name='HouseholdForm'>
+            <form name='FamilyForm'>
               <Grid container direction="column" alignItems="stretch" spacing={16}>
                 {fills.valueSeq().map((infant: Person) =>
                     <Grid item key={infant.id}>
@@ -98,18 +98,18 @@ let FamilyForm = (props: Props) => {
 
 function mapStateToProps(state) {
   return {
-    initialValues: state.household,
+    initialValues: state.family,
     esMonoparental: esMonoparental(state.persons),
     fills: state.persons.filter((person: Person) => esFill(person)),
     possiblesSustentadors: state.persons.filter((person: Person) => esSustentador(person)),
-    custodies: state.household.custodies
+    custodies: state.family.custodies
   };
 }
 
 export default connect(mapStateToProps, {addHouseholdData: addFamilyData})(
     reduxForm(
         {
-          form: "HouseholdForm",
+          form: "FamilyForm",
           onChange: (values, dispatch) => {
             dispatch(addFamilyData(values));
           }

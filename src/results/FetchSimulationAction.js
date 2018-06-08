@@ -2,7 +2,7 @@
 import {serialize as serialize_adult} from "../persons/PersonsReducer";
 import type {Person, PersonsState} from "../persons/PersonTypes";
 import type {FamilyData} from "../family/FamilyDataTypes";
-import type {Rent} from "../rent/rentTypes";
+import type {ResidenceData} from "../residence/ResidenceTypes";
 import OpenFiscaAPIClient from "../shared/OpenFiscaAPIClient";
 import {esFill, esInfantAcollit, esMonoparental, esSustentador, tipusCustodia} from "../shared/selectorUtils";
 import {esBarcelonaCiutat} from "../shared/CodisPostals";
@@ -11,8 +11,8 @@ export const FETCH_SIMULATION = "fetch_simulation";
 
 type SimulationData = {
   persons: PersonsState,
-  rent: Rent,
-  household: FamilyData
+  residence: ResidenceData,
+  family: FamilyData
 };
 
 const currentMonth = value => ({"2017-01": value});
@@ -48,7 +48,7 @@ function buildRequest(simulationData: SimulationData) {
           tipus_custodia: currentMonth(
               tipusCustodia(
                   person,
-                  simulationData.household,
+                  simulationData.family,
                   esMonoparental(simulationData.persons)
               ),
           ),
@@ -69,8 +69,8 @@ function buildRequest(simulationData: SimulationData) {
       {}
   );
 
-  if (typeof simulationData.rent.titular_contracte_de_lloguer_id === "string" && typeof personalData[simulationData.rent.titular_contracte_de_lloguer_id] === "object") {
-    personalData[simulationData.rent.titular_contracte_de_lloguer_id].titular_contracte_de_lloguer = currentMonth(true);
+  if (typeof simulationData.residence.titular_contracte_de_lloguer_id === "string" && typeof personalData[simulationData.residence.titular_contracte_de_lloguer_id] === "object") {
+    personalData[simulationData.residence.titular_contracte_de_lloguer_id].titular_contracte_de_lloguer = currentMonth(true);
   }
 
   return {
@@ -87,12 +87,12 @@ function buildRequest(simulationData: SimulationData) {
             .map(persona => persona.id),
         domicili_a_barcelona_ciutat: currentMonth(
             esBarcelonaCiutat(
-                parseInt(simulationData.rent["codi_postal_habitatge"], 10)
+                parseInt(simulationData.residence["codi_postal_habitatge"], 10)
             )
         ),
-        es_usuari_serveis_socials: currentMonth(simulationData.household.es_usuari_serveis_socials),
-        tipus_familia_monoparental: currentMonth(simulationData.household.tipus_familia_monoparental),
-        tipus_familia_nombrosa: currentMonth(simulationData.household.tipus_familia_nombrosa)
+        es_usuari_serveis_socials: currentMonth(simulationData.family.es_usuari_serveis_socials),
+        tipus_familia_monoparental: currentMonth(simulationData.family.tipus_familia_monoparental),
+        tipus_familia_nombrosa: currentMonth(simulationData.family.tipus_familia_nombrosa)
       }
     },
     persones: {...personalData}
