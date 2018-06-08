@@ -1,23 +1,16 @@
 // @flow
-import type {HouseholdData} from "./FamilyDataTypes";
+import type {FamilyData} from "./FamilyDataTypes";
 import type {FamilyDataActions} from "./FamilyDataActions";
 
-type HouseholdDataState = HouseholdData;
-
-function addHouseholdData(
-    state: HouseholdDataState,
-    householdDataToBeAdded: HouseholdData
-): HouseholdDataState {
-  return {...householdDataToBeAdded};
-}
+type FamilyDataState = FamilyData | {};
 
 export default function (
-    state: HouseholdDataState = {},
+    state: FamilyDataState = {},
     action: FamilyDataActions
-): HouseholdDataState {
+): FamilyDataState {
   switch (action.type) {
-    case "ADD_HOUSEHOLD_DATA":
-      return addHouseholdData(state, action.householdData);
+    case "ADD_FAMILY_DATA":
+      return action.familyData;
     default:
       return state;
   }

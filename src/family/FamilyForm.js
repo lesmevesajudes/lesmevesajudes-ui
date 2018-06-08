@@ -1,8 +1,8 @@
 //@flow
 import React from "react";
-import {addHouseholdData} from "./FamilyDataActions";
+import {addFamilyData} from "./FamilyDataActions";
 import {connect} from "react-redux";
-import type {HouseholdData} from "./FamilyDataTypes";
+import type {FamilyData} from "./FamilyDataTypes";
 import {Select} from "redux-form-material-ui";
 import {Field, reduxForm} from "redux-form";
 import Grid from "@material-ui/core/Grid";
@@ -18,7 +18,7 @@ import Typography from "@material-ui/core/Typography";
 import {YesNoQuestion} from "../persons/components/YesNoQuestion";
 
 type Props = {
-  initialValues: HouseholdData,
+  initialValues: FamilyData,
   addHouseholdData: Function,
   esUsuariServeisSocials: Boolean,
   esMonoparental: Boolean,
@@ -106,11 +106,11 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, {addHouseholdData})(
+export default connect(mapStateToProps, {addHouseholdData: addFamilyData})(
     reduxForm(
         {
           form: "HouseholdForm",
           onChange: (values, dispatch) => {
-            dispatch(addHouseholdData(values));
+            dispatch(addFamilyData(values));
           }
         })(FamilyForm));

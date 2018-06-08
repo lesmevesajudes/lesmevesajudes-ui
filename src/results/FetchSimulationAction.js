@@ -1,7 +1,7 @@
 //@flow
 import {serialize as serialize_adult} from "../persons/PersonsReducer";
 import type {Person, PersonsState} from "../persons/PersonTypes";
-import type {HouseholdData} from "../family/FamilyDataTypes";
+import type {FamilyData} from "../family/FamilyDataTypes";
 import type {Rent} from "../rent/rentTypes";
 import OpenFiscaAPIClient from "../shared/OpenFiscaAPIClient";
 import {esFill, esInfantAcollit, esMonoparental, esSustentador, tipusCustodia} from "../shared/selectorUtils";
@@ -12,7 +12,7 @@ export const FETCH_SIMULATION = "fetch_simulation";
 type SimulationData = {
   persons: PersonsState,
   rent: Rent,
-  household: HouseholdData
+  household: FamilyData
 };
 
 const currentMonth = value => ({"2017-01": value});
@@ -69,7 +69,7 @@ function buildRequest(simulationData: SimulationData) {
       {}
   );
 
-  if (typeof personalData[simulationData.rent.titular_contracte_de_lloguer_id] !== "undefined") {
+  if (typeof simulationData.rent.titular_contracte_de_lloguer_id === "string" && typeof personalData[simulationData.rent.titular_contracte_de_lloguer_id] === "object") {
     personalData[simulationData.rent.titular_contracte_de_lloguer_id].titular_contracte_de_lloguer = currentMonth(true);
   }
 
@@ -92,9 +92,7 @@ function buildRequest(simulationData: SimulationData) {
         ),
         es_usuari_serveis_socials: currentMonth(simulationData.household.es_usuari_serveis_socials),
         tipus_familia_monoparental: currentMonth(simulationData.household.tipus_familia_monoparental),
-        tipus_familia_nombrosa: currentMonth(simulationData.household.tipus_familia_nombrosa),
-        valor_cadastral_finques_rustiques: lastYear(simulationData.rent.valor_cadastral_finques_rustiques),
-        valor_cadastral_finques_urbanes: lastYear(simulationData.rent.valor_cadastral_finques_urbanes)
+        tipus_familia_nombrosa: currentMonth(simulationData.household.tipus_familia_nombrosa)
       }
     },
     persones: {...personalData}

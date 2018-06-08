@@ -1,18 +1,18 @@
 // @flow
-import type {HouseholdData} from "./FamilyDataTypes";
+import type {FamilyData} from "./FamilyDataTypes";
 
-type AddHouseholdDataAction = {
-  type: "ADD_HOUSEHOLD_DATA",
-  householdData: HouseholdData
+type AddFamilyDataAction = {
+  type: "ADD_FAMILY_DATA",
+  familyData: FamilyData
 };
 
-export type FamilyDataActions = AddHouseholdDataAction;
+export type FamilyDataActions = AddFamilyDataAction;
 
-export function addHouseholdData(
-    householdData: HouseholdData
-): AddHouseholdDataAction {
+export function addFamilyData(
+    familyData: FamilyData
+): AddFamilyDataAction {
   return {
-    type: "ADD_HOUSEHOLD_DATA",
-    householdData: householdData
+    type: "ADD_FAMILY_DATA",
+    familyData: familyData
   };
 }

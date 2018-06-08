@@ -2,11 +2,7 @@
 import type {Rent} from "./RentTypes";
 import type {RentActions} from "./RentActions";
 
-type RentState = Rent;
-
-function addRent(state: RentState, rentToBeAdded: Rent): RentState {
-  return rentToBeAdded;
-}
+type RentState = Rent | {};
 
 export default function (
     state: RentState = {},
@@ -14,7 +10,7 @@ export default function (
 ): RentState {
   switch (action.type) {
     case "ADD_RENT":
-      return addRent(state, action.rent);
+      return action.rent;
     default:
       return state;
   }
