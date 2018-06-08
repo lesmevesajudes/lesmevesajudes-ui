@@ -5,7 +5,7 @@ export type Rent = {
   existeix_deute_en_el_pagament_del_lloguer: boolean,
   existeix_deute_en_el_pagament_de_la_hipoteca: boolean,
   fa_mes_de_12_mesos_que_existeix_el_deute_de_hipoteca: boolean,
-  fa_mes_de_12_mesos_que_existeix_el_deute_de_lloguer: boolean,
+  ha_pagat_almenys_3_quotes_del_lloguer: boolean,
   ha_perdut_lhabitatge_en_els_ultims_2_anys: boolean,
   ha_pagat_12_mesos_daquesta_hipoteca: boolean,
   ha_participat_en_un_proces_de_mediacio: boolean,

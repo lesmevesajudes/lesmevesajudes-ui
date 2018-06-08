@@ -97,17 +97,16 @@ const RentForm = (props: Props) => {
                   </MenuItem>
                 </MultipleAnswerQuestion>}
 
-                {esLlogater && typeof titularContracteLloguer !== "undefined" &&
+                {esLlogater && typeof titularContracteLloguer !== "undefined" && titularContracteLloguer !== "no-conviu" &&
                 <MultipleAnswerQuestion name='titular_contracte_lloguer_temps_empadronat'
                                         label={<Trans>Quant temps fa que {titularContracteLloguer.nom} està empadronat
-                                          en
-                                          aquest habitatge?</Trans>}>
+                                          en aquest habitatge?</Trans>}>
                   <MenuItem value='no_empadronat'><Trans>No està empadronat</Trans></MenuItem>
                   <MenuItem value='menys_9_mesos'><Trans>Menys de 9 mesos</Trans></MenuItem>
                   <MenuItem value='9_mesos_o_mes' data-test='llogater'><Trans>9 mesos o més</Trans></MenuItem>
                 </MultipleAnswerQuestion>}
 
-                {existeixHipoteca && typeof titularContracteHipoteca !== "undefined" &&
+                {existeixHipoteca && typeof titularContracteHipoteca !== "undefined" && titularContracteHipoteca !== "no-conviu" &&
                 <MultipleAnswerQuestion name='titular_hipoteca_temps_empadronat'
                                         label={<Trans>Quant temps fa que {titularContracteHipoteca.nom} està empadronat
                                           en aquest habitatge?</Trans>}>
@@ -131,6 +130,23 @@ const RentForm = (props: Props) => {
                   <Trans>Existeix un deute en el pagament del lloguer</Trans>
                 </YesNoQuestion>}
 
+                {existeixDeutePagamentLloguer &&
+                <YesNoQuestion name='ha_pagat_almenys_3_quotes_del_lloguer'>
+                  <Trans>Ha pagat almenys 3 quotes de lloguer?</Trans>
+                </YesNoQuestion>}
+
+                {existeixDeutePagamentLloguer &&
+                <MultipleAnswerQuestion name='titular_contracte_lloguer_temps_empadronat'
+                                        label={<Trans>Des de quan teniu deutes de pagament de lloguer?</Trans>}>
+                  <MenuItem value='mes_dun_any'><Trans>Més d'un any</Trans></MenuItem>
+                  <MenuItem value='menys_dun_any'><Trans>Menys d'un any</Trans></MenuItem>
+                </MultipleAnswerQuestion>}
+
+                {esLlogater &&
+                <YesNoQuestion name='relacio_de_parentiu_amb_el_propietari'>
+                  <Trans>Algun membre de la família té relació de parentiu amb el propietari de l'habitatge</Trans>
+                </YesNoQuestion>}
+
                 {existeixHipoteca &&
                 <YesNoQuestion name='existeix_deute_en_el_pagament_de_la_hipoteca'>
                   <Trans>Existeix un deute en el pagament de la hipoteca</Trans>
@@ -144,16 +160,6 @@ const RentForm = (props: Props) => {
                 {existeixDeutePagamentHipoteca &&
                 <YesNoQuestion name='fa_mes_de_12_mesos_que_existeix_el_deute_de_hipoteca'>
                   <Trans>Fa més de 12 mesos que no paga les quotes de la hipoteca?</Trans>
-                </YesNoQuestion>}
-
-                {existeixDeutePagamentLloguer &&
-                <YesNoQuestion name='fa_mes_de_12_mesos_que_existeix_el_deute_de_lloguer'>
-                  <Trans>Fa més de 12 mesos que no paga les quotes del lloguer?</Trans>
-                </YesNoQuestion>}
-
-                {esLlogater &&
-                <YesNoQuestion name='relacio_de_parentiu_amb_el_propietari'>
-                  <Trans>Algun membre de la família té relació de parentiu amb el propietari de l'habitatge</Trans>
                 </YesNoQuestion>}
 
                 {teHabitatgeHabitual &&
@@ -174,10 +180,23 @@ const RentForm = (props: Props) => {
                 </YesNoQuestion>}
 
                 {esLlogater &&
+                <YesNoQuestion name='es_ocupant_dun_habitatge_gestionat_per_lagencia_de_lhabitatge'>
+                  <Trans>És ocupant d’un habitatge gestionat per l’Agència de l’Habitatge de Catalunya o de l’Institut
+                    Municipal d’Habitatge? </Trans>
+                </YesNoQuestion>}
+
+                {esLlogater &&
+                <YesNoQuestion name='ha_rebut_oferta_per_accedir_a_habitatge_i_lha_rebutjada'>
+                  <Trans>Ha rebut mai una oferta per accedir a un habitatge de parc públic de lloguer i no l’ha
+                    acceptat?</Trans>
+                </YesNoQuestion>}
+
+                {esLlogater &&
                 <YesNoQuestion name='ha_participat_en_un_proces_de_mediacio'>
                   <Trans>Ha participat en un procés de mediació del servei de mediació de laXarxa d’Oficines d’Habitatge
                     de Barcelona</Trans>
                 </YesNoQuestion>}
+
               </form>
             </Grid>
           </Grid>
