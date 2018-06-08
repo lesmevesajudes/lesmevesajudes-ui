@@ -29,7 +29,7 @@ type Props = {
 };
 
 let FamilyForm = (props: Props) => {
-  const {esMonoparental, possiblesSustentadors, fills} = props;
+  const {esMonoparental, possiblesSustentadors, fills, custodies} = props;
   return (
       <Grid container className="bg-container">
         <Typography variant="headline" gutterBottom><Trans>Informació sobre la seva família</Trans></Typography>
@@ -49,7 +49,7 @@ let FamilyForm = (props: Props) => {
                           <Field name={"custodies." + infant.id + ".primer"} component={Select} fullWidth>
                             {possiblesSustentadors.valueSeq().map((sustentador: Person) =>
                                 <MenuItem key={`primer-${sustentador.id}`}
-                                          value={sustentador.id}><Trans>{sustentador.nom}</Trans></MenuItem>
+                                          value={sustentador.id}>{sustentador.nom}</MenuItem>
                             )}
                             <MenuItem value="no_convivent"><Trans>Una persona que no conviu</Trans></MenuItem>
                           </Field>
@@ -60,8 +60,10 @@ let FamilyForm = (props: Props) => {
                         <Grid item xs={5}>
                           <Field name={"custodies." + infant.id + ".segon"} component={Select} fullWidth>
                             {possiblesSustentadors.valueSeq().map((sustentador: Person) =>
-                                <MenuItem key={`segon-${sustentador.id}`}
-                                          value={sustentador.id}><Trans>{sustentador.nom}</Trans></MenuItem>
+                                custodies[infant.id] !== null && custodies[infant.id].primer === sustentador.id
+                                    ? null
+                                    : <MenuItem key={`segon-${sustentador.id}`}
+                                                value={sustentador.id}>{sustentador.nom}</MenuItem>
                             )}
                             <MenuItem value="ningu_mes"><Trans>Ningú més</Trans></MenuItem>
                             <MenuItem value="no_convivent"><Trans>Una persona que no conviu</Trans></MenuItem>
