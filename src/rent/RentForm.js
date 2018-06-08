@@ -44,6 +44,7 @@ type Props = {
 const RentForm = (props: Props) => {
   const {
     esLlogater,
+    esPropietari,
     existeixDeutePagamentHipoteca,
     existeixDeutePagamentLloguer,
     existeixHipoteca,
@@ -168,11 +169,11 @@ const RentForm = (props: Props) => {
                 </YesNoQuestion>}
 
                 {teAlgunaPropietat &&
-                <YesNoQuestion name='tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusufructe'>
-                  <Trans>Disposa de l'usufructe d'aquesta propietat</Trans>
+                <YesNoQuestion name='tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit'>
+                  <Trans>Disposa de l’usdefruit d’aquesta propietat?</Trans>
                 </YesNoQuestion>}
 
-                {esLlogater &&
+                {!esPropietari &&
                 <YesNoQuestion name='ha_perdut_lhabitatge_en_els_ultims_2_anys'>
                   <Trans>Ha perdut el seu habitatge habitual degut a una execució hipotecària o desnonament en els
                     ultims

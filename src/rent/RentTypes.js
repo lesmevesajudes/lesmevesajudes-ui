@@ -16,7 +16,7 @@ export type Rent = {
   titular_contracte_lloguer_temps_empadronat: string,
   titular_hipoteca_temps_empadronat: string,
   tinc_alguna_propietat_a_part_habitatge_habitual: boolean,
-  tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusufructe: boolean,
+  tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit: boolean,
   titular_contracte_de_lloguer_id: string,
   titular_hipoteca_id: string,
 };
