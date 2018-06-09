@@ -3,13 +3,11 @@ import "./CorporateHeader.css";
 import "./core.css";
 import "./bcn-icon.css";
 import LogoBCN from "./logo.png";
-import AcceptCookiesBanner from "./AcceptCookiesBanner";
 
 class CorporateHeader extends Component {
     render() {
         return (
             <header id="brand" className="v2017 lang-ca bcnbrand-legacy">
-                <AcceptCookiesBanner/>
                 <div className="bcnbrand-desktop">
                     <div className="bcnbrand-navs-container">
                         <nav className="bcnbrand-shortcuts" id="bcnbrand-shortcuts-nav" aria-hidden="true" style={{maxHeight: '0px', display: 'none'}}>
