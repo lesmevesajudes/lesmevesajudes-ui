@@ -2,8 +2,10 @@ import React from 'react';
 import {connect} from "react-redux";
 import {backStep, nextStep} from './StepsActions'
 import {withStyles} from '@material-ui/core/styles';
-import {Grid, Step, StepLabel, Stepper} from "@material-ui/core";
+import {Grid, Step, StepButton, Stepper} from "@material-ui/core";
 import StepperButtons from './StepperButtons';
+import Typography from "@material-ui/core/es/Typography/Typography";
+import Trans from "react-i18next/dist/es/Trans";
 
 const styles = theme => ({
   root: {
@@ -36,10 +38,14 @@ let StepsComponent = (props: Props) => {
       <div className={classes.root}>
 
         <Stepper activeStep={currentStep} alternativeLabel>
-          {steps.map(step =>
-              <Step key={step.label}>
-                <StepLabel>{step.label}</StepLabel>
-              </Step>)
+          {steps.map(step => {
+            const labelProps = step.optional ? {
+              optional: <Typography variant="caption"><Trans>Opcional</Trans></Typography>
+            } : {};
+            return <Step key={step.label}>
+              <StepButton {...labelProps}>{step.label}</StepButton>
+            </Step>
+          })
           }
         </Stepper>
         <Grid container>
