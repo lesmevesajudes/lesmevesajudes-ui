@@ -4,8 +4,8 @@ import {backStep, nextStep} from './StepsActions'
 import {withStyles} from '@material-ui/core/styles';
 import {Grid, Step, StepButton, Stepper} from "@material-ui/core";
 import StepperButtons from './StepperButtons';
-import Typography from "@material-ui/core/es/Typography/Typography";
-import Trans from "react-i18next/dist/es/Trans";
+import Typography from "@material-ui/core/Typography";
+import {Trans} from "react-i18next";
 
 const styles = theme => ({
   root: {
