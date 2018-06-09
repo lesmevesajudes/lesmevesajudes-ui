@@ -17,6 +17,9 @@ import {Trans} from "react-i18next";
 import Typography from "@material-ui/core/Typography";
 import {YesNoQuestion} from "../persons/components/YesNoQuestion";
 import FormSubTitle from "../persons/components/FormSubTitle";
+import {detectaFamilies} from "./detectaFamilies";
+import {createFamilyName, toArray} from "./createFamilyName";
+import MultipleAnswerQuestion from "../persons/components/MultipleAnswerQuestion";
 
 type Props = {
   initialValues: FamilyData,
@@ -29,58 +32,6 @@ type Props = {
   fills: Map<PersonID, Person>,
   custodies: Object
 };
-type Custodia = {
-  primer: string,
-  segon?: string
-}
-
-export const detectaFamilies = (custodies: { [string]: Custodia }): Object =>
-    Object.keys(custodies).reduce(
-        (families: Object, menorID: string) => {
-          if (typeof custodies[menorID] !== "undefined"
-              && typeof custodies[menorID].primer === "string"
-              && typeof custodies[menorID].segon === "string") {
-            const familiaID = [custodies[menorID].primer, custodies[menorID].segon].sort().join('');
-            if (typeof families[familiaID] !== "undefined") {
-              families[familiaID].menors.push(menorID);
-            } else {
-              families[familiaID] =
-                  {
-                    sustentadors: custodies[menorID].segon === "ningu_mes" || custodies[menorID].segon === "no_conviu"
-                        ? [custodies[menorID].primer]
-                        : [custodies[menorID].primer, custodies[menorID].segon],
-                    menors: [menorID],
-                    monoparental: custodies[menorID].segon === "ningu_mes"
-                  };
-            }
-          }
-          return families;
-        }, {});
-
-const toArray = (anObject: Object) =>
-    Object.keys(anObject).reduce(
-        (result: Object[], key: string) =>
-            [...result, {...anObject[key], ID: key}]
-        , []
-    );
-
-function formatMembers(arr) {
-  console.log(arr);
-  let outStr = "";
-  if (arr.length === 1) {
-    outStr = arr[0];
-  } else if (arr.length === 2) {
-    outStr = arr.join(' i ');
-  } else if (arr.length > 2 && arr.length <= 4) {
-    outStr = arr.slice(0, -1).join(', ') + ' i ' + arr.slice(-1);
-  } else if (arr.length > 4) {
-    outStr = arr.slice(0, 3).join(', ') + '...';
-  }
-  return outStr;
-}
-
-const createFamilyName = (familia, persones) =>
-    formatMembers([...familia.sustentadors.map((key) => persones.get(key).nom), ...familia.menors.map((key) => persones.get(key).nom)]);
 
 const FamilyForm = (props: Props) => {
   const {custodies, families, fills, persones, possiblesSustentadors} = props;
@@ -114,7 +65,7 @@ const FamilyForm = (props: Props) => {
                         <Grid item xs={5}>
                           <Field name={"custodies." + infant.id + ".segon"} component={Select} fullWidth>
                             {possiblesSustentadors.valueSeq().map((sustentador: Person) =>
-                                typeof custodies !== "undefined" && typeof custodies[infant.id] !== "undefined" && custodies[infant.id].primer === sustentador.id
+                                typeof custodies[infant.id] !== "undefined" && custodies[infant.id].primer === sustentador.id
                                     ? null
                                     : <MenuItem key={`segon-${sustentador.id}`} value={sustentador.id}>
                                       {sustentador.nom}
@@ -129,21 +80,19 @@ const FamilyForm = (props: Props) => {
                     </Grid>)}
                 {families.length > 0 &&
                 families.map((familia) =>
-                    <Fragment>
-                      <FormSubTitle><Trans>Familia de </Trans> {createFamilyName(familia, persones)} </FormSubTitle>
+                    <Fragment key={familia.ID}>
+                      <FormSubTitle><Trans>Família de </Trans> {createFamilyName(familia, persones)} </FormSubTitle>
                       {familia.monoparental &&
-                      <Grid item>
-                        <label><Typography><Trans>Disposa del carnet de familia
-                          monoparental:</Trans></Typography></label>
-                        <Field name='tipus_familia_monoparental' component={Select} fullWidth>
-                          <MenuItem value="nop"><Trans>No</Trans></MenuItem>
-                          <MenuItem value="general"><Trans>General</Trans></MenuItem>
-                          <MenuItem value="especial"><Trans>Especial</Trans></MenuItem>
-                        </Field>
-                      </Grid>
+                      <MultipleAnswerQuestion label={<Trans>Disposa del carnet de familia monoparental:</Trans>}
+                                              name={'carnets.' + familia.ID + '.tipus_familia_monoparental'}
+                                              component={Select} fullWidth>
+                        <MenuItem value="nop"><Trans>No</Trans></MenuItem>
+                        <MenuItem value="general"><Trans>General</Trans></MenuItem>
+                        <MenuItem value="especial"><Trans>Especial</Trans></MenuItem>
+                      </MultipleAnswerQuestion>
                       }
 
-                      <YesNoQuestion name="es_usuari_serveis_socials">
+                      <YesNoQuestion name={'usuari_serveis_socials.' + familia.ID + ".es_usuari_serveis_socials"}>
                         <Trans>És usuari/a de serveis socials en seguiment a un CSS o servei especialitzat de
                           l'Ajuntament de Barcelona</Trans>
                       </YesNoQuestion>
@@ -164,16 +113,14 @@ const FamilyForm = (props: Props) => {
 };
 
 function mapStateToProps(state) {
-  console.log("custodies", state.family.custodies);
-  const families = toArray(typeof state.family.custodies !== "undefined" ? detectaFamilies(state.family.custodies) : {});
-  console.log("families: ", families);
-  console.log("monoparentals: ", families.filter(familia => familia.monoparental));
+  const custodies = typeof state.family.custodies !== "undefined" ? state.family.custodies : {};
+  const families = toArray(detectaFamilies(custodies));
   return {
     initialValues: state.family,
     fills: state.persons.filter((person: Person) => esFill(person)),
     persones: state.persons,
     possiblesSustentadors: state.persons.filter((person: Person) => esSustentador(person)),
-    custodies: state.family.custodies,
+    custodies: custodies,
     families: families
   };
 }
