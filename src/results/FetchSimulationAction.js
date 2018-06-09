@@ -4,7 +4,7 @@ import type {Person, PersonsState} from "../persons/PersonTypes";
 import type {FamilyData} from "../family/FamilyDataTypes";
 import type {ResidenceData} from "../residence/ResidenceTypes";
 import OpenFiscaAPIClient from "../shared/OpenFiscaAPIClient";
-import {esFill, esInfantAcollit, esMonoparental, esSustentador, tipusCustodia} from "../shared/selectorUtils";
+import {esFill, esInfantAcollit, esSustentador} from "../shared/selectorUtils";
 import {esBarcelonaCiutat} from "../shared/CodisPostals";
 
 export const FETCH_SIMULATION = "fetch_simulation";
@@ -45,13 +45,6 @@ function buildRequest(simulationData: SimulationData) {
           porta_dos_anys_o_mes_empadronat_a_catalunya: currentMonth(person.porta_dos_anys_o_mes_empadronat_a_catalunya),
           sexe: currentMonth(person.sexe),
           situacio_laboral: currentMonth(person.situacio_laboral),
-          tipus_custodia: currentMonth(
-              tipusCustodia(
-                  person,
-                  simulationData.family,
-                  esMonoparental(simulationData.persons)
-              ),
-          ),
           tipus_document_identitat: currentMonth(person.tipus_document_identitat),
           victima_violencia_de_genere: currentMonth(person.victima_violencia_de_genere),
           victima_violencia_domestica: currentMonth(person.victima_violencia_domestica),

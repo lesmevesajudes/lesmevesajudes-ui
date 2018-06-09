@@ -1,5 +1,5 @@
 //@flow
-import React from "react";
+import React, {Fragment} from "react";
 import {addFamilyData} from "./FamilyDataActions";
 import {connect} from "react-redux";
 import type {FamilyData} from "./FamilyDataTypes";
@@ -11,25 +11,66 @@ import Hidden from "@material-ui/core/Hidden";
 import type {PersonID} from "../persons/PersonTypes";
 import {Person} from "../persons/PersonTypes";
 import {Map} from "immutable";
-import {esFill, esMonoparental, esSustentador} from "../shared/selectorUtils";
+import {esFill, esSustentador} from "../shared/selectorUtils";
 import DescriptionText from "../components/Common/DescriptionText";
 import {Trans} from "react-i18next";
 import Typography from "@material-ui/core/Typography";
 import {YesNoQuestion} from "../persons/components/YesNoQuestion";
+import FormSubTitle from "../persons/components/FormSubTitle";
 
 type Props = {
   initialValues: FamilyData,
   addHouseholdData: Function,
-  esUsuariServeisSocials: Boolean,
-  esMonoparental: Boolean,
+  esUsuariServeisSocials: boolean,
+  families: Array<Object>,
+  persones: Map<PersonID, Person>,
   possiblesSustentadors: Map<PersonID, Person>,
-  esFamiliaNombrosa: Boolean,
+  esFamiliaNombrosa: boolean,
   fills: Map<PersonID, Person>,
   custodies: Object
 };
+type Custodia = {
+  primer: string,
+  segon?: string
+}
 
-let FamilyForm = (props: Props) => {
-  const {esMonoparental, possiblesSustentadors, fills, custodies} = props;
+export const detectaFamilies = (custodies: { [string]: Custodia }): Object =>
+    Object.keys(custodies).reduce(
+        (families: Object, menorID: string) => {
+          if (typeof custodies[menorID] !== "undefined"
+              && typeof custodies[menorID].primer === "string"
+              && typeof custodies[menorID].segon === "string") {
+            const familiaID = [custodies[menorID].primer, custodies[menorID].segon].sort().join('');
+            if (typeof families[familiaID] !== "undefined") {
+              families[familiaID].menors.push(menorID);
+            } else {
+              families[familiaID] =
+                  {
+                    primerSustentador: [custodies[menorID].primer, custodies[menorID].segon].sort()[0],
+                    segonSustentador: [custodies[menorID].primer, custodies[menorID].segon].sort()[1],
+                    menors: [menorID],
+                    monoparental: custodies[menorID].segon === "ningu_mes"
+                  };
+            }
+          }
+          return families;
+        }, {});
+
+const toArray = (anObject: Object) =>
+    Object.keys(anObject).reduce(
+        (result: Object[], key: string) =>
+            [...result, {...anObject[key], ID: key}]
+        , []
+    );
+
+const adultName = (id, persones) =>
+    id !== "ningu_mes" && id !== "no_conviu" ? persones.get(id).nom : "";
+
+const createFamilyName = (familia, persones) =>
+    [adultName(familia.primerSustentador, persones), adultName(familia.segonSustentador, persones)].join(" ") + " " + familia.menors.map((key) => persones.get(key).nom).join(", ");
+
+const FamilyForm = (props: Props) => {
+  const {custodies, families, fills, persones, possiblesSustentadors} = props;
   return (
       <Grid container className="bg-container">
         <Typography variant="headline" gutterBottom><Trans>Informació sobre la seva família</Trans></Typography>
@@ -60,10 +101,11 @@ let FamilyForm = (props: Props) => {
                         <Grid item xs={5}>
                           <Field name={"custodies." + infant.id + ".segon"} component={Select} fullWidth>
                             {possiblesSustentadors.valueSeq().map((sustentador: Person) =>
-                                custodies[infant.id] !== null && custodies[infant.id].primer === sustentador.id
+                                typeof custodies !== "undefined" && typeof custodies[infant.id] !== "undefined" && custodies[infant.id].primer === sustentador.id
                                     ? null
-                                    : <MenuItem key={`segon-${sustentador.id}`}
-                                                value={sustentador.id}>{sustentador.nom}</MenuItem>
+                                    : <MenuItem key={`segon-${sustentador.id}`} value={sustentador.id}>
+                                      {sustentador.nom}
+                                    </MenuItem>
                             )}
                             <MenuItem value="ningu_mes"><Trans>Ningú més</Trans></MenuItem>
                             <MenuItem value="no_convivent"><Trans>Una persona que no conviu</Trans></MenuItem>
@@ -72,19 +114,31 @@ let FamilyForm = (props: Props) => {
                       </Grid>
 
                     </Grid>)}
-                {esMonoparental &&
-                <Grid item>
-                  <label><Typography><Trans>Disposa del carnet de familia monoparental:</Trans></Typography></label>
-                  <Field name='tipus_familia_monoparental' component={Select} fullWidth>
-                    <MenuItem value="nop"><Trans>No</Trans></MenuItem>
-                    <MenuItem value="general"><Trans>General</Trans></MenuItem>
-                    <MenuItem value="especial"><Trans>Especial</Trans></MenuItem>
-                  </Field>
-                </Grid>}
-                <YesNoQuestion name="es_usuari_serveis_socials">
-                  <Trans>Família usuaria de serveis socials en seguiment a un CSS o servei especialitzat de
-                    l'Ajuntament de Barcelona</Trans>
-                </YesNoQuestion>
+                {families.length > 0 &&
+                families.map((familia) =>
+                    <Fragment>
+                      <FormSubTitle><Trans>Familia de </Trans> {createFamilyName(familia, persones)} </FormSubTitle>
+                      {familia.monoparental &&
+                      <Grid item>
+                        <label><Typography><Trans>{persones.get(familia.primerSustentador).nom} disposa del carnet de
+                          familia
+                          monoparental:</Trans></Typography></label>
+                        <Field name='tipus_familia_monoparental' component={Select} fullWidth>
+                          <MenuItem value="nop"><Trans>No</Trans></MenuItem>
+                          <MenuItem value="general"><Trans>General</Trans></MenuItem>
+                          <MenuItem value="especial"><Trans>Especial</Trans></MenuItem>
+                        </Field>
+                      </Grid>
+                      }
+
+                      <YesNoQuestion name="es_usuari_serveis_socials">
+                        <Trans>{persones.get(familia.primerSustentador).nom} és usuari/a de serveis socials en seguiment
+                          a un
+                          CSS o servei especialitzat de l'Ajuntament de Barcelona</Trans>
+                      </YesNoQuestion>
+                    </Fragment>
+                )}
+
               </Grid>
             </form>
           </Grid>
@@ -99,12 +153,17 @@ let FamilyForm = (props: Props) => {
 };
 
 function mapStateToProps(state) {
+  console.log("custodies", state.family.custodies);
+  const families = toArray(typeof state.family.custodies !== "undefined" ? detectaFamilies(state.family.custodies) : {});
+  console.log("families: ", families);
+  console.log("monoparentals: ", families.filter(familia => familia.monoparental));
   return {
     initialValues: state.family,
-    esMonoparental: esMonoparental(state.persons),
     fills: state.persons.filter((person: Person) => esFill(person)),
+    persones: state.persons,
     possiblesSustentadors: state.persons.filter((person: Person) => esSustentador(person)),
-    custodies: state.family.custodies
+    custodies: state.family.custodies,
+    families: families
   };
 }
 
