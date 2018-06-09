@@ -16,6 +16,7 @@ import {Question} from "../persons/components/Question";
 import {YesNoQuestion} from "../persons/components/YesNoQuestion";
 import {TextField} from "redux-form-material-ui";
 import {MoneyQuestion} from "../persons/components/MoneyQuestion";
+import Typography from "@material-ui/core/Typography";
 
 const seemsPostalCode = value =>
     value && (isNaN(Number(value)) || value.length !== 5)
@@ -57,7 +58,10 @@ const ResidenceForm = (props: Props) => {
   } = props;
   return (
       <Grid container className="bg-container">
-        <h1><Trans>Afegeixi informació del seu domicili habitual</Trans></h1>
+        <Grid item xs={12}>
+          <Typography variant="headline" gutterBottom><Trans>Afegeixi informació del seu domicili
+            habitual</Trans></Typography>
+        </Grid>
         <Grid container direction="row" justify="space-around" alignItems="stretch">
           <Grid item xs={12} sm={6}>
             <Grid container direction="column" alignItems="stretch" spacing={16}>

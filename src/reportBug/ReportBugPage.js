@@ -6,6 +6,7 @@ import {withRouter} from 'react-router-dom';
 import {Field, formValueSelector, reduxForm} from 'redux-form';
 import {Checkbox, TextField} from 'redux-form-material-ui';
 import {Button, Grid} from '@material-ui/core';
+import Typography from "@material-ui/core/Typography";
 
 type Props = {
   currentState: any,
@@ -19,7 +20,7 @@ const ReportBug = (props: Props) => {
   return (
       <Grid container className="container-family">
         <Grid item sm={12}>
-          <h1>Informar del resultat de la simulació</h1>
+          <Typography variant="headline" gutterBottom>Informar del resultat de la simulació</Typography>
         </Grid>
         <Grid item sm={12}>
           <Grid item className="bg-container extra-padding">

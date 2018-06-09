@@ -91,8 +91,9 @@ let PersonForm = (props: Props) => {
       <Grid container className="bg-container">
         <Grid item xs={12}>
           {isTheUserInFrontOfTheComputer ?
-              <Typography variant="headline" gutterBottom>Informació sobre vostè</Typography> :
-              <Typography variant="headline" gutterBottom>Dades sobre una persona que conviu amb vostè</Typography>}
+              <Typography variant="headline" gutterBottom><Trans>Informació sobre vostè</Trans></Typography> :
+              <Typography variant="headline" gutterBottom><Trans>Dades sobre una persona que conviu amb
+                vostè</Trans></Typography>}
         </Grid>
         <Grid container direction="column">
           <form onSubmit={handleSubmit}>

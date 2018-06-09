@@ -7,6 +7,7 @@ import type {Person, PersonID} from "../persons/PersonTypes";
 import ReportBug from "../reportBug/ReportBugPage";
 import axios from "axios/index";
 import {Grid} from "@material-ui/core";
+import Typography from "@material-ui/core/Typography";
 
 type Props = {
   isError: boolean,
@@ -54,9 +55,9 @@ class ResultsPage extends React.Component<Props> {
               <h1>Ajudes a les que podria optar</h1>
               <Grid container>
                 <Grid item>
-                  <p className="errorText">
+                  <Typography className="errorText">
                     Falten dades per a executar la simulació
-                  </p>
+                  </Typography>
                 </Grid>
               </Grid>
             </div>
@@ -95,7 +96,7 @@ class ResultsPage extends React.Component<Props> {
     return (
         <div>
           <div className="bg-container ">
-            <h1>Ajudes a les que podria optar</h1>
+            <Typography variant="headline" gutterBottom>Ajudes a les que podria optar</Typography>
             <Grid container>
               <Grid item xs={12}>
                 <PersonalBenefits

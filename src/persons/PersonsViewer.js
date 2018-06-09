@@ -8,6 +8,7 @@ import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton/IconButton";
 import ClearIcon from "@material-ui/icons/Clear";
+import Typography from "@material-ui/core/Typography";
 
 type Props = {
   persons: Array<Person>,
@@ -109,9 +110,9 @@ class PersonsViewer extends Component<Props, void> {
     return (
         <Grid container className="container-family">
           <Grid item sm={12} xs={12} className="bg-family">
-            <h1>
+            <Typography variant="headline" gutterBottom>
               <Trans>Persones de la unitat de convivència</Trans>
-            </h1>
+            </Typography>
             <Grid container direction="column" className="PersonsViewerPage" spacing={16} alignItems="stretch">
               <Grid item xs={12} sm={12}>
                 <Card>

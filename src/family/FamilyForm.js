@@ -37,7 +37,9 @@ const FamilyForm = (props: Props) => {
   const {custodies, families, fills, persones, possiblesSustentadors} = props;
   return (
       <Grid container className="bg-container">
-        <Typography variant="headline" gutterBottom><Trans>Informació sobre la seva família</Trans></Typography>
+        <Grid item xs={12}>
+          <Typography variant="headline" gutterBottom><Trans>Informació sobre la seva família</Trans></Typography>
+        </Grid>
         <Grid container direction="row" justify="space-around" alignItems="stretch">
           <Grid item xs={12} sm={6}>
             <form name='FamilyForm'>
@@ -93,7 +95,7 @@ const FamilyForm = (props: Props) => {
                       }
 
                       <YesNoQuestion name={'usuari_serveis_socials.' + familia.ID + ".es_usuari_serveis_socials"}>
-                        <Trans>És usuari/a de serveis socials en seguiment a un CSS o servei especialitzat de
+                        <Trans>És família usuaria de serveis socials en seguiment a un CSS o servei especialitzat de
                           l'Ajuntament de Barcelona</Trans>
                       </YesNoQuestion>
                     </Fragment>
