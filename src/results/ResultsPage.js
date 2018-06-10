@@ -1,13 +1,13 @@
-import React from "react";
-import {connect} from "react-redux";
-import {fetchSimulation} from "./FetchSimulationAction";
-import PersonalBenefits from "./PersonalBenefits";
-import FamilyBenefits from "./FamilyBenefits";
-import type {Person, PersonID} from "../persons/PersonTypes";
-import ReportBug from "../reportBug/ReportBugPage";
-import axios from "axios/index";
-import {Grid} from "@material-ui/core";
-import Typography from "@material-ui/core/Typography";
+import React from 'react';
+import {connect} from 'react-redux';
+import {fetchSimulation} from './FetchSimulationAction';
+import PersonalBenefits from './PersonalBenefits';
+import FamilyBenefits from './FamilyBenefits';
+import type {Person, PersonID} from '../persons/PersonTypes';
+import ReportBug from '../reportBug/ReportBugPage';
+import axios from 'axios/index';
+import {Grid} from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
 
 type Props = {
   isError: boolean,
@@ -28,16 +28,16 @@ class ResultsPage extends React.Component<Props> {
 
   submitReport = values => {
     // print the form values to the console
-    console.log("form submit:", values);
+    console.log('form submit:', values);
     axios
-        .post("https://lesmevesajudes-ss.herokuapp.com/api/simulations", {
-          comments: values.comments || "",
-          expected_result: values.resultat_esperat || "",
+        .post('https://lesmevesajudes-ss.herokuapp.com/api/simulations', {
+          comments: values.comments || '',
+          expected_result: values.resultat_esperat || '',
           application_state: values.application_state,
           valid_result: !values.invalid_result
         })
         .then(function (response) {
-          console.log("saved successfully", response);
+          console.log('saved successfully', response);
           //kill em all
           window.location.reload(true);
         })
@@ -51,17 +51,17 @@ class ResultsPage extends React.Component<Props> {
     if (!this.enoughDataForSimulation()) {
       return (
           <div>
-            <div className="bg-container ">
+            <div className='bg-container '>
               <h1>Ajudes a les que podria optar</h1>
               <Grid container>
                 <Grid item>
-                  <Typography className="errorText">
+                  <Typography className='errorText'>
                     Falten dades per a executar la simulació
                   </Typography>
                 </Grid>
               </Grid>
             </div>
-            <div className="bg-container ">
+            <div className='bg-container '>
               <Grid container>
                 <Grid item xs={12}>
                   <ReportBug onSubmit={this.submitReport}/>
@@ -95,8 +95,8 @@ class ResultsPage extends React.Component<Props> {
 
     return (
         <div>
-          <div className="bg-container ">
-            <Typography variant="headline" gutterBottom>Ajudes a les que podria optar</Typography>
+          <div className='bg-container '>
+            <Typography variant='headline' gutterBottom>Ajudes a les que podria optar</Typography>
             <Grid container>
               <Grid item xs={12}>
                 <PersonalBenefits

@@ -4,7 +4,7 @@ import React, {cloneElement} from 'react';
 import purple from '@material-ui/core/colors/purple';
 import classNames from 'classnames';
 import {withStyles} from '@material-ui/core/styles';
-import {Choice} from "../Choice";
+import {Choice} from '../Choice';
 
 const styles = theme => ({
   button: {

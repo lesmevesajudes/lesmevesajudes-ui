@@ -1,7 +1,7 @@
-import React from "react";
-import "./Wizard.css";
-import AppHeader from "../components/AppHeader/AppHeader";
-import {Trans, translate} from "react-i18next";
+import React from 'react';
+import './Wizard.css';
+import AppHeader from '../components/AppHeader/AppHeader';
+import {Trans, translate} from 'react-i18next';
 import Grid from '@material-ui/core/Grid';
 import StepsComponent from '../components/Steps/StepsComponent';
 import PersonsPage from '../persons/PersonsPage'
@@ -38,4 +38,4 @@ const WizardPage = () =>
         <StepsComponent steps={steps}/>
       </Grid>;
 
-export default translate("translations")(WizardPage);
+export default translate('translations')(WizardPage);

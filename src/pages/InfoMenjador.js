@@ -1,14 +1,14 @@
-import React from "react";
-import "./InfoPage.css";
-import AppHeader from "../components/AppHeader/AppHeader";
+import React from 'react';
+import './InfoPage.css';
+import AppHeader from '../components/AppHeader/AppHeader';
 import Grid from '@material-ui/core/Grid';
 
 class InfoMenjador extends React.Component {
   render() {
     return (
-        <Grid container className="container-family">
+        <Grid container className='container-family'>
           <AppHeader/>
-          <Grid item sm={12} className="Main">
+          <Grid item sm={12} className='Main'>
             <h1>Beques menjador</h1>
             <p>
               És un ajut individual de menjador (que cobreix del tot o parcialment
@@ -26,12 +26,12 @@ class InfoMenjador extends React.Component {
             <h2>Enllaços</h2>
             <ul>
               <li>
-                <a href="http://ensenyament.gencat.cat/ca/serveis-tramits/ajuts-subvencions/per-destinataris/families-alumnes/individuals-menjador/">
+                <a href='http://ensenyament.gencat.cat/ca/serveis-tramits/ajuts-subvencions/per-destinataris/families-alumnes/individuals-menjador/'>
                   Plana oficial de l'ajut
                 </a>
               </li>
               <li>
-                <a href="http://www.edubcn.cat/ca/alumnat_i_familia/ajuts_beques_i_subvencions/convocatories_ceb/ajuts_de_menjador">
+                <a href='http://www.edubcn.cat/ca/alumnat_i_familia/ajuts_beques_i_subvencions/convocatories_ceb/ajuts_de_menjador'>
                   Tramitació
                 </a>
               </li>

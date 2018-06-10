@@ -16,10 +16,10 @@ export function esBarcelona(codiPostal: string) {
 export function esCatalunya(codipostal: string) {
   const dosPrimersDigits = codipostal.substring(0, 1);
 
-  const CPBarcelona = "08";
-  const CPGirona = "17";
-  const CPLleida = "25";
-  const CPTarragona = "43";
+  const CPBarcelona = '08';
+  const CPGirona = '17';
+  const CPLleida = '25';
+  const CPTarragona = '43';
 
   return (
     dosPrimersDigits === CPBarcelona ||

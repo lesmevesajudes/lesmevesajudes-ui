@@ -1,5 +1,5 @@
-import {Map} from "immutable";
-import {Person} from "../persons/PersonTypes";
+import {Map} from 'immutable';
+import {Person} from '../persons/PersonTypes';
 
 export const toArray = (anObject: Object) =>
     Object.keys(anObject).reduce(
@@ -9,7 +9,7 @@ export const toArray = (anObject: Object) =>
     );
 
 function placeCommasAndAnds(arr: Array<string>) {
-  let outStr = "";
+  let outStr = '';
   if (arr.length === 1) {
     outStr = arr[0];
   } else if (arr.length === 2) {

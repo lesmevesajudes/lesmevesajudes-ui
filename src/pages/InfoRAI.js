@@ -1,14 +1,14 @@
-import React from "react";
-import "./InfoPage.css";
-import AppHeader from "../components/AppHeader/AppHeader";
+import React from 'react';
+import './InfoPage.css';
+import AppHeader from '../components/AppHeader/AppHeader';
 import Grid from '@material-ui/core/Grid';
 
 class InfoRAI extends React.Component {
   render() {
     return (
-        <Grid container className="container-family">
+        <Grid container className='container-family'>
           <AppHeader/>
-          <Grid item sm={12} className="Main">
+          <Grid item sm={12} className='Main'>
             <h1>Renda activa d'inserció</h1>
             <span>
             L’objectiu de la renda activa d’inserció (RAI) és incrementar les
@@ -46,12 +46,12 @@ class InfoRAI extends React.Component {
             <h2>Enllaços</h2>
             <ul>
               <li>
-                <a href="http://sepe.es/contenidos/personas/prestaciones/he_dejado_cobrar_paro/no_tengo_prestacion.html">
+                <a href='http://sepe.es/contenidos/personas/prestaciones/he_dejado_cobrar_paro/no_tengo_prestacion.html'>
                   Plana oficial de l'ajut al Servicio público de empleo estatal
                 </a>
               </li>
               <li>
-                <a href="https://sede.sepe.gob.es/portalSedeEstaticos/flows/gestorContenidos?page=sv01">
+                <a href='https://sede.sepe.gob.es/portalSedeEstaticos/flows/gestorContenidos?page=sv01'>
                   Tramitació
                 </a>
               </li>

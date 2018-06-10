@@ -1,13 +1,13 @@
-import axios from "axios/index";
-import isDevelopment from "./isDevelopment";
+import axios from 'axios/index';
+import isDevelopment from './isDevelopment';
 
 class OpenFiscaAPIClient {
   url: ?string = undefined;
-  productionURL: string = "https://lesmevesajudes-api.herokuapp.com";
-  developmentURL: string = "http://localhost:2000";
+  productionURL: string = 'https://lesmevesajudes-api.herokuapp.com';
+  developmentURL: string = 'http://localhost:2000';
 
   constructor(isDevel: boolean) {
-    if (typeof isDevel === "undefined") {
+    if (typeof isDevel === 'undefined') {
       isDevel = isDevelopment;
     }
     if (isDevel) {
@@ -17,7 +17,7 @@ class OpenFiscaAPIClient {
     }
   }
   makeSimulation(simulationData: any) {
-    return axios.post(this.url + "/calculate", simulationData);
+    return axios.post(this.url + '/calculate', simulationData);
   }
 }
 export default OpenFiscaAPIClient;

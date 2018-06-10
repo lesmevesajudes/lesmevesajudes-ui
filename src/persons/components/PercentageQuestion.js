@@ -1,9 +1,9 @@
-import React from "react";
-import {Question} from "./Question";
-import {TextField} from "redux-form-material-ui";
-import {allowOnlyPositive} from "../../components/Common/NormalizeCommon";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import {Trans} from "react-i18next";
+import React from 'react';
+import {Question} from './Question';
+import {TextField} from 'redux-form-material-ui';
+import {allowOnlyPositive} from '../../components/Common/NormalizeCommon';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import {Trans} from 'react-i18next';
 
 // TODO Max 100
 const max100 = value =>
@@ -12,9 +12,9 @@ const max100 = value =>
     : undefined;
 
 export const PercentageQuestion = (props) =>
-    <Question {...props} type="number" normalize={allowOnlyPositive} component={TextField} validate={max100}
+    <Question {...props} type='number' normalize={allowOnlyPositive} component={TextField} validate={max100}
               InputProps={{
-                endAdornment: <InputAdornment position="end">%</InputAdornment>,
+                endAdornment: <InputAdornment position='end'>%</InputAdornment>,
               }}>
       {props.children}
     </Question>;

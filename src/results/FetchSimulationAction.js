@@ -1,13 +1,13 @@
 //@flow
-import {serialize as serialize_adult} from "../persons/PersonsReducer";
-import type {Person, PersonsState} from "../persons/PersonTypes";
-import type {FamilyData} from "../family/FamilyDataTypes";
-import type {ResidenceData} from "../residence/ResidenceTypes";
-import OpenFiscaAPIClient from "../shared/OpenFiscaAPIClient";
-import {esFill, esInfantAcollit, esSustentador} from "../shared/selectorUtils";
-import {esBarcelonaCiutat} from "../shared/CodisPostals";
+import {serialize as serialize_adult} from '../persons/PersonsReducer';
+import type {Person, PersonsState} from '../persons/PersonTypes';
+import type {FamilyData} from '../family/FamilyDataTypes';
+import type {ResidenceData} from '../residence/ResidenceTypes';
+import OpenFiscaAPIClient from '../shared/OpenFiscaAPIClient';
+import {esFill, esInfantAcollit, esSustentador} from '../shared/selectorUtils';
+import {esBarcelonaCiutat} from '../shared/CodisPostals';
 
-export const FETCH_SIMULATION = "fetch_simulation";
+export const FETCH_SIMULATION = 'fetch_simulation';
 
 type SimulationData = {
   persons: PersonsState,
@@ -15,8 +15,8 @@ type SimulationData = {
   family: FamilyData
 };
 
-const currentMonth = value => ({"2017-01": value});
-const lastYear = value => ({"2016": value});
+const currentMonth = value => ({'2017-01': value});
+const lastYear = value => ({'2016': value});
 
 function buildRequest(simulationData: SimulationData) {
   const personalData = simulationData.persons.reduce(
@@ -62,7 +62,7 @@ function buildRequest(simulationData: SimulationData) {
       {}
   );
 
-  if (typeof simulationData.residence.titular_contracte_de_lloguer_id === "string" && typeof personalData[simulationData.residence.titular_contracte_de_lloguer_id] === "object") {
+  if (typeof simulationData.residence.titular_contracte_de_lloguer_id === 'string' && typeof personalData[simulationData.residence.titular_contracte_de_lloguer_id] === 'object') {
     personalData[simulationData.residence.titular_contracte_de_lloguer_id].titular_contracte_de_lloguer = currentMonth(true);
   }
 
@@ -80,7 +80,7 @@ function buildRequest(simulationData: SimulationData) {
             .map(persona => persona.id),
         domicili_a_barcelona_ciutat: currentMonth(
             esBarcelonaCiutat(
-                parseInt(simulationData.residence["codi_postal_habitatge"], 10)
+                parseInt(simulationData.residence['codi_postal_habitatge'], 10)
             )
         ),
         es_usuari_serveis_socials: currentMonth(simulationData.family.es_usuari_serveis_socials),
@@ -94,7 +94,7 @@ function buildRequest(simulationData: SimulationData) {
 
 export function fetchSimulation(simulationData: SimulationData) {
   let requestBody = buildRequest(simulationData);
-  console.log("Request: ", requestBody);
+  console.log('Request: ', requestBody);
   let client = new OpenFiscaAPIClient();
   return {
     type: FETCH_SIMULATION,

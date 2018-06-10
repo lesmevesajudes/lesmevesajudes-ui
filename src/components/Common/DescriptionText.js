@@ -1,7 +1,7 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import {HelpText} from "../HelpText";
-import Typography from "@material-ui/core/Typography";
+import {HelpText} from '../HelpText';
+import Typography from '@material-ui/core/Typography';
 
 type Props = {
   currentField: string

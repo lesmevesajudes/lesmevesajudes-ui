@@ -1,26 +1,26 @@
 //@flow
-import React, {Fragment} from "react";
-import type {PersonRole} from "./PersonTypes";
-import {Person} from "./PersonTypes";
-import {TextField} from "redux-form-material-ui";
-import ClearIcon from "@material-ui/icons/Clear";
-import {Trans} from "react-i18next";
-import {Field, formValueSelector, reduxForm} from "redux-form";
-import {connect} from "react-redux";
-import {Button, Grid, Hidden, MenuItem} from "@material-ui/core";
-import DescriptionText from "../components/Common/DescriptionText";
-import {RelacioFamiliar} from "./components/RelacioFamiliar";
-import {SituacioLaboral} from "./components/SituacioLaboral";
-import {TipusDocumentIdentitat} from "./components/TipusDocumentIdentitat";
-import {Question} from "./components/Question";
-import {YesNoQuestion} from "./components/YesNoQuestion";
-import {MoneyQuestion} from "./components/MoneyQuestion";
-import {PercentageQuestion} from "./components/PercentageQuestion";
-import {TimePeriodQuestion} from "./components/TimePeriodQuestion";
-import {MunicipiEmpadronament} from "./components/MunicipiEmpadronament";
-import Typography from "@material-ui/core/Typography";
-import MultipleAnswerQuestion from "./components/MultipleAnswerQuestion";
-import FormSubTitle from "./components/FormSubTitle";
+import React, {Fragment} from 'react';
+import type {PersonRole} from './PersonTypes';
+import {Person} from './PersonTypes';
+import {TextField} from 'redux-form-material-ui';
+import ClearIcon from '@material-ui/icons/Clear';
+import {Trans} from 'react-i18next';
+import {Field, formValueSelector, reduxForm} from 'redux-form';
+import {connect} from 'react-redux';
+import {Button, Grid, Hidden, MenuItem} from '@material-ui/core';
+import DescriptionText from '../components/Common/DescriptionText';
+import {RelacioFamiliar} from './components/RelacioFamiliar';
+import {SituacioLaboral} from './components/SituacioLaboral';
+import {TipusDocumentIdentitat} from './components/TipusDocumentIdentitat';
+import {Question} from './components/Question';
+import {YesNoQuestion} from './components/YesNoQuestion';
+import {MoneyQuestion} from './components/MoneyQuestion';
+import {PercentageQuestion} from './components/PercentageQuestion';
+import {TimePeriodQuestion} from './components/TimePeriodQuestion';
+import {MunicipiEmpadronament} from './components/MunicipiEmpadronament';
+import Typography from '@material-ui/core/Typography';
+import MultipleAnswerQuestion from './components/MultipleAnswerQuestion';
+import FormSubTitle from './components/FormSubTitle';
 
 
 export type PersonFormInitialValues = Person | { is_the_user_in_front_of_the_computer: boolean };
@@ -88,21 +88,21 @@ let PersonForm = (props: Props) => {
   } = props;
 
   return (
-      <Grid container className="bg-container">
+      <Grid container className='bg-container'>
         <Grid item xs={12}>
           {isTheUserInFrontOfTheComputer ?
-              <Typography variant="headline" gutterBottom><Trans>Informació sobre vostè</Trans></Typography> :
-              <Typography variant="headline" gutterBottom><Trans>Dades sobre una persona que conviu amb
+              <Typography variant='headline' gutterBottom><Trans>Informació sobre vostè</Trans></Typography> :
+              <Typography variant='headline' gutterBottom><Trans>Dades sobre una persona que conviu amb
                 vostè</Trans></Typography>}
         </Grid>
-        <Grid container direction="column">
+        <Grid container direction='column'>
           <form onSubmit={handleSubmit}>
-            <Field component="input" name="id" type="hidden"/>
-            <Field component="input" name="is_the_user_in_front_of_the_computer" type="hidden"/>
-            <Grid container direction="row" justify="space-around" alignItems="stretch">
+            <Field component='input' name='id' type='hidden'/>
+            <Field component='input' name='is_the_user_in_front_of_the_computer' type='hidden'/>
+            <Grid container direction='row' justify='space-around' alignItems='stretch'>
               <Grid item xs={12} sm={5}>
-                <Grid container direction="column" alignItems="stretch" spacing={16}>
-                  <Question name="nom" placeholder="Nom" component={TextField} required autoFocus>
+                <Grid container direction='column' alignItems='stretch' spacing={16}>
+                  <Question name='nom' placeholder='Nom' component={TextField} required autoFocus>
                     {isTheUserInFrontOfTheComputer ? <Trans>Identifiqui's amb un nom</Trans> :
                         <Trans>Identifiqui'l amb un nom</Trans>}
                   </Question>
@@ -111,15 +111,15 @@ let PersonForm = (props: Props) => {
 
                   {esFamiliarOUsuari &&
                   <Fragment>
-                    <TimePeriodQuestion name="edat" required validate={menorDe120}>
+                    <TimePeriodQuestion name='edat' required validate={menorDe120}>
                       <Trans>Quina és la seva edat?</Trans>
                     </TimePeriodQuestion>
 
-                    <MultipleAnswerQuestion label={<Trans>Sexe</Trans>} name="sexe">
-                      <MenuItem data-test="sexe_dona" value="dona">
+                    <MultipleAnswerQuestion label={<Trans>Sexe</Trans>} name='sexe'>
+                      <MenuItem data-test='sexe_dona' value='dona'>
                         <Trans>Dona</Trans>
                       </MenuItem>
-                      <MenuItem data-test="sexe_home" value="home">
+                      <MenuItem data-test='sexe_home' value='home'>
                         <Trans>Home</Trans>
                       </MenuItem>
                     </MultipleAnswerQuestion>
@@ -129,25 +129,25 @@ let PersonForm = (props: Props) => {
 
                     <TipusDocumentIdentitat/>
 
-                    <YesNoQuestion name="porta_dos_anys_o_mes_empadronat_a_catalunya">
+                    <YesNoQuestion name='porta_dos_anys_o_mes_empadronat_a_catalunya'>
                       <Trans>Porta dos anys o més empadronat a Catalunya?</Trans>
                     </YesNoQuestion>
                   </Fragment>}
 
-                  {esFamiliarOUsuari && esDona && tipusDocumentIdentitat === "passaport" && portaDosAnysOMesEmpadronatACatalunya &&
-                  <YesNoQuestion name="membre_de_familia_reagrupada">
+                  {esFamiliarOUsuari && esDona && tipusDocumentIdentitat === 'passaport' && portaDosAnysOMesEmpadronatACatalunya &&
+                  <YesNoQuestion name='membre_de_familia_reagrupada'>
                     <Trans>És membre d'una família reagrupada?</Trans>
                   </YesNoQuestion>}
 
                   {esFamiliarOUsuari && membreDeFamiliaReagrupada &&
-                  <YesNoQuestion name="es_una_persona_divorciada">
+                  <YesNoQuestion name='es_una_persona_divorciada'>
                     <Trans>És una persona divorciada legalment?</Trans>
                   </YesNoQuestion>}
 
                   {esFamiliarOUsuari && <MunicipiEmpadronament/>}
 
-                  {municipiEmpadronament === "barcelona" &&
-                  <TimePeriodQuestion name="anys_empadronat_a_barcelona"
+                  {municipiEmpadronament === 'barcelona' &&
+                  <TimePeriodQuestion name='anys_empadronat_a_barcelona'
                                       validate={[anysEmpadronatInferiorAEdat, menorDe120]} required>
                     <Trans>Quants anys porta empadronat a Barcelona?</Trans>
                   </TimePeriodQuestion>}
@@ -160,56 +160,56 @@ let PersonForm = (props: Props) => {
 
                     {esFamiliarOUsuari && esDesocupat &&
                     <Fragment>
-                      <YesNoQuestion name="inscrit_com_a_demandant_docupacio">
+                      <YesNoQuestion name='inscrit_com_a_demandant_docupacio'>
                         <Trans>Està inscrit com a demandant d’ocupació?</Trans>
                       </YesNoQuestion>
                       {inscritComADemandantDocupacio &&
-                      <YesNoQuestion name="inscrit_com_a_demandant_docupacio_mes_de_12_mesos">
+                      <YesNoQuestion name='inscrit_com_a_demandant_docupacio_mes_de_12_mesos'>
                         <Trans>Ha estat inscrit de forma continuada com a demandant d'ocupació més de 12 mesos?</Trans>
                       </YesNoQuestion>
                       }
 
                       {!inscritComADemandantDocupacio &&
-                      <YesNoQuestion name="en_els_ultims_12_mesos_ha_fet_baixa_voluntaria_de_la_feina">
+                      <YesNoQuestion name='en_els_ultims_12_mesos_ha_fet_baixa_voluntaria_de_la_feina'>
                         <Trans>Ha deixat la feina de forma voluntària en els darrers 12 mesos?</Trans>
                       </YesNoQuestion>}
                     </Fragment>}
 
                     {esFamiliarOUsuari && (esDesocupat || treballaPerCompteDAltriParcial) &&
-                    <YesNoQuestion name="ha_treballat_a_l_estranger_6_mesos">
+                    <YesNoQuestion name='ha_treballat_a_l_estranger_6_mesos'>
                       <Trans>Ha treballat a l’estranger un mínim de 6 mesos?</Trans>
                     </YesNoQuestion>}
 
                     {haTreballatALEstranger6Mesos &&
-                    <YesNoQuestion name="ha_treballat_a_l_estranger_6_mesos_i_ha_retornat_en_els_ultims_12_mesos">
+                    <YesNoQuestion name='ha_treballat_a_l_estranger_6_mesos_i_ha_retornat_en_els_ultims_12_mesos'>
                       <Trans>Ha retornat d’aquest període de treball en els últims 12 mesos?</Trans>
                     </YesNoQuestion>}
                   </Fragment>}
 
                   <FormSubTitle>Ingressos</FormSubTitle>
-                  <MoneyQuestion name="ingressos_bruts" required>
+                  <MoneyQuestion name='ingressos_bruts' required>
                     <Trans>Indiqui els seus ingressos bruts anuals de l’any passat?</Trans>
                   </MoneyQuestion>
 
                   {esFamiliarOUsuari &&
-                  <YesNoQuestion name="cobra_algun_tipus_de_pensio_no_contributiva">
+                  <YesNoQuestion name='cobra_algun_tipus_de_pensio_no_contributiva'>
                     <Trans>Cobra algun tipus de pensió no contributiva?</Trans>
                   </YesNoQuestion>}
 
                   {esFamiliarOUsuari && cobraAlgunTipusDePensioNoContributiva &&
                   <Fragment>
-                    <MoneyQuestion name="ingressos_per_pnc" validate={pncInclosAIngressosBruts}>
+                    <MoneyQuestion name='ingressos_per_pnc' validate={pncInclosAIngressosBruts}>
                       <Trans>Indiqui la suma dels imports de totes les pensions no contributives que cobri</Trans>
                     </MoneyQuestion>
                   </Fragment>}
 
                   {esFamiliarOUsuari && inscritComADemandantDocupacio &&
-                  <YesNoQuestion name="gaudeix_de_prestacio_contributiva_o_subsidi_desocupacio">
+                  <YesNoQuestion name='gaudeix_de_prestacio_contributiva_o_subsidi_desocupacio'>
                     <Trans>Gaudeix actualment d’una prestació contributiva o subsidi per desocupació?</Trans>
                   </YesNoQuestion>}
 
                   {esFamiliarOUsuari && inscritComADemandantDocupacio &&
-                  <YesNoQuestion name="percep_prestacions_incompatibles_amb_la_feina">
+                  <YesNoQuestion name='percep_prestacions_incompatibles_amb_la_feina'>
                     <Trans> Perceb alguna ajuda i/o prestació econòmica de la seguretat social que no li permeti
                       treballar?</Trans>
                   </YesNoQuestion>}
@@ -217,35 +217,35 @@ let PersonForm = (props: Props) => {
                   {esFamiliarOUsuari &&
                   <Fragment>
                     <FormSubTitle>Situació personal</FormSubTitle>
-                    <YesNoQuestion name="te_algun_grau_de_discapacitat_reconegut">
+                    <YesNoQuestion name='te_algun_grau_de_discapacitat_reconegut'>
                       <Trans>Té vostè algun grau de discapacitat reconegut?</Trans>
                     </YesNoQuestion>
 
                     {teAlgunGrauDeDiscapacitatReconegut &&
-                    <PercentageQuestion name="grau_discapacitat">
+                    <PercentageQuestion name='grau_discapacitat'>
                       <Trans>Grau discapacitat</Trans>
                     </PercentageQuestion>}
 
                     {potTreballar && esDona &&
-                    <YesNoQuestion name="victima_violencia_de_genere">
+                    <YesNoQuestion name='victima_violencia_de_genere'>
                       <Trans>Víctima violència de gènere</Trans>
                     </YesNoQuestion>}
 
-                    <YesNoQuestion name="victima_violencia_domestica">
+                    <YesNoQuestion name='victima_violencia_domestica'>
                       <Trans>Víctima violència domèstica</Trans>
                     </YesNoQuestion>
 
                     {(edat > 2 && edat < 16) &&
-                    <YesNoQuestion name="es_escolaritzat_entre_P3_i_4rt_ESO">
+                    <YesNoQuestion name='es_escolaritzat_entre_P3_i_4rt_ESO'>
                       <Trans>Escolaritzat entre P3 i 4rt ESO?</Trans>
                     </YesNoQuestion>}
 
                     {(edat > 18 && edat < 23) && !(esFill || esFillastre) &&
-                    <YesNoQuestion name="es_orfe_dels_dos_progenitors">
+                    <YesNoQuestion name='es_orfe_dels_dos_progenitors'>
                       <Trans>És orfe dels dos progenitors</Trans>
                     </YesNoQuestion>}
 
-                    <YesNoQuestion name="beneficiari_de_prestacio_residencial">
+                    <YesNoQuestion name='beneficiari_de_prestacio_residencial'>
                       <Trans>És beneficiari d’una prestació pública o privada de servei residencial permanent? </Trans>
                     </YesNoQuestion>
                   </Fragment>}
@@ -259,12 +259,12 @@ let PersonForm = (props: Props) => {
             </Grid>
 
             <Grid item sm={12}>
-              <Grid container justify="space-around">
+              <Grid container justify='space-around'>
                 {(isTheUserInFrontOfTheComputer !== true || updating === true) &&
-                <Button variant="raised" color="secondary" onClick={props.onCancel}>
+                <Button variant='raised' color='secondary' onClick={props.onCancel}>
                   <Trans>Cancelar</Trans> <ClearIcon/>
                 </Button>}
-                <Button variant="raised" color="primary" type="submit" name="ButtonValidar">
+                <Button variant='raised' color='primary' type='submit' name='ButtonValidar'>
                   <Trans>Validar</Trans>
                 </Button>
               </Grid>
@@ -277,31 +277,31 @@ let PersonForm = (props: Props) => {
 
 // TODO: El icono AddIcon, se deberia añadir Absolute, 25% y relative al button para probar si funciona bien el tema de align, pero es un parche.
 PersonForm = reduxForm({
-  form: "PersonForm"
+  form: 'PersonForm'
 })(PersonForm);
-const currentFocussedFieldSelector = (formName: string): Function => (state): ?string => (typeof state.form[formName] === "undefined") ? undefined : state.form[formName].active;
-const selector = formValueSelector("PersonForm");
-const currentFocussedField = currentFocussedFieldSelector("PersonForm");
+const currentFocussedFieldSelector = (formName: string): Function => (state): ?string => (typeof state.form[formName] === 'undefined') ? undefined : state.form[formName].active;
+const selector = formValueSelector('PersonForm');
+const currentFocussedField = currentFocussedFieldSelector('PersonForm');
 
 PersonForm = connect(state => {
-  const cobraAlgunTipusDePensioNoContributiva = selector(state, "cobra_algun_tipus_de_pensio_no_contributiva");
-  const edat = selector(state, "edat");
-  const esDesocupat = selector(state, "situacio_laboral") === "desocupat";
-  const esDona = selector(state, "genere") === "dona";
-  const esFamiliarOUsuari = (typeof selector(state, "relacio_parentiu") !== "undefined" && selector(state, "relacio_parentiu") !== "cap") || selector(state, "is_the_user_in_front_of_the_computer") === true;
-  const esFill = selector(state, "relacio_parentiu") === "fill";
-  const esFillastre = selector(state, "relacio_parentiu") === "fillastre";
-  const haTreballatALEstranger6Mesos = selector(state, "ha_treballat_a_l_estranger_6_mesos");
-  const inscritComADemandantDocupacio = selector(state, "inscrit_com_a_demandant_docupacio");
-  const isTheUserInFrontOfTheComputer = selector(state, "is_the_user_in_front_of_the_computer");
-  const membreDeFamiliaReagrupada = selector(state, "membre_de_familia_reagrupada");
-  const municipiEmpadronament = selector(state, "municipi_empadronament");
-  const potTreballar = selector(state, "edat") >= 16;
-  const portaDosAnysOMesEmpadronatACatalunya = selector(state, "porta_dos_anys_o_mes_empadronat_a_catalunya");
-  const rol = selector(state, "rol");
-  const teAlgunGrauDeDiscapacitatReconegut = selector(state, "te_algun_grau_de_discapacitat_reconegut");
-  const tipusDocumentIdentitat = selector(state, "document_identitat");
-  const treballaPerCompteDAltriParcial = selector(state, "situacio_laboral") === "treball_compte_daltri_jornada_parcial";
+  const cobraAlgunTipusDePensioNoContributiva = selector(state, 'cobra_algun_tipus_de_pensio_no_contributiva');
+  const edat = selector(state, 'edat');
+  const esDesocupat = selector(state, 'situacio_laboral') === 'desocupat';
+  const esDona = selector(state, 'genere') === 'dona';
+  const esFamiliarOUsuari = (typeof selector(state, 'relacio_parentiu') !== 'undefined' && selector(state, 'relacio_parentiu') !== 'cap') || selector(state, 'is_the_user_in_front_of_the_computer') === true;
+  const esFill = selector(state, 'relacio_parentiu') === 'fill';
+  const esFillastre = selector(state, 'relacio_parentiu') === 'fillastre';
+  const haTreballatALEstranger6Mesos = selector(state, 'ha_treballat_a_l_estranger_6_mesos');
+  const inscritComADemandantDocupacio = selector(state, 'inscrit_com_a_demandant_docupacio');
+  const isTheUserInFrontOfTheComputer = selector(state, 'is_the_user_in_front_of_the_computer');
+  const membreDeFamiliaReagrupada = selector(state, 'membre_de_familia_reagrupada');
+  const municipiEmpadronament = selector(state, 'municipi_empadronament');
+  const potTreballar = selector(state, 'edat') >= 16;
+  const portaDosAnysOMesEmpadronatACatalunya = selector(state, 'porta_dos_anys_o_mes_empadronat_a_catalunya');
+  const rol = selector(state, 'rol');
+  const teAlgunGrauDeDiscapacitatReconegut = selector(state, 'te_algun_grau_de_discapacitat_reconegut');
+  const tipusDocumentIdentitat = selector(state, 'document_identitat');
+  const treballaPerCompteDAltriParcial = selector(state, 'situacio_laboral') === 'treball_compte_daltri_jornada_parcial';
   const currentField = currentFocussedField(state);
 
   return {

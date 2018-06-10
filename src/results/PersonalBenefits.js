@@ -1,9 +1,10 @@
-import React from "react";
-import Link from "react-router-dom/Link";
-import {Map} from "immutable";
-import type {PersonID} from "../persons/PersonTypes";
-import {Person} from "../persons/PersonTypes";
-import {Grid} from "@material-ui/core";
+import React from 'react';
+import Link from 'react-router-dom/Link';
+import {Map} from 'immutable';
+import type {PersonID} from '../persons/PersonTypes';
+import {Person} from '../persons/PersonTypes';
+import {Grid} from '@material-ui/core';
+import {Trans} from "react-i18next";
 
 type Props = {
   benefitsForPersons: any,
@@ -15,49 +16,54 @@ class PersonalBenefits extends React.Component<Props> {
     super();
     this.possibleBenefits = [
       {
-        ID: "AE_230_mensual",
-        name: "Fons infància",
-        periode: "mes",
-        url: "/ajuts/fons_infancia"
+        ID: 'AE_230_mensual',
+        name: <Trans>Fons infància</Trans>,
+        periode: 'mes',
+        url: '/ajuts/fons_infancia'
       },
       {
-        ID: "AE_230_01_mensual",
-        name: "Fons infància ajut famílies monoparentals",
-        periode: "any",
-        url: "/ajuts/fons_infancia"
+        ID: 'AE_230_01_mensual',
+        name: <Trans>Fons infància ajut famílies monoparentals</Trans>,
+        periode: 'any',
+        url: '/ajuts/fons_infancia'
       },
       {
-        ID: "EG_233_mensual",
-        name: "Ajuts individuals de menjador",
-        periode: "dia",
-        url: "/ajuts/menjador"
+        ID: 'EG_233_mensual',
+        name: <Trans>Ajuts individuals de menjador</Trans>,
+        periode: 'dia',
+        url: '/ajuts/menjador'
       },
       {
-        ID: "GE_051_00_mensual",
-        name: "Renda activa d'inserció aturats de llarga durada",
-        periode: "mes",
-        url: "/ajuts/rai"
-      },
-      {ID: "GE_051_01_mensual", name: "Renda activa d'inserció discapacitat 33%", periode: "mes", url: "/ajuts/rai"},
-      {
-        ID: "GE_051_02_mensual",
-        name: "Renda activa d'inserció per a emigrants retornats",
-        periode: "mes",
-        url: "/ajuts/rai"
+        ID: 'GE_051_00_mensual',
+        name: <Trans>Renda activa d'inserció aturats de llarga durada</Trans>,
+        periode: 'mes',
+        url: '/ajuts/rai'
       },
       {
-        ID: "GE_051_03_mensual",
-        name: "Renda activa d'inserció per a víctimes de violència de gènere o domèstica",
-        periode: "mes",
-        url: "/ajuts/rai"
+        ID: 'GE_051_01_mensual',
+        name: <Trans>Renda activa d'inserció discapacitat 33%</Trans>,
+        periode: 'mes',
+        url: '/ajuts/rai'
+      },
+      {
+        ID: 'GE_051_02_mensual',
+        name: <Trans>Renda activa d'inserció per a emigrants retornats</Trans>,
+        periode: 'mes',
+        url: '/ajuts/rai'
+      },
+      {
+        ID: 'GE_051_03_mensual',
+        name: <Trans>Renda activa d'inserció per a víctimes de violència de gènere o domèstica</Trans>,
+        periode: 'mes',
+        url: '/ajuts/rai'
       }
-      //{ID: "GG_270_mensual", name: "Renda Garantida Ciutadana", periode: "mes", url:"/ajuts/rgc"}
+      //{ID: 'GG_270_mensual', name: 'Renda Garantida Ciutadana', periode: 'mes', url:'/ajuts/rgc'}
     ];
-    this.period = "2017-01";
+    this.period = '2017-01';
   }
 
   hasAnyBenefit(personWithBenefits) {
-    if (typeof personWithBenefits === "undefined") return false; //TODO hackish. this happends due some inconsistency in the request processing. On
+    if (typeof personWithBenefits === 'undefined') return false; //TODO hackish. this happends due some inconsistency in the request processing. On
     return (
         this.possibleBenefits.reduce((acc, benefit) => {
           return acc + personWithBenefits[benefit.ID][this.period];
@@ -69,29 +75,29 @@ class PersonalBenefits extends React.Component<Props> {
     if (personWithBenefits[benefit.ID][this.period] > 0) {
       return (
           <Grid
-              className="ResultPage"
+              className='ResultPage'
               container
-              justify="center"
-              alignItems="center"
+              justify='center'
+              alignItems='center'
               key={benefit.ID}
           >
             <Grid item sm={12}>
-              <li className="ItemResult" key={benefit.ID}>
-                <Grid container justify="center" alignItems="center" wrap="wrap">
-                  <Grid id={benefit.ID} className="benefitText" item xs={12} sm={7}>
+              <li className='ItemResult' key={benefit.ID}>
+                <Grid container justify='center' alignItems='center' wrap='wrap'>
+                  <Grid id={benefit.ID} className='benefitText' item xs={12} sm={7}>
                     <p>{benefit.name}</p>
                   </Grid>
-                  <Grid item className="Separator" xs={6} sm={2}>
-                    Import:{" "}
-                    <span className="moneyText">
+                  <Grid item className='Separator' xs={6} sm={2}>
+                    Import:{' '}
+                    <span className='moneyText'>
                     {personWithBenefits[benefit.ID][this.period]}
-                  </span>{" "}
+                  </span>{' '}
                     € / {benefit.periode}
                   </Grid>
-                  <Grid item className="Separator" xs={6} sm={3}>
+                  <Grid item className='Separator' xs={6} sm={3}>
                     <Link to={benefit.url}>
                       <button
-                          className="buttonMoreInfo"
+                          className='buttonMoreInfo'
                           key={benefit.ID}
                       >
                         Més informació
@@ -109,13 +115,13 @@ class PersonalBenefits extends React.Component<Props> {
   renderPersonalBenefits(person: Person, personBenefits: any) {
     if (this.hasAnyBenefit(personBenefits)) {
       return (
-          <li className="ItemResultOut" key={person.id}>
-          <span className="ItemTitle">
+          <li className='ItemResultOut' key={person.id}>
+          <span className='ItemTitle'>
             Ajudes per: <span>{person.nom}</span>
           </span>
             <br/>
 
-            <ul className="ItemList">
+            <ul className='ItemList'>
               {this.possibleBenefits.map(benefit =>
                   this.renderAPersonalBenefit(benefit, personBenefits)
               )}
@@ -124,17 +130,17 @@ class PersonalBenefits extends React.Component<Props> {
       );
     } else {
       return (
-          <Grid container justify="space-between" alignItems="center" key={person.id}>
+          <Grid container justify='space-between' alignItems='center' key={person.id}>
             <Grid item sm={12}>
-              <li className="ItemResultOut" key={person.id}>
+              <li className='ItemResultOut' key={person.id}>
                 <div>
                 <span>
-                  Ajudes per: <span className="ItemTitle">{person.nom}</span>
+                  Ajudes per: <span className='ItemTitle'>{person.nom}</span>
                 </span>
                   <br/>
-                  <Grid container className="ResultPage" justify="space-between">
+                  <Grid container className='ResultPage' justify='space-between'>
                     <Grid item xs sm={12}>
-                      <div className="ItemResult">No opta a cap ajuda</div>
+                      <div className='ItemResult'>No opta a cap ajuda</div>
                     </Grid>
                   </Grid>
                 </div>
@@ -150,7 +156,7 @@ class PersonalBenefits extends React.Component<Props> {
       personsWithBenefits: any
   ) {
     return (
-        <ul className="ResultList">
+        <ul className='ResultList'>
           {personsData
               .valueSeq()
               .map((person: Person) =>

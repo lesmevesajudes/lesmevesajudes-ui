@@ -1,22 +1,22 @@
 //@flow
-import React from "react";
-import {connect} from "react-redux";
-import {addResidenceData} from "./ResidenceActions";
-import type {ResidenceData} from "./ResidenceTypes";
-import type {PersonID} from "../persons/PersonTypes";
-import {Person} from "../persons/PersonTypes";
-import {Map} from "immutable";
-import {formValueSelector, reduxForm} from "redux-form";
-import {Grid, Hidden, MenuItem} from "@material-ui/core";
-import {Trans} from "react-i18next";
-import DescriptionText from "../components/Common/DescriptionText";
-import {esFill} from "../shared/selectorUtils";
-import MultipleAnswerQuestion from "../persons/components/MultipleAnswerQuestion";
-import {Question} from "../persons/components/Question";
-import {YesNoQuestion} from "../persons/components/YesNoQuestion";
-import {TextField} from "redux-form-material-ui";
-import {MoneyQuestion} from "../persons/components/MoneyQuestion";
-import Typography from "@material-ui/core/Typography";
+import React from 'react';
+import {connect} from 'react-redux';
+import {addResidenceData} from './ResidenceActions';
+import type {ResidenceData} from './ResidenceTypes';
+import type {PersonID} from '../persons/PersonTypes';
+import {Person} from '../persons/PersonTypes';
+import {Map} from 'immutable';
+import {formValueSelector, reduxForm} from 'redux-form';
+import {Grid, Hidden, MenuItem} from '@material-ui/core';
+import {Trans} from 'react-i18next';
+import DescriptionText from '../components/Common/DescriptionText';
+import {esFill} from '../shared/selectorUtils';
+import MultipleAnswerQuestion from '../persons/components/MultipleAnswerQuestion';
+import {Question} from '../persons/components/Question';
+import {YesNoQuestion} from '../persons/components/YesNoQuestion';
+import {TextField} from 'redux-form-material-ui';
+import {MoneyQuestion} from '../persons/components/MoneyQuestion';
+import Typography from '@material-ui/core/Typography';
 
 const seemsPostalCode = value =>
     value && (isNaN(Number(value)) || value.length !== 5)
@@ -57,14 +57,14 @@ const ResidenceForm = (props: Props) => {
     titularContracteHipoteca
   } = props;
   return (
-      <Grid container className="bg-container">
+      <Grid container className='bg-container'>
         <Grid item xs={12}>
-          <Typography variant="headline" gutterBottom><Trans>Afegeixi informació del seu domicili
+          <Typography variant='headline' gutterBottom><Trans>Afegeixi informació del seu domicili
             habitual</Trans></Typography>
         </Grid>
-        <Grid container direction="row" justify="space-around" alignItems="stretch">
+        <Grid container direction='row' justify='space-around' alignItems='stretch'>
           <Grid item xs={12} sm={6}>
-            <Grid container direction="column" alignItems="stretch" spacing={16}>
+            <Grid container direction='column' alignItems='stretch' spacing={16}>
               <form name='ResidenceForm'>
                 <MultipleAnswerQuestion name='relacio_habitatge' label={<Trans>Relació amb l'habitatge</Trans>}>
                   <MenuItem value='llogater' data-test='llogater'><Trans>Visc de lloguer</Trans></MenuItem>
@@ -104,7 +104,7 @@ const ResidenceForm = (props: Props) => {
                   </MenuItem>
                 </MultipleAnswerQuestion>}
 
-                {esLlogater && typeof titularContracteLloguer !== "undefined" && titularContracteLloguer !== "no-conviu" &&
+                {esLlogater && typeof titularContracteLloguer !== 'undefined' && titularContracteLloguer !== 'no-conviu' &&
                 <MultipleAnswerQuestion name='titular_contracte_lloguer_temps_empadronat'
                                         label={<Trans>Quant temps fa que {titularContracteLloguer.nom} està empadronat
                                           en aquest habitatge?</Trans>}>
@@ -113,7 +113,7 @@ const ResidenceForm = (props: Props) => {
                   <MenuItem value='9_mesos_o_mes' data-test='llogater'><Trans>9 mesos o més</Trans></MenuItem>
                 </MultipleAnswerQuestion>}
 
-                {existeixHipoteca && typeof titularContracteHipoteca !== "undefined" && titularContracteHipoteca !== "no-conviu" &&
+                {existeixHipoteca && typeof titularContracteHipoteca !== 'undefined' && titularContracteHipoteca !== 'no-conviu' &&
                 <MultipleAnswerQuestion name='titular_hipoteca_temps_empadronat'
                                         label={<Trans>Quant temps fa que {titularContracteHipoteca.nom} està empadronat
                                           en aquest habitatge?</Trans>}>
@@ -217,28 +217,28 @@ const ResidenceForm = (props: Props) => {
   );
 };
 
-const selector = formValueSelector("ResidenceForm");
+const selector = formValueSelector('ResidenceForm');
 
 function mapStateToProps(state) {
-  const esLlogater = selector(state, "relacio_habitatge") === "llogater";
-  const esPropietari = (selector(state, "relacio_habitatge") === "propietari"
-      || selector(state, "relacio_habitatge") === "propietari_hipoteca");
-  const existeixHipoteca = selector(state, "relacio_habitatge") === "propietari_hipoteca";
-  const esCessio = selector(state, "relacio_habitatge") === "cessio";
-  const haSeleccionatAlgunaRelacioAmbLHabitatge = selector(state, "relacio_habitatge") != null;
-  const titularContracteLloguer = state.persons.get(selector(state, "titular_contracte_de_lloguer_id"));
-  const titularContracteHipoteca = state.persons.get(selector(state, "titular_hipoteca_id"));
+  const esLlogater = selector(state, 'relacio_habitatge') === 'llogater';
+  const esPropietari = (selector(state, 'relacio_habitatge') === 'propietari'
+      || selector(state, 'relacio_habitatge') === 'propietari_hipoteca');
+  const existeixHipoteca = selector(state, 'relacio_habitatge') === 'propietari_hipoteca';
+  const esCessio = selector(state, 'relacio_habitatge') === 'cessio';
+  const haSeleccionatAlgunaRelacioAmbLHabitatge = selector(state, 'relacio_habitatge') != null;
+  const titularContracteLloguer = state.persons.get(selector(state, 'titular_contracte_de_lloguer_id'));
+  const titularContracteHipoteca = state.persons.get(selector(state, 'titular_hipoteca_id'));
 
   return {
     esLlogater: esLlogater,
     esPropietari: esPropietari,
-    existeixDeutePagamentLloguer: selector(state, "existeix_deute_en_el_pagament_del_lloguer"),
-    existeixDeutePagamentHipoteca: selector(state, "existeix_deute_en_el_pagament_de_la_hipoteca"),
+    existeixDeutePagamentLloguer: selector(state, 'existeix_deute_en_el_pagament_del_lloguer'),
+    existeixDeutePagamentHipoteca: selector(state, 'existeix_deute_en_el_pagament_de_la_hipoteca'),
     existeixHipoteca: existeixHipoteca,
     haSeleccionatAlgunaRelacioAmbLHabitatge: haSeleccionatAlgunaRelacioAmbLHabitatge,
     initialValues: state.residence,
     personesQuePodenTenirContracte: state.persons.filter((persona) => !esFill(persona)),
-    teAlgunaPropietat: selector(state, "tinc_alguna_propietat_a_part_habitatge_habitual"),
+    teAlgunaPropietat: selector(state, 'tinc_alguna_propietat_a_part_habitatge_habitual'),
     teHabitatgeHabitual: esLlogater || esPropietari || esCessio,
     titularContracteLloguer: titularContracteLloguer,
     titularContracteHipoteca: titularContracteHipoteca
@@ -248,7 +248,7 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps)(reduxForm(
     {
-      form: "ResidenceForm",
+      form: 'ResidenceForm',
       onChange: (values, dispatch) => {
         dispatch(addResidenceData(values));
       }

@@ -1,7 +1,7 @@
 //@flow
 
-type NextStepAction = { type: "NEXT_STEP" };
-type BackStepAction = { type: "BACK_STEP" };
+type NextStepAction = { type: 'NEXT_STEP' };
+type BackStepAction = { type: 'BACK_STEP' };
 type ButtonsShowAction = { type: 'BUTTONS_VISIBLE' };
 type ButtonsDisabledAction = { type: 'BUTTONS_DISABLED' };
 type ButtonsEnabledAction = { type: 'BUTTONS_ENABLED' };
@@ -32,9 +32,9 @@ export function enableButtons(): StepsActions {
 }
 
 export function nextStep(): StepsActions {
-  return {type: "NEXT_STEP"};
+  return {type: 'NEXT_STEP'};
 }
 
 export function backStep(): StepsActions {
-  return {type: "BACK_STEP"};
+  return {type: 'BACK_STEP'};
 }

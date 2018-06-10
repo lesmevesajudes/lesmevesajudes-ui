@@ -1,8 +1,8 @@
 // @flow
-import {Map} from "immutable";
+import {Map} from 'immutable';
 
-import type {Person, PersonID, PersonsState} from "./PersonTypes";
-import type {PersonActions} from "./PersonsActions";
+import type {Person, PersonID, PersonsState} from './PersonTypes';
+import type {PersonActions} from './PersonsActions';
 
 function removePerson(
     state: PersonsState,
@@ -40,11 +40,11 @@ export default function (
     action: PersonActions
 ): PersonsState {
   switch (action.type) {
-    case "ADD_PERSON":
+    case 'ADD_PERSON':
       return addPerson(state, action.person);
-    case "REMOVE_PERSON":
+    case 'REMOVE_PERSON':
       return removePerson(state, action.personID);
-    case "UPDATE_PERSON":
+    case 'UPDATE_PERSON':
       return updatePerson(state, action.person);
     default:
       return state;

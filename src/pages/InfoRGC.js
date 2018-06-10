@@ -1,14 +1,14 @@
-import React from "react";
-import "./InfoPage.css";
-import AppHeader from "../components/AppHeader/AppHeader";
+import React from 'react';
+import './InfoPage.css';
+import AppHeader from '../components/AppHeader/AppHeader';
 import Grid from '@material-ui/core/Grid';
 
 class InfoRGC extends React.Component {
   render() {
     return (
-        <Grid container className="container-family">
+        <Grid container className='container-family'>
           <AppHeader/>
-          <Grid item sm={12} className="Main">
+          <Grid item sm={12} className='Main'>
             <h1>Renda Garantida de Ciutadania</h1>
             <p>
               La Renda garantida de ciutadania (RGC) és la prestació social a
@@ -41,12 +41,12 @@ class InfoRGC extends React.Component {
             <h2>Enllaços</h2>
             <ul>
               <li>
-                <a href="http://treballiaferssocials.gencat.cat/ca/ambits_tematics/pobresa_i_inclusio_social/renda_garantida_ciutadania/rendagarantida_/">
+                <a href='http://treballiaferssocials.gencat.cat/ca/ambits_tematics/pobresa_i_inclusio_social/renda_garantida_ciutadania/rendagarantida_/'>
                   Plana oficial de l'ajut
                 </a>
               </li>
               <li>
-                <a href="https://web.gencat.cat/ca/tramits/tramits-temes/rgc_complement_estatal_activable?evolutiuTramit=1&moda=1">
+                <a href='https://web.gencat.cat/ca/tramits/tramits-temes/rgc_complement_estatal_activable?evolutiuTramit=1&moda=1'>
                   Tramitació
                 </a>
               </li>

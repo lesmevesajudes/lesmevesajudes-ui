@@ -1,14 +1,14 @@
 //@flow
-import React, {Component} from "react";
-import type {Person} from "./PersonTypes";
-import {Trans, translate} from "react-i18next";
+import React, {Component} from 'react';
+import type {Person} from './PersonTypes';
+import {Trans, translate} from 'react-i18next';
 import {Avatar, Card, Divider, Grid, List, ListItem, ListItemText} from '@material-ui/core';
 import {create} from '../shared/UUID';
-import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
-import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton/IconButton";
-import ClearIcon from "@material-ui/icons/Clear";
-import Typography from "@material-ui/core/Typography";
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton/IconButton';
+import ClearIcon from '@material-ui/icons/Clear';
+import Typography from '@material-ui/core/Typography';
 
 type Props = {
   persons: Array<Person>,
@@ -22,17 +22,17 @@ type Props = {
 };
 
 const initials = (name: string) => {
-  const initials = name.replace(/[^a-zA-Z- ]/g, "").match(/\b\w/g);
+  const initials = name.replace(/[^a-zA-Z- ]/g, '').match(/\b\w/g);
   if (initials instanceof Array) {
     return initials.map(char => char.toUpperCase()).join('');
   } else {
-    return "?";
+    return '?';
   }
 };
 
 const repeat = (times: number, callback: Function) => {
-  if (typeof callback !== "function") {
-    throw new TypeError("Callback is not a function");
+  if (typeof callback !== 'function') {
+    throw new TypeError('Callback is not a function');
   }
   let response = [];
   for (let i = 0; i < times; i++) {
@@ -68,18 +68,18 @@ const relacioDeParentiuATextDelLListatDePersones = (relacioDeParentiu: string) =
 
 
 const PersonCard = (props: PersonCardProps) => {
-  const anysText = props.person.edat != null ? `${props.person.edat} anys ` : "";
+  const anysText = props.person.edat != null ? `${props.person.edat} anys ` : '';
   const secondaryText = `${anysText}${relacioDeParentiuATextDelLListatDePersones(props.person.relacio_parentiu)}`;
   return (
       <ListItem button onClick={() => props.updatePerson(props.person.id)}>
-        <Avatar style={{backgroundColor: "#006600"}}>{initials(props.person.nom)}</Avatar>
+        <Avatar style={{backgroundColor: '#006600'}}>{initials(props.person.nom)}</Avatar>
         <ListItemText
             primary={props.person.is_the_user_in_front_of_the_computer ? `Vosté: ${props.person.nom}` : props.person.nom}
             secondary={props.person.is_the_user_in_front_of_the_computer ? '' : secondaryText}
         />
         {!props.person.is_the_user_in_front_of_the_computer &&
         <ListItemSecondaryAction onClick={() => props.onRemoveClick(props.person.id)}>
-          <IconButton aria-label="Delete">
+          <IconButton aria-label='Delete'>
             <ClearIcon/>
           </IconButton>
         </ListItemSecondaryAction>}
@@ -97,7 +97,7 @@ const UnknownPersonCard = (props: UnknownPersonProps) => (
       <ListItemText
           primary={`Persona ${(props.personNumber + 1).toString()} - Premi aquí per a introduir la informació d'aquesta persona`}/>
       <ListItemSecondaryAction onClick={() => props.onRemoveClick()}>
-        <IconButton aria-label="Delete">
+        <IconButton aria-label='Delete'>
           <ClearIcon/>
         </IconButton>
       </ListItemSecondaryAction>
@@ -108,12 +108,12 @@ class PersonsViewer extends Component<Props, void> {
   render() {
     const missingPersons = Math.max(this.props.expectedNumberOfPersons - this.props.persons.length, 0);
     return (
-        <Grid container className="container-family">
-          <Grid item sm={12} xs={12} className="bg-family">
-            <Typography variant="headline" gutterBottom>
+        <Grid container className='container-family'>
+          <Grid item sm={12} xs={12} className='bg-family'>
+            <Typography variant='headline' gutterBottom>
               <Trans>Persones de la unitat de convivència</Trans>
             </Typography>
-            <Grid container direction="column" className="PersonsViewerPage" spacing={16} alignItems="stretch">
+            <Grid container direction='column' className='PersonsViewerPage' spacing={16} alignItems='stretch'>
               <Grid item xs={12} sm={12}>
                 <Card>
                   <List>
@@ -134,7 +134,7 @@ class PersonsViewer extends Component<Props, void> {
               </Grid>
               {missingPersons === 0 &&
               <Grid item>
-                <Button variant="raised" onClick={this.props.onAddPersonClick}>Afegir una persona convivent</Button>
+                <Button variant='raised' onClick={this.props.onAddPersonClick}>Afegir una persona convivent</Button>
               </Grid>}
             </Grid>
           </Grid>
@@ -143,4 +143,4 @@ class PersonsViewer extends Component<Props, void> {
   }
 }
 
-export default translate("translations")(PersonsViewer);
+export default translate('translations')(PersonsViewer);

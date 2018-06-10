@@ -1,16 +1,16 @@
 //@flow
-import React from "react";
-import PersonsViewer from "./PersonsViewer";
-import type {PersonFormInitialValues} from "./PersonForm";
-import PersonForm from "./PersonForm";
-import {connect} from "react-redux";
-import type {Person, PersonID} from "./PersonTypes";
-import {HowManyPersonsLiveTogetherType} from "./PersonTypes";
-import {serialize} from "./PersonsReducer";
-import * as UUID from "../shared/UUID";
-import {addPerson, removePerson, updatePerson} from "./PersonsActions";
-import HowManyPersonsLiveTogetherPage from "./HowManyPersonsLiveTogetherPage";
-import {enableButtons, hideButtons, showButtons} from "../components/Steps/StepsActions";
+import React from 'react';
+import PersonsViewer from './PersonsViewer';
+import type {PersonFormInitialValues} from './PersonForm';
+import PersonForm from './PersonForm';
+import {connect} from 'react-redux';
+import type {Person, PersonID} from './PersonTypes';
+import {HowManyPersonsLiveTogetherType} from './PersonTypes';
+import {serialize} from './PersonsReducer';
+import * as UUID from '../shared/UUID';
+import {addPerson, removePerson, updatePerson} from './PersonsActions';
+import HowManyPersonsLiveTogetherPage from './HowManyPersonsLiveTogetherPage';
+import {enableButtons, hideButtons, showButtons} from '../components/Steps/StepsActions';
 
 type State = {
   step: string,
@@ -36,7 +36,7 @@ class PersonsPage extends React.Component<Props, State> {
     this.props.dispatch(hideButtons());
     this.setState({
       ...this.state,
-      step: "addPerson"
+      step: 'addPerson'
     });
   };
 
@@ -45,7 +45,7 @@ class PersonsPage extends React.Component<Props, State> {
     this.setState({
       ...this.state,
       initialFormValues: {...this.props.persons.filter(e => e.id === personID)[0]},
-      step: "updatePerson"
+      step: 'updatePerson'
     });
   };
 
@@ -59,7 +59,7 @@ class PersonsPage extends React.Component<Props, State> {
     this.setState({
       ...this.state,
       initialFormValues: undefined,
-      step: "personsList",
+      step: 'personsList',
     });
   };
 
@@ -86,7 +86,7 @@ class PersonsPage extends React.Component<Props, State> {
     this.setState({
       ...this.state,
       numberOfPersonsLivingTogether: formValues.how_many_persons_live_together,
-      step: "addPerson",
+      step: 'addPerson',
       initialFormValues: {is_the_user_in_front_of_the_computer: true}
     });
   };
@@ -100,8 +100,8 @@ class PersonsPage extends React.Component<Props, State> {
     this.handleSubmitPersonForm = this.handleSubmitPersonForm.bind(this);
     this.handleSubmitHowManyPersonsLiveTogether = this.handleSubmitHowManyPersonsLiveTogether.bind(this);
     this.state = {
-      step: (typeof this.props.persons !== "undefined" && this.props.persons.length > 0) ?
-          "personsList" : "NumberOfPersonsLivingTogether",
+      step: (typeof this.props.persons !== 'undefined' && this.props.persons.length > 0) ?
+          'personsList' : 'NumberOfPersonsLivingTogether',
       initialFormValues: undefined,
       numberOfPersonsLivingTogether: 0
     };
@@ -112,11 +112,11 @@ class PersonsPage extends React.Component<Props, State> {
     const step = this.state.step;
     let component = undefined;
 
-    if (step === "NumberOfPersonsLivingTogether") {
+    if (step === 'NumberOfPersonsLivingTogether') {
       component = (<HowManyPersonsLiveTogetherPage
           onSubmit={this.handleSubmitHowManyPersonsLiveTogether}
       />);
-    } else if (step === "personsList") {
+    } else if (step === 'personsList') {
       component = (
           <PersonsViewer
               persons={this.props.persons}
@@ -126,14 +126,14 @@ class PersonsPage extends React.Component<Props, State> {
               onRemoveUnknownClick={this.removeOnePersonLivingTogether}
               expectedNumberOfPersons={expectedNumberOfPersonsLivingTogether}
           />);
-    } else if (step === "addPerson" || step === "updatePerson") {
+    } else if (step === 'addPerson' || step === 'updatePerson') {
 
       component = (
           <PersonForm
               initialValues={this.state.initialFormValues}
               onSubmit={this.handleSubmitPersonForm}
               onCancel={this.doneEditingPerson}
-              updating={step === "updatePerson"}
+              updating={step === 'updatePerson'}
           />
       );
     }

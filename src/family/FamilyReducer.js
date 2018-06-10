@@ -1,6 +1,6 @@
 // @flow
-import type {FamilyData} from "./FamilyDataTypes";
-import type {FamilyDataActions} from "./FamilyDataActions";
+import type {FamilyData} from './FamilyDataTypes';
+import type {FamilyDataActions} from './FamilyDataActions';
 
 type FamilyDataState = FamilyData | {};
 
@@ -9,7 +9,7 @@ export default function (
     action: FamilyDataActions
 ): FamilyDataState {
   switch (action.type) {
-    case "ADD_FAMILY_DATA":
+    case 'ADD_FAMILY_DATA':
       return action.familyData;
     default:
       return state;

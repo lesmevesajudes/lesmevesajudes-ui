@@ -1,4 +1,4 @@
-import {Person} from "../persons/PersonTypes";
+import {Person} from '../persons/PersonTypes';
 
 export const esFill = (persona: Person) => persona.edat < 16 || persona.es_escolaritzat_entre_P3_i_4rt_ESO;
 export const esSustentador = (persona: Person) => persona.edat > 16;

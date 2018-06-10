@@ -1,14 +1,14 @@
-import React from "react";
-import "./InfoPage.css";
-import AppHeader from "../components/AppHeader/AppHeader";
+import React from 'react';
+import './InfoPage.css';
+import AppHeader from '../components/AppHeader/AppHeader';
 import Grid from '@material-ui/core/Grid';
 
 class InfoLloguer extends React.Component {
   render() {
     return (
-        <Grid container className="container-family">
+        <Grid container className='container-family'>
           <AppHeader/>
-          <Grid item sm={12} className="Main">
+          <Grid item sm={12} className='Main'>
             <h1>
               Habitatge - Ajuda per pagament del lloguer (renovables, especial
               urgències, borsa i > 65 anys)
@@ -32,12 +32,12 @@ class InfoLloguer extends React.Component {
             <h2>Enllaços</h2>
             <ul>
               <li>
-                <a href="http://habitatge.gencat.cat/ca/04_ambits_dactuacio/lloguer/ajuts_al_pagament_del_lloguer/prestacions_permanents_per_al_pagament_del_lloguer/">
+                <a href='http://habitatge.gencat.cat/ca/04_ambits_dactuacio/lloguer/ajuts_al_pagament_del_lloguer/prestacions_permanents_per_al_pagament_del_lloguer/'>
                   Plana oficial de l'ajut
                 </a>
               </li>
               <li>
-                <a href="http://governacio.gencat.cat/ca/tramits/tramits-temes/Prestacions-permanents-per-al-pagament-del-lloguer">
+                <a href='http://governacio.gencat.cat/ca/tramits/tramits-temes/Prestacions-permanents-per-al-pagament-del-lloguer'>
                   Tramitació
                 </a>
               </li>
