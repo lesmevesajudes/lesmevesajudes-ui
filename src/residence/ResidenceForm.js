@@ -143,7 +143,7 @@ const ResidenceForm = (props: Props) => {
                 </YesNoQuestion>}
 
                 {existeixDeutePagamentLloguer &&
-                <MultipleAnswerQuestion name='titular_contracte_lloguer_temps_empadronat'
+                <MultipleAnswerQuestion name='des_de_quan_teniu_deutes_de_lloguer'
                                         label={<Trans>Des de quan teniu deutes de pagament de lloguer?</Trans>}>
                   <MenuItem value='mes_dun_any'><Trans>Més d'un any</Trans></MenuItem>
                   <MenuItem value='menys_dun_any'><Trans>Menys d'un any</Trans></MenuItem>
@@ -182,8 +182,7 @@ const ResidenceForm = (props: Props) => {
                 {haSeleccionatAlgunaRelacioAmbLHabitatge && !esPropietari &&
                 <YesNoQuestion name='ha_perdut_lhabitatge_en_els_ultims_2_anys'>
                   <Trans>Ha perdut el seu habitatge habitual degut a una execució hipotecària o desnonament en els
-                    ultims
-                    2 anys?</Trans>
+                    ultims 2 anys?</Trans>
                 </YesNoQuestion>}
 
                 {esLlogater &&

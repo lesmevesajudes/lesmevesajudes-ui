@@ -74,7 +74,7 @@ const PersonCard = (props: PersonCardProps) => {
       <ListItem button onClick={() => props.updatePerson(props.person.id)}>
         <Avatar style={{backgroundColor: '#006600'}}>{initials(props.person.nom)}</Avatar>
         <ListItemText
-            primary={props.person.is_the_user_in_front_of_the_computer ? `Vosté: ${props.person.nom}` : props.person.nom}
+            primary={props.person.is_the_user_in_front_of_the_computer ? `Vostè: ${props.person.nom}` : props.person.nom}
             secondary={props.person.is_the_user_in_front_of_the_computer ? '' : secondaryText}
         />
         {!props.person.is_the_user_in_front_of_the_computer &&
