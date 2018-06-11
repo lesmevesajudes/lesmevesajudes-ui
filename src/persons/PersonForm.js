@@ -208,7 +208,7 @@ let PersonForm = (props: Props) => {
                     <Trans>Gaudeix actualment d’una prestació contributiva o subsidi per desocupació?</Trans>
                   </YesNoQuestion>}
 
-                  {esFamiliarOUsuari && inscritComADemandantDocupacio &&
+                  {esFamiliarOUsuari && esAturat &&
                   <YesNoQuestion name='percep_prestacions_incompatibles_amb_la_feina'>
                     <Trans> Perceb alguna ajuda i/o prestació econòmica de la seguretat social que no li permeti
                       treballar?</Trans>
