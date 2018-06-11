@@ -42,7 +42,7 @@ type Props = {
   cobraAlgunTipusDePensioNoContributiva: Boolean,
   currentField: string,
   edat: number,
-  esDesocupat: Boolean,
+  esAturat: Boolean,
   esDona: Boolean,
   esFamiliarOUsuari: Boolean,
   esFill: Boolean,
@@ -68,7 +68,7 @@ let PersonForm = (props: Props) => {
     cobraAlgunTipusDePensioNoContributiva,
     currentField,
     edat,
-    esDesocupat,
+    esAturat,
     esDona,
     esFamiliarOUsuari,
     esFill,
@@ -158,7 +158,7 @@ let PersonForm = (props: Props) => {
 
                     <SituacioLaboral/>
 
-                    {esFamiliarOUsuari && esDesocupat &&
+                    {esFamiliarOUsuari && esAturat &&
                     <Fragment>
                       <YesNoQuestion name='inscrit_com_a_demandant_docupacio'>
                         <Trans>Està inscrit com a demandant d’ocupació?</Trans>
@@ -175,7 +175,7 @@ let PersonForm = (props: Props) => {
                       </YesNoQuestion>}
                     </Fragment>}
 
-                    {esFamiliarOUsuari && (esDesocupat || treballaPerCompteDAltriParcial) &&
+                    {esFamiliarOUsuari && (esAturat || treballaPerCompteDAltriParcial) &&
                     <YesNoQuestion name='ha_treballat_a_l_estranger_6_mesos'>
                       <Trans>Ha treballat a l’estranger un mínim de 6 mesos?</Trans>
                     </YesNoQuestion>}
@@ -286,7 +286,7 @@ const currentFocussedField = currentFocussedFieldSelector('PersonForm');
 PersonForm = connect(state => {
   const cobraAlgunTipusDePensioNoContributiva = selector(state, 'cobra_algun_tipus_de_pensio_no_contributiva');
   const edat = selector(state, 'edat');
-  const esDesocupat = selector(state, 'situacio_laboral') === 'desocupat';
+  const esAturat = selector(state, 'situacio_laboral') === 'aturat';
   const esDona = selector(state, 'genere') === 'dona';
   const esFamiliarOUsuari = (typeof selector(state, 'relacio_parentiu') !== 'undefined' && selector(state, 'relacio_parentiu') !== 'cap') || selector(state, 'is_the_user_in_front_of_the_computer') === true;
   const esFill = selector(state, 'relacio_parentiu') === 'fill';
@@ -308,7 +308,7 @@ PersonForm = connect(state => {
     cobraAlgunTipusDePensioNoContributiva,
     currentField,
     edat,
-    esDesocupat,
+    esAturat,
     esDona,
     esFamiliarOUsuari,
     esFill,
