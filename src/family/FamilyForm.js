@@ -62,7 +62,7 @@ const FamilyForm = (props: Props) => {
                           </Field>
                         </Grid>
                         <Grid item xs={1}>
-                          <Typography><Trans>i</Trans></Typography>
+                          <Typography className="andSeparator"><Trans>i</Trans></Typography>
                         </Grid>
                         <Grid item xs={5}>
                           <Field name={'custodies.' + infant.id + '.segon'} component={Select} fullWidth>

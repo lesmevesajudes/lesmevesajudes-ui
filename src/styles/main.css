@@ -116,8 +116,10 @@ input.cercabcn {
 .buttons-container {
   border-radius: 4px;
   min-height: 180px;
-  max-width: 950px;
+  max-width: 970px;
+  padding-left: 8px;
   margin: 0px auto;
+
 }
 .buttons-container .left-button {
   float: left

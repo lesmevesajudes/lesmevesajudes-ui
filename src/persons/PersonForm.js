@@ -258,7 +258,7 @@ let PersonForm = (props: Props) => {
               </Hidden>
             </Grid>
 
-            <Grid item sm={12}>
+            <Grid item sm={12} className="margin-buttons">
               <Grid container justify='space-around'>
                 {(isTheUserInFrontOfTheComputer !== true || updating === true) &&
                 <Button variant='raised' color='secondary' onClick={props.onCancel}>
