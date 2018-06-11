@@ -58,7 +58,7 @@ const FamilyForm = (props: Props) => {
                                 <MenuItem key={`primer-${sustentador.id}`}
                                           value={sustentador.id}>{sustentador.nom}</MenuItem>
                             )}
-                            <MenuItem value='no_convivent'><Trans>Una persona que no conviu</Trans></MenuItem>
+                            <MenuItem value='no_conviu'><Trans>Una persona que no conviu</Trans></MenuItem>
                           </Field>
                         </Grid>
                         <Grid item xs={1}>
@@ -74,7 +74,7 @@ const FamilyForm = (props: Props) => {
                                     </MenuItem>
                             )}
                             <MenuItem value='ningu_mes'><Trans>Ningú més</Trans></MenuItem>
-                            <MenuItem value='no_convivent'><Trans>Una persona que no conviu</Trans></MenuItem>
+                            <MenuItem value='no_conviu'><Trans>Una persona que no conviu</Trans></MenuItem>
                           </Field>
                         </Grid>
                       </Grid>
