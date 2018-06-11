@@ -95,181 +95,178 @@ let PersonForm = (props: Props) => {
               <Typography variant='headline' gutterBottom><Trans>Dades sobre una persona que conviu amb
                 vostè</Trans></Typography>}
         </Grid>
-        <Grid container direction='column'>
-          <form onSubmit={handleSubmit}>
-            <Field component='input' name='id' type='hidden'/>
-            <Field component='input' name='is_the_user_in_front_of_the_computer' type='hidden'/>
-            <Grid container direction='row' justify='space-around' alignItems='stretch'>
-              <Grid item xs={12} sm={5}>
-                <Grid container direction='column' alignItems='stretch' spacing={16}>
-                  <Question name='nom' placeholder='Nom' component={TextField} required autoFocus>
-                    {isTheUserInFrontOfTheComputer ? <Trans>Identifiqui's amb un nom</Trans> :
-                        <Trans>Identifiqui'l amb un nom</Trans>}
-                  </Question>
+        <Grid item xs={12}>
+            <form onSubmit={handleSubmit}>
+              <Field component='input' name='id' type='hidden'/>
+              <Field component='input' name='is_the_user_in_front_of_the_computer' type='hidden'/>
+              <Grid container direction='row' justify='space-around' alignItems='stretch'>
+                <Grid item xs={12} sm={5}>
+                  <Grid container direction='column' alignItems='stretch' spacing={16}>
+                    <Question name='nom' placeholder='Nom' component={TextField} required autoFocus>
+                      {isTheUserInFrontOfTheComputer ? <Trans>Identifiqui's amb un nom</Trans> :
+                          <Trans>Identifiqui'l amb un nom</Trans>}
+                    </Question>
 
-                  {!isTheUserInFrontOfTheComputer && <RelacioFamiliar/>}
+                    {!isTheUserInFrontOfTheComputer && <RelacioFamiliar/>}
 
-                  {esFamiliarOUsuari &&
-                  <Fragment>
-                    <TimePeriodQuestion name='edat' required validate={menorDe120}>
-                      <Trans>Quina és la seva edat?</Trans>
-                    </TimePeriodQuestion>
-
-                    <MultipleAnswerQuestion label={<Trans>Sexe</Trans>} name='sexe'>
-                      <MenuItem data-test='sexe_dona' value='dona'>
-                        <Trans>Dona</Trans>
-                      </MenuItem>
-                      <MenuItem data-test='sexe_home' value='home'>
-                        <Trans>Home</Trans>
-                      </MenuItem>
-                    </MultipleAnswerQuestion>
-
-                    <Typography gutterBottom/>
-                    <FormSubTitle>Informació sobre el padró</FormSubTitle>
-
-                    <TipusDocumentIdentitat/>
-
-                    <YesNoQuestion name='porta_dos_anys_o_mes_empadronat_a_catalunya'>
-                      <Trans>Porta dos anys o més empadronat a Catalunya?</Trans>
-                    </YesNoQuestion>
-                  </Fragment>}
-
-                  {esFamiliarOUsuari && esDona && tipusDocumentIdentitat === 'passaport' && portaDosAnysOMesEmpadronatACatalunya &&
-                  <YesNoQuestion name='membre_de_familia_reagrupada'>
-                    <Trans>És membre d'una família reagrupada?</Trans>
-                  </YesNoQuestion>}
-
-                  {esFamiliarOUsuari && membreDeFamiliaReagrupada &&
-                  <YesNoQuestion name='es_una_persona_divorciada'>
-                    <Trans>És una persona divorciada legalment?</Trans>
-                  </YesNoQuestion>}
-
-                  {esFamiliarOUsuari && <MunicipiEmpadronament/>}
-
-                  {municipiEmpadronament === 'barcelona' &&
-                  <TimePeriodQuestion name='anys_empadronat_a_barcelona'
-                                      validate={[anysEmpadronatInferiorAEdat, menorDe120]} required>
-                    <Trans>Quants anys porta empadronat a Barcelona?</Trans>
-                  </TimePeriodQuestion>}
-
-                  {esFamiliarOUsuari && potTreballar &&
-                  <Fragment>
-                    <FormSubTitle><Trans>Situació laboral</Trans></FormSubTitle>
-
-                    <SituacioLaboral/>
-
-                    {esFamiliarOUsuari && esAturat &&
+                    {esFamiliarOUsuari &&
                     <Fragment>
-                      <YesNoQuestion name='inscrit_com_a_demandant_docupacio'>
-                        <Trans>Està inscrit com a demandant d’ocupació?</Trans>
-                      </YesNoQuestion>
-                      {inscritComADemandantDocupacio &&
-                      <YesNoQuestion name='inscrit_com_a_demandant_docupacio_mes_de_12_mesos'>
-                        <Trans>Ha estat inscrit de forma continuada com a demandant d'ocupació més de 12 mesos?</Trans>
-                      </YesNoQuestion>
-                      }
+                      <TimePeriodQuestion name='edat' required validate={menorDe120}>
+                        <Trans>Quina és la seva edat?</Trans>
+                      </TimePeriodQuestion>
 
-                      {!inscritComADemandantDocupacio &&
-                      <YesNoQuestion name='en_els_ultims_12_mesos_ha_fet_baixa_voluntaria_de_la_feina'>
-                        <Trans>Ha deixat la feina de forma voluntària en els darrers 12 mesos?</Trans>
+                      <MultipleAnswerQuestion label={<Trans>Sexe</Trans>} name='sexe'>
+                        <MenuItem data-test='sexe_dona' value='dona'>
+                          <Trans>Dona</Trans>
+                        </MenuItem>
+                        <MenuItem data-test='sexe_home' value='home'>
+                          <Trans>Home</Trans>
+                        </MenuItem>
+                      </MultipleAnswerQuestion>
+
+                      <Typography gutterBottom/>
+                      <FormSubTitle>Informació sobre el padró</FormSubTitle>
+
+                      <TipusDocumentIdentitat/>
+
+                      <YesNoQuestion name='porta_dos_anys_o_mes_empadronat_a_catalunya'>
+                        <Trans>Porta dos anys o més empadronat a Catalunya?</Trans>
+                      </YesNoQuestion>
+                    </Fragment>}
+
+                    {esFamiliarOUsuari && esDona && tipusDocumentIdentitat === 'passaport' && portaDosAnysOMesEmpadronatACatalunya &&
+                    <YesNoQuestion name='membre_de_familia_reagrupada'>
+                      <Trans>És membre d'una família reagrupada?</Trans>
+                    </YesNoQuestion>}
+
+                    {esFamiliarOUsuari && membreDeFamiliaReagrupada &&
+                    <YesNoQuestion name='es_una_persona_divorciada'>
+                      <Trans>És una persona divorciada legalment?</Trans>
+                    </YesNoQuestion>}
+
+                    {esFamiliarOUsuari && <MunicipiEmpadronament/>}
+
+                    {municipiEmpadronament === 'barcelona' &&
+                    <TimePeriodQuestion name='anys_empadronat_a_barcelona'
+                                        validate={[anysEmpadronatInferiorAEdat, menorDe120]} required>
+                      <Trans>Quants anys porta empadronat a Barcelona?</Trans>
+                    </TimePeriodQuestion>}
+
+                    {esFamiliarOUsuari && potTreballar &&
+                    <Fragment>
+                      <FormSubTitle><Trans>Situació laboral</Trans></FormSubTitle>
+
+                      <SituacioLaboral/>
+
+                      {esFamiliarOUsuari && esAturat &&
+                      <Fragment>
+                        <YesNoQuestion name='inscrit_com_a_demandant_docupacio'>
+                          <Trans>Està inscrit com a demandant d’ocupació?</Trans>
+                        </YesNoQuestion>
+                        {inscritComADemandantDocupacio &&
+                        <YesNoQuestion name='inscrit_com_a_demandant_docupacio_mes_de_12_mesos'>
+                          <Trans>Ha estat inscrit de forma continuada com a demandant d'ocupació més de 12 mesos?</Trans>
+                        </YesNoQuestion>
+                        }
+
+                        {!inscritComADemandantDocupacio &&
+                        <YesNoQuestion name='en_els_ultims_12_mesos_ha_fet_baixa_voluntaria_de_la_feina'>
+                          <Trans>Ha deixat la feina de forma voluntària en els darrers 12 mesos?</Trans>
+                        </YesNoQuestion>}
+                      </Fragment>}
+
+                      {esFamiliarOUsuari && (esAturat || treballaPerCompteDAltriParcial) &&
+                      <YesNoQuestion name='ha_treballat_a_l_estranger_6_mesos'>
+                        <Trans>Ha treballat a l’estranger un mínim de 6 mesos?</Trans>
+                      </YesNoQuestion>}
+
+                      {haTreballatALEstranger6Mesos &&
+                      <YesNoQuestion name='ha_treballat_a_l_estranger_6_mesos_i_ha_retornat_en_els_ultims_12_mesos'>
+                        <Trans>Ha retornat d’aquest període de treball en els últims 12 mesos?</Trans>
                       </YesNoQuestion>}
                     </Fragment>}
 
-                    {esFamiliarOUsuari && (esAturat || treballaPerCompteDAltriParcial) &&
-                    <YesNoQuestion name='ha_treballat_a_l_estranger_6_mesos'>
-                      <Trans>Ha treballat a l’estranger un mínim de 6 mesos?</Trans>
-                    </YesNoQuestion>}
-
-                    {haTreballatALEstranger6Mesos &&
-                    <YesNoQuestion name='ha_treballat_a_l_estranger_6_mesos_i_ha_retornat_en_els_ultims_12_mesos'>
-                      <Trans>Ha retornat d’aquest període de treball en els últims 12 mesos?</Trans>
-                    </YesNoQuestion>}
-                  </Fragment>}
-
-                  <FormSubTitle>Ingressos</FormSubTitle>
-                  <MoneyQuestion name='ingressos_bruts' required>
-                    <Trans>Indiqui els seus ingressos bruts anuals de l’any passat?</Trans>
-                  </MoneyQuestion>
-
-                  {esFamiliarOUsuari &&
-                  <YesNoQuestion name='cobra_algun_tipus_de_pensio_no_contributiva'>
-                    <Trans>Cobra algun tipus de pensió no contributiva?</Trans>
-                  </YesNoQuestion>}
-
-                  {esFamiliarOUsuari && cobraAlgunTipusDePensioNoContributiva &&
-                  <Fragment>
-                    <MoneyQuestion name='ingressos_per_pnc' validate={pncInclosAIngressosBruts}>
-                      <Trans>Indiqui la suma dels imports de totes les pensions no contributives que cobri</Trans>
+                    <FormSubTitle>Ingressos</FormSubTitle>
+                    <MoneyQuestion name='ingressos_bruts' required>
+                      <Trans>Indiqui els seus ingressos bruts anuals de l’any passat?</Trans>
                     </MoneyQuestion>
-                  </Fragment>}
 
-                  {esFamiliarOUsuari && inscritComADemandantDocupacio &&
-                  <YesNoQuestion name='gaudeix_de_prestacio_contributiva_o_subsidi_desocupacio'>
-                    <Trans>Gaudeix actualment d’una prestació contributiva o subsidi per desocupació?</Trans>
-                  </YesNoQuestion>}
-
-                  {esFamiliarOUsuari && esAturat &&
-                  <YesNoQuestion name='percep_prestacions_incompatibles_amb_la_feina'>
-                    <Trans> Perceb alguna ajuda i/o prestació econòmica de la seguretat social que no li permeti
-                      treballar?</Trans>
-                  </YesNoQuestion>}
-
-                  {esFamiliarOUsuari &&
-                  <Fragment>
-                    <FormSubTitle>Situació personal</FormSubTitle>
-                    <YesNoQuestion name='te_algun_grau_de_discapacitat_reconegut'>
-                      <Trans>Té vostè algun grau de discapacitat reconegut?</Trans>
-                    </YesNoQuestion>
-
-                    {teAlgunGrauDeDiscapacitatReconegut &&
-                    <PercentageQuestion name='grau_discapacitat'>
-                      <Trans>Grau discapacitat</Trans>
-                    </PercentageQuestion>}
-
-                    {potTreballar && esDona &&
-                    <YesNoQuestion name='victima_violencia_de_genere'>
-                      <Trans>Víctima violència de gènere</Trans>
+                    {esFamiliarOUsuari &&
+                    <YesNoQuestion name='cobra_algun_tipus_de_pensio_no_contributiva'>
+                      <Trans>Cobra algun tipus de pensió no contributiva?</Trans>
                     </YesNoQuestion>}
 
-                    <YesNoQuestion name='victima_violencia_domestica'>
-                      <Trans>Víctima violència domèstica</Trans>
-                    </YesNoQuestion>
+                    {esFamiliarOUsuari && cobraAlgunTipusDePensioNoContributiva &&
+                    <Fragment>
+                      <MoneyQuestion name='ingressos_per_pnc' validate={pncInclosAIngressosBruts}>
+                        <Trans>Indiqui la suma dels imports de totes les pensions no contributives que cobri</Trans>
+                      </MoneyQuestion>
+                    </Fragment>}
 
-                    {(edat > 2 && edat < 16) &&
-                    <YesNoQuestion name='es_escolaritzat_entre_P3_i_4rt_ESO'>
-                      <Trans>Escolaritzat entre P3 i 4rt ESO?</Trans>
+                    {esFamiliarOUsuari && inscritComADemandantDocupacio &&
+                    <YesNoQuestion name='gaudeix_de_prestacio_contributiva_o_subsidi_desocupacio'>
+                      <Trans>Gaudeix actualment d’una prestació contributiva o subsidi per desocupació?</Trans>
                     </YesNoQuestion>}
 
-                    {(edat > 18 && edat < 23) && !(esFill || esFillastre) &&
-                    <YesNoQuestion name='es_orfe_dels_dos_progenitors'>
-                      <Trans>És orfe dels dos progenitors</Trans>
+                    {esFamiliarOUsuari && esAturat &&
+                    <YesNoQuestion name='percep_prestacions_incompatibles_amb_la_feina'>
+                      <Trans> Perceb alguna ajuda i/o prestació econòmica de la seguretat social que no li permeti
+                        treballar?</Trans>
                     </YesNoQuestion>}
 
-                    <YesNoQuestion name='beneficiari_de_prestacio_residencial'>
-                      <Trans>És beneficiari d’una prestació pública o privada de servei residencial permanent? </Trans>
-                    </YesNoQuestion>
-                  </Fragment>}
+                    {esFamiliarOUsuari &&
+                    <Fragment>
+                      <FormSubTitle>Situació personal</FormSubTitle>
+                      <YesNoQuestion name='te_algun_grau_de_discapacitat_reconegut'>
+                        <Trans>Té vostè algun grau de discapacitat reconegut?</Trans>
+                      </YesNoQuestion>
+
+                      {teAlgunGrauDeDiscapacitatReconegut &&
+                      <PercentageQuestion name='grau_discapacitat'>
+                        <Trans>Grau discapacitat</Trans>
+                      </PercentageQuestion>}
+
+                      {potTreballar && esDona &&
+                      <YesNoQuestion name='victima_violencia_de_genere'>
+                        <Trans>Víctima violència de gènere</Trans>
+                      </YesNoQuestion>}
+
+                      <YesNoQuestion name='victima_violencia_domestica'>
+                        <Trans>Víctima violència domèstica</Trans>
+                      </YesNoQuestion>
+
+                      {(edat > 2 && edat < 16) &&
+                      <YesNoQuestion name='es_escolaritzat_entre_P3_i_4rt_ESO'>
+                        <Trans>Escolaritzat entre P3 i 4rt ESO?</Trans>
+                      </YesNoQuestion>}
+
+                      {(edat > 18 && edat < 23) && !(esFill || esFillastre) &&
+                      <YesNoQuestion name='es_orfe_dels_dos_progenitors'>
+                        <Trans>És orfe dels dos progenitors</Trans>
+                      </YesNoQuestion>}
+
+                      <YesNoQuestion name='beneficiari_de_prestacio_residencial'>
+                        <Trans>És beneficiari d’una prestació pública o privada de servei residencial permanent? </Trans>
+                      </YesNoQuestion>
+                    </Fragment>}
+                  </Grid>
+                </Grid>
+                <Grid item xs={5} sm={5}>
+                    <DescriptionText currentField={currentField}/>
                 </Grid>
               </Grid>
-              <Hidden smDown>
-                <Grid item md={5}>
-                  <DescriptionText currentField={currentField}/>
+              <Grid item sm={12} className="margin-buttons">
+                <Grid container justify='space-around'>
+                  {(isTheUserInFrontOfTheComputer !== true || updating === true) &&
+                  <Button variant='raised' color='secondary' onClick={props.onCancel}>
+                    <Trans>Cancelar</Trans> <ClearIcon/>
+                  </Button>}
+                  <Button variant='raised' color='primary' type='submit' name='ButtonValidar'>
+                    <Trans>Validar</Trans>
+                  </Button>
                 </Grid>
-              </Hidden>
-            </Grid>
-
-            <Grid item sm={12} className="margin-buttons">
-              <Grid container justify='space-around'>
-                {(isTheUserInFrontOfTheComputer !== true || updating === true) &&
-                <Button variant='raised' color='secondary' onClick={props.onCancel}>
-                  <Trans>Cancelar</Trans> <ClearIcon/>
-                </Button>}
-                <Button variant='raised' color='primary' type='submit' name='ButtonValidar'>
-                  <Trans>Validar</Trans>
-                </Button>
               </Grid>
-            </Grid>
-          </form>
+            </form>     
         </Grid>
       </Grid>
   );

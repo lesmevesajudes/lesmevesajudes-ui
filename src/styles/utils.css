@@ -57,3 +57,6 @@
   color: #202020 !important;
   margin-top: 8px !important;
 }
+.descriptionText {
+  min-height: 600px;
+}
