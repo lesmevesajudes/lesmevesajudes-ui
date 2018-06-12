@@ -253,7 +253,7 @@ let PersonForm = (props: Props) => {
                   </Grid>
                 </Grid>
                 <Grid item xs={5} sm={5}>
-                        <Sticky enabled={true} top={50} bottomBoundary={1200}>
+                        <Sticky enabled={true} top={50}>
                             <DescriptionText currentField={currentField}/>
                         </Sticky>
                 </Grid>
