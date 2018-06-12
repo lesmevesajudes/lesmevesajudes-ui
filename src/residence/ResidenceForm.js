@@ -66,7 +66,6 @@ const ResidenceForm = (props: Props) => {
           <Grid item xs={12} sm={6}>
             <form name='ResidenceForm'>
               <Grid container direction='column' alignItems='stretch' spacing={16}>
-
                   <MultipleAnswerQuestion name='relacio_habitatge' label={<Trans>Relació amb l'habitatge</Trans>}>
                     <MenuItem value='llogater' data-test='llogater'><Trans>Visc de lloguer</Trans></MenuItem>
                     <MenuItem value='propietari'><Trans>Visc en un habitatge de propietat sense

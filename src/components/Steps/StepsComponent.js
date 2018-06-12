@@ -41,11 +41,9 @@ let StepsComponent = (props: Props) => {
   const childComponent = steps[currentStep].component;
   return (
       <div className={classes.root}>
-
         <Stepper activeStep={currentStep} alternativeLabel>
           {steps.map(step => {
             const labelProps = step.optional ? {
-              
               optional: <Typography variant='caption'><Trans>Opcional</Trans></Typography>
             } : {};
             return <Step key={step.label}>
