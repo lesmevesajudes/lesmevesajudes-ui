@@ -39,7 +39,6 @@ const StepIcon = ({icon}) => (
 let StepsComponent = (props: Props) => {
   const {classes, steps, currentStep, buttonEnabled, buttonVisible, backStep, nextStep} = props;
   const childComponent = steps[currentStep].component;
-  console.log(steps);
   return (
       <div className={classes.root}>
 
