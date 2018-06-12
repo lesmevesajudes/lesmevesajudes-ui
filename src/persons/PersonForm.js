@@ -7,7 +7,7 @@ import ClearIcon from '@material-ui/icons/Clear';
 import {Trans} from 'react-i18next';
 import {Field, formValueSelector, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
-import {Button, Grid, Hidden, MenuItem} from '@material-ui/core';
+import {Button, Grid, MenuItem} from '@material-ui/core';
 import DescriptionText from '../components/Common/DescriptionText';
 import {RelacioFamiliar} from './components/RelacioFamiliar';
 import {SituacioLaboral} from './components/SituacioLaboral';
@@ -21,7 +21,7 @@ import {MunicipiEmpadronament} from './components/MunicipiEmpadronament';
 import Typography from '@material-ui/core/Typography';
 import MultipleAnswerQuestion from './components/MultipleAnswerQuestion';
 import FormSubTitle from './components/FormSubTitle';
-
+import Sticky from 'react-stickynode';
 
 export type PersonFormInitialValues = Person | { is_the_user_in_front_of_the_computer: boolean };
 
@@ -89,6 +89,7 @@ let PersonForm = (props: Props) => {
 
   return (
       <Grid container className='bg-container'>
+
         <Grid item xs={12}>
           {isTheUserInFrontOfTheComputer ?
               <Typography variant='headline' gutterBottom><Trans>Informació sobre vostè</Trans></Typography> :
@@ -252,7 +253,9 @@ let PersonForm = (props: Props) => {
                   </Grid>
                 </Grid>
                 <Grid item xs={5} sm={5}>
-                    <DescriptionText currentField={currentField}/>
+                        <Sticky enabled={true} top={50} bottomBoundary={1200}>
+                            <DescriptionText currentField={currentField}/>
+                        </Sticky>
                 </Grid>
               </Grid>
               <Grid item sm={12} className="margin-buttons">
@@ -268,7 +271,9 @@ let PersonForm = (props: Props) => {
               </Grid>
             </form>
         </Grid>
+
       </Grid>
+      
   );
 };
 
