@@ -2,7 +2,7 @@ import React from 'react';
 import './Wizard.css';
 import AppHeader from '../components/AppHeader/AppHeader';
 import {Trans, translate} from 'react-i18next';
-import Grid from '@material-ui/core/Grid';
+import {Grid} from '@material-ui/core';
 import StepsComponent from '../components/Steps/StepsComponent';
 import PersonsPage from '../persons/PersonsPage'
 import FamilyForm from '../family/FamilyForm';
@@ -13,21 +13,25 @@ const steps = [
   {
     label: <Trans>Persones que conviuen</Trans>,
     optional: false,
-    component: <PersonsPage/>
+    component: <PersonsPage/>,
+    icon: "pregnant_woman"
   },
   {
     label: <Trans>Families</Trans>,
     optional: true,
-    component: <FamilyForm/>
+    component: <FamilyForm/>,
+    icon: "accessibility"
   },
   {
     label: <Trans>Domicili Habitual</Trans>,
     optional: false,
-    component: <ResidenceForm/>
+    component: <ResidenceForm/>,
+    icon: "accessible"
   },
   {
     label: <Trans>Resultats</Trans>,
-    component: <ResultsPage/>
+    component: <ResultsPage/>,
+    icon: "accessible_forward"
   }
 ];
 

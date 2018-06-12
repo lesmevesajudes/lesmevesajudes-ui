@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {backStep, nextStep} from './StepsActions'
 import {withStyles} from '@material-ui/core/styles';
-import {Grid, Step, StepButton, Stepper} from '@material-ui/core';
+import {Grid, Step, StepButton, Stepper, Icon} from '@material-ui/core';
 import StepperButtons from './StepperButtons';
 import Typography from '@material-ui/core/Typography';
 import {Trans} from 'react-i18next';
@@ -29,22 +29,29 @@ type Props = {
   nextStep: Function,
   backStep: Function
 }
-
+const StepIcon = ({icon}) => (
+    <div style={{ position: 'relative' }}>
+      <Icon className="iconStep" color="action">
+        {icon}
+      </Icon>
+    </div>
+);
 let StepsComponent = (props: Props) => {
   const {classes, steps, currentStep, buttonEnabled, buttonVisible, backStep, nextStep} = props;
   const childComponent = steps[currentStep].component;
-
+  console.log(steps);
   return (
       <div className={classes.root}>
 
         <Stepper activeStep={currentStep} alternativeLabel>
           {steps.map(step => {
             const labelProps = step.optional ? {
+              
               optional: <Typography variant='caption'><Trans>Opcional</Trans></Typography>
             } : {};
             return <Step key={step.label}>
-              <StepButton {...labelProps}>{step.label}</StepButton>
-            </Step>
+              <StepButton {...labelProps} icon={<StepIcon icon={step.icon}/>} >{step.label}</StepButton>
+                   </Step>
           })
           }
         </Stepper>
