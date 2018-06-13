@@ -176,7 +176,7 @@ let PersonForm = (props: Props) => {
                         </YesNoQuestion>}
                       </Fragment>}
 
-                      {esFamiliarOUsuari && (esAturat || treballaPerCompteDAltriParcial) &&
+                      {esFamiliarOUsuari && tipusDocumentIdentitat === 'DNI' && (esAturat || treballaPerCompteDAltriParcial) &&
                       <YesNoQuestion name='ha_treballat_a_l_estranger_6_mesos'>
                         <Trans>Ha treballat a l’estranger un mínim de 6 mesos?</Trans>
                       </YesNoQuestion>}
