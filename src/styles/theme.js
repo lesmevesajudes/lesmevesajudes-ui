@@ -35,6 +35,12 @@ export default createMuiTheme({
       contained: {
         boxShadow: 'none',
         border: '1px solid #ccc',
+        '&:active': {
+            boxShadow: 'none',
+          },
+          '&:focus': {
+            boxShadow: 'none'
+          },
       },
       flat: { // Normal Button
         disableRipple: true,
