@@ -7,16 +7,17 @@ import type {PersonID} from '../persons/PersonTypes';
 import {Person} from '../persons/PersonTypes';
 import {Map} from 'immutable';
 import {formValueSelector, reduxForm} from 'redux-form';
-import {Grid, Hidden, MenuItem} from '@material-ui/core';
+import {Grid, MenuItem} from '@material-ui/core';
 import {Trans} from 'react-i18next';
 import DescriptionText from '../components/Common/DescriptionText';
-import {esFill} from '../shared/selectorUtils';
+import {currentFocussedFieldSelector, esFill} from '../shared/selectorUtils';
 import MultipleAnswerQuestion from '../persons/components/MultipleAnswerQuestion';
 import {Question} from '../persons/components/Question';
 import {YesNoQuestion} from '../persons/components/YesNoQuestion';
 import {TextField} from 'redux-form-material-ui';
 import {MoneyQuestion} from '../persons/components/MoneyQuestion';
 import Typography from '@material-ui/core/Typography';
+import Sticky from 'react-stickynode';
 
 const seemsPostalCode = value =>
     value && (isNaN(Number(value)) || value.length !== 5)
@@ -28,6 +29,7 @@ const onlyNumbers = value =>
 
 type Props = {
   addRent: Function,
+  currentField: string,
   esLlogater: boolean,
   esPropietari: boolean,
   existeixDeutePagamentLloguer: boolean,
@@ -45,6 +47,7 @@ type Props = {
 
 const ResidenceForm = (props: Props) => {
   const {
+    currentField,
     esLlogater,
     esPropietari,
     existeixDeutePagamentHipoteca,
@@ -208,11 +211,11 @@ const ResidenceForm = (props: Props) => {
               </Grid>
             </form>
           </Grid>
-          <Hidden smDown>
-            <Grid item md={5}>
-              <DescriptionText/>
-            </Grid>
-          </Hidden>
+          <Grid item xs sm={5}>
+            <Sticky enabled={true} top={50}>
+              <DescriptionText currentField={currentField}/>
+            </Sticky>
+          </Grid>
         </Grid>
       </Grid>
   );
@@ -231,6 +234,7 @@ function mapStateToProps(state) {
   const titularContracteHipoteca = state.persons.get(selector(state, 'titular_hipoteca_id'));
 
   return {
+    currentField: currentFocussedFieldSelector('ResidenceForm')(state),
     esLlogater: esLlogater,
     esPropietari: esPropietari,
     existeixDeutePagamentLloguer: selector(state, 'existeix_deute_en_el_pagament_del_lloguer'),
