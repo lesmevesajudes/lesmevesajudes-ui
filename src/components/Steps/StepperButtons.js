@@ -16,15 +16,16 @@ let StepperButtons = (props: Props) => {
       <Grid container justify={'center'} className='buttons-container'>
         <Grid item sm={6} md={6}>
           {typeof props.backAction !== 'undefined' &&
-          <Button
+          <Button color="secondary" variant="contained"
                   disabled={!props.buttonEnabled} onClick={props.backAction}
-                  className={classNames(props.classes.backButton, 'left-button buttonThemeInverted')}>
+                  className={classNames(props.classes.backButton, 'left-button')} >
             <Trans><Icon>keyboard_arrow_left</Icon> Anterior</Trans>
           </Button>}
         </Grid>
         <Grid item sm={6} md={6} >
           {typeof props.nextAction !== 'undefined' &&
-          <Button onClick={props.nextAction} disabled={!props.buttonEnabled}
+          <Button color="primary" variant="contained"
+          onClick={props.nextAction} disabled={!props.buttonEnabled}
                   className='right-button buttonTheme'>
             {props.nextIsResults ? <Trans>Veure resultats</Trans> : <Trans>Següent <Icon>keyboard_arrow_right</Icon></Trans>}
           </Button>}

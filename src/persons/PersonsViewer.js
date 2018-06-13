@@ -134,7 +134,7 @@ class PersonsViewer extends Component<Props, void> {
               </Grid>
               {missingPersons === 0 &&
               <Grid item>
-                <Button className="buttonThemeInverted" onClick={this.props.onAddPersonClick}>Afegir una persona convivent   <Icon>add_circle</Icon></Button>
+                <Button color="secondary" variant="contained" onClick={this.props.onAddPersonClick}>Afegir una persona convivent   <Icon>add_circle</Icon></Button>
               </Grid>}
             </Grid>
           </Grid>

@@ -9,11 +9,18 @@ export const colors = {
   white: '#fff',
 }
 
-
 export default createMuiTheme({
   palette: {
-    primary: { main: colors.primary }, 
-    secondary: { main: colors.white }, 
+    primary: { 
+      main: colors.primary,
+      dark: colors.primary_darker,
+      contrastText: colors.white
+    }, 
+    secondary: { 
+      main: colors.white,
+      dark: colors.disabled,
+      contrastText: colors.primary
+    }, 
   },
   overrides: {
     MuiButton: {
@@ -25,16 +32,16 @@ export default createMuiTheme({
         fontFamily: "'Source Sans Pro', sans-serif",
         fontWeight: 600,
       },
+      contained: {
+        boxShadow: 'none',
+        border: '1px solid #ccc',
+      },
       flat: { // Normal Button
         disableRipple: true,
-        background: colors.primary,
-        color: '#fff',
         boxShadow: 'none',
         '&:hover': {
-          background: colors.primary_darker,
           bosShadow: 'none'
         },'&:active': {
-          background: colors.primary_darker,
           bosShadow: 'none'
         }
       },
