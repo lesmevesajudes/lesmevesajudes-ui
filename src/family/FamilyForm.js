@@ -55,8 +55,9 @@ const FamilyForm = (props: Props) => {
                         <Grid item xs={5}>
                           <Field name={'custodies.' + infant.id + '.primer'} component={Select} fullWidth>
                             {possiblesSustentadors.valueSeq().map((sustentador: Person) =>
-                                <MenuItem key={`primer-${sustentador.id}`}
-                                          value={sustentador.id}>{sustentador.nom}</MenuItem>
+                                <MenuItem key={`primer-${sustentador.id}`} value={sustentador.id}>
+                                  {sustentador.nom} ({sustentador.edat} <Trans>anys</Trans>)
+                                </MenuItem>
                             )}
                             <MenuItem value='no_conviu'><Trans>Una persona que no conviu</Trans></MenuItem>
                           </Field>
@@ -70,7 +71,7 @@ const FamilyForm = (props: Props) => {
                                 typeof custodies[infant.id] !== 'undefined' && custodies[infant.id].primer === sustentador.id
                                     ? null
                                     : <MenuItem key={`segon-${sustentador.id}`} value={sustentador.id}>
-                                      {sustentador.nom}
+                                      {sustentador.nom} ({sustentador.edat} <Trans>anys</Trans>)
                                     </MenuItem>
                             )}
                             <MenuItem value='ningu_mes'><Trans>Ningú més</Trans></MenuItem>

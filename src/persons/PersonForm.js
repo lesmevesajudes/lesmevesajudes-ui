@@ -158,7 +158,6 @@ let PersonForm = (props: Props) => {
                       <FormSubTitle><Trans>Situació laboral</Trans></FormSubTitle>
 
                       <SituacioLaboral/>
-
                       {esFamiliarOUsuari && esAturat &&
                       <Fragment>
                         <YesNoQuestion name='inscrit_com_a_demandant_docupacio'>
@@ -302,7 +301,7 @@ PersonForm = connect(state => {
   const portaDosAnysOMesEmpadronatACatalunya = selector(state, 'porta_dos_anys_o_mes_empadronat_a_catalunya');
   const rol = selector(state, 'rol');
   const teAlgunGrauDeDiscapacitatReconegut = selector(state, 'te_algun_grau_de_discapacitat_reconegut');
-  const tipusDocumentIdentitat = selector(state, 'document_identitat');
+  const tipusDocumentIdentitat = selector(state, 'tipus_document_identitat');
   const treballaPerCompteDAltriParcial = selector(state, 'situacio_laboral') === 'treball_compte_daltri_jornada_parcial';
   const currentField = currentFocussedField(state);
 
