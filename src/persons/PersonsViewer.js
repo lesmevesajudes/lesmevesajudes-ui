@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import type {Person} from './PersonTypes';
 import {Trans, translate} from 'react-i18next';
-import {Avatar, Card, Divider, Grid, List, ListItem, ListItemText} from '@material-ui/core';
+import {Avatar, Card, Divider, Grid, List, ListItem, ListItemText, Icon} from '@material-ui/core';
 import {create} from '../shared/UUID';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import Button from '@material-ui/core/Button';
@@ -134,7 +134,7 @@ class PersonsViewer extends Component<Props, void> {
               </Grid>
               {missingPersons === 0 &&
               <Grid item>
-                <Button variant='raised' onClick={this.props.onAddPersonClick}>Afegir una persona convivent</Button>
+                <Button className="buttonThemeInverted" onClick={this.props.onAddPersonClick}>Afegir una persona convivent   <Icon>add_circle</Icon></Button>
               </Grid>}
             </Grid>
           </Grid>

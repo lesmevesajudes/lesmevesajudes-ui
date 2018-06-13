@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600');
 .App-intro {
     font-size: large;
 }
@@ -145,4 +146,30 @@ input.cercabcn {
   border: rgb(170, 82, 148)1px solid;
 }
 .iconStep {
+}
+.buttonTheme{
+  background: #D1347F !important;
+  color: #fff !important;
+  font-family: 'Source Sans Pro', sans-serif !important;
+  font-weight: 600 !important;
+}
+.buttonTheme:hover{
+  background: rgb(190, 49, 117) !important;
+}
+.buttonThemeInverted {
+  background: #fff !important;
+  color: #D1347F !important;
+  font-family: 'Source Sans Pro', sans-serif !important;
+  font-weight: 600 !important;
+  border: 1px solid rgb(231, 231, 231) !important;
+}
+.buttonThemeInverted:hover{
+  background: rgb(230, 230, 230) !important;
+}
+.buttonThemeInverted > .material-icons {
+  color: #D1347F !important;
+  margin-left: 10px !important;
+}
+.buttonTheme > .material-icons {
+  color: #fff !important;
 }
