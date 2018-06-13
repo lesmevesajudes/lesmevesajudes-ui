@@ -6,6 +6,7 @@ import IndexPage from './indexPage/IndexPage';
 import WizardPage from './pages/Wizard';
 import isDevelopment from './shared/isDevelopment';
 import './styles/styles.css';
+import theme from './styles/theme.js';
 import CorporateHeader from './components/Header/CorporateHeader';
 import ReportBugPage from './reportBug/ReportBugPage';
 import InfoRAI from './pages/InfoRAI';
@@ -16,6 +17,7 @@ import InfoFonsInfancia from './pages/InfoFonsInfancia';
 import ScrollToTop from './components/Common/ScrollToTop';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import configureStore from './Store';
+import { MuiThemeProvider } from '@material-ui/core/styles';
 
 if (isDevelopment) {
   console.log('Environment: ' + process.env.NODE_ENV);
@@ -28,6 +30,7 @@ const store = configureStore(preloadedState);
 class App extends Component {
   render() {
     return (
+      <MuiThemeProvider theme={theme}>
         <div>
           <CorporateHeader/>
           <CssBaseline/>
@@ -48,6 +51,7 @@ class App extends Component {
             </BrowserRouter>
           </Provider>
         </div>
+        </MuiThemeProvider>
     );
   }
 }
