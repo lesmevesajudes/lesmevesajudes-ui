@@ -14,24 +14,24 @@ const steps = [
     label: <Trans>Persones que conviuen</Trans>,
     optional: false,
     component: <PersonsPage/>,
-    icon: "accessible"
+    icon: "face"
   },
   {
     label: <Trans>Families</Trans>,
     optional: true,
     component: <FamilyForm/>,
-    icon: "accessible_forward"
+    icon: "perm_contact_calendar"
   },
   {
     label: <Trans>Domicili Habitual</Trans>,
     optional: false,
     component: <ResidenceForm/>,
-    icon: "accessible_forward"
+    icon: "home"
   },
   {
     label: <Trans>Resultats</Trans>,
     component: <ResultsPage/>,
-    icon: "accessibility_new"
+    icon: "help_outline"
   }
 ];
 
