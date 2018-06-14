@@ -3,11 +3,10 @@ import React, {Fragment} from 'react';
 import type {PersonRole} from './PersonTypes';
 import {Person} from './PersonTypes';
 import {TextField} from 'redux-form-material-ui';
-import ClearIcon from '@material-ui/icons/Clear';
 import {Trans} from 'react-i18next';
 import {Field, formValueSelector, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
-import {Button, Grid, MenuItem} from '@material-ui/core';
+import {Button, Grid, MenuItem, Icon} from '@material-ui/core';
 import DescriptionText from '../components/Common/DescriptionText';
 import {RelacioFamiliar} from './components/RelacioFamiliar';
 import {SituacioLaboral} from './components/SituacioLaboral';
@@ -22,6 +21,7 @@ import Typography from '@material-ui/core/Typography';
 import MultipleAnswerQuestion from './components/MultipleAnswerQuestion';
 import FormSubTitle from './components/FormSubTitle';
 import Sticky from 'react-stickynode';
+import {styles} from '../styles/theme';
 
 export type PersonFormInitialValues = Person | { is_the_user_in_front_of_the_computer: boolean };
 
@@ -103,6 +103,7 @@ let PersonForm = (props: Props) => {
               <Grid container direction='row' justify='space-around' alignItems='stretch'>
                 <Grid item xs={12} sm={5}>
                   <Grid container direction='column' alignItems='stretch' spacing={16}>
+                    <FormSubTitle><Trans>Informació personal</Trans></FormSubTitle>
                     <Question name='nom' placeholder='Nom' component={TextField} required autoFocus>
                       {isTheUserInFrontOfTheComputer ? <Trans>Identifiqui's amb un nom</Trans> :
                           <Trans>Identifiqui'l amb un nom</Trans>}
@@ -261,10 +262,10 @@ let PersonForm = (props: Props) => {
                 <Grid container justify='space-around'>
                   {(isTheUserInFrontOfTheComputer !== true || updating === true) &&
                   <Button variant='raised' color='secondary' onClick={props.onCancel}>
-                    <Trans>Cancelar</Trans> <ClearIcon/>
+                    <Icon className={styles.leftIcon} >keyboard_arrow_left</Icon><Trans>Cancelar</Trans> 
                   </Button>}
                   <Button variant='raised' color='primary' type='submit' name='ButtonValidar'>
-                    <Trans>Validar</Trans>
+                    <Trans>Validar</Trans><Icon>done</Icon>
                   </Button>
                 </Grid>
               </Grid>

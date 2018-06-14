@@ -42,7 +42,7 @@ let HowManyPersonsLiveTogetherPage = props => {
               </Grid>
 
               <Grid item>
-                <Button variant='flat' color='primary' type='submit' name='ButtonValidar'>
+                <Button variant='contained' color='primary' type='submit' name='ButtonValidar'>
                   <Trans>Validar</Trans>
                 </Button>
               </Grid>

@@ -16,6 +16,15 @@ const styles = theme => ({
   },
   backButton: {
     marginRight: theme.spacing.unit,
+  },
+  buttonIcon: {
+    smargin: theme.spacing.unit,
+  },
+  leftIcon: {
+    marginLeft: theme.spacing.unit,
+  },
+  rightIcon: {
+    marginRight: theme.spacing.unit,
   }
 });
 

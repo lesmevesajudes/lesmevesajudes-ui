@@ -8,7 +8,26 @@ export const colors = {
   disabled_text: '#f7f7f7',
   white: '#fff',
 }
-
+export const styles = theme =>( {
+  root: {
+    width: '100%',
+  },
+  marginButtons: {
+    marginBottom: 30 + 'px'
+  },
+  backButton: {
+    marginRight: theme.spacing.unit,
+  },
+  buttonIcon: {
+    smargin: theme.spacing.unit,
+  },
+  leftIcon: {
+    marginLeft: theme.spacing.unit,
+  },
+  rightIcon: {
+    marginRight: theme.spacing.unit,
+  }
+});
 export default createMuiTheme({
   palette: {
     primary: { 
@@ -23,6 +42,11 @@ export default createMuiTheme({
     }, 
   },
   overrides: {
+    MuiStepLabel: {
+      alternativeLabel: {
+        marginTop: '0px !important'
+      }
+    },
     MuiButton: {
       label: {
         textTransform: 'none',
@@ -34,7 +58,6 @@ export default createMuiTheme({
       },
       contained: {
         boxShadow: 'none',
-        border: '1px solid #ccc',
         '&:active': {
             boxShadow: 'none',
           },
