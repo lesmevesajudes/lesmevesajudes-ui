@@ -34,7 +34,7 @@ class IndexPage extends React.Component {
               </Trans>
             </p>
             <Link className='CTALink' to='/wizard/'>
-              <Button variant='contained' color='secondary' className={classNames(this.props.classes.grayButton, this.props.classes.button)}>
+              <Button variant='contained' color='secondary' className={classNames(this.props.classes.grayBackground, this.props.classes.button)}>
                 <b>
                   <Trans>Comença la simulació</Trans>
                 </b>

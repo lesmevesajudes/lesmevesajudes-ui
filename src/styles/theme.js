@@ -1,12 +1,16 @@
 import {createMuiTheme } from '@material-ui/core/styles';
 
 export const colors = {
-  primary: '#D1347F',
-  primary_darker: '#be3175',
-  primary_lighter: '#ed4495',
+  primary: '#e23787',
+  primary_dark: '#be3175',
+  primary_light: '#D4317C',
+  secondary: '#004A8E',
+  secondary_dark: '#014482',
+  secondary_light: '#0054A1',
   disabled: '#f3f3f3',
   disabled_text: '#f7f7f7',
   white: '#fff',
+  blackest: '#202020'
 }
 export const styles = theme =>( {
   root: {
@@ -27,14 +31,14 @@ export const styles = theme =>( {
   rightIcon: {
     marginRight: theme.spacing.unit,
   },
-  grayButton: {
-    backgroundColor: "#000",
-    color: "#fff",
+  grayBackground: {
+    backgroundColor: colors.white,
+    color: colors.primary,
     "&:active": {
-      backgroundColor: "#202020"
+      backgroundColor: colors.disabled_text
     },
     "&:hover": {
-      backgroundColor: "#202020"
+      backgroundColor: colors.disabled_text 
     }
   }
 
@@ -55,6 +59,9 @@ export default createMuiTheme({
       main: '#000',
       contrastText: '#fff'
     }
+  },
+  spacing: {
+    unit: 6,
   },
   overrides: {
     MuiStepLabel: {
