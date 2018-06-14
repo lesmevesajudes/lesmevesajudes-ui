@@ -60,9 +60,6 @@ export default createMuiTheme({
       contrastText: '#fff'
     }
   },
-  spacing: {
-    unit: 6,
-  },
   overrides: {
     MuiStepLabel: {
       alternativeLabel: {
@@ -111,6 +108,7 @@ export default createMuiTheme({
       },
       flat: { // Normal Button
         disableRipple: true,
+        fontWeight: 400,
         boxShadow: 'none',
         '&:hover': {
           bosShadow: 'none'

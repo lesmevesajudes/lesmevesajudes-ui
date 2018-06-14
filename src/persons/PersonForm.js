@@ -263,7 +263,7 @@ let PersonForm = (props: Props) => {
                 <Grid container justify='space-around'>
                   {(isTheUserInFrontOfTheComputer !== true || updating === true) &&
                   <Button variant='raised' color='secondary' onClick={props.onCancel}>
-                    <Icon className={styles.leftIcon} >keyboard_arrow_left</Icon><Trans>Cancelar</Trans> 
+                    <Icon className={styles.leftIcon} >clear</Icon><Trans>Cancelar</Trans> 
                   </Button>}
                   <Button variant='raised' color='primary' type='submit' name='ButtonValidar'>
                     <Trans>Validar</Trans><Icon>done</Icon>
