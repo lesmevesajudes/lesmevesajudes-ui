@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Provider} from 'react-redux';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
-import IndexPage from './indexPage/IndexPage';
+import IndexPage from './pages/IndexPage';
 import WizardPage from './pages/Wizard';
 import isDevelopment from './shared/isDevelopment';
 import './styles/styles.css';
@@ -17,7 +17,7 @@ import InfoFonsInfancia from './pages/InfoFonsInfancia';
 import ScrollToTop from './components/Common/ScrollToTop';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import configureStore from './Store';
-import { MuiThemeProvider } from '@material-ui/core/styles';
+import {MuiThemeProvider} from '@material-ui/core/styles';
 
 if (isDevelopment) {
   console.log('Environment: ' + process.env.NODE_ENV);
