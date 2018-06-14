@@ -8,6 +8,8 @@ import PersonsPage from '../persons/PersonsPage'
 import FamilyForm from '../family/FamilyForm';
 import ResidenceForm from '../residence/ResidenceForm';
 import ResultsPage from '../results/ResultsPage';
+import {styles} from '../styles/theme';
+import {withStyles} from '@material-ui/core/styles';
 
 const steps = [
   {
@@ -36,10 +38,10 @@ const steps = [
 ];
 
 
-const WizardPage = () =>
+const WizardPage = (props) =>
       <Grid>
         <AppHeader />
         <StepsComponent steps={steps}/>
       </Grid>;
 
-export default translate('translations')(WizardPage);
+export default translate('translations')(withStyles(styles)(WizardPage));

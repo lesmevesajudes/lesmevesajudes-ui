@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Provider} from 'react-redux';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
-
 import IndexPage from './indexPage/IndexPage';
 import WizardPage from './pages/Wizard';
 import isDevelopment from './shared/isDevelopment';
@@ -18,6 +17,8 @@ import ScrollToTop from './components/Common/ScrollToTop';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import configureStore from './Store';
 import { MuiThemeProvider } from '@material-ui/core/styles';
+import {styles} from '../src/styles/theme';
+import {withStyles} from '@material-ui/core/styles';
 
 if (isDevelopment) {
   console.log('Environment: ' + process.env.NODE_ENV);
@@ -56,4 +57,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default (withStyles(styles)(App));

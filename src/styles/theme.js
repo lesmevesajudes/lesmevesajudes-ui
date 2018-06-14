@@ -26,7 +26,18 @@ export const styles = theme =>( {
   },
   rightIcon: {
     marginRight: theme.spacing.unit,
+  },
+  grayButton: {
+    backgroundColor: "#000",
+    color: "#fff",
+    "&:active": {
+      backgroundColor: "#202020"
+    },
+    "&:hover": {
+      backgroundColor: "#202020"
+    }
   }
+
 });
 export default createMuiTheme({
   palette: {
@@ -39,7 +50,11 @@ export default createMuiTheme({
       main: colors.white,
       dark: colors.disabled,
       contrastText: colors.primary
-    }, 
+    },
+    tertiary: {
+      main: '#000',
+      contrastText: '#fff'
+    }
   },
   overrides: {
     MuiStepLabel: {
