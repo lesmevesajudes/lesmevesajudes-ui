@@ -69,6 +69,13 @@ export default createMuiTheme({
         marginTop: '0px !important'
       }
     },
+    MuiInput: {
+      underline: {
+        '&::after':{
+          border: '1px solid '+ colors.secondary
+        }
+      }
+    },
     MuiButton: {
       label: {
         textTransform: 'none',
