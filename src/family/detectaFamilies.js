@@ -3,29 +3,27 @@ type Custodia = {
   segon?: string
 }
 
-const familyID = (menorID, custodies) => [custodies[menorID].primer, custodies[menorID].segon].sort().join('');
+const familyID = (menorID, sustentadors) => sustentadors.join('');
 
-function isCustodyFilled(menorID, custodies) {
-  return typeof custodies[menorID] !== 'undefined'
-      && typeof custodies[menorID].primer === 'string'
-      && typeof custodies[menorID].segon === 'string';
-}
+const isCustodyFilled = (menorID, custodies) => typeof custodies[menorID] !== 'undefined'
+    && typeof custodies[menorID].primer === 'string'
+    && typeof custodies[menorID].segon === 'string';
 
+const sustentadorsConvivents = (menorID, custodies) => [custodies[menorID].primer, custodies[menorID].segon].filter((sustentadorID) => sustentadorID !== 'ningu_mes' && sustentadorID !== 'no_conviu').sort();
 export const detectaFamilies = (custodies: { [string]: Custodia }): Object =>
     Object.keys(custodies).reduce(
         (families: Object, menorID: string) => {
-          if (isCustodyFilled(menorID, custodies)) {
-            const familiaID = familyID(menorID, custodies);
+          const sustentadors = sustentadorsConvivents(menorID, custodies);
+          if (isCustodyFilled(menorID, custodies) && sustentadors.length > 0) {
+            const familiaID = familyID(menorID, sustentadors);
             if (typeof families[familiaID] !== 'undefined') {
               families[familiaID].menors.push(menorID);
             } else {
               families[familiaID] =
                   {
-                    sustentadors: custodies[menorID].segon === 'ningu_mes' || custodies[menorID].segon === 'no_conviu'
-                        ? [custodies[menorID].primer]
-                        : [custodies[menorID].primer, custodies[menorID].segon],
+                    sustentadors: sustentadors,
                     menors: [menorID],
-                    monoparental: custodies[menorID].segon === 'ningu_mes'
+                    monoparental: sustentadors.length === 1
                   };
             }
           }
