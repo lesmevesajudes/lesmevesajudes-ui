@@ -22,6 +22,7 @@ import MultipleAnswerQuestion from './components/MultipleAnswerQuestion';
 import FormSubTitle from './components/FormSubTitle';
 import Sticky from 'react-stickynode';
 import {styles} from '../styles/theme';
+import {currentFocussedFieldSelector} from "../shared/selectorUtils";
 
 export type PersonFormInitialValues = Person | { is_the_user_in_front_of_the_computer: boolean };
 
@@ -281,9 +282,8 @@ let PersonForm = (props: Props) => {
 PersonForm = reduxForm({
   form: 'PersonForm'
 })(PersonForm);
-const currentFocussedFieldSelector = (formName: string): Function => (state): ?string => (typeof state.form[formName] === 'undefined') ? undefined : state.form[formName].active;
+
 const selector = formValueSelector('PersonForm');
-const currentFocussedField = currentFocussedFieldSelector('PersonForm');
 
 PersonForm = connect(state => {
   const cobraAlgunTipusDePensioNoContributiva = selector(state, 'cobra_algun_tipus_de_pensio_no_contributiva');
@@ -304,7 +304,7 @@ PersonForm = connect(state => {
   const teAlgunGrauDeDiscapacitatReconegut = selector(state, 'te_algun_grau_de_discapacitat_reconegut');
   const tipusDocumentIdentitat = selector(state, 'tipus_document_identitat');
   const treballaPerCompteDAltriParcial = selector(state, 'situacio_laboral') === 'treball_compte_daltri_jornada_parcial';
-  const currentField = currentFocussedField(state);
+  const currentField = currentFocussedFieldSelector('PersonForm')(state);
 
   return {
     cobraAlgunTipusDePensioNoContributiva,

@@ -7,11 +7,10 @@ import {Select} from 'redux-form-material-ui';
 import {Field, reduxForm} from 'redux-form';
 import Grid from '@material-ui/core/Grid';
 import MenuItem from '@material-ui/core/MenuItem';
-import Hidden from '@material-ui/core/Hidden';
 import type {PersonID} from '../persons/PersonTypes';
 import {Person} from '../persons/PersonTypes';
 import {Map} from 'immutable';
-import {esFill, esSustentador} from '../shared/selectorUtils';
+import {currentFocussedFieldSelector, esFill, esSustentador} from '../shared/selectorUtils';
 import DescriptionText from '../components/Common/DescriptionText';
 import {Trans} from 'react-i18next';
 import Typography from '@material-ui/core/Typography';
@@ -20,21 +19,24 @@ import FormSubTitle from '../persons/components/FormSubTitle';
 import {detectaFamilies} from './detectaFamilies';
 import {createFamilyName, toArray} from './createFamilyName';
 import MultipleAnswerQuestion from '../persons/components/MultipleAnswerQuestion';
+import Sticky from 'react-stickynode';
+
 
 type Props = {
-  initialValues: FamilyData,
   addHouseholdData: Function,
+  currentField: string,
+  custodies: Object,
+  esFamiliaNombrosa: boolean,
   esUsuariServeisSocials: boolean,
   families: Array<Object>,
+  fills: Map<PersonID, Person>,
+  initialValues: FamilyData,
   persones: Map<PersonID, Person>,
   possiblesSustentadors: Map<PersonID, Person>,
-  esFamiliaNombrosa: boolean,
-  fills: Map<PersonID, Person>,
-  custodies: Object
 };
 
 const FamilyForm = (props: Props) => {
-  const {custodies, families, fills, persones, possiblesSustentadors} = props;
+  const {custodies, families, fills, persones, possiblesSustentadors, currentField} = props;
   return (
       <Grid container className='bg-container'>
         <Grid item xs={12}>
@@ -105,11 +107,11 @@ const FamilyForm = (props: Props) => {
               </Grid>
             </form>
           </Grid>
-          <Hidden smDown>
-            <Grid item xs sm={5}>
-              <DescriptionText/>
-            </Grid>
-          </Hidden>
+          <Grid item xs sm={5}>
+            <Sticky enabled={true} top={50}>
+              <DescriptionText currentField={currentField}/>
+            </Sticky>
+          </Grid>
         </Grid>
       </Grid>
   );
@@ -118,12 +120,14 @@ const FamilyForm = (props: Props) => {
 function mapStateToProps(state) {
   const custodies = typeof state.family.custodies !== 'undefined' ? state.family.custodies : {};
   const families = toArray(detectaFamilies(custodies));
+  const currentField = currentFocussedFieldSelector('FamilyForm')(state);
   return {
     initialValues: state.family,
     fills: state.persons.filter((person: Person) => esFill(person)),
     persones: state.persons,
     possiblesSustentadors: state.persons.filter((person: Person) => esSustentador(person)),
     custodies: custodies,
+    currentField: currentField,
     families: families
   };
 }
