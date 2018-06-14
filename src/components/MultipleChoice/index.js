@@ -5,9 +5,18 @@ import purple from '@material-ui/core/colors/purple';
 import classNames from 'classnames';
 import {withStyles} from '@material-ui/core/styles';
 import {Choice} from '../Choice';
+import {colors} from '../../styles/theme'
 
 const styles = theme => ({
   button: {
+    backgroundColor: '#f2f2f2',
+    color: '#202020',
+    '&:hover':{
+      backgroundColor: '#f5f5f5'
+    },
+    '&:active':{
+      backgroundColor: '#f5f5f5'
+    },
     '&:first-child': {
       borderBottomRightRadius: 0 + 'px',
       borderTopRightRadius: 0 + 'px',
@@ -27,9 +36,9 @@ const styles = theme => ({
   },
   selected: {
     color: theme.palette.getContrastText(purple[500]),
-    backgroundColor: purple[500],
+    backgroundColor: colors.secondary,
     '&:hover': {
-      backgroundColor: purple[700],
+      backgroundColor: colors.secondary,
     },
   }
 });

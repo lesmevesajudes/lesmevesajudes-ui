@@ -2,6 +2,7 @@ import React from 'react';
 import {Button, Grid, Icon} from '@material-ui/core';
 import {Trans} from 'react-i18next';
 import classNames from 'classnames';
+import {styles} from '../../styles/theme'
 
 type Props = {
   nextIsResults: boolean,
@@ -11,22 +12,24 @@ type Props = {
   backAction: Function
 };
 
+
 let StepperButtons = (props: Props) => {
   const content = (
       <Grid container justify={'center'} className='buttons-container'>
         <Grid item sm={6} md={6}>
           {typeof props.backAction !== 'undefined' &&
-          <Button
+          <Button color="secondary" variant="contained"
                   disabled={!props.buttonEnabled} onClick={props.backAction}
-                  className={classNames(props.classes.backButton, 'left-button buttonThemeInverted')}>
-            <Trans><Icon>keyboard_arrow_left</Icon> Anterior</Trans>
+                  className={classNames(props.classes.backButton, 'left-button')} >
+            <Icon className={props.classes.rightIcon} >keyboard_arrow_left</Icon><Trans>Anterior</Trans>
           </Button>}
         </Grid>
         <Grid item sm={6} md={6} >
           {typeof props.nextAction !== 'undefined' &&
-          <Button onClick={props.nextAction} disabled={!props.buttonEnabled}
+          <Button  className={props.classes.ButtonIcon}color="primary" variant="contained"
+          onClick={props.nextAction} disabled={!props.buttonEnabled}
                   className='right-button buttonTheme'>
-            {props.nextIsResults ? <Trans>Veure resultats</Trans> : <Trans>Següent <Icon>keyboard_arrow_right</Icon></Trans>}
+            {props.nextIsResults ? <Trans>Veure resultats</Trans> : <Trans >Següent <Icon className={props.classes.leftIcon}>keyboard_arrow_right</Icon></Trans>}
           </Button>}
         </Grid>
       </Grid>

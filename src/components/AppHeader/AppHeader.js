@@ -6,7 +6,7 @@ import Grid from '@material-ui/core/Grid';
 class AppHeader extends Component {
   render() {
     return (
-        <Grid container className='AppHeaderContainer'>
+        <Grid container className='AppHeaderContainer' justify={'center'}>
           <Grid item className='AppHeader'>
             <Link to='/'>
               <Grid item className='AppLogoPetit'/>

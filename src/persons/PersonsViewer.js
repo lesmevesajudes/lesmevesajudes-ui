@@ -9,6 +9,8 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton/IconButton';
 import ClearIcon from '@material-ui/icons/Clear';
 import Typography from '@material-ui/core/Typography';
+import {withStyles} from '@material-ui/core/styles';
+
 
 type Props = {
   persons: Array<Person>,
@@ -20,7 +22,14 @@ type Props = {
   expectedNumberOfPersons: number,
   classes: Object
 };
-
+const styles = theme => ({
+  buttonIcon: {
+    smargin: theme.spacing.unit,
+  },
+  rightIcon: {
+    marginLeft: theme.spacing.unit,
+  },
+});
 const initials = (name: string) => {
   const initials = name.replace(/[^a-zA-Z- ]/g, '').match(/\b\w/g);
   if (initials instanceof Array) {
@@ -134,7 +143,7 @@ class PersonsViewer extends Component<Props, void> {
               </Grid>
               {missingPersons === 0 &&
               <Grid item>
-                <Button className="buttonThemeInverted" onClick={this.props.onAddPersonClick}>Afegir una persona convivent   <Icon>add_circle</Icon></Button>
+                <Button className={this.props.classes.buttonIcon}color="secondary" variant="contained" onClick={this.props.onAddPersonClick}>Afegir una persona convivent<Icon className={this.props.classes.rightIcon}>add_circle</Icon></Button>
               </Grid>}
             </Grid>
           </Grid>
@@ -143,4 +152,4 @@ class PersonsViewer extends Component<Props, void> {
   }
 }
 
-export default translate('translations')(PersonsViewer);
+export default translate('translations')(withStyles(styles)(PersonsViewer));
