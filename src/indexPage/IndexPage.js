@@ -4,9 +4,9 @@ import './IndexPage.css';
 import AppHeader from '../components/AppHeader/AppHeader';
 import {Trans, translate} from 'react-i18next';
 import Button from '@material-ui/core/Button';
-import classNames from "classnames";
 import {styles} from '../styles/theme';
 import {withStyles} from '@material-ui/core/styles';
+
 class IndexPage extends React.Component {
 
   render() {
@@ -34,7 +34,7 @@ class IndexPage extends React.Component {
               </Trans>
             </p>
             <Link className='CTALink' to='/wizard/'>
-              <Button variant='contained' color='secondary' className={classNames(this.props.classes.grayBackground, this.props.classes.button)}>
+              <Button variant='contained' color='primary' className={this.props.classes.button}>
                 <b>
                   <Trans>Comença la simulació</Trans>
                 </b>
