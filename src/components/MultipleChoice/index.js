@@ -36,9 +36,9 @@ const styles = theme => ({
   },
   selected: {
     color: theme.palette.getContrastText(purple[500]),
-    backgroundColor: colors.primary_darker,
+    backgroundColor: colors.secondary,
     '&:hover': {
-      backgroundColor: colors.primary_darker,
+      backgroundColor: colors.secondary,
     },
   }
 });
