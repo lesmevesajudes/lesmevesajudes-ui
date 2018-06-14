@@ -69,10 +69,25 @@ export default createMuiTheme({
         marginTop: '0px !important'
       }
     },
+    MuiTypography: {
+      title: {
+        marginTop:'10px',
+        fontFamily: "'Source Sans Pro', sans-serif",
+        textTransform: 'uppercase',
+        fontWeight: 600,
+      }
+    },
     MuiInput: {
       underline: {
         '&::after':{
-          border: '1px solid '+ colors.secondary
+          borderBottomColor: colors.secondary,
+          borderBottomStyle: 'solid',
+          borderBottomWidth: '2px'
+        }
+      },
+      error: {
+        '&::after':{
+          border: '1px solid red'
         }
       }
     },
