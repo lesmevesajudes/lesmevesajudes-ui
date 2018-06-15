@@ -2,9 +2,12 @@
 
 import React from 'react';
 import {Trans} from 'react-i18next';
+import Typography from "@material-ui/core/Typography";
 
+const Title = (props) => <Typography variant='title' gutterBottom
+                                     component='span' {...props}>{props.children}</Typography>;
 const HelpTextMap = {
-  'edat': <Trans> Si té menys d’un any indiqui 0</Trans>,
+  'edat': <Trans>Si té menys d’un any indiqui 0</Trans>,
   'nom': <Trans>Aquesta dada es farà servir només per a que la aplicació es pugui referir a la persona, no ha de
     permetre'n la identificació</Trans>,
   'sexe': <Trans>Es refereix al sexe que s'indica al seu Document Nacional d'Identitat</Trans>,
@@ -91,7 +94,7 @@ const HelpTextMap = {
     Vellesa
     Invalidesa.
     Viduïtat.</Trans>,
-  'te_algun_grau_de_discapacitat_reconegut': <Trans>GRAU DE DISCAPACITAT
+  'te_algun_grau_de_discapacitat_reconegut': <Trans><Title>GRAU DE DISCAPACITAT</Title>
 
     El grau de discapacitat acredita la condició de discapacitat i l'accés a les ajudes derivades d'aquesta. Respon a
     uns criteris tècnics unificats, fixats mitjançant els barems aprovats pel Reial Decret 1971/1999 de 23 de desembre,
@@ -104,14 +107,21 @@ const HelpTextMap = {
     les barreres socials que limiten la participació plena i efectiva en la societat.
     La condició de persona con discapacitat de grau igual o superior al 33% s’acredita amb algun dels següents
     documents:
-    Resolució o certificat expedit per “ Instituto de Mayores y Servicios Sociales” (IMSERSO) u òrgan competent de la
-    comunitat autònoma.
-    Resolució de l’Institut Nacional de la Seguretat Social (INSS) on es reconegui la condició de pensionista per
-    incapacitat permanent total, absoluta o gran invalidesa.
-    Resolució del Ministeri d’Hisenda i Administracions Públiques o del Ministeri de defensa on es reconegui una pensió
-    de jubilació per incapacitat permanent per al servei o inutilitat.
+    <ul>
+      <li>Resolució o certificat expedit per “ Instituto de Mayores y Servicios Sociales” (IMSERSO) u òrgan competent de
+        la
+        comunitat autònoma.
+      </li>
+      <li>Resolució de l’Institut Nacional de la Seguretat Social (INSS) on es reconegui la condició de pensionista per
+        incapacitat permanent total, absoluta o gran invalidesa.
+      </li>
+      <li>Resolució del Ministeri d’Hisenda i Administracions Públiques o del Ministeri de defensa on es reconegui una
+        pensió
+        de jubilació per incapacitat permanent per al servei o inutilitat.
+      </li>
+    </ul>
   </Trans>,
-  'victima_violencia_de_genere': <Trans>VÍCTIMA DE VIOLÈNCIA DE GÈNERE O DOMÈSTICA
+  'victima_violencia_de_genere': <Trans><Title>VÍCTIMA DE VIOLÈNCIA DE GÈNERE O DOMÈSTICA</Title>
     Es considera víctima de violència de gènere la dona que és o ha estat objecte d'actes de violència física o
     psicològica, agressions a la llibertat sexual, amenaces, coacció o privació de llibertat exercida pel seu cònjuge,
     excònjuge, parella de fet o exparella, encara que no hagin conviscut.
@@ -121,7 +131,7 @@ const HelpTextMap = {
     Ministeri Fiscal o informe dels serveis socials de l'administració pública competent (autonòmica o local) o casa
     d'acollida, on s'indiqui que s’està rebent assistència per aquesta circumstància.
   </Trans>,
-  'victima_violencia_domestica': <Trans>VÍCTIMA DE VIOLÈNCIA DE GÈNERE O DOMÈSTICA
+  'victima_violencia_domestica': <Trans><Title>VÍCTIMA DE VIOLÈNCIA DE GÈNERE O DOMÈSTICA</Title>
     Es considera víctima de violència de gènere la dona que és o ha estat objecte d'actes de violència física o
     psicològica, agressions a la llibertat sexual, amenaces, coacció o privació de llibertat exercida pel seu cònjuge,
     excònjuge, parella de fet o exparella, encara que no hagin conviscut.
