@@ -27,13 +27,19 @@
   "devDependencies": {
     "chalk": "2.4.1",
     "dotenv": "^6.0.0",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "flow-bin": "0.74.0",
     "i18next-scanner": "2.4.6",
+    "jest-enzyme": "^6.0.1",
     "nightwatch": "0.9.21",
     "react-scripts": "1.1.4",
+    "react-test-renderer": "^16.4.1",
     "redux-devtools-extension": "2.13.2",
+    "redux-mock-store": "^1.5.3",
     "selenium-server-standalone": "2.53.1",
     "serve": "6.5.3",
+    "uuid": "^3.2.1",
     "wait-on": "2.1.0"
   },
   "scripts": {
