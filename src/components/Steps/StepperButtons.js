@@ -2,14 +2,14 @@ import React from 'react';
 import {Button, Grid, Icon} from '@material-ui/core';
 import {Trans} from 'react-i18next';
 import classNames from 'classnames';
-import {styles} from '../../styles/theme'
 
 type Props = {
   nextIsResults: boolean,
   buttonVisible: boolean,
   buttonEnabled: boolean,
   nextAction: Function,
-  backAction: Function
+  backAction: Function,
+  classes: Object
 };
 
 
@@ -26,9 +26,10 @@ let StepperButtons = (props: Props) => {
         </Grid>
         <Grid item sm={6} md={6} >
           {typeof props.nextAction !== 'undefined' &&
-          <Button  className={props.classes.ButtonIcon}color="primary" variant="contained"
-          onClick={props.nextAction} disabled={!props.buttonEnabled}
-                  className='right-button buttonTheme'>
+          <Button className={classNames(props.classes.ButtonIcon, 'right-button', 'buttonTheme')}
+                  color="primary" variant="contained"
+                  onClick={props.nextAction}
+                  disabled={!props.buttonEnabled}>
             {props.nextIsResults ? <Trans>Veure resultats</Trans> : <Trans >Següent <Icon className={props.classes.leftIcon}>keyboard_arrow_right</Icon></Trans>}
           </Button>}
         </Grid>
