@@ -1,11 +1,11 @@
 //@flow
-import {serialize as serialize_adult} from '../persons/PersonsReducer';
 import type {Person, PersonsState} from '../persons/PersonTypes';
 import type {FamilyData} from '../family/FamilyDataTypes';
 import type {ResidenceData} from '../residence/ResidenceTypes';
 import OpenFiscaAPIClient from '../shared/OpenFiscaAPIClient';
-import {esFill, esInfantAcollit, esSustentador} from '../shared/selectorUtils';
+import {esInfantAcollit} from '../shared/selectorUtils';
 import {esBarcelonaCiutat} from '../shared/CodisPostals';
+import {detectaFamilies} from "../family/detectaFamilies";
 
 export const FETCH_SIMULATION = 'fetch_simulation';
 
@@ -18,7 +18,7 @@ type SimulationData = {
 const currentMonth = value => ({'2017-01': value});
 const lastYear = value => ({'2016': value});
 
-function buildRequest(simulationData: SimulationData) {
+export const buildRequest = (simulationData: SimulationData) => {
   const personalData = simulationData.persons.reduce(
       (acc, person: Person) => {
         acc[person.id] = {
@@ -65,32 +65,44 @@ function buildRequest(simulationData: SimulationData) {
   if (typeof simulationData.residence.titular_contracte_de_lloguer_id === 'string' && typeof personalData[simulationData.residence.titular_contracte_de_lloguer_id] === 'object') {
     personalData[simulationData.residence.titular_contracte_de_lloguer_id].titular_contracte_de_lloguer = currentMonth(true);
   }
-
+  const detectedFamilies = detectaFamilies(simulationData.family.custodies);
+  const families = Object.keys(detectedFamilies).reduce((result, familiaID) => {
+        result[familiaID] = {
+          adults: detectedFamilies[familiaID].sustentadors,
+          menors: detectedFamilies[familiaID].menors,
+          es_usuari_serveis_socials: currentMonth(simulationData.family.usuari_serveis_socials[familiaID]),
+          tipus_familia_monoparental: currentMonth(simulationData.family.tipus_carnet_familia_monoparental[familiaID]),
+          domicili_a_barcelona_ciutat: currentMonth(esBarcelonaCiutat(parseInt(simulationData.residence['codi_postal_habitatge'], 10))),
+          tipus_custodia: currentMonth(detectedFamilies[familiaID].tipus_custodia)
+        };
+        return result;
+      }, {}
+  );
+  console.log(families);
   return {
-    families: {
-      familia_1: {
-        adults: serialize_adult(simulationData.persons)
-            .filter(persona => esSustentador(persona))
-            .map(persona => persona.id),
-        menors: serialize_adult(simulationData.persons)
-            .filter(persona => esFill(persona))
-            .map(persona => persona.id),
-        altres_adults: serialize_adult(simulationData.persons)
-            .filter(persona => !esFill(persona) && !esSustentador(persona))
-            .map(persona => persona.id),
-        domicili_a_barcelona_ciutat: currentMonth(
-            esBarcelonaCiutat(
-                parseInt(simulationData.residence['codi_postal_habitatge'], 10)
-            )
-        ),
-        es_usuari_serveis_socials: currentMonth(simulationData.family.es_usuari_serveis_socials),
-        tipus_familia_monoparental: currentMonth(simulationData.family.tipus_familia_monoparental),
-        tipus_familia_nombrosa: currentMonth(simulationData.family.tipus_familia_nombrosa)
-      }
-    },
+    families: families,
+    /*familia_1: {
+      adults: serialize_adult(simulationData.persons)
+          .filter(persona => esSustentador(persona))
+          .map(persona => persona.id),
+      menors: serialize_adult(simulationData.persons)
+          .filter(persona => esFill(persona))
+          .map(persona => persona.id),
+      altres_adults: serialize_adult(simulationData.persons)
+          .filter(persona => !esFill(persona) && !esSustentador(persona))
+          .map(persona => persona.id),
+      domicili_a_barcelona_ciutat: currentMonth(
+          esBarcelonaCiutat(
+              parseInt(simulationData.residence['codi_postal_habitatge'], 10)
+          )
+      ),
+      es_usuari_serveis_socials: currentMonth(simulationData.family.es_usuari_serveis_socials),
+      tipus_familia_monoparental: currentMonth(simulationData.family.tipus_familia_monoparental),
+      tipus_familia_nombrosa: currentMonth(simulationData.family.tipus_familia_nombrosa)
+    }*/
     persones: {...personalData}
   };
-}
+};
 
 export function fetchSimulation(simulationData: SimulationData) {
   let requestBody = buildRequest(simulationData);

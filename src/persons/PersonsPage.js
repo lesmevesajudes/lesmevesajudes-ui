@@ -44,7 +44,7 @@ class PersonsPage extends React.Component<Props, State> {
     this.props.dispatch(hideButtons());
     this.setState({
       ...this.state,
-      initialFormValues: {...this.props.persons.filter(e => e.id === personID)[0]},
+      initialFormValues: this.props.persons.filter((e: Person): boolean => e.id === personID)[0],
       step: 'updatePerson'
     });
   };
@@ -64,7 +64,8 @@ class PersonsPage extends React.Component<Props, State> {
   };
 
   handleSubmitPersonForm = (formValues: Person) => {
-
+    console.log(formValues.edat);
+    console.log({...formValues}.edat);
     this.props.dispatch(
         (formValues.id === undefined)
             ? addPerson({...formValues, id: UUID.create()})
@@ -87,7 +88,7 @@ class PersonsPage extends React.Component<Props, State> {
       ...this.state,
       numberOfPersonsLivingTogether: formValues.how_many_persons_live_together,
       step: 'addPerson',
-      initialFormValues: {is_the_user_in_front_of_the_computer: true}
+      initialFormValues: {is_the_person_in_front_of_the_computer: true}
     });
   };
 

@@ -1,14 +1,13 @@
 //@flow
 import React, {Fragment} from 'react';
-import type {PersonRole} from './PersonTypes';
-import {Person} from './PersonTypes';
+import type {Person, PersonRole} from './PersonTypes';
 import {TextField} from 'redux-form-material-ui';
 import {Trans} from 'react-i18next';
 import {Field, formValueSelector, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
-import {Button, Grid, MenuItem, Icon} from '@material-ui/core';
+import {Button, Grid, Icon, MenuItem} from '@material-ui/core';
 import DescriptionText from '../components/Common/DescriptionText';
-import {RelacioFamiliar} from './components/RelacioFamiliar';
+import {RelacioParentiu} from './components/RelacioParentiu';
 import {SituacioLaboral} from './components/SituacioLaboral';
 import {TipusDocumentIdentitat} from './components/TipusDocumentIdentitat';
 import {Question} from './components/Question';
@@ -24,7 +23,7 @@ import Sticky from 'react-stickynode';
 import {styles} from '../styles/theme';
 import {currentFocussedFieldSelector} from "../shared/selectorUtils";
 
-export type PersonFormInitialValues = Person | { is_the_user_in_front_of_the_computer: boolean };
+export type PersonFormInitialValues = Person | { is_the_person_in_front_of_the_computer: boolean };
 
 const pncInclosAIngressosBruts = (value, allValues) =>
     value && value > parseInt(allValues.ingressos_bruts, 10)
@@ -48,6 +47,7 @@ type Props = {
   esFamiliarOUsuari: Boolean,
   esFill: Boolean,
   esFillastre: Boolean,
+  esHome: Boolean,
   handleSubmit: Function,
   haTreballatALEstranger6Mesos: Boolean,
   inscritComADemandantDocupacio: Boolean,
@@ -74,6 +74,7 @@ let PersonForm = (props: Props) => {
     esFamiliarOUsuari,
     esFill,
     esFillastre,
+    esHome,
     handleSubmit,
     haTreballatALEstranger6Mesos,
     inscritComADemandantDocupacio,
@@ -110,7 +111,7 @@ let PersonForm = (props: Props) => {
                           <Trans>Identifiqui'l amb un nom</Trans>}
                     </Question>
 
-                    {!isTheUserInFrontOfTheComputer && <RelacioFamiliar/>}
+                    {!isTheUserInFrontOfTheComputer && <RelacioParentiu/>}
 
                     {esFamiliarOUsuari &&
                     <Fragment>
@@ -232,10 +233,10 @@ let PersonForm = (props: Props) => {
                       <YesNoQuestion name='victima_violencia_de_genere'>
                         <Trans>Víctima violència de gènere</Trans>
                       </YesNoQuestion>}
-
+                      {potTreballar && esHome &&
                       <YesNoQuestion name='victima_violencia_domestica'>
                         <Trans>Víctima violència domèstica</Trans>
-                      </YesNoQuestion>
+                      </YesNoQuestion>}
 
                     {(edat > 2 && edat < 16) &&
                     <YesNoQuestion name='es_escolaritzat_entre_P3_i_4rt_ESO'>
@@ -248,7 +249,7 @@ let PersonForm = (props: Props) => {
                       </YesNoQuestion>}
 
                       <YesNoQuestion name='beneficiari_de_prestacio_residencial'>
-                        <Trans>És beneficiari d’una prestació pública o privada de servei residencial permanent? </Trans>
+                        <Trans>És beneficiari d’una prestació pública o privada de servei residencial permanent?</Trans>
                       </YesNoQuestion>
                     </Fragment>}
                   </Grid>
@@ -289,13 +290,14 @@ PersonForm = connect(state => {
   const cobraAlgunTipusDePensioNoContributiva = selector(state, 'cobra_algun_tipus_de_pensio_no_contributiva');
   const edat = selector(state, 'edat');
   const esAturat = selector(state, 'situacio_laboral') === 'aturat';
-  const esDona = selector(state, 'genere') === 'dona';
-  const esFamiliarOUsuari = (typeof selector(state, 'relacio_parentiu') !== 'undefined' && selector(state, 'relacio_parentiu') !== 'cap') || selector(state, 'is_the_user_in_front_of_the_computer') === true;
+  const esDona = selector(state, 'sexe') === 'dona';
+  const esHome = selector(state, 'sexe') === 'home';
+  const esFamiliarOUsuari = (typeof selector(state, 'relacio_parentiu') !== 'undefined' && selector(state, 'relacio_parentiu') !== 'cap') || selector(state, 'is_the_person_in_front_of_the_computer') === true;
   const esFill = selector(state, 'relacio_parentiu') === 'fill';
   const esFillastre = selector(state, 'relacio_parentiu') === 'fillastre';
   const haTreballatALEstranger6Mesos = selector(state, 'ha_treballat_a_l_estranger_6_mesos');
   const inscritComADemandantDocupacio = selector(state, 'inscrit_com_a_demandant_docupacio');
-  const isTheUserInFrontOfTheComputer = selector(state, 'is_the_user_in_front_of_the_computer');
+  const isTheUserInFrontOfTheComputer = selector(state, 'is_the_person_in_front_of_the_computer');
   const membreDeFamiliaReagrupada = selector(state, 'membre_de_familia_reagrupada');
   const municipiEmpadronament = selector(state, 'municipi_empadronament');
   const potTreballar = selector(state, 'edat') >= 16;
@@ -315,6 +317,7 @@ PersonForm = connect(state => {
     esFamiliarOUsuari,
     esFill,
     esFillastre,
+    esHome,
     haTreballatALEstranger6Mesos,
     inscritComADemandantDocupacio,
     isTheUserInFrontOfTheComputer,

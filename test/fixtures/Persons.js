@@ -1,7 +1,7 @@
 import uuid from 'uuid/v4';
 
 export const aPerson = (props) => ({
-  ...props, ...{
+  ...{
     anys_empadronat_a_barcelona: '3',
     beneficiari_de_prestacio_residencial: true,
     cobra_algun_tipus_de_pensio_no_contributiva: true,
@@ -25,7 +25,7 @@ export const aPerson = (props) => ({
     tipus_document_identitat: 'DNI',
     victima_violencia_domestica: true,
     te_algun_grau_de_discapacitat_reconegut: true
-  }
+  }, ...props
 });
 
 export const aWoman = (props) => ({sexe: 'dona', ...props});

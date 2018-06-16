@@ -4,7 +4,7 @@ import {Trans} from 'react-i18next';
 import Grid from '@material-ui/core/Grid';
 import MultipleAnswerQuestion from './MultipleAnswerQuestion';
 
-export const RelacioFamiliar = () =>
+export const RelacioParentiu = () =>
     <Grid item>
       <MultipleAnswerQuestion name='relacio_parentiu' label={<Trans>Aquesta persona és el/la seu/va?</Trans>}>
         <MenuItem data-test='parella' value='parella'>

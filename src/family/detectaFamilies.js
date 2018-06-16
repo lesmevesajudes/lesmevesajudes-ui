@@ -10,6 +10,7 @@ const isCustodyFilled = (menorID, custodies) => typeof custodies[menorID] !== 'u
     && typeof custodies[menorID].segon === 'string';
 
 const sustentadorsConvivents = (menorID, custodies) => [custodies[menorID].primer, custodies[menorID].segon].filter((sustentadorID) => sustentadorID !== 'ningu_mes' && sustentadorID !== 'no_conviu').sort();
+
 export const detectaFamilies = (custodies: { [string]: Custodia }): Object =>
     Object.keys(custodies).reduce(
         (families: Object, menorID: string) => {
@@ -23,7 +24,8 @@ export const detectaFamilies = (custodies: { [string]: Custodia }): Object =>
                   {
                     sustentadors: sustentadors,
                     menors: [menorID],
-                    monoparental: sustentadors.length === 1
+                    monoparental: sustentadors.length === 1,
+                    tipus_custodia: custodies[menorID].segon !== 'ningu_mes' ? 'compartida' : 'total'
                   };
             }
           }

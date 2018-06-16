@@ -7,8 +7,7 @@ import {Select} from 'redux-form-material-ui';
 import {Field, reduxForm} from 'redux-form';
 import Grid from '@material-ui/core/Grid';
 import MenuItem from '@material-ui/core/MenuItem';
-import type {PersonID} from '../persons/PersonTypes';
-import {Person} from '../persons/PersonTypes';
+import type {Person, PersonID} from '../persons/PersonTypes';
 import {Map} from 'immutable';
 import {currentFocussedFieldSelector, esFill, esSustentador} from '../shared/selectorUtils';
 import DescriptionText from '../components/Common/DescriptionText';
@@ -89,7 +88,7 @@ const FamilyForm = (props: Props) => {
                       <FormSubTitle><Trans>Família de </Trans> {createFamilyName(familia, persones)} </FormSubTitle>
                       {familia.monoparental &&
                       <MultipleAnswerQuestion label={<Trans>Disposa del carnet de familia monoparental:</Trans>}
-                                              name={'carnets.' + familia.ID + '.tipus_familia_monoparental'}
+                                              name={'tipus_carnet_familia_monoparental.' + familia.ID}
                                               component={Select} fullWidth>
                         <MenuItem value='nop'><Trans>No</Trans></MenuItem>
                         <MenuItem value='general'><Trans>General</Trans></MenuItem>
@@ -97,7 +96,7 @@ const FamilyForm = (props: Props) => {
                       </MultipleAnswerQuestion>
                       }
 
-                      <YesNoQuestion name={'usuari_serveis_socials.' + familia.ID + '.es_usuari_serveis_socials'}>
+                      <YesNoQuestion name={'usuari_serveis_socials.' + familia.ID}>
                         <Trans>És família usuaria de serveis socials en seguiment a un CSS o servei especialitzat de
                           l'Ajuntament de Barcelona</Trans>
                       </YesNoQuestion>
