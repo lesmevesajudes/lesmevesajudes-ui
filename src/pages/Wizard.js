@@ -19,7 +19,7 @@ const steps = [
     icon: "face"
   },
   {
-    label: <Trans>Families</Trans>,
+    label: <Trans>Families amb menors</Trans>,
     optional: true,
     component: <FamilyForm/>,
     icon: "perm_contact_calendar"
@@ -38,7 +38,7 @@ const steps = [
 ];
 
 
-const WizardPage = (props) =>
+const WizardPage = () =>
       <Grid>
         <AppHeader />
         <StepsComponent steps={steps}/>

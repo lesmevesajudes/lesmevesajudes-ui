@@ -226,7 +226,7 @@ let PersonForm = (props: Props) => {
 
                       {teAlgunGrauDeDiscapacitatReconegut &&
                       <PercentageQuestion name='grau_discapacitat'>
-                        <Trans>Grau discapacitat</Trans>
+                        <Trans>Grau discapacitat, expressat en percentatge</Trans>
                       </PercentageQuestion>}
 
                       {potTreballar && esDona &&

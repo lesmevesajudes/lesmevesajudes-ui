@@ -49,7 +49,7 @@ const FamilyForm = (props: Props) => {
                     <Grid item key={infant.id}>
 
                       <label>
-                        <Typography><Trans>Qui té la guarda i custòdia o tutela legal de </Trans>{infant.nom}
+                        <Typography gutterBottom><Trans>Qui té la guarda i custòdia o tutela legal de: </Trans><b>{infant.nom}</b>
                         </Typography>
                       </label>
                       <Grid container direction='row' justify='space-between'>
@@ -90,9 +90,8 @@ const FamilyForm = (props: Props) => {
                       <MultipleAnswerQuestion label={<Trans>Disposa del carnet de familia monoparental:</Trans>}
                                               name={'tipus_carnet_familia_monoparental.' + familia.ID}
                                               component={Select} fullWidth>
+                        <MenuItem value='si'><Trans>Si</Trans></MenuItem>
                         <MenuItem value='nop'><Trans>No</Trans></MenuItem>
-                        <MenuItem value='general'><Trans>General</Trans></MenuItem>
-                        <MenuItem value='especial'><Trans>Especial</Trans></MenuItem>
                       </MultipleAnswerQuestion>
                       }
 
