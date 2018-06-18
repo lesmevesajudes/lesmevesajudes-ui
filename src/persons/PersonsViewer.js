@@ -6,6 +6,7 @@ import {Avatar, Card, Divider, Grid, Icon, List, ListItem, ListItemText} from '@
 import {create} from '../shared/UUID';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import Button from '@material-ui/core/Button';
+import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton/IconButton';
 import ClearIcon from '@material-ui/icons/Clear';
 import Typography from '@material-ui/core/Typography';
@@ -77,9 +78,11 @@ export const PersonCard = (props: PersonCardProps) => {
         />
         {!props.person.is_the_person_in_front_of_the_computer &&
         <ListItemSecondaryAction onClick={() => props.onRemoveClick(props.person.id)}>
-          <IconButton aria-label='Delete'>
-            <ClearIcon/>
-          </IconButton>
+          <Tooltip id="known-tooltip" title="Aquesta acció eliminarà aquest membre" placement="right-start">
+            <IconButton aria-label='Delete'>
+              <ClearIcon/>
+            </IconButton>
+          </Tooltip>
         </ListItemSecondaryAction>}
       </ListItem>);
 };
@@ -95,9 +98,11 @@ const UnknownPersonCard = (props: UnknownPersonProps) => (
       <ListItemText
           primary={`Persona ${(props.personNumber + 1).toString()} - Premi aquí per a introduir la informació d'aquesta persona`}/>
       <ListItemSecondaryAction onClick={() => props.onRemoveClick()}>
-        <IconButton aria-label='Delete'>
-          <ClearIcon/>
-        </IconButton>
+        <Tooltip id="unknown-tooltip" title="Aquesta acció eliminarà aquest membre" placement="right-start">
+          <IconButton aria-label='Delete'>
+            <ClearIcon/>
+          </IconButton>
+        </Tooltip>
       </ListItemSecondaryAction>
     </ListItem>
 );
@@ -141,9 +146,11 @@ export const PersonsViewer = (props: Props) => {
               </Grid>
               {missingPersons === 0 &&
               <Grid item>
+              <Tooltip id="add-person-tooltip" title="Si ha oblidat introduir algun membre de la seva llar cliqui aquí" placement="right-start">
                 <Button className={props.classes.buttonIcon} color="secondary" variant="contained"
                         onClick={props.onAddPersonClick}>Afegir una persona convivent<Icon
                     className={props.classes.rightIcon}>add_circle</Icon></Button>
+              </Tooltip>
               </Grid>}
             </Grid>
           </Grid>

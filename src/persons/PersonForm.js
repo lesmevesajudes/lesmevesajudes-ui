@@ -106,7 +106,7 @@ let PersonForm = (props: Props) => {
                 <Grid item xs={12} sm={5}>
                   <Grid container direction='column' alignItems='stretch' spacing={16}>
                     <FormSubTitle><Trans>Informació personal</Trans></FormSubTitle>
-                    <Question name='nom' placeholder='Nom' component={TextField} required autoFocus>
+                    <Question name='nom' placeholder='Nom' component={TextField} autoFocus>
                       {isTheUserInFrontOfTheComputer ? <Trans>Identifiqui's amb un nom</Trans> :
                           <Trans>Identifiqui'l amb un nom</Trans>}
                     </Question>
@@ -115,7 +115,7 @@ let PersonForm = (props: Props) => {
 
                     {esFamiliarOUsuari &&
                     <Fragment>
-                      <TimePeriodQuestion name='edat' required validate={menorDe120}>
+                      <TimePeriodQuestion name='edat' validate={menorDe120}>
                         <Trans>Quina és la seva edat?</Trans>
                       </TimePeriodQuestion>
 
@@ -278,10 +278,16 @@ let PersonForm = (props: Props) => {
       
   );
 };
+function validateInput(input) {
+  let errors = {};
+  console.log(input);
+  console.log(errors);
+  return errors 
+}
 
-// TODO: El icono AddIcon, se deberia añadir Absolute, 25% y relative al button para probar si funciona bien el tema de align, pero es un parche.
 PersonForm = reduxForm({
-  form: 'PersonForm'
+  form: 'PersonForm',
+  validate: validateInput
 })(PersonForm);
 
 const selector = formValueSelector('PersonForm');
