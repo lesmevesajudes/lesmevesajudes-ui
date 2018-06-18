@@ -4,7 +4,6 @@ import type {FamilyData} from '../family/FamilyDataTypes';
 import type {ResidenceData} from '../residence/ResidenceTypes';
 import OpenFiscaAPIClient from '../shared/OpenFiscaAPIClient';
 import {esInfantAcollit} from '../shared/selectorUtils';
-import {esBarcelonaCiutat} from '../shared/CodisPostals';
 import {detectaFamilies} from "../family/detectaFamilies";
 
 export const FETCH_SIMULATION = 'fetch_simulation';
@@ -72,34 +71,13 @@ export const buildRequest = (simulationData: SimulationData) => {
           menors: detectedFamilies[familiaID].menors,
           es_usuari_serveis_socials: currentMonth(simulationData.family.usuari_serveis_socials[familiaID]),
           tipus_familia_monoparental: currentMonth(simulationData.family.tipus_carnet_familia_monoparental[familiaID]),
-          domicili_a_barcelona_ciutat: currentMonth(esBarcelonaCiutat(parseInt(simulationData.residence['codi_postal_habitatge'], 10))),
           tipus_custodia: currentMonth(detectedFamilies[familiaID].tipus_custodia)
         };
         return result;
       }, {}
   );
-  console.log(families);
   return {
     families: families,
-    /*familia_1: {
-      adults: serialize_adult(simulationData.persons)
-          .filter(persona => esSustentador(persona))
-          .map(persona => persona.id),
-      menors: serialize_adult(simulationData.persons)
-          .filter(persona => esFill(persona))
-          .map(persona => persona.id),
-      altres_adults: serialize_adult(simulationData.persons)
-          .filter(persona => !esFill(persona) && !esSustentador(persona))
-          .map(persona => persona.id),
-      domicili_a_barcelona_ciutat: currentMonth(
-          esBarcelonaCiutat(
-              parseInt(simulationData.residence['codi_postal_habitatge'], 10)
-          )
-      ),
-      es_usuari_serveis_socials: currentMonth(simulationData.family.es_usuari_serveis_socials),
-      tipus_familia_monoparental: currentMonth(simulationData.family.tipus_familia_monoparental),
-      tipus_familia_nombrosa: currentMonth(simulationData.family.tipus_familia_nombrosa)
-    }*/
     persones: {...personalData}
   };
 };
