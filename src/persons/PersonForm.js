@@ -37,7 +37,6 @@ const menorDe120 = (value) =>
     value && value >= 120
         ? <Trans>No es contemplen edats superiors als 120 anys</Trans>
         : undefined;
-const required = value => (value ? undefined : 'Requerido');
 
 type Props = {
   cobraAlgunTipusDePensioNoContributiva: Boolean,
@@ -107,7 +106,7 @@ let PersonForm = (props: Props) => {
                 <Grid item xs={12} sm={5}>
                   <Grid container direction='column' alignItems='stretch' spacing={16}>
                     <FormSubTitle><Trans>Informació personal</Trans></FormSubTitle>
-                    <Question name='nom' placeholder='Nom' component={TextField} validate={required} autoFocus>
+                    <Question name='nom' placeholder='Nom' component={TextField} autoFocus>
                       {isTheUserInFrontOfTheComputer ? <Trans>Identifiqui's amb un nom</Trans> :
                           <Trans>Identifiqui'l amb un nom</Trans>}
                     </Question>
@@ -116,11 +115,11 @@ let PersonForm = (props: Props) => {
 
                     {esFamiliarOUsuari &&
                     <Fragment>
-                      <TimePeriodQuestion name='edat' validate={[menorDe120,required]}>
+                      <TimePeriodQuestion name='edat' validate={menorDe120}>
                         <Trans>Quina és la seva edat?</Trans>
                       </TimePeriodQuestion>
 
-                      <MultipleAnswerQuestion label={<Trans>Sexe</Trans>} name='sexe' validate={required}>
+                      <MultipleAnswerQuestion label={<Trans>Sexe</Trans>} name='sexe'>
                         <MenuItem data-test='sexe_dona' value='dona'>
                           <Trans>Dona</Trans>
                         </MenuItem>
@@ -280,8 +279,8 @@ let PersonForm = (props: Props) => {
   );
 };
 function validateInput(input) {
-  let errors = {}
-  console.log(input)
+  let errors = {};
+  console.log(input);
   console.log(errors);
   return errors 
 }
