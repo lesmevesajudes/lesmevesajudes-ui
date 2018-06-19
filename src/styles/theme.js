@@ -62,8 +62,15 @@ export default createMuiTheme({
   },
   overrides: {
     MuiStepLabel: {
+      root: {
+        fontFamily: "'Source Sans Pro', sans-serif"
+      },
       alternativeLabel: {
         marginTop: '0px !important'
+      },
+      completed: {
+        fontWeight: '600 !important',
+        color: colors.secondary + ' !important'
       }
     },
     MuiTypography: {

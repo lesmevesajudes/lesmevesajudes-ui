@@ -1,3 +1,4 @@
+//@flow
 import React from 'react';
 import {connect} from 'react-redux';
 import {backStep, nextStep} from './StepsActions'
@@ -6,6 +7,10 @@ import {Grid, Icon, Step, StepButton, Stepper} from '@material-ui/core';
 import StepperButtons from './StepperButtons';
 import Typography from '@material-ui/core/Typography';
 import {Trans} from 'react-i18next';
+import FaceIcon from '@material-ui/icons/Face';
+import PermContactCalendarIcon from '@material-ui/icons/PermContactCalendar';
+import HomeIcon from '@material-ui/icons/Home';
+import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 
 const styles = theme => ({
   root: {
@@ -25,6 +30,9 @@ const styles = theme => ({
   },
   rightIcon: {
     marginRight: theme.spacing.unit,
+  },
+  completed: {
+    color: '#004A8E',
   }
 });
 
@@ -34,25 +42,38 @@ type Props = {
   nextStep: Function,
   backStep: Function
 }
-const StepIcon = ({icon}) => (
-    <div style={{ position: 'relative' }}>
-      <Icon className="iconStep" color="action" style={{fontSize: 30}}>
-        {icon}
-      </Icon>
-    </div>
-);
+
+const chooseIcon = (props,icon) => {
+  switch(icon){
+    case 'Persons':
+    if(props.currentStep > 0){return <FaceIcon className={props.classes.completed}/>}
+      return <FaceIcon/>
+    case 'Family':
+      if(props.currentStep > 1){return <PermContactCalendarIcon className={props.classes.completed}/>}
+      return <PermContactCalendarIcon/>;
+    case 'Home':
+      if(props.currentStep > 2){return <HomeIcon className={props.classes.completed}/>}
+      return <HomeIcon/>;
+    case 'Help':
+      if(props.currentStep >= 3){return <HelpOutlineIcon className={props.classes.completed}/>}
+      return <HelpOutlineIcon/>;
+    default: 
+      break;
+  }
+}
+
 let StepsComponent = (props: Props) => {
   const {classes, steps, currentStep, buttonEnabled, buttonVisible, backStep, nextStep} = props;
   const childComponent = steps[currentStep].component;
   return (
       <div className={classes.root}>
         <Stepper activeStep={currentStep} alternativeLabel>
-          {steps.map(step => {
+          {steps.map((step) => {
             const labelProps = step.optional ? {
               optional: <Typography variant='caption'><Trans>Opcional</Trans></Typography>
             } : {};
-            return <Step key={step.label}>
-              <StepButton {...labelProps} icon={<StepIcon icon={step.icon}/>} >{step.label}</StepButton>
+            return <Step key={step}>
+              <StepButton {...labelProps} icon={chooseIcon(props, step.icon)}>{step.label}</StepButton>
                    </Step>
           })
           }
