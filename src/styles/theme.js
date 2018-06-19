@@ -40,6 +40,16 @@ export const styles = theme =>( {
     "&:hover": {
       backgroundColor: colors.disabled_text 
     }
+  },
+  AvatarUnknownPerson: {
+    backgroundColor: '#bbbbbb'
+  },
+  titleUnknownPerson: {
+    color: colors.primary + ' !important'
+  },
+  deleteListItemTitle: {
+    marginLeft: '-75px !important',
+    fontSize: '16px'
   }
 
 });
@@ -79,6 +89,9 @@ export default createMuiTheme({
         fontFamily: "'Source Sans Pro', sans-serif",
         textTransform: 'uppercase',
         fontWeight: 600,
+      },
+      subheading: {
+        color: colors.secondary
       }
     },
     MuiInput: {

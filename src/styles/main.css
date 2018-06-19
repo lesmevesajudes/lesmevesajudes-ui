@@ -2,6 +2,9 @@
 .App-intro {
     font-size: large;
 }
+body {
+  background: #fafafa;
+}
 .Main {
     max-width: 960px;
     margin: 0 auto;

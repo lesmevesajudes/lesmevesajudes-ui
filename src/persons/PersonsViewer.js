@@ -11,15 +11,8 @@ import IconButton from '@material-ui/core/IconButton/IconButton';
 import ClearIcon from '@material-ui/icons/Clear';
 import Typography from '@material-ui/core/Typography';
 import {withStyles} from '@material-ui/core/styles';
+import {styles} from '../styles/theme'
 
-const styles = theme => ({
-  buttonIcon: {
-    smargin: theme.spacing.unit,
-  },
-  rightIcon: {
-    marginLeft: theme.spacing.unit,
-  },
-});
 const initials = (name: string) => {
   const initials = name.replace(/[^a-zA-Z- ]/g, '').match(/\b\w/g);
   if (initials instanceof Array) {
@@ -92,20 +85,20 @@ type UnknownPersonProps = {
   onRemoveClick: Function,
   personNumber: number
 }
-const UnknownPersonCard = (props: UnknownPersonProps) => (
+const UnknownPersonCard = (props: UnknownPersonProps) => {
+  const { classes } = props;
+    return (
     <ListItem button onClick={() => props.onAddPersonClick()}>
-      <Avatar>?</Avatar>
-      <ListItemText
-          primary={`Persona ${(props.personNumber + 1).toString()} - Premi aquí per a introduir la informació d'aquesta persona`}/>
+      <Avatar className={classes.avatarUnknownPerson} >?</Avatar>
+      <ListItemText 
+          primary={<Typography className= {classes.titleUnknownPerson} >Persona {(props.personNumber + 1).toString()} - Premi aquí per a introduir la informació d'aquesta persona</Typography>}/>
       <ListItemSecondaryAction onClick={() => props.onRemoveClick()}>
         <Tooltip id="unknown-tooltip" title="Aquesta acció eliminarà aquest membre" placement="right-start">
-          <IconButton aria-label='Delete'>
-            <ClearIcon/>
-          </IconButton>
+         <Typography className={classes.deleteListItemTitle}> Eliminar </Typography>
         </Tooltip>
       </ListItemSecondaryAction>
     </ListItem>
-);
+)};
 
 type Props = {
   persons: Array<Person>,
@@ -137,7 +130,7 @@ export const PersonsViewer = (props: Props) => {
                             updatePerson={props.onUpdateClick}/>
                     ),
                       ...repeat(missingPersons,
-                          (i) => <UnknownPersonCard key={i} personNumber={i}
+                          (i) => <UnknownPersonCard key={i} personNumber={i} classes={props.classes}
                                                     onRemoveClick={props.onRemoveUnknownClick}
                                                     onAddPersonClick={props.onAddPersonClick}/>)]
                         .reduce((arr, current) => [...arr, current, <Divider key={create()}/>], []).slice(0, -1)}
