@@ -10,7 +10,8 @@ export const colors = {
   disabled: '#f3f3f3',
   disabled_text: '#f7f7f7',
   white: '#fff',
-  blackest: '#202020'
+  blackest: '#202020',
+  gray: '#f2f2f2'
 }
 export const styles = theme =>( {
   root: {
@@ -67,13 +68,9 @@ export default createMuiTheme({
       contrastText: colors.white
     }, 
     secondary: { 
-      main: colors.white,
+      main: colors.gray,
       dark: colors.disabled,
       contrastText: colors.primary
-    },
-    tertiary: {
-      main: '#000',
-      contrastText: '#fff'
     }
   },
   overrides: {
@@ -125,6 +122,7 @@ export default createMuiTheme({
         fontWeight: 600,
       },
       contained: {
+
         boxShadow: 'none',
         '&:active': {
             boxShadow: 'none',

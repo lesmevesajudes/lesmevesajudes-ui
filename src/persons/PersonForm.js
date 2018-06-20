@@ -94,8 +94,8 @@ let PersonForm = (props: Props) => {
 
         <Grid item xs={12}>
           {isTheUserInFrontOfTheComputer ?
-              <Typography variant='headline' gutterBottom><Trans>Informació sobre vostè</Trans></Typography> :
-              <Typography variant='headline' gutterBottom><Trans>Dades sobre una persona que conviu amb
+              <Typography variant='headline'><Trans>Informació sobre vostè</Trans></Typography> :
+              <Typography variant='headline'><Trans>Dades sobre una persona que conviu amb
                 vostè</Trans></Typography>}
         </Grid>
         <Grid item xs={12}  className='bg-form-exterior bg-form'>
@@ -263,11 +263,11 @@ let PersonForm = (props: Props) => {
               <Grid item sm={12} className="margin-buttons">
                 <Grid container justify='space-around'>
                   {(isTheUserInFrontOfTheComputer !== true || updating === true) &&
-                  <Button variant='raised' color='secondary' onClick={props.onCancel}>
-                    <Icon className={styles.leftIcon} >clear</Icon><Trans>Cancelar</Trans> 
+                  <Button variant='contained' color='secondary' onClick={props.onCancel}>
+                    <Trans>Cancelar</Trans> 
                   </Button>}
                   <Button variant='raised' color='primary' type='submit' name='ButtonValidar'>
-                    <Trans>Validar</Trans><Icon>done</Icon>
+                    <Trans>Validar</Trans>
                   </Button>
                 </Grid>
               </Grid>
