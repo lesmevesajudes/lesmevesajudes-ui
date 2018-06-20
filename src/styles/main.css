@@ -3,7 +3,10 @@
     font-size: large;
 }
 body {
-  background: #fafafa;
+  background: #fbfbfb !important;
+}
+.stepperContainer{
+  background: #fbfbfb !important;
 }
 .Main {
     max-width: 960px;
@@ -68,13 +71,21 @@ button {
 
 .bg-container {
   background: #f2f2f2;
-  border: #dbdbdb 1px solid;
   border-radius: 4px;
   min-height: 180px;
   max-width: 960px;
   margin: 30px auto;
   padding: 20px;
 }
+.bg-form-exterior {
+  margin-left: 90px !important;
+  margin-right: 90px !important;
+}
+.bg-form {
+  background:#fff;
+  padding: 20px;
+}
+
 
 
 .border-family {

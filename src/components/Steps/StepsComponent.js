@@ -11,30 +11,7 @@ import FaceIcon from '@material-ui/icons/Face';
 import PermContactCalendarIcon from '@material-ui/icons/PermContactCalendar';
 import HomeIcon from '@material-ui/icons/Home';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
-
-const styles = theme => ({
-  root: {
-    width: '100%',
-  },
-  marginButtons: {
-    marginBottom: 30 + 'px'
-  },
-  backButton: {
-    marginRight: theme.spacing.unit,
-  },
-  buttonIcon: {
-    smargin: theme.spacing.unit,
-  },
-  leftIcon: {
-    marginLeft: theme.spacing.unit,
-  },
-  rightIcon: {
-    marginRight: theme.spacing.unit,
-  },
-  completed: {
-    color: '#004A8E',
-  }
-});
+import styles from '../../styles/theme';
 
 type Props = {
   classes: Object,
@@ -67,7 +44,7 @@ let StepsComponent = (props: Props) => {
   const childComponent = steps[currentStep].component;
   return (
       <div className={classes.root}>
-        <Stepper activeStep={currentStep} alternativeLabel>
+        <Stepper activeStep={currentStep} alternativeLabel className='stepperContainer'>
           {steps.map((step) => {
             const labelProps = step.optional ? {
               optional: <Typography variant='caption'><Trans>Opcional</Trans></Typography>

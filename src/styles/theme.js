@@ -41,6 +41,9 @@ export const styles = theme =>( {
       backgroundColor: colors.disabled_text 
     }
   },
+  completed: {
+    color: '#004A8E',
+  },
   AvatarUnknownPerson: {
     backgroundColor: '#bbbbbb'
   },
@@ -50,9 +53,12 @@ export const styles = theme =>( {
   deleteListItemTitle: {
     marginLeft: '-75px !important',
     fontSize: '16px'
+  },
+  stepperContainer: {
+    backgroundColor: '#fbfbfb'
   }
-
 });
+
 export default createMuiTheme({
   palette: {
     primary: { 
@@ -89,6 +95,7 @@ export default createMuiTheme({
         fontFamily: "'Source Sans Pro', sans-serif",
         textTransform: 'uppercase',
         fontWeight: 600,
+        color: colors.secondary
       },
       subheading: {
         color: colors.secondary
