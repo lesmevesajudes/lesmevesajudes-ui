@@ -28,7 +28,8 @@ export const styles = theme =>( {
   },
   addMemberButton: {
     margin: theme.spacing.unit,
-    backgroundColor: '#fff !important'
+    backgroundColor: '#fff !important',
+    marginLeft: '15px'
   },
   leftIcon: {
     marginLeft: theme.spacing.unit,
