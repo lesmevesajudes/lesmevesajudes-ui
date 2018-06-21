@@ -1,7 +1,7 @@
 import {createMuiTheme } from '@material-ui/core/styles';
 
 export const colors = {
-  primary: '#e23787',
+  primary: '#d50283',
   primary_dark: '#be3175',
   primary_light: '#D4317C',
   secondary: '#004A8E',
@@ -24,7 +24,12 @@ export const styles = theme =>( {
     marginRight: theme.spacing.unit,
   },
   buttonIcon: {
-    smargin: theme.spacing.unit,
+    margin: theme.spacing.unit,
+  },
+  addMemberButton: {
+    margin: theme.spacing.unit,
+    backgroundColor: '#fff !important',
+    marginLeft: '15px'
   },
   leftIcon: {
     marginLeft: theme.spacing.unit,
@@ -53,7 +58,8 @@ export const styles = theme =>( {
   },
   deleteListItemTitle: {
     marginLeft: '-75px !important',
-    fontSize: '16px'
+    fontSize: '16px',
+    cursor: 'pointer'
   },
   stepperContainer: {
     backgroundColor: '#fbfbfb'
@@ -84,6 +90,18 @@ export default createMuiTheme({
       completed: {
         fontWeight: '600 !important',
         color: colors.secondary + ' !important'
+      }
+    },
+    MuiPaper: {
+      elevation2: {
+        boxShadow: "none",
+        borderRadius: '4px'
+      }
+    },
+    MuiList: {
+      padding: {
+        paddingTop: '0px',
+        paddingBottom: '0px'
       }
     },
     MuiTypography: {
