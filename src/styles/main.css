@@ -135,8 +135,7 @@ input.cercabcn {
 .buttons-container {
   border-radius: 4px;
   min-height: 180px;
-  max-width: 970px;
-  padding-left: 8px;
+  max-width: 1140px;
   margin: 0px auto;
 
 }
@@ -164,4 +163,7 @@ input.cercabcn {
   border: rgb(170, 82, 148)1px solid;
 }
 .iconStep {
+}
+.addPersonContainer {
+  margin-left:75px !important
 }

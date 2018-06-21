@@ -7,8 +7,6 @@ import {create} from '../shared/UUID';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip';
-import IconButton from '@material-ui/core/IconButton/IconButton';
-import ClearIcon from '@material-ui/icons/Clear';
 import Typography from '@material-ui/core/Typography';
 import {withStyles} from '@material-ui/core/styles';
 import {styles} from '../styles/theme'
@@ -62,6 +60,7 @@ const relacioDeParentiuATextDelLListatDePersones = (relacioDeParentiu: string) =
 export const PersonCard = (props: PersonCardProps) => {
   const anysText = props.person.edat != null ? `${props.person.edat} anys ` : '';
   const secondaryText = `${anysText}${relacioDeParentiuATextDelLListatDePersones(props.person.relacio_parentiu)}`;
+  const { classes } = props;
   return (
       <ListItem button onClick={() => props.updatePerson(props.person.id)}>
         <Avatar style={{backgroundColor: '#006600'}}>{initials(props.person.nom)}</Avatar>
@@ -72,9 +71,7 @@ export const PersonCard = (props: PersonCardProps) => {
         {!props.person.is_the_person_in_front_of_the_computer &&
         <ListItemSecondaryAction onClick={() => props.onRemoveClick(props.person.id)}>
           <Tooltip id="known-tooltip" title="Aquesta acció eliminarà aquest membre" placement="right-start">
-            <IconButton aria-label='Delete'>
-              <ClearIcon/>
-            </IconButton>
+            <Typography className={classes.deleteListItemTitle}> Eliminar </Typography>
           </Tooltip>
         </ListItemSecondaryAction>}
       </ListItem>);
@@ -113,38 +110,40 @@ type Props = {
 export const PersonsViewer = (props: Props) => {
   const missingPersons = Math.max(props.expectedNumberOfPersons - props.persons.length, 0);
     return (
-        <Grid container className='container-family'>
-          <Grid item sm={12} xs={12} className='bg-family'>
-            <Typography variant='headline' gutterBottom>
+        <Grid container className='bg-container'>
+          <Grid item sm={12} xs={12} >
+            <Typography variant='headline' className="titleContainer">
               <Trans>Persones de la unitat de convivència</Trans>
             </Typography>
-            <Grid container direction='column' className='PersonsViewerPage' spacing={16} alignItems='stretch'>
-              <Grid item xs={12} sm={12}>
+            <Grid container direction='row' justify='space-around' alignItems='stretch' spacing={16}>
+              <Grid item xs={12} sm={12} className='bg-form-exterior'>
                 <Card>
-                  <List>
-                    {[...props.persons.map(person =>
-                        <PersonCard
-                            key={person.id}
-                            person={person}
-                            onRemoveClick={props.onRemoveClick}
-                            updatePerson={props.onUpdateClick}/>
-                    ),
-                      ...repeat(missingPersons,
-                          (i) => <UnknownPersonCard key={i} personNumber={i} classes={props.classes}
-                                                    onRemoveClick={props.onRemoveUnknownClick}
-                                                    onAddPersonClick={props.onAddPersonClick}/>)]
-                        .reduce((arr, current) => [...arr, current, <Divider key={create()}/>], []).slice(0, -1)}
-                  </List>
+                    <List>
+                      {[...props.persons.map(person =>
+                          <PersonCard
+                              classes={props.classes}
+                              key={person.id}
+                              person={person}
+                              onRemoveClick={props.onRemoveClick}
+                              updatePerson={props.onUpdateClick}/>
+                      ),
+                        ...repeat(missingPersons,
+                            (i) => <UnknownPersonCard key={i} personNumber={i} classes={props.classes}
+                                                      onRemoveClick={props.onRemoveUnknownClick}
+                                                      onAddPersonClick={props.onAddPersonClick}/>)]
+                          .reduce((arr, current) => [...arr, current, <Divider key={create()}/>], []).slice(0, -1)}
+                    </List>
                 </Card>
               </Grid>
               {missingPersons === 0 &&
-              <Grid item>
-              <Tooltip id="add-person-tooltip" title="Si ha oblidat introduir algun membre de la seva llar cliqui aquí" placement="right-start">
-                <Button className={props.classes.addMemberButton} color="secondary" variant="raised"
-                        onClick={props.onAddPersonClick}>Afegir una persona convivent <Icon
-                    className={props.classes.rightIcon}>add_circle</Icon></Button>
-              </Tooltip>
-              </Grid>}
+                <Grid item sm={12} className="addPersonContainer">
+                  <Tooltip id="add-person-tooltip" title="Si ha oblidat introduir algun membre de la seva llar cliqui aquí" placement="right-start">
+                    <Button className={props.classes.addMemberButton} color="secondary" variant="raised"
+                            onClick={props.onAddPersonClick}>Afegir una persona convivent <Icon
+                        className={props.classes.rightIcon}>add_circle</Icon></Button>
+                  </Tooltip>
+                </Grid>
+              }
             </Grid>
           </Grid>
         </Grid>
