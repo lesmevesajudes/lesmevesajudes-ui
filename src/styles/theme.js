@@ -10,7 +10,8 @@ export const colors = {
   disabled: '#f3f3f3',
   disabled_text: '#f7f7f7',
   white: '#fff',
-  blackest: '#202020'
+  blackest: '#202020',
+  gray: '#f2f2f2'
 }
 export const styles = theme =>( {
   root: {
@@ -40,9 +41,25 @@ export const styles = theme =>( {
     "&:hover": {
       backgroundColor: colors.disabled_text 
     }
+  },
+  completed: {
+    color: '#004A8E',
+  },
+  AvatarUnknownPerson: {
+    backgroundColor: '#bbbbbb'
+  },
+  titleUnknownPerson: {
+    color: colors.primary + ' !important'
+  },
+  deleteListItemTitle: {
+    marginLeft: '-75px !important',
+    fontSize: '16px'
+  },
+  stepperContainer: {
+    backgroundColor: '#fbfbfb'
   }
-
 });
+
 export default createMuiTheme({
   palette: {
     primary: { 
@@ -51,19 +68,22 @@ export default createMuiTheme({
       contrastText: colors.white
     }, 
     secondary: { 
-      main: colors.white,
+      main: colors.gray,
       dark: colors.disabled,
       contrastText: colors.primary
-    },
-    tertiary: {
-      main: '#000',
-      contrastText: '#fff'
     }
   },
   overrides: {
     MuiStepLabel: {
+      root: {
+        fontFamily: "'Source Sans Pro', sans-serif"
+      },
       alternativeLabel: {
         marginTop: '0px !important'
+      },
+      completed: {
+        fontWeight: '600 !important',
+        color: colors.secondary + ' !important'
       }
     },
     MuiTypography: {
@@ -72,6 +92,10 @@ export default createMuiTheme({
         fontFamily: "'Source Sans Pro', sans-serif",
         textTransform: 'uppercase',
         fontWeight: 600,
+        color: colors.secondary
+      },
+      subheading: {
+        color: colors.secondary
       }
     },
     MuiInput: {
@@ -95,9 +119,10 @@ export default createMuiTheme({
       root: { // Global variabbles of buttons
         disableRipple: true,
         fontFamily: "'Source Sans Pro', sans-serif",
-        fontWeight: 600,
+        fontWeight: 600
       },
       contained: {
+
         boxShadow: 'none',
         '&:active': {
             boxShadow: 'none',

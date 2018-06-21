@@ -16,24 +16,24 @@ const steps = [
     label: <Trans>Persones que conviuen</Trans>,
     optional: false,
     component: <PersonsPage/>,
-    icon: "face"
+    icon: "Persons"
   },
   {
     label: <Trans>Families amb menors</Trans>,
     optional: true,
     component: <FamilyForm/>,
-    icon: "perm_contact_calendar"
+    icon: "Family"
   },
   {
     label: <Trans>Domicili Habitual</Trans>,
     optional: false,
     component: <ResidenceForm/>,
-    icon: "home"
+    icon: "Home"
   },
   {
     label: <Trans>Resultats</Trans>,
     component: <ResultsPage/>,
-    icon: "help_outline"
+    icon: "Help"
   }
 ];
 
