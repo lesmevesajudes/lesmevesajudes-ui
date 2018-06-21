@@ -24,7 +24,11 @@ export const styles = theme =>( {
     marginRight: theme.spacing.unit,
   },
   buttonIcon: {
-    smargin: theme.spacing.unit,
+    margin: theme.spacing.unit,
+  },
+  addMemberButton: {
+    margin: theme.spacing.unit,
+    backgroundColor: '#fff !important'
   },
   leftIcon: {
     marginLeft: theme.spacing.unit,
@@ -53,7 +57,8 @@ export const styles = theme =>( {
   },
   deleteListItemTitle: {
     marginLeft: '-75px !important',
-    fontSize: '16px'
+    fontSize: '16px',
+    cursor: 'pointer'
   },
   stepperContainer: {
     backgroundColor: '#fbfbfb'

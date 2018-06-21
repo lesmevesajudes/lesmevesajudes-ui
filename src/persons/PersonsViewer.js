@@ -140,8 +140,8 @@ export const PersonsViewer = (props: Props) => {
               {missingPersons === 0 &&
               <Grid item>
               <Tooltip id="add-person-tooltip" title="Si ha oblidat introduir algun membre de la seva llar cliqui aquí" placement="right-start">
-                <Button className={props.classes.buttonIcon} color="secondary" variant="contained"
-                        onClick={props.onAddPersonClick}>Afegir una persona convivent<Icon
+                <Button className={props.classes.addMemberButton} color="secondary" variant="raised"
+                        onClick={props.onAddPersonClick}>Afegir una persona convivent <Icon
                     className={props.classes.rightIcon}>add_circle</Icon></Button>
               </Tooltip>
               </Grid>}
