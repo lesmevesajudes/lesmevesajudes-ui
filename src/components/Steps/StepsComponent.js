@@ -3,7 +3,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {backStep, nextStep} from './StepsActions'
 import {withStyles} from '@material-ui/core/styles';
-import {Grid, Icon, Step, StepButton, Stepper} from '@material-ui/core';
+import {Grid, Step, StepButton, Stepper} from '@material-ui/core';
 import StepperButtons from './StepperButtons';
 import Typography from '@material-ui/core/Typography';
 import {Trans} from 'react-i18next';

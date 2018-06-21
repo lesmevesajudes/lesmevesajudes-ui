@@ -5,7 +5,7 @@ import {TextField} from 'redux-form-material-ui';
 import {Trans} from 'react-i18next';
 import {Field, formValueSelector, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
-import {Button, Grid, Icon, MenuItem} from '@material-ui/core';
+import {Button, Grid, MenuItem} from '@material-ui/core';
 import DescriptionText from '../components/Common/DescriptionText';
 import {RelacioParentiu} from './components/RelacioParentiu';
 import {SituacioLaboral} from './components/SituacioLaboral';
@@ -20,7 +20,6 @@ import Typography from '@material-ui/core/Typography';
 import MultipleAnswerQuestion from './components/MultipleAnswerQuestion';
 import FormSubTitle from './components/FormSubTitle';
 import Sticky from 'react-stickynode';
-import {styles} from '../styles/theme';
 import {currentFocussedFieldSelector} from "../shared/selectorUtils";
 
 export type PersonFormInitialValues = Person | { is_the_person_in_front_of_the_computer: boolean };
@@ -255,11 +254,12 @@ let PersonForm = (props: Props) => {
                   </Grid>
                 </Grid>
                 <Grid item xs={5} sm={5}>
-                        <Sticky enabled={true} top={50}>
+                        <Sticky enabled={true} top={10} bottomBoundary='#stop'>
                             <DescriptionText currentField={currentField}/>
                         </Sticky>
                 </Grid>
               </Grid>
+              <div id="stop"></div>
               <Grid item sm={12} className="margin-buttons">
                 <Grid container justify='space-around'>
                   {(isTheUserInFrontOfTheComputer !== true || updating === true) &&

@@ -9,7 +9,7 @@ type Props = {
 const DescriptionText = (props: Props) =>
     <Grid item className='descriptionText'>
           <Hidden smDown>
-            <Typography component='span'>
+            <Typography  className="text" component='span'>
               <HelpText id={props.currentField}/>
           </Typography>
           </Hidden>

@@ -119,7 +119,7 @@ export default createMuiTheme({
       root: { // Global variabbles of buttons
         disableRipple: true,
         fontFamily: "'Source Sans Pro', sans-serif",
-        fontWeight: 600,
+        fontWeight: 600
       },
       contained: {
 
