@@ -17,7 +17,6 @@ import {YesNoQuestion} from '../persons/components/YesNoQuestion';
 import FormSubTitle from '../persons/components/FormSubTitle';
 import {detectaFamilies} from './detectaFamilies';
 import {createFamilyName, toArray} from './createFamilyName';
-import MultipleAnswerQuestion from '../persons/components/MultipleAnswerQuestion';
 import Sticky from 'react-stickynode';
 
 
@@ -87,13 +86,9 @@ const FamilyForm = (props: Props) => {
                     <Fragment key={familia.ID}>
                       <FormSubTitle><Trans>Família de </Trans> {createFamilyName(familia, persones)} </FormSubTitle>
                       {familia.monoparental &&
-                      <MultipleAnswerQuestion label={<Trans>Disposa del carnet de familia monoparental:</Trans>}
-                                              name={'tipus_carnet_familia_monoparental.' + familia.ID}
-                                              component={Select} fullWidth>
-                        <MenuItem value='si'><Trans>Si</Trans></MenuItem>
-                        <MenuItem value='nop'><Trans>No</Trans></MenuItem>
-                      </MultipleAnswerQuestion>
-                      }
+                      <YesNoQuestion name={'disposa_de_carnet_familia_monoparental.' + familia.ID}>
+                        <Trans>Disposa del carnet de familia monoparental:</Trans>
+                      </YesNoQuestion>}
 
                       <YesNoQuestion name={'usuari_serveis_socials.' + familia.ID}>
                         <Trans>És família usuaria de serveis socials en seguiment a un CSS o servei especialitzat de
@@ -117,7 +112,7 @@ const FamilyForm = (props: Props) => {
 
 function mapStateToProps(state) {
   const custodies = typeof state.family.custodies !== 'undefined' ? state.family.custodies : {};
-  const families = toArray(detectaFamilies(custodies));
+  const families = toArray(detectaFamilies(custodies, state.persons));
   const currentField = currentFocussedFieldSelector('FamilyForm')(state);
   return {
     initialValues: state.family,

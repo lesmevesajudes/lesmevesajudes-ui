@@ -4,10 +4,7 @@ import {Map} from 'immutable';
 import type {Person, PersonID, PersonsState} from './PersonTypes';
 import type {PersonActions} from './PersonsActions';
 
-function removePerson(
-    state: PersonsState,
-    personIDToBeRemoved: PersonID
-): PersonsState {
+function removePerson(state: PersonsState, personIDToBeRemoved: PersonID): PersonsState {
   return state.delete(personIDToBeRemoved);
 }
 

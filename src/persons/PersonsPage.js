@@ -64,8 +64,6 @@ class PersonsPage extends React.Component<Props, State> {
   };
 
   handleSubmitPersonForm = (formValues: Person) => {
-    console.log(formValues.edat);
-    console.log({...formValues}.edat);
     this.props.dispatch(
         (formValues.id === undefined)
             ? addPerson({...formValues, id: UUID.create()})

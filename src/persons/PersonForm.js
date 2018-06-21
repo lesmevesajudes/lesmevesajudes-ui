@@ -278,16 +278,9 @@ let PersonForm = (props: Props) => {
       
   );
 };
-function validateInput(input) {
-  let errors = {};
-  console.log(input);
-  console.log(errors);
-  return errors 
-}
 
 PersonForm = reduxForm({
-  form: 'PersonForm',
-  validate: validateInput
+  form: 'PersonForm'
 })(PersonForm);
 
 const selector = formValueSelector('PersonForm');
