@@ -102,7 +102,7 @@ let PersonForm = (props: Props) => {
               <Field component='input' name='id' type='hidden'/>
               <Field component='input' name='is_the_user_in_front_of_the_computer' type='hidden'/>
               <Grid container direction='row' justify='space-around' alignItems='stretch' spacing={16}>
-                <Grid item xs={12} sm={5}>
+                <Grid item xs={12} sm={6}>
                   <Grid container direction='column' alignItems='stretch' spacing={16}>
                     <FormSubTitle><Trans>Informació personal</Trans></FormSubTitle>
                     <Question name='nom' placeholder='Nom' component={TextField} autoFocus>

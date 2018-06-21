@@ -44,7 +44,7 @@ const FamilyForm = (props: Props) => {
         <Grid item xs={12}  className='bg-form-exterior bg-form'>
             <form name='FamilyForm'>
               <Grid container direction='row' justify='space-around' alignItems='stretch' spacing={16}>
-              <Grid item xs={12} sm={5}>
+              <Grid item xs={12} sm={6}>
                 <Grid container direction='column' alignItems='stretch' spacing={16}>
                 {fills.valueSeq().map((infant: Person) =>
                     <Grid item xs={12} key={infant.id}>
