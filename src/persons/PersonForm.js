@@ -280,7 +280,7 @@ let PersonForm = (props: Props) => {
 };
 
 PersonForm = reduxForm({
-  form: 'PersonForm',
+  form: 'PersonForm'
 })(PersonForm);
 
 const selector = formValueSelector('PersonForm');

@@ -20,7 +20,7 @@ describe('PersonsReducer', () => {
             segon: '42c5f2a9-4f60-47ad-87cd-63a08b19b360'
           }
         },
-        tipus_carnet_familia_monoparental: {
+        disposa_de_carnet_familia_monoparental: {
           '23c1a8ca-8c2d-46bf-8469-ad1e1d5190c142c5f2a9-4f60-47ad-87cd-63a08b19b360': 'nop'
         },
         usuari_serveis_socials: {
