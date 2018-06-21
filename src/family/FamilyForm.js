@@ -39,7 +39,7 @@ const FamilyForm = (props: Props) => {
   return (
       <Grid container className='bg-container'>
         <Grid item xs={12}>
-          <Typography variant='headline' gutterBottom><Trans>Informació sobre la seva família</Trans></Typography>
+          <Typography variant='headline' className="titleContainer"><Trans>Informació sobre la seva família</Trans></Typography>
         </Grid>
         <Grid item xs={12}  className='bg-form-exterior bg-form'>
             <form name='FamilyForm'>
