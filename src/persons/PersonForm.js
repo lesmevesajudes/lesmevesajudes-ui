@@ -5,7 +5,7 @@ import {TextField} from 'redux-form-material-ui';
 import {Trans} from 'react-i18next';
 import {Field, formValueSelector, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
-import {Button, Grid, Icon, MenuItem} from '@material-ui/core';
+import {Button, Grid, MenuItem} from '@material-ui/core';
 import DescriptionText from '../components/Common/DescriptionText';
 import {RelacioParentiu} from './components/RelacioParentiu';
 import {SituacioLaboral} from './components/SituacioLaboral';
@@ -20,7 +20,6 @@ import Typography from '@material-ui/core/Typography';
 import MultipleAnswerQuestion from './components/MultipleAnswerQuestion';
 import FormSubTitle from './components/FormSubTitle';
 import Sticky from 'react-stickynode';
-import {styles} from '../styles/theme';
 import {currentFocussedFieldSelector} from "../shared/selectorUtils";
 
 export type PersonFormInitialValues = Person | { is_the_person_in_front_of_the_computer: boolean };
@@ -94,16 +93,16 @@ let PersonForm = (props: Props) => {
 
         <Grid item xs={12}>
           {isTheUserInFrontOfTheComputer ?
-              <Typography variant='headline' gutterBottom><Trans>Informació sobre vostè</Trans></Typography> :
-              <Typography variant='headline' gutterBottom><Trans>Dades sobre una persona que conviu amb
+              <Typography className="titleContainer" variant='headline'><Trans>Informació sobre vostè</Trans></Typography> :
+              <Typography className="titleContainer" variant='headline'><Trans>Dades sobre una persona que conviu amb
                 vostè</Trans></Typography>}
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12}  className='bg-form-exterior bg-form'>
             <form onSubmit={handleSubmit}>
               <Field component='input' name='id' type='hidden'/>
               <Field component='input' name='is_the_user_in_front_of_the_computer' type='hidden'/>
-              <Grid container direction='row' justify='space-around' alignItems='stretch'>
-                <Grid item xs={12} sm={5}>
+              <Grid container direction='row' justify='space-around' alignItems='stretch' spacing={16}>
+                <Grid item xs={12} sm={6}>
                   <Grid container direction='column' alignItems='stretch' spacing={16}>
                     <FormSubTitle><Trans>Informació personal</Trans></FormSubTitle>
                     <Question name='nom' placeholder='Nom' component={TextField} autoFocus>
@@ -255,19 +254,20 @@ let PersonForm = (props: Props) => {
                   </Grid>
                 </Grid>
                 <Grid item xs={5} sm={5}>
-                        <Sticky enabled={true} top={50}>
+                        <Sticky enabled={true} top={10} bottomBoundary='#stop'>
                             <DescriptionText currentField={currentField}/>
                         </Sticky>
                 </Grid>
               </Grid>
+              <div id="stop"></div>
               <Grid item sm={12} className="margin-buttons">
                 <Grid container justify='space-around'>
                   {(isTheUserInFrontOfTheComputer !== true || updating === true) &&
-                  <Button variant='raised' color='secondary' onClick={props.onCancel}>
-                    <Icon className={styles.leftIcon} >clear</Icon><Trans>Cancelar</Trans> 
+                  <Button variant='contained' color='secondary' onClick={props.onCancel}>
+                    <Trans>Cancelar</Trans> 
                   </Button>}
                   <Button variant='raised' color='primary' type='submit' name='ButtonValidar'>
-                    <Trans>Validar</Trans><Icon>done</Icon>
+                    <Trans>Validar</Trans>
                   </Button>
                 </Grid>
               </Grid>

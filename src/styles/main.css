@@ -2,9 +2,20 @@
 .App-intro {
     font-size: large;
 }
+body {
+  background: #fbfbfb !important;
+  font-family: 'Source Sans Pro', sans-serif
+}
+.stepperContainer{
+  background: #fbfbfb !important;
+}
 .Main {
-    max-width: 960px;
+    max-width: 1140px;
     margin: 0 auto;
+}
+.titleContainer{
+  float:left;
+  margin-left: 90px !important;
 }
 .FormContainer {
     margin-left: auto;
@@ -65,13 +76,21 @@ button {
 
 .bg-container {
   background: #f2f2f2;
-  border: #dbdbdb 1px solid;
   border-radius: 4px;
   min-height: 180px;
-  max-width: 960px;
+  max-width: 1140px;
   margin: 30px auto;
   padding: 20px;
 }
+.bg-form-exterior {
+  margin-left: 90px !important;
+  margin-right: 90px !important;
+}
+.bg-form {
+  background:#fff;
+  padding: 20px;
+}
+
 
 
 .border-family {
@@ -116,8 +135,7 @@ input.cercabcn {
 .buttons-container {
   border-radius: 4px;
   min-height: 180px;
-  max-width: 970px;
-  padding-left: 8px;
+  max-width: 1140px;
   margin: 0px auto;
 
 }
@@ -145,4 +163,7 @@ input.cercabcn {
   border: rgb(170, 82, 148)1px solid;
 }
 .iconStep {
+}
+.addPersonContainer {
+  margin-left:75px !important
 }

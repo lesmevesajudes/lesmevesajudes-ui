@@ -38,14 +38,15 @@ const FamilyForm = (props: Props) => {
   return (
       <Grid container className='bg-container'>
         <Grid item xs={12}>
-          <Typography variant='headline' gutterBottom><Trans>Informació sobre la seva família</Trans></Typography>
+          <Typography variant='headline' className="titleContainer"><Trans>Informació sobre la seva família</Trans></Typography>
         </Grid>
-        <Grid container direction='row' justify='space-around' alignItems='stretch'>
-          <Grid item xs={12} sm={6}>
+        <Grid item xs={12}  className='bg-form-exterior bg-form'>
             <form name='FamilyForm'>
-              <Grid container direction='column' alignItems='stretch' spacing={16}>
+              <Grid container direction='row' justify='space-around' alignItems='stretch' spacing={16}>
+              <Grid item xs={12} sm={6}>
+                <Grid container direction='column' alignItems='stretch' spacing={16}>
                 {fills.valueSeq().map((infant: Person) =>
-                    <Grid item key={infant.id}>
+                    <Grid item xs={12} key={infant.id}>
 
                       <label>
                         <Typography gutterBottom><Trans>Qui té la guarda i custòdia o tutela legal de: </Trans><b>{infant.nom}</b>
@@ -96,16 +97,17 @@ const FamilyForm = (props: Props) => {
                       </YesNoQuestion>
                     </Fragment>
                 )}
-
+                </Grid>
+              </Grid>
+              <Grid item xs sm={5}>
+                  <Sticky enabled={true} top={10} bottomBoundary='.bg-container'>
+                    <DescriptionText currentField={currentField}/>
+                  </Sticky>
+              </Grid>
               </Grid>
             </form>
-          </Grid>
-          <Grid item xs sm={5}>
-            <Sticky enabled={true} top={50}>
-              <DescriptionText currentField={currentField}/>
-            </Sticky>
-          </Grid>
         </Grid>
+
       </Grid>
   );
 };
