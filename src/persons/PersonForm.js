@@ -93,8 +93,8 @@ let PersonForm = (props: Props) => {
 
         <Grid item xs={12}>
           {isTheUserInFrontOfTheComputer ?
-              <Typography variant='headline'><Trans>Informació sobre vostè</Trans></Typography> :
-              <Typography variant='headline'><Trans>Dades sobre una persona que conviu amb
+              <Typography className="titleContainer" variant='headline'><Trans>Informació sobre vostè</Trans></Typography> :
+              <Typography className="titleContainer" variant='headline'><Trans>Dades sobre una persona que conviu amb
                 vostè</Trans></Typography>}
         </Grid>
         <Grid item xs={12}  className='bg-form-exterior bg-form'>

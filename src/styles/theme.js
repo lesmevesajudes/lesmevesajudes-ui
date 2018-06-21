@@ -1,7 +1,7 @@
 import {createMuiTheme } from '@material-ui/core/styles';
 
 export const colors = {
-  primary: '#e23787',
+  primary: '#d50283',
   primary_dark: '#be3175',
   primary_light: '#D4317C',
   secondary: '#004A8E',
@@ -84,6 +84,18 @@ export default createMuiTheme({
       completed: {
         fontWeight: '600 !important',
         color: colors.secondary + ' !important'
+      }
+    },
+    MuiPaper: {
+      elevation2: {
+        boxShadow: "none",
+        borderRadius: '4px'
+      }
+    },
+    MuiList: {
+      padding: {
+        paddingTop: '0px',
+        paddingBottom: '0px'
       }
     },
     MuiTypography: {
