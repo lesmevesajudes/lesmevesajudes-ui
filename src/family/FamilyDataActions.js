@@ -8,7 +8,8 @@ type AddFamilyDataAction = {
 
 export type FamilyDataActions = AddFamilyDataAction;
 
-export function addFamilyData(
+export function
+addFamilyData(
     familyData: FamilyData
 ): AddFamilyDataAction {
   return {

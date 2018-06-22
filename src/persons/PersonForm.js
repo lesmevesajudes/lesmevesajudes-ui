@@ -259,7 +259,7 @@ let PersonForm = (props: Props) => {
                         </Sticky>
                 </Grid>
               </Grid>
-              <div id="stop"></div>
+              <div id="stop"/>
               <Grid item sm={12} className="margin-buttons">
                 <Grid container justify='space-around'>
                   {(isTheUserInFrontOfTheComputer !== true || updating === true) &&

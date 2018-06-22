@@ -15,16 +15,19 @@ import styles from '../../styles/theme';
 
 type Props = {
   classes: Object,
-  steps: Array,
+  steps: Array<any>,
   nextStep: Function,
-  backStep: Function
+  backStep: Function,
+  currentStep: number,
+  buttonEnabled: boolean,
+  buttonVisible: boolean
 }
 
 const chooseIcon = (props,icon) => {
   switch(icon){
     case 'Persons':
     if(props.currentStep > 0){return <FaceIcon className={props.classes.completed}/>}
-      return <FaceIcon/>
+      return <FaceIcon/>;
     case 'Family':
       if(props.currentStep > 1){return <PermContactCalendarIcon className={props.classes.completed}/>}
       return <PermContactCalendarIcon/>;
@@ -37,7 +40,7 @@ const chooseIcon = (props,icon) => {
     default: 
       break;
   }
-}
+};
 
 let StepsComponent = (props: Props) => {
   const {classes, steps, currentStep, buttonEnabled, buttonVisible, backStep, nextStep} = props;

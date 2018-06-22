@@ -5,7 +5,7 @@ import type {FamilyDataActions} from './FamilyDataActions';
 type FamilyDataState = FamilyData | {};
 
 export default function (
-    state: FamilyDataState = {},
+    state: FamilyDataState = {custodies: {}},
     action: FamilyDataActions
 ): FamilyDataState {
   switch (action.type) {

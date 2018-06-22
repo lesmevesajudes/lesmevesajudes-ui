@@ -1,5 +1,4 @@
-import type {Person, PersonID} from "../persons/PersonTypes";
-import {serialize} from "../persons/PersonsReducer";
+import type {PersonID} from "../persons/PersonTypes";
 
 type Custodia = {
   primer: string,
@@ -14,11 +13,7 @@ const isCustodyFilled = (menorID: PersonID, custodies) => typeof custodies[menor
 
 const personesAmbCustodiaConvivents = (menorID: PersonID, custodies) => [custodies[menorID].primer, custodies[menorID].segon].filter((sustentadorID) => sustentadorID !== 'ningu_mes' && sustentadorID !== 'no_conviu').sort();
 
-const findPersonsWithRole = (role: string, persons: Array<Person>, excludedPersonID: PersonID) => {
-  persons.filter(person => person.role === role).filter(person => person.id !== excludedPersonID)
-};
-
-const buildFamiliesFromCustodies = (custodies: { [string]: Custodia }, persones: Array<Person>): Object =>
+export const detectaFamilies = (custodies: { [string]: Custodia }): Object =>
     Object.keys(custodies).reduce(
         (families: Object, menorID: string) => {
           const sustentadors = personesAmbCustodiaConvivents(menorID, custodies);
@@ -38,9 +33,3 @@ const buildFamiliesFromCustodies = (custodies: { [string]: Custodia }, persones:
           }
           return families;
         }, {});
-
-export const detectaFamilies = (custodies: { [string]: Custodia }, persones: Map<PersonID, Person>): Object => {
-  return buildFamiliesFromCustodies(custodies, serialize(persones));
-};
-
-

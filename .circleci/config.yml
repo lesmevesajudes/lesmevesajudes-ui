@@ -32,6 +32,6 @@ jobs:
       - run:
           name: Wait for server
           command: yarn wait-on http://localhost:3000 -t 10000
-      - run: yarn browser_tests --env chrome_headless -a ci
+      - run: yarn test
       - store_artifacts:
           path: ./reports/failure_screenshots/

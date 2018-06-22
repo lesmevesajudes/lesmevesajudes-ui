@@ -56,8 +56,8 @@ class PersonalBenefits extends React.Component<Props> {
         name: <Trans>Renda activa d'inserció per a víctimes de violència de gènere o domèstica</Trans>,
         periode: 'mes',
         url: '/ajuts/rai'
-      }
-      //{ID: 'GG_270_mensual', name: 'Renda Garantida Ciutadana', periode: 'mes', url:'/ajuts/rgc'}
+      },
+      {ID: 'GG_270_mensual', name: 'Renda Garantida Ciutadana', periode: 'mes', url: '/ajuts/rgc'}
     ];
     this.period = '2017-01';
   }
