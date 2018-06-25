@@ -1,7 +1,7 @@
 //@flow
 import React from 'react';
 import {connect} from 'react-redux';
-import {backStep, nextStep} from './StepsActions'
+import {backStep, nextStep,setActualStep} from './StepsActions'
 import {withStyles} from '@material-ui/core/styles';
 import {Grid, Step, StepButton, Stepper} from '@material-ui/core';
 import StepperButtons from './StepperButtons';
@@ -18,6 +18,7 @@ type Props = {
   steps: Array<any>,
   nextStep: Function,
   backStep: Function,
+  setActualStep: Function,
   currentStep: number,
   buttonEnabled: boolean,
   buttonVisible: boolean
@@ -43,17 +44,17 @@ const chooseIcon = (props,icon) => {
 };
 
 let StepsComponent = (props: Props) => {
-  const {classes, steps, currentStep, buttonEnabled, buttonVisible, backStep, nextStep} = props;
+  const {classes, steps, currentStep,setActualStep, buttonEnabled, buttonVisible, backStep, nextStep} = props;
   const childComponent = steps[currentStep].component;
   return (
       <div className={classes.root}>
         <Stepper activeStep={currentStep} alternativeLabel className='stepperContainer'>
-          {steps.map((step) => {
+          {steps.map((step,index) => {
             const labelProps = step.optional ? {
               optional: <Typography variant='caption'><Trans>Opcional</Trans></Typography>
             } : {};
             return <Step key={step}>
-              <StepButton {...labelProps} icon={chooseIcon(props, step.icon)}>{step.label}</StepButton>
+              <StepButton {...labelProps} onClick={()=> setActualStep(index)} icon={chooseIcon(props, step.icon)}>{step.label}</StepButton>
                    </Step>
           })
           }
@@ -72,14 +73,12 @@ let StepsComponent = (props: Props) => {
       </div>
   );
 };
-
 const mapStateToProps = (state) => {
   return {
     currentStep: state.step.current_step,
     buttonEnabled: state.step.button_enabled,
-    buttonVisible: state.step.button_visible
-
+    buttonVisible: state.step.button_visible,
   }
 };
 
-export default connect(mapStateToProps, {nextStep, backStep})(withStyles(styles)(StepsComponent));
+export default connect(mapStateToProps,{backStep,nextStep, setActualStep})(withStyles(styles)(StepsComponent));

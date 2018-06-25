@@ -163,8 +163,38 @@ input.cercabcn {
   background: rgb(194, 98, 170);
   border: rgb(170, 82, 148)1px solid;
 }
-.iconStep {
+.boxDescriptionText {
+  box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.15);
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 14px !important;
 }
 .addPersonContainer {
   margin-left:75px !important
+}
+@media only screen and (max-width: 600px) {
+  .titleContainer{
+    float:left;
+    margin-left: 0px !important;
+  }
+  .bg-form-exterior {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+  }
+  .addPersonContainer {
+    margin-left: 0px !important;
+  }
+}
+@media only screen and (max-width: 1140px) {
+  .titleContainer{
+    float:left;
+    margin-left: 0px !important;
+  }
+  .bg-form-exterior {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+  }
+  .addPersonContainer {
+    margin-left: 0px !important;
+  }
 }

@@ -3,7 +3,7 @@ import Link from 'react-router-dom/Link';
 import {Map} from 'immutable';
 import type {PersonID} from '../persons/PersonTypes';
 import {Person} from '../persons/PersonTypes';
-import {Grid} from '@material-ui/core';
+import {Button, Grid} from '@material-ui/core';
 import {Trans} from "react-i18next";
 
 type Props = {
@@ -84,24 +84,20 @@ class PersonalBenefits extends React.Component<Props> {
             <Grid item sm={12}>
               <li className='ItemResult' key={benefit.ID}>
                 <Grid container justify='center' alignItems='center' wrap='wrap'>
-                  <Grid id={benefit.ID} className='benefitText' item xs={12} sm={7}>
+                  <Grid id={benefit.ID} className='benefitText' item xs={12} sm={9}>
                     <p>{benefit.name}</p>
                   </Grid>
-                  <Grid item className='Separator' xs={6} sm={2}>
-                    Import:{' '}
-                    <span className='moneyText'>
-                    {personWithBenefits[benefit.ID][this.period]}
-                  </span>{' '}
-                    € / {benefit.periode}
-                  </Grid>
+
                   <Grid item className='Separator' xs={6} sm={3}>
                     <Link to={benefit.url}>
-                      <button
+                      <Button
+                          variant="contained"
+                          color="primary"
                           className='buttonMoreInfo'
                           key={benefit.ID}
                       >
                         Més informació
-                      </button>
+                      </Button>
                     </Link>
                   </Grid>
                 </Grid>
