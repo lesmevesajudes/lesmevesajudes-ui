@@ -163,7 +163,11 @@ input.cercabcn {
   background: rgb(194, 98, 170);
   border: rgb(170, 82, 148)1px solid;
 }
-.iconStep {
+.boxDescriptionText {
+  box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.15);
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 14px !important;
 }
 .addPersonContainer {
   margin-left:75px !important
