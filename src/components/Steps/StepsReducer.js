@@ -22,6 +22,11 @@ export default (state: StepsState = initial, action: StepsActions): StepsState =
         ...state,
         current_step: state.current_step - 1,
       };
+      case 'SET_ACTUAL_STEP':
+      return {
+        ...state,
+        current_step: action.index
+      };
     case 'BUTTONS_VISIBLE':
       return {
         ...state,

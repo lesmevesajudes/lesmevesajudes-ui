@@ -6,6 +6,7 @@ type ButtonsShowAction = { type: 'BUTTONS_VISIBLE' };
 type ButtonsDisabledAction = { type: 'BUTTONS_DISABLED' };
 type ButtonsEnabledAction = { type: 'BUTTONS_ENABLED' };
 type ButtonsHiddenAction = { type: 'BUTTONS_HIDDEN' };
+type SetActualStepAction = { type: 'SET_ACTUAL_STEP' };
 
 export type StepsActions =
     | ButtonsShowAction
@@ -13,7 +14,8 @@ export type StepsActions =
     | ButtonsDisabledAction
     | ButtonsEnabledAction
     | NextStepAction
-    | BackStepAction;
+    | BackStepAction
+    | SetActualStepAction;
 
 export function showButtons(): StepsActions {
   return {type: 'BUTTONS_VISIBLE'};
@@ -30,7 +32,9 @@ export function disableButtons(): StepsActions {
 export function enableButtons(): StepsActions {
   return {type: 'BUTTONS_ENABLED'};
 }
-
+export function setActualStep(index): StepsActions {
+  return {type: 'SET_ACTUAL_STEP', index};
+}
 export function nextStep(): StepsActions {
   return {type: 'NEXT_STEP'};
 }
