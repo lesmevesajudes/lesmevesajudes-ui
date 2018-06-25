@@ -69,6 +69,7 @@ class PersonsPage extends React.Component<Props, State> {
             ? addPerson({...formValues, id: UUID.create()})
             : updatePerson(formValues)
     );
+    window.scrollTo(0, 0);
     this.enableButtonsIfNeeded(this.props.persons.length + 1);
     this.doneEditingPerson();
   };
