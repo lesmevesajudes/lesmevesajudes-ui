@@ -120,10 +120,10 @@ let PersonForm = (props: Props) => {
 
                       <MultipleAnswerQuestion label={<Trans>Sexe</Trans>} name='sexe'>
                         <MenuItem data-test='sexe_dona' value='dona'>
-                          <Trans>Dona</Trans>
+                          <Trans>Femení</Trans>
                         </MenuItem>
                         <MenuItem data-test='sexe_home' value='home'>
-                          <Trans>Home</Trans>
+                          <Trans>Masculí</Trans>
                         </MenuItem>
                       </MultipleAnswerQuestion>
 
