@@ -112,8 +112,8 @@ const ResidenceForm = (props: Props) => {
                                             label={<Trans>Quant temps fa que {titularContracteLloguer.nom} està empadronat
                                               en aquest habitatge?</Trans>}>
                       <MenuItem value='no_empadronat'><Trans>No està empadronat</Trans></MenuItem>
-                      <MenuItem value='menys_9_mesos'><Trans>Menys de 9 mesos</Trans></MenuItem>
-                      <MenuItem value='9_mesos_o_mes' data-test='llogater'><Trans>9 mesos o més</Trans></MenuItem>
+                      <MenuItem value='menys_nou_mesos'><Trans>Menys de 9 mesos</Trans></MenuItem>
+                      <MenuItem value='nou_mesos_o_mes' data-test='llogater'><Trans>9 mesos o més</Trans></MenuItem>
                     </MultipleAnswerQuestion>}
 
                     {existeixHipoteca && typeof titularContracteHipoteca !== 'undefined' && titularContracteHipoteca !== 'no-conviu' &&
@@ -121,8 +121,8 @@ const ResidenceForm = (props: Props) => {
                                             label={<Trans>Quant temps fa que {titularContracteHipoteca.nom} està empadronat
                                               en aquest habitatge?</Trans>}>
                       <MenuItem value='no_empadronat'><Trans>No està empadronat</Trans></MenuItem>
-                      <MenuItem value='menys_9_mesos'><Trans>Menys de 9 mesos</Trans></MenuItem>
-                      <MenuItem value='9_mesos_o_mes' data-test='llogater'><Trans>9 mesos o més</Trans></MenuItem>
+                      <MenuItem value='menys_nou_mesos'><Trans>Menys de 9 mesos</Trans></MenuItem>
+                      <MenuItem value='nou_mesos_o_mes' data-test='llogater'><Trans>9 mesos o més</Trans></MenuItem>
                     </MultipleAnswerQuestion>}
 
                     {esLlogater &&

@@ -51,9 +51,33 @@ const buildOpenFiscaFamiliesFromCustodies = (custodies, simulationData) => {
 const createAFamilyWithAllPersons = (simulationData) => {
   const id = uuid();
   let result = {};
-  console.log("pasa");
   result[id] = {
     altres_persones: seleccionaElsAltresMembresDeLaUnitatDeConvivenciaQueNoSiguinDeLaFamilia([], serialize(simulationData.persons))
+  };
+  return result;
+};
+
+const residenceDataToAPI = (residenceData: ResidenceData) => ({
+  codi_postal_habitatge: currentMonth(residenceData.codi_postal_habitatge),
+  existeix_deute_en_el_pagament_del_lloguer: currentMonth(residenceData.existeix_deute_en_el_pagament_del_lloguer),
+  existeix_deute_en_el_pagament_de_la_hipoteca: currentMonth(residenceData.existeix_deute_en_el_pagament_de_la_hipoteca),
+  fa_mes_de_12_mesos_que_existeix_el_deute_de_hipoteca: currentMonth(residenceData.fa_mes_de_12_mesos_que_existeix_el_deute_de_hipoteca),
+  ha_pagat_almenys_3_quotes_del_lloguer: currentMonth(residenceData.ha_pagat_almenys_3_quotes_del_lloguer),
+  ha_perdut_lhabitatge_en_els_ultims_2_anys: currentMonth(residenceData.ha_perdut_lhabitatge_en_els_ultims_2_anys),
+  ha_pagat_12_mesos_daquesta_hipoteca: currentMonth(residenceData.ha_pagat_12_mesos_daquesta_hipoteca),
+  ha_participat_en_un_proces_de_mediacio: currentMonth(residenceData.ha_participat_en_un_proces_de_mediacio),
+  import_del_lloguer: currentMonth(residenceData.import_del_lloguer),
+  import_de_la_hipoteca: currentMonth(residenceData.import_de_la_hipoteca),
+  relacio_de_parentiu_amb_el_propietari: currentMonth(residenceData.relacio_de_parentiu_amb_el_propietari),
+  tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit: currentMonth(residenceData.tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit),
+});
+
+const createUnitatDeConvivencia = (simulationData) => {
+  const id = uuid();
+  let result = {};
+  result[id] = {
+    persones_que_conviuen: seleccionaElsAltresMembresDeLaUnitatDeConvivenciaQueNoSiguinDeLaFamilia([], serialize(simulationData.persons)),
+    ...residenceDataToAPI(simulationData.residence)
   };
   return result;
 };
@@ -106,15 +130,23 @@ export const buildRequest = (simulationData: SimulationData) => {
 
   if (typeof simulationData.residence.titular_contracte_de_lloguer_id === 'string' && typeof personalData[simulationData.residence.titular_contracte_de_lloguer_id] === 'object') {
     personalData[simulationData.residence.titular_contracte_de_lloguer_id].titular_contracte_de_lloguer = currentMonth(true);
+    personalData[simulationData.residence.titular_contracte_de_lloguer_id].temps_empadronat_habitatge_actual = currentMonth(simulationData.residence.titular_contracte_lloguer_temps_empadronat);
+  }
+
+  if (typeof simulationData.residence.titular_hipoteca_id === 'string' && typeof personalData[simulationData.residence.titular_hipoteca_id] === 'object') {
+    personalData[simulationData.residence.titular_hipoteca_id].titular_hipoteca = currentMonth(true);
+    personalData[simulationData.residence.titular_hipoteca_id].temps_empadronat_habitatge_actual = currentMonth(simulationData.residence.titular_hipoteca_temps_empadronat);
+
   }
 
   const families = isEmptyMap(simulationData.family.custodies)
       ? createAFamilyWithAllPersons(simulationData)
       : buildOpenFiscaFamiliesFromCustodies(simulationData.family.custodies, simulationData);
-
+  const unitatsDeConvivencia = createUnitatDeConvivencia(simulationData);
   return {
     families: families,
-    persones: {...personalData}
+    persones: {...personalData},
+    unitats_de_convivencia: unitatsDeConvivencia
   };
 };
 
