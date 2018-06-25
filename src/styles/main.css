@@ -181,3 +181,16 @@ input.cercabcn {
     margin-left: 0px !important;
   }
 }
+@media only screen and (max-width: 1140px) {
+  .titleContainer{
+    float:left;
+    margin-left: 0px !important;
+  }
+  .bg-form-exterior {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+  }
+  .addPersonContainer {
+    margin-left: 0px !important;
+  }
+}
