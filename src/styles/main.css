@@ -172,7 +172,9 @@ input.cercabcn {
 .addPersonContainer {
   margin-left:75px !important
 }
-
+.buttonTheme {
+  height: 40px;
+}
 @media only screen and (max-width: 1140px) {
   .titleContainer{
     float:left;

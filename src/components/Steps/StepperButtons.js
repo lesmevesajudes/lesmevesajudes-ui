@@ -30,7 +30,7 @@ let StepperButtons = (props: Props) => {
                   color="primary" variant="contained"
                   onClick={props.nextAction}
                   disabled={!props.buttonEnabled}>
-            {props.nextIsResults ? <Trans>Veure resultats</Trans> : <Trans >Següent <Icon className={props.classes.leftIcon}>keyboard_arrow_right</Icon></Trans>}
+            {props.nextIsResults ? <Trans >Veure resultats</Trans> : <Trans >Següent <Icon className={props.classes.leftIcon}>keyboard_arrow_right</Icon></Trans>}
           </Button>}
         </Grid>
       </Grid>
