@@ -286,5 +286,8 @@
   "Femení": "Femení",
   "Masculí": "Masculí",
   "Grau discapacitat, expressat en percentatge": "Grau discapacitat, expressat en percentatge",
-  "Cessió d'ús": "Cessió d'ús"
+  "Cessió d'ús": "Cessió d'ús",
+  "<0>Nom</0>Aquesta dada es farà servir només perquè l'aplicació es pugui referir a la persona. No ha de permetre'n la identificació": "<0>Nom</0>Aquesta dada es farà servir només perquè l'aplicació es pugui referir a la persona. No ha de permetre'n la identificació",
+  "CONEGUI LES SEVES AJUDES": "CONEGUI LES SEVES AJUDES",
+  "Aquesta eina us permetrà consultar a quins ajuts i prestacions socials podeu arribar a optar. Heu de declarar, sota la vostra responsabilitat, que les respostes són certes.Podreu trobar-hi ajudes gestionades per l’Ajuntament, la Generalitat i l’Estat.<1></1> El simulador, que es troba en fase inicial, anirà incorporant ajuts nous. <3></3>Aquest assistent no tramita la sol·licitud.": "Aquesta eina us permetrà consultar a quins ajuts i prestacions socials podeu arribar a optar. Heu de declarar, sota la vostra responsabilitat, que les respostes són certes.Podreu trobar-hi ajudes gestionades per l’Ajuntament, la Generalitat i l’Estat.<1></1> El simulador, que es troba en fase inicial, anirà incorporant ajuts nous. <3></3>Aquest assistent no tramita la sol·licitud."
 }
