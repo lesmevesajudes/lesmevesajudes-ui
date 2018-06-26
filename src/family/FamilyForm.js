@@ -85,15 +85,15 @@ const FamilyForm = (props: Props) => {
                 {families.length > 0 &&
                 families.map((familia) =>
                     <Fragment key={familia.ID}>
-                      <FormSubTitle><Trans>Família de </Trans> {createFamilyName(familia, persones)} </FormSubTitle>
+                      <FormSubTitle><Trans>Família de: </Trans> {createFamilyName(familia, persones)} </FormSubTitle>
                       {familia.monoparental &&
                       <YesNoQuestion name={'disposa_de_carnet_familia_monoparental.' + familia.ID}>
-                        <Trans>Disposa del carnet de familia monoparental:</Trans>
+                        <Trans>Té el carnet de família monoparental?</Trans>
                       </YesNoQuestion>}
 
                       <YesNoQuestion name={'usuari_serveis_socials.' + familia.ID}>
-                        <Trans>És família usuaria de serveis socials en seguiment a un CSS o servei especialitzat de
-                          l'Ajuntament de Barcelona</Trans>
+                        <Trans>Aquesta família és usuària de serveis socials en seguiment a un CSS o servei especialitzat de
+                          l'Ajuntament de Barcelona des d'abans del 31/12/2017?</Trans>
                       </YesNoQuestion>
                     </Fragment>
                 )}

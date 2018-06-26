@@ -130,6 +130,9 @@ const HelpTextMap = {
     familiar reagrupada.
     Cal documentació acreditativa per la seva sol.licitud i la seva obtenció.
   </Trans>,
+  "relacio_habitatge": <Trans><title>CESSIÓ D’ÚS</title>
+    És un contracte pel qual se cedeix l’ús d’un habitatge per un temps determinat a canvi del pagament d’un preu
+    equiparable a un lloguer tou.</Trans>,
   "relacio_parentiu": <Trans><title>Relacions familiars</title>
     <b>INFANT EN ACOLLIMENT</b>
     <p>L'acolliment familiar d'un infant comporta confiar temporalment la guarda d'una persona menor a una família o
@@ -183,6 +186,10 @@ const HelpTextMap = {
     afectar els drets hereditaris de les persones descendents, que amb el temps acabaran adquirint la seva herència.
 
   </Trans>,
+  "titular_contracte_de_lloguer_id": <Trans>En cas que hi hagi més d'un titular escolliu-ne només un, prefentment aquell
+    que visqui a l'habitatge.</Trans>,
+  "titular_hipoteca_id": <Trans>En cas que hi hagi més d'un titular escolliu-ne només un, prefentment aquell
+    que visqui a l'habitatge.</Trans>,
   "victima_violencia_de_genere": <Trans><Title>VÍCTIMA DE VIOLÈNCIA DE GÈNERE O DOMÈSTICA</Title>
     Es considera víctima de violència de gènere la dona que és o ha estat objecte d'actes de violència física o
     psicològica, agressions a la llibertat sexual, amenaces, coacció o privació de llibertat exercida pel seu cònjuge,
