@@ -135,7 +135,8 @@ export default createMuiTheme({
       },
       error: {
         '&::after':{
-          border: '1px solid red'
+          border: '1px solid red',
+          backgroundColor: 'red'
         }
       }
     },

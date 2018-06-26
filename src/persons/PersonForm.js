@@ -97,7 +97,7 @@ let PersonForm = (props: Props) => {
               <Typography className="titleContainer" variant='headline'><Trans>Dades sobre una persona que conviu amb
                 vostè</Trans></Typography>}
         </Grid>
-        <Grid item xs={12}  className='bg-form-exterior bg-form'>
+        <Grid item xs={12} className='bg-form-exterior bg-form'>
             <form onSubmit={handleSubmit}>
               <Field component='input' name='id' type='hidden'/>
               <Field component='input' name='is_the_user_in_front_of_the_computer' type='hidden'/>

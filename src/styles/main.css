@@ -172,7 +172,8 @@ input.cercabcn {
 .addPersonContainer {
   margin-left:75px !important
 }
-@media only screen and (max-width: 600px) {
+
+@media only screen and (max-width: 1140px) {
   .titleContainer{
     float:left;
     margin-left: 0px !important;
@@ -185,10 +186,10 @@ input.cercabcn {
     margin-left: 0px !important;
   }
 }
-@media only screen and (max-width: 1140px) {
+@media only screen and (max-width: 600px) {
   .titleContainer{
     float:left;
-    margin-left: 0px !important;
+    margin-left: 16px !important;
   }
   .bg-form-exterior {
     margin-left: 0px !important;
@@ -196,5 +197,10 @@ input.cercabcn {
   }
   .addPersonContainer {
     margin-left: 0px !important;
+  }
+  .bg-container {
+    background: none;
+    margin: 0px auto;
+    padding: 0px;
   }
 }

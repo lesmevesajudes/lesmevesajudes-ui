@@ -28,27 +28,25 @@ let HowManyPersonsLiveTogetherPage = props => {
   return (
       <Grid container className='bg-container' justify='center'>
         <Grid item>
+          <Typography variant='headline' gutterBottom>
+            <Trans>Quantes persones viuen en el seu domicili? (amb vostè inclòs)</Trans>
+          </Typography>
+        </Grid>
+        <Grid item xs={12} className='bg-form-exterior bg-form'>
           <form onSubmit={handleSubmit}>
-            <Grid container direction='column' alignItems='center' justify='center' spacing={16}>
-
-              <Grid item>
-                <Typography variant='headline' gutterBottom>
-                  <Trans>Quantes persones viuen en el seu domicili? (amb vostè inclòs)</Trans>
-                </Typography>
-              </Grid>
-              <Grid item>
-                <Field name='how_many_persons_live_together' placeholder='0' type='number'
-                       component={TextField} normalize={allowOnlyPositive} autoFocus/>
-              </Grid>
-
-              <Grid item>
-                <Button variant="contained" color='primary' type='submit' name='ButtonValidar'>
-                  <Trans>Validar</Trans>
-                </Button>
+            <Grid container justify='center' alignItems='center' spacing={16}>
+              <Field name='how_many_persons_live_together' placeholder='0' type='number'
+                        component={TextField} normalize={allowOnlyPositive} autoFocus/>
+              <Grid item sm={12}>
+                <Grid container className="margin-buttons" alignItems='flex-start' justify='center'>
+                  <Button variant="contained" color='primary' type='submit' name='ButtonValidar'>
+                        <Trans>Validar</Trans>
+                  </Button>
+                </Grid>
               </Grid>
             </Grid>
-          </form>
-        </Grid>
+            </form>
+          </Grid>
       </Grid>
   );
 };
