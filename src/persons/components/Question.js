@@ -15,7 +15,7 @@ export const Question = (props: Props) =>
         <Typography gutterBottom>
           {props.children}
           {isHelpAvailable(props.name) &&
-          <Hidden smUp> <HelpIcon name={props.name}/> </Hidden>
+          <HelpIcon name={props.name}/>
           }
         </Typography>
       </label>

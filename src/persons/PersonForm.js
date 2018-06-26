@@ -94,7 +94,7 @@ let PersonForm = (props: Props) => {
         <Grid item xs={12}>
           {isTheUserInFrontOfTheComputer ?
               <Typography className="titleContainer" variant='headline'><Trans>Informació sobre vostè</Trans></Typography> :
-              <Typography className="titleContainer" variant='headline'><Trans>Dades sobre una persona que conviu amb
+              <Typography className="titleContainer" variant='headline'><Trans>Informació sobre una persona que conviu amb
                 vostè</Trans></Typography>}
         </Grid>
         <Grid item xs={12}  className='bg-form-exterior bg-form'>
@@ -107,7 +107,7 @@ let PersonForm = (props: Props) => {
                     <FormSubTitle><Trans>Informació personal</Trans></FormSubTitle>
                     <Question name='nom' placeholder='Nom' component={TextField} autoFocus>
                       {isTheUserInFrontOfTheComputer ? <Trans>Identifiqui's amb un nom</Trans> :
-                          <Trans>Identifiqui'l amb un nom</Trans>}
+                          <Trans>Identifiqui aquesta persona amb un nom</Trans>}
                     </Question>
 
                     {!isTheUserInFrontOfTheComputer && <RelacioParentiu/>}
@@ -190,7 +190,11 @@ let PersonForm = (props: Props) => {
 
                     <FormSubTitle>Ingressos</FormSubTitle>
                     <MoneyQuestion name='ingressos_bruts' required>
-                      <Trans>Indiqui els seus ingressos anuals de l’any passat</Trans>
+                      {isTheUserInFrontOfTheComputer
+                        ?<Trans>Indiqui els seus ingressos anuals de l’any passat</Trans>
+                        :<Trans>Indiqui els ingressos anuals de l’any passat d'aquesta persona</Trans>
+                      }
+
                     </MoneyQuestion>
 
                     {esFamiliarOUsuari &&
@@ -225,7 +229,7 @@ let PersonForm = (props: Props) => {
 
                       {teAlgunGrauDeDiscapacitatReconegut &&
                       <PercentageQuestion name='grau_discapacitat'>
-                        <Trans>Indiqui quin és el seu grau de discapacitat, expressat en percentatge</Trans>
+                        <Trans>Indiqui quin és el grau de discapacitat, expressat en percentatge</Trans>
                       </PercentageQuestion>}
 
                       {potTreballar && esDona &&
@@ -239,7 +243,7 @@ let PersonForm = (props: Props) => {
 
                     {(edat > 2 && edat < 16) &&
                     <YesNoQuestion name='es_escolaritzat_entre_P3_i_4rt_ESO'>
-                      <Trans>Escolaritzat entre P3 i 4rt ESO a la ciutat de Barcelona?</Trans>
+                      <Trans>Escolaritzat/ada entre P3 i 4rt ESO a la ciutat de Barcelona?</Trans>
                     </YesNoQuestion>}
 
                       {(edat > 18 && edat < 23) && !(esFill || esFillastre) &&
