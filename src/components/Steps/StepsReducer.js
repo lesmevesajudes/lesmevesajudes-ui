@@ -1,5 +1,5 @@
 // @flow
-import type {StepsActions} from './StepsActions';
+import type {StepAction} from './StepsActions';
 import type {StepsState} from './StepsTypes';
 
 
@@ -9,7 +9,7 @@ const initial: StepsState = {
   button_visible: false
 };
 
-export default (state: StepsState = initial, action: StepsActions): StepsState => {
+export default (state: StepsState = initial, action: StepAction): StepsState => {
   switch (action.type) {
     case 'NEXT_STEP': {
       return {
