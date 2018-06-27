@@ -7,7 +7,7 @@ import {Field} from 'redux-form/';
 import {reduxForm} from 'redux-form';
 import {allowOnlyPositive} from '../components/Common/NormalizeCommon';
 import Typography from '@material-ui/core/Typography';
-
+import {IconFont} from '../components/IconFont/IconFont'
 const validate = values => {
   const errors = {};
   const requiredFields = [
@@ -27,9 +27,11 @@ let HowManyPersonsLiveTogetherPage = props => {
   const {handleSubmit} = props;
   return (
       <Grid container className='bg-container' justify='center'>
-        <Grid item>
-          <Typography variant='headline' gutterBottom>
-            <Trans>Quantes persones viuen en el seu domicili? (amb vostè inclòs)</Trans>
+        <Grid item xs={12} sm={12} className="titleContainer">
+
+          <Typography variant='headline' className="titlePage" variant='headline'>
+          <IconFont icon={""} fontSize={36}/>
+          <Trans>Quantes persones viuen en el seu domicili? (amb vostè inclòs)</Trans>
           </Typography>
         </Grid>
         <Grid item xs={12} className='bg-form-exterior bg-form'>

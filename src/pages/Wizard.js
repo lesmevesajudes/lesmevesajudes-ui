@@ -20,7 +20,8 @@ const steps = [
     label: <Trans>Persones que conviuen</Trans>,
     optional: false,
     component: <PersonsPage/>,
-    icon: FaceIcon
+    icon: FaceIcon,
+    
   },
   {
     label: <Trans>Families amb menors</Trans>,

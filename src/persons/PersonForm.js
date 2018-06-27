@@ -21,6 +21,7 @@ import MultipleAnswerQuestion from './components/MultipleAnswerQuestion';
 import FormSubTitle from './components/FormSubTitle';
 import Sticky from 'react-stickynode';
 import {currentFocussedFieldSelector} from "../shared/selectorUtils";
+import {IconFont} from '../components/IconFont/IconFont'
 
 export type PersonFormInitialValues = Person | { is_the_person_in_front_of_the_computer: boolean };
 
@@ -91,11 +92,13 @@ let PersonForm = (props: Props) => {
   return (
       <Grid container className='bg-container'>
 
-        <Grid item xs={12}>
+        <Grid item xs={12} sm={12} className="titleContainer">
           {isTheUserInFrontOfTheComputer ?
-              <Typography className="titleContainer" variant='headline'><Trans>Informació sobre vostè</Trans></Typography> :
-              <Typography className="titleContainer" variant='headline'><Trans>Dades sobre una persona que conviu amb
-                vostè</Trans></Typography>}
+              <Typography variant='headline' className="titlePage" variant='headline'><IconFont icon={""} fontSize={36}/><Trans>Informació sobre vostè</Trans></Typography> :
+              <Typography variant='headline' className="titlePage" variant='headline'>
+                <IconFont icon={""} fontSize={36}/>
+                <Trans>Dades sobre una persona que conviu ambvostè</Trans>
+              </Typography>}
         </Grid>
         <Grid item xs={12} className='bg-form-exterior bg-form'>
             <form onSubmit={handleSubmit}>
