@@ -29,13 +29,13 @@ export default (state: StepsState = initial, action: StepAction): StepsState => 
           ...state,
           current_step: action.index,
         };
-      }else {
+      } else {
         return {
           ...state,
           current_step: action.index,
           max_step_reached: action.index
         };
-      };
+      }
     case 'BUTTONS_VISIBLE':
       return {
         ...state,
