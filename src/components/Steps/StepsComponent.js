@@ -8,6 +8,7 @@ import StepperButtons from './StepperButtons';
 import Typography from '@material-ui/core/Typography';
 import {Trans} from 'react-i18next';
 import {styles} from '../../styles/theme';
+import {IconFont} from '../IconFont/IconFont';
 
 type Props = {
   classes: Object,
@@ -21,15 +22,14 @@ type Props = {
 }
 
 const chooseIcon = (props, index) => {
-  const Component = props.steps[index].icon;
-  let classes = '';
+  const iconStep = props.steps[index].icon;
+  let active = false;
   if (props.currentStep === index) {
-    classes = props.classes.actualStep
-  } else if (props.currentStep > index) {
-    classes = props.classes.completedStep
+    active = true;
   }
-  return <Component className={classes}/>
+  return <IconFont icon={iconStep} active={active} sizeSphere={"32px"} fontSize={"18px"}/>
 };
+
 let StepsComponent = (props: Props) => {
   const {classes, steps, currentStep,setActualStep, buttonEnabled, buttonVisible, backStep, nextStep} = props;
   const childComponent = steps[currentStep].component;

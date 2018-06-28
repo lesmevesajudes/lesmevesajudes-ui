@@ -14,19 +14,11 @@ body {
   font-family: 'Ajuntament';
 }
 .iconTitle {
-  font-size: 36px;
-  float: left;
-  padding-left: 14px;
-  text-align: center;
-  line-height: 64px;
+  text-align: center !important;
   color: #fff;
 }
 .iconTitle-container {
-  background: #00ACD4;
-  float: left;    
-  height:64px;
-  margin-right: 10px;
-  width: 64px;
+  float: left; 
   border-radius: 100%;
 }
 .titleContainer {

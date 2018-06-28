@@ -29,8 +29,8 @@ let HowManyPersonsLiveTogetherPage = props => {
       <Grid container className='bg-container' justify='center'>
         <Grid item xs={12} sm={12} className="titleContainer">
 
-          <Typography variant='headline' className="titlePage" variant='headline'>
-          <IconFont icon={""} fontSize={36}/>
+          <Typography variant='headline' className="titlePage">
+          <IconFont icon={""} />
           <Trans>Quantes persones viuen en el seu domicili? (amb vostè inclòs)</Trans>
           </Typography>
         </Grid>
