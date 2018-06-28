@@ -1,5 +1,10 @@
 import React from 'react';
 export const IconFont = (props) => {
+  const colors = {
+    active: "#d50283",
+    completed: "#00ACD4",
+    uncompleted: "#d2d2d2",
+  }
   const iconStyle = {
     fontSize: props.fontSize,
     lineHeight: props.sizeSphere
@@ -7,12 +12,12 @@ export const IconFont = (props) => {
   const noStepperIcon = {
     height: props.sizeSphere,
     width: props.sizeSphere,
-    backgroundColor: "#00ACD4",
+    backgroundColor: colors.completed,
   }
   const StepperIcon = {
     height: props.sizeSphere,
     width: props.sizeSphere,
-    backgroundColor: props.active ? "#d50283" : props.completed ? "#00ACD4" : "#d2d2d2",
+    backgroundColor: props.active ? colors.active : props.completed ? colors.completed : colors.uncompleted,
   }
   return (
     <div className="iconTitle-container" style={props.isStepperIcon ? StepperIcon : noStepperIcon}>
