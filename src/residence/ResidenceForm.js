@@ -55,8 +55,6 @@ const ResidenceForm = (props: Props) => {
     existeixDeutePagamentHipoteca,
     existeixDeutePagamentLloguer,
     existeixHipoteca,
-    haEstatDesnonat,
-    haParticipatEnUnProcesDeMediacio,
     haSeleccionatAlgunaRelacioAmbLHabitatge,
     teAlgunaPropietat,
     teHabitatgeHabitual,
