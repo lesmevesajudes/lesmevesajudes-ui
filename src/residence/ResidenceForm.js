@@ -17,7 +17,7 @@ import {TextField} from 'redux-form-material-ui';
 import {MoneyQuestion} from '../persons/components/MoneyQuestion';
 import Typography from '@material-ui/core/Typography';
 import Sticky from 'react-stickynode';
-import {IconFont} from '../components/IconFont/IconFont'
+import {IconFont} from '../components/IconFont/IconFont';
 
 const seemsPostalCode = value =>
     value && (isNaN(Number(value)) || value.length !== 5)

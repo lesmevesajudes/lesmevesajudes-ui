@@ -21,7 +21,7 @@ import MultipleAnswerQuestion from './components/MultipleAnswerQuestion';
 import FormSubTitle from './components/FormSubTitle';
 import Sticky from 'react-stickynode';
 import {currentFocussedFieldSelector} from "../shared/selectorUtils";
-import {IconFont} from '../components/IconFont/IconFont'
+import {IconFont} from '../components/IconFont/IconFont';
 
 export type PersonFormInitialValues = Person | { is_the_person_in_front_of_the_computer: boolean };
 

@@ -8,7 +8,7 @@ import ReportBug from '../reportBug/ReportBugPage';
 import axios from 'axios/index';
 import {Grid} from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
-import {IconFont} from '../components/IconFont/IconFont'
+import {IconFont} from '../components/IconFont/IconFont';
 
 type Props = {
   isError: boolean,

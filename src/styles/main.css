@@ -212,6 +212,13 @@ input.cercabcn {
   .titlePage{
     float:left;
     margin-left: 16px !important;
+    line-height: 1.35417em !important;
+  }
+  .buttons-container .left-button {
+    margin-right: 15px;
+  }
+  .buttons-container .right-button {
+    margin-left: 15px;
   }
   .bg-form-exterior {
     margin-left: 0px !important;

@@ -37,8 +37,11 @@ let HowManyPersonsLiveTogetherPage = props => {
         <Grid item xs={12} className='bg-form-exterior bg-form'>
           <form onSubmit={handleSubmit}>
             <Grid container justify='center' alignItems='center' spacing={16}>
+              <Grid item xs={12} sm={12}>
               <Field name='how_many_persons_live_together' placeholder='0' type='number'
-                        component={TextField} normalize={allowOnlyPositive} autoFocus/>
+                          component={TextField} normalize={allowOnlyPositive} autoFocus/>
+              </Grid>
+
               <Grid item xs={12} sm={12}>
                 <Grid container className="margin-buttons" alignItems='flex-start' justify='flex-end'>
                   <Button variant="contained" color='primary' type='submit' name='ButtonValidar'>

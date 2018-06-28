@@ -9,8 +9,8 @@ import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import {withStyles} from '@material-ui/core/styles';
-import {styles} from '../styles/theme'
-import {IconFont} from '../components/IconFont/IconFont'
+import {styles} from '../styles/theme';
+import {IconFont} from '../components/IconFont/IconFont';
 const initials = (name: string) => {
   const initials = name.replace(/[^a-zA-Z- ]/g, '').match(/\b\w/g);
   if (initials instanceof Array) {

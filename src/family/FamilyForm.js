@@ -18,7 +18,7 @@ import FormSubTitle from '../persons/components/FormSubTitle';
 import {detectaFamilies} from './detectaFamilies';
 import {createFamilyName, toArray} from './createFamilyName';
 import Sticky from 'react-stickynode';
-import {IconFont} from '../components/IconFont/IconFont'
+import {IconFont} from '../components/IconFont/IconFont';
 
 type Props = {
   addHouseholdData: Function,
