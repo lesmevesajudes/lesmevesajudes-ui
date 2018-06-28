@@ -70,7 +70,7 @@ export const PersonCard = (props: PersonCardProps) => {
         />
         {!props.person.is_the_person_in_front_of_the_computer &&
         <ListItemSecondaryAction onClick={() => props.onRemoveClick(props.person.id)}>
-          <Tooltip id="known-tooltip" title="Aquesta acció eliminarà aquest membre" placement="right-start">
+          <Tooltip id="known-tooltip" title="Aquesta acció eliminarà aquest registre" placement="right-start">
             <Typography className={classes.deleteListItemTitle}> Eliminar </Typography>
           </Tooltip>
         </ListItemSecondaryAction>}
@@ -90,7 +90,7 @@ const UnknownPersonCard = (props: UnknownPersonProps) => {
       <ListItemText 
           primary={<Typography className= {classes.titleUnknownPerson} >Persona {(props.personNumber + 1).toString()} - Premi aquí per a introduir la informació d'aquesta persona</Typography>}/>
       <ListItemSecondaryAction onClick={() => props.onRemoveClick()}>
-        <Tooltip id="unknown-tooltip" title="Aquesta acció eliminarà aquest membre" placement="right-start">
+        <Tooltip id="unknown-tooltip" title="Aquesta acció eliminarà aquest registre" placement="right-start">
          <Typography className={classes.deleteListItemTitle}> Eliminar </Typography>
         </Tooltip>
       </ListItemSecondaryAction>
@@ -140,7 +140,7 @@ export const PersonsViewer = (props: Props) => {
               </Grid>
               {missingPersons === 0 &&
                 <Grid item sm={12} className="addPersonContainer">
-                  <Tooltip id="add-person-tooltip" title="Si ha oblidat introduir algun membre de la seva llar cliqui aquí" placement="right">
+                  <Tooltip id="add-person-tooltip" title="Si vol afegir un altra persona que convisqui amb vosté cliqui aquí" placement="right">
                     <Button className={props.classes.addMemberButton} color="secondary" variant="raised"
                             onClick={props.onAddPersonClick}>Afegir una persona convivent <Icon
                         className={props.classes.rightIcon}>add_circle</Icon></Button>

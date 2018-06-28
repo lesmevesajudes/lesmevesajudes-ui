@@ -3,6 +3,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import {Trans} from 'react-i18next';
 import Grid from '@material-ui/core/Grid';
 import MultipleAnswerQuestion from './MultipleAnswerQuestion';
+import Icon from "@material-ui/core/Icon";
 
 export const RelacioParentiu = () =>
     <Grid item>
@@ -20,7 +21,7 @@ export const RelacioParentiu = () =>
           <Trans>Nét/a</Trans>
         </MenuItem>
         <MenuItem data-test='infant_acollit' value='infant_acollit'>
-          <Trans>Infant en acolliment</Trans>
+          <Trans>Infant en acolliment </Trans><Icon>info</Icon>
         </MenuItem>
         <MenuItem data-test='pare' value='pare'>
           <Trans>Pare o mare</Trans>

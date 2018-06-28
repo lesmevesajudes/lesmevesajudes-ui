@@ -17,7 +17,7 @@ export const SituacioLaboral = () =>
         <Trans>Treballa per compte d'altri jornada parcial</Trans>
       </MenuItem>
       <MenuItem data-test='aturat' value='aturat'>
-        <Trans>Aturat</Trans>
+        <Trans>Aturat/ada</Trans>
       </MenuItem>
       <MenuItem data-test='tasques_de_la_llar' value='tasques_de_la_llar'>
         <Trans>Tasques de la llar</Trans>
@@ -26,6 +26,9 @@ export const SituacioLaboral = () =>
         <Trans>Estudiant o pràctiques sense remunerar</Trans>
       </MenuItem>
       <MenuItem data-test='jubilat' value='jubilat'>
-        <Trans>Jubilat/a, Prejubilat/ada</Trans>
+        <Trans>Jubilat/ada o prejubilat/ada</Trans>
+      </MenuItem>
+      <MenuItem data-test='altres' value='altres'>
+        <Trans>Altres</Trans>
       </MenuItem>
     </MultipleAnswerQuestion>;

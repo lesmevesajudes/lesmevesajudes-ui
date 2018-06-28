@@ -113,7 +113,7 @@ let PersonForm = (props: Props) => {
                     <FormSubTitle><Trans>Informació personal</Trans></FormSubTitle>
                     <Question name='nom' placeholder='Nom' component={TextField} autoFocus>
                       {isTheUserInFrontOfTheComputer ? <Trans>Identifiqui's amb un nom</Trans> :
-                          <Trans>Identifiqui'l amb un nom</Trans>}
+                          <Trans>Identifiqui aquesta persona amb un nom</Trans>}
                     </Question>
 
                     {!isTheUserInFrontOfTheComputer && <RelacioParentiu/>}
@@ -139,7 +139,7 @@ let PersonForm = (props: Props) => {
                       <TipusDocumentIdentitat/>
 
                       <YesNoQuestion name='porta_dos_anys_o_mes_empadronat_a_catalunya'>
-                        <Trans>Porta dos anys o més empadronat a Catalunya?</Trans>
+                        <Trans>Fa dos anys o més que està empadronat/ada a Catalunya?</Trans>
                       </YesNoQuestion>
                     </Fragment>}
 
@@ -158,7 +158,7 @@ let PersonForm = (props: Props) => {
                     {municipiEmpadronament === 'barcelona' &&
                     <TimePeriodQuestion name='anys_empadronat_a_barcelona'
                                         validate={[anysEmpadronatInferiorAEdat, menorDe120]} required>
-                      <Trans>Quants anys porta empadronat a Barcelona?</Trans>
+                      <Trans>Quants fa que està empadronat/ada a Barcelona?</Trans>
                     </TimePeriodQuestion>}
 
                     {esFamiliarOUsuari && potTreballar &&
@@ -169,34 +169,38 @@ let PersonForm = (props: Props) => {
                       {esFamiliarOUsuari && esAturat &&
                       <Fragment>
                         <YesNoQuestion name='inscrit_com_a_demandant_docupacio'>
-                          <Trans>Està inscrit com a demandant d’ocupació?</Trans>
+                          <Trans>Està inscrit/a com a demandant d’ocupació?</Trans>
                         </YesNoQuestion>
                         {inscritComADemandantDocupacio &&
                         <YesNoQuestion name='inscrit_com_a_demandant_docupacio_mes_de_12_mesos'>
-                          <Trans>Ha estat inscrit de forma continuada com a demandant d'ocupació més de 12 mesos?</Trans>
+                          <Trans>Ha estat inscrit/a de forma continuada com a demandant d'ocupació més de 12 mesos?</Trans>
                         </YesNoQuestion>
                         }
 
-                        {!inscritComADemandantDocupacio &&
+                        {esAturat &&
                         <YesNoQuestion name='en_els_ultims_12_mesos_ha_fet_baixa_voluntaria_de_la_feina'>
                           <Trans>Ha deixat la feina de forma voluntària en els darrers 12 mesos?</Trans>
                         </YesNoQuestion>}
                       </Fragment>}
 
-                      {esFamiliarOUsuari && tipusDocumentIdentitat === 'DNI' && (esAturat || treballaPerCompteDAltriParcial) &&
+                      {esFamiliarOUsuari && (tipusDocumentIdentitat === 'DNI' || tipusDocumentIdentitat === 'NIE')&& (esAturat || treballaPerCompteDAltriParcial) &&
                       <YesNoQuestion name='ha_treballat_a_l_estranger_6_mesos'>
                         <Trans>Ha treballat a l’estranger un mínim de 6 mesos?</Trans>
                       </YesNoQuestion>}
 
                       {haTreballatALEstranger6Mesos &&
                       <YesNoQuestion name='ha_treballat_a_l_estranger_6_mesos_i_ha_retornat_en_els_ultims_12_mesos'>
-                        <Trans>Ha retornat d’aquest període de treball en els últims 12 mesos?</Trans>
+                        <Trans>Ha retornat d’aquest període de treball en els darrers 12 mesos?</Trans>
                       </YesNoQuestion>}
                     </Fragment>}
 
                     <FormSubTitle>Ingressos</FormSubTitle>
                     <MoneyQuestion name='ingressos_bruts' required>
-                      <Trans>Indiqui els seus ingressos bruts anuals de l’any passat?</Trans>
+                      {isTheUserInFrontOfTheComputer
+                        ?<Trans>Indiqui els seus ingressos anuals de l’any passat</Trans>
+                        :<Trans>Indiqui els ingressos anuals de l’any passat d'aquesta persona</Trans>
+                      }
+
                     </MoneyQuestion>
 
                     {esFamiliarOUsuari &&
@@ -207,7 +211,7 @@ let PersonForm = (props: Props) => {
                     {esFamiliarOUsuari && cobraAlgunTipusDePensioNoContributiva &&
                     <Fragment>
                       <MoneyQuestion name='ingressos_per_pnc' validate={pncInclosAIngressosBruts}>
-                        <Trans>Indiqui la suma dels imports de totes les pensions no contributives que cobri</Trans>
+                        <Trans>Indiqui la suma dels imports anuals que perceb en concepte de pensions no contributives</Trans>
                       </MoneyQuestion>
                     </Fragment>}
 
@@ -226,12 +230,12 @@ let PersonForm = (props: Props) => {
                     <Fragment>
                       <FormSubTitle>Situació personal</FormSubTitle>
                       <YesNoQuestion name='te_algun_grau_de_discapacitat_reconegut'>
-                        <Trans>Té vostè algun grau de discapacitat reconegut?</Trans>
+                        <Trans>Té algun grau de discapacitat reconegut?</Trans>
                       </YesNoQuestion>
 
                       {teAlgunGrauDeDiscapacitatReconegut &&
                       <PercentageQuestion name='grau_discapacitat'>
-                        <Trans>Grau discapacitat, expressat en percentatge</Trans>
+                        <Trans>Indiqui quin és el grau de discapacitat, expressat en percentatge</Trans>
                       </PercentageQuestion>}
 
                       {potTreballar && esDona &&
@@ -245,16 +249,16 @@ let PersonForm = (props: Props) => {
 
                     {(edat > 2 && edat < 16) &&
                     <YesNoQuestion name='es_escolaritzat_entre_P3_i_4rt_ESO'>
-                      <Trans>Escolaritzat entre P3 i 4rt ESO a la ciutat de Barcelona?</Trans>
+                      <Trans>Escolaritzat/ada entre P3 i 4rt ESO a la ciutat de Barcelona?</Trans>
                     </YesNoQuestion>}
 
                       {(edat > 18 && edat < 23) && !(esFill || esFillastre) &&
                       <YesNoQuestion name='es_orfe_dels_dos_progenitors'>
-                        <Trans>És orfe dels dos progenitors</Trans>
+                        <Trans>És orfe/na dels dos progenitors</Trans>
                       </YesNoQuestion>}
 
                       <YesNoQuestion name='beneficiari_de_prestacio_residencial'>
-                        <Trans>És beneficiari d’una prestació pública o privada de servei residencial permanent?</Trans>
+                        <Trans>És beneficiari/aria d’una prestació pública o privada de servei residencial permanent?</Trans>
                       </YesNoQuestion>
                     </Fragment>}
                   </Grid>
@@ -281,7 +285,7 @@ let PersonForm = (props: Props) => {
         </Grid>
 
       </Grid>
-      
+
   );
 };
 

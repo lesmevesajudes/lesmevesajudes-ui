@@ -35,6 +35,8 @@ type Props = {
   existeixDeutePagamentLloguer: boolean,
   existeixDeutePagamentHipoteca: boolean,
   existeixHipoteca: boolean,
+  haEstatDesnonat: boolean,
+  haParticipatEnUnProcesDeMediacio: boolean,
   haSeleccionatAlgunaRelacioAmbLHabitatge: boolean,
   initialValues: ?ResidenceData,
   personesQuePodenTenirContracte: Map<PersonID, Person>,
@@ -53,6 +55,8 @@ const ResidenceForm = (props: Props) => {
     existeixDeutePagamentHipoteca,
     existeixDeutePagamentLloguer,
     existeixHipoteca,
+    haEstatDesnonat,
+    haParticipatEnUnProcesDeMediacio,
     haSeleccionatAlgunaRelacioAmbLHabitatge,
     teAlgunaPropietat,
     teHabitatgeHabitual,
@@ -247,6 +251,8 @@ function mapStateToProps(state) {
     existeixDeutePagamentLloguer: selector(state, 'existeix_deute_en_el_pagament_del_lloguer'),
     existeixDeutePagamentHipoteca: selector(state, 'existeix_deute_en_el_pagament_de_la_hipoteca'),
     existeixHipoteca: existeixHipoteca,
+    haEstatDesnonat: selector(state, 'ha_perdut_lhabitatge_en_els_ultims_2_anys'),
+    haParticipatEnUnProcesDeMediacio: selector(state, 'ha_participat_en_un_proces_de_mediacio'),
     haSeleccionatAlgunaRelacioAmbLHabitatge: haSeleccionatAlgunaRelacioAmbLHabitatge,
     initialValues: state.residence,
     personesQuePodenTenirContracte: state.persons.filter((persona) => !esFill(persona)),
@@ -254,7 +260,6 @@ function mapStateToProps(state) {
     teHabitatgeHabitual: esLlogater || esPropietari || esCessio,
     titularContracteLloguer: titularContracteLloguer,
     titularContracteHipoteca: titularContracteHipoteca
-
   };
 }
 

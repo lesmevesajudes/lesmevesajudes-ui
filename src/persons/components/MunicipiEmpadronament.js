@@ -10,7 +10,7 @@ export const MunicipiEmpadronament = () =>
         <Trans>Barcelona</Trans>
       </MenuItem>
       <MenuItem data-test='altres' value='altres'>
-        <Trans>altres</Trans>
+        <Trans>Altres municipis catalans</Trans>
       </MenuItem>
       <MenuItem data-test='no_empadronat_a_cat' value='no_empadronat_a_cat'>
         <Trans>No estic empadronat a Catalunya</Trans>
