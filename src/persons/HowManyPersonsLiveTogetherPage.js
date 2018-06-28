@@ -40,7 +40,7 @@ let HowManyPersonsLiveTogetherPage = props => {
               <Field name='how_many_persons_live_together' placeholder='0' type='number'
                         component={TextField} normalize={allowOnlyPositive} autoFocus/>
               <Grid item xs={12} sm={12}>
-                <Grid container className="margin-buttons" alignItems='flex-start' justify='center'>
+                <Grid container className="margin-buttons" alignItems='flex-start' justify='flex-end'>
                   <Button variant="contained" color='primary' type='submit' name='ButtonValidar'>
                         <Trans>Validar</Trans>
                   </Button>
