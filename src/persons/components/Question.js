@@ -2,7 +2,6 @@ import React from 'react';
 import {Field} from 'redux-form';
 import HelpIcon from '../../components/HelpIcon';
 import {isHelpAvailable} from '../../components/HelpText';
-import Hidden from '@material-ui/core/Hidden';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 
