@@ -5,6 +5,7 @@ import type {StepsState} from './StepsTypes';
 
 const initial: StepsState = {
   current_step: 0,
+  max_step_reached: 0,
   button_enabled: false,
   button_visible: false
 };
@@ -23,9 +24,17 @@ export default (state: StepsState = initial, action: StepAction): StepsState => 
         current_step: state.current_step - 1,
       };
       case 'SET_ACTUAL_STEP':
-      return {
-        ...state,
-        current_step: action.index
+      if(action.index <= state.max_step_reached){
+        return {
+          ...state,
+          current_step: action.index,
+        };
+      }else {
+        return {
+          ...state,
+          current_step: action.index,
+          max_step_reached: action.index
+        }
       };
     case 'BUTTONS_VISIBLE':
       return {
