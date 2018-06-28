@@ -99,6 +99,11 @@ export default createMuiTheme({
       lineHorizontal: {
         border: '0px solid #fff',
         borderTopWidth: '0px'
+      },
+      alternativeLabel: {
+        top: '23px',
+        left: 'calc(50% + 27px)',
+        right: 'calc(-50% + 27px)',
       }
     },
     MuiPaper: {

@@ -19,6 +19,7 @@ body {
 }
 .iconTitle-container {
   float: left; 
+  background: #00ACD4;
   border-radius: 100%;
 }
 .titleContainer {

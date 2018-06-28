@@ -24,10 +24,14 @@ type Props = {
 const chooseIcon = (props, index) => {
   const iconStep = props.steps[index].icon;
   let active = false;
+  let completed = false;
   if (props.currentStep === index) {
     active = true;
   }
-  return <IconFont icon={iconStep} active={active} sizeSphere={"32px"} fontSize={"18px"}/>
+  else if (props.currentStep > index) {
+    completed = true;
+  }
+  return <IconFont icon={iconStep} completed={completed}  active={active} isStepperIcon={true} sizeSphere={"48px"} fontSize={"32px"}/>
 };
 
 let StepsComponent = (props: Props) => {
