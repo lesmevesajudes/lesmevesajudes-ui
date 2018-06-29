@@ -1,4 +1,5 @@
 import React from 'react';
+
 export const IconFont = (props) => {
   let icon = "";
   switch(props.icon){

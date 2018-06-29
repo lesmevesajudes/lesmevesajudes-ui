@@ -93,14 +93,14 @@ class ResultsPage extends React.Component<Props> {
           </div>
       );
     }
-
+    //Añadir Trans en titlePage
     return (
         <Fragment>
           <div className='bg-container'>
               <Grid item xs={12} sm={12} className="titleContainer">
                   <Typography variant='headline' className="titlePage">
-                    <IconFont icon="resultats"/>
-                    Ajudes a les que podria optar
+                    <IconFont icon="resultats" sizeSphere={48} fontSize={32} />
+                    <span class="titleText">Ajudes a les que podria optar</span> 
                   </Typography>
             </Grid>
             <Grid container>

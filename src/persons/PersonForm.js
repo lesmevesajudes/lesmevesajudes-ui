@@ -95,12 +95,12 @@ let PersonForm = (props: Props) => {
         <Grid item xs={12} sm={12} className="titleContainer">
           {isTheUserInFrontOfTheComputer ?
               <Typography variant='headline' className="titlePage">
-                <IconFont icon="persona"/>
-                <Trans>Informació sobre vostè</Trans>
+                <IconFont icon="persona" sizeSphere={48} fontSize={32} />
+                <span class="titleText"><Trans>Informació sobre vostè</Trans></span>
               </Typography> :
               <Typography variant='headline' className="titlePage">
-                <IconFont icon="persona"/>
-                <Trans>Dades sobre una persona que conviu ambvostè</Trans>
+                <IconFont icon="persona" sizeSphere={48} fontSize={32} />
+                <span class="titleText"><Trans>Dades sobre una persona que conviu ambvostè</Trans></span>
               </Typography>}
         </Grid>
         <Grid item xs={12} className='bg-form-exterior bg-form'>
