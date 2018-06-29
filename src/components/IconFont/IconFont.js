@@ -1,5 +1,23 @@
 import React from 'react';
 export const IconFont = (props) => {
+  let icon = "";
+  switch(props.icon){
+    case 'persona':
+      icon = "";
+      break;
+    case 'familia':
+      icon = "";
+      break;
+    case 'domicili':
+      icon = "";
+      break;
+    case 'resultats':
+      icon = "";
+      break;
+    default: 
+      icon = props.icon;
+      break;
+  }
   const colors = {
     active: "#d50283",
     completed: "#00ACD4",
@@ -13,6 +31,7 @@ export const IconFont = (props) => {
     height: props.sizeSphere,
     width: props.sizeSphere,
     backgroundColor: colors.completed,
+    marginRight: '10px'
   }
   const StepperIcon = {
     height: props.sizeSphere,
@@ -21,7 +40,7 @@ export const IconFont = (props) => {
   }
   return (
     <div className="iconTitle-container" style={props.isStepperIcon ? StepperIcon : noStepperIcon}>
-      <span className="iconAjuntament iconTitle" style={iconStyle}>{props.icon}</span>
+      <span className="iconAjuntament iconTitle" style={iconStyle}>{icon}</span>
     </div>
   )
 }
