@@ -30,6 +30,9 @@ body {
   margin-left: 90px !important;
   float:left;
 }
+.titleText{
+  line-height: 48px;
+}
 .stepperContainer{
   background: #fbfbfb !important;
 }

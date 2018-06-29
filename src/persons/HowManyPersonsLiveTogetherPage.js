@@ -31,7 +31,7 @@ let HowManyPersonsLiveTogetherPage = props => {
 
           <Typography variant='headline' className="titlePage">
           <IconFont icon={""} sizeSphere={48} fontSize={32} />
-          <span style="line-height: 48px;"><Trans>Quantes persones viuen en el seu domicili? (amb vostè inclòs)</Trans></span>
+          <span class="titleText"><Trans>Quantes persones viuen en el seu domicili? (amb vostè inclòs)</Trans></span>
           </Typography>
         </Grid>
         <Grid item xs={12} className='bg-form-exterior bg-form'>
