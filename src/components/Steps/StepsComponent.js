@@ -1,17 +1,14 @@
 //@flow
 import React from 'react';
 import {connect} from 'react-redux';
-import {backStep, nextStep,setActualStep} from './StepsActions'
+import {backStep, nextStep, setActualStep} from './StepsActions'
 import {withStyles} from '@material-ui/core/styles';
 import {Grid, Step, StepButton, Stepper} from '@material-ui/core';
 import StepperButtons from './StepperButtons';
 import Typography from '@material-ui/core/Typography';
 import {Trans} from 'react-i18next';
-import FaceIcon from '@material-ui/icons/Face';
-import PermContactCalendarIcon from '@material-ui/icons/PermContactCalendar';
-import HomeIcon from '@material-ui/icons/Home';
-import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
-import styles from '../../styles/theme';
+import {styles} from '../../styles/theme';
+import {IconFont} from '../IconFont/IconFont';
 
 type Props = {
   classes: Object,
@@ -24,23 +21,17 @@ type Props = {
   buttonVisible: boolean
 }
 
-const chooseIcon = (props,icon) => {
-  switch(icon){
-    case 'Persons':
-    if(props.currentStep > 0){return <FaceIcon className={props.classes.completed}/>}
-      return <FaceIcon/>;
-    case 'Family':
-      if(props.currentStep > 1){return <PermContactCalendarIcon className={props.classes.completed}/>}
-      return <PermContactCalendarIcon/>;
-    case 'Home':
-      if(props.currentStep > 2){return <HomeIcon className={props.classes.completed}/>}
-      return <HomeIcon/>;
-    case 'Help':
-      if(props.currentStep >= 3){return <HelpOutlineIcon className={props.classes.completed}/>}
-      return <HelpOutlineIcon/>;
-    default: 
-      break;
+const chooseIcon = (props, index) => {
+  const iconStep = props.steps[index].icon;
+  let active = false;
+  let completed = false;
+  if (props.currentStep === index) {
+    active = true;
   }
+  else if (props.currentStep > index) {
+    completed = true;
+  }
+  return <IconFont icon={iconStep} completed={completed} active={active} isStepperIcon={true} sizeSphere={"48px"} fontSize={"32px"}/>
 };
 
 let StepsComponent = (props: Props) => {
@@ -48,13 +39,14 @@ let StepsComponent = (props: Props) => {
   const childComponent = steps[currentStep].component;
   return (
       <div className={classes.root}>
-        <Stepper activeStep={currentStep} alternativeLabel className='stepperContainer'>
+        <Stepper activeStep={currentStep} nonLinear alternativeLabel className='stepperContainer'>
           {steps.map((step,index) => {
             const labelProps = step.optional ? {
               optional: <Typography variant='caption'><Trans>Opcional</Trans></Typography>
             } : {};
             return <Step key={step}>
-              <StepButton {...labelProps} onClick={()=> setActualStep(index)} icon={chooseIcon(props, step.icon)}>{step.label}</StepButton>
+              <StepButton {...labelProps} onClick={() => setActualStep(index)}
+                          icon={chooseIcon(props, index)}>{step.label}</StepButton>
                    </Step>
           })
           }
@@ -63,7 +55,7 @@ let StepsComponent = (props: Props) => {
           <Grid item sm={12} xs={12} md={12}>
             {childComponent}
           </Grid>
-          <Grid item sm={12} xs={12} md={12} className={classes.backButton}>
+          <Grid item sm={12} xs={12} md={12}>
             <StepperButtons nextAction={(currentStep === steps.length - 1) ? undefined : nextStep}
                             backAction={(currentStep === 0) ? undefined : backStep} classes={classes}
                             buttonEnabled={buttonEnabled} buttonVisible={buttonVisible}

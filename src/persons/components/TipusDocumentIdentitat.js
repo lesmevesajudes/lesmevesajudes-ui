@@ -6,16 +6,16 @@ import MultipleAnswerQuestion from './MultipleAnswerQuestion';
 
 export const TipusDocumentIdentitat = () =>
     <MultipleAnswerQuestion label={<Trans>Tipus de document d'identitat</Trans>} name='tipus_document_identitat'>
-      <MenuItem data-test='di_dni' value='DNI'>
+      <MenuItem value='DNI'>
         <Trans>DNI</Trans>
       </MenuItem>
-      <MenuItem data-test='di_nie' value='NIE'>
+      <MenuItem value='NIE'>
         <Trans>NIE</Trans>
       </MenuItem>
-      <MenuItem data-test='di_pass' value='passaport'>
+      <MenuItem value='passaport'>
         <Trans>Passaport</Trans>
       </MenuItem>
-      <MenuItem data-test='di_altres' value='altres'>
+      <MenuItem value='altres'>
         <Trans>Altres</Trans>
       </MenuItem>
     </MultipleAnswerQuestion>;

@@ -1,44 +1,42 @@
 //@flow
 
-type NextStepAction = { type: 'NEXT_STEP' };
-type BackStepAction = { type: 'BACK_STEP' };
-type ButtonsShowAction = { type: 'BUTTONS_VISIBLE' };
-type ButtonsDisabledAction = { type: 'BUTTONS_DISABLED' };
-type ButtonsEnabledAction = { type: 'BUTTONS_ENABLED' };
-type ButtonsHiddenAction = { type: 'BUTTONS_HIDDEN' };
-type SetActualStepAction = { type: 'SET_ACTUAL_STEP' };
+type ActionsTypes =
+    'NEXT_STEP'
+    | 'BACK_STEP'
+    | 'BUTTONS_VISIBLE'
+    | 'BUTTONS_DISABLED'
+    | 'BUTTONS_ENABLED'
+    | 'BUTTONS_HIDDEN'
+    | 'SET_ACTUAL_STEP'
+export type StepAction = {
+  type: ActionsTypes,
+  index?: number
+};
 
-export type StepsActions =
-    | ButtonsShowAction
-    | ButtonsHiddenAction
-    | ButtonsDisabledAction
-    | ButtonsEnabledAction
-    | NextStepAction
-    | BackStepAction
-    | SetActualStepAction;
-
-export function showButtons(): StepsActions {
+export function showButtons(): StepAction {
   return {type: 'BUTTONS_VISIBLE'};
 }
 
-export function hideButtons(): StepsActions {
+export function hideButtons(): StepAction {
   return {type: 'BUTTONS_HIDDEN'};
 }
 
-export function disableButtons(): StepsActions {
+export function disableButtons(): StepAction {
   return {type: 'BUTTONS_DISABLED'};
 }
 
-export function enableButtons(): StepsActions {
+export function enableButtons(): StepAction {
   return {type: 'BUTTONS_ENABLED'};
 }
-export function setActualStep(index): StepsActions {
+
+export function setActualStep(index: number): StepAction {
   return {type: 'SET_ACTUAL_STEP', index};
 }
-export function nextStep(): StepsActions {
+
+export function nextStep(): StepAction {
   return {type: 'NEXT_STEP'};
 }
 
-export function backStep(): StepsActions {
+export function backStep(): StepAction {
   return {type: 'BACK_STEP'};
 }

@@ -16,24 +16,25 @@ const steps = [
     label: <Trans>Persones que conviuen</Trans>,
     optional: false,
     component: <PersonsPage/>,
-    icon: "Persons"
+    icon: "", //Icono de persona perfil
+    
   },
   {
     label: <Trans>Families amb menors</Trans>,
     optional: true,
     component: <FamilyForm/>,
-    icon: "Family"
+    icon: "" // Icono de familia, niños corriendo
   },
   {
     label: <Trans>Domicili Habitual</Trans>,
     optional: false,
     component: <ResidenceForm/>,
-    icon: "Home"
+    icon: "" // Icono Casa
   },
   {
     label: <Trans>Resultats</Trans>,
     component: <ResultsPage/>,
-    icon: "Help"
+    icon: "" // Icono Billete
   }
 ];
 

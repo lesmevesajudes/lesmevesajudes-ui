@@ -13,15 +13,12 @@ export const colors = {
   blackest: '#202020',
   gray: '#f2f2f2'
 }
-export const styles = theme =>( {
+export const styles = theme => ({
   root: {
     width: '100%',
   },
   marginButtons: {
     marginBottom: 30 + 'px'
-  },
-  backButton: {
-    marginRight: theme.spacing.unit,
   },
   buttonIcon: {
     margin: theme.spacing.unit,
@@ -47,8 +44,11 @@ export const styles = theme =>( {
       backgroundColor: colors.disabled_text 
     }
   },
-  completed: {
-    color: '#004A8E',
+  completedStep: {
+    color: '#00acd4',
+  },
+  actualStep: {
+    color: '#d50283'
   },
   AvatarUnknownPerson: {
     backgroundColor: '#bbbbbb'
@@ -89,7 +89,21 @@ export default createMuiTheme({
       },
       completed: {
         fontWeight: '600 !important',
-        color: colors.secondary + ' !important'
+      }
+    },
+    MuiStepConnector:{
+      root: {
+        backgroundColor: '#00acd4',
+        height: '2px'
+      },
+      lineHorizontal: {
+        border: '0px solid #fff',
+        borderTopWidth: '0px'
+      },
+      alternativeLabel: {
+        top: '23px',
+        left: 'calc(50% + 27px)',
+        right: 'calc(-50% + 27px)',
       }
     },
     MuiPaper: {
@@ -126,7 +140,8 @@ export default createMuiTheme({
       },
       error: {
         '&::after':{
-          border: '1px solid red'
+          border: '1px solid red',
+          backgroundColor: 'red'
         }
       }
     },

@@ -9,8 +9,8 @@ import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import {withStyles} from '@material-ui/core/styles';
-import {styles} from '../styles/theme'
-
+import {styles} from '../styles/theme';
+import {IconFont} from '../components/IconFont/IconFont';
 const initials = (name: string) => {
   const initials = name.replace(/[^a-zA-Z- ]/g, '').match(/\b\w/g);
   if (initials instanceof Array) {
@@ -111,10 +111,13 @@ export const PersonsViewer = (props: Props) => {
   const missingPersons = Math.max(props.expectedNumberOfPersons - props.persons.length, 0);
     return (
         <Grid container className='bg-container'>
-          <Grid item sm={12} xs={12} >
-            <Typography variant='headline' className="titleContainer">
-              <Trans>Persones de la unitat de convivència</Trans>
-            </Typography>
+           <Grid item xs={12} sm={12} className="titleContainer">
+           <Typography variant='headline' className="titlePage">
+                <IconFont icon={""} />
+                <Trans>Persones de la unitat de convivència</Trans>
+              </Typography>
+          </Grid>
+          <Grid item xs={12}>
             <Grid container direction='row' justify='space-around' alignItems='stretch' spacing={16}>
               <Grid item xs={12} sm={12} className='bg-form-exterior'>
                 <Card>
