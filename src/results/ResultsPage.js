@@ -99,7 +99,7 @@ class ResultsPage extends React.Component<Props> {
           <div className='bg-container'>
               <Grid item xs={12} sm={12} className="titleContainer">
                   <Typography variant='headline' className="titlePage">
-                    <IconFont icon={"resultats"}/>
+                    <IconFont icon="resultats"/>
                     Ajudes a les que podria optar
                   </Typography>
             </Grid>

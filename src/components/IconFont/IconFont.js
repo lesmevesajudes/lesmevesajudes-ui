@@ -23,19 +23,20 @@ export const IconFont = (props) => {
     completed: "#00ACD4",
     uncompleted: "#d2d2d2",
   }
+  console.log((props.fontSize * 1.42857 ))
   const iconStyle = {
-    fontSize: props.fontSize,
-    lineHeight: props.sizeSphere
+    fontSize: props.fontSize + "px",
+    lineHeight: props.sizeSphere + 'px',
   }
   const noStepperIcon = {
-    height: props.sizeSphere,
-    width: props.sizeSphere,
+    height: props.sizeSphere + "px",
+    width: props.sizeSphere + "px",
     backgroundColor: colors.completed,
     marginRight: '10px'
   }
   const StepperIcon = {
-    height: props.sizeSphere,
-    width: props.sizeSphere,
+    height: props.sizeSphere + "px",
+    width: props.sizeSphere + "px",
     backgroundColor: props.active ? colors.active : props.completed ? colors.completed : colors.uncompleted,
   }
   return (
@@ -45,8 +46,8 @@ export const IconFont = (props) => {
   )
 }
 IconFont.defaultProps = {
-  fontSize: '36px',
-  sizeSphere:'64px',
+  fontSize: 36,
+  sizeSphere: 64,
   active: false,
   completed: false,
   isStepperIcon: false
