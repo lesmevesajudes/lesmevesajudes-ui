@@ -7,6 +7,7 @@ import {esInfantAcollit} from '../shared/selectorUtils';
 import {detectaFamilies} from "../family/detectaFamilies";
 import {serialize} from "../persons/PersonsReducer";
 import * as uuid from "uuid";
+import {zonaDelCodiPostal} from "../shared/CodisPostals";
 
 export const FETCH_SIMULATION = 'fetch_simulation';
 
@@ -77,7 +78,7 @@ const createUnitatDeConvivencia = (simulationData) => {
   let result = {};
   result[id] = {
     persones_que_conviuen: seleccionaElsAltresMembresDeLaUnitatDeConvivenciaQueNoSiguinDeLaFamilia([], serialize(simulationData.persons)),
-    ...residenceDataToAPI(simulationData.residence)
+    ...residenceDataToAPI(simulationData.residence),
   };
   return result;
 };
@@ -138,6 +139,7 @@ export const buildRequest = (simulationData: SimulationData) => {
     personalData[simulationData.residence.titular_hipoteca_id].temps_empadronat_habitatge_actual = currentMonth(simulationData.residence.titular_hipoteca_temps_empadronat);
 
   }
+  simulationData.residence.zona_de_lhabitatge = zonaDelCodiPostal(simulationData.residence.codi_postal_habitatge);
 
   const families = isEmptyMap(simulationData.family.custodies)
       ? createAFamilyWithAllPersons(simulationData)

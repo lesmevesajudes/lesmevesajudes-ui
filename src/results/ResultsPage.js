@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import {connect} from 'react-redux';
 import {fetchSimulation} from './FetchSimulationAction';
 import PersonalBenefits from './PersonalBenefits';
@@ -8,6 +8,7 @@ import ReportBug from '../reportBug/ReportBugPage';
 import axios from 'axios/index';
 import {Grid} from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
+import {IconFont} from '../components/IconFont/IconFont';
 
 type Props = {
   isError: boolean,
@@ -94,9 +95,14 @@ class ResultsPage extends React.Component<Props> {
     }
 
     return (
-        <div>
-          <div className='bg-container '>
-            <Typography variant='headline' gutterBottom>Ajudes a les que podria optar</Typography>
+        <Fragment>
+          <div className='bg-container'>
+              <Grid item xs={12} sm={12} className="titleContainer">
+                  <Typography variant='headline' className="titlePage">
+                    <IconFont icon={""}/>
+                    Ajudes a les que podria optar
+                  </Typography>
+            </Grid>
             <Grid container>
               <Grid item xs={12}>
                 <PersonalBenefits
@@ -118,7 +124,7 @@ class ResultsPage extends React.Component<Props> {
               </Grid>
             </Grid>
           </div>
-        </div>
+        </Fragment>
     );
   }
 }

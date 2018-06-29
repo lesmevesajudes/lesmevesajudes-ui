@@ -26,7 +26,7 @@ let StepperButtons = (props: Props) => {
         </Grid>
         <Grid item sm={6} md={6} >
           {typeof props.nextAction !== 'undefined' &&
-          <Button className={classNames(props.classes.addMemberButton, 'right-button', 'buttonTheme')}
+          <Button className={classNames('right-button', 'buttonTheme')}
                   color="primary" variant="contained"
                   onClick={props.nextAction}
                   disabled={!props.buttonEnabled}>

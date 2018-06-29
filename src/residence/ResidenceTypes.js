@@ -23,4 +23,5 @@ export type ResidenceData = {
   titular_contracte_de_lloguer_id: string,
   titular_hipoteca_id: string,
   titular_hipoteca_temps_empadronat: string,
+  zona_de_lhabitatge: string
 };
