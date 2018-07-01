@@ -135,7 +135,7 @@ class PersonalBenefits extends React.Component<Props> {
                   <br/>
                   <Grid container className='ResultPage' justify='space-between'>
                     <Grid item xs sm={12}>
-                      <div className='ItemResult'>No opta a cap ajuda</div>
+                      <span className='ItemResult'>No opta a cap ajuda</span>
                     </Grid>
                   </Grid>
                 </div>

@@ -26,7 +26,7 @@ const renderABenefit = (benefit, unitatDeConvivencia, period) =>
             <li className='ItemResult' key={benefit.ID}>
               <Grid container justify='center' alignItems='center' wrap='wrap'>
                 <Grid id={benefit.ID} className='benefitText' item xs={12} sm={9}>
-                  <p>{benefit.name}</p>
+                  {benefit.name}
                 </Grid>
 
                 <Grid item className='Separator' xs={6} sm={3}>
@@ -50,7 +50,6 @@ const renderUnitatDeConvivenciaBenefitList = (unitatDeConvivencia, persons, peri
                 <span className='ItemTitle'>
                   Ajudes per a la unitat de convivència:
                 </span>
-            <br/>
             <Grid container className='ResultPage' justify='space-between'>
               <Grid item xs sm={12}>
                 <ul className='ItemList'>
@@ -58,7 +57,7 @@ const renderUnitatDeConvivenciaBenefitList = (unitatDeConvivencia, persons, peri
                       ? possibleBenefits.map((benefit) =>
                           renderABenefit(benefit, unitatDeConvivencia, period)
                       )
-                      : <div className='ItemResult'>No opta a cap ajuda</div>}
+                      : <span className='ItemResult'>No opta a cap ajuda</span>}
                 </ul>
               </Grid>
             </Grid>
