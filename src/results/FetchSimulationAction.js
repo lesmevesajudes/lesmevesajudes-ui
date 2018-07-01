@@ -60,6 +60,7 @@ const createAFamilyWithAllPersons = (simulationData) => {
 
 const residenceDataToAPI = (residenceData: ResidenceData) => ({
   codi_postal_habitatge: currentMonth(residenceData.codi_postal_habitatge),
+  des_de_quan_teniu_deutes_de_lloguer: currentMonth(residenceData.des_de_quan_teniu_deutes_de_lloguer),
   existeix_deute_en_el_pagament_del_lloguer: currentMonth(residenceData.existeix_deute_en_el_pagament_del_lloguer),
   existeix_deute_en_el_pagament_de_la_hipoteca: currentMonth(residenceData.existeix_deute_en_el_pagament_de_la_hipoteca),
   fa_mes_de_12_mesos_que_existeix_el_deute_de_hipoteca: currentMonth(residenceData.fa_mes_de_12_mesos_que_existeix_el_deute_de_hipoteca),
@@ -72,7 +73,10 @@ const residenceDataToAPI = (residenceData: ResidenceData) => ({
   relacio_de_parentiu_amb_el_propietari: currentMonth(residenceData.relacio_de_parentiu_amb_el_propietari),
   tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit: currentMonth(residenceData.tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit),
   zona_de_lhabitatge: currentMonth(residenceData.zona_de_lhabitatge),
-  HA_001: currentMonth(null)
+  HA_001: currentMonth(null),
+  HA_002: currentMonth(null),
+  HA_003: currentMonth(null),
+  HA_004: currentMonth(null)
 });
 
 const createUnitatDeConvivencia = (simulationData) => {

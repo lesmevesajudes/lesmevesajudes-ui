@@ -9,7 +9,25 @@ const possibleBenefits = [
     name: 'AJUTS LLOGUER ESPECIAL URGÈNCIA PER A PERSONES BENEFICIÀRIES DE PRESTACIONS DERIVADES DE LA MEDIACIÓ A BARCELONA',
     periode: 'mes',
     url: '/ajuts/lloguer'
-  }
+  },
+  {
+    ID: 'HA_002',
+    name: 'AJUTS PER PÈRDUA D’HABITATGE PER DESNONAMENT O EXECUCIÓ HIPOTECÀRIA',
+    periode: 'mes',
+    url: '/ajuts/lloguer'
+  },
+  {
+    ID: 'HA_003',
+    name: 'AJUTS ESPECIAL URGÈNCIA AMORTITZACIÓ HIPOTECÀRIA',
+    periode: 'mes',
+    url: '/ajuts/lloguer'
+  },
+  {
+    ID: 'HA_004',
+    name: 'AJUTS LLOGUER ESPECIAL URGÈNCIA',
+    periode: 'mes',
+    url: '/ajuts/lloguer'
+  },
 ];
 
 const hasAnyBenefit = (unitatDeConvivencia, period) =>
