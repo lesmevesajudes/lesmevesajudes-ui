@@ -28,6 +28,12 @@ const possibleBenefits = [
     periode: 'mes',
     url: '/ajuts/lloguer'
   },
+  {
+    ID: 'HA_005',
+    name: 'SUBVENCIONS HABITATGE DE TIPUS MIFO',
+    periode: 'mes',
+    url: '/ajuts/lloguer'
+  },
 ];
 
 const hasAnyBenefit = (unitatDeConvivencia, period) =>
