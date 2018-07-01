@@ -10,7 +10,8 @@ import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import {withStyles} from '@material-ui/core/styles';
 import {styles} from '../styles/theme';
-import {IconFont} from '../components/IconFont/IconFont';
+import {IconFontAjuntamentBarcelona} from '../components/IconFont/IconFontAjuntamentBarcelona';
+
 const initials = (name: string) => {
   const initials = name.replace(/[^a-zA-Z- ]/g, '').match(/\b\w/g);
   if (initials instanceof Array) {
@@ -35,6 +36,7 @@ type PersonCardProps = {
   person: Person,
   updatePerson: Function,
   onRemoveClick: Function,
+  classes: Object
 }
 const relacioDeParentiuATextDelLListatDePersones = (relacioDeParentiu: string) => {
   const textos = {
@@ -80,7 +82,8 @@ export const PersonCard = (props: PersonCardProps) => {
 type UnknownPersonProps = {
   onAddPersonClick: Function,
   onRemoveClick: Function,
-  personNumber: number
+  personNumber: number,
+  classes: Object
 }
 const UnknownPersonCard = (props: UnknownPersonProps) => {
   const { classes } = props;
@@ -113,8 +116,8 @@ export const PersonsViewer = (props: Props) => {
         <Grid container className='bg-container'>
            <Grid item xs={12} sm={12} className="titleContainer">
            <Typography variant='headline' className="titlePage">
-                <IconFont icon="persona" sizeSphere={48} fontSize={32} />
-                <span class="titleText"><Trans>Persones de la unitat de convivència</Trans></span>
+             <IconFontAjuntamentBarcelona icon="persona" sphereSize={48} fontSize={32}/>
+             <span className="titleText"><Trans>Persones de la unitat de convivència</Trans></span>
               </Typography>
           </Grid>
           <Grid item xs={12}>

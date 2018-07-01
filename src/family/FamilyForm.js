@@ -18,7 +18,7 @@ import FormSubTitle from '../persons/components/FormSubTitle';
 import {detectaFamilies} from './detectaFamilies';
 import {createFamilyName, toArray} from './createFamilyName';
 import Sticky from 'react-stickynode';
-import {IconFont} from '../components/IconFont/IconFont';
+import {IconFontAjuntamentBarcelona} from '../components/IconFont/IconFontAjuntamentBarcelona';
 
 type Props = {
   addHouseholdData: Function,
@@ -39,8 +39,8 @@ const FamilyForm = (props: Props) => {
       <Grid container className='bg-container'>
         <Grid item xs={12} sm={12} className="titleContainer">
               <Typography variant='headline' className="titlePage">
-                <IconFont icon="familia" sizeSphere={48} fontSize={32} />
-                <span class="titleText"><Trans>Informació sobre la seva família</Trans></span>
+                <IconFontAjuntamentBarcelona icon="familia" sphereSize={48} fontSize={32}/>
+                <span className="titleText"><Trans>Informació sobre la seva família</Trans></span>
               </Typography>
         </Grid>
         <Grid item xs={12}  className='bg-form-exterior bg-form'>

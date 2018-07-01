@@ -7,7 +7,10 @@ import {Field} from 'redux-form/';
 import {reduxForm} from 'redux-form';
 import {allowOnlyPositive} from '../components/Common/NormalizeCommon';
 import Typography from '@material-ui/core/Typography';
-import {IconFont} from '../components/IconFont/IconFont'
+import {IconFontAjuntamentBarcelona} from '../components/IconFont/IconFontAjuntamentBarcelona';
+import {withStyles} from '@material-ui/core/styles';
+import {styles} from '../styles/theme';
+
 const validate = values => {
   const errors = {};
   const requiredFields = [
@@ -24,14 +27,15 @@ const validate = values => {
   return errors
 };
 let HowManyPersonsLiveTogetherPage = props => {
-  const {handleSubmit} = props;
+  const {handleSubmit, classes} = props;
   return (
       <Grid container className='bg-container' justify='center'>
         <Grid item xs={12} sm={12} className="titleContainer">
 
           <Typography variant='headline' className="titlePage">
-          <IconFont icon="familia" sizeSphere={48} fontSize={32} />
-          <span class="titleText"><Trans>Quantes persones viuen en el seu domicili? (amb vostè inclòs)</Trans></span>
+            <IconFontAjuntamentBarcelona icon="familia" className={classes.formIcon}/>
+            <span
+                className="titleText"><Trans>Quantes persones viuen en el seu domicili? (amb vostè inclòs)</Trans></span>
           </Typography>
         </Grid>
         <Grid item xs={12} className='bg-form-exterior bg-form'>
@@ -61,4 +65,4 @@ HowManyPersonsLiveTogetherPage = reduxForm({
   validate
 })(HowManyPersonsLiveTogetherPage);
 
-export default HowManyPersonsLiveTogetherPage;
+export default withStyles(styles)(HowManyPersonsLiveTogetherPage);

@@ -21,7 +21,7 @@ import MultipleAnswerQuestion from './components/MultipleAnswerQuestion';
 import FormSubTitle from './components/FormSubTitle';
 import Sticky from 'react-stickynode';
 import {currentFocussedFieldSelector} from "../shared/selectorUtils";
-import {IconFont} from '../components/IconFont/IconFont';
+import {IconFontAjuntamentBarcelona} from '../components/IconFont/IconFontAjuntamentBarcelona';
 
 export type PersonFormInitialValues = Person | { is_the_person_in_front_of_the_computer: boolean };
 
@@ -95,12 +95,12 @@ let PersonForm = (props: Props) => {
         <Grid item xs={12} sm={12} className="titleContainer">
           {isTheUserInFrontOfTheComputer ?
               <Typography variant='headline' className="titlePage">
-                <IconFont icon="persona" sizeSphere={48} fontSize={32} />
-                <span class="titleText"><Trans>Informació sobre vostè</Trans></span>
+                <IconFontAjuntamentBarcelona icon="persona" sphereSize={48} fontSize={32}/>
+                <span className="titleText"><Trans>Informació sobre vostè</Trans></span>
               </Typography> :
               <Typography variant='headline' className="titlePage">
-                <IconFont icon="persona" sizeSphere={48} fontSize={32} />
-                <span class="titleText"><Trans>Dades sobre una persona que conviu ambvostè</Trans></span>
+                <IconFontAjuntamentBarcelona icon="persona" sphereSize={48} fontSize={32}/>
+                <span className="titleText"><Trans>Dades sobre una persona que conviu ambvostè</Trans></span>
               </Typography>}
         </Grid>
         <Grid item xs={12} className='bg-form-exterior bg-form'>

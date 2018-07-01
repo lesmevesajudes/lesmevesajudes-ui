@@ -1,4 +1,4 @@
-import {createMuiTheme } from '@material-ui/core/styles';
+import {createMuiTheme} from '@material-ui/core/styles';
 
 export const colors = {
   primary: '#d50283',
@@ -12,7 +12,8 @@ export const colors = {
   white: '#fff',
   blackest: '#202020',
   gray: '#f2f2f2'
-}
+};
+
 export const styles = theme => ({
   root: {
     width: '100%',
@@ -44,6 +45,9 @@ export const styles = theme => ({
       backgroundColor: colors.disabled_text 
     }
   },
+  unCompletedStep: {
+    color: '#d2d2d2'
+  },
   completedStep: {
     color: '#00acd4',
   },
@@ -63,6 +67,12 @@ export const styles = theme => ({
   },
   stepperContainer: {
     backgroundColor: '#fbfbfb'
+  },
+  formIcon: {
+    color: '#d50283',
+    marginRight: '10px',
+    height: '48px',
+    fontSize: '32px'
   }
 });
 

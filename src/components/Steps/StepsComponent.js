@@ -8,7 +8,7 @@ import StepperButtons from './StepperButtons';
 import Typography from '@material-ui/core/Typography';
 import {Trans} from 'react-i18next';
 import {styles} from '../../styles/theme';
-import {IconFont} from '../IconFont/IconFont';
+import {StepperIconFont} from './StepperIconFont';
 
 type Props = {
   classes: Object,
@@ -23,15 +23,11 @@ type Props = {
 
 const chooseIcon = (props, index) => {
   const iconStep = props.steps[index].icon;
-  let active = false;
-  let completed = false;
-  if (props.currentStep === index) {
-    active = true;
-  }
-  else if (props.currentStep > index) {
-    completed = true;
-  }
-  return <IconFont icon={iconStep} completed={completed} active={active} isStepperIcon={true} sizeSphere={48} fontSize={32}/>
+  const active = props.currentStep === index;
+  const completed = props.currentStep > index;
+
+  return <StepperIconFont icon={iconStep} completed={completed} active={active} sphereSize={48} fontSize={32}
+                          classes={props.classes}/>
 };
 
 let StepsComponent = (props: Props) => {
@@ -52,9 +48,11 @@ let StepsComponent = (props: Props) => {
           }
         </Stepper>
         <Grid container>
+
           <Grid item sm={12} xs={12} md={12}>
             {childComponent}
           </Grid>
+
           <Grid item sm={12} xs={12} md={12}>
             <StepperButtons nextAction={(currentStep === steps.length - 1) ? undefined : nextStep}
                             backAction={(currentStep === 0) ? undefined : backStep} classes={classes}

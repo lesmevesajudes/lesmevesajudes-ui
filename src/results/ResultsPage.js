@@ -8,7 +8,9 @@ import ReportBug from '../reportBug/ReportBugPage';
 import axios from 'axios/index';
 import {Grid} from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
-import {IconFont} from '../components/IconFont/IconFont';
+import {IconFontAjuntamentBarcelona} from '../components/IconFont/IconFontAjuntamentBarcelona';
+import {styles} from "../styles/theme";
+import {withStyles} from "@material-ui/core/styles/index";
 
 type Props = {
   isError: boolean,
@@ -99,8 +101,8 @@ class ResultsPage extends React.Component<Props> {
           <div className='bg-container'>
               <Grid item xs={12} sm={12} className="titleContainer">
                   <Typography variant='headline' className="titlePage">
-                    <IconFont icon="resultats" sizeSphere={48} fontSize={32} />
-                    <span class="titleText">Ajudes a les que podria optar</span> 
+                    <IconFontAjuntamentBarcelona icon="resultats" sphereSize={48} fontSize={32}/>
+                    <span className="titleText">Ajudes a les que podria optar</span>
                   </Typography>
             </Grid>
             <Grid container>
@@ -139,4 +141,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, {fetchSimulation})(ResultsPage);
+export default connect(mapStateToProps, {fetchSimulation})(withStyles(styles)(ResultsPage));
