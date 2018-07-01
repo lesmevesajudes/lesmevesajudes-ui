@@ -8,6 +8,7 @@ import {reduxForm} from 'redux-form';
 import {allowOnlyPositive} from '../components/Common/NormalizeCommon';
 import Typography from '@material-ui/core/Typography';
 import {IconFont} from '../components/IconFont/IconFont'
+
 const validate = values => {
   const errors = {};
   const requiredFields = [
@@ -31,7 +32,8 @@ let HowManyPersonsLiveTogetherPage = props => {
 
           <Typography variant='headline' className="titlePage">
           <IconFont icon="familia" sizeSphere={48} fontSize={32} />
-          <span class="titleText"><Trans>Quantes persones viuen en el seu domicili? (amb vostè inclòs)</Trans></span>
+            <span
+                className="titleText"><Trans>Quantes persones viuen en el seu domicili? (amb vostè inclòs)</Trans></span>
           </Typography>
         </Grid>
         <Grid item xs={12} className='bg-form-exterior bg-form'>
