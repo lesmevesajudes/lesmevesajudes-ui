@@ -12,6 +12,13 @@ const possibleBenefits = [
   }
 ];
 
+const hasAnyBenefit = (unitatDeConvivencia, period) =>
+    typeof unitatDeConvivencia === 'undefined'
+        ? false
+        : possibleBenefits.reduce((acc, benefit) => {
+      return acc + unitatDeConvivencia[benefit.ID][period];
+    }, 0) > 0;
+
 const renderABenefit = (benefit, unitatDeConvivencia, period) =>
     unitatDeConvivencia[benefit.ID][period] > 0
         ? <Grid container className='ResultPage' justify='center' alignItems='center' key={benefit.ID}>
@@ -47,9 +54,11 @@ const renderUnitatDeConvivenciaBenefitList = (unitatDeConvivencia, persons, peri
             <Grid container className='ResultPage' justify='space-between'>
               <Grid item xs sm={12}>
                 <ul className='ItemList'>
-                  {possibleBenefits.map((benefit) =>
-                      renderABenefit(benefit, unitatDeConvivencia, period)
-                  )}
+                  {hasAnyBenefit(unitatDeConvivencia, period)
+                      ? possibleBenefits.map((benefit) =>
+                          renderABenefit(benefit, unitatDeConvivencia, period)
+                      )
+                      : <div className='ItemResult'>No opta a cap ajuda</div>}
                 </ul>
               </Grid>
             </Grid>
