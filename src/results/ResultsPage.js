@@ -9,6 +9,7 @@ import axios from 'axios/index';
 import {Grid} from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import {IconFont} from '../components/IconFont/IconFont';
+import UnitatDeConvivenciaBenefits from "./UnitatDeConvivenciaBenefits";
 
 type Props = {
   isError: boolean,
@@ -19,6 +20,11 @@ type Props = {
 };
 
 class ResultsPage extends React.Component<Props> {
+  constructor() {
+    super();
+    this.period = '2017-01';
+  }
+
   enoughDataForSimulation() {
     return this.props.persons.count() > 0;
   }
@@ -111,9 +117,14 @@ class ResultsPage extends React.Component<Props> {
                 />
               </Grid>
               <Grid item xs={12}>
-                <div>
                   <FamilyBenefits benefits={this.props.resultsData.families}/>
-                </div>
+              </Grid>
+              <Grid item xs={12}>
+                <UnitatDeConvivenciaBenefits
+                    unitatDeConvivencia={this.props.resultsData.unitats_de_convivencia}
+                    persons={this.props.persons}
+                    period={this.period}
+                />
               </Grid>
             </Grid>
           </div>

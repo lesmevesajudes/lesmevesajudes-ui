@@ -71,6 +71,8 @@ const residenceDataToAPI = (residenceData: ResidenceData) => ({
   import_de_la_hipoteca: currentMonth(residenceData.import_de_la_hipoteca),
   relacio_de_parentiu_amb_el_propietari: currentMonth(residenceData.relacio_de_parentiu_amb_el_propietari),
   tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit: currentMonth(residenceData.tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit),
+  zona_de_lhabitatge: currentMonth(residenceData.zona_de_lhabitatge),
+  HA_001: currentMonth(null)
 });
 
 const createUnitatDeConvivencia = (simulationData) => {
