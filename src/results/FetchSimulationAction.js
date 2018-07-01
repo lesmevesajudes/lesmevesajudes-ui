@@ -7,7 +7,7 @@ import {esInfantAcollit} from '../shared/selectorUtils';
 import {detectaFamilies} from "../family/detectaFamilies";
 import {serialize} from "../persons/PersonsReducer";
 import * as uuid from "uuid";
-import {zonaDelCodiPostal} from "../shared/CodisPostals";
+import {demarcacioDelCodiPostal, zonaDelCodiPostal} from "../shared/CodisPostals";
 
 export const FETCH_SIMULATION = 'fetch_simulation';
 
@@ -60,6 +60,7 @@ const createAFamilyWithAllPersons = (simulationData) => {
 
 const residenceDataToAPI = (residenceData: ResidenceData) => ({
   codi_postal_habitatge: currentMonth(residenceData.codi_postal_habitatge),
+  demarcacio_de_lhabitatge: currentMonth(residenceData.demarcacio_de_lhabitatge),
   des_de_quan_teniu_deutes_de_lloguer: currentMonth(residenceData.des_de_quan_teniu_deutes_de_lloguer),
   existeix_deute_en_el_pagament_del_lloguer: currentMonth(residenceData.existeix_deute_en_el_pagament_del_lloguer),
   existeix_deute_en_el_pagament_de_la_hipoteca: currentMonth(residenceData.existeix_deute_en_el_pagament_de_la_hipoteca),
@@ -146,6 +147,7 @@ export const buildRequest = (simulationData: SimulationData) => {
 
   }
   simulationData.residence.zona_de_lhabitatge = zonaDelCodiPostal(simulationData.residence.codi_postal_habitatge);
+  simulationData.residence.demarcacio_de_lhabitatge = demarcacioDelCodiPostal(simulationData.residence.codi_postal_habitatge);
 
   const families = isEmptyMap(simulationData.family.custodies)
       ? createAFamilyWithAllPersons(simulationData)

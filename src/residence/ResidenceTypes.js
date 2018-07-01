@@ -3,6 +3,7 @@
 export type ResidenceData = {
   codi_postal_habitatge: string,
   des_de_quan_teniu_deutes_de_lloguer: string,
+  demarcacio_de_lhabitatge: string,
   es_ocupant_dun_habitatge_gestionat_per_lagencia_de_lhabitatge: boolean,
   existeix_deute_en_el_pagament_del_lloguer: boolean,
   existeix_deute_en_el_pagament_de_la_hipoteca: boolean,
