@@ -65,8 +65,8 @@ const ResidenceForm = (props: Props) => {
       <Grid container className='bg-container'>
         <Grid item xs={12} sm={12} className="titleContainer">
           <Typography variant='headline' className="titlePage">
-            <IconFont icon={""}/>
-            <Trans>Afegeixi informació del seu domicili habitual</Trans>
+            <IconFont icon="domicili" sizeSphere={48} fontSize={32} />
+            <span className="titleText"><Trans>Afegeixi informació del seu domicili habitual</Trans></span>
           </Typography>
         </Grid>
         <Grid item xs={12} className='bg-form-exterior bg-form'>

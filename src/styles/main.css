@@ -14,21 +14,24 @@ body {
   font-family: 'Ajuntament';
 }
 .iconTitle {
-  text-align: center !important;
   color: #fff;
 }
 .iconTitle-container {
   float: left; 
   background: #00ACD4;
   border-radius: 100%;
+  text-align: center !important;
 }
 .titleContainer {
-  margin-bottom: 25px !important;
+  margin-bottom: 15px !important;
 }
 .titlePage{
-  line-height: 64px !important;
+  text-align: left;
   margin-left: 90px !important;
   float:left;
+}
+.titleText{
+  line-height: 48px;
 }
 .stepperContainer{
   background: #fbfbfb !important;

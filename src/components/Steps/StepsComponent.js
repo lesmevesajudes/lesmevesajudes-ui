@@ -31,7 +31,7 @@ const chooseIcon = (props, index) => {
   else if (props.currentStep > index) {
     completed = true;
   }
-  return <IconFont icon={iconStep} completed={completed} active={active} isStepperIcon={true} sizeSphere={"48px"} fontSize={"32px"}/>
+  return <IconFont icon={iconStep} completed={completed} active={active} isStepperIcon={true} sizeSphere={48} fontSize={32}/>
 };
 
 let StepsComponent = (props: Props) => {

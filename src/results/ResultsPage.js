@@ -9,6 +9,7 @@ import axios from 'axios/index';
 import {Grid} from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import {IconFont} from '../components/IconFont/IconFont';
+import UnitatDeConvivenciaBenefits from "./UnitatDeConvivenciaBenefits";
 
 type Props = {
   isError: boolean,
@@ -19,6 +20,11 @@ type Props = {
 };
 
 class ResultsPage extends React.Component<Props> {
+  constructor() {
+    super();
+    this.period = '2017-01';
+  }
+
   enoughDataForSimulation() {
     return this.props.persons.count() > 0;
   }
@@ -93,14 +99,14 @@ class ResultsPage extends React.Component<Props> {
           </div>
       );
     }
-
+    //Añadir Trans en titlePage
     return (
         <Fragment>
           <div className='bg-container'>
               <Grid item xs={12} sm={12} className="titleContainer">
                   <Typography variant='headline' className="titlePage">
-                    <IconFont icon={""}/>
-                    Ajudes a les que podria optar
+                    <IconFont icon="resultats" sizeSphere={48} fontSize={32} />
+                    <span className="titleText">Ajudes a les que podria optar</span>
                   </Typography>
             </Grid>
             <Grid container>
@@ -111,9 +117,14 @@ class ResultsPage extends React.Component<Props> {
                 />
               </Grid>
               <Grid item xs={12}>
-                <div>
                   <FamilyBenefits benefits={this.props.resultsData.families}/>
-                </div>
+              </Grid>
+              <Grid item xs={12}>
+                <UnitatDeConvivenciaBenefits
+                    unitatDeConvivencia={this.props.resultsData.unitats_de_convivencia}
+                    persons={this.props.persons}
+                    period={this.period}
+                />
               </Grid>
             </Grid>
           </div>

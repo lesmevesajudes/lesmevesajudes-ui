@@ -92,6 +92,54 @@ const codisPostalsZonaA = ['08328',
   '08214',
   '08210',
   '08001',
+  '08002',
+  '08003',
+  '08004',
+  '08005',
+  '08006',
+  '08007',
+  '08008',
+  '08009',
+  '08010',
+  '08011',
+  '08012',
+  '08013',
+  '08014',
+  '08015',
+  '08016',
+  '08017',
+  '08018',
+  '08019',
+  '08020',
+  '08021',
+  '08022',
+  '08023',
+  '08024',
+  '08025',
+  '08026',
+  '08027',
+  '08028',
+  '08029',
+  '08030',
+  '08031',
+  '08032',
+  '08033',
+  '08034',
+  '08035',
+  '08036',
+  '08037',
+  '08038',
+  '08039',
+  '08040',
+  '08041',
+  '08042',
+  '08075',
+  '08196',
+  '08830',
+  '08903',
+  '08904',
+  '08930',
+  '08960',
   '08349',
   '08348',
   '08140',
@@ -706,6 +754,81 @@ const codisPostalsZonaD = ['08256',
   '043374',
   '025547',
   '08679'];
+
+const terresDeLEbre = [
+  '43500',
+  '43511',
+  '43512',
+  '43513',
+  '43514',
+  '43515',
+  '43516',
+  '43519',
+  '43520',
+  '43540',
+  '43550',
+  '43370',
+  '43530',
+  '43559',
+  '43558',
+  '43560',
+  '43570',
+  '43580',
+  '43592',
+  '43593',
+  '43594',
+  '43595',
+  '43596',
+  '43597',
+  '43740',
+  '43746',
+  '43747',
+  '43748',
+  '43749',
+  '43750',
+  '43780',
+  '43781',
+  '43782',
+  '43783',
+  '43784',
+  '43785',
+  '43786',
+  '43787',
+  '43790',
+  '43791',
+  '43792',
+  '43870',
+  '43877',
+  '43878',
+  '43894',
+  '43895'
+];
+export const demarcacioDelCodiPostal = (codiPostal: string): string => {
+  const CPBarcelona = '08';
+  const CPGirona = '17';
+  const CPLleida = '25';
+  const CPTarragona = '43';
+  const dosPrimersDigits = codiPostal.substring(0, 2);
+  let result = "";
+  console.log(dosPrimersDigits);
+  if (terresDeLEbre.indexOf(codiPostal) > -1) {
+    result = 'terres_de_lebre';
+  } else if (esBarcelona(codiPostal)) {
+    result = 'barcelona_ciutat'
+  } else if (dosPrimersDigits === CPBarcelona) {
+    result = 'barcelona_provincia'
+  } else if (dosPrimersDigits === CPGirona) {
+    result = 'girona'
+  } else if (dosPrimersDigits === CPTarragona) {
+    result = 'tarragona'
+  } else if (dosPrimersDigits === CPLleida) {
+    result = 'lleida'
+  } else {
+    result = 'desconeguda'
+  }
+
+  return result;
+};
 
 export const zonaDelCodiPostal = (codiPostal: string): string => {
   let result = "";

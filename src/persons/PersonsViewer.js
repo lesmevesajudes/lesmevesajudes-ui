@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import {withStyles} from '@material-ui/core/styles';
 import {styles} from '../styles/theme';
 import {IconFont} from '../components/IconFont/IconFont';
+
 const initials = (name: string) => {
   const initials = name.replace(/[^a-zA-Z- ]/g, '').match(/\b\w/g);
   if (initials instanceof Array) {
@@ -113,8 +114,8 @@ export const PersonsViewer = (props: Props) => {
         <Grid container className='bg-container'>
            <Grid item xs={12} sm={12} className="titleContainer">
            <Typography variant='headline' className="titlePage">
-                <IconFont icon={""} />
-                <Trans>Persones de la unitat de convivència</Trans>
+                <IconFont icon="persona" sizeSphere={48} fontSize={32} />
+             <span className="titleText"><Trans>Persones de la unitat de convivència</Trans></span>
               </Typography>
           </Grid>
           <Grid item xs={12}>
