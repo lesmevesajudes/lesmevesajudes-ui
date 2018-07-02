@@ -158,7 +158,7 @@ let PersonForm = (props: Props) => {
                     {municipiEmpadronament === 'barcelona' &&
                     <TimePeriodQuestion name='anys_empadronat_a_barcelona'
                                         validate={[anysEmpadronatInferiorAEdat, menorDe120]} required>
-                      <Trans>Quants fa que està empadronat/ada a Barcelona?</Trans>
+                      <Trans>Quants anys fa que està empadronat/ada a Barcelona?</Trans>
                     </TimePeriodQuestion>}
 
                     {esFamiliarOUsuari && potTreballar &&
@@ -190,7 +190,7 @@ let PersonForm = (props: Props) => {
 
                       {haTreballatALEstranger6Mesos &&
                       <YesNoQuestion name='ha_treballat_a_l_estranger_6_mesos_i_ha_retornat_en_els_ultims_12_mesos'>
-                        <Trans>Ha retornat d’aquest període de treball en els darrers 12 mesos?</Trans>
+                        <Trans>Ha tornat d’aquest període de treball en els darrers 12 mesos?</Trans>
                       </YesNoQuestion>}
                     </Fragment>}
 
@@ -222,7 +222,7 @@ let PersonForm = (props: Props) => {
 
                     {esFamiliarOUsuari && esAturat &&
                     <YesNoQuestion name='percep_prestacions_incompatibles_amb_la_feina'>
-                      <Trans> Perceb alguna ajuda i/o prestació econòmica de la seguretat social que no li permeti
+                      <Trans> Percep alguna ajuda i/o prestació econòmica de la seguretat social que no li permet
                         treballar?</Trans>
                     </YesNoQuestion>}
 
@@ -254,7 +254,7 @@ let PersonForm = (props: Props) => {
 
                       {(edat > 18 && edat < 23) && !(esFill || esFillastre) &&
                       <YesNoQuestion name='es_orfe_dels_dos_progenitors'>
-                        <Trans>És orfe/na dels dos progenitors</Trans>
+                        <Trans>És orfe/na dels dos progenitors?</Trans>
                       </YesNoQuestion>}
 
                       <YesNoQuestion name='beneficiari_de_prestacio_residencial'>

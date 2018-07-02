@@ -70,7 +70,7 @@ const ResidenceForm = (props: Props) => {
           </Typography>
         </Grid>
         <Grid item xs={12} className='bg-form-exterior bg-form'>
-          <form name='ResidenceForm'>
+          <kjlform name='ResidenceForm'>
             <Grid container direction='row' justify='space-around' alignItems='stretch' spacing={16}>
               <Grid item sm={6}>
                 <Grid container direction='column' alignItems='stretch' spacing={16}>
@@ -134,7 +134,7 @@ const ResidenceForm = (props: Props) => {
 
                   {esLlogater &&
                   <MoneyQuestion name='import_del_lloguer'>
-                    <Trans>Quina és la quota mensual d’aquest lloguer?</Trans>
+                    <Trans>Quin és l’import mensual d’aquest lloguer?</Trans>
                   </MoneyQuestion>}
 
                   {existeixHipoteca &&
@@ -144,7 +144,7 @@ const ResidenceForm = (props: Props) => {
 
                   {esLlogater &&
                   <YesNoQuestion name='existeix_deute_en_el_pagament_del_lloguer'>
-                    <Trans>Existeix un deute en el pagament del lloguer</Trans>
+                    <Trans>Existeix un deute en el pagament del lloguer?</Trans>
                   </YesNoQuestion>}
 
                   {existeixDeutePagamentLloguer &&
@@ -223,7 +223,7 @@ const ResidenceForm = (props: Props) => {
                 </Sticky>
               </Grid>
             </Grid>
-          </form>
+          </kjlform>
         </Grid>
       </Grid>
 
