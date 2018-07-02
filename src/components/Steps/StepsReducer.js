@@ -16,6 +16,7 @@ export default (state: StepsState = initial, action: StepAction): StepsState => 
       return {
         ...state,
         current_step: state.current_step + 1,
+        max_step_reached: state.current_step + 1
       };
     }
     case 'BACK_STEP':
@@ -31,9 +32,7 @@ export default (state: StepsState = initial, action: StepAction): StepsState => 
         };
       } else {
         return {
-          ...state,
-          current_step: action.index,
-          max_step_reached: action.index
+          ...state
         };
       }
     case 'BUTTONS_VISIBLE':
