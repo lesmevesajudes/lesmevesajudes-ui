@@ -808,9 +808,11 @@ export const demarcacioDelCodiPostal = (codiPostal: string): string => {
   const CPGirona = '17';
   const CPLleida = '25';
   const CPTarragona = '43';
+
+  if (typeof codiPostal !== 'string') return 'desconeguda';
+
   const dosPrimersDigits = codiPostal.substring(0, 2);
   let result = "";
-  console.log(dosPrimersDigits);
   if (terresDeLEbre.indexOf(codiPostal) > -1) {
     result = 'terres_de_lebre';
   } else if (esBarcelona(codiPostal)) {
