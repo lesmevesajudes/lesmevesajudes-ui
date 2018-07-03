@@ -100,7 +100,7 @@ let PersonForm = (props: Props) => {
               </Typography> :
               <Typography variant='headline' className="titlePage">
                 <IconFont icon="persona" sizeSphere={48} fontSize={32} />
-                <span className="titleText"><Trans>Dades sobre una persona que conviu ambvostè</Trans></span>
+                <span className="titleText"><Trans>Informació sobre aquesta persona que conviu amb vostè</Trans></span>
               </Typography>}
         </Grid>
         <Grid item xs={12} className='bg-form-exterior bg-form'>
@@ -222,7 +222,7 @@ let PersonForm = (props: Props) => {
 
                     {esFamiliarOUsuari && esAturat &&
                     <YesNoQuestion name='percep_prestacions_incompatibles_amb_la_feina'>
-                      <Trans> Percep alguna ajuda i/o prestació econòmica de la seguretat social que no li permet
+                      <Trans>Percep alguna ajuda i/o prestació econòmica de la seguretat social que no li permet
                         treballar?</Trans>
                     </YesNoQuestion>}
 
@@ -240,16 +240,16 @@ let PersonForm = (props: Props) => {
 
                       {potTreballar && esDona &&
                       <YesNoQuestion name='victima_violencia_de_genere'>
-                        <Trans>Víctima violència de gènere</Trans>
+                        <Trans>És víctima violència de gènere?</Trans>
                       </YesNoQuestion>}
                       {potTreballar && esHome &&
                       <YesNoQuestion name='victima_violencia_domestica'>
-                        <Trans>Víctima violència domèstica</Trans>
+                        <Trans>És víctima violència domèstica?</Trans>
                       </YesNoQuestion>}
 
                     {(edat > 2 && edat < 16) &&
                     <YesNoQuestion name='es_escolaritzat_entre_P3_i_4rt_ESO'>
-                      <Trans>Escolaritzat/ada entre P3 i 4rt ESO a la ciutat de Barcelona?</Trans>
+                      <Trans>És escolaritzat/ada entre P3 i 4rt ESO a la ciutat de Barcelona?</Trans>
                     </YesNoQuestion>}
 
                       {(edat > 18 && edat < 23) && !(esFill || esFillastre) &&

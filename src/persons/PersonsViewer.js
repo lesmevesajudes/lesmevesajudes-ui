@@ -115,7 +115,7 @@ export const PersonsViewer = (props: Props) => {
            <Grid item xs={12} sm={12} className="titleContainer">
            <Typography variant='headline' className="titlePage">
                 <IconFont icon="persona" sizeSphere={48} fontSize={32} />
-             <span className="titleText"><Trans>Persones de la unitat de convivència</Trans></span>
+             <span className="titleText"><Trans>Persones que viuen en el seu domicili</Trans></span>
               </Typography>
           </Grid>
           <Grid item xs={12}>

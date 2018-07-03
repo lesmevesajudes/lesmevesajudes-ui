@@ -18,6 +18,7 @@ import {MoneyQuestion} from '../persons/components/MoneyQuestion';
 import Typography from '@material-ui/core/Typography';
 import Sticky from 'react-stickynode';
 import {IconFont} from '../components/IconFont/IconFont';
+import Icon from "@material-ui/core/Icon/Icon";
 
 const seemsPostalCode = value =>
     value && (isNaN(Number(value)) || value.length !== 5)
@@ -82,7 +83,7 @@ const ResidenceForm = (props: Props) => {
                     <MenuItem value='propietari_hipoteca'><Trans>Visc en un habitatge de propietat amb
                       hipoteca</Trans></MenuItem>
                     <MenuItem value='no_en_te'><Trans>No tinc un habitatge fixe</Trans></MenuItem>
-                    <MenuItem value='cessio'><Trans>Cessió d'ús</Trans></MenuItem>
+                    <MenuItem value='cessio'><Trans>Cessió d'ús</Trans><Icon>info</Icon></MenuItem>
                     <MenuItem value='altres'><Trans>Altres</Trans></MenuItem>
                   </MultipleAnswerQuestion>
                   {teHabitatgeHabitual &&

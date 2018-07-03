@@ -1,15 +1,16 @@
-import React, {Fragment} from 'react';
-import {connect} from 'react-redux';
-import {fetchSimulation} from './FetchSimulationAction';
-import PersonalBenefits from './PersonalBenefits';
-import FamilyBenefits from './FamilyBenefits';
-import type {Person, PersonID} from '../persons/PersonTypes';
-import ReportBug from '../reportBug/ReportBugPage';
-import axios from 'axios/index';
-import {Grid} from '@material-ui/core';
-import Typography from '@material-ui/core/Typography';
-import {IconFont} from '../components/IconFont/IconFont';
+import React, { Fragment } from "react";
+import { connect } from "react-redux";
+import { fetchSimulation } from "./FetchSimulationAction";
+import PersonalBenefits from "./PersonalBenefits";
+import FamilyBenefits from "./FamilyBenefits";
+import type { Person, PersonID } from "../persons/PersonTypes";
+import ReportBug from "../reportBug/ReportBugPage";
+import axios from "axios/index";
+import { Grid } from "@material-ui/core";
+import Typography from "@material-ui/core/Typography";
+import { IconFont } from "../components/IconFont/IconFont";
 import UnitatDeConvivenciaBenefits from "./UnitatDeConvivenciaBenefits";
+import { Trans } from "react-i18next";
 
 type Props = {
   isError: boolean,
@@ -22,7 +23,7 @@ type Props = {
 class ResultsPage extends React.Component<Props> {
   constructor() {
     super();
-    this.period = '2017-01';
+    this.period = "2017-01";
   }
 
   enoughDataForSimulation() {
@@ -35,47 +36,47 @@ class ResultsPage extends React.Component<Props> {
 
   submitReport = values => {
     // print the form values to the console
-    console.log('form submit:', values);
+    console.log("form submit:", values);
     axios
-        .post('https://lesmevesajudes-ss.herokuapp.com/api/simulations', {
-          comments: values.comments || '',
-          expected_result: values.resultat_esperat || '',
-          application_state: values.application_state,
-          valid_result: !values.invalid_result
-        })
-        .then(function (response) {
-          console.log('saved successfully', response);
-          //kill em all
-          window.location.reload(true);
-        })
-        .catch(function (error) {
-          console.error(error);
-          alert(error);
-        });
+      .post("https://lesmevesajudes-ss.herokuapp.com/api/simulations", {
+        comments: values.comments || "",
+        expected_result: values.resultat_esperat || "",
+        application_state: values.application_state,
+        valid_result: !values.invalid_result
+      })
+      .then(function(response) {
+        console.log("saved successfully", response);
+        //kill em all
+        window.location.reload(true);
+      })
+      .catch(function(error) {
+        console.error(error);
+        alert(error);
+      });
   };
 
   render() {
     if (!this.enoughDataForSimulation()) {
       return (
-          <div>
-            <div className='bg-container '>
-              <h1>Ajudes a les que podria optar</h1>
-              <Grid container>
-                <Grid item>
-                  <Typography className='errorText'>
-                    Falten dades per a executar la simulació
-                  </Typography>
-                </Grid>
+        <div>
+          <div className='bg-container '>
+            <h1>Ajudes a les que podria optar</h1>
+            <Grid container>
+              <Grid item>
+                <Typography className='errorText'>
+                  Falten dades per a executar la simulació
+                </Typography>
               </Grid>
-            </div>
-            <div className='bg-container '>
-              <Grid container>
-                <Grid item xs={12}>
-                  <ReportBug onSubmit={this.submitReport}/>
-                </Grid>
-              </Grid>
-            </div>
+            </Grid>
           </div>
+          <div className='bg-container '>
+            <Grid container>
+              <Grid item xs={12}>
+                <ReportBug onSubmit={this.submitReport}/>
+              </Grid>
+            </Grid>
+          </div>
+        </div>
       );
     }
 
@@ -85,57 +86,57 @@ class ResultsPage extends React.Component<Props> {
 
     if (this.props.isError) {
       return (
-          <div>
-            <h1>Error fent la petició</h1>
-            <p>{this.props.resultsData.message}</p>
-            <p>Details:</p>
-            <p>
-              {JSON.stringify(
-                  JSON.parse(this.props.resultsData.response.request.responseText),
-                  null,
-                  2
-              )}
-            </p>
-          </div>
+        <div>
+          <h1>Error fent la petició</h1>
+          <p>{this.props.resultsData.message}</p>
+          <p>Details:</p>
+          <p>
+            {JSON.stringify(
+              JSON.parse(this.props.resultsData.response.request.responseText),
+              null,
+              2
+            )}
+          </p>
+        </div>
       );
     }
     //Añadir Trans en titlePage
     return (
-        <Fragment>
-          <div className='bg-container'>
-              <Grid item xs={12} sm={12} className="titleContainer">
-                  <Typography variant='headline' className="titlePage">
-                    <IconFont icon="resultats" sizeSphere={48} fontSize={32} />
-                    <span className="titleText">Ajudes a les que podria optar</span>
-                  </Typography>
+      <Fragment>
+        <div className='bg-container'>
+          <Grid item xs={12} sm={12} className="titleContainer">
+            <Typography variant='headline' className="titlePage">
+              <IconFont icon="resultats" sizeSphere={48} fontSize={32}/>
+              <span className="titleText"><Trans>A partir de la informació que ens ha facilitat, a continuació li informem que:</Trans></span>
+            </Typography>
+          </Grid>
+          <Grid container>
+            <Grid item xs={12}>
+              <PersonalBenefits
+                benefitsForPersons={this.props.resultsData.persones}
+                persons={this.props.persons}
+              />
             </Grid>
-            <Grid container>
-              <Grid item xs={12}>
-                <PersonalBenefits
-                    benefitsForPersons={this.props.resultsData.persones}
-                    persons={this.props.persons}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                  <FamilyBenefits benefits={this.props.resultsData.families}/>
-              </Grid>
-              <Grid item xs={12}>
-                <UnitatDeConvivenciaBenefits
-                    unitatDeConvivencia={this.props.resultsData.unitats_de_convivencia}
-                    persons={this.props.persons}
-                    period={this.period}
-                />
-              </Grid>
+            <Grid item xs={12}>
+              <FamilyBenefits benefits={this.props.resultsData.families}/>
             </Grid>
-          </div>
-          <div>
-            <Grid container>
-              <Grid item xs={12}>
-                <ReportBug onSubmit={this.submitReport}/>
-              </Grid>
+            <Grid item xs={12}>
+              <UnitatDeConvivenciaBenefits
+                unitatDeConvivencia={this.props.resultsData.unitats_de_convivencia}
+                persons={this.props.persons}
+                period={this.period}
+              />
             </Grid>
-          </div>
-        </Fragment>
+          </Grid>
+        </div>
+        <div>
+          <Grid container>
+            <Grid item xs={12}>
+              <ReportBug onSubmit={this.submitReport}/>
+            </Grid>
+          </Grid>
+        </div>
+      </Fragment>
     );
   }
 }
@@ -150,4 +151,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, {fetchSimulation})(ResultsPage);
+export default connect(mapStateToProps, { fetchSimulation })(ResultsPage);

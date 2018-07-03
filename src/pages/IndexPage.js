@@ -50,9 +50,8 @@ const IndexPage = (props) =>
           </h1>
           <p>
             <Trans i18nKey='FonsInfanciaShortText'>
-              Fons infància Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua.
+              Ajut extraordinari adreçat a famílies en situació de vulnerabilitat per cobrir les necessitats bàsiques de
+              subsistència d'infants i adolescents de 0 a 16 anys.
             </Trans>
           </p>
         </div>
@@ -64,28 +63,80 @@ const IndexPage = (props) =>
           </h1>
           <p>
             <Trans i18nKey='AjutsIndividualsShortText'>
-              Ajuts individuals de menjador Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit, sed do eiusmod tempor incididunt
-              ut labore et dolore magna aliqua.
+              Ajut individual orientat a cobrir el cost del servei de menjador de l'alumnat que pertany a famílies en
+              situacions socioeconòmiques desafavorides.
+
             </Trans>
           </p>
         </div>
         <div className='Cell'>
           <h1>
             <Link className='IndexPageLink' to='/ajuts/lloguer'>
-              <Trans>Ajuts al pagament del lloguer</Trans>
+              <Trans>Prestacions econòmiques d'urgència social derivades de la mediació a Barcelona</Trans>
             </Link>
           </h1>
           <p>
             <Trans i18nKey='AjutsAlPagamentLloguerShortText'>
-              Ajuts al pagament del lloguer Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit, sed do eiusmod tempor incididunt
-              ut labore et dolore magna aliqua.
+              Prestació econòmica de caràcter temporal adreçada a persones residents a Barcelona amb dificultats per fer
+              front al pagament del lloguer.
             </Trans>
           </p>
         </div>
       </div>
       <div className='Row'>
+        <div className='Cell'>
+          <h1>
+            <Link className='IndexPageLink' to='/ajuts/lloguer'>
+              <Trans>Prestació econòmica per al pagament de deutes del lloguer</Trans>
+            </Link>
+          </h1>
+          <p>
+            <Trans i18nKey='AjutsAlPagamentLloguerShortText'>
+              Prestació econòmica que s’atorga a persones amb deutes contrets per rebuts impagats de rendes de lloguer.
+            </Trans>
+          </p>
+        </div>
+        <div className='Cell'>
+          <h1>
+            <Link className='IndexPageLink' to='/ajuts/lloguer'>
+              <Trans>Prestació econòmica d’urgència per al pagament de deutes d’hipoteca</Trans>
+            </Link>
+          </h1>
+          <p>
+            <Trans i18nKey='AjutsAlPagamentLloguerShortText'>
+              Prestació a fons perdut que s’atorga a persones amb deutes contrets per rebuts impagats de quotes
+              d’amortització del préstec hipotecari.
+            </Trans>
+          </p>
+        </div>
+        <div className='Cell'>
+          <h1>
+            <Link className='IndexPageLink' to='/ajuts/lloguer'>
+              <Trans>Ajut per pèrdua de l’habitatge</Trans>
+            </Link>
+          </h1>
+          <p>
+            <Trans i18nKey='AjutsAlPagamentLloguerShortText'>
+              Prestació econòmica d’urgència que s’atorga a persones que han perdut l’habitatge com a conseqüència d’un
+              procés de desnonament o d’execució hipotecària.
+            </Trans>
+          </p>
+        </div>
+      </div>
+      <div className='Row'>
+        <div className='Cell'>
+          <h1>
+            <Link className='IndexPageLink' to='/ajuts/lloguer'>
+              <Trans>Ajudes MIFO</Trans>
+            </Link>
+          </h1>
+          <p>
+            <Trans i18nKey='AjutsAlPagamentLloguerShortText'>
+              Prestació a fons perdut que s’atorga a persones amb deutes contrets per rebuts impagats de quotes
+              d’amortització del préstec hipotecari.
+            </Trans>
+          </p>
+        </div>
         <div className='Cell'>
           <h1>
             <Link className='IndexPageLink' to='/ajuts/rai'>
@@ -94,9 +145,12 @@ const IndexPage = (props) =>
           </h1>
           <p>
             <Trans i18nKey='RendaActivaInsercioShortText'>
-              Renda activa d'inserció Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit, sed do eiusmod tempor incididunt
-              ut labore et dolore magna aliqua.
+              Ajut econòmic destinat a incrementar les oportunitats d’inserció en el mercat laboral a treballadors en
+              atur amb necessitats econòmiques especials, com ara:
+              Aturats de llarga durada
+              Persones amb discapacitat
+              Emigrants retornats
+              Víctimes de violència de gènere o domèstica
             </Trans>
           </p>
         </div>
@@ -108,9 +162,9 @@ const IndexPage = (props) =>
           </h1>
           <p>
             <Trans i18nKey='RendaGarantidaCiutadanaShortText'>
-              Renda Garantida Ciutadana Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit, sed do eiusmod tempor incididunt
-              ut labore et dolore magna aliqua.
+              Renda destinada a garantir que tots els ciutadans i ciutadanes de Catalunya es puguin fer càrrec de les
+              despeses essencials per al manteniment propi o de les persones que integren la unitat familiar o de
+              convivència.
             </Trans>
           </p>
         </div>
