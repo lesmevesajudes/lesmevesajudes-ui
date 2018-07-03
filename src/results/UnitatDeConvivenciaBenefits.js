@@ -1,6 +1,5 @@
 import React from 'react';
-import Grid from "@material-ui/core/Grid/Grid";
-import Button from "@material-ui/core/Button/Button";
+import {Button, Grid, Typography} from '@material-ui/core';
 import Link from 'react-router-dom/Link';
 import ClearIcon from '@material-ui/icons/Clear';
 const possibleBenefits = [
@@ -70,10 +69,9 @@ const renderUnitatDeConvivenciaBenefitList = (unitatDeConvivencia, persons, peri
     <Grid container justify='space-between' alignItems='center'>
       <Grid item sm={12}>
         <li className='ItemResultOut'>
-          <div>
-                <span className='ItemTitle'>
+                <Typography className='ItemTitle'>
                   Ajudes per a la unitat de convivència:
-                </span>
+                </Typography>
             <Grid container className='ResultPage' justify='space-between'>
               <Grid item xs sm={12}>
                 <ul className='ItemList'>
@@ -85,7 +83,6 @@ const renderUnitatDeConvivenciaBenefitList = (unitatDeConvivencia, persons, peri
                 </ul>
               </Grid>
             </Grid>
-          </div>
         </li>
       </Grid>
     </Grid>;

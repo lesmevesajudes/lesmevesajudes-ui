@@ -6,8 +6,7 @@ import FamilyBenefits from "./FamilyBenefits";
 import type { Person, PersonID } from "../persons/PersonTypes";
 import ReportBug from "../reportBug/ReportBugPage";
 import axios from "axios/index";
-import { Grid } from "@material-ui/core";
-import Typography from "@material-ui/core/Typography";
+import {Grid, Typography} from '@material-ui/core';
 import { IconFont } from "../components/IconFont/IconFont";
 import UnitatDeConvivenciaBenefits from "./UnitatDeConvivenciaBenefits";
 import { Trans } from "react-i18next";
@@ -58,8 +57,8 @@ class ResultsPage extends React.Component<Props> {
   render() {
     if (!this.enoughDataForSimulation()) {
       return (
-        <div>
-          <div className='bg-container '>
+        <Grid container>
+          <Grid item className='bg-container'>
             <h1>Ajudes a les que podria optar</h1>
             <Grid container>
               <Grid item>
@@ -68,15 +67,15 @@ class ResultsPage extends React.Component<Props> {
                 </Typography>
               </Grid>
             </Grid>
-          </div>
-          <div className='bg-container '>
+          </Grid>
+          <Grid item className='bg-container '>
             <Grid container>
               <Grid item xs={12}>
                 <ReportBug onSubmit={this.submitReport}/>
               </Grid>
             </Grid>
-          </div>
-        </div>
+          </Grid>
+        </Grid>
       );
     }
 
@@ -86,18 +85,18 @@ class ResultsPage extends React.Component<Props> {
 
     if (this.props.isError) {
       return (
-        <div>
+        <Fragment>
           <h1>Error fent la petició</h1>
-          <p>{this.props.resultsData.message}</p>
-          <p>Details:</p>
-          <p>
+          <Typography>{this.props.resultsData.message}</Typography>
+          <Typography>Details:</Typography>
+          <Typography>
             {JSON.stringify(
               JSON.parse(this.props.resultsData.response.request.responseText),
               null,
               2
             )}
-          </p>
-        </div>
+          </Typography>
+        </Fragment>
       );
     }
     //Añadir Trans en titlePage

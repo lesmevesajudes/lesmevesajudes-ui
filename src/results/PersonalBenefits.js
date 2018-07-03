@@ -1,9 +1,9 @@
-import React from "react";
+import React, {Fragment} from "react";
 import Link from "react-router-dom/Link";
 import { Map } from "immutable";
 import type { PersonID } from "../persons/PersonTypes";
 import { Person } from "../persons/PersonTypes";
-import { Button, Grid } from "@material-ui/core";
+import {Button, Grid, Typography} from '@material-ui/core';
 import { Trans } from "react-i18next";
 import Tooltip from "@material-ui/core/Tooltip/Tooltip";
 import DoneIcon from '@material-ui/icons/Done';
@@ -87,7 +87,7 @@ class PersonalBenefits extends React.Component<Props> {
             <li className='ItemResult' key={benefit.ID}>
               <Grid container justify='center' alignItems='center' wrap='wrap'>
                 <Grid id={benefit.ID} className='benefitText' item xs={12} sm={9}>
-                  <p ><DoneIcon className="resultIconSuccess" /> {benefit.name}</p>
+                  <Typography ><DoneIcon className="resultIconSuccess" /> {benefit.name}</Typography>
                 </Grid>
 
                 <Grid item className='Separator' xs={6} sm={3}>
@@ -115,10 +115,9 @@ class PersonalBenefits extends React.Component<Props> {
     if (this.hasAnyBenefit(personBenefits)) {
       return (
         <li className='ItemResultOut' key={person.id}>
-          <span className='ItemTitle'>
-             Ajudes a les que podria ser beneficiàri/a: <span>{person.nom}</span>
-          </span>
-          <br/>
+          <Typography className='ItemTitle'>
+             Ajudes a les que podria ser beneficiàri/a: {person.nom}
+          </Typography>
 
           <ul className='ItemList'>
             {this.possibleBenefits.map(benefit =>
@@ -132,17 +131,15 @@ class PersonalBenefits extends React.Component<Props> {
         <Grid container justify='space-between' alignItems='center' key={person.id}>
           <Grid item sm={12}>
             <li className='ItemResultOut' key={person.id}>
-              <div>
-                <span>
+                <Typography>
                   Ajudes a les que podria ser beneficiàri/a: <span className='ItemTitle'>{person.nom}</span>
-                </span>
+                </Typography>
                 <br/>
                 <Grid container className='ResultPage' justify='space-between'>
                   <Grid item xs sm={12}>
                     <span className='ItemResult'><ClearIcon className="resultIconError"/> No opta a cap ajuda</span>
                   </Grid>
                 </Grid>
-              </div>
             </li>
           </Grid>
         </Grid>
@@ -167,12 +164,12 @@ class PersonalBenefits extends React.Component<Props> {
 
   render() {
     return (
-      <div>
+      <Fragment>
         {this.renderPersonalBenefitList(
           this.props.persons,
           this.props.benefitsForPersons
         )}
-      </div>
+      </Fragment>
     );
   }
 }
