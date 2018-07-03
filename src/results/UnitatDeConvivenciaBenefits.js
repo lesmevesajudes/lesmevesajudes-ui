@@ -1,6 +1,6 @@
 import React from 'react';
 import {Grid, Typography} from '@material-ui/core';
-import BenefitRow, {NoBenefitRow} from "./BenefitRow";
+import BenefitRow, {NoBenefitRow} from './BenefitRow';
 
 const possibleBenefits = [
   {
@@ -53,7 +53,7 @@ const renderUnitatDeConvivenciaBenefitList = (unitatDeConvivencia, persons, peri
     <Grid container justify='space-between' alignItems='center'>
       <Grid item sm={12}>
         <li className='ItemResultOut'>
-          <Typography variant="display1" gutterBottom>
+          <Typography variant='display1' gutterBottom>
             Ajudes per a la unitat de convivència:
           </Typography>
           <Grid container className='ResultPage' justify='space-between'>

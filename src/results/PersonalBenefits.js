@@ -1,10 +1,10 @@
-import React from "react";
-import {Map} from "immutable";
-import type {PersonID} from "../persons/PersonTypes";
-import {Person} from "../persons/PersonTypes";
+import React from 'react';
+import {Map} from 'immutable';
+import type {PersonID} from '../persons/PersonTypes';
+import {Person} from '../persons/PersonTypes';
 import {Grid, Typography} from '@material-ui/core';
-import {Trans} from "react-i18next";
-import BenefitRow, {NoBenefitRow} from "./BenefitRow";
+import {Trans} from 'react-i18next';
+import BenefitRow, {NoBenefitRow} from './BenefitRow';
 
 type Props = {
   benefitsForPersons: any,
@@ -16,54 +16,54 @@ class PersonalBenefits extends React.Component<Props> {
     super();
     this.possibleBenefits = [
       {
-        ID: "AE_230_mensual",
+        ID: 'AE_230_mensual',
         name: <Trans>Fons infància</Trans>,
-        periode: "mes",
-        url: "/ajuts/fons_infancia"
+        periode: 'mes',
+        url: '/ajuts/fons_infancia'
       },
       {
-        ID: "AE_230_01_mensual",
+        ID: 'AE_230_01_mensual',
         name: <Trans>Fons infància ajut famílies monoparentals</Trans>,
-        periode: "any",
-        url: "/ajuts/fons_infancia"
+        periode: 'any',
+        url: '/ajuts/fons_infancia'
       },
       {
-        ID: "EG_233_mensual",
+        ID: 'EG_233_mensual',
         name: <Trans>Ajuts individuals de menjador</Trans>,
-        periode: "dia",
-        url: "/ajuts/menjador"
+        periode: 'dia',
+        url: '/ajuts/menjador'
       },
       {
-        ID: "GE_051_00_mensual",
+        ID: 'GE_051_00_mensual',
         name: <Trans>Renda activa d'inserció aturats de llarga durada</Trans>,
-        periode: "mes",
-        url: "/ajuts/rai"
+        periode: 'mes',
+        url: '/ajuts/rai'
       },
       {
-        ID: "GE_051_01_mensual",
+        ID: 'GE_051_01_mensual',
         name: <Trans>Renda activa d'inserció discapacitat 33%</Trans>,
-        periode: "mes",
-        url: "/ajuts/rai"
+        periode: 'mes',
+        url: '/ajuts/rai'
       },
       {
-        ID: "GE_051_02_mensual",
+        ID: 'GE_051_02_mensual',
         name: <Trans>Renda activa d'inserció per a emigrants retornats</Trans>,
-        periode: "mes",
-        url: "/ajuts/rai"
+        periode: 'mes',
+        url: '/ajuts/rai'
       },
       {
-        ID: "GE_051_03_mensual",
+        ID: 'GE_051_03_mensual',
         name: <Trans>Renda activa d'inserció per a víctimes de violència de gènere o domèstica</Trans>,
-        periode: "mes",
-        url: "/ajuts/rai"
+        periode: 'mes',
+        url: '/ajuts/rai'
       },
-      {ID: "GG_270_mensual", name: "Renda Garantida Ciutadana", periode: "mes", url: "/ajuts/rgc"}
+      {ID: 'GG_270_mensual', name: 'Renda Garantida Ciutadana', periode: 'mes', url: '/ajuts/rgc'}
     ];
-    this.period = "2017-01";
+    this.period = '2017-01';
   }
 
   hasAnyBenefit(personWithBenefits) {
-    if (typeof personWithBenefits === "undefined") return false; //TODO hackish. this happends due some inconsistency in the request processing. On
+    if (typeof personWithBenefits === 'undefined') return false; //TODO hackish. this happends due some inconsistency in the request processing. On
     return (
         this.possibleBenefits.reduce((acc, benefit) => {
           return acc + personWithBenefits[benefit.ID][this.period];
@@ -82,7 +82,7 @@ class PersonalBenefits extends React.Component<Props> {
   renderPersonalBenefits(person: Person, personBenefits: any) {
     return (
         <li className='ItemResultOut' key={person.id}>
-          <Typography variant="display1" gutterBottom>
+          <Typography variant='display1' gutterBottom>
             Ajudes a les que podria ser beneficiàri/a: {person.nom}
           </Typography>
 
