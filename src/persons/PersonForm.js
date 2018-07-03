@@ -210,7 +210,8 @@ let PersonForm = (props: Props) => {
                     {esFamiliarOUsuari && cobraAlgunTipusDePensioNoContributiva &&
                     <Fragment>
                       <MoneyQuestion name='ingressos_per_pnc' validate={pncInclosAIngressosBruts}>
-                        <Trans>Indiqui la suma dels imports anuals que perceb en concepte de pensions no contributives</Trans>
+                        <Trans>Indiqui la suma dels imports anuals que percep en concepte de pensions no
+                          contributives</Trans>
                       </MoneyQuestion>
                     </Fragment>}
 
