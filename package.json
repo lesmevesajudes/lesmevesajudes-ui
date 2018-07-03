@@ -10,6 +10,7 @@
     "i18next-browser-languagedetector": "2.2.0",
     "i18next-xhr-backend": "1.5.1",
     "immutable": "3.8.2",
+    "pure-react-carousel": "^1.13.2",
     "react": "16.4.0",
     "react-app-rewire-hot-loader": "^1.0.1",
     "react-app-rewired": "^1.5.2",

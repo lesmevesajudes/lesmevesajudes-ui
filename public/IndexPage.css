@@ -11,6 +11,7 @@
     background-color: #00acd4;
     text-align: center;
     line-height: 1.5;
+
 }
 
 .CTAButton {
@@ -26,9 +27,6 @@
     color: black;
 }
 
-.Presentation {
-    background-color: #e3e4e4;
-}
 
 .PresentationText {
     text-align: justify;
@@ -39,6 +37,7 @@
 }
 
 .AppLogo {
+
     max-height: 410px;
     max-width: 470px;
     height: auto;
