@@ -66,11 +66,11 @@
     font-size: 16px;
 }
 .ItemTitle {
-    font-size: 20px;
+    font-size: 40px;
 }
 .buttonMoreInfo {
   padding: 15px;
   font-size: 12px;
-  float: "right";
+    float: right;
   margin-top: 17px;
 }

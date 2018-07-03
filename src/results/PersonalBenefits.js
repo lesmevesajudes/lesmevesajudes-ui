@@ -1,13 +1,11 @@
-import React, {Fragment} from "react";
-import Link from "react-router-dom/Link";
-import { Map } from "immutable";
-import type { PersonID } from "../persons/PersonTypes";
-import { Person } from "../persons/PersonTypes";
-import {Button, Grid, Typography} from '@material-ui/core';
-import { Trans } from "react-i18next";
-import Tooltip from "@material-ui/core/Tooltip/Tooltip";
-import DoneIcon from '@material-ui/icons/Done';
-import ClearIcon from '@material-ui/icons/Clear';
+import React from "react";
+import {Map} from "immutable";
+import type {PersonID} from "../persons/PersonTypes";
+import {Person} from "../persons/PersonTypes";
+import {Grid, Typography} from '@material-ui/core';
+import {Trans} from "react-i18next";
+import BenefitRow, {NoBenefitRow} from "./BenefitRow";
+
 type Props = {
   benefitsForPersons: any,
   persons: Map<PersonID, Person>
@@ -59,7 +57,7 @@ class PersonalBenefits extends React.Component<Props> {
         periode: "mes",
         url: "/ajuts/rai"
       },
-      { ID: "GG_270_mensual", name: "Renda Garantida Ciutadana", periode: "mes", url: "/ajuts/rgc" }
+      {ID: "GG_270_mensual", name: "Renda Garantida Ciutadana", periode: "mes", url: "/ajuts/rgc"}
     ];
     this.period = "2017-01";
   }
@@ -67,109 +65,61 @@ class PersonalBenefits extends React.Component<Props> {
   hasAnyBenefit(personWithBenefits) {
     if (typeof personWithBenefits === "undefined") return false; //TODO hackish. this happends due some inconsistency in the request processing. On
     return (
-      this.possibleBenefits.reduce((acc, benefit) => {
-        return acc + personWithBenefits[benefit.ID][this.period];
-      }, 0) > 0
+        this.possibleBenefits.reduce((acc, benefit) => {
+          return acc + personWithBenefits[benefit.ID][this.period];
+        }, 0) > 0
     );
   }
 
   renderAPersonalBenefit(benefit, personWithBenefits) {
     if (personWithBenefits[benefit.ID][this.period] > 0) {
       return (
-        <Grid
-          className='ResultPage'
-          container
-          justify='center'
-          alignItems='center'
-          key={benefit.ID}
-        >
-          <Grid item sm={12}>
-            <li className='ItemResult' key={benefit.ID}>
-              <Grid container justify='center' alignItems='center' wrap='wrap'>
-                <Grid id={benefit.ID} className='benefitText' item xs={12} sm={9}>
-                  <Typography ><DoneIcon className="resultIconSuccess" /> {benefit.name}</Typography>
-                </Grid>
-
-                <Grid item className='Separator' xs={6} sm={3}>
-                  <Link className={"linkBenefits"} to={benefit.url}>
-                    <Tooltip id="mes-info-tooltip"
-                             title="Si vol saber si reuneix tots els requisits necessaris per accedir a aquest ajut, cliqui aquí"
-                             placement="right">
-                      <Button variant="contained" color="primary" key={benefit.ID}>
-                        <Trans>
-                          Més informació
-                        </Trans>
-                      </Button>
-                    </Tooltip>
-                  </Link>
-                </Grid>
-              </Grid>
-            </li>
-          </Grid>
-        </Grid>
+          <BenefitRow benefit={benefit} key={benefit.ID}/>
       );
     }
   }
 
   renderPersonalBenefits(person: Person, personBenefits: any) {
-    if (this.hasAnyBenefit(personBenefits)) {
-      return (
+    return (
         <li className='ItemResultOut' key={person.id}>
-          <Typography className='ItemTitle'>
-             Ajudes a les que podria ser beneficiàri/a: {person.nom}
+          <Typography className='ItemTitle' gutterBottom>
+            Ajudes a les que podria ser beneficiàri/a: {person.nom}
           </Typography>
 
-          <ul className='ItemList'>
-            {this.possibleBenefits.map(benefit =>
-              this.renderAPersonalBenefit(benefit, personBenefits)
-            )}
-          </ul>
-        </li>
-      );
-    } else {
-      return (
-        <Grid container justify='space-between' alignItems='center' key={person.id}>
-          <Grid item sm={12}>
-            <li className='ItemResultOut' key={person.id}>
-                <Typography>
-                  Ajudes a les que podria ser beneficiàri/a: <span className='ItemTitle'>{person.nom}</span>
-                </Typography>
-                <br/>
-                <Grid container className='ResultPage' justify='space-between'>
-                  <Grid item xs sm={12}>
-                    <span className='ItemResult'><ClearIcon className="resultIconError"/> No opta a cap ajuda</span>
-                  </Grid>
-                </Grid>
-            </li>
+          <Grid container className='ItemList'>
+            {(this.hasAnyBenefit(personBenefits))
+                ? this.possibleBenefits.map(benefit => this.renderAPersonalBenefit(benefit, personBenefits))
+                : <NoBenefitRow/>
+            }
           </Grid>
-        </Grid>
-      );
-    }
+        </li>
+    );
   }
 
   renderPersonalBenefitList(
-    personsData: Map<PersonID, Person>,
-    personsWithBenefits: any
+      personsData: Map<PersonID, Person>,
+      personsWithBenefits: any
   ) {
     return (
-      <ul className='ResultList'>
-        {personsData
-          .valueSeq()
-          .map((person: Person) =>
-            this.renderPersonalBenefits(person, personsWithBenefits[person.id])
-          )}
-      </ul>
+        <Grid className='ResultList'>
+          {personsData
+              .valueSeq()
+              .map((person: Person) =>
+                  this.renderPersonalBenefits(person, personsWithBenefits[person.id])
+              )}
+        </Grid>
     );
   }
 
   render() {
     return (
-      <Fragment>
-        {this.renderPersonalBenefitList(
-          this.props.persons,
-          this.props.benefitsForPersons
-        )}
-      </Fragment>
+        <Grid className='ResultList'>
+          {this.props.persons
+              .valueSeq()
+              .map((person: Person) =>
+                  this.renderPersonalBenefits(person, this.props.benefitsForPersons[person.id])
+              )}
+        </Grid>
     );
   }
 }
