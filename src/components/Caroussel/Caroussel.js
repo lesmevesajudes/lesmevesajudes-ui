@@ -91,7 +91,7 @@ export default class extends React.Component {
                 <Slide key={index} index={index}>
                   <Grid container>
                     <Grid item>
-                      <Typography variant='title aligncenter' className="titlePage" gutterBottom>
+                      <Typography variant='title' className="titlePage" gutterBottom>
                         <Link className='IndexPageLink' to={slideContent.link}>
                           {slideContent.title}
                         </Link>
