@@ -4,14 +4,14 @@ import 'pure-react-carousel/dist/react-carousel.es.css';
 import {Link} from "react-router-dom";
 import Trans from "react-i18next/dist/es/Trans";
 import Typography from "@material-ui/core/es/Typography/Typography";
-import {Grid, Button} from "@material-ui/core/";
+import {Button, Grid} from "@material-ui/core/";
 import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 
 
 const content = [
   {
-    title: <Trans>Fons infància</Trans>,
+    title: <Trans>Fons d'ajut d'emergència social per a infants</Trans>,
     body: <Trans>Ajut extraordinari adreçat a famílies en situació de vulnerabilitat per cobrir les necessitats bàsiques
       de subsistència d\'infants i adolescents de 0 a 16 anys.</Trans>,
     link: '/ajuts/fons_infancia'
@@ -91,11 +91,13 @@ export default class extends React.Component {
           <Slider>
             {content.map((slideContent, index) =>
                 <Slide key={index} index={index}>
-                  <Grid container className="sliderItem">  
-                    <Grid item>
+                  <Grid container direction='column' className="sliderItem">
+                    <Grid item justify='flex-start' style={{height: 90}}>
                       <Typography variant='title' className="sliderTitle" gutterBottom>
                         {slideContent.title}
                       </Typography>
+                    </Grid>
+                    <Grid item justify='flex-start' style={{height: 120}}>
                       <Typography className="sliderBody">
                         {slideContent.body}
                       </Typography>
