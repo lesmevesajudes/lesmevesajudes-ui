@@ -4,7 +4,9 @@ import 'pure-react-carousel/dist/react-carousel.es.css';
 import {Link} from "react-router-dom";
 import Trans from "react-i18next/dist/es/Trans";
 import Typography from "@material-ui/core/es/Typography/Typography";
-import Grid from "@material-ui/core/es/Grid/Grid";
+import {Grid, Button} from "@material-ui/core/";
+import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
+import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 
 
 const content = [
@@ -89,25 +91,26 @@ export default class extends React.Component {
           <Slider>
             {content.map((slideContent, index) =>
                 <Slide key={index} index={index}>
-                  <Grid container>
+                  <Grid container className="sliderItem">  
                     <Grid item>
-                      <Typography variant='title' className="titlePage" gutterBottom>
-                        <Link className='IndexPageLink' to={slideContent.link}>
-                          {slideContent.title}
-                        </Link>
+                      <Typography variant='title' className="sliderTitle" gutterBottom>
+                        {slideContent.title}
                       </Typography>
-                    </Grid>
-                    <Grid item>
-                      <Typography>
+                      <Typography className="sliderBody">
                         {slideContent.body}
                       </Typography>
+                    </Grid>
+                    <Grid item xs={12} sm={12}>
+                      <Link to={slideContent.link}>
+                      <Button color="primary" variant="contained" className="sliderButton"> Més informació</Button>
+                      </Link>
                     </Grid>
                   </Grid>
                 </Slide>
             )}
           </Slider>
-          <ButtonBack>Back</ButtonBack>
-          <ButtonNext>Next</ButtonNext>
+          <ButtonBack><KeyboardArrowLeftIcon/></ButtonBack>
+          <ButtonNext><KeyboardArrowRightIcon/></ButtonNext>
         </CarouselProvider>
     );
   }

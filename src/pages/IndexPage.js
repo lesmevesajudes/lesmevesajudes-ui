@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import "./indexPage/IndexPage.css";
 import AppHeader from "../components/AppHeader/AppHeader";
 import {Trans, translate} from "react-i18next";
-import Button from "@material-ui/core/Button";
+import {Button,Typography} from "@material-ui/core";
 import {styles} from "../styles/theme";
 import {withStyles} from "@material-ui/core/styles";
 import Caroussel from "../components/Caroussel/Caroussel";
@@ -14,7 +14,7 @@ const IndexPage = (props) =>
     <AppHeader/>
     <div className='BlockContainer'>
       <div className='Block'>
-        <div className='AppLogo'/>
+        <div className='AppLogo' style={{opacity: 0.5}}/>
         <div className='BlockText'>
               <span>
                 <Trans>Vols saber a quins ajuts públics pots accedir?</Trans>
@@ -40,9 +40,11 @@ const IndexPage = (props) =>
         </Trans>
       </p>
     </div>
-    <div className='Main'>
-      <div className='Presentation'/>
+    <div className='sliderContainer'>
+      <div className="Presentation">
+      <Typography variant="title" align="center" className="sliderContainerTitle" gutterBottom>Ajudes destacades</Typography>
       <Caroussel/>
+      </div>
     </div>
   </div>;
 
