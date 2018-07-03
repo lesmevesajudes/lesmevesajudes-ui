@@ -6,7 +6,8 @@ import { Person } from "../persons/PersonTypes";
 import { Button, Grid } from "@material-ui/core";
 import { Trans } from "react-i18next";
 import Tooltip from "@material-ui/core/Tooltip/Tooltip";
-
+import DoneIcon from '@material-ui/icons/Done';
+import ClearIcon from '@material-ui/icons/Clear';
 type Props = {
   benefitsForPersons: any,
   persons: Map<PersonID, Person>
@@ -86,7 +87,7 @@ class PersonalBenefits extends React.Component<Props> {
             <li className='ItemResult' key={benefit.ID}>
               <Grid container justify='center' alignItems='center' wrap='wrap'>
                 <Grid id={benefit.ID} className='benefitText' item xs={12} sm={9}>
-                  <p>{benefit.name}</p>
+                  <p ><DoneIcon className="resultIconSuccess" /> {benefit.name}</p>
                 </Grid>
 
                 <Grid item className='Separator' xs={6} sm={3}>
@@ -138,7 +139,7 @@ class PersonalBenefits extends React.Component<Props> {
                 <br/>
                 <Grid container className='ResultPage' justify='space-between'>
                   <Grid item xs sm={12}>
-                    <span className='ItemResult'>No opta a cap ajuda</span>
+                    <span className='ItemResult'><ClearIcon className="resultIconError"/> No opta a cap ajuda</span>
                   </Grid>
                 </Grid>
               </div>

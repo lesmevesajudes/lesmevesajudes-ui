@@ -2,7 +2,7 @@ import React from 'react';
 import Grid from "@material-ui/core/Grid/Grid";
 import Button from "@material-ui/core/Button/Button";
 import Link from 'react-router-dom/Link';
-
+import ClearIcon from '@material-ui/icons/Clear';
 const possibleBenefits = [
   {
     ID: 'HA_001',
@@ -81,7 +81,7 @@ const renderUnitatDeConvivenciaBenefitList = (unitatDeConvivencia, persons, peri
                       ? possibleBenefits.map((benefit) =>
                           renderABenefit(benefit, unitatDeConvivencia, period)
                       )
-                      : <span className='ItemResult'>No opta a cap ajuda</span>}
+                      : <span className='ItemResult'><ClearIcon className="resultIconError"/>No opta a cap ajuda</span>}
                 </ul>
               </Grid>
             </Grid>

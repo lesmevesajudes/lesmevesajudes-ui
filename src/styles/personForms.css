@@ -28,3 +28,12 @@
     margin-bottom: 10px;
     font-size: 18px;
 }
+.resultText {
+}
+.resultIconSuccess {
+  font-size: 18px !important;
+  color: #98bf11;
+}
+.resultIconError {
+  color: #858585;
+}

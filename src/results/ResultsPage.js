@@ -103,14 +103,14 @@ class ResultsPage extends React.Component<Props> {
     //Añadir Trans en titlePage
     return (
       <Fragment>
-        <div className='bg-container'>
+        <Grid container className='bg-container'>
           <Grid item xs={12} sm={12} className="titleContainer">
             <Typography variant='headline' className="titlePage">
               <IconFont icon="resultats" sizeSphere={48} fontSize={32}/>
               <span className="titleText"><Trans>A partir de la informació que ens ha facilitat, a continuació li informem que:</Trans></span>
             </Typography>
           </Grid>
-          <Grid container>
+          <Grid item xs={12} className='bg-form-exterior'>
             <Grid item xs={12}>
               <PersonalBenefits
                 benefitsForPersons={this.props.resultsData.persones}
@@ -128,7 +128,7 @@ class ResultsPage extends React.Component<Props> {
               />
             </Grid>
           </Grid>
-        </div>
+        </Grid>
         <div>
           <Grid container>
             <Grid item xs={12}>
