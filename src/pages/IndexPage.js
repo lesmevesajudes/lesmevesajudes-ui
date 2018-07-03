@@ -16,7 +16,7 @@ const IndexPage = (props) =>
       <div className='Block'>
         <div className='AppLogo' style={{opacity: 0.5}}/>
         <div className='BlockText'>
-              <span>
+              <span className="titleLogo">
                 <Trans>Vols saber a quins ajuts públics pots accedir?</Trans>
               </span>
           <Link className='CTALink' to='/wizard/'>
