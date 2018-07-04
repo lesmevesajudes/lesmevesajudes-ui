@@ -6,6 +6,7 @@ import FamilyReducer from './family/FamilyReducer';
 import ResidenceReducer from './residence/ResidenceReducer';
 import StepReducer from './components/Steps/StepsReducer'
 import ModalReducer from './components/Modals/ModalReducer';
+import {ShowMeOnceReducer} from "./components/ShowMeOnceModal/ShowMeOnceReducer";
 
 export const rootReducer = combineReducers({
   results: ResultsReducer,
@@ -14,6 +15,7 @@ export const rootReducer = combineReducers({
   residence: ResidenceReducer,
   step: StepReducer,
   modals: ModalReducer,
+  showMeOnceModals: ShowMeOnceReducer,
   form: reduxFormReducer
 
 });
