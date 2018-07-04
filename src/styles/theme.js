@@ -80,6 +80,11 @@ export const styles = theme => ({
 });
 
 export default createMuiTheme({
+  typography: {
+    fontFamily: 'Source Sans Pro',
+    fontSize: 14,
+    htmlFontSize: 14
+  },
   palette: {
     primary: { 
       main: colors.primary,
