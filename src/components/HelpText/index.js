@@ -1,15 +1,14 @@
 //@flow
 import HelpTextMap from './HelpTextMap';
 
-type Props = {
-  id: string
+export type HelpText = {
+  title?: string,
+  body: string
 }
-
-export const HelpText = (props: Props) => typeof props.id === 'string'
-    ? (isHelpAvailable(props.id)
-        ? HelpTextMap[props.id]
-        : props.id)
-    : null;
+export const helpText = (id: string): HelpText =>
+    typeof id === 'string' && isHelpAvailable(id)
+        ? HelpTextMap[id]
+        : {body: ''};
 export const isHelpAvailable = (id: string) => {
   return typeof HelpTextMap[id] !== 'undefined';
 };
