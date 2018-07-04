@@ -11,8 +11,8 @@ const HelpTextMap = {
   },
   "nom": {
     title: <Trans>Nom</Trans>,
-    body: <Trans><p>Aquesta dada es farà servir només perquè l'aplicació es pugui referir a la persona. No
-      ha de permetre'n la identificació</p></Trans>
+    body: <Trans>Aquesta dada es farà servir només perquè l'aplicació es pugui referir a la persona. No
+      ha de permetre'n la identificació</Trans>
   },
   "beneficiari_de_prestacio_residencial": {
     title: <Trans>Beneficiari de prestació residencial</Trans>,
@@ -40,20 +40,20 @@ const HelpTextMap = {
     title: <Trans>Tipus de custòdia</Trans>,
     body: <Trans>
      <Typography variant="subheading" className="subtitle" gutterBottom>Guarda i custòdia</Typography>
-      <p>
-        Com a guarda i custòdia s’entén viure amb els fills o filles, cuidar-los i assistir-los. Es pot atribuir a una
+
+      Com a guarda i custòdia s’entén viure amb els fills o filles, cuidar-los i assistir-los. Es pot atribuir a una
         de les persones progenitores, compartida entre ambdues o a una tercera persona. Abans d’acordar el règim de
         guarda i custòdia, el jutge ha de considerar l’informe del Ministeri Fiscal i escoltar els menors que tinguin
         suficient judici quan s’estimi necessari.
         Cal un document acreditatiu.
-      </p>
+
       <Typography variant="subheading" className="subtitle" gutterBottom>Tutela legal</Typography>
-      <p>La tutela és la institució principal en la protecció de les persones incapacitades, a les quals ha d'assegurar
+      La tutela és la institució principal en la protecció de les persones incapacitades, a les quals ha d'assegurar
         la protecció, l'administració i la guarda de drets i béns. Normalment, és l'autoritat conferida a una persona
         física o jurídica, anomenada tutor o tutora, per tenir cura d'una persona i els seus béns pel fet que sigui
         menor d'edat o hagi estat declarada incapaç. Les funcions que se li confereixen són: atenció personal,
         administració dels béns i representació legal.
-        Cal un document acreditatiu.</p>
+      Cal un document acreditatiu.
       Les persones que s’han de posar en tutela són:
       <ul>
         <li> Les persones menors no emancipades que no estiguin en potestat parental.</li>
@@ -181,11 +181,11 @@ const HelpTextMap = {
     title: <Trans>Relacions familiars</Trans>,
     body: <Trans>
       <Typography variant="subheading" className="subtitle" gutterBottom>Infant en acolliment</Typography>
-      <p>L'acolliment familiar d'un infant comporta confiar temporalment la guarda d'una persona menor a una família o
+      L'acolliment familiar d'un infant comporta confiar temporalment la guarda d'una persona menor a una família o
         persona sola, sense que hi hagi finalitat adoptiva.
         És una mesura temporal per oferir als infants el millor entorn possible per créixer fins que la seva família
         resolgui els problemes que li impedeixen d'ocupar-se'n
-        Cal un document acreditatiu.</p>
+      Cal un document acreditatiu.
     </Trans>
   },
   "relacio_de_parentiu_amb_el_propietari": {

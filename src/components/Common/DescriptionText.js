@@ -5,9 +5,10 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import {withStyles} from '@material-ui/core/styles';
 import {styles} from '../../styles/theme';
+
 class DescriptionText extends React.Component {
   render() {
-    console.log(this.props)
+    console.log(this.props);
     return (
         <Fragment>
           <Hidden smDown>
@@ -20,7 +21,7 @@ class DescriptionText extends React.Component {
                       </Typography>
                     </Grid>
                     <Grid item>
-                      <Typography component='p'>
+                      <Typography component='span'>
                         {helpText(this.props.currentField).body}
                       </Typography>
                     </Grid>
