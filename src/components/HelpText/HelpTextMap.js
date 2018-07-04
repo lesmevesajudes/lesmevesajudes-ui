@@ -4,8 +4,6 @@ import React from "react";
 import {Trans} from "react-i18next";
 import Typography from "@material-ui/core/Typography";
 
-const Title = (props) => <Typography variant='title' gutterBottom
-                                     component='span' {...props}>{props.children}</Typography>;
 const HelpTextMap = {
   "edat": {
     title: <Trans>edat</Trans>,
@@ -14,10 +12,16 @@ const HelpTextMap = {
   "nom": {
     title: <Trans>Nom</Trans>,
     body: <Trans><p>Aquesta dada es farà servir només perquè l'aplicació es pugui referir a la persona. No
-      ha de permetre'n la identificació</p></Trans>,
-    "beneficiari_de_prestacio_residencial": <Trans>S’ha de trobar amb la situació d’estar ingressat en un centre
-      sociosanitari, comunitat terapèutica, geriàtrica o similars</Trans>,
-    "cobra_algun_tipus_de_pensio_no_contributiva": <Trans>Les pensions no contributives són uns ingressos econòmics
+      ha de permetre'n la identificació</p></Trans>
+  },
+  "beneficiari_de_prestacio_residencial": {
+    title: <Trans>Beneficiari de prestació residencial</Trans>,
+    body: <Trans>S’ha de trobar amb la situació d’estar ingressat en un centre
+      sociosanitari, comunitat terapèutica, geriàtrica o similars</Trans>
+  },
+  "cobra_algun_tipus_de_pensio_no_contributiva": {
+    title: <Trans> Perstacions no contributives</Trans>,
+    body: <Trans>Les pensions no contributives són uns ingressos econòmics
       mensuals que l'Estat garanteix a les persones que no tenen recursos suficients per subsistir i no poden acollir-se
       —perquè no cotitzen a la Seguretat Social— a les pensions contributives.
       Les persones beneficiàries d'aquestes pensions gaudeixen de la condició de pensionistes de la Seguretat Social. El
@@ -33,8 +37,9 @@ const HelpTextMap = {
     </Trans>
   },
   "custodies": {
-    title: <Trans><title>GUARDA I CUSTÒDIA</title></Trans>,
+    title: <Trans>Tipus de custòdia</Trans>,
     body: <Trans>
+      <Typography variant="headline">Guarda i custòdia</Typography>
       <p>
         Com a guarda i custòdia s’entén viure amb els fills o filles, cuidar-los i assistir-los. Es pot atribuir a una
         de les persones progenitores, compartida entre ambdues o a una tercera persona. Abans d’acordar el règim de
@@ -42,7 +47,7 @@ const HelpTextMap = {
         suficient judici quan s’estimi necessari.
         Cal un document acreditatiu.
       </p>
-      <title>TUTELA LEGAL</title>
+      <Typography variant="headline">Tutela legal</Typography>
       <p>La tutela és la institució principal en la protecció de les persones incapacitades, a les quals ha d'assegurar
         la protecció, l'administració i la guarda de drets i béns. Normalment, és l'autoritat conferida a una persona
         física o jurídica, anomenada tutor o tutora, per tenir cura d'una persona i els seus béns pel fet que sigui
@@ -57,7 +62,7 @@ const HelpTextMap = {
     </Trans>
   },
   "disposa_de_carnet_familia_monoparental": {
-    title: <Trans><title>FAMÍLIA MONOPARENTAL</title></Trans>,
+    title: <Trans>Família monoparental</Trans>,
     body: <Trans>
       S'entén per família monoparental (tant de categoria especial com de categoria general) la família formada per un
       fill o filla o més, menors de 21 anys, o de 26 anys, si estudien, que conviuen i depenen econòmicament d'una sola
@@ -93,7 +98,7 @@ const HelpTextMap = {
     </Trans>
   },
   "ha_participat_en_un_proces_de_mediacio": {
-    title: <Trans><title>PROCÉS DE MEDIACIÓ EN L’HABITATGE</title></Trans>,
+    title: <Trans>Procés de mediació en l’habitatge</Trans>,
     body: <Trans>
       L'Ajuntament de Barcelona i la Generalitat de Catalunya, mitjançant el Consorci de l’Habitatge de Barcelona, posen
       al servei de la ciutadania unes eines de mediació i assessorament amb l’objectiu de garantir un ús digne de
@@ -143,7 +148,7 @@ const HelpTextMap = {
     </Trans>
   },
   "inscrit_com_a_demandant_docupacio": {
-    title: <Trans><title>INSCRIT/A COM A DEMANDANT D'OCUPACIÓ</title></Trans>,
+    title: <Trans>Inscrit/a com a demandant d'ocupació</Trans>,
     body: <Trans>Persona inscrita a les
       oficines de Treball.
       La inscripció com a demandant d’ocupació és el pas previ per accedir a tots els serveis del Servei d'Ocupació
@@ -166,24 +171,25 @@ const HelpTextMap = {
     </Trans>
   },
   "relacio_habitatge": {
-    title: <Trans><title>CESSIÓ D’ÚS</title></Trans>,
+    title: <Trans>Situacions respecte a l’habitatge</Trans>,
     body: <Trans>
+      <Typography variant="headline">Cessió d’ús</Typography>
       És un contracte pel qual se cedeix l’ús d’un habitatge per un temps determinat a canvi del pagament d’un preu
       equiparable a un lloguer tou.</Trans>
   },
   "relacio_parentiu": {
-    title: <Trans><title>Relacions familiars</title></Trans>,
+    title: <Trans>Relacions familiars</Trans>,
     body: <Trans>
-      <b>INFANT EN ACOLLIMENT</b>
+      <Typography variant="headline">Infant en acolliment</Typography>
       <p>L'acolliment familiar d'un infant comporta confiar temporalment la guarda d'una persona menor a una família o
         persona sola, sense que hi hagi finalitat adoptiva.
         És una mesura temporal per oferir als infants el millor entorn possible per créixer fins que la seva família
         resolgui els problemes que li impedeixen d'ocupar-se'n
-        Cal un document acreditatiu.</p>}
+        Cal un document acreditatiu.</p>
     </Trans>
   },
   "relacio_de_parentiu_amb_el_propietari": {
-    title: <Trans><title>Vincle de parentiu per consanguinitat</title></Trans>,
+    title: <Trans>Vincle de parentiu per consanguinitat</Trans>,
     body: <Trans>
       El parentiu per consanguinitat, o simplement la consanguinitat, és la relació entre persones unides per un
       vincle de
@@ -212,7 +218,7 @@ const HelpTextMap = {
       “nom sentit” en tots els documents d’àmbit municipal en els quals calgui informar del sexe</Trans>
   },
   "te_algun_grau_de_discapacitat_reconegut": {
-    title: <Trans><Title>GRAU DE DISCAPACITAT</Title></Trans>,
+    title: <Trans>Grau de discapacitat</Trans>,
     body: <Trans>
       El grau de discapacitat acredita la condició de discapacitat i l'accés a les ajudes que se'n deriven.
       Cal acreditar el grau de discapacitat mitjançant el certificat de reconeixement de la discapacitat. La condició
@@ -232,7 +238,7 @@ const HelpTextMap = {
     </Trans>
   },
   "tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit": {
-    title: <Trans><title>USDEFRUIT</title></Trans>,
+    title: <Trans>Usdefruit</Trans>,
     body: <Trans>
       Dret real de gaudi sobre una cosa d'altri, que atorga a la persona usufructuària les facultats d’usar-la i
       percebre'n tots els fruits, si bé amb les limitacions d'haver de conservar-ne la forma i la substància.
@@ -248,13 +254,18 @@ const HelpTextMap = {
   },
   "titular_contracte_de_lloguer_id": {
     title: <Trans>Titular del contracte de lloguer</Trans>,
-    body: <Trans>En cas que hi hagi més d'un titular escolliu-ne només un, prefentment
-      aquell
-      que visqui a l'habitatge.</Trans>,
-    "titular_hipoteca_id": <Trans>En cas que hi hagi més d'un titular escolliu-ne només un, prefentment aquell
-      que visqui a l'habitatge.</Trans>,
-    "victima_violencia_de_genere": <Trans><Title>VÍCTIMA DE VIOLÈNCIA DE GÈNERE O DOMÈSTICA</Title>
-      Es considera víctima de violència de gènere la dona que és o ha estat objecte d'actes de violència física o
+    body: <Trans>En cas que hi hagi més d'un titular escolliu-ne només un, prefentment aquell que visqui a
+      l'habitatge.</Trans>
+  },
+  "titular_hipoteca_id": {
+    title: <Trans>Titular del contracte de hipoteca</Trans>,
+    body: <Trans>En cas que hi hagi més d'un titular escolliu-ne només un, prefentment aquell que visqui a
+      l'habitatge.</Trans>
+  },
+  "victima_violencia_de_genere": {
+    title: <Trans>Víctima de violència de gènere o domèstica</Trans>,
+    body: <Trans>Es considera víctima de violència de gènere la dona que és o ha estat objecte d'actes de violència
+      física o
       psicològica, agressions a la llibertat sexual, amenaces, coacció o privació de llibertat exercida pel seu
       cònjuge,
       excònjuge, parella de fet o exparella, encara que no hagin conviscut.
@@ -267,7 +278,7 @@ const HelpTextMap = {
     </Trans>
   },
   "victima_violencia_domestica": {
-    title: <Trans><Title>VÍCTIMA DE VIOLÈNCIA DE GÈNERE O DOMÈSTICA</Title></Trans>,
+    title: <Trans>Víctima de violència de gènere o domèstica</Trans>,
     body: <Trans>
       Es considera víctima de violència de gènere la dona que és o ha estat objecte d'actes de violència física o
       psicològica, agressions a la llibertat sexual, amenaces, coacció o privació de llibertat exercida pel seu
