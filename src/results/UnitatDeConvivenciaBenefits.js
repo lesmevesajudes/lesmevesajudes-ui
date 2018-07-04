@@ -7,31 +7,41 @@ const possibleBenefits = [
     ID: 'HA_001',
     name: 'AJUTS LLOGUER ESPECIAL URGÈNCIA PER A PERSONES BENEFICIÀRIES DE PRESTACIONS DERIVADES DE LA MEDIACIÓ A BARCELONA',
     periode: 'mes',
-    url: '/ajuts/lloguer'
+    url: '/ajuts/lloguer',
+    from: undefined,
+    to: undefined
   },
   {
     ID: 'HA_002',
     name: 'AJUTS PER PÈRDUA D’HABITATGE PER DESNONAMENT O EXECUCIÓ HIPOTECÀRIA',
     periode: 'mes',
-    url: '/ajuts/lloguer'
+    url: '/ajuts/lloguer',
+    from: new Date(2018, 5, 16),
+    to: new Date(2018, 10, 31)
   },
   {
     ID: 'HA_003',
     name: 'AJUTS ESPECIAL URGÈNCIA AMORTITZACIÓ HIPOTECÀRIA',
     periode: 'mes',
-    url: '/ajuts/lloguer'
+    url: '/ajuts/lloguer',
+    from: undefined,
+    to: undefined
   },
   {
     ID: 'HA_004',
     name: 'AJUTS LLOGUER ESPECIAL URGÈNCIA',
     periode: 'mes',
-    url: '/ajuts/lloguer'
+    url: '/ajuts/lloguer',
+    from: undefined,
+    to: undefined
   },
   {
     ID: 'HA_005',
     name: 'SUBVENCIONS HABITATGE DE TIPUS MIFO',
     periode: 'mes',
-    url: '/ajuts/lloguer'
+    url: '/ajuts/lloguer',
+    from: undefined,
+    to: undefined
   },
 ];
 

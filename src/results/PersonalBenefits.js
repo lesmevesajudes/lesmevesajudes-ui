@@ -19,25 +19,33 @@ class PersonalBenefits extends React.Component<Props> {
         ID: 'AE_230_mensual',
         name: <Trans>Fons infància</Trans>,
         periode: 'mes',
-        url: '/ajuts/fons_infancia'
+        url: '/ajuts/fons_infancia',
+        from: new Date(2018, 4, 25, 0, 0, 0, 0),
+        to: new Date(2018, 5, 25, 0, 0, 0, 0)
       },
       {
         ID: 'AE_230_01_mensual',
         name: <Trans>Fons infància ajut famílies monoparentals</Trans>,
         periode: 'any',
-        url: '/ajuts/fons_infancia'
+        url: '/ajuts/fons_infancia',
+        from: new Date(2018, 4, 25, 0, 0, 0, 0),
+        to: new Date(2018, 5, 25, 0, 0, 0, 0)
       },
       {
         ID: 'EG_233_mensual',
         name: <Trans>Ajuts individuals de menjador</Trans>,
         periode: 'dia',
-        url: '/ajuts/menjador'
+        url: '/ajuts/menjador',
+        from: new Date(2018, 9, 3, 0, 0, 0, 0),
+        to: new Date(2018, 9, 14, 0, 0, 0, 0)
       },
       {
         ID: 'GE_051_00_mensual',
         name: <Trans>Renda activa d'inserció aturats de llarga durada</Trans>,
         periode: 'mes',
-        url: '/ajuts/rai'
+        url: '/ajuts/rai',
+        from: undefined,
+        to: undefined
       },
       {
         ID: 'GE_051_01_mensual',
@@ -49,15 +57,26 @@ class PersonalBenefits extends React.Component<Props> {
         ID: 'GE_051_02_mensual',
         name: <Trans>Renda activa d'inserció per a emigrants retornats</Trans>,
         periode: 'mes',
-        url: '/ajuts/rai'
+        url: '/ajuts/rai',
+        from: undefined,
+        to: undefined
       },
       {
         ID: 'GE_051_03_mensual',
         name: <Trans>Renda activa d'inserció per a víctimes de violència de gènere o domèstica</Trans>,
         periode: 'mes',
-        url: '/ajuts/rai'
+        url: '/ajuts/rai',
+        from: undefined,
+        to: undefined
       },
-      {ID: 'GG_270_mensual', name: 'Renda Garantida Ciutadana', periode: 'mes', url: '/ajuts/rgc'}
+      {
+        ID: 'GG_270_mensual',
+        name: 'Renda Garantida Ciutadana',
+        periode: 'mes',
+        url: '/ajuts/rgc',
+        from: undefined,
+        to: undefined,
+      }
     ];
     this.period = '2017-01';
   }

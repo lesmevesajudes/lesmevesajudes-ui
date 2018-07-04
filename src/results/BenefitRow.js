@@ -11,6 +11,23 @@ import ClearIcon from '@material-ui/icons/Clear';
 type Props = {
   benefit: Object,
 };
+const dateFormat = (date: Date) => `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
+const Period = (props) => {
+  const benefit = props.benefit;
+  const now = Date.now();
+
+  if (typeof benefit.from === 'undefined') {
+    return <Typography variant="caption"><Trans>Convocatòria permanent</Trans></Typography>
+  } else if (now >= benefit.from && now <= benefit.to) {
+    return <Typography variant="caption"><Trans>Convocatòria
+      entre {dateFormat(benefit.from)} i {dateFormat(benefit.to)}</Trans></Typography>
+  } else if (now > benefit.to) {
+    return <Typography variant="caption"><Trans>Convocatòria finalitzada</Trans></Typography>
+  } else if (now < benefit.from) {
+    return <Typography variant="caption"><Trans>Propera convocatòria
+      entre {dateFormat(benefit.from)} i {dateFormat(benefit.to)}</Trans></Typography>
+  }
+};
 
 export const BenefitRow = (props: Props) =>
     <Grid
@@ -27,6 +44,7 @@ export const BenefitRow = (props: Props) =>
         </Grid>
         <Grid item xs={9}>
           <Typography style={{color: '#004a8e', fontSize: '1rem'}}>{props.benefit.name}</Typography>
+          <Period benefit={props.benefit}/>
         </Grid>
         <Grid item className='Separator' xs={2}>
           <Link className={"linkBenefits"} to={props.benefit.url}>
