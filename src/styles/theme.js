@@ -63,6 +63,18 @@ export const styles = theme => ({
   },
   stepperContainer: {
     backgroundColor: '#fbfbfb'
+  },
+  boxDescriptionText: {
+    boxShadow: "0px 0px 7px rgba(0, 0, 0, 0.15)",
+    padding: "10px",
+    borderRadius: "4px",
+    fontSize: "14px !important"
+  },
+  titleDescriptionText: {
+    color: colors.secondary,
+    textTransform: 'uppercase',
+    fontSize: '1.3125rem',
+    fontfamily:  "'Source Sans Pro', sans-serif"
   }
 });
 
