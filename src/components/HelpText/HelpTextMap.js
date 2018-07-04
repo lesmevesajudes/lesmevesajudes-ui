@@ -6,7 +6,7 @@ import Typography from "@material-ui/core/Typography";
 
 const HelpTextMap = {
   "edat": {
-    title: <Trans>edat</Trans>,
+    title: <Trans>Edat</Trans>,
     body: <Trans>Si té menys d’un any indiqui 0</Trans>
   },
   "nom": {

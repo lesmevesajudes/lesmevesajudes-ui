@@ -40,7 +40,6 @@ class ShowMeOnceModal extends React.Component<Props, State> {
 
   constructor(props) {
     super(props);
-    console.log(props);
     this.state = {
       open: props.seenModals.indexOf(props.name) === -1,
     };
@@ -70,7 +69,6 @@ class ShowMeOnceModal extends React.Component<Props, State> {
 }
 
 function mapStateToProps(state) {
-  console.log(state);
   return {
     seenModals: state.showMeOnceModals.seenModals || []
   };

@@ -8,7 +8,6 @@ import {styles} from '../../styles/theme';
 
 class DescriptionText extends React.Component {
   render() {
-    console.log(this.props);
     return (
         <Fragment>
           <Hidden smDown>
