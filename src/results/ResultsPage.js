@@ -1,15 +1,16 @@
-import React, { Fragment } from "react";
-import { connect } from "react-redux";
-import { fetchSimulation } from "./FetchSimulationAction";
+import React, {Fragment} from "react";
+import {connect} from "react-redux";
+import {fetchSimulation} from "./FetchSimulationAction";
 import PersonalBenefits from "./PersonalBenefits";
 import FamilyBenefits from "./FamilyBenefits";
-import type { Person, PersonID } from "../persons/PersonTypes";
+import type {Person, PersonID} from "../persons/PersonTypes";
 import ReportBug from "../reportBug/ReportBugPage";
 import axios from "axios/index";
 import {Grid, Typography} from '@material-ui/core';
-import { IconFont } from "../components/IconFont/IconFont";
+import {IconFont} from "../components/IconFont/IconFont";
 import UnitatDeConvivenciaBenefits from "./UnitatDeConvivenciaBenefits";
-import { Trans } from "react-i18next";
+import {Trans} from "react-i18next";
+import ShowMeOnceModal from '../components/ShowMeOnceModal'
 
 type Props = {
   isError: boolean,
@@ -37,45 +38,45 @@ class ResultsPage extends React.Component<Props> {
     // print the form values to the console
     console.log("form submit:", values);
     axios
-      .post("https://lesmevesajudes-ss.herokuapp.com/api/simulations", {
-        comments: values.comments || "",
-        expected_result: values.resultat_esperat || "",
-        application_state: values.application_state,
-        valid_result: !values.invalid_result
-      })
-      .then(function(response) {
-        console.log("saved successfully", response);
-        //kill em all
-        window.location.reload(true);
-      })
-      .catch(function(error) {
-        console.error(error);
-        alert(error);
-      });
+        .post("https://lesmevesajudes-ss.herokuapp.com/api/simulations", {
+          comments: values.comments || "",
+          expected_result: values.resultat_esperat || "",
+          application_state: values.application_state,
+          valid_result: !values.invalid_result
+        })
+        .then(function (response) {
+          console.log("saved successfully", response);
+          //kill em all
+          window.location.reload(true);
+        })
+        .catch(function (error) {
+          console.error(error);
+          alert(error);
+        });
   };
 
   render() {
     if (!this.enoughDataForSimulation()) {
       return (
-        <Grid container>
-          <Grid item className='bg-container'>
-            <h1>Ajudes a les que podria optar</h1>
-            <Grid container>
-              <Grid item>
-                <Typography className='errorText'>
-                  Falten dades per a executar la simulació
-                </Typography>
+          <Grid container>
+            <Grid item className='bg-container'>
+              <h1>Ajudes a les que podria optar</h1>
+              <Grid container>
+                <Grid item>
+                  <Typography className='errorText'>
+                    Falten dades per a executar la simulació
+                  </Typography>
+                </Grid>
+              </Grid>
+            </Grid>
+            <Grid item className='bg-container '>
+              <Grid container>
+                <Grid item xs={12}>
+                  <ReportBug onSubmit={this.submitReport}/>
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
-          <Grid item className='bg-container '>
-            <Grid container>
-              <Grid item xs={12}>
-                <ReportBug onSubmit={this.submitReport}/>
-              </Grid>
-            </Grid>
-          </Grid>
-        </Grid>
       );
     }
 
@@ -85,57 +86,64 @@ class ResultsPage extends React.Component<Props> {
 
     if (this.props.isError) {
       return (
-        <Fragment>
-          <h1>Error fent la petició</h1>
-          <Typography>{this.props.resultsData.message}</Typography>
-          <Typography>Details:</Typography>
-          <Typography>
-            {JSON.stringify(
-              JSON.parse(this.props.resultsData.response.request.responseText),
-              null,
-              2
-            )}
-          </Typography>
-        </Fragment>
+          <Fragment>
+            <h1>Error fent la petició</h1>
+            <Typography>{this.props.resultsData.message}</Typography>
+            <Typography>Details:</Typography>
+            <Typography>
+              {JSON.stringify(
+                  JSON.parse(this.props.resultsData.response.request.responseText),
+                  null,
+                  2
+              )}
+            </Typography>
+          </Fragment>
       );
     }
     //Añadir Trans en titlePage
     return (
-      <Fragment>
-        <Grid container className='bg-container'>
-          <Grid item xs={12} sm={12} className="titleContainer">
-            <Typography variant='headline' className="titlePage">
-              <IconFont icon="resultats" sizeSphere={48} fontSize={32}/>
-              <span className="titleText"><Trans>A partir de la informació que ens ha facilitat, a continuació li informem que:</Trans></span>
-            </Typography>
+        <Fragment>
+          <ShowMeOnceModal name="resultsModal" title="Ajudes a les que podría optar">
+            <p>A continuació es mostrarà el conjunt d’ajudes a les quals podria arribar a optar.
+              L’informem que la concessió d’una d’elles pot fer variar els llindars d’ingressos i/o requisits que les
+              altres ajudes preveuen per a ser concedides.</p>
+            <p>Per tant, a la pràctica, pot trobar ajudes incompatibles entre sí.</p>
+            Informi-se’n clicant sobre cada ajut.
+          </ShowMeOnceModal>
+          <Grid container className='bg-container'>
+            <Grid item xs={12} sm={12} className="titleContainer">
+              <Typography variant='headline' className="titlePage">
+                <IconFont icon="resultats" sizeSphere={48} fontSize={32}/>
+                <span className="titleText"><Trans>A partir de la informació que ens ha facilitat, a continuació li informem que:</Trans></span>
+              </Typography>
+            </Grid>
+            <Grid item xs={12} className='bg-form-exterior'>
+              <Grid item xs={12}>
+                <PersonalBenefits
+                    benefitsForPersons={this.props.resultsData.persones}
+                    persons={this.props.persons}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <FamilyBenefits benefits={this.props.resultsData.families}/>
+              </Grid>
+              <Grid item xs={12}>
+                <UnitatDeConvivenciaBenefits
+                    unitatDeConvivencia={this.props.resultsData.unitats_de_convivencia}
+                    persons={this.props.persons}
+                    period={this.period}
+                />
+              </Grid>
+            </Grid>
           </Grid>
-          <Grid item xs={12} className='bg-form-exterior'>
-            <Grid item xs={12}>
-              <PersonalBenefits
-                benefitsForPersons={this.props.resultsData.persones}
-                persons={this.props.persons}
-              />
+          <div>
+            <Grid container>
+              <Grid item xs={12}>
+                <ReportBug onSubmit={this.submitReport}/>
+              </Grid>
             </Grid>
-            <Grid item xs={12}>
-              <FamilyBenefits benefits={this.props.resultsData.families}/>
-            </Grid>
-            <Grid item xs={12}>
-              <UnitatDeConvivenciaBenefits
-                unitatDeConvivencia={this.props.resultsData.unitats_de_convivencia}
-                persons={this.props.persons}
-                period={this.period}
-              />
-            </Grid>
-          </Grid>
-        </Grid>
-        <div>
-          <Grid container>
-            <Grid item xs={12}>
-              <ReportBug onSubmit={this.submitReport}/>
-            </Grid>
-          </Grid>
-        </div>
-      </Fragment>
+          </div>
+        </Fragment>
     );
   }
 }
@@ -150,4 +158,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { fetchSimulation })(ResultsPage);
+export default connect(mapStateToProps, {fetchSimulation})(ResultsPage);
