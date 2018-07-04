@@ -5,7 +5,7 @@ import BenefitRow, {NoBenefitRow} from './BenefitRow';
 const possibleBenefits = [
   {
     ID: 'HA_001',
-    name: 'AJUTS LLOGUER ESPECIAL URGÈNCIA PER A PERSONES BENEFICIÀRIES DE PRESTACIONS DERIVADES DE LA MEDIACIÓ A BARCELONA',
+    name: 'Ajuts lloguer especial urgència per a persones beneficiàries de prestacions derivades de la mediació a barcelona',
     periode: 'mes',
     url: '/ajuts/lloguer',
     from: undefined,
@@ -13,7 +13,7 @@ const possibleBenefits = [
   },
   {
     ID: 'HA_002',
-    name: 'AJUTS PER PÈRDUA D’HABITATGE PER DESNONAMENT O EXECUCIÓ HIPOTECÀRIA',
+    name: 'Ajuts per pèrdua d’habitatge per desnonament o execució hipotecària',
     periode: 'mes',
     url: '/ajuts/lloguer',
     from: new Date(2018, 5, 16),
@@ -21,7 +21,7 @@ const possibleBenefits = [
   },
   {
     ID: 'HA_003',
-    name: 'AJUTS ESPECIAL URGÈNCIA AMORTITZACIÓ HIPOTECÀRIA',
+    name: 'Ajuts especial urgència amortització hipotecària',
     periode: 'mes',
     url: '/ajuts/lloguer',
     from: undefined,
@@ -29,7 +29,7 @@ const possibleBenefits = [
   },
   {
     ID: 'HA_004',
-    name: 'AJUTS LLOGUER ESPECIAL URGÈNCIA',
+    name: 'Ajuts lloguer especial urgència',
     periode: 'mes',
     url: '/ajuts/lloguer',
     from: undefined,
@@ -37,7 +37,7 @@ const possibleBenefits = [
   },
   {
     ID: 'HA_005',
-    name: 'SUBVENCIONS HABITATGE DE TIPUS MIFO',
+    name: 'Subvencions habitatge de tipus mifo',
     periode: 'mes',
     url: '/ajuts/lloguer',
     from: undefined,
@@ -55,7 +55,7 @@ const hasAnyBenefit = (unitatDeConvivencia, period) =>
 const renderABenefit = (benefit, unitatDeConvivencia, period) =>
     unitatDeConvivencia[benefit.ID][period] > 0
         ? <Grid container className='ResultPage' justify='center' alignItems='center' key={benefit.ID}>
-          <BenefitRow benefit={benefit}/>
+          <BenefitRow benefit={benefit} subject={unitatDeConvivencia}/>
         </Grid>
         : null;
 
@@ -63,7 +63,7 @@ const renderUnitatDeConvivenciaBenefitList = (unitatDeConvivencia, persons, peri
     <Grid container justify='space-between' alignItems='center'>
       <Grid item sm={12}>
         <li className='ItemResultOut'>
-          <Typography variant='Subheading' gutterBottom>
+          <Typography variant='subheading' gutterBottom>
             Ajudes per a la unitat de convivència:
           </Typography>
           <Grid container className='ResultPage' justify='space-between'>

@@ -88,7 +88,7 @@ export default createMuiTheme({
   palette: {
     primary: { 
       main: colors.primary,
-      dark: colors.primary_darker,
+      dark: colors.primary_dark,
       contrastText: colors.white
     }, 
     secondary: { 
@@ -173,7 +173,6 @@ export default createMuiTheme({
         fontWeight: 500
       },
       contained: {
-
         boxShadow: 'none',
         '&:active': {
             boxShadow: 'none',

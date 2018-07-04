@@ -93,7 +93,7 @@ class PersonalBenefits extends React.Component<PersonalBenefitsProps> {
   renderAPersonalBenefit(benefit, personWithBenefits) {
     if (personWithBenefits[benefit.ID][this.period] > 0) {
       return (
-          <BenefitRow benefit={benefit} key={benefit.ID}/>
+          <BenefitRow benefit={benefit} subject={personWithBenefits} key={benefit.ID}/>
       );
     }
   }
