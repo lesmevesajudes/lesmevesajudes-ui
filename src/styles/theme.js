@@ -106,7 +106,7 @@ export default createMuiTheme({
     },
     MuiStepConnector:{
       root: {
-        backgroundColor: '#00acd4',
+        backgroundColor: '#dedede',
         height: '2px'
       },
       lineHorizontal: {

@@ -57,7 +57,7 @@ const HelpModal = (props: Props) =>
             close
           </Icon>
         </div>
-        <Typography variant='subheading' id='simple-modal-description'>
+        <Typography id='simple-modal-description'>
           {props.children}
         </Typography>
       </div>
