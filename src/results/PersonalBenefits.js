@@ -82,8 +82,8 @@ class PersonalBenefits extends React.Component<Props> {
   renderPersonalBenefits(person: Person, personBenefits: any) {
     return (
         <li className='ItemResultOut' key={person.id}>
-          <Typography variant='headline' gutterBottom>
-            Ajudes a les que podria ser beneficiàri/a: {person.nom}
+          <Typography variant='Subheading' gutterBottom>
+            Ajudes a les que podria ser beneficiàri/a: <b>{person.nom}</b>
           </Typography>
 
           <Grid container className='ItemList'>
