@@ -48,7 +48,7 @@ const content = [
     </Trans>,
     link: '/ajuts/lloguer'
   }, {
-    title: <Trans>Ajudes MIFO</Trans>,
+    title: <Trans>Ajudes al lloguer MIFO</Trans>,
     body: <Trans>
       Prestació a fons perdut que s’atorga a persones amb deutes contrets per rebuts impagats de quotes
       d’amortització del préstec hipotecari.
