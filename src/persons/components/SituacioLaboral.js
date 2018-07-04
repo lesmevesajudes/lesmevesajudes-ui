@@ -29,6 +29,6 @@ export const SituacioLaboral = () =>
         <Trans>Jubilat/ada o prejubilat/ada</Trans>
       </MenuItem>
       <MenuItem data-test='altres' value='altres'>
-        <Trans>Altres</Trans>
+        <Trans>Altres situacions</Trans>
       </MenuItem>
     </MultipleAnswerQuestion>;

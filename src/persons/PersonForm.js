@@ -170,11 +170,11 @@ let PersonForm = (props: Props) => {
                         <YesNoQuestion name='inscrit_com_a_demandant_docupacio'>
                           <Trans>Està inscrit/a com a demandant d’ocupació?</Trans>
                         </YesNoQuestion>
+
                         {inscritComADemandantDocupacio &&
                         <YesNoQuestion name='inscrit_com_a_demandant_docupacio_mes_de_12_mesos'>
                           <Trans>Ha estat inscrit/a de forma continuada com a demandant d'ocupació més de 12 mesos?</Trans>
-                        </YesNoQuestion>
-                        }
+                        </YesNoQuestion>}
 
                         {esAturat &&
                         <YesNoQuestion name='en_els_ultims_12_mesos_ha_fet_baixa_voluntaria_de_la_feina'>
@@ -210,8 +210,9 @@ let PersonForm = (props: Props) => {
                     {esFamiliarOUsuari && cobraAlgunTipusDePensioNoContributiva &&
                     <Fragment>
                       <MoneyQuestion name='ingressos_per_pnc' validate={pncInclosAIngressosBruts}>
-                        <Trans>Indiqui la suma dels imports anuals que percep en concepte de pensions no
-                          contributives</Trans>
+                        <Trans>
+                          Indiqui la suma dels imports anuals que percep en concepte de pensions no contributives
+                        </Trans>
                       </MoneyQuestion>
                     </Fragment>}
 
@@ -222,8 +223,9 @@ let PersonForm = (props: Props) => {
 
                     {esFamiliarOUsuari && esAturat &&
                     <YesNoQuestion name='percep_prestacions_incompatibles_amb_la_feina'>
-                      <Trans>Percep alguna ajuda i/o prestació econòmica de la seguretat social que no li permet
-                        treballar?</Trans>
+                      <Trans>
+                        Percep alguna ajuda i/o prestació econòmica de la seguretat social que no li permeti treballar?
+                      </Trans>
                     </YesNoQuestion>}
 
                     {esFamiliarOUsuari &&
@@ -240,7 +242,7 @@ let PersonForm = (props: Props) => {
 
                       {potTreballar && esDona &&
                       <YesNoQuestion name='victima_violencia_de_genere'>
-                        <Trans>És víctima violència de gènere?</Trans>
+                        <Trans>És víctima violència de gènere o domèstica?</Trans>
                       </YesNoQuestion>}
                       {potTreballar && esHome &&
                       <YesNoQuestion name='victima_violencia_domestica'>

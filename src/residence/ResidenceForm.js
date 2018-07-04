@@ -82,10 +82,15 @@ const ResidenceForm = (props: Props) => {
                     <MenuItem value='llogater' data-test='llogater'><Trans>Visc de lloguer</Trans></MenuItem>
                     <MenuItem value='propietari'><Trans>Visc en un habitatge de propietat sense
                       hipoteca</Trans></MenuItem>
-                    <MenuItem value='propietari_hipoteca'><Trans>Visc en un habitatge de propietat amb
-                      hipoteca</Trans></MenuItem>
-                    <MenuItem value='no_en_te'><Trans>No tinc un habitatge fixe</Trans></MenuItem>
-                    <MenuItem value='cessio'><Trans>Cessió d'ús</Trans><Icon>info</Icon></MenuItem>
+                    <MenuItem value='propietari_hipoteca'>
+                      <Trans>
+                        Visc en un habitatge de propietat amb hipoteca
+                      </Trans>
+                    </MenuItem>
+                    <MenuItem value='no_en_te'><Trans>No tinc un habitatge fix</Trans></MenuItem>
+                    <MenuItem value='cessio'>
+                      <Trans>Visc en un habitatge en cessió d'ús</Trans>&nbsp;&nbsp;<Icon>info</Icon>
+                    </MenuItem>
                     <MenuItem value='altres'><Trans>Altres</Trans></MenuItem>
                   </MultipleAnswerQuestion>
 
@@ -117,14 +122,18 @@ const ResidenceForm = (props: Props) => {
 
                   {esLlogater &&
                   <YesNoQuestion name='ha_participat_en_un_proces_de_mediacio'>
-                    <Trans>Ha participat en un procés de mediació del servei de mediació de laXarxa d’Oficines
-                      d’Habitatge de Barcelona?</Trans>
+                    <Trans>
+                      Ha participat en un procés de mediació del servei de mediació de la Xarxa d’Oficines d’Habitatge
+                      de Barcelona?
+                    </Trans>
                   </YesNoQuestion>}
 
                   {haSeleccionatAlgunaRelacioAmbLHabitatge && !esPropietari &&
                   <YesNoQuestion name='ha_perdut_lhabitatge_en_els_ultims_2_anys'>
-                    <Trans>Ha perdut el seu habitatge habitual degut a una execució hipotecària o desnonament en els
-                      ultims 2 anys?</Trans>
+                    <Trans>
+                      Ha perdut el seu habitatge habitual degut a una execució hipotecària o desnonament en els últims 2
+                      anys?
+                    </Trans>
                   </YesNoQuestion>}
 
                   {esLlogater && (existeixDeutePagamentLloguer || haParticipatEnUnProcesDeMediacio || haEstatDesnonat) &&
@@ -154,9 +163,12 @@ const ResidenceForm = (props: Props) => {
                   && typeof titularContracteLloguer !== 'undefined'
                   && titularContracteLloguer !== 'no-conviu' &&
                   <MultipleAnswerQuestion name='titular_contracte_lloguer_temps_empadronat'
-                                          label={<Trans>Quant temps fa que {titularContracteLloguer.nom} està empadronat
-                                            en aquest habitatge?</Trans>}>
-                    <MenuItem value='no_empadronat'><Trans>No està empadronat</Trans></MenuItem>
+                                          label={
+                                            <Trans>
+                                              Quant temps fa que {titularContracteLloguer.nom} està empadronat/ada en
+                                              aquest habitatge?
+                                            </Trans>}>
+                    <MenuItem value='no_empadronat'><Trans>No està empadronat/ada</Trans></MenuItem>
                     <MenuItem value='menys_nou_mesos'><Trans>Menys de 9 mesos</Trans></MenuItem>
                     <MenuItem value='nou_mesos_o_mes' data-test='llogater'><Trans>9 mesos o més</Trans></MenuItem>
                   </MultipleAnswerQuestion>}
@@ -166,11 +178,12 @@ const ResidenceForm = (props: Props) => {
                   && typeof titularContracteHipoteca !== 'undefined'
                   && titularContracteHipoteca !== 'no-conviu' &&
                   <MultipleAnswerQuestion name='titular_hipoteca_temps_empadronat'
-                                          label={<Trans>
-                                            Quant temps fa que {titularContracteHipoteca.nom} està empadronat en aquest
-                                            habitatge?
-                                          </Trans>}>
-                    <MenuItem value='no_empadronat'><Trans>No està empadronat</Trans></MenuItem>
+                                          label={
+                                            <Trans>
+                                              Quant temps fa que {titularContracteHipoteca.nom} està empadronat/ada en
+                                              aquest habitatge?
+                                            </Trans>}>
+                    <MenuItem value='no_empadronat'><Trans>No està empadronat/ada</Trans></MenuItem>
                     <MenuItem value='menys_nou_mesos'><Trans>Menys de 9 mesos</Trans></MenuItem>
                     <MenuItem value='nou_mesos_o_mes' data-test='llogater'><Trans>9 mesos o més</Trans></MenuItem>
                   </MultipleAnswerQuestion>}
@@ -183,8 +196,8 @@ const ResidenceForm = (props: Props) => {
                   {existeixDeutePagamentLloguer &&
                   <MultipleAnswerQuestion name='des_de_quan_teniu_deutes_de_lloguer'
                                           label={<Trans>Des de quan teniu deutes de pagament de lloguer?</Trans>}>
-                    <MenuItem value='mes_dun_any'><Trans>Més d'un any</Trans></MenuItem>
-                    <MenuItem value='menys_dun_any'><Trans>Menys d'un any</Trans></MenuItem>
+                    <MenuItem value='menys_dun_any'><Trans>Fa menys d'un any</Trans></MenuItem>
+                    <MenuItem value='mes_dun_any'><Trans>Fa més d'un any</Trans></MenuItem>
                   </MultipleAnswerQuestion>}
 
                   {esLlogater && existeixDeutePagamentLloguer &&
@@ -204,8 +217,9 @@ const ResidenceForm = (props: Props) => {
 
                   {teHabitatgeHabitual &&
                   <YesNoQuestion name='tinc_alguna_propietat_a_part_habitatge_habitual'>
-                    <Trans>Alguna persona que conviu amb vostè té alguna propietat a part de l'habitatge
-                      habitual</Trans>
+                    <Trans>
+                      Alguna persona que conviu amb vostè té alguna propietat a part de l'habitatge habitual
+                    </Trans>
                   </YesNoQuestion>}
 
                   {teAlgunaPropietat &&
@@ -215,14 +229,17 @@ const ResidenceForm = (props: Props) => {
 
                   {esLlogater && existeixDeutePagamentLloguer &&
                   <YesNoQuestion name='es_ocupant_dun_habitatge_gestionat_per_lagencia_de_lhabitatge'>
-                    <Trans>És ocupant d’un habitatge gestionat per l’Agència de l’Habitatge de Catalunya o de l’Institut
-                      Municipal d’Habitatge? </Trans>
+                    <Trans>
+                      És ocupant d’un habitatge gestionat per l’Agència de l’Habitatge de Catalunya o de l’Institut
+                      Municipal d’Habitatge?
+                    </Trans>
                   </YesNoQuestion>}
 
                   {esLlogater && existeixDeutePagamentLloguer &&
                   <YesNoQuestion name='ha_rebut_oferta_per_accedir_a_habitatge_i_lha_rebutjada'>
-                    <Trans>Ha rebut mai una oferta per accedir a un habitatge de parc públic de lloguer i no l’ha
-                      acceptat?</Trans>
+                    <Trans>
+                      Ha rebut mai una oferta per accedir a un habitatge de parc públic de lloguer i no l’ha acceptat?
+                    </Trans>
                   </YesNoQuestion>}
 
                 </Grid>
@@ -236,7 +253,6 @@ const ResidenceForm = (props: Props) => {
           </kjlform>
         </Grid>
       </Grid>
-
   );
 };
 

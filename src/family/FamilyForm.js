@@ -78,8 +78,8 @@ const FamilyForm = (props: Props) => {
                                       {sustentador.nom} ({sustentador.edat} <Trans>anys</Trans>)
                                     </MenuItem>
                             )}
-                            <MenuItem value='ningu_mes'><Trans>Ningú més</Trans></MenuItem>
                             <MenuItem value='no_conviu'><Trans>Una persona que no conviu</Trans></MenuItem>
+                            <MenuItem value='ningu_mes'><Trans>Ningú més</Trans></MenuItem>
                           </Field>
                         </Grid>
                       </Grid>

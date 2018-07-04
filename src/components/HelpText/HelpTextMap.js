@@ -134,7 +134,7 @@ const HelpTextMap = {
     </Trans>
   },
   "ingressos_bruts": {
-    title: <Trans>Ingressos bruts</Trans>,
+    title: <Trans>Ingressos</Trans>,
     body: <Trans>Es consideren ingressos propis els que es generen per:
       <ul>
         <li>Rendiment del treball</li>

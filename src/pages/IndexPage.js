@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import "./indexPage/IndexPage.css";
 import AppHeader from "../components/AppHeader/AppHeader";
 import {Trans, translate} from "react-i18next";
-import {Button,Typography} from "@material-ui/core";
+import {Button, Typography} from "@material-ui/core";
 import {styles} from "../styles/theme";
 import {withStyles} from "@material-ui/core/styles";
 import Caroussel from "../components/Caroussel/Caroussel";
@@ -30,7 +30,7 @@ const IndexPage = (props) =>
       </div>
     </div>
     <div className='CTA'>
-      <p className='PresentationText'>
+      <p className='PresentationText' style={{textAlign: 'center'}}>
         <Trans>
           Aquesta eina us permetrà consultar a quins ajuts i prestacions socials podeu arribar a optar. Heu de declarar,
           sota la vostra responsabilitat, que les respostes són certes.Podreu trobar-hi ajudes gestionades per
