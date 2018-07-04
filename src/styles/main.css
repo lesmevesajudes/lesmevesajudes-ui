@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600');
 @font-face {
   font-family: 'Ajuntament';
-  src: url('icoajuntament.ttf') format("truetype");
+    src: url('icoajuntament.ttf') format('truetype');
 }
 .App-intro {
     font-size: large;
@@ -75,7 +75,8 @@ label {
 input:focus {
     outline: none;
 }
-input[type="radio"], input[type="checkbox"] {
+
+input[type='radio'], input[type='checkbox'] {
     margin-right: 0.5rem;
 }
 button {

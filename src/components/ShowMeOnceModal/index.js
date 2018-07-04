@@ -2,9 +2,10 @@ import React from 'react';
 import {withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Modal from '@material-ui/core/Modal';
-import {modalSeenAction} from "./ShowMeOnceReducer";
-import {connect} from "react-redux";
+import {modalSeenAction} from './ShowMeOnceReducer';
+import {connect} from 'react-redux';
 import Icon from '@material-ui/core/Icon';
+
 function getModalStyle() {
   const top = 50;
   const left = 50;
@@ -50,8 +51,8 @@ class ShowMeOnceModal extends React.Component<Props, State> {
     const closeImg = {cursor: 'pointer', float: 'right', marginTop: '5px', width: '20px'};
     return (
         <Modal
-            aria-labelledby="simple-modal-title"
-            aria-describedby="simple-modal-description"
+            aria-labelledby='simple-modal-title'
+            aria-describedby='simple-modal-description'
             open={this.state.open}
             onClose={this.handleClose}
         >
@@ -59,10 +60,10 @@ class ShowMeOnceModal extends React.Component<Props, State> {
               <Icon onClick={this.handleClose} style={closeImg} color='primary'>
                 close
               </Icon>
-            <Typography variant="title" id="modal-title" gutterBottom>
+            <Typography variant='title' id='modal-title' gutterBottom>
               {title}
             </Typography>
-            <Typography id="simple-modal-description">
+            <Typography id='simple-modal-description'>
               {children}
             </Typography>
           </div>

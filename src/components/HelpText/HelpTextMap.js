@@ -1,25 +1,25 @@
 //@flow
 
-import React from "react";
-import {Trans} from "react-i18next";
-import Typography from "@material-ui/core/Typography";
+import React from 'react';
+import {Trans} from 'react-i18next';
+import Typography from '@material-ui/core/Typography';
 
 const HelpTextMap = {
-  "edat": {
+  'edat': {
     title: <Trans>Edat</Trans>,
     body: <Trans>Si té menys d’un any indiqui 0</Trans>
   },
-  "nom": {
+  'nom': {
     title: <Trans>Nom</Trans>,
     body: <Trans>Aquesta dada es farà servir només perquè l'aplicació es pugui referir a la persona. No
       ha de permetre'n la identificació</Trans>
   },
-  "beneficiari_de_prestacio_residencial": {
+  'beneficiari_de_prestacio_residencial': {
     title: <Trans>Beneficiari de prestació residencial</Trans>,
     body: <Trans>S’ha de trobar amb la situació d’estar ingressat en un centre
       sociosanitari, comunitat terapèutica, geriàtrica o similars</Trans>
   },
-  "cobra_algun_tipus_de_pensio_no_contributiva": {
+  'cobra_algun_tipus_de_pensio_no_contributiva': {
     title: <Trans> Perstacions no contributives</Trans>,
     body: <Trans>Les pensions no contributives són uns ingressos econòmics
       mensuals que l'Estat garanteix a les persones que no tenen recursos suficients per subsistir i no poden acollir-se
@@ -36,10 +36,10 @@ const HelpTextMap = {
       </ul>
     </Trans>
   },
-  "custodies": {
+  'custodies': {
     title: <Trans>Tipus de custòdia</Trans>,
     body: <Trans>
-     <Typography variant="subheading" className="subtitle" gutterBottom>Guarda i custòdia</Typography>
+      <Typography variant='subheading' className='subtitle' gutterBottom>Guarda i custòdia</Typography>
 
       Com a guarda i custòdia s’entén viure amb els fills o filles, cuidar-los i assistir-los. Es pot atribuir a una
         de les persones progenitores, compartida entre ambdues o a una tercera persona. Abans d’acordar el règim de
@@ -47,7 +47,7 @@ const HelpTextMap = {
         suficient judici quan s’estimi necessari.
         Cal un document acreditatiu.
 
-      <Typography variant="subheading" className="subtitle" gutterBottom>Tutela legal</Typography>
+      <Typography variant='subheading' className='subtitle' gutterBottom>Tutela legal</Typography>
       La tutela és la institució principal en la protecció de les persones incapacitades, a les quals ha d'assegurar
         la protecció, l'administració i la guarda de drets i béns. Normalment, és l'autoritat conferida a una persona
         física o jurídica, anomenada tutor o tutora, per tenir cura d'una persona i els seus béns pel fet que sigui
@@ -61,7 +61,7 @@ const HelpTextMap = {
       </ul>
     </Trans>
   },
-  "disposa_de_carnet_familia_monoparental": {
+  'disposa_de_carnet_familia_monoparental': {
     title: <Trans>Família monoparental</Trans>,
     body: <Trans>
       S'entén per família monoparental (tant de categoria especial com de categoria general) la família formada per un
@@ -74,7 +74,7 @@ const HelpTextMap = {
       cada una de les persones membres que en són beneficiàries.
     </Trans>
   },
-  "gaudeix_de_prestacio_contributiva_o_subsidi_desocupacio": {
+  'gaudeix_de_prestacio_contributiva_o_subsidi_desocupacio': {
     title: <Trans>Prestacions contributives</Trans>,
     body: <Trans>
       La concessió de les prestacions econòmiques generalment està supeditada a una relació jurídica prèvia amb la
@@ -97,7 +97,7 @@ const HelpTextMap = {
       </ul>
     </Trans>
   },
-  "ha_participat_en_un_proces_de_mediacio": {
+  'ha_participat_en_un_proces_de_mediacio': {
     title: <Trans>Procés de mediació en l’habitatge</Trans>,
     body: <Trans>
       L'Ajuntament de Barcelona i la Generalitat de Catalunya, mitjançant el Consorci de l’Habitatge de Barcelona, posen
@@ -116,7 +116,7 @@ const HelpTextMap = {
       concret, una solució òptima per a les dues parts.
     </Trans>
   },
-  "ha_treballat_a_l_estranger_6_mesos": {
+  'ha_treballat_a_l_estranger_6_mesos': {
     title: <Trans>Treball a l'extranger</Trans>,
     body: <Trans>S’haurà d’acreditar aportant la documentació següent:
       <ul>
@@ -133,7 +133,7 @@ const HelpTextMap = {
       </ul>
     </Trans>
   },
-  "ingressos_bruts": {
+  'ingressos_bruts': {
     title: <Trans>Ingressos</Trans>,
     body: <Trans>Es consideren ingressos propis els que es generen per:
       <ul>
@@ -147,7 +147,7 @@ const HelpTextMap = {
       </ul>
     </Trans>
   },
-  "inscrit_com_a_demandant_docupacio": {
+  'inscrit_com_a_demandant_docupacio': {
     title: <Trans>Inscrit/a com a demandant d'ocupació</Trans>,
     body: <Trans>Persona inscrita a les
       oficines de Treball.
@@ -159,7 +159,7 @@ const HelpTextMap = {
       Un cop feta la inscripció com a demandant d’ocupació, la persona rep el document d'alta i de renovació de la
       demanda d'ocupació (denominat DARDO).</Trans>
   },
-  "membre_de_familia_reagrupada": {
+  'membre_de_familia_reagrupada': {
     title: <Trans>Famílies reagrupades</Trans>,
     body: <Trans>Segons l'article 16 de la Llei d'estrangeria, les persones estrangeres
       residents
@@ -170,17 +170,17 @@ const HelpTextMap = {
       Cal documentació acreditativa per la seva sol.licitud i la seva obtenció.
     </Trans>
   },
-  "relacio_habitatge": {
+  'relacio_habitatge': {
     title: <Trans>Situacions respecte a l’habitatge</Trans>,
     body: <Trans>
-      <Typography variant="subheading" className="subtitle" gutterBottom>Cessió d’ús</Typography>
+      <Typography variant='subheading' className='subtitle' gutterBottom>Cessió d’ús</Typography>
       És un contracte pel qual se cedeix l’ús d’un habitatge per un temps determinat a canvi del pagament d’un preu
       equiparable a un lloguer tou.</Trans>
   },
-  "relacio_parentiu": {
+  'relacio_parentiu': {
     title: <Trans>Relacions familiars</Trans>,
     body: <Trans>
-      <Typography variant="subheading" className="subtitle" gutterBottom>Infant en acolliment</Typography>
+      <Typography variant='subheading' className='subtitle' gutterBottom>Infant en acolliment</Typography>
       L'acolliment familiar d'un infant comporta confiar temporalment la guarda d'una persona menor a una família o
         persona sola, sense que hi hagi finalitat adoptiva.
         És una mesura temporal per oferir als infants el millor entorn possible per créixer fins que la seva família
@@ -188,7 +188,7 @@ const HelpTextMap = {
       Cal un document acreditatiu.
     </Trans>
   },
-  "relacio_de_parentiu_amb_el_propietari": {
+  'relacio_de_parentiu_amb_el_propietari': {
     title: <Trans>Vincle de parentiu per consanguinitat</Trans>,
     body: <Trans>
       El parentiu per consanguinitat, o simplement la consanguinitat, és la relació entre persones unides per un
@@ -209,15 +209,15 @@ const HelpTextMap = {
       d'aquesta persona en la mateixa línia i grau que el parent consanguini del qual són cònjuges.
     </Trans>
   },
-  "sexe": {
+  'sexe': {
     title: <Trans>Sexe</Trans>,
-    body: <Trans>Per al càlcul dels diferents ajuts, i segons marca la normativa vigent, cal que a l'apartat "SEXE"
+    body: <Trans>Per al càlcul dels diferents ajuts, i segons marca la normativa vigent, cal que a l'apartat 'SEXE'
       seleccioneu el que consta oficialment en el vostre DNI en vigor. L'Ajuntament de Barcelona, atenent a la
       diversitat
       sexual i de gènere, està treballant perquè cada persona pugui expressar, si així ho desitja, el seu gènere i
       “nom sentit” en tots els documents d’àmbit municipal en els quals calgui informar del sexe</Trans>
   },
-  "te_algun_grau_de_discapacitat_reconegut": {
+  'te_algun_grau_de_discapacitat_reconegut': {
     title: <Trans>Grau de discapacitat</Trans>,
     body: <Trans>
       El grau de discapacitat acredita la condició de discapacitat i l'accés a les ajudes que se'n deriven.
@@ -237,7 +237,7 @@ const HelpTextMap = {
       </ul>
     </Trans>
   },
-  "tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit": {
+  'tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit': {
     title: <Trans>Usdefruit</Trans>,
     body: <Trans>
       Dret real de gaudi sobre una cosa d'altri, que atorga a la persona usufructuària les facultats d’usar-la i
@@ -252,17 +252,17 @@ const HelpTextMap = {
       afectar els drets hereditaris de les persones descendents, que amb el temps acabaran adquirint la seva herència.
     </Trans>
   },
-  "titular_contracte_de_lloguer_id": {
+  'titular_contracte_de_lloguer_id': {
     title: <Trans>Titular del contracte de lloguer</Trans>,
     body: <Trans>En cas que hi hagi més d'un titular escolliu-ne només un, prefentment aquell que visqui a
       l'habitatge.</Trans>
   },
-  "titular_hipoteca_id": {
+  'titular_hipoteca_id': {
     title: <Trans>Titular del contracte de hipoteca</Trans>,
     body: <Trans>En cas que hi hagi més d'un titular escolliu-ne només un, prefentment aquell que visqui a
       l'habitatge.</Trans>
   },
-  "victima_violencia_de_genere": {
+  'victima_violencia_de_genere': {
     title: <Trans>Víctima de violència de gènere o domèstica</Trans>,
     body: <Trans>Es considera víctima de violència de gènere la dona que és o ha estat objecte d'actes de violència
       física o
@@ -277,7 +277,7 @@ const HelpTextMap = {
       local) o la casa d'acollida, on s'indiqui que es rep assistència per aquesta circumstància.
     </Trans>
   },
-  "victima_violencia_domestica": {
+  'victima_violencia_domestica': {
     title: <Trans>Víctima de violència de gènere o domèstica</Trans>,
     body: <Trans>
       Es considera víctima de violència de gènere la dona que és o ha estat objecte d'actes de violència física o

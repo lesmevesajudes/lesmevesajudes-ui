@@ -1,15 +1,15 @@
-import React, {Fragment} from "react";
-import {connect} from "react-redux";
-import {fetchSimulation} from "./FetchSimulationAction";
-import PersonalBenefits from "./PersonalBenefits";
-import FamilyBenefits from "./FamilyBenefits";
-import type {Person, PersonID} from "../persons/PersonTypes";
-import ReportBug from "../reportBug/ReportBugPage";
-import axios from "axios/index";
+import React, {Fragment} from 'react';
+import {connect} from 'react-redux';
+import {fetchSimulation} from './FetchSimulationAction';
+import PersonalBenefits from './PersonalBenefits';
+import FamilyBenefits from './FamilyBenefits';
+import type {Person, PersonID} from '../persons/PersonTypes';
+import ReportBug from '../reportBug/ReportBugPage';
+import axios from 'axios/index';
 import {Grid, Typography} from '@material-ui/core';
-import {IconFont} from "../components/IconFont/IconFont";
-import UnitatDeConvivenciaBenefits from "./UnitatDeConvivenciaBenefits";
-import {Trans} from "react-i18next";
+import {IconFont} from '../components/IconFont/IconFont';
+import UnitatDeConvivenciaBenefits from './UnitatDeConvivenciaBenefits';
+import {Trans} from 'react-i18next';
 import ShowMeOnceModal from '../components/ShowMeOnceModal'
 
 type Props = {
@@ -21,9 +21,30 @@ type Props = {
 };
 
 class ResultsPage extends React.Component<Props> {
+  submitReport = values => {
+    // print the form values to the console
+    console.log('form submit:', values);
+    axios
+        .post('https://lesmevesajudes-ss.herokuapp.com/api/simulations', {
+          comments: values.comments || '',
+          expected_result: values.resultat_esperat || '',
+          application_state: values.application_state,
+          valid_result: !values.invalid_result
+        })
+        .then(function (response) {
+          console.log('saved successfully', response);
+          //kill em all
+          window.location.reload(true);
+        })
+        .catch(function (error) {
+          console.error(error);
+          alert(error);
+        });
+  };
+
   constructor() {
     super();
-    this.period = "2017-01";
+    this.period = '2017-01';
   }
 
   enoughDataForSimulation() {
@@ -33,27 +54,6 @@ class ResultsPage extends React.Component<Props> {
   componentDidMount() {
     if (this.enoughDataForSimulation()) this.props.fetchSimulation(this.props.simulationData);
   }
-
-  submitReport = values => {
-    // print the form values to the console
-    console.log("form submit:", values);
-    axios
-        .post("https://lesmevesajudes-ss.herokuapp.com/api/simulations", {
-          comments: values.comments || "",
-          expected_result: values.resultat_esperat || "",
-          application_state: values.application_state,
-          valid_result: !values.invalid_result
-        })
-        .then(function (response) {
-          console.log("saved successfully", response);
-          //kill em all
-          window.location.reload(true);
-        })
-        .catch(function (error) {
-          console.error(error);
-          alert(error);
-        });
-  };
 
   render() {
     if (!this.enoughDataForSimulation()) {
@@ -103,7 +103,7 @@ class ResultsPage extends React.Component<Props> {
     //Añadir Trans en titlePage
     return (
         <Fragment>
-          <ShowMeOnceModal name="resultsModal" title="Ajudes a les que podría optar">
+          <ShowMeOnceModal name='resultsModal' title='Ajudes a les que podría optar'>
             <p>A continuació es mostrarà el conjunt d’ajudes a les quals podria arribar a optar.
               L’informem que la concessió d’una d’elles pot fer variar els llindars d’ingressos i/o requisits que les
               altres ajudes preveuen per a ser concedides.</p>
@@ -111,10 +111,10 @@ class ResultsPage extends React.Component<Props> {
             Informi-se’n clicant sobre cada ajut.
           </ShowMeOnceModal>
           <Grid container className='bg-container'>
-            <Grid item xs={12} sm={12} className="titleContainer">
-              <Typography variant='headline' className="titlePage">
-                <IconFont icon="resultats" sizeSphere={48} fontSize={32}/>
-                <span className="titleText"><Trans>A partir de la informació que ens ha facilitat, a continuació li informem que:</Trans></span>
+            <Grid item xs={12} sm={12} className='titleContainer'>
+              <Typography variant='headline' className='titlePage'>
+                <IconFont icon='resultats' sizeSphere={48} fontSize={32}/>
+                <span className='titleText'><Trans>A partir de la informació que ens ha facilitat, a continuació li informem que:</Trans></span>
               </Typography>
             </Grid>
             <Grid item xs={12} className='bg-form-exterior'>

@@ -71,7 +71,7 @@ export const PersonCard = (props: PersonCardProps) => {
         />
         {!props.person.is_the_person_in_front_of_the_computer &&
         <ListItemSecondaryAction onClick={() => props.onRemoveClick(props.person.id)}>
-          <Tooltip id="known-tooltip" title="Aquesta acció eliminarà aquest registre" placement="right-start">
+          <Tooltip id='known-tooltip' title='Aquesta acció eliminarà aquest registre' placement='right-start'>
             <Typography className={classes.deleteListItemTitle}> Eliminar </Typography>
           </Tooltip>
         </ListItemSecondaryAction>}
@@ -91,7 +91,7 @@ const UnknownPersonCard = (props: UnknownPersonProps) => {
       <ListItemText 
           primary={<Typography className= {classes.titleUnknownPerson} >Persona {(props.personNumber + 1).toString()} - Premi aquí per a introduir la informació d'aquesta persona</Typography>}/>
       <ListItemSecondaryAction onClick={() => props.onRemoveClick()}>
-        <Tooltip id="unknown-tooltip" title="Aquesta acció eliminarà aquest registre" placement="right-start">
+        <Tooltip id='unknown-tooltip' title='Aquesta acció eliminarà aquest registre' placement='right-start'>
          <Typography className={classes.deleteListItemTitle}> Eliminar </Typography>
         </Tooltip>
       </ListItemSecondaryAction>
@@ -112,10 +112,10 @@ export const PersonsViewer = (props: Props) => {
   const missingPersons = Math.max(props.expectedNumberOfPersons - props.persons.length, 0);
     return (
         <Grid container className='bg-container'>
-           <Grid item xs={12} sm={12} className="titleContainer">
-           <Typography variant='headline' className="titlePage">
-                <IconFont icon="persona" sizeSphere={48} fontSize={32} />
-             <span className="titleText"><Trans>Persones que viuen en el seu domicili</Trans></span>
+          <Grid item xs={12} sm={12} className='titleContainer'>
+            <Typography variant='headline' className='titlePage'>
+              <IconFont icon='persona' sizeSphere={48} fontSize={32}/>
+              <span className='titleText'><Trans>Persones que viuen en el seu domicili</Trans></span>
               </Typography>
           </Grid>
           <Grid item xs={12}>
@@ -140,9 +140,10 @@ export const PersonsViewer = (props: Props) => {
                 </Card>
               </Grid>
               {missingPersons === 0 &&
-                <Grid item sm={12} className="addPersonContainer">
-                  <Tooltip id="add-person-tooltip" title="Si vol afegir un altra persona que convisqui amb vosté cliqui aquí" placement="right">
-                    <Button className={props.classes.addMemberButton} color="secondary" variant="raised"
+              <Grid item sm={12} className='addPersonContainer'>
+                <Tooltip id='add-person-tooltip'
+                         title='Si vol afegir un altra persona que convisqui amb vosté cliqui aquí' placement='right'>
+                  <Button className={props.classes.addMemberButton} color='secondary' variant='raised'
                             onClick={props.onAddPersonClick}>Afegir una persona convivent <Icon
                         className={props.classes.rightIcon}>add_circle</Icon></Button>
                   </Tooltip>

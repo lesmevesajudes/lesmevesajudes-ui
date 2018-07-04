@@ -812,7 +812,7 @@ export const demarcacioDelCodiPostal = (codiPostal: string): string => {
   if (typeof codiPostal !== 'string') return 'desconeguda';
 
   const dosPrimersDigits = codiPostal.substring(0, 2);
-  let result = "";
+  let result = '';
   if (terresDeLEbre.indexOf(codiPostal) > -1) {
     result = 'terres_de_lebre';
   } else if (esBarcelona(codiPostal)) {
@@ -833,7 +833,7 @@ export const demarcacioDelCodiPostal = (codiPostal: string): string => {
 };
 
 export const zonaDelCodiPostal = (codiPostal: string): string => {
-  let result = "";
+  let result = '';
   if (codisPostalsZonaA.indexOf(codiPostal) > -1) {
     result = 'zona_a';
   } else if (codispostalsZonaB.indexOf(codiPostal) > -1) {

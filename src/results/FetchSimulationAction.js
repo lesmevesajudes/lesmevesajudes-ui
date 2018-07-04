@@ -4,10 +4,10 @@ import type {FamilyData} from '../family/FamilyDataTypes';
 import type {ResidenceData} from '../residence/ResidenceTypes';
 import OpenFiscaAPIClient from '../shared/OpenFiscaAPIClient';
 import {esInfantAcollit} from '../shared/selectorUtils';
-import {detectaFamilies} from "../family/detectaFamilies";
-import {serialize} from "../persons/PersonsReducer";
-import * as uuid from "uuid";
-import {demarcacioDelCodiPostal, zonaDelCodiPostal} from "../shared/CodisPostals";
+import {detectaFamilies} from '../family/detectaFamilies';
+import {serialize} from '../persons/PersonsReducer';
+import * as uuid from 'uuid';
+import {demarcacioDelCodiPostal, zonaDelCodiPostal} from '../shared/CodisPostals';
 
 export const FETCH_SIMULATION = 'fetch_simulation';
 

@@ -1,4 +1,4 @@
-import {createMuiTheme } from '@material-ui/core/styles';
+import {createMuiTheme} from '@material-ui/core/styles';
 
 export const colors = {
   primary: '#d50283',
@@ -12,7 +12,7 @@ export const colors = {
   white: '#fff',
   blackest: '#202020',
   gray: '#f2f2f2'
-}
+};
 export const styles = theme => ({
   root: {
     width: '100%',
@@ -37,10 +37,10 @@ export const styles = theme => ({
   grayBackground: {
     backgroundColor: colors.white,
     color: colors.primary,
-    "&:active": {
+    '&:active': {
       backgroundColor: colors.disabled_text
     },
-    "&:hover": {
+    '&:hover': {
       backgroundColor: colors.disabled_text 
     }
   },
@@ -65,16 +65,16 @@ export const styles = theme => ({
     backgroundColor: '#fbfbfb'
   },
   boxDescriptionText: {
-    boxShadow: "0px 0px 7px rgba(0, 0, 0, 0.15)",
-    padding: "10px",
-    borderRadius: "4px",
-    fontSize: "14px !important"
+    boxShadow: '0px 0px 7px rgba(0, 0, 0, 0.15)',
+    padding: '10px',
+    borderRadius: '4px',
+    fontSize: '14px !important'
   },
   titleDescriptionText: {
     color: colors.blackest,
     fontWeight: '600',
     fontSize: '1.125rem',
-    fontFamily:  "'Source Sans Pro', sans-serif",
+    fontFamily: 'Source Sans Pro, sans-serif',
     textAlign: 'justify'
   }
 });
@@ -95,7 +95,7 @@ export default createMuiTheme({
   overrides: {
     MuiStepLabel: {
       root: {
-        fontFamily: "'Source Sans Pro', sans-serif"
+        fontFamily: 'Source Sans Pro, sans-serif'
       },
       alternativeLabel: {
         marginTop: '0px !important'
@@ -121,7 +121,7 @@ export default createMuiTheme({
     },
     MuiPaper: {
       elevation2: {
-        boxShadow: "none",
+        boxShadow: 'none',
         borderRadius: '4px'
       }
     },
@@ -134,7 +134,7 @@ export default createMuiTheme({
     MuiTypography: {
       title: {
         marginTop:'10px',
-        fontFamily: "'Source Sans Pro', sans-serif",
+        fontFamily: 'Source Sans Pro, sans-serif',
         textTransform: 'uppercase',
         fontWeight: 600,
         color: colors.secondary
@@ -162,9 +162,9 @@ export default createMuiTheme({
       label: {
         textTransform: 'none',
       },
-      root: { // Global variabbles of buttons
+      root: { // Global variables of buttons
         disableRipple: true,
-        fontFamily: "'Source Sans Pro', sans-serif",
+        fontFamily: 'Source Sans Pro, sans-serif',
         fontWeight: 500
       },
       contained: {

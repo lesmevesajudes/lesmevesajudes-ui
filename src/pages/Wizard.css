@@ -31,7 +31,7 @@ ol.progtrckr li.progtrckr-todo {
 }
 
 ol.progtrckr li:after {
-    content: "\00a0\00a0";
+    content: '\00a0\00a0';
 }
 ol.progtrckr li:before {
     position: relative;
@@ -41,7 +41,7 @@ ol.progtrckr li:before {
     line-height: 1em;
 }
 ol.progtrckr li.progtrckr-doing:before {
-    content: "";
+    content: '';
     color: white;
     background-color: #00acd4;
     height: 1.2em;
@@ -52,7 +52,7 @@ ol.progtrckr li.progtrckr-doing:before {
 }
 
 ol.progtrckr li.progtrckr-done:before {
-    content: "";
+    content: '';
     color: white;
     background-color: #00acd4;
     height: 1.2em;
@@ -62,7 +62,7 @@ ol.progtrckr li.progtrckr-done:before {
     border-radius: 1.2em;
 }
 ol.progtrckr li.progtrckr-todo:before {
-    content: "";
+    content: '';
     color: silver;
     background-color: silver;
     height: 1.2em;

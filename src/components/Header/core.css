@@ -4,69 +4,69 @@
  *
  */
 @font-face {
-  font-family: "Open Sans";
+    font-family: 'Open Sans';
   font-style: normal;
   font-weight: 700;
   src: url(https://themes.googleusercontent.com/static/fonts/opensans/v6/k3k702ZOKiLJc3WVjuplzHZ2MAKAc2x4R1uOSeegc5U.eot);
-    src: local("Open Sans Bold"), local("OpenSans-Bold"),
-    url(https://themes.googleusercontent.com/static/fonts/opensans/v6/k3k702ZOKiLJc3WVjuplzHZ2MAKAc2x4R1uOSeegc5U.eot) format("embedded-opentype"),
-    url(https://themes.googleusercontent.com/static/fonts/opensans/v6/k3k702ZOKiLJc3WVjuplzHhCUOGz7vYGh680lGh-uXM.woff) format("woff");
+    src: local('Open Sans Bold'), local('OpenSans-Bold'),
+    url(https://themes.googleusercontent.com/static/fonts/opensans/v6/k3k702ZOKiLJc3WVjuplzHZ2MAKAc2x4R1uOSeegc5U.eot) format('embedded-opentype'),
+    url(https://themes.googleusercontent.com/static/fonts/opensans/v6/k3k702ZOKiLJc3WVjuplzHhCUOGz7vYGh680lGh-uXM.woff) format('woff');
 }
 
 @font-face {
-  font-family: "Open Sans";
+    font-family: 'Open Sans';
   font-style: italic;
   font-weight: 700;
   src: url(https://themes.googleusercontent.com/static/fonts/opensans/v6/PRmiXeptR36kaC0GEAetxrFt29aCHKT7otDW9l62Aag.eot);
-    src: local("Open Sans Bold Italic"), local("OpenSans-BoldItalic"),
-    url(https://themes.googleusercontent.com/static/fonts/opensans/v6/PRmiXeptR36kaC0GEAetxrFt29aCHKT7otDW9l62Aag.eot) format("embedded-opentype"),
-    url(https://themes.googleusercontent.com/static/fonts/opensans/v6/PRmiXeptR36kaC0GEAetxjqR_3kx9_hJXbbyU8S6IN0.woff) format("woff");
+    src: local('Open Sans Bold Italic'), local('OpenSans-BoldItalic'),
+    url(https://themes.googleusercontent.com/static/fonts/opensans/v6/PRmiXeptR36kaC0GEAetxrFt29aCHKT7otDW9l62Aag.eot) format('embedded-opentype'),
+    url(https://themes.googleusercontent.com/static/fonts/opensans/v6/PRmiXeptR36kaC0GEAetxjqR_3kx9_hJXbbyU8S6IN0.woff) format('woff');
 }
 
 @font-face {
-  font-family: "Open Sans";
+    font-family: 'Open Sans';
   font-style: normal;
   font-weight: 400;
   src: url(https://themes.googleusercontent.com/static/fonts/opensans/v6/cJZKeOuBrn4kERxqtaUH3fY6323mHUZFJMgTvxaG2iE.eot);
-    src: local("Open Sans"), local("OpenSans"),
-    url(https://themes.googleusercontent.com/static/fonts/opensans/v6/cJZKeOuBrn4kERxqtaUH3fY6323mHUZFJMgTvxaG2iE.eot) format("embedded-opentype"),
-    url(https://themes.googleusercontent.com/static/fonts/opensans/v6/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff) format("woff");
+    src: local('Open Sans'), local('OpenSans'),
+    url(https://themes.googleusercontent.com/static/fonts/opensans/v6/cJZKeOuBrn4kERxqtaUH3fY6323mHUZFJMgTvxaG2iE.eot) format('embedded-opentype'),
+    url(https://themes.googleusercontent.com/static/fonts/opensans/v6/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
 }
 
 @font-face {
-  font-family: "Open Sans";
+    font-family: 'Open Sans';
   font-style: italic;
   font-weight: 400;
   src: url(https://themes.googleusercontent.com/static/fonts/opensans/v6/xjAJXh38I15wypJXxuGMBmfQcKutQXcIrRfyR5jdjY8.eot);
-    src: local("Open Sans Italic"), local("OpenSans-Italic"),
-    url(https://themes.googleusercontent.com/static/fonts/opensans/v6/xjAJXh38I15wypJXxuGMBmfQcKutQXcIrRfyR5jdjY8.eot) format("embedded-opentype"),
-    url(https://themes.googleusercontent.com/static/fonts/opensans/v6/xjAJXh38I15wypJXxuGMBobN6UDyHWBl620a-IRfuBk.woff) format("woff");
+    src: local('Open Sans Italic'), local('OpenSans-Italic'),
+    url(https://themes.googleusercontent.com/static/fonts/opensans/v6/xjAJXh38I15wypJXxuGMBmfQcKutQXcIrRfyR5jdjY8.eot) format('embedded-opentype'),
+    url(https://themes.googleusercontent.com/static/fonts/opensans/v6/xjAJXh38I15wypJXxuGMBobN6UDyHWBl620a-IRfuBk.woff) format('woff');
 }
 
 @font-face {
-  font-family: "Open Sans";
+    font-family: 'Open Sans';
   font-style: normal;
   font-weight: 300;
   src: url(https://themes.googleusercontent.com/static/fonts/opensans/v6/DXI1ORHCpsQm3Vp6mXoaTXZ2MAKAc2x4R1uOSeegc5U.eot);
-    src: local("Open Sans Light"), local("OpenSans-Light"),
-    url(https://themes.googleusercontent.com/static/fonts/opensans/v6/DXI1ORHCpsQm3Vp6mXoaTXZ2MAKAc2x4R1uOSeegc5U.eot) format("embedded-opentype"),
-    url(https://themes.googleusercontent.com/static/fonts/opensans/v6/DXI1ORHCpsQm3Vp6mXoaTXhCUOGz7vYGh680lGh-uXM.woff) format("woff");
+    src: local('Open Sans Light'), local('OpenSans-Light'),
+    url(https://themes.googleusercontent.com/static/fonts/opensans/v6/DXI1ORHCpsQm3Vp6mXoaTXZ2MAKAc2x4R1uOSeegc5U.eot) format('embedded-opentype'),
+    url(https://themes.googleusercontent.com/static/fonts/opensans/v6/DXI1ORHCpsQm3Vp6mXoaTXhCUOGz7vYGh680lGh-uXM.woff) format('woff');
 }
 
 @font-face {
-  font-family: "Open Sans";
+    font-family: 'Open Sans';
   font-style: italic;
   font-weight: 300;
   src: url(https://themes.googleusercontent.com/static/fonts/opensans/v6/PRmiXeptR36kaC0GEAetxrXcjzEax2LfQAlK8DdMzhA.eot);
-    src: local("Open Sans Light Italic"), local("OpenSansLight-Italic"),
-    url(https://themes.googleusercontent.com/static/fonts/opensans/v6/PRmiXeptR36kaC0GEAetxrXcjzEax2LfQAlK8DdMzhA.eot) format("embedded-opentype"),
-    url(https://themes.googleusercontent.com/static/fonts/opensans/v6/PRmiXeptR36kaC0GEAetxh_xHqYgAV9Bl_ZQbYUxnQU.woff) format("woff");
+    src: local('Open Sans Light Italic'), local('OpenSansLight-Italic'),
+    url(https://themes.googleusercontent.com/static/fonts/opensans/v6/PRmiXeptR36kaC0GEAetxrXcjzEax2LfQAlK8DdMzhA.eot) format('embedded-opentype'),
+    url(https://themes.googleusercontent.com/static/fonts/opensans/v6/PRmiXeptR36kaC0GEAetxh_xHqYgAV9Bl_ZQbYUxnQU.woff) format('woff');
 }
 
 /* Banner 2017 - fonts */
 #brand.v2017 {
   border-bottom: 1px solid #eeeeee;
-  font-family: "Source Sans Pro";
+    font-family: 'Source Sans Pro';
   font-weight: 400;
   color: #111013;
   text-align: center;
@@ -78,7 +78,8 @@
 #brand.v2017 button {
     outline: none;
 }
-#brand.v2017 button[type="submit"] {
+
+#brand.v2017 button[type='submit'] {
   width: auto;
     margin-bottom: 0;
 }
@@ -292,7 +293,7 @@ input {
   width: 190px;
   padding: 0 2em 2px 0;
   background: none;
-  font-family: "Source Sans Pro";
+    font-family: 'Source Sans Pro';
   font-size: 14px;
   color: black;
     font-style: italic;
@@ -730,7 +731,7 @@ li:not(:last-child) {
 nav.bcnbrand-lang.bcnbrand-lang-extended
 ul:not(:first-of-type)
 li:not(:last-child)::after {
-  content: "";
+    content: '';
   position: absolute;
   right: 0;
   width: 7px;
@@ -985,7 +986,7 @@ form
 input {
   width: 100%;
   border: none;
-  font-family: "Source Sans Pro";
+    font-family: 'Source Sans Pro';
   font-style: italic;
   font-size: 20px;
   font-weight: 400;
@@ -2181,7 +2182,7 @@ a {
 #brand.v2015 nav.city .left ul:after,
 #brand.v2015 nav.city .right:after,
 #brand.v2015.v2015-ajuntament-f nav.city .left ul li:last-child:after {
-  content: ".";
+    content: '.';
   display: block;
   clear: both;
   visibility: hidden;
@@ -2199,7 +2200,7 @@ a {
 
 /* Banner 2015 Ciutat - Mobile First */
 #brand.v2015 {
-  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
   font-weight: 400;
     font-size: 16px;
 }
@@ -2273,7 +2274,7 @@ a {
 }
 #brand.v2015 nav.panel .padding-close a.close {
   display: block;
-  background-image: url("/assets/images/brand/banner/2015/close_white.png");
+    background-image: url('/assets/images/brand/banner/2015/close_white.png');
   background-position: 10px center;
   background-repeat: no-repeat;
   background-size: 13px auto;
@@ -2352,7 +2353,7 @@ a {
   float: right;
   width: 16px;
   height: 16px;
-  background-image: url("/assets/images/brand/banner/2015/app_launcher_sprite_640.png");
+    background-image: url('/assets/images/brand/banner/2015/app_launcher_sprite_640.png');
   background-size: 16px auto;
     margin: 2px 14px 0 0;
 }
@@ -2382,7 +2383,7 @@ a.lang_mobile
 span.lang_text {
   display: inline-block;
   font-size: 12px;
-  background-image: url("/assets/images/brand/banner/2015/arrow_lang_close_mobile.png");
+    background-image: url('/assets/images/brand/banner/2015/arrow_lang_close_mobile.png');
   background-position: right 7px;
   background-repeat: no-repeat;
   background-size: 7px auto;
@@ -2399,13 +2400,13 @@ header.navbar
 .center
 a.lang_mobile.open
 span.lang_text {
-    background-image: url("/assets/images/brand/banner/2015/arrow_lang_open_mobile.png");
+    background-image: url('/assets/images/brand/banner/2015/arrow_lang_open_mobile.png');
 }
 #brand.v2015 header.navbar .wrapper .content .center a.search_icon {
   float: right;
   width: 15px;
   height: 16px;
-  background-image: url("/assets/images/brand/banner/2015/search_icon_sprite.png");
+    background-image: url('/assets/images/brand/banner/2015/search_icon_sprite.png');
   background-repeat: no-repeat;
   background-position: 0 0;
     margin: 2px 14px 0 0;
@@ -2449,13 +2450,13 @@ span.lang_text {
 }
 #brand.v2015 nav.lang ul li a {
   color: #64646e;
-  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
   font-weight: 400;
     font-size: 18px;
 }
 #brand.v2015 nav.lang ul li a.active {
   color: black;
-  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
     font-weight: 600;
 }
 #brand.v2015 nav.lang ul li:last-child {
@@ -2479,7 +2480,7 @@ span.lang_text {
   width: 55px;
   height: 55px;
   float: left;
-  background-image: url("/assets/images/brand/banner/2015/eixos_sprite_mobile.png");
+    background-image: url('/assets/images/brand/banner/2015/eixos_sprite_mobile.png');
   background-size: 55px auto;
     overflow: hidden;
 }
@@ -2489,14 +2490,14 @@ span.lang_text {
     width: 78.33333%;
 }
 #brand.v2015 nav.app ul li a div h3 {
-  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
   font-weight: 700;
   font-size: 13px;
   color: black;
     text-transform: none;
 }
 #brand.v2015 nav.app ul li a div p {
-  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-style: italic;
   font-size: 14px;
@@ -2534,14 +2535,14 @@ span.lang_text {
 #brand.v2015 nav.app nav.links ul li a span.icon {
   width: 40px;
   height: 40px;
-  background-image: url("/assets/images/brand/banner/2015/links_sprite_mobile.png");
+    background-image: url('/assets/images/brand/banner/2015/links_sprite_mobile.png');
     background-size: 40px auto;
 }
 #brand.v2015 nav.app nav.links ul li a span.text {
   display: inline-block;
   padding-top: 10px;
   padding-left: 18px;
-  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
   font-weight: 700;
   font-size: 13px;
     color: #747480;
@@ -2569,7 +2570,7 @@ span.lang_text {
     float: none;
 }
 #brand.v2015 nav.city .left div h3 {
-  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
   font-weight: 300;
   font-style: italic;
   font-size: 18px;
@@ -2579,7 +2580,7 @@ span.lang_text {
 #brand.v2015 nav.city .left div h3 a {
   color: #ff4949;
   text-decoration: underline;
-  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
   font-weight: 400;
     font-style: italic;
 }
@@ -2613,7 +2614,7 @@ span.lang_text {
   padding-right: 2%;
   text-decoration: none;
   text-align: center;
-  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-size: 12px;
   text-transform: uppercase;
@@ -2710,10 +2711,10 @@ span.lang_text {
     padding-left: 23px;
 }
 #brand.v2015 nav.city .left ul li.guia a span.icon {
-    background-image: url("/assets/images/brand/banner/2015/guia_bck.png");
+    background-image: url('/assets/images/brand/banner/2015/guia_bck.png');
 }
 #brand.v2015 nav.city .left ul li.planol a span.icon {
-    background-image: url("/assets/images/brand/banner/2015/planol_bck.png");
+    background-image: url('/assets/images/brand/banner/2015/planol_bck.png');
 }
 #brand.v2015 nav.city .right {
   width: 100%;
@@ -2737,7 +2738,7 @@ span.lang_text {
 #brand.v2015 nav.city .right div h3 {
   margin-top: 15px;
   display: inline-block;
-  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-style: italic;
   font-size: 12px;
@@ -2759,7 +2760,7 @@ span.lang_text {
   display: inline-block;
   width: 40px;
   height: 40px;
-  background-image: url("/assets/images/brand/banner/2015/rrss_sprite_mobile.png");
+    background-image: url('/assets/images/brand/banner/2015/rrss_sprite_mobile.png');
   background-size: 40px auto;
   margin-right: 3px;
     text-indent: -9999px;
@@ -2817,11 +2818,12 @@ a {
   position: relative;
     margin: 0 auto;
 }
-#brand.v2015 nav.search_mobile .padding form input[type="search"] {
+
+#brand.v2015 nav.search_mobile .padding form input[type='search'] {
   width: 100%;
   margin: 0 auto;
   display: block;
-  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-size: 16px;
   color: black;
@@ -2838,9 +2840,9 @@ a {
 nav.search_mobile
 .padding
 form
-input[type="search"]::-webkit-input-placeholder {
+input[type='search']::-webkit-input-placeholder {
   font-size: 16px;
-  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
   font-weight: 300;
     font-style: italic;
 }
@@ -2849,9 +2851,9 @@ input[type="search"]::-webkit-input-placeholder {
 nav.search_mobile
 .padding
 form
-input[type="search"]:-moz-placeholder {
+input[type='search']:-moz-placeholder {
   font-size: 16px;
-  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
   font-weight: 300;
     font-style: italic;
 }
@@ -2860,9 +2862,9 @@ input[type="search"]:-moz-placeholder {
 nav.search_mobile
 .padding
 form
-input[type="search"]::-moz-placeholder {
+input[type='search']::-moz-placeholder {
   font-size: 16px;
-  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
   font-weight: 300;
     font-style: italic;
 }
@@ -2871,20 +2873,22 @@ input[type="search"]::-moz-placeholder {
 nav.search_mobile
 .padding
 form
-input[type="search"]:-ms-input-placeholder {
+input[type='search']:-ms-input-placeholder {
   font-size: 16px;
-  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
   font-weight: 300;
     font-style: italic;
 }
-#brand.v2015 nav.search_mobile .padding form input[type="search"]:focus {
+
+#brand.v2015 nav.search_mobile .padding form input[type='search']:focus {
     border: 1px solid #c60c30;
 }
-#brand.v2015 nav.search_mobile .padding form input[type="submit"] {
+
+#brand.v2015 nav.search_mobile .padding form input[type='submit'] {
   position: absolute;
   right: 2px;
   top: 2px;
-  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
   font-weight: 300;
   font-size: 14px;
   color: white;
@@ -2901,7 +2905,8 @@ input[type="search"]:-ms-input-placeholder {
   -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-#brand.v2015 nav.search_mobile .padding form input[type="submit"]:hover {
+
+#brand.v2015 nav.search_mobile .padding form input[type='submit']:hover {
   -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.45) inset;
   -moz-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.45) inset;
     box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.45) inset;
@@ -2937,7 +2942,8 @@ input[type="search"]:-ms-input-placeholder {
 #brand.v2015.restyle nav.app ul li {
     margin-bottom: 10px;
 }
-#brand.v2015.restyle nav.search form input[type="search"] {
+
+#brand.v2015.restyle nav.search form input[type='search'] {
     -webkit-appearance: none;
 }
 
@@ -3051,7 +3057,7 @@ input[type="search"]:-ms-input-placeholder {
     margin-top: 1px;
     width: 24px;
     height: 23px;
-    background-image: url("/assets/images/brand/banner/2015/search_icon_sprite_mobile.png");
+      background-image: url('/assets/images/brand/banner/2015/search_icon_sprite_mobile.png');
     background-size: 22px auto;
       margin-right: 23px;
   }
@@ -3190,7 +3196,8 @@ input[type="search"]:-ms-input-placeholder {
     width: 92%;
       padding: 0;
   }
-  #brand.v2015 nav.search_mobile .padding form input[type="search"] {
+
+    #brand.v2015 nav.search_mobile .padding form input[type='search'] {
     height: 50px;
     font-size: 22px;
     padding-right: 115px;
@@ -3201,7 +3208,7 @@ input[type="search"]:-ms-input-placeholder {
     nav.search_mobile
     .padding
     form
-    input[type="search"]::-webkit-input-placeholder {
+    input[type='search']::-webkit-input-placeholder {
         font-size: 22px;
     }
 
@@ -3209,7 +3216,7 @@ input[type="search"]:-ms-input-placeholder {
     nav.search_mobile
     .padding
     form
-    input[type="search"]:-moz-placeholder {
+    input[type='search']:-moz-placeholder {
         font-size: 22px;
     }
 
@@ -3217,7 +3224,7 @@ input[type="search"]:-ms-input-placeholder {
     nav.search_mobile
     .padding
     form
-    input[type="search"]::-moz-placeholder {
+    input[type='search']::-moz-placeholder {
         font-size: 22px;
     }
 
@@ -3225,17 +3232,19 @@ input[type="search"]:-ms-input-placeholder {
     nav.search_mobile
     .padding
     form
-    input[type="search"]:-ms-input-placeholder {
+    input[type='search']:-ms-input-placeholder {
         font-size: 22px;
     }
-  #brand.v2015 nav.search_mobile .padding form input[type="submit"] {
+
+    #brand.v2015 nav.search_mobile .padding form input[type='submit'] {
     font-size: 20px;
     height: 46px;
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
       border-radius: 15px;
   }
-  #brand.v2015 nav.search_mobile .padding form input[type="submit"]:hover {
+
+    #brand.v2015 nav.search_mobile .padding form input[type='submit']:hover {
     -webkit-box-shadow: 0 -2px 0 0 rgba(0, 0, 0, 0.45) inset;
     -moz-box-shadow: 0 -2px 0 0 rgba(0, 0, 0, 0.45) inset;
       box-shadow: 0 -2px 0 0 rgba(0, 0, 0, 0.45) inset;
@@ -3506,7 +3515,8 @@ input[type="search"]:-ms-input-placeholder {
     width: 94%;
       padding: 0;
   }
-  #brand.v2015 nav.search_mobile .padding form input[type="search"] {
+
+    #brand.v2015 nav.search_mobile .padding form input[type='search'] {
     height: 66px;
     font-size: 30px;
     padding-right: 145px;
@@ -3517,7 +3527,7 @@ input[type="search"]:-ms-input-placeholder {
     nav.search_mobile
     .padding
     form
-    input[type="search"]::-webkit-input-placeholder {
+    input[type='search']::-webkit-input-placeholder {
         font-size: 30px;
     }
 
@@ -3525,7 +3535,7 @@ input[type="search"]:-ms-input-placeholder {
     nav.search_mobile
     .padding
     form
-    input[type="search"]:-moz-placeholder {
+    input[type='search']:-moz-placeholder {
         font-size: 30px;
     }
 
@@ -3533,7 +3543,7 @@ input[type="search"]:-ms-input-placeholder {
     nav.search_mobile
     .padding
     form
-    input[type="search"]::-moz-placeholder {
+    input[type='search']::-moz-placeholder {
         font-size: 30px;
     }
 
@@ -3541,10 +3551,11 @@ input[type="search"]:-ms-input-placeholder {
     nav.search_mobile
     .padding
     form
-    input[type="search"]:-ms-input-placeholder {
+    input[type='search']:-ms-input-placeholder {
         font-size: 30px;
     }
-  #brand.v2015 nav.search_mobile .padding form input[type="submit"] {
+
+    #brand.v2015 nav.search_mobile .padding form input[type='submit'] {
     font-size: 27px;
     height: 62px;
     -webkit-border-radius: 18px;
@@ -3624,7 +3635,7 @@ input[type="search"]:-ms-input-placeholder {
     width: 18px;
     height: 18px;
     text-indent: -9999px;
-    background-image: url("/assets/images/brand/banner/2015/close.png");
+      background-image: url('/assets/images/brand/banner/2015/close.png');
     background-repeat: no-repeat;
     background-position: left 0;
     background-color: transparent;
@@ -3688,7 +3699,7 @@ input[type="search"]:-ms-input-placeholder {
   #brand.v2015 header.navbar .wrapper .content .center a.app_launcher {
     width: 16px;
     height: 16px;
-    background-image: url("/assets/images/brand/banner/2015/app_launcher_sprite.png");
+      background-image: url('/assets/images/brand/banner/2015/app_launcher_sprite.png');
     float: right;
       display: inline-block;
   }
@@ -3726,7 +3737,7 @@ input[type="search"]:-ms-input-placeholder {
       vertical-align: top;
   }
   #brand.v2015 header.navbar .wrapper .content .center a.lang span.arrow {
-    background-image: url("/assets/images/brand/banner/2015/arrow_lang_open_sprite.png");
+      background-image: url('/assets/images/brand/banner/2015/arrow_lang_open_sprite.png');
     background-repeat: no-repeat;
     background-position: right 0;
     width: 9px;
@@ -3741,7 +3752,7 @@ input[type="search"]:-ms-input-placeholder {
       color: #c5c5ca;
   }
   #brand.v2015 header.navbar .wrapper .content .center a.lang.open span.arrow {
-      background-image: url("/assets/images/brand/banner/2015/arrow_lang_open.png");
+      background-image: url('/assets/images/brand/banner/2015/arrow_lang_open.png');
   }
   #brand.v2015 header.navbar .wrapper .content .center a.lang.open:hover {
       color: #c5c5ca;
@@ -3754,7 +3765,7 @@ input[type="search"]:-ms-input-placeholder {
     .center
     a.lang.open:hover
     span.arrow {
-    background-image: url("/assets/images/brand/banner/2015/arrow_lang_open.png");
+        background-image: url('/assets/images/brand/banner/2015/arrow_lang_open.png');
         background-position: right 0;
     }
   #brand.v2015 header.navbar .wrapper .content .center a.lang:hover {
@@ -3767,7 +3778,7 @@ input[type="search"]:-ms-input-placeholder {
     float: right;
     width: 15px;
     height: 16px;
-    background-image: url("/assets/images/brand/banner/2015/search_icon_sprite.png");
+      background-image: url('/assets/images/brand/banner/2015/search_icon_sprite.png');
     background-repeat: no-repeat;
     background-position: 0 0;
     margin-right: 18px;
@@ -3787,7 +3798,7 @@ input[type="search"]:-ms-input-placeholder {
     margin-right: 20px;
     text-align: right;
     float: right;
-    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+      font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
     font-weight: 700;
       font-size: 18px;
   }
@@ -3802,7 +3813,7 @@ input[type="search"]:-ms-input-placeholder {
     height: 19px;
     display: inline-block;
     margin-left: 3px;
-    background-image: url("/assets/images/brand/banner/2015/circle_arrow_sprite.png");
+      background-image: url('/assets/images/brand/banner/2015/circle_arrow_sprite.png');
     background-repeat: no-repeat;
     background-position: center 0;
     top: 4px;
@@ -3831,7 +3842,7 @@ input[type="search"]:-ms-input-placeholder {
   }
   #brand.v2015 header.navbar .wrapper .content .logo_shield:hover {
     padding-left: 75px;
-    background-image: url("/assets/images/brand/banner/2015/logo_ayto_hover.png");
+      background-image: url('/assets/images/brand/banner/2015/logo_ayto_hover.png');
     background-repeat: no-repeat;
       background-size: 115px auto;
   }
@@ -3848,7 +3859,7 @@ input[type="search"]:-ms-input-placeholder {
       text-align: right;
   }
   #brand.v2015 nav.app .left div h3 {
-    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+      font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
     font-weight: 300;
     font-style: italic;
     color: black;
@@ -3859,12 +3870,12 @@ input[type="search"]:-ms-input-placeholder {
   #brand.v2015 nav.app .left div h3 a {
     color: black;
     text-decoration: underline;
-    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+      font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
     font-weight: 400;
       font-style: italic;
   }
   #brand.v2015 nav.app .left div p {
-    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+      font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
     font-weight: 300;
     font-style: italic;
     font-size: 18px;
@@ -3896,7 +3907,7 @@ input[type="search"]:-ms-input-placeholder {
   #brand.v2015 nav.app ul li a span.icon {
     width: 46px;
     height: 46px;
-    background-image: url("/assets/images/brand/banner/2015/eixos_sprite.png");
+      background-image: url('/assets/images/brand/banner/2015/eixos_sprite.png');
     background-size: 92px auto;
     display: inline-block;
     float: none;
@@ -3907,14 +3918,14 @@ input[type="search"]:-ms-input-placeholder {
       padding-left: 0;
   }
   #brand.v2015 nav.app ul li a div h3 {
-    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+      font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
     font-weight: 700;
     font-size: 12px;
     color: black;
       margin-bottom: 4px;
   }
   #brand.v2015 nav.app ul li a div p {
-    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+      font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
     font-weight: 400;
     font-style: italic;
     font-size: 12px;
@@ -3977,12 +3988,12 @@ input[type="search"]:-ms-input-placeholder {
     width: 28px;
     height: 28px;
     background-size: auto auto;
-    background-image: url("/assets/images/brand/banner/2015/links_sprite.png");
+      background-image: url('/assets/images/brand/banner/2015/links_sprite.png');
     background-repeat: no-repeat;
       float: left;
   }
   #brand.v2015 nav.app nav.links ul li a span.text {
-    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+      font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
     font-weight: 400;
     font-size: 12px;
     color: #64646e;
@@ -4034,7 +4045,7 @@ input[type="search"]:-ms-input-placeholder {
 
     #brand.v2015 nav.lang .padding ul li a.active,
     #brand.v2015 nav.lang .padding ul li a.active:hover {
-    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+        font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
     font-weight: 600;
     color: black;
         text-decoration: none;
@@ -4058,7 +4069,7 @@ input[type="search"]:-ms-input-placeholder {
       margin-top: 10px;
   }
   #brand.v2015 nav.city .left div p {
-    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+      font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
     font-weight: 300;
     font-style: italic;
     font-size: 18px;
@@ -4140,7 +4151,7 @@ input[type="search"]:-ms-input-placeholder {
   #brand.v2015 nav.city .right div ul li a {
     width: 26px;
     height: 26px;
-    background-image: url("/assets/images/brand/banner/2015/rrss_sprite.png");
+      background-image: url('/assets/images/brand/banner/2015/rrss_sprite.png');
     background-size: 52px auto;
       margin-right: 5px;
   }
@@ -4214,7 +4225,7 @@ input[type="search"]:-ms-input-placeholder {
       display: inline-block;
   }
   #brand.v2015 nav.city ul.buttons li.button.guia a span.icon {
-      background-image: url("/assets/images/brand/banner/2015/guia_bck_desktop.png");
+      background-image: url('/assets/images/brand/banner/2015/guia_bck_desktop.png');
   }
   #brand.v2015 nav.city ul.buttons li.button.planol {
       margin-right: 0;
@@ -4222,7 +4233,7 @@ input[type="search"]:-ms-input-placeholder {
   #brand.v2015 nav.city ul.buttons li.button.planol a span.icon {
     width: 15px;
     height: 19px;
-      background-image: url("/assets/images/brand/banner/2015/planol_bck_desktop.png");
+      background-image: url('/assets/images/brand/banner/2015/planol_bck_desktop.png');
   }
   #brand.v2015 nav.search .padding {
     padding-top: 33px;
@@ -4236,9 +4247,10 @@ input[type="search"]:-ms-input-placeholder {
     position: relative;
       margin: 0 auto;
   }
-  #brand.v2015 nav.search .left form input[type="search"] {
+
+    #brand.v2015 nav.search .left form input[type='search'] {
     width: 100%;
-    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+        font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
     font-weight: 400;
     font-size: 22px;
     color: black;
@@ -4255,21 +4267,23 @@ input[type="search"]:-ms-input-placeholder {
     nav.search
     .left
     form
-    input[type="search"]::-webkit-input-placeholder {
+    input[type='search']::-webkit-input-placeholder {
     font-size: 20px;
-    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+        font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
     font-weight: 300;
         font-style: italic;
     }
-  #brand.v2015 nav.search .left form input[type="search"]:-moz-placeholder {
+
+    #brand.v2015 nav.search .left form input[type='search']:-moz-placeholder {
     font-size: 20px;
-    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+        font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
     font-weight: 300;
       font-style: italic;
   }
-  #brand.v2015 nav.search .left form input[type="search"]::-moz-placeholder {
+
+    #brand.v2015 nav.search .left form input[type='search']::-moz-placeholder {
     font-size: 20px;
-    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+        font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
     font-weight: 300;
       font-style: italic;
   }
@@ -4278,21 +4292,23 @@ input[type="search"]:-ms-input-placeholder {
     nav.search
     .left
     form
-    input[type="search"]:-ms-input-placeholder {
+    input[type='search']:-ms-input-placeholder {
     font-size: 20px;
-    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+        font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
     font-weight: 300;
         font-style: italic;
     }
-  #brand.v2015 nav.search .left form input[type="search"]:focus {
+
+    #brand.v2015 nav.search .left form input[type='search']:focus {
       border: 1px solid #c60c30;
   }
-  #brand.v2015 nav.search .left form input[type="submit"] {
+
+    #brand.v2015 nav.search .left form input[type='submit'] {
     display: none;
     position: absolute;
     right: 2px;
     top: 2px;
-    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+        font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
     font-weight: 300;
     color: white;
     background-color: #64646e;
@@ -4307,7 +4323,8 @@ input[type="search"]:-ms-input-placeholder {
     -moz-box-sizing: border-box;
       box-sizing: border-box;
   }
-  #brand.v2015 nav.search .left form input[type="submit"]:hover {
+
+    #brand.v2015 nav.search .left form input[type='submit']:hover {
     -webkit-box-shadow: -1px -2px 0px 0px rgba(0, 0, 0, 0.45) inset;
     -moz-box-shadow: -1px -2px 0px 0px rgba(0, 0, 0, 0.45) inset;
       box-shadow: -1px -2px 0px 0px rgba(0, 0, 0, 0.45) inset;
@@ -4333,12 +4350,12 @@ input[type="search"]:-ms-input-placeholder {
   #brand.v2015 nav.search .right ul li a span.icon {
     width: 25px;
     height: 25px;
-    background-image: url("/assets/images/brand/banner/2015/icons_search.png");
+      background-image: url('/assets/images/brand/banner/2015/icons_search.png');
     background-repeat: no-repeat;
       float: left;
   }
   #brand.v2015 nav.search .right ul li a span.text {
-    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+      font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
     font-weight: 400;
     font-size: 12px;
     color: #64646e;
@@ -4434,10 +4451,10 @@ input[type="search"]:-ms-input-placeholder {
     .wrapper.legacy
     .content
     .logo_shield:hover {
-    background-image: url("/assets/images/brand/banner/2015/logo_ayto_hover.png");
+        background-image: url('/assets/images/brand/banner/2015/logo_ayto_hover.png');
     background-repeat: no-repeat;
     background-size: 100% auto;
-        background-image: url("/assets/images/brand/banner/2015/llima-negra.svg"),
+        background-image: url('/assets/images/brand/banner/2015/llima-negra.svg'),
         none;
     background-repeat: no-repeat;
         background-size: 100% auto;
@@ -4457,7 +4474,7 @@ input[type="search"]:-ms-input-placeholder {
     -o-transition: none;
     transition: none;
     padding-left: 75px;
-    background-image: url("/assets/images/brand/banner/2015/logo_ayto_hover.png");
+        background-image: url('/assets/images/brand/banner/2015/logo_ayto_hover.png');
     background-repeat: no-repeat;
         background-size: 115px auto;
     }
@@ -4989,7 +5006,7 @@ input[type="search"]:-ms-input-placeholder {
 #brand.v2015 nav.city .left ul:after,
 #brand.v2015 nav.city .right:after,
 #brand.v2015.v2015-ajuntament-f nav.city .left ul li:last-child:after {
-  content: ".";
+    content: '.';
   display: block;
   clear: both;
   visibility: hidden;
@@ -5096,7 +5113,7 @@ a.app_launcher_mobile {
     padding-left: 15px;
 }
 #brand.v2015.v2015-ajuntament-f nav.city .left ul.buttons .govern a span.icon {
-  background-image: url("/assets/images/brand/banner/2015/govern_bck.png");
+    background-image: url('/assets/images/brand/banner/2015/govern_bck.png');
   width: 24px;
     height: 23px;
 }
@@ -5104,7 +5121,7 @@ a.app_launcher_mobile {
     height: 23px;
 }
 #brand.v2015.v2015-ajuntament-f nav.city .left ul.buttons .seu a span.icon {
-  background-image: url("/assets/images/brand/banner/2015/seu_bck.png");
+    background-image: url('/assets/images/brand/banner/2015/seu_bck.png');
   background-position: 0 0;
   width: 24px;
     height: 24px;
@@ -5144,7 +5161,7 @@ header.navbar
 .content
 h1 {
   text-indent: inherit;
-  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
   font-weight: 700;
     word-wrap: normal;
 }
@@ -5221,7 +5238,7 @@ ul.buttons
 .govern
 a
 span.icon {
-  background-image: url("/assets/images/brand/banner/2015/gov_op_mov.png");
+    background-image: url('/assets/images/brand/banner/2015/gov_op_mov.png');
   width: 24px;
   height: 23px;
     top: 1px;
@@ -5351,7 +5368,7 @@ span.icon {
     .content
     h1 {
     text-indent: inherit;
-    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+        font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
         font-weight: 700;
     }
 
@@ -5547,7 +5564,7 @@ span.icon {
     h1 {
     background-color: transparent !important;
     text-indent: inherit;
-    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+        font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
         font-weight: 700;
     }
 
@@ -5740,7 +5757,7 @@ span.icon {
     .govern
     a
     span.icon {
-    background-image: url("/assets/images/brand/banner/2015/govern_bck.png");
+        background-image: url('/assets/images/brand/banner/2015/govern_bck.png');
         left: 6px;
     }
 
@@ -5757,7 +5774,7 @@ span.icon {
       margin-right: 0;
   }
   #brand.v2015.v2015-ajuntament-f nav.city .right ul.buttons .seu a span.icon {
-    background-image: url("/assets/images/brand/banner/2015/seu_bck.png");
+      background-image: url('/assets/images/brand/banner/2015/seu_bck.png');
       left: 5px;
   }
   #brand.v2015.v2015-ajuntament-f nav.city .right ul.buttons .seu a span.text {
@@ -5875,7 +5892,7 @@ span.icon {
     .content
     h1 {
     text-indent: inherit;
-    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+        font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
         font-weight: 700;
     }
 
@@ -5981,7 +5998,7 @@ span.icon {
     .govern
     a
     span.icon {
-    background-image: url("/assets/images/brand/banner/2015/gov_op.png");
+        background-image: url('/assets/images/brand/banner/2015/gov_op.png');
     left: 6px;
         height: 15px;
     }
@@ -6072,7 +6089,7 @@ span.icon {
     .content
     h1 {
     text-indent: inherit;
-    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+        font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
         font-weight: 700;
     }
 
@@ -6332,7 +6349,7 @@ span.icon {
 }
 #brand.v2012 .brand-wrapper a {
   color: black;
-  font-family: "Open Sans";
+    font-family: 'Open Sans';
   font-size: 11px;
   font-weight: normal;
   text-decoration: none;
@@ -6404,7 +6421,7 @@ span.icon {
   color: black;
     background: url(/assets/images/brand/banner/2012/marcador-idioma.png) no-repeat center bottom;
   display: block;
-  font-family: "Open Sans";
+    font-family: 'Open Sans';
   font-size: 12px;
   font-weight: bold;
   padding: 0 8px 4px 6px;
@@ -6534,7 +6551,7 @@ span.icon {
 }
 #brand.v2012 .brand-wrapper .search label {
   color: gray;
-  font-family: "Open Sans";
+    font-family: 'Open Sans';
   font-size: 12px;
   font-weight: normal;
   left: 6px;
@@ -6545,7 +6562,7 @@ span.icon {
     cursor: text;
 }
 #brand.v2012 .brand-wrapper .search #brand-search {
-  font-family: "Open Sans";
+    font-family: 'Open Sans';
   background: transparent;
   font-size: 12px;
   border: none;
@@ -6604,7 +6621,7 @@ span.icon {
 }
 #brand-mobile .brand-wrapper a {
   color: black;
-  font-family: "Open Sans";
+    font-family: 'Open Sans';
   font-size: 11px;
   text-decoration: none;
     border: 0;
@@ -6656,7 +6673,7 @@ span.icon {
   border: 0;
   border-radius: 0;
   -webkit-appearance: none;
-  font-family: "Open Sans";
+    font-family: 'Open Sans';
   text-decoration: none;
     list-style-type: none;
 }
@@ -6704,7 +6721,7 @@ span.icon {
 }
 #brand.v2013 .brand-wrapper a {
   color: black;
-  font-family: "Open Sans";
+    font-family: 'Open Sans';
   font-size: 11px;
   font-weight: normal;
   text-decoration: none;
@@ -6775,7 +6792,7 @@ span.icon {
   color: black;
     background: url(/assets/images/brand/banner/2013/language-active.png) no-repeat center bottom;
   display: block;
-  font-family: "Open Sans";
+    font-family: 'Open Sans';
   font-size: 12px;
   font-weight: bold;
   padding: 0 8px 4px 6px;
@@ -6945,7 +6962,7 @@ span.icon {
 }
 #brand.v2013 .brand-wrapper .search label {
   color: gray;
-  font-family: "Open Sans";
+    font-family: 'Open Sans';
   font-size: 11px;
   font-weight: normal;
   left: 6px;
@@ -6956,7 +6973,7 @@ span.icon {
     cursor: text;
 }
 #brand.v2013 .brand-wrapper .search #brand-search {
-  font-family: "Open Sans";
+    font-family: 'Open Sans';
   background: transparent;
   font-size: 11px;
   border: none;
@@ -7001,7 +7018,7 @@ span.icon {
   border: 0;
   border-radius: 0;
   -webkit-appearance: none;
-  font-family: "Open Sans";
+    font-family: 'Open Sans';
   text-decoration: none;
     list-style-type: none;
 }
@@ -7514,7 +7531,7 @@ span.icon {
 }
 #brand.vInspira .brand-wrapper a {
   color: black;
-  font-family: "Open Sans";
+    font-family: 'Open Sans';
   font-size: 11px;
   font-weight: normal;
   text-decoration: none;
@@ -7587,7 +7604,7 @@ span.icon {
   color: black;
     background: url(/assets/images/brand/banner/2013/language-active.png) no-repeat center bottom;
   display: block;
-  font-family: "Open Sans";
+    font-family: 'Open Sans';
   font-size: 12px;
   font-weight: bold;
   padding: 0 8px 4px 6px;
@@ -8192,7 +8209,7 @@ body > div.black-bg {
   width: 320px;
   margin: auto;
   opacity: 0;
-  font-family: "Open Sans";
+    font-family: 'Open Sans';
   position: fixed;
   top: 15%;
   z-index: 100000000;
@@ -8246,7 +8263,7 @@ body > div.black-bg {
     padding: 11px 3px;
 }
 #bcn-apps .bcn-apps-title span:before {
-    content: "\d7";
+    content: '\d7';
 }
 #bcn-apps .bcn-app-icon {
   position: relative;
@@ -8305,7 +8322,7 @@ body > div.black-bg {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  font-family: "Source Sans Pro", sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
   max-width: 925px;
     margin: 0 auto;
 }
@@ -8315,7 +8332,7 @@ body > div.black-bg {
     margin: 8px 0;
 }
 #bcn-ccwr.v2014.desktop .bcn-cc-content .bcn-cc-info p {
-  font-family: "Source Sans Pro", sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
   color: #c60c30;
   font-size: 13px;
   line-height: 17px;
@@ -8370,7 +8387,7 @@ body > div.black-bg {
   color: black;
   font-size: 12px;
   text-decoration: underline;
-  font-family: "Source Sans Pro", sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
   font-weight: 400;
   border: 0;
   float: right;
@@ -8397,7 +8414,7 @@ body > div.black-bg {
     margin: 16px 0 0;
 }
 #bcn-ccwr.v2014.mobile .bcn-cc-content .bcn-cc-info p {
-  font-family: "Source Sans Pro", sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
   color: #c60c30;
   font-size: 10px;
   line-height: 1.1em;
@@ -8443,7 +8460,7 @@ body > div.black-bg {
   color: black;
   font-size: 10px;
   text-decoration: underline;
-  font-family: "Source Sans Pro", sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
   font-weight: 400;
   border: 0;
   padding: 0;

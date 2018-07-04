@@ -19,7 +19,7 @@ import {MunicipiEmpadronament} from './components/MunicipiEmpadronament';
 import MultipleAnswerQuestion from './components/MultipleAnswerQuestion';
 import FormSubTitle from './components/FormSubTitle';
 import Sticky from 'react-stickynode';
-import {currentFocussedFieldSelector} from "../shared/selectorUtils";
+import {currentFocussedFieldSelector} from '../shared/selectorUtils';
 import {IconFont} from '../components/IconFont/IconFont';
 
 export type PersonFormInitialValues = Person | { is_the_person_in_front_of_the_computer: boolean };
@@ -91,15 +91,15 @@ let PersonForm = (props: Props) => {
   return (
       <Grid container className='bg-container'>
 
-        <Grid item xs={12} sm={12} className="titleContainer">
+        <Grid item xs={12} sm={12} className='titleContainer'>
           {isTheUserInFrontOfTheComputer ?
-              <Typography variant='headline' className="titlePage">
-                <IconFont icon="persona" sizeSphere={48} fontSize={32} />
-                <span className="titleText"><Trans>Informació sobre vostè</Trans></span>
+              <Typography variant='headline' className='titlePage'>
+                <IconFont icon='persona' sizeSphere={48} fontSize={32}/>
+                <span className='titleText'><Trans>Informació sobre vostè</Trans></span>
               </Typography> :
-              <Typography variant='headline' className="titlePage">
-                <IconFont icon="persona" sizeSphere={48} fontSize={32} />
-                <span className="titleText"><Trans>Informació sobre aquesta persona que conviu amb vostè</Trans></span>
+              <Typography variant='headline' className='titlePage'>
+                <IconFont icon='persona' sizeSphere={48} fontSize={32}/>
+                <span className='titleText'><Trans>Informació sobre aquesta persona que conviu amb vostè</Trans></span>
               </Typography>}
         </Grid>
         <Grid item xs={12} className='bg-form-exterior bg-form'>
@@ -271,8 +271,8 @@ let PersonForm = (props: Props) => {
                         </Sticky>
                 </Grid>
               </Grid>
-              <div id="stop"/>
-              <Grid item sm={12} className="margin-buttons">
+              <div id='stop'/>
+              <Grid item sm={12} className='margin-buttons'>
                 <Grid container justify='space-around'>
                   {(isTheUserInFrontOfTheComputer !== true || updating === true) &&
                   <Button variant='contained' color='secondary' onClick={props.onCancel}>

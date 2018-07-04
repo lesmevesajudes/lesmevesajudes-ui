@@ -1,4 +1,4 @@
-import type {PersonID} from "../persons/PersonTypes";
+import type {PersonID} from '../persons/PersonTypes';
 
 type Custodia = {
   primer: string,

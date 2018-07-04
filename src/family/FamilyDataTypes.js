@@ -1,6 +1,6 @@
 // @flow
 
-import type {PersonID} from "../persons/PersonTypes";
+import type {PersonID} from '../persons/PersonTypes';
 
 export type FamilyData = {
   tipus_familia_nombrosa: string,

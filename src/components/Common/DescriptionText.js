@@ -1,8 +1,8 @@
 import React, {Fragment} from 'react';
 import {helpText, isHelpAvailable} from '../HelpText';
 import {Hidden, Typography} from '@material-ui/core';
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
 import {withStyles} from '@material-ui/core/styles';
 import {styles} from '../../styles/theme';
 

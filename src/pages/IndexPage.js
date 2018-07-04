@@ -1,13 +1,13 @@
 //@flow
-import React from "react";
-import {Link} from "react-router-dom";
-import "./indexPage/IndexPage.css";
-import AppHeader from "../components/AppHeader/AppHeader";
-import {Trans, translate} from "react-i18next";
-import {Button, Typography} from "@material-ui/core";
-import {styles} from "../styles/theme";
-import {withStyles} from "@material-ui/core/styles";
-import Caroussel from "../components/Caroussel/Caroussel";
+import React from 'react';
+import {Link} from 'react-router-dom';
+import './indexPage/IndexPage.css';
+import AppHeader from '../components/AppHeader/AppHeader';
+import {Trans, translate} from 'react-i18next';
+import {Button, Typography} from '@material-ui/core';
+import {styles} from '../styles/theme';
+import {withStyles} from '@material-ui/core/styles';
+import Caroussel from '../components/Caroussel/Caroussel';
 
 const IndexPage = (props) =>
   <div>
@@ -16,7 +16,7 @@ const IndexPage = (props) =>
       <div className='Block'>
         <div className='AppLogo' style={{opacity: 0.5}}/>
         <div className='BlockText'>
-              <span className="titleLogo">
+              <span className='titleLogo'>
                 <Trans>Vols saber a quins ajuts públics pots accedir?</Trans>
               </span>
           <Link className='CTALink' to='/wizard/'>
@@ -41,11 +41,12 @@ const IndexPage = (props) =>
       </p>
     </div>
     <div className='sliderContainer'>
-      <div className="Presentation">
-      <Typography variant="title" align="center" className="sliderContainerTitle" gutterBottom>Ajudes destacades</Typography>
+      <div className='Presentation'>
+        <Typography variant='title' align='center' className='sliderContainerTitle' gutterBottom>Ajudes
+          destacades</Typography>
       <Caroussel/>
       </div>
     </div>
   </div>;
 
-export default translate("translations")(withStyles(styles)(IndexPage));
+export default translate('translations')(withStyles(styles)(IndexPage));

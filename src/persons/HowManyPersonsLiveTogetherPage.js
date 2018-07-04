@@ -29,15 +29,15 @@ let HowManyPersonsLiveTogetherPage = props => {
   const {handleSubmit} = props;
   return (
       <Grid container className='bg-container' justify='center'>
-        <Grid item xs={12} sm={12} className="titleContainer">
+        <Grid item xs={12} sm={12} className='titleContainer'>
 
-          <Typography variant='headline' className="titlePage">
-            <IconFont icon="persona" sizeSphere={48} fontSize={32}/>
+          <Typography variant='headline' className='titlePage'>
+            <IconFont icon='persona' sizeSphere={48} fontSize={32}/>
             <span
-                className="titleText"><Trans>Quantes persones viuen en el seu domicili? (amb vostè inclòs)</Trans></span>
+                className='titleText'><Trans>Quantes persones viuen en el seu domicili? (amb vostè inclòs)</Trans></span>
           </Typography>
         </Grid>
-        <ShowMeOnceModal name="howManyPersonsModal" title="Dades sobre les persones">
+        <ShowMeOnceModal name='howManyPersonsModal' title='Dades sobre les persones'>
           Podeu començar la simulació. A partir d’aquest moment, us formularem una sèrie de preguntes sobre vós i sobre
           els membres de la vostra llar que són necessàries per conèixer els ajuts als quals podeu arribar a optar. Us
           informem que les dades de caràcter personal que es recullin a través dels recursos disponibles en el portal es
@@ -52,8 +52,8 @@ let HowManyPersonsLiveTogetherPage = props => {
               </Grid>
 
               <Grid item xs={12} sm={12}>
-                <Grid container className="margin-buttons" alignItems='flex-start' justify='flex-end'>
-                  <Button variant="contained" color='primary' type='submit' name='ButtonValidar'>
+                <Grid container className='margin-buttons' alignItems='flex-start' justify='flex-end'>
+                  <Button variant='contained' color='primary' type='submit' name='ButtonValidar'>
                     <Trans>Validar</Trans>
                   </Button>
                 </Grid>

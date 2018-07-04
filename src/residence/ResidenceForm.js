@@ -18,7 +18,7 @@ import {MoneyQuestion} from '../persons/components/MoneyQuestion';
 import Typography from '@material-ui/core/Typography';
 import Sticky from 'react-stickynode';
 import {IconFont} from '../components/IconFont/IconFont';
-import Icon from "@material-ui/core/Icon/Icon";
+import Icon from '@material-ui/core/Icon/Icon';
 
 const seemsPostalCode = value =>
     value && (isNaN(Number(value)) || value.length !== 5)
@@ -66,10 +66,10 @@ const ResidenceForm = (props: Props) => {
   } = props;
   return (
       <Grid container className='bg-container'>
-        <Grid item xs={12} sm={12} className="titleContainer">
-          <Typography variant='headline' className="titlePage">
-            <IconFont icon="domicili" sizeSphere={48} fontSize={32}/>
-            <span className="titleText"><Trans>Afegeixi informació del seu domicili habitual</Trans></span>
+        <Grid item xs={12} sm={12} className='titleContainer'>
+          <Typography variant='headline' className='titlePage'>
+            <IconFont icon='domicili' sizeSphere={48} fontSize={32}/>
+            <span className='titleText'><Trans>Afegeixi informació del seu domicili habitual</Trans></span>
           </Typography>
         </Grid>
         <Grid item xs={12} className='bg-form-exterior bg-form'>

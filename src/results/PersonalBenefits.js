@@ -6,12 +6,12 @@ import {Grid, Typography} from '@material-ui/core';
 import {Trans} from 'react-i18next';
 import BenefitRow, {NoBenefitRow} from './BenefitRow';
 
-type Props = {
+type PersonalBenefitsProps = {
   benefitsForPersons: any,
   persons: Map<PersonID, Person>
 };
 
-class PersonalBenefits extends React.Component<Props> {
+class PersonalBenefits extends React.Component<PersonalBenefitsProps> {
   constructor() {
     super();
     this.possibleBenefits = [

@@ -4,7 +4,7 @@ import {openModal} from '../Modals/ModalActions';
 import {connect} from 'react-redux';
 import Icon from '@material-ui/core/Icon';
 import HelpModal from '../Modals/HelpModal';
-import {helpText} from "../HelpText";
+import {helpText} from '../HelpText';
 
 type Props = {
   openModal: Function,

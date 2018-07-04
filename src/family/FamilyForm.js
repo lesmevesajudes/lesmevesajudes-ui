@@ -37,10 +37,10 @@ const FamilyForm = (props: Props) => {
   const {custodies, families, fills, persones, possiblesSustentadors, currentField} = props;
   return (
       <Grid container className='bg-container'>
-        <Grid item xs={12} sm={12} className="titleContainer">
-              <Typography variant='headline' className="titlePage">
-                <IconFont icon="familia" sizeSphere={48} fontSize={32} />
-                <span className="titleText"><Trans>Informació sobre la família</Trans></span>
+        <Grid item xs={12} sm={12} className='titleContainer'>
+          <Typography variant='headline' className='titlePage'>
+            <IconFont icon='familia' sizeSphere={48} fontSize={32}/>
+            <span className='titleText'><Trans>Informació sobre la família</Trans></span>
               </Typography>
         </Grid>
         <Grid item xs={12}  className='bg-form-exterior bg-form'>
@@ -67,7 +67,7 @@ const FamilyForm = (props: Props) => {
                           </Field>
                         </Grid>
                         <Grid item xs={1}>
-                          <Typography className="andSeparator"><Trans>i</Trans></Typography>
+                          <Typography className='andSeparator'><Trans>i</Trans></Typography>
                         </Grid>
                         <Grid item xs={5}>
                           <Field name={'custodies.' + infant.id + '.segon'} component={Select} fullWidth>
