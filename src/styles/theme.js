@@ -72,9 +72,8 @@ export const styles = theme => ({
   },
   titleDescriptionText: {
     color: colors.secondary,
-    textTransform: 'uppercase',
-    fontSize: '1.3125rem',
-    fontfamily:  "'Source Sans Pro', sans-serif"
+    fontSize: '1.125rem',
+    fontFamily:  "'Source Sans Pro', sans-serif"
   }
 });
 
