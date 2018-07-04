@@ -71,9 +71,11 @@ export const styles = theme => ({
     fontSize: "14px !important"
   },
   titleDescriptionText: {
-    color: colors.secondary,
+    color: colors.blackest,
+    fontWeight: '600',
     fontSize: '1.125rem',
-    fontFamily:  "'Source Sans Pro', sans-serif"
+    fontFamily:  "'Source Sans Pro', sans-serif",
+    textAlign: 'justify'
   }
 });
 

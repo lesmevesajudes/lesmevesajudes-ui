@@ -39,7 +39,7 @@ const HelpTextMap = {
   "custodies": {
     title: <Trans>Tipus de custòdia</Trans>,
     body: <Trans>
-      <Typography variant="headline">Guarda i custòdia</Typography>
+     <Typography variant="subheading" className="subtitle" gutterBottom>Guarda i custòdia</Typography>
       <p>
         Com a guarda i custòdia s’entén viure amb els fills o filles, cuidar-los i assistir-los. Es pot atribuir a una
         de les persones progenitores, compartida entre ambdues o a una tercera persona. Abans d’acordar el règim de
@@ -47,7 +47,7 @@ const HelpTextMap = {
         suficient judici quan s’estimi necessari.
         Cal un document acreditatiu.
       </p>
-      <Typography variant="headline">Tutela legal</Typography>
+      <Typography variant="subheading" className="subtitle" gutterBottom>Tutela legal</Typography>
       <p>La tutela és la institució principal en la protecció de les persones incapacitades, a les quals ha d'assegurar
         la protecció, l'administració i la guarda de drets i béns. Normalment, és l'autoritat conferida a una persona
         física o jurídica, anomenada tutor o tutora, per tenir cura d'una persona i els seus béns pel fet que sigui
@@ -173,14 +173,14 @@ const HelpTextMap = {
   "relacio_habitatge": {
     title: <Trans>Situacions respecte a l’habitatge</Trans>,
     body: <Trans>
-      <Typography variant="headline">Cessió d’ús</Typography>
+      <Typography variant="subheading" className="subtitle" gutterBottom>Cessió d’ús</Typography>
       És un contracte pel qual se cedeix l’ús d’un habitatge per un temps determinat a canvi del pagament d’un preu
       equiparable a un lloguer tou.</Trans>
   },
   "relacio_parentiu": {
     title: <Trans>Relacions familiars</Trans>,
     body: <Trans>
-      <Typography variant="headline">Infant en acolliment</Typography>
+      <Typography variant="subheading" className="subtitle" gutterBottom>Infant en acolliment</Typography>
       <p>L'acolliment familiar d'un infant comporta confiar temporalment la guarda d'una persona menor a una família o
         persona sola, sense que hi hagi finalitat adoptiva.
         És una mesura temporal per oferir als infants el millor entorn possible per créixer fins que la seva família
