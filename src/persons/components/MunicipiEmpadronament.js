@@ -4,7 +4,7 @@ import {Trans} from 'react-i18next';
 import MultipleAnswerQuestion from './MultipleAnswerQuestion';
 
 export const MunicipiEmpadronament = () =>
-    <MultipleAnswerQuestion label={<Trans>En quin municipi està empadronat actualment?</Trans>}
+    <MultipleAnswerQuestion label={<Trans>En quin municipi està empadronat/ada actualment?</Trans>}
                             name='municipi_empadronament'>
       <MenuItem data-test='barcelona' value='barcelona'>
         <Trans>Barcelona</Trans>
