@@ -36,6 +36,7 @@ type PersonCardProps = {
   person: Person,
   updatePerson: Function,
   onRemoveClick: Function,
+  classes: Object
 }
 const relacioDeParentiuATextDelLListatDePersones = (relacioDeParentiu: string) => {
   const textos = {
@@ -81,7 +82,8 @@ export const PersonCard = (props: PersonCardProps) => {
 type UnknownPersonProps = {
   onAddPersonClick: Function,
   onRemoveClick: Function,
-  personNumber: number
+  personNumber: number,
+  classes: Object
 }
 const UnknownPersonCard = (props: UnknownPersonProps) => {
   const { classes } = props;
@@ -142,7 +144,7 @@ export const PersonsViewer = (props: Props) => {
               {missingPersons === 0 &&
               <Grid item sm={12} className='addPersonContainer'>
                 <Tooltip id='add-person-tooltip'
-                         title='Si vol afegir un altra persona que convisqui amb vosté cliqui aquí' placement='right'>
+                         title='Si vol afegir un altra persona que convisqui amb vostè cliqui aquí' placement='right'>
                   <Button className={props.classes.addMemberButton} color='secondary' variant='raised'
                             onClick={props.onAddPersonClick}>Afegir una persona convivent <Icon
                         className={props.classes.rightIcon}>add_circle</Icon></Button>
