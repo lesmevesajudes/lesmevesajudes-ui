@@ -270,4 +270,7 @@ input.cercabcn {
     margin: 0px auto;
     padding: 0px;
   }
+  .buttonResultsXS {
+    padding: 0px !important
+  }
 }

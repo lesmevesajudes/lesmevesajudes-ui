@@ -112,6 +112,7 @@ type Props = {
 };
 export const PersonsViewer = (props: Props) => {
   const missingPersons = Math.max(props.expectedNumberOfPersons - props.persons.length, 0);
+  console.log(this.props)
     return (
         <Grid container className='bg-container'>
           <Grid item xs={12} sm={12} className='titleContainer'>

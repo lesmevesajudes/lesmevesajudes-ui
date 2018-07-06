@@ -8,7 +8,8 @@ import {Trans} from 'react-i18next';
 import DoneIcon from '@material-ui/icons/Done';
 import ClearIcon from '@material-ui/icons/Clear';
 import type {Person} from "../persons/PersonTypes";
-
+import {styles} from '../styles/theme';
+import {withStyles} from '@material-ui/core/styles';
 type Props = {
   benefit: Object,
   person: Person
@@ -31,7 +32,7 @@ const Period = (props) => {
   }
 };
 
-export const BenefitRow = ({benefit, subject}: Props) =>
+export const BenefitRow = ({benefit, subject,props}: Props) =>
     <Grid
         className='ResultPage'
         container
@@ -42,10 +43,10 @@ export const BenefitRow = ({benefit, subject}: Props) =>
       {console.log(benefit)}
       {console.log(subject)}
       <Grid container direction='row' justify='center' alignItems='center' key={benefit.ID} className='ItemResult'>
-        <Grid item style={{margin: 'auto'}} xs={1}>
+        <Grid item xs={1}>
           <DoneIcon className='resultIconSuccess'/>
         </Grid>
-        <Grid item xs={7}>
+        <Grid item xs={6}>
           <Typography style={{color: '#004a8e', fontSize: '1rem'}}>{benefit.name}</Typography>
           <Period benefit={benefit}/>
         </Grid>
@@ -59,7 +60,7 @@ export const BenefitRow = ({benefit, subject}: Props) =>
             <Tooltip id='mes-info-tooltip'
                      title='Si vol saber si reuneix tots els requisits necessaris per accedir a aquest ajut, cliqui aquí'
                      placement='right'>
-              <Button variant='contained' color='primary' key={benefit.ID}>
+              <Button variant='contained' color='primary' key={benefit.ID} className={"buttonResultsXS"}>
                 <Typography style={{color: '#ffffff'}}>
                   <Trans>
                     Més informació
@@ -84,4 +85,4 @@ export const NoBenefitRow = () =>
       </Grid>
     </Grid>;
 
-export default BenefitRow;
+export default (withStyles(styles)(BenefitRow));
