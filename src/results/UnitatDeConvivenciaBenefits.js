@@ -63,7 +63,7 @@ const renderUnitatDeConvivenciaBenefitList = (unitatDeConvivencia, persons, peri
     <Grid container justify='space-between' alignItems='center'>
       <Grid item sm={12}>
         <li className='ItemResultOut'>
-          <Typography variant='subheading' gutterBottom>
+          <Typography variant='subheading' gutterBottom className="titleResultPerson">
             Ajudes per a la unitat de convivència:
           </Typography>
           <Grid container className='ResultPage' justify='space-between'>
