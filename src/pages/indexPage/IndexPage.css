@@ -54,14 +54,7 @@
     background-color: #00acd4;
 }
 
-.Block {
-    max-width: 1080px;
-    min-height: 410px;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #00acd4;
-    padding: 5px;
-}
+
 
 .BlockText {
     flex-direction: column;

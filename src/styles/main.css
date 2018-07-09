@@ -236,13 +236,7 @@ input.cercabcn {
   max-width: 1140px;
   margin: 0 auto;
 }
-.sliderContainerTitle {
-  margin-top: 0px !important;
-  padding-top: 25px;
-  padding-bottom: 25px;
-  font-size: 28px !important;
-  color: #333333 !important
-}
+
 .titleLogo {
   text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15)
 }

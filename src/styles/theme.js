@@ -89,7 +89,35 @@ export const styles = theme => ({
     [theme.breakpoints.down('sm')]: {
       padding: '0px 0px'
     }
-  }
+  },
+  helpContainer: {
+    [theme.breakpoints.down('sm')]: {
+      margin: '15px',
+      backgroundColor: '#fff',
+      padding: '10px'
+    }
+  },
+  sliderContainerTitle: {
+    marginTop: '0px !important',
+    paddingTop: '25px !important',
+    fontSize: '28px',
+    color: '#333333 !important',
+  },
+  helpContainerBody: {
+    marginTop: '15px',
+    marginBottom: '15px'
+  },
+  logoContainer: {
+    maxWidth: '1080px',
+    minHeight: '410px',
+    margin: '0 auto',
+    marginRight: 'auto',
+    backgroundColor: '#00acd4',
+    padding: '5px',
+    '&::before':{
+      background: '#00acd4 url(../pages/indexPage/AppLogo.png) no-repeat center'
+    }
+}
 });
 
 export default createMuiTheme({
