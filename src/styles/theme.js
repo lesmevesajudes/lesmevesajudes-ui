@@ -114,9 +114,6 @@ export const styles = theme => ({
     marginRight: 'auto',
     backgroundColor: '#00acd4',
     padding: '5px',
-    '&::before':{
-      background: '#00acd4 url(../pages/indexPage/AppLogo.png) no-repeat center'
-    }
 }
 });
 

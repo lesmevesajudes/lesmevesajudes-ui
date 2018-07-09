@@ -83,11 +83,9 @@ const IndexPage = (props) =>
   <div>
     <AppHeader/>
     <div className='BlockContainer'>
-      <div className={props.classes.logoContainer}>
       <Hidden smDown>
         <div className='AppLogo' style={{opacity: 0.5}}/>
       </Hidden>
-       
         <div className='BlockText'>
               <span className='titleLogo'>
                 <Trans>Vols saber a quins ajuts públics pots accedir?</Trans>
@@ -100,7 +98,6 @@ const IndexPage = (props) =>
             </Button>
           </Link>
         </div>
-      </div>
     </div>
     <div className='CTA'>
       <p className='PresentationText' style={{textAlign: 'center'}}>
