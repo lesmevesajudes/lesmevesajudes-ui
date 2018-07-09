@@ -17,7 +17,7 @@ class PersonalBenefits extends React.Component<PersonalBenefitsProps> {
     this.possibleBenefits = [
       {
         ID: 'AE_230_mensual',
-        name: <Trans>Fons infància</Trans>,
+        name: <Trans>Fons extraordinari d’ajuts d’emergència social per a infants de 0 a 16 anys</Trans>,
         periode: 'mes',
         url: '/ajuts/fons_infancia',
         from: new Date(2018, 4, 25, 0, 0, 0, 0),
@@ -25,7 +25,8 @@ class PersonalBenefits extends React.Component<PersonalBenefitsProps> {
       },
       {
         ID: 'AE_230_01_mensual',
-        name: <Trans>Fons infància ajut famílies monoparentals</Trans>,
+        name: <Trans>Fons extraordinari d’ajuts d’emergència social per a infants de 0 a 16 anys per a famílies
+          monoparentals</Trans>,
         periode: 'any',
         url: '/ajuts/fons_infancia',
         from: new Date(2018, 4, 25, 0, 0, 0, 0),
@@ -33,7 +34,7 @@ class PersonalBenefits extends React.Component<PersonalBenefitsProps> {
       },
       {
         ID: 'EG_233_mensual',
-        name: <Trans>Ajuts individuals de menjador</Trans>,
+        name: <Trans>Ajuts de menjador escolar</Trans>,
         periode: 'dia',
         url: '/ajuts/menjador',
         from: new Date(2018, 9, 3, 0, 0, 0, 0),
@@ -71,7 +72,7 @@ class PersonalBenefits extends React.Component<PersonalBenefitsProps> {
       },
       {
         ID: 'GG_270_mensual',
-        name: 'Renda Garantida Ciutadana',
+        name: <Trans>Renda garantida ciutadana</Trans>,
         periode: 'mes',
         url: '/ajuts/rgc',
         from: undefined,

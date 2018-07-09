@@ -7,11 +7,10 @@ import {Link} from 'react-router-dom';
 import {Trans} from 'react-i18next';
 import DoneIcon from '@material-ui/icons/Done';
 import ClearIcon from '@material-ui/icons/Clear';
-import type {Person} from "../persons/PersonTypes";
 
 type Props = {
   benefit: Object,
-  person: Person
+  subject: Object
 };
 const dateFormat = (date: Date) => `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
 const Period = (props) => {
