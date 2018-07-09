@@ -8,6 +8,7 @@ import {Button, Grid} from '@material-ui/core/';
 import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 
+let test = "asdasdasd";
 
 const content = [
   {
