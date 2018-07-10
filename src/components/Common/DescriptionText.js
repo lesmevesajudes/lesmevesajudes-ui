@@ -14,7 +14,6 @@ const isHelpAvailableForThisField = (fieldName: string): boolean => typeof field
 
 const DescriptionText = (props) =>
           <Hidden smDown>
-            {typeof props.currentField === 'string' ? console.log(toHelpID(props.currentField)) : null}
             {isHelpAvailableForThisField(props.currentField) ?
                 <Paper className={props.classes.boxDescriptionText}>
                   <Grid container direction='column' spacing={8}>
