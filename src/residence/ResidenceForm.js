@@ -73,7 +73,7 @@ const ResidenceForm = (props: Props) => {
           </Typography>
         </Grid>
         <Grid item xs={12} className='bg-form-exterior bg-form'>
-          <kjlform name='ResidenceForm'>
+          <form name='ResidenceForm'>
             <Grid container direction='row' justify='space-around' alignItems='stretch' spacing={16}>
               <Grid item sm={6}>
                 <Grid container direction='column' alignItems='stretch' spacing={16}>
@@ -252,7 +252,7 @@ const ResidenceForm = (props: Props) => {
                 </Sticky>
               </Grid>
             </Grid>
-          </kjlform>
+          </form>
         </Grid>
       </Grid>
   );
