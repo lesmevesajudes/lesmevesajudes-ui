@@ -7,13 +7,14 @@ import {withStyles} from '@material-ui/core/styles';
 import {styles} from '../../styles/theme';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutline';
 
-const toHelpID = (fieldName: string): string => fieldName.split(".").pop();
+const toHelpID = (fieldName: string): string => fieldName.split(".")[0];
 
 const findHelpTextFor = (fieldName: string): object => typeof fieldName === 'string' ? helpText(toHelpID(fieldName)) : null;
 const isHelpAvailableForThisField = (fieldName: string): boolean => typeof fieldName === 'string' ? isHelpAvailable(toHelpID(fieldName)) : null;
 
 const DescriptionText = (props) =>
           <Hidden smDown>
+            {typeof props.currentField === 'string' ? console.log(toHelpID(props.currentField)) : null}
             {isHelpAvailableForThisField(props.currentField) ?
                 <Paper className={props.classes.boxDescriptionText}>
                   <Grid container direction='column' spacing={8}>
