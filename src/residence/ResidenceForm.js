@@ -165,7 +165,8 @@ const ResidenceForm = (props: Props) => {
                   <MultipleAnswerQuestion name='titular_contracte_lloguer_temps_empadronat'
                                           label={
                                             <Trans>
-                                              Quant temps fa que {titularContracteLloguer.nom} està empadronat/ada en
+                                              Quant temps fa que <b>{titularContracteLloguer.nom}</b> està
+                                              empadronat/ada en
                                               aquest habitatge?
                                             </Trans>}>
                     <MenuItem value='no_empadronat'><Trans>No està empadronat/ada</Trans></MenuItem>
@@ -180,7 +181,8 @@ const ResidenceForm = (props: Props) => {
                   <MultipleAnswerQuestion name='titular_hipoteca_temps_empadronat'
                                           label={
                                             <Trans>
-                                              Quant temps fa que {titularContracteHipoteca.nom} està empadronat/ada en
+                                              Quant temps fa que <b>{titularContracteHipoteca.nom}</b> està
+                                              empadronat/ada en
                                               aquest habitatge?
                                             </Trans>}>
                     <MenuItem value='no_empadronat'><Trans>No està empadronat/ada</Trans></MenuItem>
