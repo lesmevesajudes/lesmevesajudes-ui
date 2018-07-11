@@ -61,7 +61,8 @@ export const styles = theme => ({
   deleteListItemTitle: {
     marginLeft: '-75px !important',
     fontSize: '16px',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    textAlign: 'center'
   },
   stepperContainer: {
     backgroundColor: '#fbfbfb'
@@ -80,7 +81,12 @@ export const styles = theme => ({
     textAlign: 'justify'
   },
   modalContainer: {
-    width: '300px',
+    [theme.breakpoints.down('xs')]: {
+      width: '300px',
+    },
+    [theme.breakpoints.down('sm')]: {
+      width: '300px',
+    },
     position: 'absolute',
     padding: '32px',
     backgroundColor: '#fff',
