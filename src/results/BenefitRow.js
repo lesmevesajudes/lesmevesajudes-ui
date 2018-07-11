@@ -38,8 +38,6 @@ export const BenefitRow = ({benefit, subject}: Props) =>
         alignItems='center'
         key={benefit.ID}
     >
-      {console.log(benefit)}
-      {console.log(subject)}
       <Grid container direction='row' justify='center' alignItems='center' key={benefit.ID} className='ItemResult'>
         <Grid item style={{margin: 'auto'}} xs={1}>
           <DoneIcon className='resultIconSuccess'/>
