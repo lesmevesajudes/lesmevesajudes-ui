@@ -65,7 +65,7 @@ const renderUnitatDeConvivenciaBenefitList = (unitatDeConvivencia, persons, peri
       <Grid item sm={12}>
         <li className='ItemResultOut'>
           <Typography variant='subheading' gutterBottom>
-            Ajudes per a la unitat de convivència:
+            Ajudes per a l'habitatge:
           </Typography>
           <Grid container className='ResultPage' justify='space-between'>
             <Grid item xs sm={12}>
