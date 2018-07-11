@@ -12,7 +12,7 @@ type Props = {
 }
 const HelpIcon = (props: Props) =>
     <Fragment>
-      <Icon onClick={(e) => props.openModal(props.name, e.clientY - 9, e.clientX + 11)} style={{fontSize: '1rem'}}
+      <Icon onClick={(e) => props.openModal(props.name, e.clientY - 9, e.clientX + 11)} style={{float: 'right'}}
             color='action'>info</Icon>
       <HelpModal name={props.name}>
         {helpText(props.name).body}
