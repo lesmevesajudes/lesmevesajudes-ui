@@ -80,24 +80,24 @@ const content = [
 ];
 
 const IndexPage = (props) =>
-  <div>
-    <AppHeader/>
-    <div className='BlockContainer'>
+    <div>
+      <AppHeader/>
+      <div className='BlockContainer'>
       <Hidden smDown>
         <div className='AppLogo' style={{opacity: 0.5}}/>
       </Hidden>
-        <div className='BlockText'>
+          <div className='BlockText'>
               <span className='titleLogo'>
                 <Trans>Vols saber a quins ajuts públics pots accedir?</Trans>
               </span>
-          <Link className='CTALink' to='/wizard/'>
-            <Button variant='contained' color='primary' className={props.classes.button}>
-              <b>
-                <Trans>CONEGUI LES SEVES AJUDES</Trans>
-              </b>
-            </Button>
-          </Link>
-        </div>
+            <Link className='CTALink' to='/wizard/'>
+              <Button variant='contained' color='primary' className={props.classes.button}>
+                <b>
+                  <Trans>CONEGUI LES SEVES AJUDES</Trans>
+                </b>
+              </Button>
+            </Link>
+          </div>
     </div>
     <div className='CTA'>
       <p className='PresentationText' style={{textAlign: 'center'}}>

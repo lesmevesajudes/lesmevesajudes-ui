@@ -1,11 +1,12 @@
 import React from 'react';
 import {Grid, Typography} from '@material-ui/core';
 import BenefitRow, {NoBenefitRow} from './BenefitRow';
+import {Trans} from "react-i18next";
 
 const possibleBenefits = [
   {
     ID: 'HA_001',
-    name: 'Ajuts lloguer especial urgència per a persones beneficiàries de prestacions derivades de la mediació a barcelona',
+    name: <Trans>Prestacions econòmiques d\'urgència social derivades de la mediació a Barcelona</Trans>,
     periode: 'mes',
     url: '/ajuts/lloguer',
     from: undefined,
@@ -13,7 +14,8 @@ const possibleBenefits = [
   },
   {
     ID: 'HA_002',
-    name: 'Ajuts per pèrdua d’habitatge per desnonament o execució hipotecària',
+    name: <Trans>Prestacions econòmiques d’especial urgència davant la pèrdua de l’habitatge per desnonament o execució
+      hipotecària</Trans>,
     periode: 'mes',
     url: '/ajuts/lloguer',
     from: new Date(2018, 5, 16),
@@ -21,7 +23,8 @@ const possibleBenefits = [
   },
   {
     ID: 'HA_003',
-    name: 'Ajuts especial urgència amortització hipotecària',
+    name: <Trans>Prestacions econòmiques d’especial urgència per al pagament de quotes d\'amortització
+      hipotecària</Trans>,
     periode: 'mes',
     url: '/ajuts/lloguer',
     from: undefined,
@@ -29,7 +32,7 @@ const possibleBenefits = [
   },
   {
     ID: 'HA_004',
-    name: 'Ajuts lloguer especial urgència',
+    name: <Trans>Prestacions econòmiques d’especial urgència per al pagament de deutes del lloguer</Trans>,
     periode: 'mes',
     url: '/ajuts/lloguer',
     from: undefined,
@@ -37,7 +40,7 @@ const possibleBenefits = [
   },
   {
     ID: 'HA_005',
-    name: 'Subvencions habitatge de tipus mifo',
+    name: <Trans>Subvencions de pagament de lloguer (MIFO)</Trans>,
     periode: 'mes',
     url: '/ajuts/lloguer',
     from: undefined,
@@ -48,9 +51,7 @@ const possibleBenefits = [
 const hasAnyBenefit = (unitatDeConvivencia, period) =>
     typeof unitatDeConvivencia === 'undefined'
         ? false
-        : possibleBenefits.reduce((acc, benefit) => {
-      return acc + unitatDeConvivencia[benefit.ID][period];
-    }, 0) > 0;
+        : possibleBenefits.reduce((acc, benefit) => acc + unitatDeConvivencia[benefit.ID][period], 0) > 0;
 
 const renderABenefit = (benefit, unitatDeConvivencia, period) =>
     unitatDeConvivencia[benefit.ID][period] > 0
@@ -64,15 +65,13 @@ const renderUnitatDeConvivenciaBenefitList = (unitatDeConvivencia, persons, peri
       <Grid item sm={12}>
         <li className='ItemResultOut'>
           <Typography variant='subheading' gutterBottom className="titleResultPerson">
-            Ajudes per a la unitat de convivència:
+            Ajudes per a l'habitatge:
           </Typography>
           <Grid container className='ResultPage' justify='space-between'>
             <Grid item xs sm={12}>
               <Grid className='ItemList'>
                 {hasAnyBenefit(unitatDeConvivencia, period)
-                    ? possibleBenefits.map((benefit) =>
-                        renderABenefit(benefit, unitatDeConvivencia, period)
-                    )
+                    ? possibleBenefits.map((benefit) => renderABenefit(benefit, unitatDeConvivencia, period))
                     : <NoBenefitRow/>}
               </Grid>
             </Grid>
@@ -81,15 +80,14 @@ const renderUnitatDeConvivenciaBenefitList = (unitatDeConvivencia, persons, peri
       </Grid>
     </Grid>;
 
-
-type Props = {
+type UnitatDeConvivenciaBenefitsProps = {
   persons: Object,
   unitatDeConvivencia: Object,
   period: string
 
 };
 
-const UnitatDeConvivenciaBenefits = (props: Props) =>
+const UnitatDeConvivenciaBenefits = (props: UnitatDeConvivenciaBenefitsProps) =>
     renderUnitatDeConvivenciaBenefitList(Object.values(props.unitatDeConvivencia)[0], props.persons, props.period);
 
 export default UnitatDeConvivenciaBenefits;

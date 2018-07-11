@@ -7,12 +7,11 @@ import {Link} from 'react-router-dom';
 import {Trans} from 'react-i18next';
 import DoneIcon from '@material-ui/icons/Done';
 import ClearIcon from '@material-ui/icons/Clear';
-import type {Person} from "../persons/PersonTypes";
 import {styles} from '../styles/theme';
 import {withStyles} from '@material-ui/core/styles';
 type Props = {
   benefit: Object,
-  person: Person
+  subject: Object
 };
 const dateFormat = (date: Date) => `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
 const Period = (props) => {
@@ -40,8 +39,6 @@ export const BenefitRow = ({benefit, subject,props}: Props) =>
         alignItems='center'
         key={benefit.ID}
     >
-      {console.log(benefit)}
-      {console.log(subject)}
       <Grid container direction='row' justify='center' alignItems='center' key={benefit.ID} className='ItemResult'>
         <Grid item xs={1}>
           <DoneIcon className='resultIconSuccess'/>

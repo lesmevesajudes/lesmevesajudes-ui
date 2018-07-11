@@ -73,7 +73,7 @@ const ResidenceForm = (props: Props) => {
           </Typography>
         </Grid>
         <Grid item xs={12} className='bg-form-exterior bg-form'>
-          <kjlform name='ResidenceForm'>
+          <form name='ResidenceForm'>
             <Grid container direction='row' justify='space-around' alignItems='stretch' spacing={16}>
               <Grid item sm={6}>
                 <Grid container direction='column' alignItems='stretch' spacing={16}>
@@ -117,7 +117,7 @@ const ResidenceForm = (props: Props) => {
 
                   {existeixHipoteca &&
                   <YesNoQuestion name='existeix_deute_en_el_pagament_de_la_hipoteca'>
-                    <Trans>Existeix un deute en el pagament de la hipoteca?</Trans>
+                    <Trans>Té alguna quota de la hipoteca que no ha pogut pagar?</Trans>
                   </YesNoQuestion>}
 
                   {esLlogater &&
@@ -165,7 +165,8 @@ const ResidenceForm = (props: Props) => {
                   <MultipleAnswerQuestion name='titular_contracte_lloguer_temps_empadronat'
                                           label={
                                             <Trans>
-                                              Quant temps fa que {titularContracteLloguer.nom} està empadronat/ada en
+                                              Quant temps fa que <b>{titularContracteLloguer.nom}</b> està
+                                              empadronat/ada en
                                               aquest habitatge?
                                             </Trans>}>
                     <MenuItem value='no_empadronat'><Trans>No està empadronat/ada</Trans></MenuItem>
@@ -180,7 +181,8 @@ const ResidenceForm = (props: Props) => {
                   <MultipleAnswerQuestion name='titular_hipoteca_temps_empadronat'
                                           label={
                                             <Trans>
-                                              Quant temps fa que {titularContracteHipoteca.nom} està empadronat/ada en
+                                              Quant temps fa que <b>{titularContracteHipoteca.nom}</b> està
+                                              empadronat/ada en
                                               aquest habitatge?
                                             </Trans>}>
                     <MenuItem value='no_empadronat'><Trans>No està empadronat/ada</Trans></MenuItem>
@@ -250,7 +252,7 @@ const ResidenceForm = (props: Props) => {
                 </Sticky>
               </Grid>
             </Grid>
-          </kjlform>
+          </form>
         </Grid>
       </Grid>
   );

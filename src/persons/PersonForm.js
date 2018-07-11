@@ -23,7 +23,7 @@ import {currentFocussedFieldSelector} from '../shared/selectorUtils';
 import {IconFont} from '../components/IconFont/IconFont';
 
 export type PersonFormInitialValues = Person | { is_the_person_in_front_of_the_computer: boolean };
-
+const required = value => value ? undefined : <Trans>Aquest camp és requerit</Trans>;
 const pncInclosAIngressosBruts = (value, allValues) =>
     value && value > parseInt(allValues.ingressos_bruts, 10)
         ? <Trans>Els ingressos per pensions no contributives has d'estar inclosos en els ingressos bruts</Trans>
@@ -110,7 +110,7 @@ let PersonForm = (props: Props) => {
                 <Grid item xs={12} sm={6}>
                   <Grid container direction='column' alignItems='stretch' spacing={16}>
                     <FormSubTitle><Trans>Informació personal</Trans></FormSubTitle>
-                    <Question name='nom' placeholder='Nom' component={TextField} autoFocus>
+                    <Question name='nom' placeholder='Nom' component={TextField} validate={[required]} autoFocus>
                       {isTheUserInFrontOfTheComputer ? <Trans>Identifiqui's amb un nom</Trans> :
                           <Trans>Identifiqui aquesta persona amb un nom</Trans>}
                     </Question>
@@ -119,7 +119,7 @@ let PersonForm = (props: Props) => {
 
                     {esFamiliarOUsuari &&
                     <Fragment>
-                      <TimePeriodQuestion name='edat' validate={menorDe120}>
+                      <TimePeriodQuestion name='edat' validate={[menorDe120, required]}>
                         <Trans>Quina és la seva edat?</Trans>
                       </TimePeriodQuestion>
 
@@ -156,7 +156,7 @@ let PersonForm = (props: Props) => {
 
                     {municipiEmpadronament === 'barcelona' &&
                     <TimePeriodQuestion name='anys_empadronat_a_barcelona'
-                                        validate={[anysEmpadronatInferiorAEdat, menorDe120]} required>
+                                        validate={[anysEmpadronatInferiorAEdat, menorDe120, required]}>
                       <Trans>Quants anys fa que està empadronat/ada a Barcelona?</Trans>
                     </TimePeriodQuestion>}
 
@@ -194,7 +194,7 @@ let PersonForm = (props: Props) => {
                     </Fragment>}
 
                     <FormSubTitle>Ingressos</FormSubTitle>
-                    <MoneyQuestion name='ingressos_bruts' required>
+                    <MoneyQuestion name='ingressos_bruts' validate={[required]}>
                       {isTheUserInFrontOfTheComputer
                         ?<Trans>Indiqui els seus ingressos anuals de l’any passat</Trans>
                         :<Trans>Indiqui els ingressos anuals de l’any passat d'aquesta persona</Trans>
