@@ -38,10 +38,17 @@ let HowManyPersonsLiveTogetherPage = props => {
           </Typography>
         </Grid>
         <ShowMeOnceModal name='howManyPersonsModal' title='Dades sobre les persones'>
-          Podeu començar la simulació. A partir d’aquest moment, us formularem una sèrie de preguntes sobre vós i sobre
-          els membres de la vostra llar que són necessàries per conèixer els ajuts als quals podeu arribar a optar. Us
-          informem que les dades de caràcter personal que es recullin a través dels recursos disponibles en el portal es
-          tractaran de forma confidencial i en cap cas no s'utilitzaran amb finalitats incompatibles amb la LOPD.
+          <Trans>
+            Pot començar la simulació.<br/>
+            A partir d’aquest moment, li formularem una sèrie de preguntes sobre vostè i sobre els membres de la seva
+            llar
+            que són necessàries per conèixer els ajuts als quals pot arribar a optar.<br/>
+            Li informem que les dades de caràcter personal que es recullin a través dels recursos disponibles en el
+            portal
+            es tractaran de forma confidencial i en cap cas no s'utilitzaran amb finalitats incompatibles amb la Llei
+            orgànica de protecció de dades de caràcter personal (LOPD) i/o Reglament general de protecció de dades
+            (RGPD)
+          </Trans>
         </ShowMeOnceModal>
         <Grid item xs={12} className='bg-form-exterior bg-form'>
           <form onSubmit={handleSubmit}>

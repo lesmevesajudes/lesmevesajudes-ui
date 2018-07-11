@@ -18,16 +18,17 @@ type Props = {
 const ReportBug = (props: Props) => {
   const {handleSubmit, resultatIncorrecte} = props;
   return (
-      <Grid container className='container-family'>
+      <Grid container direction='column' className='container-family'>
         <Grid item sm={12}>
           <Typography variant='headline' gutterBottom>Informar del resultat de la simulació</Typography>
         </Grid>
-        <Grid item sm={12}>
-          <Grid item className='bg-container extra-padding'>
+        <Grid container direction='column' sm={12} spacing={16} className='bg-container extra-padding'>
             <form name='ReportBug' onSubmit={handleSubmit}>
               <Grid item>
-                <label><Field name='invalid_result' component={Checkbox}/> El resultat de la simulació NO és
-                  correcte.</label>
+                <label>
+                  <Field name='invalid_result' component={Checkbox}/>
+                  El resultat de la simulació NO és correcte.
+                </label>
               </Grid>
               {resultatIncorrecte &&
               <Grid item>
@@ -40,9 +41,10 @@ const ReportBug = (props: Props) => {
                 <Field name='comments' placeholder='...' fullWidth component={TextField}/>
               </Grid>
               <Field component='input' name='application_state' type='hidden'/>
-              <Button variant='raised' color='primary' type='submit'>Informar</Button>
+              <Grid item className='margin-buttons'>
+                <Button variant='raised' color='primary' type='submit'>Informar</Button>
+              </Grid>
             </form>
-          </Grid>
         </Grid>
       </Grid>
   );

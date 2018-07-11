@@ -7,12 +7,14 @@ export const colors = {
   secondary: '#004A8E',
   secondary_dark: '#014482',
   secondary_light: '#0054A1',
+  tertiary: '#00ACD4',
   disabled: '#f3f3f3',
   disabled_text: '#f7f7f7',
   white: '#fff',
   blackest: '#202020',
   gray: '#f2f2f2'
 };
+
 export const styles = theme => ({
   root: {
     width: '100%',
@@ -45,10 +47,10 @@ export const styles = theme => ({
     }
   },
   completedStep: {
-    color: '#00acd4',
+    color: colors.tertiary,
   },
   actualStep: {
-    color: '#d50283'
+    color: colors.primary,
   },
   AvatarUnknownPerson: {
     backgroundColor: '#bbbbbb'
@@ -76,6 +78,9 @@ export const styles = theme => ({
     fontSize: '1.125rem',
     fontFamily: 'Source Sans Pro, sans-serif',
     textAlign: 'justify'
+  },
+  tertiaryColor: {
+    color: colors.tertiary,
   }
 });
 

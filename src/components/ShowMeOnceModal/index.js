@@ -63,7 +63,7 @@ class ShowMeOnceModal extends React.Component<Props, State> {
             <Typography variant='title' id='modal-title' gutterBottom>
               {title}
             </Typography>
-            <Typography id='simple-modal-description'>
+            <Typography id='simple-modal-description' align='justify'>
               {children}
             </Typography>
           </div>
