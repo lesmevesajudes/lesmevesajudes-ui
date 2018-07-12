@@ -37,9 +37,10 @@ export const BenefitRow = ({benefit, subject,props}: Props) =>
         container
         justify='center'
         alignItems='center'
+        xs={12}
         key={benefit.ID}
     >
-      <Grid container direction='row' justify='center' alignItems='center' key={benefit.ID} className='ItemResult'>
+      <Grid container  xs={12} direction='row' justify='center' alignItems='center' key={benefit.ID} className='ItemResult'>
         <Grid item xs={1}>
           <DoneIcon className='resultIconSuccess'/>
         </Grid>
@@ -71,7 +72,7 @@ export const BenefitRow = ({benefit, subject,props}: Props) =>
     </Grid>;
 
 export const NoBenefitRow = () =>
-    <Grid container justify='center' alignItems='center' className='ItemResult'>
+    <Grid container sm={12} xs={12} justify='center' alignItems='center' className='ItemResult'>
       <Grid item xs={1}>
         <ClearIcon className='resultIconError'/>
       </Grid>

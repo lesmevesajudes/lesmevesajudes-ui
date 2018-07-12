@@ -62,13 +62,13 @@ const renderABenefit = (benefit, unitatDeConvivencia, period) =>
 
 const renderUnitatDeConvivenciaBenefitList = (unitatDeConvivencia, persons, period: string) =>
     <Grid container justify='space-between' alignItems='center'>
-      <Grid item sm={12}>
+      <Grid item xs={12} sm={12}>
         <li className='ItemResultOut'>
           <Typography variant='subheading' gutterBottom className="titleResultPerson">
             Ajudes per a l'habitatge:
           </Typography>
           <Grid container className='ResultPage' justify='space-between'>
-            <Grid item xs sm={12}>
+            <Grid item xs={12} sm={12}>
               <Grid className='ItemList'>
                 {hasAnyBenefit(unitatDeConvivencia, period)
                     ? possibleBenefits.map((benefit) => renderABenefit(benefit, unitatDeConvivencia, period))

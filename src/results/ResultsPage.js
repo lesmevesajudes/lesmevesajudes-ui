@@ -58,19 +58,19 @@ class ResultsPage extends React.Component<Props> {
   render() {
     if (!this.enoughDataForSimulation()) {
       return (
-          <Grid container>
-            <Grid item className='bg-container'>
+          <Grid container xs={12}>
+            <Grid item xs={12} className='bg-container'>
               <h1>Ajudes a les que podria optar</h1>
-              <Grid container>
-                <Grid item>
+              <Grid container xs={12}>
+                <Grid item xs={12}>
                   <Typography className='errorText'>
                     Falten dades per a executar la simulació
                   </Typography>
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item className='bg-container '>
-              <Grid container>
+            <Grid item xs={12} className='bg-container '>
+              <Grid container xs={12}>
                 <Grid item xs={12}>
                   <ReportBug onSubmit={this.submitReport}/>
                 </Grid>
@@ -110,7 +110,8 @@ class ResultsPage extends React.Component<Props> {
             <p>Per tant, a la pràctica, pot trobar ajudes incompatibles entre sí.</p>
             Informi-se’n clicant sobre cada ajut.
           </ShowMeOnceModal>
-          <Grid container className='bg-container'>
+          <Grid container className='bg-container' justify='center'>
+
             <Grid item xs={12} sm={12} className='titleContainer'>
               <Typography variant='headline' className='titlePage'>
                 <IconFont icon='resultats' sizeSphere={48} fontSize={32}/>
@@ -136,13 +137,6 @@ class ResultsPage extends React.Component<Props> {
               </Grid>
             </Grid>
           </Grid>
-          <div>
-            <Grid container>
-              <Grid item xs={12}>
-                <ReportBug onSubmit={this.submitReport}/>
-              </Grid>
-            </Grid>
-          </div>
         </Fragment>
     );
   }

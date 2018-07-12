@@ -106,7 +106,7 @@ class PersonalBenefits extends React.Component<PersonalBenefitsProps> {
             Ajudes a les que podria ser beneficiàri/a: <b>{person.nom}</b>
           </Typography>
 
-          <Grid container className='ItemList'>
+          <Grid container sm={12} xs={12} className='ItemList'>
             {(this.hasAnyBenefit(personBenefits))
                 ? this.possibleBenefits.map(benefit => this.renderAPersonalBenefit(benefit, personBenefits))
                 : <NoBenefitRow/>
