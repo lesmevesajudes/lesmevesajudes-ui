@@ -5,7 +5,7 @@ import Modal from '@material-ui/core/Modal';
 import {modalSeenAction} from './ShowMeOnceReducer';
 import {connect} from 'react-redux';
 import Icon from '@material-ui/core/Icon';
-
+import {styles} from '../../styles/theme'
 function getModalStyle() {
   const top = 50;
   const left = 50;
@@ -17,15 +17,6 @@ function getModalStyle() {
   };
 }
 
-const styles = theme => ({
-  paper: {
-    position: 'absolute',
-    width: theme.spacing.unit * 70,
-    backgroundColor: theme.palette.background.paper,
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing.unit * 4,
-  },
-});
 type State = {
   open: boolean
 }
@@ -56,7 +47,7 @@ class ShowMeOnceModal extends React.Component<Props, State> {
             open={this.state.open}
             onClose={this.handleClose}
         >
-          <div style={getModalStyle()} className={classes.paper}>
+          <div style={getModalStyle()} className={classes.modalContainer}>
               <Icon onClick={this.handleClose} style={closeImg} color='primary'>
                 close
               </Icon>

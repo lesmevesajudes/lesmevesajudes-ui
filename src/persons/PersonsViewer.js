@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import {withStyles} from '@material-ui/core/styles';
 import {styles} from '../styles/theme';
 import {IconFont} from '../components/IconFont/IconFont';
+import withWidth, {isWidthUp} from "@material-ui/core/withWidth";
 
 const initials = (name: string) => {
   const initials = name.replace(/[^a-zA-Z- ]/g, '').match(/\b\w/g);
@@ -83,9 +84,10 @@ type UnknownPersonProps = {
   onAddPersonClick: Function,
   onRemoveClick: Function,
   personNumber: number,
+  width: any,
   classes: Object
 }
-const UnknownPersonCard = (props: UnknownPersonProps) => {
+const UnknownPersonCard = withWidth()((props: UnknownPersonProps) => {
   const { classes } = props;
     return (
     <ListItem button onClick={() => props.onAddPersonClick()}>
@@ -94,11 +96,13 @@ const UnknownPersonCard = (props: UnknownPersonProps) => {
           primary={<Typography className= {classes.titleUnknownPerson} >Persona {(props.personNumber + 1).toString()} - Premi aquí per a introduir la informació d'aquesta persona</Typography>}/>
       <ListItemSecondaryAction onClick={() => props.onRemoveClick()}>
         <Tooltip id='unknown-tooltip' title='Aquesta acció eliminarà aquest registre' placement='right-start'>
-         <Typography className={classes.deleteListItemTitle}> Eliminar </Typography>
+          <Typography className={classes.deleteListItemTitle}> {isWidthUp('sm', props.width) ? 'Eliminar' :
+              <Icon>clear</Icon>} </Typography>
         </Tooltip>
       </ListItemSecondaryAction>
     </ListItem>
-)};
+    )
+});
 
 type Props = {
   persons: Array<Person>,

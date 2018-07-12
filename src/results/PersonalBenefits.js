@@ -102,11 +102,11 @@ class PersonalBenefits extends React.Component<PersonalBenefitsProps> {
   renderPersonalBenefits(person: Person, personBenefits: any) {
     return (
         <li className='ItemResultOut' key={person.id}>
-          <Typography variant='subheading' gutterBottom>
+          <Typography variant='subheading' gutterBottom className="titleResultPerson">
             Ajudes a les que podria ser beneficiàri/a: <b>{person.nom}</b>
           </Typography>
 
-          <Grid container className='ItemList'>
+          <Grid container sm={12} xs={12} className='ItemList'>
             {(this.hasAnyBenefit(personBenefits))
                 ? this.possibleBenefits.map(benefit => this.renderAPersonalBenefit(benefit, personBenefits))
                 : <NoBenefitRow/>

@@ -61,7 +61,8 @@ export const styles = theme => ({
   deleteListItemTitle: {
     marginLeft: '-75px !important',
     fontSize: '16px',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    textAlign: 'center'
   },
   stepperContainer: {
     backgroundColor: '#fbfbfb'
@@ -79,9 +80,49 @@ export const styles = theme => ({
     fontFamily: 'Source Sans Pro, sans-serif',
     textAlign: 'justify'
   },
-  tertiaryColor: {
-    color: colors.tertiary,
-  }
+  modalContainer: {
+    [theme.breakpoints.down('xs')]: {
+      width: '300px',
+    },
+    [theme.breakpoints.down('sm')]: {
+      width: '300px',
+    },
+    position: 'absolute',
+    padding: '32px',
+    backgroundColor: '#fff',
+    boxShadow: 'px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 5px 8px 0px rgba(0, 0, 0, 0.14), 0px 1px 14px 0px rgba(0, 0, 0, 0.12);',
+
+  },
+  buttonResultsXS: {
+    [theme.breakpoints.down('sm')]: {
+      padding: '0px 0px'
+    }
+  },
+  helpContainer: {
+    [theme.breakpoints.down('sm')]: {
+      margin: '15px',
+      backgroundColor: '#fff',
+      padding: '10px'
+    }
+  },
+  sliderContainerTitle: {
+    marginTop: '0px !important',
+    paddingTop: '25px !important',
+    fontSize: '28px',
+    color: '#333333 !important',
+  },
+  helpContainerBody: {
+    marginTop: '15px',
+    marginBottom: '15px'
+  },
+  logoContainer: {
+    maxWidth: '1080px',
+    minHeight: '410px',
+    margin: '0 auto',
+    marginRight: 'auto',
+    backgroundColor: '#00acd4',
+    padding: '5px',
+}
 });
 
 export default createMuiTheme({
