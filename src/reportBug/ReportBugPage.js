@@ -22,9 +22,9 @@ const ReportBug = (props: Props) => {
         <Grid item sm={12}>
           <Typography variant='headline' gutterBottom>Informar del resultat de la simulació</Typography>
         </Grid>
-        <Grid container direction='column' sm={12} spacing={16} className='bg-container extra-padding'>
+        <Grid container direction='column' spacing={16} className='bg-container extra-padding'>
             <form name='ReportBug' onSubmit={handleSubmit}>
-              <Grid item>
+              <Grid item sm={12}>
                 <label>
                   <Field name='invalid_result' component={Checkbox}/>
                   El resultat de la simulació NO és correcte.

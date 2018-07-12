@@ -104,10 +104,10 @@ class ResultsPage extends React.Component<Props> {
     return (
         <Fragment>
           <ShowMeOnceModal name='resultsModal' title='Ajudes a les que podría optar'>
-            <p>A continuació es mostrarà el conjunt d’ajudes a les quals podria arribar a optar.
-              L’informem que la concessió d’una d’elles pot fer variar els llindars d’ingressos i/o requisits que les
-              altres ajudes preveuen per a ser concedides.</p>
-            <p>Per tant, a la pràctica, pot trobar ajudes incompatibles entre sí.</p>
+            A continuació es mostrarà el conjunt d’ajudes a les quals podria arribar a optar.
+            L’informem que la concessió d’una d’elles pot fer variar els llindars d’ingressos i/o requisits que les
+            altres ajudes preveuen per a ser concedides.&nbsp;
+            Per tant, a la pràctica, pot trobar ajudes incompatibles entre sí.&nbsp;
             Informi-se’n clicant sobre cada ajut.
           </ShowMeOnceModal>
           <Grid container className='bg-container'>
