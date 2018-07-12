@@ -41,7 +41,6 @@ const chooseIcon = (props: Object, currentStep: number, maxStepReached: number, 
 };
 
 const isOptionalStep = (step) => {
-  console.log("is optional: ", step);
   return typeof step.shouldShowStep === 'function';
 };
 
@@ -50,7 +49,6 @@ const BACKWARD = -1;
 
 class StepsComponent extends React.Component<Props, State> {
   nextStep = () => {
-    console.log("next called");
     let step = this.state.current_step;
     step = this.findNextPageThatShouldShow(step, FORWARD);
     this.setState({
@@ -96,7 +94,6 @@ class StepsComponent extends React.Component<Props, State> {
         && index >= 0) {
       index = index + direction;
     }
-    console.log("next viable step index:", index);
     return index;
   }
 

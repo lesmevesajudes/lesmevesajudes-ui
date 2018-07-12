@@ -13,7 +13,6 @@ import {withStyles} from '@material-ui/core/styles';
 
 const shouldShowFamilyStep = (state) => {
   const menors = state.persons.valueSeq().toArray().filter((persona) => persona.edat <= 16);
-  console.log("menors: ", menors);
   return menors.length > 0
 };
 
