@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 import {withStyles} from '@material-ui/core/styles';
 import {compose} from 'redux';
 import Icon from '@material-ui/core/Icon';
-
+import {styles} from '../../styles/theme'
 type Props = {
   open: Boolean,
   title: string,
@@ -20,28 +20,13 @@ type Props = {
 
 const getModalStyle = () => {
   const top = 50;
-  const left = 43;
+  const left = 50;
   return {
     top: `${top}%`,
     left: `${left}%`,
     transform: `translate(-${top}%, -${left}%)`,
   };
 };
-const styles = theme => ({
-  paper: {
-    position: 'absolute',
-    width: theme.spacing.unit * 50,
-    backgroundColor: theme.palette.background.paper,
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing.unit * 2,
-    borderRadius: 6 + 'px',
-    maxWidth: 345 + 'px'
-  },
-  title: {
-    fontWeight: 'bold',
-    fontSize: '1.1em'
-  }
-});
 const closeImg = {cursor: 'pointer', float: 'right', marginTop: '5px', width: '20px'};
 const HelpModal = (props: Props) =>
     <Modal
@@ -50,9 +35,9 @@ const HelpModal = (props: Props) =>
         open={props.open && props.currentOpenedModal === props.name}
         onClose={() => props.closeModal('HelpModal')}
     >
-      <div style={getModalStyle()} className={props.classes.paper}>
+      <div style={getModalStyle()} className={props.classes.modalContainer}>
         <div>
-          <span className={props.classes.title}>{props.title}</span>
+          <span>{props.title}</span>
           <Icon onClick={() => props.closeModal('HelpModal')} style={closeImg} color='primary'>
             close
           </Icon>
