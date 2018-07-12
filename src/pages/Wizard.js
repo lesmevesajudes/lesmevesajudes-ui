@@ -11,17 +11,24 @@ import ResultsPage from '../results/ResultsPage';
 import {styles} from '../styles/theme';
 import {withStyles} from '@material-ui/core/styles';
 
+const shouldShowFamilyStep = (state) => {
+  const menors = state.persons.valueSeq().toArray().filter((persona) => persona.edat <= 16);
+  console.log("menors: ", menors);
+  return menors.length > 0
+};
+
 const steps = [
   {
     label: <Trans>Persones que conviuen</Trans>,
     optional: false,
     component: <PersonsPage/>,
     icon: 'persona', //Icono de persona perfil
-    
+
   },
   {
     label: <Trans>Families amb menors</Trans>,
     optional: true,
+    shouldShowStep: shouldShowFamilyStep,
     component: <FamilyForm/>,
     icon: 'familia' // Icono de familia, niños corriendo
   },
@@ -33,6 +40,7 @@ const steps = [
   },
   {
     label: <Trans>Resultats</Trans>,
+    optional: false,
     component: <ResultsPage/>,
     icon: 'resultats' // Icono Billete
   }
@@ -40,9 +48,9 @@ const steps = [
 
 
 const WizardPage = () =>
-      <Grid>
-        <AppHeader />
-        <StepsComponent steps={steps}/>
-      </Grid>;
+    <Grid>
+      <AppHeader/>
+      <StepsComponent steps={steps}/>
+    </Grid>;
 
 export default translate('translations')(withStyles(styles)(WizardPage));

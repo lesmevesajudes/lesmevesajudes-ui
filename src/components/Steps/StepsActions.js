@@ -1,16 +1,15 @@
 //@flow
 
 type ActionsTypes =
-    'NEXT_STEP'
-    | 'BACK_STEP'
-    | 'BUTTONS_VISIBLE'
+    'BUTTONS_VISIBLE'
     | 'BUTTONS_DISABLED'
     | 'BUTTONS_ENABLED'
     | 'BUTTONS_HIDDEN'
-    | 'SET_ACTUAL_STEP'
+
 export type StepAction = {
   type: ActionsTypes,
-  index?: number
+  index?: number,
+  steps?: Object
 };
 
 export function showButtons(): StepAction {
@@ -27,16 +26,4 @@ export function disableButtons(): StepAction {
 
 export function enableButtons(): StepAction {
   return {type: 'BUTTONS_ENABLED'};
-}
-
-export function setActualStep(index: number): StepAction {
-  return {type: 'SET_ACTUAL_STEP', index};
-}
-
-export function nextStep(): StepAction {
-  return {type: 'NEXT_STEP'};
-}
-
-export function backStep(): StepAction {
-  return {type: 'BACK_STEP'};
 }

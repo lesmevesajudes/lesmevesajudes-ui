@@ -4,37 +4,12 @@ import type {StepsState} from './StepsTypes';
 
 
 const initial: StepsState = {
-  current_step: 0,
-  max_step_reached: 0,
   button_enabled: false,
   button_visible: false
 };
 
 export default (state: StepsState = initial, action: StepAction): StepsState => {
   switch (action.type) {
-    case 'NEXT_STEP': {
-      return {
-        ...state,
-        current_step: state.current_step + 1,
-        max_step_reached: state.current_step + 1
-      };
-    }
-    case 'BACK_STEP':
-      return {
-        ...state,
-        current_step: state.current_step - 1,
-      };
-      case 'SET_ACTUAL_STEP':
-      if(action.index <= state.max_step_reached){
-        return {
-          ...state,
-          current_step: action.index,
-        };
-      } else {
-        return {
-          ...state
-        };
-      }
     case 'BUTTONS_VISIBLE':
       return {
         ...state,
