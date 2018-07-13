@@ -71,7 +71,10 @@ export const styles = theme => ({
     boxShadow: '0px 0px 7px rgba(0, 0, 0, 0.15)',
     padding: '10px',
     borderRadius: '4px',
-    fontSize: '14px !important'
+    fontSize: '14px !important',
+    maxHeight: '550px',
+    minHeight: '200px',
+    overflowY: 'scroll'
   },
   titleDescriptionText: {
     color: colors.blackest,

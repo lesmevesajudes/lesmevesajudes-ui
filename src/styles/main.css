@@ -1,40 +1,50 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600');
+
 @font-face {
-  font-family: 'Ajuntament';
+    font-family: 'Ajuntament';
     src: url('icoajuntament.ttf') format('truetype');
 }
+
 .App-intro {
     font-size: large;
 }
+
 body {
-  background: #fbfbfb !important;
-  font-family: 'Source Sans Pro', sans-serif
+    background: #fbfbfb !important;
+    font-family: 'Source Sans Pro', sans-serif
 }
+
 .iconAjuntament {
-  font-family: 'Ajuntament';
+    font-family: 'Ajuntament';
 }
+
 .iconTitle {
-  color: #fff;
+    color: #fff;
 }
+
 .iconTitle-container {
-  float: left; 
-  background: #00ACD4;
-  border-radius: 100%;
-  text-align: center !important;
+    float: left;
+    background: #00ACD4;
+    border-radius: 100%;
+    text-align: center !important;
 }
+
 .titleContainer {
-  margin-bottom: 15px !important;
+    margin-bottom: 15px !important;
 }
-.titlePage{
-  text-align: left;
-  margin-left: 90px !important;
-  float:left;
+
+.titlePage {
+    text-align: left;
+    margin-left: 90px !important;
+    float: left;
 }
-.titleText{
-  line-height: 48px;
+
+.titleText {
+    line-height: 48px;
 }
-.stepperContainer{
-  background: #fbfbfb !important;
+
+.stepperContainer {
+    background: #fbfbfb !important;
 }
 
 .FormContainer {
@@ -42,15 +52,19 @@ body {
     margin-right: auto;
     max-width: 768px;
 }
+
 input {
     min-width: 700px;
 }
+
 .hiddenInput {
     display: none;
 }
+
 .root {
     flex: 1;
 }
+
 h1 {
     box-sizing: border-box;
     display: block;
@@ -61,10 +75,12 @@ h1 {
     margin-top: 0px;
     margin-bottom: 0px;
 }
+
 .field {
     display: block;
     margin-bottom: 0.5rem;
 }
+
 label {
     display: block;
     font-size: 0.8rem;
@@ -72,6 +88,7 @@ label {
     font-weight: 600;
     color: #9a9a9a;
 }
+
 input:focus {
     outline: none;
 }
@@ -79,6 +96,7 @@ input:focus {
 input[type='radio'], input[type='checkbox'] {
     margin-right: 0.5rem;
 }
+
 button {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -96,23 +114,24 @@ button {
 }
 
 .bg-container {
-  background: #f2f2f2;
-  border-radius: 4px;
-  min-height: 180px;
-  max-width: 1140px;
-  margin: 30px auto;
-  padding: 20px;
+    background: #f2f2f2;
+    border-radius: 4px;
+    min-height: 180px;
+    max-width: 1140px;
+    margin: 30px auto;
+    padding: 20px;
 }
+
 .bg-form-exterior {
-  margin-left: 90px !important;
-  margin-right: 90px !important;
+    margin-left: 90px !important;
+    margin-right: 90px !important;
 }
+
 .bg-form {
-  background:#fff;
-  padding: 20px;
+    background: #fff;
+    padding: 20px;
+    min-height: 600px;
 }
-
-
 
 .border-family {
     border: #dbdbdb 1px solid;
@@ -121,8 +140,9 @@ button {
 }
 
 .titlecurrentStepTypePerson {
-  margin-bottom: 50px
+    margin-bottom: 50px
 }
+
 .extra-padding {
     padding: 20px;
 }
@@ -154,117 +174,142 @@ button {
 input.cercabcn {
     min-width: 190px;
 }
+
 .buttons-container {
-  border-radius: 4px;
-  min-height: 180px;
-  max-width: 1140px;
-  margin: 0px auto;
+    border-radius: 4px;
+    min-height: 180px;
+    max-width: 1140px;
+    margin: 0px auto;
 
 }
+
 .buttons-container .left-button {
-  float: left
+    float: left
 }
+
 .buttons-container .right-button {
-  float: right
+    float: right
 }
+
 .checkOption {
-  padding:5px;
-  text-align: center;
-  width: 35px;
-  display: inline-block;
-  height: auto;
-  border-radius: 6px;
-  border: #c2c2c2 1px solid;
-  cursor: default;
+    padding: 5px;
+    text-align: center;
+    width: 35px;
+    display: inline-block;
+    height: auto;
+    border-radius: 6px;
+    border: #c2c2c2 1px solid;
+    cursor: default;
 }
+
 .checkOption:first-child {
-  margin-right: 5px;
+    margin-right: 5px;
 }
+
 .checkOption.active {
-  background: rgb(194, 98, 170);
-  border: rgb(170, 82, 148)1px solid;
+    background: rgb(194, 98, 170);
+    border: rgb(170, 82, 148) 1px solid;
 }
+
 .boxDescriptionText {
-  box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.15);
-  padding: 10px;
-  border-radius: 4px;
-  font-size: 14px !important;
+    box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.15);
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 14px !important;
 }
+
 .addPersonContainer {
-  margin-left:75px !important
+    margin-left: 75px !important
 }
+
 .buttonTheme {
-  height: 40px;
+    height: 40px;
 }
+
 @media only screen and (max-width: 1140px) {
-  .titlePage{
-    float:left;
-    margin-left: 16px !important;
-  }
-  .bg-form-exterior {
-    margin-left: 0px !important;
-    margin-right: 0px !important;
-  }
-  .addPersonContainer {
-    margin-left: 0px !important;
-  }
+    .titlePage {
+        float: left;
+        margin-left: 16px !important;
+    }
+
+    .bg-form-exterior {
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+    }
+
+    .addPersonContainer {
+        margin-left: 0px !important;
+    }
 }
+
 .sliderItemContainer {
 
 }
+
 .sliderItem {
- padding: 20px;
- border-radius: 4px;
- background: #fff;
- max-height: 300px;
- min-height: 300px;
+    padding: 20px;
+    border-radius: 4px;
+    background: #fff;
+    max-height: 300px;
+    min-height: 300px;
 }
+
 .sliderTitle {
-  text-align: left;
+    text-align: left;
 }
+
 .sliderBody {
-  font-size: 12px;
+    font-size: 12px;
 }
 
 .sliderButton {
-  float: right;
+    float: right;
 }
+
 .sliderContainer {
-  background: #f2f2f2;
+    background: #f2f2f2;
 }
+
 .Presentation {
-  max-width: 1140px;
-  margin: 0 auto;
+    max-width: 1140px;
+    margin: 0 auto;
 }
 
 .titleLogo {
-  text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15)
+    text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15)
 }
+
 @media only screen and (max-width: 600px) {
-  .titlePage{
-    float:left;
-    margin-left: 16px !important;
-    line-height: 1.35417em !important;
-  }
-  .buttons-container .left-button {
-    margin-right: 15px;
-  }
-  .buttons-container .right-button {
-    margin-left: 15px;
-  }
-  .bg-form-exterior {
-    margin-left: 0px !important;
-    margin-right: 0px !important;
-  }
-  .addPersonContainer {
-    margin-left: 0px !important;
-  }
-  .bg-container {
-    background: none;
-    margin: 0px auto;
-    padding: 0px;
-  }
-  .buttonResultsXS {
-    padding: 0px !important
-  }
+    .titlePage {
+        float: left;
+        margin-left: 16px !important;
+        line-height: 1.35417em !important;
+    }
+
+    .buttons-container .left-button {
+        margin-right: 15px;
+    }
+
+    .buttons-container .right-button {
+        margin-left: 15px;
+    }
+
+    .bg-form-exterior {
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+    }
+
+    .addPersonContainer {
+        margin-left: 0px !important;
+    }
+
+    .bg-container {
+        background: none;
+        margin: 0px auto;
+        padding: 0px;
+    }
+
+    .buttonResultsXS {
+        padding: 0px !important
+    }
 }
