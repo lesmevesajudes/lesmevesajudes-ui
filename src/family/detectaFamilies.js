@@ -1,6 +1,6 @@
 import type {PersonID} from '../persons/PersonTypes';
 
-type Custodia = {
+export type Custodia = {
   primer: string,
   segon?: string
 }

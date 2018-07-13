@@ -49,12 +49,14 @@
     -moz-background-size: contain;
     -o-background-size: contain;
 }
+.logoContainer {
+  margin: 0 auto;
+  width: 1140px;
+}
 .BlockContainer {
     background-color: #00acd4;
     position: relative;
 }
-
-
 
 
 .BlockText {
@@ -87,6 +89,9 @@
   }
   .titleLogo {
     text-align: center;
+  }
+  .logoContainer {
+    width: 300px;
   }
   .BlockContainer::before {
     position: absolute;

@@ -147,6 +147,11 @@ export default createMuiTheme({
     }
   },
   overrides: {
+    MuiBackdrop: {
+      root: {
+        backgroundColor: 'rgba(0, 0, 0, 0.85)'
+      }
+    },
     MuiStepLabel: {
       root: {
         fontFamily: 'Source Sans Pro, sans-serif'
