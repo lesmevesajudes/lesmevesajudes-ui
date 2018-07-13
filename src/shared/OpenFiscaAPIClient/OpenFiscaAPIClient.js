@@ -1,5 +1,6 @@
 import axios from 'axios/index';
-import isDevelopment from './isDevelopment';
+import isDevelopment from '../isDevelopment';
+import {buildRequest} from "./RequestBuilder";
 
 class OpenFiscaAPIClient {
   url: ?string = undefined;
@@ -16,8 +17,12 @@ class OpenFiscaAPIClient {
       this.url = this.productionURL;
     }
   }
+
   makeSimulation(simulationData: any) {
-    return axios.post(this.url + '/calculate', simulationData);
+    const requestBody = buildRequest(simulationData);
+    console.log('Request: ', requestBody);
+    return axios.post(this.url + '/calculate', requestBody);
   }
 }
+
 export default OpenFiscaAPIClient;

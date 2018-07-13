@@ -102,7 +102,7 @@ let PersonForm = (props: Props) => {
                 <span className='titleText'><Trans>Informació sobre aquesta persona que conviu amb vostè</Trans></span>
               </Typography>}
         </Grid>
-        <Grid item xs={12} className='bg-form-exterior bg-form'>
+        <Grid item xs={12} className='bg-form-exterior bg-form formMinHeight'>
             <form onSubmit={handleSubmit}>
               <Field component='input' name='id' type='hidden'/>
               <Field component='input' name='is_the_user_in_front_of_the_computer' type='hidden'/>

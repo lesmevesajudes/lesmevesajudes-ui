@@ -72,7 +72,7 @@ const ResidenceForm = (props: Props) => {
             <span className='titleText'><Trans>Afegeixi informació del seu domicili habitual</Trans></span>
           </Typography>
         </Grid>
-        <Grid item xs={12} className='bg-form-exterior bg-form'>
+        <Grid item xs={12} className='bg-form-exterior bg-form formMinHeight'>
           <form name='ResidenceForm'>
             <Grid container direction='row' justify='space-around' alignItems='stretch' spacing={16}>
               <Grid item sm={6}>

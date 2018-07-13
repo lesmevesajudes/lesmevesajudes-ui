@@ -52,7 +52,7 @@ let HowManyPersonsLiveTogetherPage = props => {
         </ShowMeOnceModal>
         <Grid item xs={12} className='bg-form-exterior bg-form'>
           <form onSubmit={handleSubmit}>
-            <Grid container justify='center' alignItems='center' spacing={16}>
+            <Grid container justify='space-between' direction='column' alignItems='space-around' spacing={16}>
               <Grid item xs={12} sm={12}>
                 <Field name='how_many_persons_live_together' placeholder='0' type='number'
                        component={TextField} normalize={allowOnlyPositive} autoFocus/>

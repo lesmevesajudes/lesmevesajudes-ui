@@ -43,7 +43,7 @@ const FamilyForm = (props: Props) => {
             <span className='titleText'><Trans>Informació sobre la família</Trans></span>
               </Typography>
         </Grid>
-        <Grid item xs={12}  className='bg-form-exterior bg-form'>
+        <Grid item xs={12} className='bg-form-exterior bg-form formMinHeight'>
             <form name='FamilyForm'>
               <Grid container direction='row' justify='space-around' alignItems='stretch' spacing={16}>
               <Grid item xs={12} sm={6}>

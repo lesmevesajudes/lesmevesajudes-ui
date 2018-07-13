@@ -130,6 +130,9 @@ button {
 .bg-form {
     background: #fff;
     padding: 20px;
+}
+
+.formMinHeight {
     min-height: 600px;
 }
 
