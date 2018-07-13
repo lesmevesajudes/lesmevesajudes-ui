@@ -12,46 +12,44 @@ module.exports = {
   "load app": browser => {
     browser
         .click('a[href="/wizard/"]')
-        .waitForElementVisible("#AddParentButton");
     browser.assert.urlContains("wizard");
+  },
+  "Add Family members": browser => {
+    const utils = browser.page.UtilObject();
+    browser.waitForElementVisible('#closeButtonModal')
+    utils.closeModal();
+    utils.howManyFamiliy(2);
+    utils.nextPage();
   },
   "add father": browser => {
     const persona = browser.page.AddPerson();
-
-    browser
-        .waitForElementVisible("#AddParentButton")
-        .click("#AddParentButton");
     persona
         .deNom("Pare1")
-        .ambDataDeNaixement("15011961")
-        .ambDataDeUltimaIncripcioAlPadro("15122015")
+        .ambDataDeNaixement("57")
         .esHome()
         .teDNI()
+        .ambDataDeUltimaIncripcioAlPadro("Barcelona","3")
         .ingressosBruts(7000);
     browser
         .waitForElementVisible('button[name="ButtonValidar"]')
         .click('button[name="ButtonValidar"]')
         .pause(waitForModalAnimationsToFinishIGuess)
-        .waitForElementVisible('div.container-family')
   },
   "add mother": browser => {
     const persona = browser.page.AddPerson();
-
-    browser
-        .waitForElementVisible("#AddParentButton")
-        .click("#AddParentButton");
+    const utils = browser.page.UtilObject();
     persona
-        .deNom("Mare")
-        .ambDataDeNaixement("15011961")
-        .ambDataDeUltimaIncripcioAlPadro("15122015")
-        .esDona()
-        .teDNI()
-        .ingressosBruts(0);
+
+    utils
+      .clickNewPerson();
+    persona
+      .deNom("Mare");
+    utils.selectTypePerson("parella");
     browser
-        .waitForElementVisible('button[name="ButtonValidar"]')
-        .click('button[name="ButtonValidar"]')
-        .pause(waitForModalAnimationsToFinishIGuess)
-        .waitForElementVisible('div.container-family')
+      .waitForElementVisible('button[name="ButtonValidar"]')
+      .click('button[name="ButtonValidar"]')
+      .pause(waitForModalAnimationsToFinishIGuess)
+      .waitForElementVisible('div.container-family')
   },
   "add child": browser => {
     const persona = browser.page.AddPerson();

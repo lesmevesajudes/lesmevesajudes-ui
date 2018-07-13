@@ -48,7 +48,7 @@ class ShowMeOnceModal extends React.Component<Props, State> {
             onClose={this.handleClose}
         >
           <div style={getModalStyle()} className={classes.modalContainer}>
-              <Icon onClick={this.handleClose} style={closeImg} color='primary'>
+              <Icon id="closeButtonModal" onClick={this.handleClose} style={closeImg} color='primary'>
                 close
               </Icon>
             <Typography variant='title' id='modal-title' gutterBottom>

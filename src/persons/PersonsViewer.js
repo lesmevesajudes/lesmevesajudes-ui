@@ -90,7 +90,7 @@ type UnknownPersonProps = {
 const UnknownPersonCard = withWidth()((props: UnknownPersonProps) => {
   const { classes } = props;
     return (
-    <ListItem button onClick={() => props.onAddPersonClick()}>
+    <ListItem name="personNotDefined" button onClick={() => props.onAddPersonClick()}>
       <Avatar className={classes.avatarUnknownPerson} >?</Avatar>
       <ListItemText 
           primary={<Typography className= {classes.titleUnknownPerson} >Persona {(props.personNumber + 1).toString()} - Premi aquí per a introduir la informació d'aquesta persona</Typography>}/>

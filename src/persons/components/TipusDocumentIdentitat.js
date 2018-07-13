@@ -5,7 +5,7 @@ import MultipleAnswerQuestion from './MultipleAnswerQuestion';
 
 
 export const TipusDocumentIdentitat = () =>
-    <MultipleAnswerQuestion label={<Trans>Tipus de document d'identitat</Trans>} name='tipus_document_identitat'>
+    <MultipleAnswerQuestion label={<Trans>Tipus de document d'identitat</Trans>} id="identity-input" name='tipus_document_identitat'>
       <MenuItem value='DNI'>
         <Trans>DNI</Trans>
       </MenuItem>

@@ -5,7 +5,7 @@ import MultipleAnswerQuestion from './MultipleAnswerQuestion';
 
 export const MunicipiEmpadronament = () =>
     <MultipleAnswerQuestion label={<Trans>En quin municipi està empadronat/ada actualment?</Trans>}
-                            name='municipi_empadronament'>
+                            id="padro-input" name='municipi_empadronament'>
       <MenuItem data-test='barcelona' value='barcelona'>
         <Trans>Barcelona</Trans>
       </MenuItem>

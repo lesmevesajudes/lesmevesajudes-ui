@@ -60,7 +60,7 @@ let HowManyPersonsLiveTogetherPage = props => {
 
               <Grid item xs={12} sm={12}>
                 <Grid container className='margin-buttons' alignItems='flex-start' justify='flex-end'>
-                  <Button variant='contained' color='primary' type='submit' name='ButtonValidar'>
+                  <Button variant='contained' color='primary' type='submit' id="next-button" name='ButtonValidar'>
                     <Trans>Validar</Trans>
                   </Button>
                 </Grid>

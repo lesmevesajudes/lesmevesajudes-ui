@@ -8,7 +8,7 @@ type Props = {
   label: Object,
 }
 const MultipleAnswerQuestion = (props: Props) =>
-    <Grid item>
+    <Grid item id={props.id}>
       <label>
         <Typography>
           {props.label}

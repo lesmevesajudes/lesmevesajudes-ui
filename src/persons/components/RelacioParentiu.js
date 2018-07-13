@@ -7,7 +7,7 @@ import Icon from '@material-ui/core/Icon';
 
 export const RelacioParentiu = () =>
     <Grid item>
-      <MultipleAnswerQuestion name='relacio_parentiu' label={<Trans>Aquesta persona és el/la seu/va?</Trans>}>
+      <MultipleAnswerQuestion name='relacio_parentiu' id="relacio_parentiu" label={<Trans>Aquesta persona és el/la seu/va?</Trans>}>
         <MenuItem data-test='parella' value='parella'>
           <Trans>Cònjuge / parella</Trans>
         </MenuItem>

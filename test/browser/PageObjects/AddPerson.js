@@ -4,16 +4,20 @@ module.exports = {
   elements: {
     parentButton: "#AddParentButton",
     personName: 'input[name="nom"]',
-    dateBirth: 'input[name="data_naixement"]',
-    datePadro: 'input[name="data_alta_padro"]',
-    gender: 'div[data-test="genere"]',
-    genderW: '[data-test="genere_dona"]',
-    genderM: '[data-test="genere_home"]',
-    identity: '[data-test="document_identitat"]',
-    identityDNI: '[data-test="di_dni"]',
-    identityNIE: '[data-test="di_nie"]',
-    identityPassport: '[data-test="passport"]',
-    identityOther: '[data-test="di_altres"]',
+    dateBirth: 'input[name="edat"]',
+    datePadro: '#padro-input',
+    padroBarcelona: '[data-test="barcelona"]',
+    padroYearsBarcelona: 'input[name="anys_empadronat_a_barcelona"]',
+    padroAltres: '[data-test="altres"]',
+    padroNoCat: '[data-test="no_empadronat_a_cat"]',
+    gender: '#sexe-input',
+    genderW: '[data-test="sexe_dona"]',
+    genderM: '[data-test="sexe_home"]',
+    identity: '#identity-input',
+    identityDNI: '[data-value="DNI"]',
+    identityNIE: '[data-value="NIE"]',
+    identityPassport: '[data-value="passaport"]',
+    identityOther: '[data-value="altres"]',
     laboralSituation: '[data-test="situacio_laboral"]',
     unemployed: '[data-test="desocupat"]',
     workFullTime: '[data-test="treball_compte_daltri_jornada_complerta"]',
@@ -47,8 +51,26 @@ module.exports = {
     ambDataDeNaixement: function (birth) {
       return this.waitForElementVisible("@dateBirth").setValue('@dateBirth', birth)
     },
-    ambDataDeUltimaIncripcioAlPadro: function (padro) {
-      return this.waitForElementVisible("@datePadro").setValue('@datePadro', padro)
+    ambDataDeUltimaIncripcioAlPadro: function (typePadro, years) {
+      this.waitForElementVisible("@datePadro").click('@datePadro');
+      if(typePadro === "Barcelona"){
+        this
+        .waitForElementVisible("@padroBarcelona")
+        .click("@padroBarcelona")
+        .api.pause(waitForModalAnimationsToFinishIGuess);
+        this.waitForElementVisible("@padroYearsBarcelona").setValue('@padroYearsBarcelona', years);
+      }else if(typePadro === "No Catalunya"){
+        this
+        .waitForElementVisible("@padroNoCat")
+        .click("@padroNoCat")
+        .api.pause(waitForModalAnimationsToFinishIGuess);
+      }else {
+        this
+        .waitForElementVisible("@padroAltres")
+        .click("@padroAltres")
+        .api.pause(waitForModalAnimationsToFinishIGuess);
+      }
+      return this;
     },
     esDona: function () {
       this.waitForElementVisible("@gender")

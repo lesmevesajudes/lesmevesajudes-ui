@@ -123,7 +123,7 @@ let PersonForm = (props: Props) => {
                         <Trans>Quina és la seva edat?</Trans>
                       </TimePeriodQuestion>
 
-                      <MultipleAnswerQuestion label={<Trans>Sexe</Trans>} name='sexe'>
+                      <MultipleAnswerQuestion label={<Trans>Sexe</Trans>} id="sexe-input" name='sexe'>
                         <MenuItem data-test='sexe_dona' value='dona'>
                           <Trans>Femení</Trans>
                         </MenuItem>
