@@ -9,6 +9,7 @@ import DoneIcon from '@material-ui/icons/Done';
 import ClearIcon from '@material-ui/icons/Clear';
 import {styles} from '../styles/theme';
 import {withStyles} from '@material-ui/core/styles';
+
 type Props = {
   benefit: Object,
   subject: Object
@@ -31,7 +32,7 @@ const Period = (props) => {
   }
 };
 
-export const BenefitRow = ({benefit, subject,props}: Props) =>
+export const BenefitRow = ({benefit, subject}: Props) =>
     <Grid
         className='ResultPage'
         container
@@ -72,7 +73,7 @@ export const BenefitRow = ({benefit, subject,props}: Props) =>
     </Grid>;
 
 export const NoBenefitRow = () =>
-    <Grid container sm={12} xs={12} justify='center' alignItems='center' className='ItemResult'>
+    <Grid container justify='center' alignItems='center' className='ItemResult'>
       <Grid item xs={1}>
         <ClearIcon className='resultIconError'/>
       </Grid>
