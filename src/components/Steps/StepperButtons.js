@@ -29,6 +29,7 @@ let StepperButtons = (props: Props) => {
           <Button className={classNames('right-button', 'buttonTheme')}
                   color='primary' variant='contained'
                   onClick={props.nextAction}
+                  id="next-button"
                   disabled={!props.buttonEnabled}>
             {props.nextIsResults ? <Trans>Veure resultats</Trans> : <Trans >Següent <Icon className={props.classes.leftIcon}>keyboard_arrow_right</Icon></Trans>}
           </Button>}

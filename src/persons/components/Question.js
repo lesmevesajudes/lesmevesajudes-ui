@@ -12,12 +12,12 @@ type Props = {
 export const Question = (props: Props) =>
     <Grid item>
       <label>
-        <Typography gutterBottom>
+        <Typography id="test" gutterBottom>
           {props.children}
           {isHelpAvailable(props.name) &&
           <Hidden smUp> <HelpIcon name={props.name}/> </Hidden>
           }
         </Typography>
       </label>
-      <Field {...props} fullWidth/>
+      <Field {...props} id="test" fullWidth/>
     </Grid>;

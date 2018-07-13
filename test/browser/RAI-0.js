@@ -9,44 +9,43 @@ module.exports = {
         // wait for page to load
         .waitForElementVisible(".CTA");
   },
+
   "load app": browser => {
     browser
         .click('a[href="/wizard/"]')
-        .waitForElementVisible("#AddParentButton");
     browser.assert.urlContains("wizard");
+  },
+  "Add family members": browser => {
+    const utils = browser.page.UtilObject();
+    browser.waitForElementVisible('#closeButtonModal')
+    utils.closeModal();
+    utils.howManyFamiliy(1);
+    utils.nextPage();
   },
   "can add an parent": browser => {
     const persona = browser.page.AddPerson();
-    browser
-        .waitForElementVisible("#AddParentButton")
-        .click("#AddParentButton")
-        .waitForElementVisible('input[name="nom"]')
-        .pause(waitForModalAnimationsToFinishIGuess);
     persona
         .deNom("Woman RAI-0")
-        .ambDataDeNaixement("15011961")
-        .ambDataDeUltimaIncripcioAlPadro("15011961")
+        .ambDataDeNaixement("57")
+        .ambDataDeUltimaIncripcioAlPadro("Barcelona","3")
         .waitForElementVisible("@gender")
         .esDona()
         .teDNI()
         .situacioLaboralDesocupat()
-        .teUnPercentatgeDeMinusvaliaDel(34)
+        //.teUnPercentatgeDeMinusvaliaDel(34)
         .ingressosBruts(6000)
-        .inscritComADemanadantDOcupacio()
-        .esgotatPrestacioDesocupacio()
-        .demandantDesocupacioDurant12Mesos()
-        .haRealitzatAccionsDeRecercaActivaDeFeinaEnElMesAnterior();
+        //.inscritComADemanadantDOcupacio()
+        //.esgotatPrestacioDesocupacio()
+        //.demandantDesocupacioDurant12Mesos()
+        //.haRealitzatAccionsDeRecercaActivaDeFeinaEnElMesAnterior();
     browser.pause(waitForModalAnimationsToFinishIGuess);
     browser
         .waitForElementVisible('button[name="ButtonValidar"]')
         .click('button[name="ButtonValidar"]')
-        .pause(waitForModalAnimationsToFinishIGuess)
-        .waitForElementVisible('div.container-family')
   },
   "can set family settings": browser => {
     const utils = browser.page.UtilObject();
     utils.nextPage();
-    utils.nextPage()
   },
   "rent settings": browser => {
     const utils = browser.page.UtilObject();

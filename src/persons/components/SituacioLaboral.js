@@ -4,7 +4,7 @@ import {Trans} from 'react-i18next';
 import MultipleAnswerQuestion from './MultipleAnswerQuestion';
 
 export const SituacioLaboral = () =>
-    <MultipleAnswerQuestion label={<Trans>Indiqui la seva situació laboral:</Trans>} name='situacio_laboral'>
+    <MultipleAnswerQuestion label={<Trans>Indiqui la seva situació laboral:</Trans>} id='situacio_laboral' name='situacio_laboral'>
       <MenuItem data-test='treball_compte_propi' value='treball_compte_propi'>
         <Trans>Treballa per compte propi</Trans>
       </MenuItem>
