@@ -78,6 +78,7 @@ const ResidenceForm = (props: Props) => {
               <Grid item sm={6}>
                 <Grid container direction='column' alignItems='stretch' spacing={16}>
                   <MultipleAnswerQuestion name='relacio_habitatge'
+                                          id='relacio_habitatge'
                                           label={<Trans>Quina és la seva situació respecte a l’habitatge</Trans>}>
                     <MenuItem value='llogater' data-test='llogater'><Trans>Visc de lloguer</Trans></MenuItem>
                     <MenuItem value='propietari'><Trans>Visc en un habitatge de propietat sense
@@ -89,7 +90,7 @@ const ResidenceForm = (props: Props) => {
                     </MenuItem>
                     <MenuItem value='no_en_te'><Trans>No tinc un habitatge fix</Trans></MenuItem>
                     <MenuItem value='cessio'>
-                      <Trans>Visc en un habitatge en cessió d'ús</Trans>&nbsp;&nbsp;<Icon>info</Icon>
+                      <Trans>Visc en un habitatge en cessió d'ús</Trans>&nbsp;&nbsp
                     </MenuItem>
                     <MenuItem value='altres'><Trans>Altres</Trans></MenuItem>
                   </MultipleAnswerQuestion>

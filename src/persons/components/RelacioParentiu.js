@@ -21,7 +21,7 @@ export const RelacioParentiu = () =>
           <Trans>Nét/a</Trans>
         </MenuItem>
         <MenuItem data-test='infant_acollit' value='infant_acollit'>
-          <Trans>Infant en acolliment </Trans><Icon>info</Icon>
+          <Trans>Infant en acolliment </Trans>
         </MenuItem>
         <MenuItem data-test='pare' value='pare'>
           <Trans>Pare o mare</Trans>
