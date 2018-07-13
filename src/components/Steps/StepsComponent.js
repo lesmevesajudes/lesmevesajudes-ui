@@ -66,15 +66,18 @@ class StepsComponent extends React.Component<Props, State> {
   };
 
   setStep = (index: number) => {
-    index <= this.state.max_step_reached
-    && (
-        !isOptionalStep(this.props.steps[index])
-        || (isOptionalStep(this.props.steps[index]) && this.props.steps[index].shouldShowStep(this.props.appState)))
-        ? this.setState({
-          ...this.state,
-          current_step: index,
-        }) : null;
+    if (index <= this.state.max_step_reached && this.shouldShowStep(index)) {
+      this.setState({
+        ...this.state,
+        current_step: index,
+      })
+    }
   };
+
+  shouldShowStep(index) {
+    return !isOptionalStep(this.props.steps[index])
+        || (isOptionalStep(this.props.steps[index]) && this.props.steps[index].shouldShowStep(this.props.appState));
+  }
 
   constructor(props) {
     super(props);
