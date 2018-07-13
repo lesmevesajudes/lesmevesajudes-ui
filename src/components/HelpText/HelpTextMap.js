@@ -42,17 +42,17 @@ const HelpTextMap = {
       <Typography variant='subheading' className='subtitle' gutterBottom>Guarda i custòdia</Typography>
 
       Com a guarda i custòdia s’entén viure amb els fills o filles, cuidar-los i assistir-los. Es pot atribuir a una
-        de les persones progenitores, compartida entre ambdues o a una tercera persona. Abans d’acordar el règim de
-        guarda i custòdia, el jutge ha de considerar l’informe del Ministeri Fiscal i escoltar els menors que tinguin
-        suficient judici quan s’estimi necessari.
-        Cal un document acreditatiu.
+      de les persones progenitores, compartida entre ambdues o a una tercera persona. Abans d’acordar el règim de
+      guarda i custòdia, el jutge ha de considerar l’informe del Ministeri Fiscal i escoltar els menors que tinguin
+      suficient judici quan s’estimi necessari.
+      Cal un document acreditatiu.
 
       <Typography variant='subheading' className='subtitle' gutterBottom>Tutela legal</Typography>
       La tutela és la institució principal en la protecció de les persones incapacitades, a les quals ha d'assegurar
-        la protecció, l'administració i la guarda de drets i béns. Normalment, és l'autoritat conferida a una persona
-        física o jurídica, anomenada tutor o tutora, per tenir cura d'una persona i els seus béns pel fet que sigui
-        menor d'edat o hagi estat declarada incapaç. Les funcions que se li confereixen són: atenció personal,
-        administració dels béns i representació legal.
+      la protecció, l'administració i la guarda de drets i béns. Normalment, és l'autoritat conferida a una persona
+      física o jurídica, anomenada tutor o tutora, per tenir cura d'una persona i els seus béns pel fet que sigui
+      menor d'edat o hagi estat declarada incapaç. Les funcions que se li confereixen són: atenció personal,
+      administració dels béns i representació legal.
       Cal un document acreditatiu.
       Les persones que s’han de posar en tutela són:
       <ul>
@@ -182,9 +182,9 @@ const HelpTextMap = {
     body: <Trans>
       <Typography variant='subheading' className='subtitle' gutterBottom>Infant en acolliment</Typography>
       L'acolliment familiar d'un infant comporta confiar temporalment la guarda d'una persona menor a una família o
-        persona sola, sense que hi hagi finalitat adoptiva.
-        És una mesura temporal per oferir als infants el millor entorn possible per créixer fins que la seva família
-        resolgui els problemes que li impedeixen d'ocupar-se'n
+      persona sola, sense que hi hagi finalitat adoptiva.
+      És una mesura temporal per oferir als infants el millor entorn possible per créixer fins que la seva família
+      resolgui els problemes que li impedeixen d'ocupar-se'n
       Cal un document acreditatiu.
     </Trans>
   },
@@ -250,6 +250,17 @@ const HelpTextMap = {
       herències, atès que té la característica que dona protecció al cònjuge (té l'ús i gaudi per a tota la vida)
       sense
       afectar els drets hereditaris de les persones descendents, que amb el temps acabaran adquirint la seva herència.
+    </Trans>
+  },
+  'tipus_document_identitat': {
+    title: <Trans>Document d'identitat</Trans>,
+    body: <Trans>
+      El tipus de document d’identitat és un requisit que pot determinar l’accés a alguns ajuts.
+      Si disposa de més d’un document d’identitat li recomanem que segueixi el següent criteri:
+      <ul>
+        <li>En cas de disposar de DNI i algun altre document d’identitat seleccioni DNI</li>
+        <li>En cas de disposar de NIE i algun altre document d’identitat (que no sigui el DNI) seleccioni el NIE.)</li>
+      </ul>
     </Trans>
   },
   'titular_contracte_de_lloguer_id': {
