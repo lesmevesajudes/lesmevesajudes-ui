@@ -13,7 +13,7 @@ const isCustodyFilled = (menorID: PersonID, custodies) => typeof custodies[menor
 
 const personesAmbCustodiaConvivents = (menorID: PersonID, custodies) => [custodies[menorID].primer, custodies[menorID].segon].filter((sustentadorID) => sustentadorID !== 'ningu_mes' && sustentadorID !== 'no_conviu').sort();
 
-export const detectaFamilies = (custodies: { [string]: Custodia }): Object =>
+export const detectaFamiliesAPartirDeCustodies = (custodies: { [string]: Custodia }): Object =>
     Object.keys(custodies).reduce(
         (families: Object, menorID: string) => {
           const sustentadors = personesAmbCustodiaConvivents(menorID, custodies);

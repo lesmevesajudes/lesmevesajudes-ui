@@ -9,7 +9,8 @@ export const FETCH_SIMULATION = 'fetch_simulation';
 export type SimulationData = {
   persons: PersonsState,
   residence: ResidenceData,
-  family: FamilyData
+  family: FamilyData,
+  parelles: Object
 };
 
 export function fetchSimulation(simulationData: SimulationData) {

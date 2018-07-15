@@ -1,10 +1,10 @@
-import {detectaFamilies} from './detectaFamilies';
+import {detectaFamiliesAPartirDeCustodies} from './detectaFamiliesAPartirDeCustodies';
 import {Map} from 'immutable';
 
 describe('Given a set of custodies detect families', () => {
       it('Detects a family with two parents', () => {
         expect(
-            detectaFamilies(
+            detectaFamiliesAPartirDeCustodies(
                 {
                   '12a030f5-31f1-43d0-828b-168eb55471db': {
                     primer: '7307eb57-41ef-40f5-861a-1dcc72ac3f1e',
@@ -26,7 +26,7 @@ describe('Given a set of custodies detect families', () => {
 
       it('Detects one family from multiple custodies', () => {
         expect(
-            detectaFamilies(
+            detectaFamiliesAPartirDeCustodies(
                 {
                   '12a030f5-31f1-43d0-828b-168eb55471db': {
                     primer: '7307eb57-41ef-40f5-861a-1dcc72ac3f1e',
@@ -51,7 +51,7 @@ describe('Given a set of custodies detect families', () => {
 
       it('Detects two families from multiple custodies', () => {
         expect(
-            detectaFamilies(
+            detectaFamiliesAPartirDeCustodies(
                 {
                   '12a030f5-31f1-43d0-828b-168eb55471db': {
                     primer: '7307eb57-41ef-40f5-861a-1dcc72ac3f1e',
@@ -82,7 +82,7 @@ describe('Given a set of custodies detect families', () => {
 
       it('Detects a monoparental family when there is only one parent', () => {
         expect(
-            detectaFamilies(
+            detectaFamiliesAPartirDeCustodies(
                 {
                   '12a030f5-31f1-43d0-828b-168eb55471db': {
                     primer: '7307eb57-41ef-40f5-861a-1dcc72ac3f1e',
@@ -112,7 +112,7 @@ describe('Given a set of custodies detect families', () => {
 
       it('Does not detect a family when there isn\'t one', () => {
         expect(
-            detectaFamilies(
+            detectaFamiliesAPartirDeCustodies(
                 {
                   '12a030f5-31f1-43d0-828b-168eb55471db': {
                     primer: 'no_conviu',
@@ -126,7 +126,7 @@ describe('Given a set of custodies detect families', () => {
 
       it('Does not detect a family when custodies is empty', () => {
         expect(
-            detectaFamilies({}, Map({}))
+            detectaFamiliesAPartirDeCustodies({}, Map({}))
         ).toEqual(
             {}
         );

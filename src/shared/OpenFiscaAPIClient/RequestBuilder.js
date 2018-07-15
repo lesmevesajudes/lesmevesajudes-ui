@@ -2,45 +2,58 @@ import type {Person, PersonID} from "../../persons/PersonTypes";
 import {demarcacioDelCodiPostal, zonaDelCodiPostal} from "../CodisPostals";
 import {serialize} from "../../persons/PersonsReducer";
 import {create as createUUID} from '../UUID';
-import type {Custodia} from "../../family/detectaFamilies";
-import {detectaFamilies} from "../../family/detectaFamilies";
+import {detectaFamiliesAPartirDeCustodies} from "../../family/detectaFamiliesAPartirDeCustodies";
 import type {ResidenceData} from "../../residence/ResidenceTypes";
 import {esInfantAcollit} from "../selectorUtils";
 import type {SimulationData} from "../../results/FetchSimulationAction";
+import {possiblesParellesDe} from "../../family/FamilyForm";
 
 const currentMonth = value => ({'2017-01': value});
 const lastYear = value => ({'2016': value});
-const isEmptyMap = (anObject: Object) => Object.keys(anObject).length === 0 && anObject.constructor === Object;
 const seleccionaFamiliarsFinsASegonGrau = (persons: Array<Person>) => persons.filter((persona: Person) => persona.relacio_parentiu !== 'cap' && persona.relacio_parentiu !== 'altres').map((persona: Person) => persona.id);
 const allPersonsIDs = (persons: Array<Person>) => persons.map((persona: Person) => persona.id);
 const esUnSustentadorConvivent = (sustentador: ?string) => typeof sustentador === 'string' && sustentador !== 'ningu_mes' && sustentador !== 'no_conviu';
-const areThereAny016Families = (custodies) => custodies.constructor === Object && Object.keys(custodies).filter((custodia: Custodia) => (esUnSustentadorConvivent(custodia.primer) || esUnSustentadorConvivent(custodia.segon))).length > 0;
+const areThereAny016Families = (custodies) => custodies.constructor === Object && Object.keys(custodies).filter((custodiaID: string) => (esUnSustentadorConvivent(custodies[custodiaID].primer) || esUnSustentadorConvivent(custodies[custodiaID].segon))).length > 0;
 const seleccionaNoFamiliarsFinsASegonGrau = (persons: Array<Person>) => persons.filter((persona: Person) => persona.relacio_parentiu === 'cap' || persona.relacio_parentiu === 'altres').map((persona: Person) => persona.id);
 
 const seleccionaElsAltresMembresDeLaUnitatDeConvivenciaQueSiguinFamiliarsFinsASegonGrau =
     (family016Members: Array<PersonID>, persons: Array<Person>) =>
         seleccionaFamiliarsFinsASegonGrau(persons).filter((personaID: PersonID) => family016Members.indexOf(personaID) === -1);
 
-const buildOpenFiscaFamiliesFromCustodies = (custodies, simulationData) => {
-  const detectedFamilies = detectaFamilies(custodies, simulationData.persons);
-  return Object.keys(detectedFamilies).reduce((result, familiaID) => {
-    const IDsFamilia016 = [...detectedFamilies[familiaID].sustentadors, ...detectedFamilies[familiaID].menors];
+function afegeixSustentadorsSenseCustodia(persones, parelles) {
+  return (familia) => {
+    if (familia.monoparental) {
+      const sustentador = familia.sustentadors[0];
+
+      familia.sustentadors = [sustentador, typeof parelles[sustentador] !== 'undefined' ? parelles[sustentador] : possiblesParellesDe(sustentador, persones)[0]]
+
+    } else return familia;
+  }
+}
+
+const buildOpenFiscaFamiliesFromCustodies = (custodies, persons, families) => {
+  const familiesFromCustodies = detectaFamiliesAPartirDeCustodies(custodies, persons);
+  console.log("familiesFromCustodies: ", familiesFromCustodies);
+  const families016 = familiesFromCustodies.map(afegeixSustentadorsSenseCustodia(persons, families.parelles));
+  console.log("fmilies 016: ", families016);
+  return Object.keys(families016).reduce((result, familiaID) => {
+    const IDsFamilia016 = [...families016[familiaID].sustentadors, ...families016[familiaID].menors];
     const carnetMonoparental =
-        typeof(simulationData.family.disposa_de_carnet_familia_monoparental) !== 'undefined'
-        && typeof(simulationData.family.disposa_de_carnet_familia_monoparental[familiaID]) !== 'undefined'
-        && simulationData.family.disposa_de_carnet_familia_monoparental[familiaID]
+        typeof(families.disposa_de_carnet_familia_monoparental) !== 'undefined'
+        && typeof(families.disposa_de_carnet_familia_monoparental[familiaID]) !== 'undefined'
+        && families.disposa_de_carnet_familia_monoparental[familiaID]
             ? 'general' : 'nop';
 
     result[familiaID] = {
-      adults: detectedFamilies[familiaID].sustentadors,
-      menors: detectedFamilies[familiaID].menors,
-      altres_persones: seleccionaNoFamiliarsFinsASegonGrau(serialize(simulationData.persons)),
+      adults: families016[familiaID].sustentadors,
+      menors: families016[familiaID].menors,
+      altres_persones: seleccionaNoFamiliarsFinsASegonGrau(serialize(persons)),
       altres_familiars: seleccionaElsAltresMembresDeLaUnitatDeConvivenciaQueSiguinFamiliarsFinsASegonGrau(
           IDsFamilia016,
-          serialize(simulationData.persons)),
-      es_usuari_serveis_socials: currentMonth(simulationData.family.usuari_serveis_socials[familiaID]),
+          serialize(persons)),
+      es_usuari_serveis_socials: currentMonth(families.usuari_serveis_socials[familiaID]),
       tipus_familia_monoparental: currentMonth(carnetMonoparental),
-      tipus_custodia: currentMonth(detectedFamilies[familiaID].tipus_custodia)
+      tipus_custodia: currentMonth(families016[familiaID].tipus_custodia)
     };
     return result;
   }, {});
@@ -154,7 +167,7 @@ export const buildRequest = (simulationData: SimulationData) => {
   simulationData.residence.demarcacio_de_lhabitatge = demarcacioDelCodiPostal(simulationData.residence.codi_postal_habitatge);
 
   const families = areThereAny016Families(simulationData.family.custodies)
-      ? buildOpenFiscaFamiliesFromCustodies(simulationData.family.custodies, simulationData)
+      ? buildOpenFiscaFamiliesFromCustodies(simulationData.family.custodies, simulationData.persons, simulationData.family)
       : createAFamilyWithAllPersons(simulationData);
 
   const unitatsDeConvivencia = createUnitatDeConvivencia(simulationData);

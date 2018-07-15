@@ -6,3 +6,4 @@ export const esSustentador = (persona: Person) => persona.edat > 16
         (typeof persona.relacio_parentiu === 'string' && persona.relacio_parentiu !== 'cap'));
 export const esInfantAcollit = (persona: Person) => persona.rol === 'infant_acollit';
 export const currentFocussedFieldSelector = (formName: string): Function => (state): ?string => (typeof state.form[formName] === 'undefined') ? undefined : state.form[formName].active;
+export const personsByRelacioDeParentiu = (relacioDeParentiu: string, persones: Array<Person>) => persones.filter((person: Person) => person.relacio_parentiu === relacioDeParentiu);

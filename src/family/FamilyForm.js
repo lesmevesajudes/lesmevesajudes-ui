@@ -9,13 +9,13 @@ import Grid from '@material-ui/core/Grid';
 import MenuItem from '@material-ui/core/MenuItem';
 import type {Person, PersonID} from '../persons/PersonTypes';
 import {Map} from 'immutable';
-import {currentFocussedFieldSelector, esFill, esSustentador} from '../shared/selectorUtils';
+import {currentFocussedFieldSelector, esFill, esSustentador, personsByRelacioDeParentiu} from '../shared/selectorUtils';
 import DescriptionText from '../components/Common/DescriptionText';
 import {Trans} from 'react-i18next';
 import Typography from '@material-ui/core/Typography';
 import {YesNoQuestion} from '../persons/components/YesNoQuestion';
 import FormSubTitle from '../persons/components/FormSubTitle';
-import {detectaFamilies} from './detectaFamilies';
+import {detectaFamiliesAPartirDeCustodies} from './detectaFamiliesAPartirDeCustodies';
 import {createFamilyName, toArray} from './createFamilyName';
 import Sticky from 'react-stickynode';
 import {IconFont} from '../components/IconFont/IconFont';
@@ -31,11 +31,12 @@ type Props = {
   initialValues: FamilyData,
   persones: Map<PersonID, Person>,
   possiblesSustentadors: Map<PersonID, Person>,
-  sustentadorsUnics: Array<Person>
+  sustentadorsSolitarisAmbPossiblesParelles: Map<Person, Array<Person>>
 };
 
 const FamilyForm = (props: Props) => {
-  const {currentField, custodies, families, fills, persones, possiblesSustentadors, sustentadorsUnics} = props;
+  const {currentField, custodies, families, fills, persones, possiblesSustentadors, sustentadorsSolitarisAmbPossiblesParelles} = props;
+  console.log("sustentadorsiparelles:", sustentadorsSolitarisAmbPossiblesParelles);
   return (
       <Grid container className='bg-container'>
         <Grid item xs={12} sm={12} className='titleContainer'>
@@ -53,8 +54,8 @@ const FamilyForm = (props: Props) => {
                       <Grid item xs={12} key={infant.id}>
 
                         <label>
-                          <Typography gutterBottom><Trans>Qui té la guarda i custòdia o tutela legal
-                            de: </Trans><b>{infant.nom}</b>
+                          <Typography gutterBottom>
+                            <Trans>Qui té la guarda i custòdia o tutela legal de: </Trans><b>{infant.nom}</b>
                           </Typography>
                         </label>
                         <Grid container direction='row' justify='space-between'>
@@ -87,15 +88,33 @@ const FamilyForm = (props: Props) => {
                         </Grid>
 
                       </Grid>)}
-                  {sustentadorsUnics.length > 0 &&
-                  sustentadorsUnics.map((sustentador) =>
-                      <Fragment key={sustentador}>
-                      </Fragment>
-                  }
                   {families.length > 0 &&
                   families.map((familia) =>
                       <Fragment key={familia.ID}>
                         <FormSubTitle><Trans>Família de: </Trans> {createFamilyName(familia, persones)} </FormSubTitle>
+                        { // $FlowFixMe
+                          typeof sustentadorsSolitarisAmbPossiblesParelles[familia.sustentadors[0]] !== 'undefined' &&
+                          // $FlowFixMe
+                          sustentadorsSolitarisAmbPossiblesParelles[familia.sustentadors[0]].length > 1 &&
+                          <Fragment>
+                            <label>
+                              <Typography gutterBottom>
+                                <Trans>Existeix una parella
+                                  de: </Trans><b>{persones.get(familia.sustentadors[0]).nom}</b>
+                              </Typography>
+                            </label>
+                            <Field name={'parelles.' + familia.sustentadors[0]} component={Select} fullWidth>
+                              {// $FlowFixMe
+                                sustentadorsSolitarisAmbPossiblesParelles[familia.sustentadors[0]].map((possibleParella: Person) =>
+                                    <MenuItem key={`parella-${familia.sustentadors[0]}-${possibleParella.id}`}
+                                              value={possibleParella.id}>
+                                      {possibleParella.nom} ({possibleParella.edat})
+                                    </MenuItem>
+                                )}
+                              <MenuItem key='no-en-te' value='no-en-te'>No en té</MenuItem>
+                            </Field>
+                          </Fragment>
+                        }
                         {familia.monoparental &&
                         <YesNoQuestion name={'disposa_de_carnet_familia_monoparental.' + familia.ID}>
                           <Trans>Té el carnet de família monoparental?</Trans>
@@ -103,8 +122,7 @@ const FamilyForm = (props: Props) => {
 
                         <YesNoQuestion name={'usuari_serveis_socials.' + familia.ID}>
                           <Trans>Aquesta família és usuària de serveis socials en seguiment a un CSS o servei
-                            especialitzat de
-                            l'Ajuntament de Barcelona des d'abans del 31/12/2017?</Trans>
+                            especialitzat de l'Ajuntament de Barcelona des d'abans del 31/12/2017?</Trans>
                         </YesNoQuestion>
                       </Fragment>
                   )}
@@ -123,12 +141,35 @@ const FamilyForm = (props: Props) => {
   );
 };
 
+export function possiblesParellesDe(person: Person, persons: Map<PersonID, Person>): Array<Person> {
+  switch (person.relacio_parentiu) {
+    case undefined:
+      return personsByRelacioDeParentiu('parella', persons.toArray());
+    case 'fill':
+      return personsByRelacioDeParentiu('gendre', persons.toArray());
+    case 'germa':
+      return personsByRelacioDeParentiu('cunyat', persons.toArray());
+    default:
+      return [];
+  }
+}
+
+export function sustentadorsSolitarisIPossiblesParelles(sustentadors: Array<Person>, persones: Map<PersonID, Person>) {
+  return sustentadors.reduce((result, current) => {
+    // $FlowFixMe
+    result[current.id] = possiblesParellesDe(current, persones);
+    return result;
+  }, {})
+}
+
 function mapStateToProps(state) {
   const currentField = currentFocussedFieldSelector('FamilyForm')(state);
   const custodies = typeof state.family.custodies !== 'undefined' ? state.family.custodies : {};
-  const families = toArray(detectaFamilies(custodies, state.persons));
+  const families = toArray(detectaFamiliesAPartirDeCustodies(custodies, state.persons));
   const familiesMonoparentals = families.filter((familia) => familia.monoparental);
   const sustentadorsUnicsIDs = familiesMonoparentals.map((familia) => familia.sustentadors[0]);
+  const sustentadorsSolitaris = state.persons.filter((person: Person) => sustentadorsUnicsIDs.includes(person.id));
+  const sustentadorsSolitarisAmbPossiblesParelles = sustentadorsSolitarisIPossiblesParelles(sustentadorsSolitaris, state.persons);
   return {
     currentField: currentField,
     custodies: custodies,
@@ -137,7 +178,7 @@ function mapStateToProps(state) {
     initialValues: state.family,
     persones: state.persons,
     possiblesSustentadors: state.persons.filter((person: Person) => esSustentador(person)),
-    sustentadorsUnicsIDs: sustentadorsUnicsIDs
+    sustentadorsSolitarisAmbPossiblesParelles: sustentadorsSolitarisAmbPossiblesParelles
   };
 }
 

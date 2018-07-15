@@ -28,8 +28,17 @@ export const aPerson = (props) => ({
   }, ...props
 });
 
-export const aWoman = (props) => ({sexe: 'dona', ...props});
-export const aMan = (props) => ({sexe: 'home', ...props});
-export const ofAge = (age, props) => ({edat: age, ...props});
-export const isThePersonInFromOfTheComputer = (props) => ({is_the_person_in_front_of_the_computer: true, ...props});
-export const isPartner = (props) => ({relacio_parentiu: '', ...props});
+export const aWoman = (props) => ({...props, sexe: 'dona'});
+export const aMan = (props) => ({...props, sexe: 'home'});
+export const ofAge = (age, props) => ({...props, edat: age});
+export const isThePersonInFromOfTheComputer = (props) => ({...props, is_the_person_in_front_of_the_computer: true});
+export const isPartner = (props) => ({...props, relacio_parentiu: 'parella'});
+export const isSon = (props) => ({...props, relacio_parentiu: 'fill'});
+export const isBrother = (props) => ({...props, relacio_parentiu: 'germa'});
+export const isParent = (props) => ({...props, relacio_parentiu: 'pare'});
+export const isGrandSon = (props) => ({...props, relacio_parentiu: 'net'});
+export const isPoliticalSon = (props) => ({...props, relacio_parentiu: 'gendre'});
+export const isPoliticalBrother = (props) => ({...props, relacio_parentiu: 'cunyat'});
+export const named = (nom, props) => ({...props, nom: nom});
+
+
