@@ -20,22 +20,51 @@ const seleccionaElsAltresMembresDeLaUnitatDeConvivenciaQueSiguinFamiliarsFinsASe
     (family016Members: Array<PersonID>, persons: Array<Person>) =>
         seleccionaFamiliarsFinsASegonGrau(persons).filter((personaID: PersonID) => family016Members.indexOf(personaID) === -1);
 
-function afegeixSustentadorsSenseCustodia(persones, parelles) {
-  return (familia) => {
-    if (familia.monoparental) {
-      const sustentador = familia.sustentadors[0];
-
-      familia.sustentadors = [sustentador, typeof parelles[sustentador] !== 'undefined' ? parelles[sustentador] : possiblesParellesDe(sustentador, persones)[0]]
-
-    } else return familia;
-  }
+function afegeixSustentadorsSenseCustodies(familiesFromCustodies, families, persons) {
+  return Object.keys(familiesFromCustodies).reduce(
+      (acc, familiaID) => {
+        let familia = familiesFromCustodies[familiaID];
+        if (familia.monoparental) {
+          const sustentador = familia.sustentadors[0];
+          familia.sustentadors = [sustentador, typeof families.parelles[sustentador] !== 'undefined'
+              ? families.parelles[sustentador]
+              : possiblesParellesDe(sustentador, persons)[0]];
+          acc[familiaID] = familia;
+        } else {
+          acc[familiaID] = familia;
+        }
+        return acc;
+      },
+      {});
 }
 
-const buildOpenFiscaFamiliesFromCustodies = (custodies, persons, families) => {
+const buildFamilies016 = (custodies, persons, families) => {
   const familiesFromCustodies = detectaFamiliesAPartirDeCustodies(custodies, persons);
-  console.log("familiesFromCustodies: ", familiesFromCustodies);
-  const families016 = familiesFromCustodies.map(afegeixSustentadorsSenseCustodia(persons, families.parelles));
-  console.log("fmilies 016: ", families016);
+  const families016 = afegeixSustentadorsSenseCustodies(familiesFromCustodies, families, persons);
+
+  return Object.keys(families016).reduce((result, familiaID) => {
+    const IDsFamilia016 = [...families016[familiaID].sustentadors, ...families016[familiaID].menors];
+    const carnetMonoparental =
+        typeof(families.disposa_de_carnet_familia_monoparental) !== 'undefined'
+        && typeof(families.disposa_de_carnet_familia_monoparental[familiaID]) !== 'undefined'
+        && families.disposa_de_carnet_familia_monoparental[familiaID]
+            ? 'general' : 'nop';
+
+    result[familiaID] = {
+      adults: families016[familiaID].sustentadors,
+      menors: families016[familiaID].menors,
+      es_usuari_serveis_socials: currentMonth(families.usuari_serveis_socials[familiaID]),
+      tipus_familia_monoparental: currentMonth(carnetMonoparental),
+      tipus_custodia: currentMonth(families016[familiaID].tipus_custodia)
+    };
+    return result;
+  }, {});
+};
+
+const buildFamilies016 = (custodies, persons, families) => {
+  const familiesFromCustodies = detectaFamiliesAPartirDeCustodies(custodies, persons);
+  const families016 = afegeixSustentadorsSenseCustodies(familiesFromCustodies, families, persons);
+
   return Object.keys(families016).reduce((result, familiaID) => {
     const IDsFamilia016 = [...families016[familiaID].sustentadors, ...families016[familiaID].menors];
     const carnetMonoparental =
@@ -59,14 +88,14 @@ const buildOpenFiscaFamiliesFromCustodies = (custodies, persons, families) => {
   }, {});
 };
 
-const createAFamilyWithAllPersons = (simulationData) => {
+const createAFamilyWithAllPersons = (persones) => {
   const id = createUUID();
   let result = {};
   result[id] = {
-    altres_persones: seleccionaNoFamiliarsFinsASegonGrau(serialize(simulationData.persons)),
+    altres_persones: seleccionaNoFamiliarsFinsASegonGrau(serialize(persones)),
     altres_familiars: seleccionaElsAltresMembresDeLaUnitatDeConvivenciaQueSiguinFamiliarsFinsASegonGrau(
         [],
-        serialize(simulationData.persons))
+        serialize(persones))
   };
   return result;
 };
@@ -166,14 +195,11 @@ export const buildRequest = (simulationData: SimulationData) => {
   simulationData.residence.zona_de_lhabitatge = zonaDelCodiPostal(simulationData.residence.codi_postal_habitatge);
   simulationData.residence.demarcacio_de_lhabitatge = demarcacioDelCodiPostal(simulationData.residence.codi_postal_habitatge);
 
-  const families = areThereAny016Families(simulationData.family.custodies)
-      ? buildOpenFiscaFamiliesFromCustodies(simulationData.family.custodies, simulationData.persons, simulationData.family)
-      : createAFamilyWithAllPersons(simulationData);
-
   const unitatsDeConvivencia = createUnitatDeConvivencia(simulationData);
 
   return {
-    families: families,
+    families016: buildFamilies016(simulationData.family.custodies, simulationData.persons, simulationData.family),
+    families: createAFamilyWithAllPersons(simulationData.persons),
     persones: {...personalData},
     unitats_de_convivencia: unitatsDeConvivencia
   };
