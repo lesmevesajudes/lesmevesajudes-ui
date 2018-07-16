@@ -61,33 +61,6 @@ const buildFamilies016 = (custodies, persons, families) => {
   }, {});
 };
 
-const buildFamilies016 = (custodies, persons, families) => {
-  const familiesFromCustodies = detectaFamiliesAPartirDeCustodies(custodies, persons);
-  const families016 = afegeixSustentadorsSenseCustodies(familiesFromCustodies, families, persons);
-
-  return Object.keys(families016).reduce((result, familiaID) => {
-    const IDsFamilia016 = [...families016[familiaID].sustentadors, ...families016[familiaID].menors];
-    const carnetMonoparental =
-        typeof(families.disposa_de_carnet_familia_monoparental) !== 'undefined'
-        && typeof(families.disposa_de_carnet_familia_monoparental[familiaID]) !== 'undefined'
-        && families.disposa_de_carnet_familia_monoparental[familiaID]
-            ? 'general' : 'nop';
-
-    result[familiaID] = {
-      adults: families016[familiaID].sustentadors,
-      menors: families016[familiaID].menors,
-      altres_persones: seleccionaNoFamiliarsFinsASegonGrau(serialize(persons)),
-      altres_familiars: seleccionaElsAltresMembresDeLaUnitatDeConvivenciaQueSiguinFamiliarsFinsASegonGrau(
-          IDsFamilia016,
-          serialize(persons)),
-      es_usuari_serveis_socials: currentMonth(families.usuari_serveis_socials[familiaID]),
-      tipus_familia_monoparental: currentMonth(carnetMonoparental),
-      tipus_custodia: currentMonth(families016[familiaID].tipus_custodia)
-    };
-    return result;
-  }, {});
-};
-
 const createAFamilyWithAllPersons = (persones) => {
   const id = createUUID();
   let result = {};
