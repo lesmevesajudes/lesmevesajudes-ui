@@ -254,5 +254,17 @@
   "Prestacions econòmiques d’especial urgència davant la pèrdua de l’habitatge per desnonament o execució hipotecària": "Prestacions econòmiques d’especial urgència davant la pèrdua de l’habitatge per desnonament o execució hipotecària",
   "Prestacions econòmiques d’especial urgència per al pagament de quotes d\\'amortització hipotecària": "Prestacions econòmiques d’especial urgència per al pagament de quotes d\\'amortització hipotecària",
   "Prestacions econòmiques d’especial urgència per al pagament de deutes del lloguer": "Prestacions econòmiques d’especial urgència per al pagament de deutes del lloguer",
-  "Subvencions de pagament de lloguer (MIFO)": "Subvencions de pagament de lloguer (MIFO)"
+  "Subvencions de pagament de lloguer (MIFO)": "Subvencions de pagament de lloguer (MIFO)",
+  "Aquesta dada es farà servir només perquè l'aplicació es pugui referir a la persona. No ha de permetre'n la identificació, per tant no cal que escrigui cognoms, DNI, ...": "Aquesta dada es farà servir només perquè l'aplicació es pugui referir a la persona. No ha de permetre'n la identificació, per tant no cal que escrigui cognoms, DNI, ...",
+  "Document d'identitat": "Document d'identitat",
+  "El tipus de document d’identitat és un requisit que pot determinar l’accés a alguns ajuts. Si disposa de més d’un document d’identitat li recomanem que segueixi el següent criteri: <1> <1>En cas de disposar de DNI i algun altre document d’identitat seleccioni DNI</1> <3>En cas de disposar de NIE i algun altre document d’identitat (que no sigui el DNI) seleccioni el NIE.)</3> </1>": "El tipus de document d’identitat és un requisit que pot determinar l’accés a alguns ajuts. Si disposa de més d’un document d’identitat li recomanem que segueixi el següent criteri: <1> <1>En cas de disposar de DNI i algun altre document d’identitat seleccioni DNI</1> <3>En cas de disposar de NIE i algun altre document d’identitat (que no sigui el DNI) seleccioni el NIE.)</3> </1>",
+  "Prestacions d'urgència social derivades de la mediació a Barcelona": "Prestacions d'urgència social derivades de la mediació a Barcelona",
+  "Prestacions d’especial urgència per al pagament de quotes d'amortització hipotecària": "Prestacions d’especial urgència per al pagament de quotes d'amortització hipotecària",
+  "Prestacions d’especial urgència davant la pèrdua de l’habitatge per desnonament o execució hipotecària": "Prestacions d’especial urgència davant la pèrdua de l’habitatge per desnonament o execució hipotecària",
+  "Subvencions per al pagament de lloguer (MIFO) (Agència de l’Habitatge": "Subvencions per al pagament de lloguer (MIFO) (Agència de l’Habitatge",
+  "Aquest camp és requerit": "Aquest camp és requerit",
+  "Té alguna quota de la hipoteca que no ha pogut pagar?": "Té alguna quota de la hipoteca que no ha pogut pagar?",
+  "Quant temps fa que <1><0>{titularContracteLloguer.nom}</0></1> està empadronat/ada en aquest habitatge?": "Quant temps fa que <1><0>{titularContracteLloguer.nom}</0></1> està empadronat/ada en aquest habitatge?",
+  "Quant temps fa que <1><0>{titularContracteHipoteca.nom}</0></1> està empadronat/ada en aquest habitatge?": "Quant temps fa que <1><0>{titularContracteHipoteca.nom}</0></1> està empadronat/ada en aquest habitatge?",
+  "Prestacions econòmiques d’especial urgència per al pagament de quotes d'amortització hipotecària": "Prestacions econòmiques d’especial urgència per al pagament de quotes d'amortització hipotecària"
 }

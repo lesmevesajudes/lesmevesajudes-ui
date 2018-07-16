@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import './indexPage/IndexPage.css';
 import AppHeader from '../components/AppHeader/AppHeader';
 import {Trans, translate} from 'react-i18next';
-import {Hidden, Button, Typography,Grid} from '@material-ui/core';
+import {Button, Grid, Hidden, Typography} from '@material-ui/core';
 import {styles} from '../styles/theme';
 import {withStyles} from '@material-ui/core/styles';
 import Caroussel from '../components/Caroussel/Caroussel';
@@ -21,39 +21,39 @@ const content = [
       situacions socioeconòmiques desafavorides.</Trans>,
     link: '/ajuts/menjador'
   }, {
-    title: <Trans>Prestacions econòmiques d'urgència social derivades de la mediació a Barcelona</Trans>,
+    title: <Trans>Prestacions d'urgència social derivades de la mediació a Barcelona</Trans>,
     body: <Trans>Prestació econòmica de caràcter temporal adreçada a persones residents a Barcelona amb dificultats per
       fer front al pagament del lloguer.</Trans>,
-    link: '/ajuts/lloguer'
+    link: '/ajuts/lloguer_mediacio'
   }, {
-    title: <Trans>Prestació econòmica per al pagament de deutes del lloguer</Trans>,
+    title: <Trans>Prestacions d’especial urgència per al pagament de deutes del lloguer</Trans>,
     body: <Trans>
       Prestació econòmica que s’atorga a persones amb deutes contrets per rebuts impagats de rendes de
       lloguer.
     </Trans>,
-    link: '/ajuts/lloguer'
+    link: '/ajuts/lloguer_especial_urgencia'
   }, {
-    title: <Trans>Prestació econòmica d’urgència per al pagament de deutes d’hipoteca</Trans>,
+    title: <Trans>Prestacions d’especial urgència per al pagament de quotes d'hipoteca</Trans>,
     body: <Trans>
       Prestació a fons perdut que s’atorga a persones amb deutes contrets per rebuts impagats de quotes
       d’amortització del préstec hipotecari.
     </Trans>,
-    link: '/ajuts/lloguer'
+    link: '/ajuts/hipoteca_especial_urgencia'
   }, {
-    title: <Trans>Ajut per pèrdua de l’habitatge</Trans>,
+    title: <Trans>Prestacions d’especial urgència per la pèrdua de l’habitatge </Trans>,
     body: <Trans>
       Prestació econòmica d’urgència que s’atorga a persones que han perdut l’habitatge com a
       conseqüència d’un
       procés de desnonament o d’execució hipotecària.
     </Trans>,
-    link: '/ajuts/lloguer'
+    link: '/ajuts/desnonament_especial_urgencia'
   }, {
-    title: <Trans>Ajudes al lloguer MIFO</Trans>,
+    title: <Trans>Subvencions per al pagament de lloguer</Trans>,
     body: <Trans>
       Prestació a fons perdut que s’atorga a persones amb deutes contrets per rebuts impagats de quotes
       d’amortització del préstec hipotecari.
     </Trans>,
-    link: '/ajuts/lloguer'
+    link: '/ajuts/mifo'
   }, {
     title: <Trans>Renda activa d'inserció</Trans>,
     body: <Trans>

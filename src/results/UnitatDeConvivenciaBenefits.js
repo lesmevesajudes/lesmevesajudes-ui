@@ -8,7 +8,7 @@ const possibleBenefits = [
     ID: 'HA_001',
     name: <Trans>Prestacions econòmiques d'urgència social derivades de la mediació a Barcelona</Trans>,
     periode: 'mes',
-    url: '/ajuts/lloguer',
+    url: '/ajuts/lloguer_mediacio',
     from: undefined,
     to: undefined
   },
@@ -17,7 +17,7 @@ const possibleBenefits = [
     name: <Trans>Prestacions econòmiques d’especial urgència davant la pèrdua de l’habitatge per desnonament o execució
       hipotecària</Trans>,
     periode: 'mes',
-    url: '/ajuts/lloguer',
+    url: '/ajuts/desnonament_especial_urgencia',
     from: new Date(2018, 5, 16),
     to: new Date(2018, 10, 31)
   },
@@ -26,7 +26,7 @@ const possibleBenefits = [
     name: <Trans>Prestacions econòmiques d’especial urgència per al pagament de quotes d'amortització
       hipotecària</Trans>,
     periode: 'mes',
-    url: '/ajuts/lloguer',
+    url: '/ajuts/hipoteca_especial_urgencia',
     from: undefined,
     to: undefined
   },
@@ -34,7 +34,7 @@ const possibleBenefits = [
     ID: 'HA_004',
     name: <Trans>Prestacions econòmiques d’especial urgència per al pagament de deutes del lloguer</Trans>,
     periode: 'mes',
-    url: '/ajuts/lloguer',
+    url: '/ajuts/lloguer_especial_urgencia',
     from: undefined,
     to: undefined
   },
