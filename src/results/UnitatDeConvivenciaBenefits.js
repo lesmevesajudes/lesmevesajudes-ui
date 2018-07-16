@@ -6,7 +6,7 @@ import {Trans} from "react-i18next";
 const possibleBenefits = [
   {
     ID: 'HA_001',
-    name: <Trans>Prestacions econòmiques d\'urgència social derivades de la mediació a Barcelona</Trans>,
+    name: <Trans>Prestacions econòmiques d'urgència social derivades de la mediació a Barcelona</Trans>,
     periode: 'mes',
     url: '/ajuts/lloguer',
     from: undefined,
@@ -23,7 +23,7 @@ const possibleBenefits = [
   },
   {
     ID: 'HA_003',
-    name: <Trans>Prestacions econòmiques d’especial urgència per al pagament de quotes d\'amortització
+    name: <Trans>Prestacions econòmiques d’especial urgència per al pagament de quotes d'amortització
       hipotecària</Trans>,
     periode: 'mes',
     url: '/ajuts/lloguer',
