@@ -2,7 +2,6 @@ import type {Person, PersonID} from "../../persons/PersonTypes";
 import {demarcacioDelCodiPostal, zonaDelCodiPostal} from "../CodisPostals";
 import {serialize} from "../../persons/PersonsReducer";
 import {create as createUUID} from '../UUID';
-import type {Custodia} from "../../family/detectaFamilies";
 import {detectaFamilies} from "../../family/detectaFamilies";
 import type {ResidenceData} from "../../residence/ResidenceTypes";
 import {esInfantAcollit} from "../selectorUtils";
@@ -14,7 +13,7 @@ const isEmptyMap = (anObject: Object) => Object.keys(anObject).length === 0 && a
 const seleccionaFamiliarsFinsASegonGrau = (persons: Array<Person>) => persons.filter((persona: Person) => persona.relacio_parentiu !== 'cap' && persona.relacio_parentiu !== 'altres').map((persona: Person) => persona.id);
 const allPersonsIDs = (persons: Array<Person>) => persons.map((persona: Person) => persona.id);
 const esUnSustentadorConvivent = (sustentador: ?string) => typeof sustentador === 'string' && sustentador !== 'ningu_mes' && sustentador !== 'no_conviu';
-const areThereAny016Families = (custodies) => custodies.constructor === Object && Object.keys(custodies).filter((custodia: Custodia) => (esUnSustentadorConvivent(custodia.primer) || esUnSustentadorConvivent(custodia.segon))).length > 0;
+const areThereAny016Families = (custodies) => custodies.constructor === Object && Object.keys(custodies).filter((custodia: string) => (esUnSustentadorConvivent(custodies[custodia].primer) || esUnSustentadorConvivent(custodies[custodia].segon))).length > 0;
 const seleccionaNoFamiliarsFinsASegonGrau = (persons: Array<Person>) => persons.filter((persona: Person) => persona.relacio_parentiu === 'cap' || persona.relacio_parentiu === 'altres').map((persona: Person) => persona.id);
 
 const seleccionaElsAltresMembresDeLaUnitatDeConvivenciaQueSiguinFamiliarsFinsASegonGrau =
@@ -46,14 +45,14 @@ const buildOpenFiscaFamiliesFromCustodies = (custodies, simulationData) => {
   }, {});
 };
 
-const createAFamilyWithAllPersons = (simulationData) => {
+const createAFamilyWithAllPersons = (persons) => {
   const id = createUUID();
   let result = {};
   result[id] = {
-    altres_persones: seleccionaNoFamiliarsFinsASegonGrau(serialize(simulationData.persons)),
+    altres_persones: seleccionaNoFamiliarsFinsASegonGrau(serialize(persons)),
     altres_familiars: seleccionaElsAltresMembresDeLaUnitatDeConvivenciaQueSiguinFamiliarsFinsASegonGrau(
         [],
-        serialize(simulationData.persons))
+        serialize(persons))
   };
   return result;
 };
@@ -81,12 +80,12 @@ const residenceDataToAPI = (residenceData: ResidenceData) => ({
   HA_005: currentMonth(null),
 });
 
-const createUnitatDeConvivencia = (simulationData) => {
+const createUnitatDeConvivencia = (persons, residenceData) => {
   const id = createUUID();
   let result = {};
   result[id] = {
-    persones_que_conviuen: allPersonsIDs(serialize(simulationData.persons)),
-    ...residenceDataToAPI(simulationData.residence),
+    persones_que_conviuen: allPersonsIDs(serialize(persons)),
+    ...residenceDataToAPI(residenceData),
   };
   return result;
 };
@@ -155,9 +154,9 @@ export const buildRequest = (simulationData: SimulationData) => {
 
   const families = areThereAny016Families(simulationData.family.custodies)
       ? buildOpenFiscaFamiliesFromCustodies(simulationData.family.custodies, simulationData)
-      : createAFamilyWithAllPersons(simulationData);
+      : createAFamilyWithAllPersons(simulationData.persons);
 
-  const unitatsDeConvivencia = createUnitatDeConvivencia(simulationData);
+  const unitatsDeConvivencia = createUnitatDeConvivencia(simulationData.persons, simulationData.residence);
 
   return {
     families: families,
