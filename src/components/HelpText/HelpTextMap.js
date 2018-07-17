@@ -259,7 +259,7 @@ const HelpTextMap = {
       Si disposa de més d’un document d’identitat li recomanem que segueixi el següent criteri:
       <ul>
         <li>En cas de disposar de DNI i algun altre document d’identitat seleccioni DNI</li>
-        <li>En cas de disposar de NIE i algun altre document d’identitat (que no sigui el DNI) seleccioni el NIE.)</li>
+        <li>En cas de disposar de NIE i algun altre document d’identitat (que no sigui el DNI) seleccioni el NIE.</li>
       </ul>
     </Trans>
   },

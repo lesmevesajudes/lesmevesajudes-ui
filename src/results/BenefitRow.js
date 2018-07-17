@@ -55,7 +55,7 @@ export const BenefitRow = ({benefit, subject}: Props) =>
                 : `${subject[benefit.ID][Object.keys(subject[benefit.ID])[0]]} € / ${benefit.periode}`}
           </Typography>
         </Grid>
-        <Grid item className='Separator' xs={2}>
+        <Grid item className='Separator' xs={2} alignItems='space-around'>
           <Link className={'linkBenefits'} to={benefit.url}>
             <Tooltip id='mes-info-tooltip'
                      title='Si vol saber si reuneix tots els requisits necessaris per accedir a aquest ajut, cliqui aquí'

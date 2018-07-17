@@ -104,13 +104,14 @@ class ResultsPage extends React.Component<Props> {
     return (
         <Fragment>
           <ShowMeOnceModal name='resultsModal' title='Ajudes a les que podria optar'>
-            A continuació es mostrarà el conjunt d’ajudes a les quals podria arribar a optar.
+            <Trans>A continuació es mostrarà el conjunt d’ajudes a les quals podria arribar a optar.
             L’informem que la concessió d’una d’elles pot fer variar els llindars d’ingressos i/o requisits que les
             altres ajudes preveuen per a ser concedides.&nbsp;
             Per tant, a la pràctica, pot trobar ajudes incompatibles entre sí.&nbsp;
-            Informi-se’n clicant sobre cada ajut.
+              Informi-se’n clicant sobre cada ajut.</Trans>
           </ShowMeOnceModal>
           <Grid container className='bg-container' justify='center'>
+
             <Grid item xs={12} sm={12} className='titleContainer'>
               <Typography variant='headline' className='titlePage'>
                 <IconFont icon='resultats' sizeSphere={48} fontSize={32}/>
