@@ -103,7 +103,7 @@ class ResultsPage extends React.Component<Props> {
     //Añadir Trans en titlePage
     return (
         <Fragment>
-          <ShowMeOnceModal name='resultsModal' title='Ajudes a les que podría optar'>
+          <ShowMeOnceModal name='resultsModal' title='Ajudes a les que podria optar'>
             A continuació es mostrarà el conjunt d’ajudes a les quals podria arribar a optar.
             L’informem que la concessió d’una d’elles pot fer variar els llindars d’ingressos i/o requisits que les
             altres ajudes preveuen per a ser concedides.&nbsp;
