@@ -50,7 +50,9 @@ export const BenefitRow = ({benefit, subject}: Props) =>
         </Grid>
         <Grid item className='Separator' xs={2}>
           <Typography style={{color: '#004a8e', fontSize: '1rem', paddingTop: '1rem'}}>
-            {subject[benefit.ID][Object.keys(subject[benefit.ID])[0]]} € / {benefit.periode}
+            {typeof benefit.amountText !== 'undefined'
+                ? benefit.amountText
+                : `${subject[benefit.ID][Object.keys(subject[benefit.ID])[0]]} € / ${benefit.periode}`}
           </Typography>
         </Grid>
         <Grid item className='Separator' xs={2}>

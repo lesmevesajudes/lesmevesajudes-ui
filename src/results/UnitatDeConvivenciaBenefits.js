@@ -25,7 +25,7 @@ const possibleBenefits = [
     ID: 'HA_003',
     name: <Trans>Prestacions econòmiques d’especial urgència per al pagament de quotes d'amortització
       hipotecària</Trans>,
-    periode: 'mes',
+    amountText: <Trans>Mínim: XXX - Màxim: 3000 € / anuals</Trans>,
     url: '/ajuts/hipoteca_especial_urgencia',
     from: undefined,
     to: undefined
@@ -33,7 +33,7 @@ const possibleBenefits = [
   {
     ID: 'HA_004',
     name: <Trans>Prestacions econòmiques d’especial urgència per al pagament de deutes del lloguer</Trans>,
-    periode: 'mes',
+    amountText: <Trans>Mínim: XXX - Màxim: 3000 € / anuals</Trans>,
     url: '/ajuts/lloguer_especial_urgencia',
     from: undefined,
     to: undefined
