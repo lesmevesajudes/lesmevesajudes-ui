@@ -68,7 +68,6 @@ const ResidenceForm = (props: Props) => {
     titularContracteLloguer,
     titularContracteHipoteca
   } = props;
-  console.log("haEstatDesnonat: ", haEstatDesnonat, noTeHabitatgeFix, (teHabitatgeHabitual || haEstatDesnonat));
   return (
       <Grid container className='bg-container'>
         <Grid item xs={12} sm={12} className='titleContainer'>
@@ -320,6 +319,7 @@ export default connect(mapStateToProps)(reduxForm(
     {
       form: 'ResidenceForm',
       onChange: (values, dispatch) => {
+        console.log(values);
         dispatch(addResidenceData(values));
       }
     })(ResidenceForm));
