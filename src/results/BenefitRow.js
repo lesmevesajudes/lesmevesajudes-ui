@@ -44,7 +44,7 @@ export const BenefitRow = ({benefit, subject}: Props) =>
         <Grid item xs={1}>
           <DoneIcon className='resultIconSuccess'/>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={7}>
           <Typography style={{color: '#004a8e', fontSize: '1rem'}}>{benefit.name}</Typography>
           <Period benefit={benefit}/>
         </Grid>
