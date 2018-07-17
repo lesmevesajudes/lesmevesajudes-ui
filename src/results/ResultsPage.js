@@ -111,7 +111,6 @@ class ResultsPage extends React.Component<Props> {
             Informi-se’n clicant sobre cada ajut.
           </ShowMeOnceModal>
           <Grid container className='bg-container' justify='center'>
-
             <Grid item xs={12} sm={12} className='titleContainer'>
               <Typography variant='headline' className='titlePage'>
                 <IconFont icon='resultats' sizeSphere={48} fontSize={32}/>
@@ -134,6 +133,12 @@ class ResultsPage extends React.Component<Props> {
                     persons={this.props.persons}
                     period={this.period}
                 />
+              </Grid>
+              <Grid item xs={12}>
+                Li recordem que la concessió d’una d’aquestes ajudes pot fer variar els seus ingressos i/o requisits
+                fent que algunes de les ajudes llistades no puguin ser concedides.&nbsp;
+                Per tant, a la pràctica, pot trobar ajudes incompatibles entre sí.&nbsp;
+                Informi-se’n clicant sobre cada ajut.
               </Grid>
             </Grid>
           </Grid>
