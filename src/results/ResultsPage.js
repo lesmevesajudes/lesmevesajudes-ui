@@ -144,12 +144,8 @@ class ResultsPage extends React.Component<Props> {
                   </Trans>
                 </Typography>
               </Grid>
-              <Grid item xs={12} className='bg-container '>
-                <Grid container xs={12}>
-                  <Grid item xs={12}>
-                    <ReportBug onSubmit={this.submitReport}/>
-                  </Grid>
-                </Grid>
+              <Grid item xs={12}>
+                <ReportBug onSubmit={this.submitReport}/>
               </Grid>
             </Grid>
           </Grid>
