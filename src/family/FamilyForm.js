@@ -9,7 +9,12 @@ import Grid from '@material-ui/core/Grid';
 import MenuItem from '@material-ui/core/MenuItem';
 import type {Person, PersonID} from '../persons/PersonTypes';
 import {Map} from 'immutable';
-import {currentFocussedFieldSelector, esFill, esSustentador, personsByRelacioDeParentiu} from '../shared/selectorUtils';
+import {
+  currentFocussedFieldSelector,
+  esFill,
+  esSustentador,
+  personsByRelacioDeParentiu,
+} from '../shared/selectorUtils';
 import DescriptionText from '../components/Common/DescriptionText';
 import {Trans} from 'react-i18next';
 import Typography from '@material-ui/core/Typography';
@@ -104,7 +109,8 @@ const FamilyForm = (props: Props) => {
                                   de: </Trans><b>{persones.get(familia.sustentadors[0]).nom}</b>
                               </Typography>
                             </label>
-                            <Field name={'parelles.' + familia.sustentadors[0]} component={Select} fullWidth>
+                            <IRemoveMyValueWhenUnmountedField name={'parelles.' + familia.sustentadors[0]}
+                                                              component={Select} fullWidth>
                               {// $FlowFixMe
                                 sustentadorsSolitarisAmbPossiblesParelles[familia.sustentadors[0]].map((possibleParella: Person) =>
                                     <MenuItem key={`parella-${familia.sustentadors[0]}-${possibleParella.id}`}
@@ -113,7 +119,7 @@ const FamilyForm = (props: Props) => {
                                     </MenuItem>
                                 )}
                               <MenuItem key='no-en-te' value='no-en-te'>No en té</MenuItem>
-                            </Field>
+                            </IRemoveMyValueWhenUnmountedField>
                           </Fragment>
                         }
                         {familia.monoparental &&
@@ -145,11 +151,11 @@ const FamilyForm = (props: Props) => {
 export function possiblesParellesDe(person: Person, persons: Map<PersonID, Person>): Array<Person> {
   switch (person.relacio_parentiu) {
     case undefined:
-      return personsByRelacioDeParentiu('parella', persons.toArray());
+      return personsByRelacioDeParentiu('parella', persons);
     case 'fill':
-      return personsByRelacioDeParentiu('gendre', persons.toArray());
+      return personsByRelacioDeParentiu('gendre', persons);
     case 'germa':
-      return personsByRelacioDeParentiu('cunyat', persons.toArray());
+      return personsByRelacioDeParentiu('cunyat', persons);
     default:
       return [];
   }

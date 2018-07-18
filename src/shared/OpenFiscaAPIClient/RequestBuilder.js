@@ -15,6 +15,8 @@ const allPersonsIDs = (persons: Array<Person>) => persons.map((persona: Person) 
 const esUnSustentadorConvivent = (sustentador: ?string) => typeof sustentador === 'string' && sustentador !== 'ningu_mes' && sustentador !== 'no_conviu';
 const areThereAny016Families = (custodies) => custodies.constructor === Object && Object.keys(custodies).filter((custodiaID: string) => (esUnSustentadorConvivent(custodies[custodiaID].primer) || esUnSustentadorConvivent(custodies[custodiaID].segon))).length > 0;
 const seleccionaNoFamiliarsFinsASegonGrau = (persons: Array<Person>) => persons.filter((persona: Person) => persona.relacio_parentiu === 'cap' || persona.relacio_parentiu === 'altres').map((persona: Person) => persona.id);
+const getAllPersonsInA016Family = (familia016) => [...familia016.adults, ...familia016.menors, ...familia016.altres_familiars, ...familia016.altres_persones];
+const allMembersOfFamilies = (families) => Object.values(families).map(getAllPersonsInA016Family).reduce((acc, val) => acc.concat(val), []);
 
 const seleccionaElsAltresMembresDeLaUnitatDeConvivenciaQueSiguinFamiliarsFinsASegonGrau =
     (family016Members: Array<PersonID>, persons: Array<Person>) =>
@@ -26,9 +28,12 @@ function afegeixSustentadorsSenseCustodies(familiesFromCustodies, families, pers
         let familia = familiesFromCustodies[familiaID];
         if (familia.monoparental) {
           const sustentador = familia.sustentadors[0];
-          familia.sustentadors = [sustentador, typeof families.parelles[sustentador] !== 'undefined'
+          const possibleParella = typeof families.parelles !== 'undefined' && typeof families.parelles[sustentador] !== 'undefined'
               ? families.parelles[sustentador]
-              : possiblesParellesDe(sustentador, persons)[0]];
+              : possiblesParellesDe(sustentador, persons).map((persona: Person) => persona.id)[0];
+          if (typeof possibleParella !== 'undefined') {
+            familia.sustentadors = [sustentador, possibleParella]
+          }
           acc[familiaID] = familia;
         } else {
           acc[familiaID] = familia;
@@ -42,8 +47,7 @@ const buildFamilies016 = (custodies, persons, families) => {
   const familiesFromCustodies = detectaFamiliesAPartirDeCustodies(custodies, persons);
   const families016 = afegeixSustentadorsSenseCustodies(familiesFromCustodies, families, persons);
 
-  return Object.keys(families016).reduce((result, familiaID) => {
-    const IDsFamilia016 = [...families016[familiaID].sustentadors, ...families016[familiaID].menors];
+  let completedFamilies = Object.keys(families016).reduce((result, familiaID) => {
     const carnetMonoparental =
         typeof(families.disposa_de_carnet_familia_monoparental) !== 'undefined'
         && typeof(families.disposa_de_carnet_familia_monoparental[familiaID]) !== 'undefined'
@@ -51,20 +55,32 @@ const buildFamilies016 = (custodies, persons, families) => {
             ? 'general' : 'nop';
 
     result[familiaID] = {
-      adults: families016[familiaID].sustentadors,
-      menors: families016[familiaID].menors,
+      adults: typeof families016[familiaID].sustentadors !== 'undefined' ? families016[familiaID].sustentadors : [],
+      menors: typeof families016[familiaID].menors !== 'undefined' ? families016[familiaID].menors : [],
+      altres_persones: [],
+      altres_familiars: [],
       es_usuari_serveis_socials: currentMonth(families.usuari_serveis_socials[familiaID]),
       tipus_familia_monoparental: currentMonth(carnetMonoparental),
       tipus_custodia: currentMonth(families016[familiaID].tipus_custodia)
     };
     return result;
   }, {});
+
+  const allMembersOfFamiliesIDs = allMembersOfFamilies(completedFamilies);
+  const personsNotInAfamily = allPersonsIDs(persons).filter((personID) => !allMembersOfFamiliesIDs.includes(personID));
+
+  if (personsNotInAfamily.length > 0) {
+    completedFamilies[createUUID()] = {altres_persones: personsNotInAfamily}
+  }
+  return completedFamilies;
 };
 
 const createAFamilyWithAllPersons = (persones) => {
   const id = createUUID();
   let result = {};
   result[id] = {
+    adults: [],
+    menors: [],
     altres_persones: seleccionaNoFamiliarsFinsASegonGrau(serialize(persones)),
     altres_familiars: seleccionaElsAltresMembresDeLaUnitatDeConvivenciaQueSiguinFamiliarsFinsASegonGrau(
         [],
@@ -181,14 +197,15 @@ export const buildRequest = (simulationData: SimulationData) => {
   simulationData.residence.zona_de_lhabitatge = zonaDelCodiPostal(simulationData.residence.codi_postal_habitatge);
   simulationData.residence.demarcacio_de_lhabitatge = demarcacioDelCodiPostal(simulationData.residence.codi_postal_habitatge);
 
-  const families = areThereAny016Families(simulationData.family.custodies)
-      ? buildOpenFiscaFamiliesFromCustodies(simulationData.family.custodies, simulationData)
+  let families = areThereAny016Families(simulationData.family.custodies)
+      ? buildFamilies016(simulationData.family.custodies, serialize(simulationData.persons), simulationData.family)
       : createAFamilyWithAllPersons(simulationData.persons);
 
   const unitatsDeConvivencia = createUnitatDeConvivencia(simulationData.persons, simulationData.residence);
   const familiaFinsASegonGrau = createFamiliaFinsASegonGrau(serialize(simulationData.persons));
+
   return {
-    families: buildFamilies016(simulationData.family.custodies, simulationData.persons, simulationData.family),
+    families: families,
     persones: {...personalData},
     unitats_de_convivencia: unitatsDeConvivencia,
     families_fins_a_segon_grau: familiaFinsASegonGrau
