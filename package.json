@@ -39,7 +39,7 @@
     "redux-devtools-extension": "2.13.2",
     "redux-mock-store": "^1.5.3",
     "selenium-server-standalone": "2.53.1",
-    "serve": "6.5.3",
+    "serve": "9.2.0",
     "uuid": "^3.2.1",
     "wait-on": "2.1.0"
   },
