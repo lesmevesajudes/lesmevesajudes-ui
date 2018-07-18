@@ -1,10 +1,10 @@
 import React from 'react';
-import {Field} from 'redux-form';
 import HelpIcon from '../../components/HelpIcon';
 import {isHelpAvailable} from '../../components/HelpText';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
+import {IRemoveMyValueWhenUnmountedField} from "../../components/IRemoveMyValueWhenUnmountedField";
 
 type Props = {
   name: string
@@ -19,5 +19,5 @@ export const Question = (props: Props) =>
           }
         </Typography>
       </label>
-      <Field {...props} fullWidth/>
+      <IRemoveMyValueWhenUnmountedField {...props} fullWidth/>
     </Grid>;

@@ -141,9 +141,12 @@ class ResultsPage extends React.Component<Props> {
                     Li recordem que la concessió d’una d’aquestes ajudes pot fer variar els seus ingressos i/o requisits
                     fent que algunes de les ajudes llistades no puguin ser concedides.&nbsp;
                     Per tant, a la pràctica, pot trobar ajudes incompatibles entre sí.&nbsp;
-                    Informi-se’n clicant sobre cada ajut.
+                    Informi-se’n clicant sobre cada ajut..
                   </Trans>
                 </Typography>
+              </Grid>
+              <Grid item xs={12}>
+                <ReportBug onSubmit={this.submitReport}/>
               </Grid>
             </Grid>
           </Grid>

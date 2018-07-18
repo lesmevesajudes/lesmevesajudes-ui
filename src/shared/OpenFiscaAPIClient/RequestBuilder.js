@@ -70,6 +70,8 @@ const residenceDataToAPI = (residenceData: ResidenceData) => ({
   ha_participat_en_un_proces_de_mediacio: currentMonth(residenceData.ha_participat_en_un_proces_de_mediacio),
   import_del_lloguer: currentMonth(residenceData.import_del_lloguer),
   import_de_la_hipoteca: currentMonth(residenceData.import_de_la_hipoteca),
+  import_deute_en_el_pagament_del_lloguer: currentMonth(residenceData.import_deute_en_el_pagament_del_lloguer),
+  import_deute_en_el_pagament_hipoteca: currentMonth(residenceData.import_deute_en_el_pagament_hipoteca),
   relacio_de_parentiu_amb_el_propietari: currentMonth(residenceData.relacio_de_parentiu_amb_el_propietari),
   tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit: currentMonth(residenceData.tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit),
   zona_de_lhabitatge: currentMonth(residenceData.zona_de_lhabitatge),

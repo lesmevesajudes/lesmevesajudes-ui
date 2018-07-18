@@ -1,8 +1,8 @@
 import React from 'react';
 import {Select} from 'redux-form-material-ui';
-import {Field} from 'redux-form';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
+import {IRemoveMyValueWhenUnmountedField} from "../../components/IRemoveMyValueWhenUnmountedField";
 
 type Props = {
   label: Object,
@@ -14,9 +14,9 @@ const MultipleAnswerQuestion = (props: Props) =>
           {props.label}
         </Typography>
       </label>
-      <Field {...props} component={Select} fullWidth>
+      <IRemoveMyValueWhenUnmountedField {...props} component={Select} fullWidth>
         {props.children}
-      </Field>
+      </IRemoveMyValueWhenUnmountedField>
     </Grid>;
 
 export default MultipleAnswerQuestion;

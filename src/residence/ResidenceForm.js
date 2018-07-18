@@ -68,7 +68,6 @@ const ResidenceForm = (props: Props) => {
     titularContracteLloguer,
     titularContracteHipoteca
   } = props;
-  console.log("haEstatDesnonat: ", haEstatDesnonat, noTeHabitatgeFix, (teHabitatgeHabitual || haEstatDesnonat));
   return (
       <Grid container className='bg-container'>
         <Grid item xs={12} sm={12} className='titleContainer'>
@@ -104,10 +103,20 @@ const ResidenceForm = (props: Props) => {
                     <Trans>Existeix un deute en el pagament del lloguer?</Trans>
                   </YesNoQuestion>}
 
+                  {esLlogater && existeixDeutePagamentLloguer &&
+                  <MoneyQuestion name='import_deute_en_el_pagament_del_lloguer'>
+                    <Trans>Indiqui l'import del deute en el pagament del lloguer:</Trans>
+                  </MoneyQuestion>}
+
                   {existeixHipoteca &&
                   <YesNoQuestion name='existeix_deute_en_el_pagament_de_la_hipoteca'>
                     <Trans>Té alguna quota de la hipoteca que no ha pogut pagar?</Trans>
                   </YesNoQuestion>}
+
+                  {existeixHipoteca && existeixDeutePagamentHipoteca &&
+                  <MoneyQuestion name='import_deute_en_el_pagament_hipoteca'>
+                    <Trans>Indiqui l'import del deute en el pagament de la hipoteca:</Trans>
+                  </MoneyQuestion>}
 
                   {esLlogater &&
                   <YesNoQuestion name='ha_participat_en_un_proces_de_mediacio'>
@@ -310,6 +319,7 @@ export default connect(mapStateToProps)(reduxForm(
     {
       form: 'ResidenceForm',
       onChange: (values, dispatch) => {
+        console.log(values);
         dispatch(addResidenceData(values));
       }
     })(ResidenceForm));
