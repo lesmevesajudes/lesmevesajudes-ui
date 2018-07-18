@@ -9,7 +9,6 @@ import type {SimulationData} from "../../results/FetchSimulationAction";
 
 const currentMonth = value => ({'2017-01': value});
 const lastYear = value => ({'2016': value});
-const isEmptyMap = (anObject: Object) => Object.keys(anObject).length === 0 && anObject.constructor === Object;
 const seleccionaFamiliarsFinsASegonGrau = (persons: Array<Person>) => persons.filter((persona: Person) => persona.relacio_parentiu !== 'cap' && persona.relacio_parentiu !== 'altres').map((persona: Person) => persona.id);
 const allPersonsIDs = (persons: Array<Person>) => persons.map((persona: Person) => persona.id);
 const esUnSustentadorConvivent = (sustentador: ?string) => typeof sustentador === 'string' && sustentador !== 'ningu_mes' && sustentador !== 'no_conviu';
@@ -92,6 +91,16 @@ const createUnitatDeConvivencia = (persons, residenceData) => {
   return result;
 };
 
+const createFamiliaFinsASegonGrau = (persons) => {
+  const id = createUUID();
+  let result = {};
+  result[id] = {
+    familiars: seleccionaFamiliarsFinsASegonGrau(persons),
+    no_familiars: seleccionaNoFamiliarsFinsASegonGrau(persons)
+  };
+  return result;
+};
+
 const personToOpenFiscaPerson = (person: Person) => ({
   anys_empadronat_a_barcelona: currentMonth(person.anys_empadronat_a_barcelona),
   beneficiari_de_prestacio_residencial: currentMonth(person.beneficiari_de_prestacio_residencial),
@@ -110,6 +119,7 @@ const personToOpenFiscaPerson = (person: Person) => ({
       person.ha_treballat_a_l_estranger_6_mesos_i_ha_retornat_en_els_ultims_12_mesos
   ),
   ingressos_bruts: lastYear(person.ingressos_bruts),
+  ingressos_bruts_ultims_sis_mesos: currentMonth(person.ingressos_bruts_ultims_sis_mesos),
   ingressos_per_pnc: lastYear(person.ingressos_per_pnc),
   inscrit_com_a_demandant_docupacio: currentMonth(person.inscrit_com_a_demandant_docupacio),
   inscrit_com_a_demandant_docupacio_mes_de_12_mesos: currentMonth(person.inscrit_com_a_demandant_docupacio_mes_de_12_mesos),
@@ -159,10 +169,11 @@ export const buildRequest = (simulationData: SimulationData) => {
       : createAFamilyWithAllPersons(simulationData.persons);
 
   const unitatsDeConvivencia = createUnitatDeConvivencia(simulationData.persons, simulationData.residence);
-
+  const familiaFinsASegonGrau = createFamiliaFinsASegonGrau(serialize(simulationData.persons));
   return {
     families: families,
     persones: {...personalData},
-    unitats_de_convivencia: unitatsDeConvivencia
+    unitats_de_convivencia: unitatsDeConvivencia,
+    families_fins_a_segon_grau: familiaFinsASegonGrau
   };
 };
