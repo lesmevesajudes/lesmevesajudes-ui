@@ -17,7 +17,7 @@ const possibleBenefits = [
     ID: 'HA_002',
     name: <Trans>Prestacions econòmiques d’especial urgència davant la pèrdua de l’habitatge per desnonament o execució
       hipotecària</Trans>,
-    periode: 'pagament únic',
+    periode: '/ mes',
     url: '/ajuts/desnonament_especial_urgencia',
     from: undefined,
     to: undefined
