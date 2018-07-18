@@ -10,8 +10,8 @@ const possibleBenefits = [
     periode: 'mes',
     url: '/ajuts/lloguer_mediacio',
     amountText: '20 - 300 € /mes',
-    from: undefined,
-    to: undefined
+    from: new Date(2018, 4, 1),
+    to: new Date(2018, 12, 7)
   },
   {
     ID: 'HA_002',
@@ -19,8 +19,8 @@ const possibleBenefits = [
       hipotecària</Trans>,
     periode: 'pagament únic',
     url: '/ajuts/desnonament_especial_urgencia',
-    from: new Date(2018, 5, 16),
-    to: new Date(2018, 10, 31)
+    from: undefined,
+    to: undefined
   },
   {
     ID: 'HA_003',
@@ -36,8 +36,8 @@ const possibleBenefits = [
     name: <Trans>Prestacions econòmiques d’especial urgència per al pagament de deutes del lloguer</Trans>,
     periode: 'pagament únic',
     url: '/ajuts/lloguer_especial_urgencia',
-    from: undefined,
-    to: undefined
+    from: new Date(2018, 5, 19),
+    to: new Date(2018, 6, 29)
   },
   {
     ID: 'HA_005',
