@@ -44,10 +44,11 @@
     "wait-on": "2.1.0"
   },
   "scripts": {
+    "git-info": "echo export default \"{\\\"versionHash\\\": \\\"$(git log --pretty=format:'%h' -n 1)\\\"}\"  > src/_git_commit.js",
     "flow": "flow",
-    "start": "react-app-rewired start",
+    "start": "yarn git-info; react-app-rewired start",
     "serve": "serve -l -s build -p 3000",
-    "build": "react-app-rewired build",
+    "build": "yarn git-info;react-app-rewired build",
     "test": "react-app-rewired test --env=jsdom",
     "eject": "react-scripts eject",
     "browser_tests": "ls test/browser/*.js |xargs -n 1 nightwatch -c nightwatch.json",

@@ -22,10 +22,12 @@ import InfoEspecialUrgenciaPagamentLloguer from "./pages/HabitatgeEspecialUrgenc
 import HabitatgeEspecialUrgenciaPagamentHipoteca from "./pages/HabitatgeEspecialUrgenciaPagamentHipoteca";
 import HabitatgeEspecialUrgenciaDesnonaments from "./pages/HabitatgeEspecialUrgenciaDesnonaments";
 import HabitatgeMIFO from "./pages/HabitatgeMIFO";
+import getCodeVersion from "./shared/getCodeVersion";
 
 if (isDevelopment) {
   console.log('Environment: ' + process.env.NODE_ENV);
 }
+console.log('App version: ', getCodeVersion());
 
 const preloadedState = window.__PRELOADED_STATE__;
 
