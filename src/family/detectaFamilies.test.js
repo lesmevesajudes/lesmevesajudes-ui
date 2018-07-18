@@ -16,9 +16,9 @@ describe('Given a set of custodies detect families', () => {
             {
               '2844f3a8-a334-4baf-8f4a-762d3b7b15437307eb57-41ef-40f5-861a-1dcc72ac3f1e': {
                 'menors': ['12a030f5-31f1-43d0-828b-168eb55471db'],
-                'sustentadors': ['2844f3a8-a334-4baf-8f4a-762d3b7b1543', '7307eb57-41ef-40f5-861a-1dcc72ac3f1e'],
+                'sustentadors_i_custodia': ['2844f3a8-a334-4baf-8f4a-762d3b7b1543', '7307eb57-41ef-40f5-861a-1dcc72ac3f1e'],
                 'monoparental': false,
-                'tipus_custodia': 'compartida'
+                'tipus_custodia': 'total'
               }
             }
         );
@@ -41,9 +41,9 @@ describe('Given a set of custodies detect families', () => {
             {
               '2844f3a8-a334-4baf-8f4a-762d3b7b15437307eb57-41ef-40f5-861a-1dcc72ac3f1e': {
                 'menors': ['12a030f5-31f1-43d0-828b-168eb55471db', 'fc9c8238-7992-4475-8680-e56942ca7c3d'],
-                'sustentadors': ['2844f3a8-a334-4baf-8f4a-762d3b7b1543', '7307eb57-41ef-40f5-861a-1dcc72ac3f1e'],
+                'sustentadors_i_custodia': ['2844f3a8-a334-4baf-8f4a-762d3b7b1543', '7307eb57-41ef-40f5-861a-1dcc72ac3f1e'],
                 'monoparental': false,
-                'tipus_custodia': 'compartida'
+                'tipus_custodia': 'total'
               }
             }
         );
@@ -66,15 +66,15 @@ describe('Given a set of custodies detect families', () => {
             {
               '2844f3a8-a334-4baf-8f4a-762d3b7b15437307eb57-41ef-40f5-861a-1dcc72ac3f1e': {
                 'menors': ['12a030f5-31f1-43d0-828b-168eb55471db'],
-                'sustentadors': ['2844f3a8-a334-4baf-8f4a-762d3b7b1543', '7307eb57-41ef-40f5-861a-1dcc72ac3f1e'],
+                'sustentadors_i_custodia': ['2844f3a8-a334-4baf-8f4a-762d3b7b1543', '7307eb57-41ef-40f5-861a-1dcc72ac3f1e'],
                 'monoparental': false,
-                'tipus_custodia': 'compartida'
+                'tipus_custodia': 'total'
               },
               '2d04dda7-c4a3-43df-ba65-ada23faa1bf06e52d617-0920-49eb-a4b6-d8fe070d3ee9': {
                 'menors': ['6f596a70-c277-4327-9df0-ecbd996ee8c4'],
-                'sustentadors': ['2d04dda7-c4a3-43df-ba65-ada23faa1bf0', '6e52d617-0920-49eb-a4b6-d8fe070d3ee9'],
+                'sustentadors_i_custodia': ['2d04dda7-c4a3-43df-ba65-ada23faa1bf0', '6e52d617-0920-49eb-a4b6-d8fe070d3ee9'],
                 'monoparental': false,
-                'tipus_custodia': 'compartida'
+                'tipus_custodia': 'total'
               }
             }
         );
@@ -102,7 +102,7 @@ describe('Given a set of custodies detect families', () => {
             {
               '7307eb57-41ef-40f5-861a-1dcc72ac3f1e': {
                 'menors': ['12a030f5-31f1-43d0-828b-168eb55471db', 'fc9c8238-7992-4475-8680-e56942ca7c3d'],
-                'sustentadors': ['7307eb57-41ef-40f5-861a-1dcc72ac3f1e'],
+                'sustentadors_i_custodia': ['7307eb57-41ef-40f5-861a-1dcc72ac3f1e'],
                 'monoparental': true,
                 'tipus_custodia': 'total'
               }

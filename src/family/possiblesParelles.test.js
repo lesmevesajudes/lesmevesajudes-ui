@@ -1,5 +1,5 @@
 import React from 'react';
-import PersonsReducer, {initPersonState} from '../persons/PersonsReducer';
+import PersonsReducer, {initPersonState, serialize} from '../persons/PersonsReducer';
 import {
   aMan,
   aPerson,
@@ -40,11 +40,11 @@ describe('possiblesParelles', () => {
       }
     };
 
-    const families = toArray(detectaFamiliesAPartirDeCustodies(state.family.custodies, state.persons));
+    const families = toArray(detectaFamiliesAPartirDeCustodies(state.family.custodies, serialize(state.persons)));
     const familiesMonoparentals = families.filter((familia) => familia.monoparental);
-    const sustentadorsUnicsIDs = familiesMonoparentals.map((familia) => familia.sustentadors[0]);
-    const sustentadorsSolitaris = state.persons.filter((person: Person) => sustentadorsUnicsIDs.includes(person.id)).toArray();
-    const sustentadorsSolitarisAmbPossiblesParelles = sustentadorsSolitarisIPossiblesParelles(sustentadorsSolitaris, state.persons);
+    const sustentadorsUnicsIDs = familiesMonoparentals.map((familia) => familia.sustentadors_i_custodia[0]);
+    const sustentadorsSolitaris = state.persons.filter((person: Person) => sustentadorsUnicsIDs.includes(person.id));
+    const sustentadorsSolitarisAmbPossiblesParelles = sustentadorsSolitarisIPossiblesParelles(sustentadorsSolitaris, serialize(state.persons));
     expect(sustentadorsSolitarisAmbPossiblesParelles).toEqual({[maria.id]: [pere]})
   }),
       it('it is safe with no fmailies', () => {
@@ -65,11 +65,11 @@ describe('possiblesParelles', () => {
           }
         };
 
-        const families = toArray(detectaFamiliesAPartirDeCustodies(state.family.custodies, state.persons));
+        const families = toArray(detectaFamiliesAPartirDeCustodies(state.family.custodies, serialize(state.persons)));
         const familiesMonoparentals = families.filter((familia) => familia.monoparental);
-        const sustentadorsUnicsIDs = familiesMonoparentals.map((familia) => familia.sustentadors[0]);
-        const sustentadorsSolitaris = state.persons.filter((person: Person) => sustentadorsUnicsIDs.includes(person.id)).toArray();
-        const sustentadorsSolitarisAmbPossiblesParelles = sustentadorsSolitarisIPossiblesParelles(sustentadorsSolitaris, state.persons);
+        const sustentadorsUnicsIDs = familiesMonoparentals.map((familia) => familia.sustentadors_i_custodia[0]);
+        const sustentadorsSolitaris = state.persons.filter((person: Person) => sustentadorsUnicsIDs.includes(person.id));
+        const sustentadorsSolitarisAmbPossiblesParelles = sustentadorsSolitarisIPossiblesParelles(sustentadorsSolitaris, serialize(state.persons));
         expect(sustentadorsSolitarisAmbPossiblesParelles).toEqual({})
       })
 });

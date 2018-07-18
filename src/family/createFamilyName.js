@@ -27,4 +27,4 @@ const getNamesOf = (IDs: Array<string>, persones: Map<string, Person>): Array<st
 };
 
 export const createFamilyName = (familia, persones) =>
-    placeCommasAndAnds([...getNamesOf(familia.sustentadors, persones), ...getNamesOf(familia.menors, persones)]);
+    placeCommasAndAnds([...getNamesOf(familia.sustentadors_i_custodia, persones), ...getNamesOf(familia.menors, persones)]);

@@ -15,7 +15,7 @@ const allPersonsIDs = (persons: Array<Person>) => persons.map((persona: Person) 
 const esUnSustentadorConvivent = (sustentador: ?string) => typeof sustentador === 'string' && sustentador !== 'ningu_mes' && sustentador !== 'no_conviu';
 const areThereAny016Families = (custodies) => custodies.constructor === Object && Object.keys(custodies).filter((custodiaID: string) => (esUnSustentadorConvivent(custodies[custodiaID].primer) || esUnSustentadorConvivent(custodies[custodiaID].segon))).length > 0;
 const seleccionaNoFamiliarsFinsASegonGrau = (persons: Array<Person>) => persons.filter((persona: Person) => persona.relacio_parentiu === 'cap' || persona.relacio_parentiu === 'altres').map((persona: Person) => persona.id);
-const getAllPersonsInA016Family = (familia016) => [...familia016.adults, ...familia016.menors, ...familia016.altres_familiars, ...familia016.altres_persones];
+const getAllPersonsInA016Family = (familia016) => [...familia016.sustentadors_i_custodia, ...familia016.sustentadors, ...familia016.menors, ...familia016.altres_familiars, ...familia016.altres_persones];
 const allMembersOfFamilies = (families) => Object.values(families).map(getAllPersonsInA016Family).reduce((acc, val) => acc.concat(val), []);
 
 const seleccionaElsAltresMembresDeLaUnitatDeConvivenciaQueSiguinFamiliarsFinsASegonGrau =
@@ -27,12 +27,12 @@ function afegeixSustentadorsSenseCustodies(familiesFromCustodies, families, pers
       (acc, familiaID) => {
         let familia = familiesFromCustodies[familiaID];
         if (familia.monoparental) {
-          const sustentador = familia.sustentadors[0];
+          const sustentador = familia.sustentadors_i_custodia[0];
           const possibleParella = typeof families.parelles !== 'undefined' && typeof families.parelles[sustentador] !== 'undefined'
               ? families.parelles[sustentador]
               : possiblesParellesDe(sustentador, persons).map((persona: Person) => persona.id)[0];
           if (typeof possibleParella !== 'undefined') {
-            familia.sustentadors = [sustentador, possibleParella]
+            familia.sustentadors = [possibleParella]
           }
           acc[familiaID] = familia;
         } else {
@@ -55,7 +55,8 @@ const buildFamilies016 = (custodies, persons, families) => {
             ? 'general' : 'nop';
 
     result[familiaID] = {
-      adults: typeof families016[familiaID].sustentadors !== 'undefined' ? families016[familiaID].sustentadors : [],
+      sustentadors_i_custodia: typeof families016[familiaID].sustentadors_i_custodia !== 'undefined' ? families016[familiaID].sustentadors_i_custodia : [],
+      sustentadors: typeof families016[familiaID].sustentadors !== 'undefined' ? families016[familiaID].sustentadors : [],
       menors: typeof families016[familiaID].menors !== 'undefined' ? families016[familiaID].menors : [],
       altres_persones: [],
       altres_familiars: [],
@@ -79,7 +80,8 @@ const createAFamilyWithAllPersons = (persones) => {
   const id = createUUID();
   let result = {};
   result[id] = {
-    adults: [],
+    sustentadors_i_custodia: [],
+    sustentadors: [],
     menors: [],
     altres_persones: seleccionaNoFamiliarsFinsASegonGrau(serialize(persones)),
     altres_familiars: seleccionaElsAltresMembresDeLaUnitatDeConvivenciaQueSiguinFamiliarsFinsASegonGrau(

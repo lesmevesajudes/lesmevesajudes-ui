@@ -99,21 +99,22 @@ const FamilyForm = (props: Props) => {
                       <Fragment key={familia.ID}>
                         <FormSubTitle><Trans>Família de: </Trans> {createFamilyName(familia, persones)} </FormSubTitle>
                         { // $FlowFixMe
-                          typeof sustentadorsSolitarisAmbPossiblesParelles[familia.sustentadors[0]] !== 'undefined' &&
+                          typeof sustentadorsSolitarisAmbPossiblesParelles[familia.sustentadors_i_custodia[0]] !== 'undefined' &&
                           // $FlowFixMe
-                          sustentadorsSolitarisAmbPossiblesParelles[familia.sustentadors[0]].length > 1 &&
+                          sustentadorsSolitarisAmbPossiblesParelles[familia.sustentadors_i_custodia[0]].length > 1 &&
                           <Fragment>
                             <label>
                               <Typography gutterBottom>
                                 <Trans>Existeix una parella
-                                  de: </Trans><b>{persones.get(familia.sustentadors[0]).nom}</b>
+                                  de: </Trans><b>{persones.get(familia.sustentadors_i_custodia[0]).nom}</b>
                               </Typography>
                             </label>
-                            <IRemoveMyValueWhenUnmountedField name={'parelles.' + familia.sustentadors[0]}
+                            <IRemoveMyValueWhenUnmountedField name={'parelles.' + familia.sustentadors_i_custodia[0]}
                                                               component={Select} fullWidth>
                               {// $FlowFixMe
-                                sustentadorsSolitarisAmbPossiblesParelles[familia.sustentadors[0]].map((possibleParella: Person) =>
-                                    <MenuItem key={`parella-${familia.sustentadors[0]}-${possibleParella.id}`}
+                                sustentadorsSolitarisAmbPossiblesParelles[familia.sustentadors_i_custodia[0]].map((possibleParella: Person) =>
+                                    <MenuItem
+                                        key={`parella-${familia.sustentadors_i_custodia[0]}-${possibleParella.id}`}
                                               value={possibleParella.id}>
                                       {possibleParella.nom} ({possibleParella.edat})
                                     </MenuItem>
@@ -174,7 +175,7 @@ function mapStateToProps(state) {
   const custodies = typeof state.family.custodies !== 'undefined' ? state.family.custodies : {};
   const families = toArray(detectaFamiliesAPartirDeCustodies(custodies, state.persons));
   const familiesMonoparentals = families.filter((familia) => familia.monoparental);
-  const sustentadorsUnicsIDs = familiesMonoparentals.map((familia) => familia.sustentadors[0]);
+  const sustentadorsUnicsIDs = familiesMonoparentals.map((familia) => familia.sustentadors_i_custodia[0]);
   const sustentadorsSolitaris = state.persons.filter((person: Person) => sustentadorsUnicsIDs.includes(person.id));
   const sustentadorsSolitarisAmbPossiblesParelles = sustentadorsSolitarisIPossiblesParelles(sustentadorsSolitaris, state.persons);
   return {

@@ -24,10 +24,10 @@ export const detectaFamiliesAPartirDeCustodies = (custodies: { [string]: Custodi
             } else {
               families[familiaID] =
                   {
-                    sustentadors: sustentadors,
+                    sustentadors_i_custodia: sustentadors,
                     menors: [menorID],
                     monoparental: sustentadors.length === 1,
-                    tipus_custodia: custodies[menorID].segon === 'ningu_mes' ? 'total' : 'compartida'
+                    tipus_custodia: custodies[menorID].segon === 'no_conviu' ? 'compartida' : 'total'
                   };
             }
           }
