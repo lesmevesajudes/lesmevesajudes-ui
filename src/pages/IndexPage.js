@@ -84,68 +84,69 @@ const IndexPage = (props) =>
       <AppHeader/>
       <div className='BlockContainer'>
         <div className='logoContainer'>
-        <Hidden smDown>
-          <div className='AppLogo' style={{opacity: 0.5}}/>
-        </Hidden>
-            <div className='BlockText'>
+          <Hidden smDown>
+            <div className='AppLogo' style={{opacity: 0.5}}/>
+          </Hidden>
+          <div className='BlockText'>
                 <span className='titleLogo'>
                   <Trans>Vols saber a quins ajuts públics pots accedir?</Trans>
                 </span>
-              <Link className='CTALink' to='/wizard/'>
-                <Button variant='contained' color='primary' className={props.classes.button}>
-                  <b>
-                    <Trans>CONEGUI LES SEVES AJUDES</Trans>
-                  </b>
-                </Button>
-              </Link>
-            </div>
+            <Link className='CTALink' to='/wizard/'>
+              <Button variant='contained' color='primary' className={props.classes.button}>
+                <b>
+                  <Trans>CONEGUI LES SEVES AJUDES</Trans>
+                </b>
+              </Button>
+            </Link>
+          </div>
+        </div>
       </div>
-    </div>
-    <div className='CTA'>
-      <p className='PresentationText' style={{textAlign: 'center'}}>
-        <Trans>
-          Aquesta eina us permetrà consultar a quins ajuts i prestacions socials podeu arribar a optar. Heu de declarar,
-          sota la vostra responsabilitat, que les respostes són certes.Podreu trobar-hi ajudes gestionades per
-          l’Ajuntament, la Generalitat i l’Estat.<br/>
-          El simulador, que es troba en fase inicial, anirà incorporant ajuts nous. <br/>Aquest assistent no tramita la
-          sol·licitud.
-        </Trans>
-      </p>
-    </div>
-    <div className='sliderContainer'>
-      <div className='Presentation'>
-        <Typography variant='title' align='center' className={props.classes.sliderContainerTitle} gutterBottom>Ajudes
-          destacades</Typography>
-      <Hidden smUp>
-        {content.slice(0,3).map((slideContent, index) =>
-            <div key={index} index={index}>
-              <Grid container direction='column'>
-                <Grid item xs={12} className={props.classes.helpContainer}>
-                  <Grid item >
-                    <Typography variant='title' className='sliderTitle' gutterBottom>
-                      {slideContent.title}
-                    </Typography>
-                  </Grid>
-                  <Grid item className={props.classes.helpContainerBody}>
-                    <Typography className='sliderBody'>
-                      {slideContent.body}
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={12} sm={12}>
-                    <Link to={slideContent.link}>
-                      <Button color='primary' variant='contained' className='sliderButton'> Més informació</Button>
-                    </Link>
-                  </Grid>
-                </Grid>
-              </Grid>
-            </div>
-        )}
-      </Hidden>
-      <Hidden smDown>
-        <Caroussel content={content}/>
-      </Hidden>
+      <div className='CTA'>
+        <p className='PresentationText' style={{textAlign: 'center'}}>
+          <Trans>
+            Aquesta eina li permetrà consultar a quins ajuts i prestacions socials pot arribar a optar. Ha de declarar,
+            sota la seva responsabilitat, que les respostes són certes.
+            Pot trobar-hi ajudes gestionades per l’Ajuntament, la Generalitat i l’Estat. El simulador, que es troba en
+            fase inicial, anirà incorporant ajuts nous.
+            Aquest assistent no tramita la sol·licitud.
+
+          </Trans>
+        </p>
       </div>
-    </div>
-  </div>;
+      <div className='sliderContainer'>
+        <div className='Presentation'>
+          <Typography variant='title' align='center' className={props.classes.sliderContainerTitle} gutterBottom>Ajudes
+            destacades</Typography>
+          <Hidden smUp>
+            {content.slice(0, 3).map((slideContent, index) =>
+                <div key={index} index={index}>
+                  <Grid container direction='column'>
+                    <Grid item xs={12} className={props.classes.helpContainer}>
+                      <Grid item>
+                        <Typography variant='title' className='sliderTitle' gutterBottom>
+                          {slideContent.title}
+                        </Typography>
+                      </Grid>
+                      <Grid item className={props.classes.helpContainerBody}>
+                        <Typography className='sliderBody'>
+                          {slideContent.body}
+                        </Typography>
+                      </Grid>
+                      <Grid item xs={12} sm={12}>
+                        <Link to={slideContent.link}>
+                          <Button color='primary' variant='contained' className='sliderButton'> Més informació</Button>
+                        </Link>
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                </div>
+            )}
+          </Hidden>
+          <Hidden smDown>
+            <Caroussel content={content}/>
+          </Hidden>
+        </div>
+      </div>
+    </div>;
 
 export default translate('translations')(withStyles(styles)(IndexPage));
