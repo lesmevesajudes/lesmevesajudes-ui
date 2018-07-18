@@ -21,6 +21,7 @@ export type Person = {
   id: PersonID;
   ingressos_bruts: number;
   ingressos_per_pnc: number;
+  ingressos_bruts_ultims_sis_mesos: number;
   inscrit_com_a_demandant_docupacio: boolean;
   inscrit_com_a_demandant_docupacio_mes_de_12_mesos: boolean;
   is_the_person_in_front_of_the_computer: boolean;

@@ -4,7 +4,7 @@ import {addFamilyData} from './FamilyDataActions';
 import {connect} from 'react-redux';
 import type {FamilyData} from './FamilyDataTypes';
 import {Select} from 'redux-form-material-ui';
-import {Field, reduxForm} from 'redux-form';
+import {reduxForm} from 'redux-form';
 import Grid from '@material-ui/core/Grid';
 import MenuItem from '@material-ui/core/MenuItem';
 import type {Person, PersonID} from '../persons/PersonTypes';
@@ -19,6 +19,7 @@ import {detectaFamiliesAPartirDeCustodies} from './detectaFamiliesAPartirDeCusto
 import {createFamilyName, toArray} from './createFamilyName';
 import Sticky from 'react-stickynode';
 import {IconFont} from '../components/IconFont/IconFont';
+import {IRemoveMyValueWhenUnmountedField} from "../components/IRemoveMyValueWhenUnmountedField";
 
 type Props = {
   addHouseholdData: Function,
@@ -60,20 +61,20 @@ const FamilyForm = (props: Props) => {
                         </label>
                         <Grid container direction='row' justify='space-between'>
                           <Grid item xs={5}>
-                            <Field name={'custodies.' + infant.id + '.primer'} component={Select} fullWidth>
+                            <IRemoveMyValueWhenUnmountedField name={'custodies.' + infant.id + '.primer'} component={Select} fullWidth>
                               {possiblesSustentadors.valueSeq().map((sustentador: Person) =>
                                   <MenuItem key={`primer-${sustentador.id}`} value={sustentador.id}>
                                     {sustentador.nom} ({sustentador.edat} <Trans>anys</Trans>)
                                   </MenuItem>
                               )}
                               <MenuItem value='no_conviu'><Trans>Una persona que no conviu</Trans></MenuItem>
-                            </Field>
+                            </IRemoveMyValueWhenUnmountedField>
                           </Grid>
                           <Grid item xs={1}>
                             <Typography className='andSeparator'><Trans>i</Trans></Typography>
                           </Grid>
                           <Grid item xs={5}>
-                            <Field name={'custodies.' + infant.id + '.segon'} component={Select} fullWidth>
+                            <IRemoveMyValueWhenUnmountedField name={'custodies.' + infant.id + '.segon'} component={Select} fullWidth>
                               {possiblesSustentadors.valueSeq().map((sustentador: Person) =>
                                   typeof custodies[infant.id] !== 'undefined' && custodies[infant.id].primer === sustentador.id
                                       ? null
@@ -83,7 +84,7 @@ const FamilyForm = (props: Props) => {
                               )}
                               <MenuItem value='no_conviu'><Trans>Una persona que no conviu</Trans></MenuItem>
                               <MenuItem value='ningu_mes'><Trans>Ningú més</Trans></MenuItem>
-                            </Field>
+                            </IRemoveMyValueWhenUnmountedField>
                           </Grid>
                         </Grid>
 

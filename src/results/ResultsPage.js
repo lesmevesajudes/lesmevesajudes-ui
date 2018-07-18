@@ -103,12 +103,12 @@ class ResultsPage extends React.Component<Props> {
     //Añadir Trans en titlePage
     return (
         <Fragment>
-          <ShowMeOnceModal name='resultsModal' title='Ajudes a les que podría optar'>
-            A continuació es mostrarà el conjunt d’ajudes a les quals podria arribar a optar.
+          <ShowMeOnceModal name='resultsModal' title='Ajudes a les que podria optar'>
+            <Trans>A continuació es mostrarà el conjunt d’ajudes a les quals podria arribar a optar.
             L’informem que la concessió d’una d’elles pot fer variar els llindars d’ingressos i/o requisits que les
             altres ajudes preveuen per a ser concedides.&nbsp;
             Per tant, a la pràctica, pot trobar ajudes incompatibles entre sí.&nbsp;
-            Informi-se’n clicant sobre cada ajut.
+              Informi-se’n clicant sobre cada ajut.</Trans>
           </ShowMeOnceModal>
           <Grid container className='bg-container' justify='center'>
 
@@ -134,6 +134,19 @@ class ResultsPage extends React.Component<Props> {
                     persons={this.props.persons}
                     period={this.period}
                 />
+              </Grid>
+              <Grid item xs={12}>
+                <Typography>
+                  <Trans>
+                    Li recordem que la concessió d’una d’aquestes ajudes pot fer variar els seus ingressos i/o requisits
+                    fent que algunes de les ajudes llistades no puguin ser concedides.&nbsp;
+                    Per tant, a la pràctica, pot trobar ajudes incompatibles entre sí.&nbsp;
+                    Informi-se’n clicant sobre cada ajut..
+                  </Trans>
+                </Typography>
+              </Grid>
+              <Grid item xs={12}>
+                <ReportBug onSubmit={this.submitReport}/>
               </Grid>
             </Grid>
           </Grid>

@@ -18,11 +18,11 @@ type Props = {
 const ReportBug = (props: Props) => {
   const {handleSubmit, resultatIncorrecte} = props;
   return (
-      <Grid container direction='column' className='container-family'>
+      <Grid container direction='column'>
         <Grid item sm={12}>
           <Typography variant='headline' gutterBottom>Informar del resultat de la simulació</Typography>
         </Grid>
-        <Grid container direction='column' spacing={16} className='bg-container extra-padding'>
+        <Grid container direction='column' spacing={16}>
             <form name='ReportBug' onSubmit={handleSubmit}>
               <Grid item sm={12}>
                 <label>

@@ -6,37 +6,38 @@ import {Trans} from "react-i18next";
 const possibleBenefits = [
   {
     ID: 'HA_001',
-    name: <Trans>Prestacions econòmiques d\'urgència social derivades de la mediació a Barcelona</Trans>,
+    name: <Trans>Prestacions econòmiques d'urgència social derivades de la mediació a Barcelona</Trans>,
     periode: 'mes',
-    url: '/ajuts/lloguer',
-    from: undefined,
-    to: undefined
+    url: '/ajuts/lloguer_mediacio',
+    amountText: '20 - 300 € /mes',
+    from: new Date(2018, 4, 1),
+    to: new Date(2018, 12, 7)
   },
   {
     ID: 'HA_002',
     name: <Trans>Prestacions econòmiques d’especial urgència davant la pèrdua de l’habitatge per desnonament o execució
       hipotecària</Trans>,
-    periode: 'mes',
-    url: '/ajuts/lloguer',
-    from: new Date(2018, 5, 16),
-    to: new Date(2018, 10, 31)
+    periode: '/ mes',
+    url: '/ajuts/desnonament_especial_urgencia',
+    from: undefined,
+    to: undefined
   },
   {
     ID: 'HA_003',
-    name: <Trans>Prestacions econòmiques d’especial urgència per al pagament de quotes d\'amortització
+    name: <Trans>Prestacions econòmiques d’especial urgència per al pagament de quotes d'amortització
       hipotecària</Trans>,
-    periode: 'mes',
-    url: '/ajuts/lloguer',
+    periode: 'pagament únic',
+    url: '/ajuts/hipoteca_especial_urgencia',
     from: undefined,
     to: undefined
   },
   {
     ID: 'HA_004',
     name: <Trans>Prestacions econòmiques d’especial urgència per al pagament de deutes del lloguer</Trans>,
-    periode: 'mes',
-    url: '/ajuts/lloguer',
-    from: undefined,
-    to: undefined
+    periode: 'pagament únic',
+    url: '/ajuts/lloguer_especial_urgencia',
+    from: new Date(2018, 5, 19),
+    to: new Date(2018, 6, 29)
   },
   {
     ID: 'HA_005',

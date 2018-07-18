@@ -38,23 +38,24 @@ export const BenefitRow = ({benefit, subject}: Props) =>
         container
         justify='center'
         alignItems='center'
-        xs={12}
         key={benefit.ID}
     >
-      <Grid container  xs={12} direction='row' justify='center' alignItems='center' key={benefit.ID} className='ItemResult'>
+      <Grid container direction='row' justify='center' alignItems='center' key={benefit.ID} className='ItemResult'>
         <Grid item xs={1}>
           <DoneIcon className='resultIconSuccess'/>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={7}>
           <Typography style={{color: '#004a8e', fontSize: '1rem'}}>{benefit.name}</Typography>
           <Period benefit={benefit}/>
         </Grid>
         <Grid item className='Separator' xs={2}>
           <Typography style={{color: '#004a8e', fontSize: '1rem', paddingTop: '1rem'}}>
-            {subject[benefit.ID][Object.keys(subject[benefit.ID])[0]]} € / {benefit.periode}
+            {typeof benefit.amountText !== 'undefined'
+                ? benefit.amountText
+                : `${subject[benefit.ID][Object.keys(subject[benefit.ID])[0]]} € / ${benefit.periode}`}
           </Typography>
         </Grid>
-        <Grid item className='Separator' xs={2}>
+        <Grid item className='Separator' xs={2} alignItems='space-around'>
           <Link className={'linkBenefits'} to={benefit.url}>
             <Tooltip id='mes-info-tooltip'
                      title='Si vol saber si reuneix tots els requisits necessaris per accedir a aquest ajut, cliqui aquí'

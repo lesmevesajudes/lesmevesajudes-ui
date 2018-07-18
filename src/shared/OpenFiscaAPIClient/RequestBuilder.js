@@ -86,6 +86,8 @@ const residenceDataToAPI = (residenceData: ResidenceData) => ({
   ha_participat_en_un_proces_de_mediacio: currentMonth(residenceData.ha_participat_en_un_proces_de_mediacio),
   import_del_lloguer: currentMonth(residenceData.import_del_lloguer),
   import_de_la_hipoteca: currentMonth(residenceData.import_de_la_hipoteca),
+  import_deute_en_el_pagament_del_lloguer: currentMonth(residenceData.import_deute_en_el_pagament_del_lloguer),
+  import_deute_en_el_pagament_hipoteca: currentMonth(residenceData.import_deute_en_el_pagament_hipoteca),
   relacio_de_parentiu_amb_el_propietari: currentMonth(residenceData.relacio_de_parentiu_amb_el_propietari),
   tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit: currentMonth(residenceData.tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit),
   zona_de_lhabitatge: currentMonth(residenceData.zona_de_lhabitatge),
@@ -96,12 +98,22 @@ const residenceDataToAPI = (residenceData: ResidenceData) => ({
   HA_005: currentMonth(null),
 });
 
-const createUnitatDeConvivencia = (simulationData) => {
+const createUnitatDeConvivencia = (persons, residenceData) => {
   const id = createUUID();
   let result = {};
   result[id] = {
-    persones_que_conviuen: allPersonsIDs(serialize(simulationData.persons)),
-    ...residenceDataToAPI(simulationData.residence),
+    persones_que_conviuen: allPersonsIDs(serialize(persons)),
+    ...residenceDataToAPI(residenceData),
+  };
+  return result;
+};
+
+const createFamiliaFinsASegonGrau = (persons) => {
+  const id = createUUID();
+  let result = {};
+  result[id] = {
+    familiars: seleccionaFamiliarsFinsASegonGrau(persons),
+    no_familiars: seleccionaNoFamiliarsFinsASegonGrau(persons)
   };
   return result;
 };
@@ -124,6 +136,7 @@ const personToOpenFiscaPerson = (person: Person) => ({
       person.ha_treballat_a_l_estranger_6_mesos_i_ha_retornat_en_els_ultims_12_mesos
   ),
   ingressos_bruts: lastYear(person.ingressos_bruts),
+  ingressos_bruts_ultims_sis_mesos: currentMonth(person.ingressos_bruts_ultims_sis_mesos),
   ingressos_per_pnc: lastYear(person.ingressos_per_pnc),
   inscrit_com_a_demandant_docupacio: currentMonth(person.inscrit_com_a_demandant_docupacio),
   inscrit_com_a_demandant_docupacio_mes_de_12_mesos: currentMonth(person.inscrit_com_a_demandant_docupacio_mes_de_12_mesos),
@@ -168,12 +181,16 @@ export const buildRequest = (simulationData: SimulationData) => {
   simulationData.residence.zona_de_lhabitatge = zonaDelCodiPostal(simulationData.residence.codi_postal_habitatge);
   simulationData.residence.demarcacio_de_lhabitatge = demarcacioDelCodiPostal(simulationData.residence.codi_postal_habitatge);
 
-  const unitatsDeConvivencia = createUnitatDeConvivencia(simulationData);
+  const families = areThereAny016Families(simulationData.family.custodies)
+      ? buildOpenFiscaFamiliesFromCustodies(simulationData.family.custodies, simulationData)
+      : createAFamilyWithAllPersons(simulationData.persons);
 
+  const unitatsDeConvivencia = createUnitatDeConvivencia(simulationData.persons, simulationData.residence);
+  const familiaFinsASegonGrau = createFamiliaFinsASegonGrau(serialize(simulationData.persons));
   return {
-    families016: buildFamilies016(simulationData.family.custodies, simulationData.persons, simulationData.family),
-    families: createAFamilyWithAllPersons(simulationData.persons),
+    families: buildFamilies016(simulationData.family.custodies, simulationData.persons, simulationData.family),
     persones: {...personalData},
-    unitats_de_convivencia: unitatsDeConvivencia
+    unitats_de_convivencia: unitatsDeConvivencia,
+    families_fins_a_segon_grau: familiaFinsASegonGrau
   };
 };
