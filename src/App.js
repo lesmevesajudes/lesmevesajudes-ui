@@ -23,13 +23,14 @@ import HabitatgeEspecialUrgenciaPagamentHipoteca from "./pages/HabitatgeEspecial
 import HabitatgeEspecialUrgenciaDesnonaments from "./pages/HabitatgeEspecialUrgenciaDesnonaments";
 import HabitatgeMIFO from "./pages/HabitatgeMIFO";
 import getCodeVersion from "./shared/getCodeVersion";
-import {ENVIRONMENT} from "./config";
+import {API_URL, ENVIRONMENT} from "./config";
 
 if (isDevelopment) {
   console.log('Environment: ' + ENVIRONMENT);
 }
 
 console.log('App version: ', getCodeVersion());
+console.log('API endpoint: ', API_URL);
 
 const preloadedState = window.__PRELOADED_STATE__;
 
