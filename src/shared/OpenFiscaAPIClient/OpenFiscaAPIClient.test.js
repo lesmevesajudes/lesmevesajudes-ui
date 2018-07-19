@@ -12,6 +12,7 @@ import {
 import {addPerson} from '../../persons/PersonsActions';
 import {buildRequest} from '../../results/FetchSimulationAction';
 import OpenFiscaAPIClient from './OpenFiscaAPIClient';
+import {API_URL} from "../../config";
 
 describe('OpenFiscaAPIClient', () => {
   it('Can make a simulation', () => {
@@ -43,7 +44,7 @@ describe('OpenFiscaAPIClient', () => {
         import_del_lloguer: '700'
       }
     };
-    let client = new OpenFiscaAPIClient(true);
+    let client = new OpenFiscaAPIClient(API_URL);
     return client.makeSimulation(state)
         .then(result => expect(result.data).toEqual({
               'families': {

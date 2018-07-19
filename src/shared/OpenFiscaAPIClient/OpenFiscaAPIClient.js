@@ -1,21 +1,11 @@
 import axios from 'axios/index';
-import isDevelopment from '../isDevelopment';
 import {buildRequest} from "./RequestBuilder";
 
 class OpenFiscaAPIClient {
   url: ?string = undefined;
-  productionURL: string = 'https://lesmevesajudes-api.herokuapp.com';
-  developmentURL: string = 'http://localhost:2000';
 
-  constructor(isDevel: boolean) {
-    if (typeof isDevel === 'undefined') {
-      isDevel = isDevelopment;
-    }
-    if (isDevel) {
-      this.url = this.developmentURL;
-    } else {
-      this.url = this.productionURL;
-    }
+  constructor(url: string) {
+    this.url = url;
   }
 
   makeSimulation(simulationData: any) {
