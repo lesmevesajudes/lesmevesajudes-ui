@@ -15,8 +15,8 @@ type Props = {
 
 let StepperButtons = (props: Props) => {
   const content = (
-      <Grid container justify={'center'} className='buttons-container'>
-        <Grid item sm={6} md={6}>
+      <Grid container justify={'flex-end'} alignItems={'center'} className='buttons-container'>
+        <Grid item sm={2} md={2}>
           {typeof props.backAction !== 'undefined' &&
           <Button color='secondary' variant='contained'
                   disabled={!props.buttonEnabled} onClick={props.backAction}
@@ -24,7 +24,15 @@ let StepperButtons = (props: Props) => {
             <Icon className={props.classes.rightIcon} >keyboard_arrow_left</Icon><Trans>Anterior</Trans>
           </Button>}
         </Grid>
-        <Grid item sm={6} md={6} >
+        <Grid item sm={2} md={2}>
+          {typeof props.nextAction === 'undefined' &&
+          <Button className={classNames('right-button', 'buttonTheme')}
+                  color='secondary' variant='contained'
+                  onClick={() => window.location.reload(true)}
+                  disabled={!props.buttonEnabled}>
+            <Trans>Nou càlcul</Trans>
+          </Button>
+          }
           {typeof props.nextAction !== 'undefined' &&
           <Button className={classNames('right-button', 'buttonTheme')}
                   color='primary' variant='contained'
