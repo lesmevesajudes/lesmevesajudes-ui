@@ -29,9 +29,8 @@ const HelpTextMap = {
         reconeixement del dret d'accés a una pensió no contributiva comporta l'accés a l'assistència mèdica i
         farmacèutica
         de la Seguretat Social.</p>
-      Les pensions no contributives atenen dos col·lectius: persones grans i persones amb discapacitat, fet que dona
-      lloc
-      a dues modalitats de pensions no contributives:
+      <p>Les pensions no contributives atenen dos col·lectius: persones grans i persones amb discapacitat, fet que dona
+        lloc a dues modalitats de pensions no contributives:</p>
       <ul>
         <li>Jubilació</li>
         <li>Invalidesa</li>
@@ -69,11 +68,10 @@ const HelpTextMap = {
       S'entén per família monoparental (tant de categoria especial com de categoria general) la família formada per un
       fill o filla o més, menors de 21 anys, o de 26 anys, si estudien, que conviuen i depenen econòmicament d'una sola
       persona.
-      Títol de família monoparental
+      <Typography variant='subheading' className='subtitle' gutterBottom>Títol de família monoparental</Typography>
       El títol de família monoparental atorga diversos beneficis, avantatges fiscals i bonificacions.
       Juntament amb el títol col·lectiu per a tota la família, també dona dret a la possessió d’un títol individual per
-      a
-      cada una de les persones membres que en són beneficiàries.
+      a cada una de les persones membres que en són beneficiàries.
     </Trans>
   },
   'gaudeix_de_prestacio_contributiva_o_subsidi_desocupacio': {
@@ -274,32 +272,33 @@ const HelpTextMap = {
   },
   'victima_violencia_de_genere': {
     title: <Trans>Víctima de violència de gènere o domèstica</Trans>,
-    body: <Trans>Es considera víctima de violència de gènere la dona que és o ha estat objecte d'actes de violència
-      física o
-      psicològica, agressions a la llibertat sexual, amenaces, coacció o privació de llibertat exercida pel seu
-      cònjuge,
-      excònjuge, parella de fet o exparella, encara que no hagin conviscut.
-      És víctima de violència domèstica l'home que pateixi violència exercida pel seu cònjuge, excònjuge, parella o
-      exparella, pares o fills, i la dona que pateixi violència exercida pels seus pares o fills.
-      Per acreditar la condició de víctima s’ha d’aportar una sentència judicial, una ordre de protecció judicial, un
-      informe del Ministeri Fiscal o un informe dels serveis socials de l'Administració pública competent (autonòmica
-      o
-      local) o la casa d'acollida, on s'indiqui que es rep assistència per aquesta circumstància.
+    body: <Trans>
+      <p>Es considera víctima de violència de gènere la dona que és o ha estat objecte d'actes de violència
+        física o
+        psicològica, agressions a la llibertat sexual, amenaces, coacció o privació de llibertat exercida pel seu
+        cònjuge,
+        excònjuge, parella de fet o exparella, encara que no hagin conviscut.</p>
+      <p>És víctima de violència domèstica l'home que pateixi violència exercida pel seu cònjuge, excònjuge, parella o
+        exparella, pares o fills, i la dona que pateixi violència exercida pels seus pares o fills.
+        Per acreditar la condició de víctima s’ha d’aportar una sentència judicial, una ordre de protecció judicial, un
+        informe del Ministeri Fiscal o un informe dels serveis socials de l'Administració pública competent (autonòmica
+        o
+        local) o la casa d'acollida, on s'indiqui que es rep assistència per aquesta circumstància.</p>
     </Trans>
   },
   'victima_violencia_domestica': {
     title: <Trans>Víctima de violència de gènere o domèstica</Trans>,
     body: <Trans>
-      Es considera víctima de violència de gènere la dona que és o ha estat objecte d'actes de violència física o
-      psicològica, agressions a la llibertat sexual, amenaces, coacció o privació de llibertat exercida pel seu
-      cònjuge,
-      excònjuge, parella de fet o exparella, encara que no hagin conviscut.
-      És víctima de violència domèstica l'home que pateixi violència exercida pel seu cònjuge, excònjuge, parella o
-      exparella, pares o fills, i la dona que pateixi violència exercida pels seus pares o fills.
-      Per acreditar la condició de víctima s’ha d’aportar una sentència judicial, una ordre de protecció judicial, un
-      informe del Ministeri Fiscal o un informe dels serveis socials de l'Administració pública competent (autonòmica
-      o
-      local) o la casa d'acollida, on s'indiqui que es rep assistència per aquesta circumstància.
+      <p>Es considera víctima de violència de gènere la dona que és o ha estat objecte d'actes de violència física o
+        psicològica, agressions a la llibertat sexual, amenaces, coacció o privació de llibertat exercida pel seu
+        cònjuge,
+        excònjuge, parella de fet o exparella, encara que no hagin conviscut.</p>
+      <p>És víctima de violència domèstica l'home que pateixi violència exercida pel seu cònjuge, excònjuge, parella o
+        exparella, pares o fills, i la dona que pateixi violència exercida pels seus pares o fills.
+        Per acreditar la condició de víctima s’ha d’aportar una sentència judicial, una ordre de protecció judicial, un
+        informe del Ministeri Fiscal o un informe dels serveis socials de l'Administració pública competent (autonòmica
+        o
+        local) o la casa d'acollida, on s'indiqui que es rep assistència per aquesta circumstància.</p>
     </Trans>
   }
 };
