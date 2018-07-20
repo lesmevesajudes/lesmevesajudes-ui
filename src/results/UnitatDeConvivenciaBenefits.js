@@ -36,16 +36,16 @@ const possibleBenefits = [
     name: <Trans>Prestacions econòmiques d’especial urgència per al pagament de deutes del lloguer</Trans>,
     periode: 'pagament únic',
     url: '/ajuts/lloguer_especial_urgencia',
-    from: new Date(2018, 5, 19),
-    to: new Date(2018, 6, 29)
+    from: undefined,
+    to: undefined
   },
   {
     ID: 'HA_005',
     name: <Trans>Subvencions de pagament de lloguer (MIFO)</Trans>,
     periode: 'mes',
     url: '/ajuts/lloguer',
-    from: undefined,
-    to: undefined
+    from: new Date(2018, 5, 19),
+    to: new Date(2018, 6, 29)
   },
 ];
 
