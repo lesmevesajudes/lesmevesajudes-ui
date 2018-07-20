@@ -11,7 +11,8 @@ import {IconFont} from '../components/IconFont/IconFont';
 import UnitatDeConvivenciaBenefits from './UnitatDeConvivenciaBenefits';
 import {Trans} from 'react-i18next';
 import ShowMeOnceModal from '../components/ShowMeOnceModal'
-import {REPORT_BUG_URL} from "../config";
+import {REPORT_BUG_URL} from '../config';
+import Spinner from './spinner.svg';
 
 type Props = {
   isError: boolean,
@@ -26,7 +27,7 @@ class ResultsPage extends React.Component<Props> {
     // print the form values to the console
     console.log('form submit:', values);
     axios
-        .post('https://lesmevesajudes-ss.herokuapp.com/api/simulations', {
+        .post(REPORT_BUG_URL, {
           comments: values.comments || '',
           expected_result: values.resultat_esperat || '',
           application_state: values.application_state,
@@ -65,7 +66,7 @@ class ResultsPage extends React.Component<Props> {
               <Grid container xs={12}>
                 <Grid item xs={12}>
                   <Typography className='errorText'>
-                    Falten dades per a executar la simulació
+                    <Trans>Falten dades per a executar la simulació</Trans>
                   </Typography>
                 </Grid>
               </Grid>
@@ -76,12 +77,17 @@ class ResultsPage extends React.Component<Props> {
 
     if (!this.props.isRequestDone) {
       return <Fragment>
-        <Grid container className='bg-container' justify='center'>
+        <Grid container direction='column' justify='center' alignItems='center' className='bg-container'>
           <Grid item xs={12} className='bg-form-exterior'>
-            <Grid item xs={12}>
-              <Typography align='center'>
-                Carregant...
-              </Typography>
+            <Grid container direction='column' justify='center' alignItems='center'>
+              <Grid item>
+                <img className="spinner" src={Spinner} width="40" alt="carregant"/>
+              </Grid>
+              <Grid item>
+                <Typography align='center'>
+                  <Trans>Carregant...</Trans>
+                </Typography>
+              </Grid>
             </Grid>
           </Grid>
         </Grid>
