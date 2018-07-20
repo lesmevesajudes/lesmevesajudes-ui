@@ -11,6 +11,7 @@ import {IconFont} from '../components/IconFont/IconFont';
 import UnitatDeConvivenciaBenefits from './UnitatDeConvivenciaBenefits';
 import {Trans} from 'react-i18next';
 import ShowMeOnceModal from '../components/ShowMeOnceModal'
+import {REPORT_BUG_URL} from "../config";
 
 type Props = {
   isError: boolean,
@@ -69,34 +70,51 @@ class ResultsPage extends React.Component<Props> {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item xs={12} className='bg-container '>
-              <Grid container xs={12}>
-                <Grid item xs={12}>
-                  <ReportBug onSubmit={this.submitReport}/>
-                </Grid>
-              </Grid>
-            </Grid>
           </Grid>
       );
     }
 
     if (!this.props.isRequestDone) {
-      return <div>Carregant...</div>;
+      return <Fragment>
+        <Grid container className='bg-container' justify='center'>
+          <Grid item xs={12} className='bg-form-exterior'>
+            <Grid item xs={12}>
+              <Typography align='center'>
+                Carregant...
+              </Typography>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Fragment>;
     }
 
     if (this.props.isError) {
       return (
           <Fragment>
-            <h1>Error fent la petició</h1>
-            <Typography>{this.props.resultsData.message}</Typography>
-            <Typography>Details:</Typography>
-            <Typography>
-              {JSON.stringify(
-                  JSON.parse(this.props.resultsData.response.request.responseText),
-                  null,
-                  2
-              )}
-            </Typography>
+            <Grid container className='bg-container' justify='center'>
+              <Grid item xs={12} className='bg-form-exterior'>
+                <Grid item xs={12}>
+                  <Typography variant='title'>Error fent la petició</Typography>
+                  <Grid className='ResultList'>
+                    <Grid container direction='column' className='ItemResult'>
+                      <Grid item>
+                        <Typography>{this.props.resultsData.message}</Typography>
+                      </Grid>
+                      <Grid item>
+                        <Typography>Details:</Typography>
+                        <Typography>
+                          {JSON.stringify(
+                              typeof this.props.resultsData.response !== 'undefined' ? JSON.parse(this.props.resultsData.response.request.responseText) : '',
+                              null,
+                              2
+                          )}
+                        </Typography>
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                </Grid>
+              </Grid>
+            </Grid>
           </Fragment>
       );
     }
@@ -105,9 +123,10 @@ class ResultsPage extends React.Component<Props> {
         <Fragment>
           <ShowMeOnceModal name='resultsModal' title='Ajudes a les que podria optar'>
             <Trans>A continuació es mostrarà el conjunt d’ajudes a les quals podria arribar a optar.
-            L’informem que la concessió d’una d’elles pot fer variar els llindars d’ingressos i/o requisits que les
-            altres ajudes preveuen per a ser concedides.&nbsp;
-            Per tant, a la pràctica, pot trobar ajudes incompatibles entre sí.&nbsp;
+              L’informem que la concessió d’una d’elles pot fer variar els llindars d’ingressos i/o requisits que
+              les
+              altres ajudes preveuen per a ser concedides.&nbsp;
+              Per tant, a la pràctica, pot trobar ajudes incompatibles entre sí.&nbsp;
               Informi-se’n clicant sobre cada ajut.</Trans>
           </ShowMeOnceModal>
           <Grid container className='bg-container' justify='center'>
@@ -138,7 +157,8 @@ class ResultsPage extends React.Component<Props> {
               <Grid item xs={12}>
                 <Typography>
                   <Trans>
-                    Li recordem que la concessió d’una d’aquestes ajudes pot fer variar els seus ingressos i/o requisits
+                    Li recordem que la concessió d’una d’aquestes ajudes pot fer variar els seus ingressos i/o
+                    requisits
                     fent que algunes de les ajudes llistades no puguin ser concedides.&nbsp;
                     Per tant, a la pràctica, pot trobar ajudes incompatibles entre sí.&nbsp;
                     Informi-se’n clicant sobre cada ajut..

@@ -64,7 +64,7 @@ const renderABenefit = (benefit, unitatDeConvivencia, period) =>
 const renderUnitatDeConvivenciaBenefitList = (unitatDeConvivencia, persons, period: string) =>
     <Grid container justify='space-between' alignItems='center'>
       <Grid item xs={12} sm={12}>
-        <li className='ItemResultOut'>
+        <Grid className='ItemResultOut'>
           <Typography variant='subheading' gutterBottom className="titleResultPerson">
             Ajudes per a l'habitatge:
           </Typography>
@@ -77,7 +77,7 @@ const renderUnitatDeConvivenciaBenefitList = (unitatDeConvivencia, persons, peri
               </Grid>
             </Grid>
           </Grid>
-        </li>
+        </Grid>
       </Grid>
     </Grid>;
 
