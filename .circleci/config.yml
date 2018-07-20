@@ -32,7 +32,7 @@ jobs:
       - run:
           name: Wait for server
           command: yarn wait-on http://localhost:3000 -t 10000
-      - run: yarn test --testPathIgnorePatterns src/results/OpenFiscaAPIClient..test.js
+      - run: yarn test --testPathIgnorePatterns src/results/OpenFiscaAPIClient.test.js
       - store_artifacts:
           path: ./reports/failure_screenshots/
   deploy:
