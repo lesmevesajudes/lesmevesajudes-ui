@@ -47,7 +47,7 @@
     "git-info": "echo export default \"{\\\"versionHash\\\": \\\"$(echo $SOURCE_VERSION)\\\"}\"  > src/_git_commit.js",
     "flow": "flow",
     "start": "yarn git-info; react-app-rewired start",
-    "serve": "serve -l -s build -p 3000",
+    "serve": "serve -l 3000 -s  build ",
     "build": "yarn git-info;react-app-rewired build",
     "test": "react-app-rewired test --env=jsdom",
     "eject": "react-scripts eject",
