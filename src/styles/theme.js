@@ -72,9 +72,9 @@ export const styles = theme => ({
     padding: '10px',
     borderRadius: '4px',
     fontSize: '14px !important',
-    maxHeight: '550px',
-    minHeight: '200px',
-    overflowY: 'scroll'
+    //maxHeight: '550px',
+    //minHeight: '200px',
+    //overflowY: 'scroll'
   },
   titleDescriptionText: {
     color: colors.blackest,

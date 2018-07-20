@@ -21,12 +21,14 @@ const HelpTextMap = {
   },
   'cobra_algun_tipus_de_pensio_no_contributiva': {
     title: <Trans> Perstacions no contributives</Trans>,
-    body: <Trans>Les pensions no contributives són uns ingressos econòmics
+    body: <Trans><p>Les pensions no contributives són uns ingressos econòmics
       mensuals que l'Estat garanteix a les persones que no tenen recursos suficients per subsistir i no poden acollir-se
-      —perquè no cotitzen a la Seguretat Social— a les pensions contributives.
-      Les persones beneficiàries d'aquestes pensions gaudeixen de la condició de pensionistes de la Seguretat Social. El
-      reconeixement del dret d'accés a una pensió no contributiva comporta l'accés a l'assistència mèdica i farmacèutica
-      de la Seguretat Social.
+      —perquè no cotitzen a la Seguretat Social— a les pensions contributives.</p>
+      <p>Les persones beneficiàries d'aquestes pensions gaudeixen de la condició de pensionistes de la Seguretat Social.
+        El
+        reconeixement del dret d'accés a una pensió no contributiva comporta l'accés a l'assistència mèdica i
+        farmacèutica
+        de la Seguretat Social.</p>
       Les pensions no contributives atenen dos col·lectius: persones grans i persones amb discapacitat, fet que dona
       lloc
       a dues modalitats de pensions no contributives:
@@ -100,20 +102,23 @@ const HelpTextMap = {
   'ha_participat_en_un_proces_de_mediacio': {
     title: <Trans>Procés de mediació en l’habitatge</Trans>,
     body: <Trans>
-      L'Ajuntament de Barcelona i la Generalitat de Catalunya, mitjançant el Consorci de l’Habitatge de Barcelona, posen
-      al servei de la ciutadania unes eines de mediació i assessorament amb l’objectiu de garantir un ús digne de
-      l’habitatge per a tothom.
-      Aquests serveis d’informació permeten a la ciutadania conèixer i comprendre la situació en què es troba i també
-      rebre l’assessorament i l’acompanyament que requereix. Les oficines de l’habitatge ofereixen un servei de mediació
-      entre la persona propietària (arrendadora) i la persona inquilina (arrendatària) en casos en què, per dificultats
-      econòmiques (impagament, deute, demanda, etcètera), la darrera es pugui veure exposada a un desnonament.
-      La finalitat de la mediació és plantejar una sèrie d’acords entre les parts que permetin, d’una banda, fer front
-      als
-      deutes pendents i, de l’altra, prevenir i evitar un endeutament futur. Sempre que sigui possible, s’intentarà que
-      la
-      persona arrendatària mantingui el mateix habitatge. L’èxit de la mediació rau en la capacitat d’adoptar, en cada
-      cas
-      concret, una solució òptima per a les dues parts.
+      <p>L'Ajuntament de Barcelona i la Generalitat de Catalunya, mitjançant el Consorci de l’Habitatge de Barcelona,
+        posen
+        al servei de la ciutadania unes eines de mediació i assessorament amb l’objectiu de garantir un ús digne de
+        l’habitatge per a tothom.</p>
+      <p>Aquests serveis d’informació permeten a la ciutadania conèixer i comprendre la situació en què es troba i també
+        rebre l’assessorament i l’acompanyament que requereix. Les oficines de l’habitatge ofereixen un servei de
+        mediació
+        entre la persona propietària (arrendadora) i la persona inquilina (arrendatària) en casos en què, per
+        dificultats
+        econòmiques (impagament, deute, demanda, etcètera), la darrera es pugui veure exposada a un desnonament.</p>
+      <p>La finalitat de la mediació és plantejar una sèrie d’acords entre les parts que permetin, d’una banda, fer
+        front
+        als deutes pendents i, de l’altra, prevenir i evitar un endeutament futur. Sempre que sigui possible,
+        s’intentarà que
+        la persona arrendatària mantingui el mateix habitatge. L’èxit de la mediació rau en la capacitat d’adoptar, en
+        cada
+        cas concret, una solució òptima per a les dues parts.</p>
     </Trans>
   },
   'ha_treballat_a_l_estranger_6_mesos': {
@@ -191,31 +196,26 @@ const HelpTextMap = {
   'relacio_de_parentiu_amb_el_propietari': {
     title: <Trans>Vincle de parentiu per consanguinitat</Trans>,
     body: <Trans>
-      El parentiu per consanguinitat, o simplement la consanguinitat, és la relació entre persones unides per un
-      vincle de
-      sang, és a dir, que tenen almenys un ascendent en comú. En el parentiu per consanguinitat, la proximitat es
-      determina pel nombre de generacions que separen dos parents i es mesura en graus. Cada grau correspon a la
-      separació
-      entre una persona i els seus pares o mares, fills o filles.
-      Aquests vincles de parentiu consanguini s'organitzen en graus de parentiu. .
-      Vincle de parentiu d'afinitat
-      L'afinitat és el vincle que s'estableix entre un dels cònjuges i els parents consanguinis de l'altre o,
-      recíprocament, entre una persona i els cònjuges dels seus parents consanguinis. El grau i la línia de l'afinitat
-      es
-      determinen segons el grau i la línia de la consanguinitat. És a dir, una persona és parent per afinitat de tots
-      els
-      parents consanguinis del o la cònjuge en la mateixa línia i grau que el o la cònjuge ho és d'aquests parents per
-      consanguinitat. Recíprocament, els cònjuges dels parents consanguinis d'una persona són parents per afinitat
-      d'aquesta persona en la mateixa línia i grau que el parent consanguini del qual són cònjuges.
+      <p>El parentiu per consanguinitat, o simplement la consanguinitat, és la relació entre persones unides per un
+        vincle de sang, és a dir, que tenen almenys un ascendent en comú. En el parentiu per consanguinitat, la
+        proximitat es determina pel nombre de generacions que separen dos parents i es mesura en graus. Cada grau
+        correspon a la separació entre una persona i els seus pares o mares, fills o filles.<br/>
+        Aquests vincles de parentiu consanguini s'organitzen en graus de parentiu. </p>
+      <Typography variant='subheading' className='subtitle' gutterBottom>Vincle de parentiu d'afinitat</Typography>
+      <p>L'afinitat és el vincle que s'estableix entre un dels cònjuges i els parents consanguinis de l'altre o,
+        recíprocament, entre una persona i els cònjuges dels seus parents consanguinis. El grau i la línia de l'afinitat
+        es determinen segons el grau i la línia de la consanguinitat. És a dir, una persona és parent per afinitat de
+        tots els parents consanguinis del o la cònjuge en la mateixa línia i grau que el o la cònjuge ho és d'aquests
+        parents per consanguinitat. Recíprocament, els cònjuges dels parents consanguinis d'una persona són parents per
+        afinitat d'aquesta persona en la mateixa línia i grau que el parent consanguini del qual són cònjuges.</p>
     </Trans>
   },
   'sexe': {
     title: <Trans>Sexe</Trans>,
     body: <Trans>Per al càlcul dels diferents ajuts, i segons marca la normativa vigent, cal que a l'apartat 'SEXE'
       seleccioneu el que consta oficialment en el vostre DNI en vigor. L'Ajuntament de Barcelona, atenent a la
-      diversitat
-      sexual i de gènere, està treballant perquè cada persona pugui expressar, si així ho desitja, el seu gènere i
-      “nom sentit” en tots els documents d’àmbit municipal en els quals calgui informar del sexe</Trans>
+      diversitat sexual i de gènere, està treballant perquè cada persona pugui expressar, si així ho desitja, el seu
+      gènere i “nom sentit” en tots els documents d’àmbit municipal en els quals calgui informar del sexe</Trans>
   },
   'te_algun_grau_de_discapacitat_reconegut': {
     title: <Trans>Grau de discapacitat</Trans>,
@@ -240,16 +240,15 @@ const HelpTextMap = {
   'tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit': {
     title: <Trans>Usdefruit</Trans>,
     body: <Trans>
-      Dret real de gaudi sobre una cosa d'altri, que atorga a la persona usufructuària les facultats d’usar-la i
-      percebre'n tots els fruits, si bé amb les limitacions d'haver de conservar-ne la forma i la substància.
-      L'usdefruit és un dret real, la qual cosa implica que és independent de qui en tingui la nua propietat. La
-      persona
-      propietària pot vendre la cosa i la usufructuària continuarà en la seva posició, encara que l'amo o mestressa
-      canviï.
-      L'usdefruit sempre és temporal, tant si és vitalici com si té un termini exacte. És un dret molt habitual en
-      herències, atès que té la característica que dona protecció al cònjuge (té l'ús i gaudi per a tota la vida)
-      sense
-      afectar els drets hereditaris de les persones descendents, que amb el temps acabaran adquirint la seva herència.
+      <p>Dret real de gaudi sobre una cosa d'altri, que atorga a la persona usufructuària les facultats d’usar-la i
+        percebre'n tots els fruits, si bé amb les limitacions d'haver de conservar-ne la forma i la substància.
+        L'usdefruit és un dret real, la qual cosa implica que és independent de qui en tingui la nua propietat. La
+        persona propietària pot vendre la cosa i la usufructuària continuarà en la seva posició, encara que l'amo o
+        mestressa canviï.</p>
+      <p>L'usdefruit sempre és temporal, tant si és vitalici com si té un termini exacte. És un dret molt habitual en
+        herències, atès que té la característica que dona protecció al cònjuge (té l'ús i gaudi per a tota la vida)
+        sense afectar els drets hereditaris de les persones descendents, que amb el temps acabaran adquirint la seva
+        herència.</p>
     </Trans>
   },
   'tipus_document_identitat': {

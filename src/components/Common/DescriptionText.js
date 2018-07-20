@@ -24,7 +24,7 @@ const DescriptionText = (props) =>
                       </Typography>
                     </Grid>
                     <Grid item>
-                      <Typography component='span' align='justify'>
+                      <Typography component='div' align='justify'>
                         {findHelpTextFor(props.currentField).body}
                       </Typography>
                     </Grid>
