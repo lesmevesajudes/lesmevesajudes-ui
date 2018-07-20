@@ -9,6 +9,7 @@ import {allowOnlyPositive} from '../components/Common/NormalizeCommon';
 import Typography from '@material-ui/core/Typography';
 import {IconFont} from '../components/IconFont/IconFont'
 import ShowMeOnceModal from '../components/ShowMeOnceModal'
+import {withRouter} from 'react-router-dom'
 
 const validate = values => {
   const errors = {};
@@ -26,7 +27,7 @@ const validate = values => {
   return errors
 };
 let HowManyPersonsLiveTogetherPage = props => {
-  const {handleSubmit} = props;
+  const {handleSubmit, history} = props;
   return (
       <Grid container className='bg-container' justify='center'>
         <Grid item xs={12} sm={12} className='titleContainer'>
@@ -59,10 +60,19 @@ let HowManyPersonsLiveTogetherPage = props => {
               </Grid>
 
               <Grid item xs={12} sm={12}>
-                <Grid container className='margin-buttons' alignItems='flex-start' justify='flex-end'>
-                  <Button variant='contained' color='primary' type='submit' name='ButtonValidar'>
-                    <Trans>Validar</Trans>
-                  </Button>
+                <Grid container direction='row' className='margin-buttons' justify='flex-end'>
+                  <Grid item xs={2}>
+                    <Button variant='contained' name='ButtonTornar' onClick={() => {
+                      history.push('/')
+                    }}>
+                      <Trans>Tornar</Trans>
+                    </Button>
+                  </Grid>
+                  <Grid item xs={2}>
+                    <Button variant='contained' color='primary' type='submit' name='ButtonValidar'>
+                      <Trans>Validar</Trans>
+                    </Button>
+                  </Grid>
                 </Grid>
               </Grid>
             </Grid>
@@ -77,4 +87,4 @@ HowManyPersonsLiveTogetherPage = reduxForm({
   validate
 })(HowManyPersonsLiveTogetherPage);
 
-export default HowManyPersonsLiveTogetherPage;
+export default withRouter(HowManyPersonsLiveTogetherPage);
