@@ -12,7 +12,7 @@ const HelpTextMap = {
   'nom': {
     title: <Trans>Nom</Trans>,
     body: <Trans>Aquesta dada es farà servir només perquè l'aplicació es pugui referir a la persona. No
-      ha de permetre'n la identificació, per tant no cal que escrigui cognoms, DNI, ...</Trans>
+      ha de permetre'n la identificació, per tant no escrigui cognoms, DNI, ...</Trans>
   },
   'beneficiari_de_prestacio_residencial': {
     title: <Trans>Beneficiari de prestació residencial</Trans>,
