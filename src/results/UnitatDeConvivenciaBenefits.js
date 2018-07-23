@@ -10,7 +10,7 @@ const possibleBenefits = [
     periode: 'mes',
     url: '/ajuts/lloguer_mediacio',
     amountText: '20 - 300 € /mes',
-    from: new Date(2018, 4, 1),
+    from: new Date(2018, 6, 12),
     to: new Date(2018, 12, 7)
   },
   {
