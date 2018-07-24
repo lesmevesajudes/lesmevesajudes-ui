@@ -9,7 +9,7 @@ const possibleBenefits = [
     name: <Trans>Prestacions econòmiques d'urgència social derivades de la mediació a Barcelona</Trans>,
     periode: 'mes',
     url: '/ajuts/lloguer_mediacio',
-    amountText: '20 - 300 € /mes',
+    amountText: 'Entre 20 - 300 € /mes durant un màxim de 12 mesos',
     from: new Date(2018, 6, 12),
     to: new Date(2018, 12, 7)
   },
@@ -17,7 +17,7 @@ const possibleBenefits = [
     ID: 'HA_002',
     name: <Trans>Prestacions econòmiques d’especial urgència davant la pèrdua de l’habitatge per desnonament o execució
       hipotecària</Trans>,
-    periode: 'mes',
+    periode: 'mes durant un màxim de 12 mesos',
     url: '/ajuts/desnonament_especial_urgencia',
     from: undefined,
     to: undefined
@@ -26,7 +26,7 @@ const possibleBenefits = [
     ID: 'HA_003',
     name: <Trans>Prestacions econòmiques d’especial urgència per al pagament de quotes d'amortització
       hipotecària</Trans>,
-    periode: 'pagament únic',
+    periode: 'pagament únic anual',
     url: '/ajuts/hipoteca_especial_urgencia',
     from: undefined,
     to: undefined
@@ -34,7 +34,7 @@ const possibleBenefits = [
   {
     ID: 'HA_004',
     name: <Trans>Prestacions econòmiques d’especial urgència per al pagament de deutes del lloguer</Trans>,
-    periode: 'pagament únic',
+    periode: 'pagament únic anual',
     url: '/ajuts/lloguer_especial_urgencia',
     from: undefined,
     to: undefined
@@ -42,7 +42,7 @@ const possibleBenefits = [
   {
     ID: 'HA_005',
     name: <Trans>Subvencions de pagament de lloguer (MIFO)</Trans>,
-    periode: 'mes',
+    periode: 'mes durant un màxim de 12 mesos',
     url: '/ajuts/lloguer',
     from: new Date(2018, 5, 19),
     to: new Date(2018, 6, 29)
