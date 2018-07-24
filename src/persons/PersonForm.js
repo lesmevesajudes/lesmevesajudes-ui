@@ -201,14 +201,12 @@ let PersonForm = (props: Props) => {
                         : <Trans>Indiqui els ingressos anuals de l’any passat d'aquesta persona</Trans>
                     }
                   </MoneyQuestion>
-                  {esFamiliarOUsuari && edat > 18 &&
                   <MoneyQuestion name='ingressos_bruts_ultims_sis_mesos' validate={[required]}>
                     {isTheUserInFrontOfTheComputer
                         ? <Trans>Indiqui els seus ingressos dels últims sis mesos</Trans>
                         : <Trans>Indiqui els ingressos dels últims sis mesos d'aquesta persona</Trans>
                     }
                   </MoneyQuestion>
-                  }
                   {esFamiliarOUsuari &&
                   <YesNoQuestion name='cobra_algun_tipus_de_pensio_no_contributiva'>
                     <Trans>Cobra algun tipus de pensió no contributiva?</Trans>
