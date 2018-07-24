@@ -176,6 +176,15 @@ const personToOpenFiscaPerson = (person: Person) => ({
   GG_270_mensual: currentMonth(null)
 });
 
+function numeraMenorsDeFamilies016(families, personalData) {
+  let result = {...personalData};
+  Object.values(families).map((familia) => familia.menors.map((menor, index) => result[menor] = {
+    ...result[menor],
+    ordre_del_menor: currentMonth(index)
+  }));
+  return result;
+}
+
 export const buildRequest = (simulationData: SimulationData) => {
   const personalData = simulationData.persons.reduce(
       (acc, person: Person) => {
@@ -203,12 +212,13 @@ export const buildRequest = (simulationData: SimulationData) => {
       ? buildFamilies016(simulationData.family.custodies, serialize(simulationData.persons), simulationData.family)
       : createAFamilyWithAllPersons(simulationData.persons);
 
+  const personsData = numeraMenorsDeFamilies016(families, personalData);
   const unitatsDeConvivencia = createUnitatDeConvivencia(simulationData.persons, simulationData.residence);
   const familiaFinsASegonGrau = createFamiliaFinsASegonGrau(serialize(simulationData.persons));
 
   return {
     families: families,
-    persones: {...personalData},
+    persones: {...personsData},
     unitats_de_convivencia: unitatsDeConvivencia,
     families_fins_a_segon_grau: familiaFinsASegonGrau
   };
