@@ -31,5 +31,6 @@ export const detectaFamiliesAPartirDeCustodies = (custodies: { [string]: Custodi
                   };
             }
           }
+
           return families;
         }, {});

@@ -42,7 +42,6 @@ type Props = {
 
 const FamilyForm = (props: Props) => {
   const {currentField, custodies, families, fills, persones, possiblesSustentadors, sustentadorsSolitarisAmbPossiblesParelles} = props;
-  console.log("sustentadorsiparelles:", sustentadorsSolitarisAmbPossiblesParelles);
   return (
       <Grid container className='bg-container'>
         <Grid item xs={12} sm={12} className='titleContainer'>
@@ -105,8 +104,8 @@ const FamilyForm = (props: Props) => {
                           <Fragment>
                             <label>
                               <Typography gutterBottom>
-                                <Trans>Existeix una parella
-                                  de: </Trans><b>{persones.get(familia.sustentadors_i_custodia[0]).nom}</b>
+                                <Trans>Existeix una parella de: </Trans>
+                                <b>{persones.get(familia.sustentadors_i_custodia[0]).nom}</b>
                               </Typography>
                             </label>
                             <IRemoveMyValueWhenUnmountedField name={'parelles.' + familia.sustentadors_i_custodia[0]}
@@ -163,6 +162,7 @@ export function possiblesParellesDe(person: Person, persons: Map<PersonID, Perso
 }
 
 export function sustentadorsSolitarisIPossiblesParelles(sustentadors: Array<Person>, persones: Map<PersonID, Person>) {
+  console.log("persones", persones);
   return sustentadors.reduce((result, current) => {
     // $FlowFixMe
     result[current.id] = possiblesParellesDe(current, persones);
@@ -177,7 +177,8 @@ function mapStateToProps(state) {
   const familiesMonoparentals = families.filter((familia) => familia.monoparental);
   const sustentadorsUnicsIDs = familiesMonoparentals.map((familia) => familia.sustentadors_i_custodia[0]);
   const sustentadorsSolitaris = state.persons.filter((person: Person) => sustentadorsUnicsIDs.includes(person.id));
-  const sustentadorsSolitarisAmbPossiblesParelles = sustentadorsSolitarisIPossiblesParelles(sustentadorsSolitaris, state.persons);
+  const sustentadorsSolitarisAmbPossiblesParelles = sustentadorsSolitarisIPossiblesParelles(sustentadorsSolitaris, state.persons.toArray());
+
   return {
     currentField: currentField,
     custodies: custodies,

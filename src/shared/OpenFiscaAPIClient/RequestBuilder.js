@@ -71,7 +71,13 @@ const buildFamilies016 = (custodies, persons, families) => {
   const personsNotInAfamily = allPersonsIDs(persons).filter((personID) => !allMembersOfFamiliesIDs.includes(personID));
 
   if (personsNotInAfamily.length > 0) {
-    completedFamilies[createUUID()] = {altres_persones: personsNotInAfamily}
+    completedFamilies[createUUID()] = {
+      sustentadors_i_custodia: [],
+      sustentadors: [],
+      menors: [],
+      altres_persones: personsNotInAfamily,
+      altres_familiars: []
+    }
   }
   return completedFamilies;
 };
@@ -211,6 +217,7 @@ export const buildRequest = (simulationData: SimulationData) => {
   let families = areThereAny016Families(simulationData.family.custodies)
       ? buildFamilies016(simulationData.family.custodies, serialize(simulationData.persons), simulationData.family)
       : createAFamilyWithAllPersons(simulationData.persons);
+
 
   const personsData = numeraMenorsDeFamilies016(families, personalData);
   const unitatsDeConvivencia = createUnitatDeConvivencia(simulationData.persons, simulationData.residence);
