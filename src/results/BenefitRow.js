@@ -9,12 +9,13 @@ import DoneIcon from '@material-ui/icons/Done';
 import ClearIcon from '@material-ui/icons/Clear';
 import {styles} from '../styles/theme';
 import {withStyles} from '@material-ui/core/styles';
+import {dateToString} from "../shared/dateUtils";
 
 type Props = {
   benefit: Object,
   subject: Object
 };
-const dateFormat = (date: Date) => `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
+
 const Period = (props) => {
   const benefit = props.benefit;
   const now = Date.now();
@@ -23,12 +24,12 @@ const Period = (props) => {
     return <Typography variant='caption'><Trans>Convocatòria permanent</Trans></Typography>
   } else if (now >= benefit.from && now <= benefit.to) {
     return <Typography variant='caption'><Trans>Convocatòria
-      entre {dateFormat(benefit.from)} i {dateFormat(benefit.to)}</Trans></Typography>
+      entre {dateToString(benefit.from)} i {dateToString(benefit.to)}</Trans></Typography>
   } else if (now > benefit.to) {
     return <Typography variant='caption'><Trans>Convocatòria finalitzada</Trans></Typography>
   } else if (now < benefit.from) {
     return <Typography variant='caption'><Trans>Propera convocatòria
-      entre {dateFormat(benefit.from)} i {dateFormat(benefit.to)}</Trans></Typography>
+      entre {dateToString(benefit.from)} i {dateToString(benefit.to)}</Trans></Typography>
   }
 };
 

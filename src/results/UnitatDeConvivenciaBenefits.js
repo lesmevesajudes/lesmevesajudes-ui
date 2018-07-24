@@ -2,6 +2,7 @@ import React from 'react';
 import {Grid, Typography} from '@material-ui/core';
 import BenefitRow, {NoBenefitRow} from './BenefitRow';
 import {Trans} from "react-i18next";
+import {newDate} from "../shared/dateUtils";
 
 const possibleBenefits = [
   {
@@ -10,8 +11,8 @@ const possibleBenefits = [
     periode: 'mes',
     url: '/ajuts/lloguer_mediacio',
     amountText: 'Entre 20 - 300 € /mes durant un màxim de 12 mesos',
-    from: new Date(2018, 6, 12),
-    to: new Date(2018, 12, 7)
+    from: newDate(2018, 6, 12),
+    to: newDate(2018, 12, 7)
   },
   {
     ID: 'HA_002',
@@ -44,8 +45,8 @@ const possibleBenefits = [
     name: <Trans>Subvencions de pagament de lloguer (MIFO)</Trans>,
     periode: 'mes durant un màxim de 12 mesos',
     url: '/ajuts/lloguer',
-    from: new Date(2018, 5, 19),
-    to: new Date(2018, 6, 29)
+    from: newDate(2018, 5, 19),
+    to: newDate(2018, 6, 29)
   },
 ];
 

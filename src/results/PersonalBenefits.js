@@ -5,6 +5,7 @@ import {Person} from '../persons/PersonTypes';
 import {Grid, Typography} from '@material-ui/core';
 import {Trans} from 'react-i18next';
 import BenefitRow, {NoBenefitRow} from './BenefitRow';
+import {newDate} from "../shared/dateUtils";
 
 type PersonalBenefitsProps = {
   benefitsForPersons: any,
@@ -20,8 +21,8 @@ class PersonalBenefits extends React.Component<PersonalBenefitsProps> {
         name: <Trans>Fons extraordinari d’ajuts d’emergència social per a infants de 0 a 16 anys</Trans>,
         periode: 'mes',
         url: '/ajuts/fons_infancia',
-        from: new Date(2018, 4, 25, 0, 0, 0, 0),
-        to: new Date(2018, 5, 25, 0, 0, 0, 0)
+        from: newDate(2018, 4, 25),
+        to: newDate(2018, 5, 25)
       },
       {
         ID: 'AE_230_01_mensual',
@@ -29,16 +30,16 @@ class PersonalBenefits extends React.Component<PersonalBenefitsProps> {
           monoparentals</Trans>,
         periode: 'any',
         url: '/ajuts/fons_infancia',
-        from: new Date(2018, 4, 25, 0, 0, 0, 0),
-        to: new Date(2018, 5, 25, 0, 0, 0, 0)
+        from: newDate(2018, 4, 25),
+        to: newDate(2018, 5, 25)
       },
       {
         ID: 'EG_233_mensual',
         name: <Trans>Ajuts de menjador escolar</Trans>,
         periode: 'dia',
         url: '/ajuts/menjador',
-        from: new Date(2018, 9, 3, 0, 0, 0, 0),
-        to: new Date(2018, 9, 14, 0, 0, 0, 0)
+        from: newDate(2018, 9, 3),
+        to: newDate(2018, 9, 14)
       },
       {
         ID: 'GE_051_00_mensual',
