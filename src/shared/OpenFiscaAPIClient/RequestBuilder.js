@@ -119,6 +119,7 @@ const residenceDataToAPI = (residenceData: ResidenceData) => ({
   HA_002: currentMonth(null),
   HA_003: currentMonth(null),
   HA_004: currentMonth(null),
+  HA_004_01: currentMonth(null),
   HA_005: currentMonth(null),
 });
 
