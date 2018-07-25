@@ -214,7 +214,7 @@ const ResidenceForm = (props: Props) => {
 
                   {existeixDeutePagamentLloguer &&
                   <YesNoQuestion name='ha_pagat_almenys_3_quotes_del_lloguer'>
-                    <Trans>Ha pagat almenys 3 quotes de lloguer?</Trans>
+                    <Trans>Ha pagat almenys 3 quotes de lloguer des de la signatura del contracte?</Trans>
                   </YesNoQuestion>}
 
                   {existeixDeutePagamentLloguer &&
