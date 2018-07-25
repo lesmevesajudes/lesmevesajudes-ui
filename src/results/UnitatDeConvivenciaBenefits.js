@@ -40,6 +40,14 @@ const possibleBenefits = [
     to: undefined
   },
   {
+    ID: 'HA_004-1',
+    name: <Trans>Ajut complementari a les prestacions econòmiques d’especial urgència per al pagament de deutes del lloguer</Trans>,
+    amountText: 'Fins a 200 € /mes màxim 12 mesos',
+    url: '/ajuts/lloguer_especial_urgencia',
+    from: undefined,
+    to: undefined
+  },
+  {
     ID: 'HA_005',
     name: <Trans>Subvencions de pagament de lloguer (MIFO)</Trans>,
     amountText: 'Fins a 200 € /mes màxim 12 mesos',

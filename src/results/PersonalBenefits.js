@@ -19,7 +19,7 @@ class PersonalBenefits extends React.Component<PersonalBenefitsProps> {
       {
         ID: 'AE_230_mensual',
         name: <Trans>Fons extraordinari d’ajuts d’emergència social per a infants de 0 a 16 anys</Trans>,
-        periode: 'mes',
+        periode: 'mes màxim 9 mesos',
         url: '/ajuts/fons_infancia',
         from: newDate(2018, 4, 25),
         to: newDate(2018, 5, 25)
@@ -36,7 +36,7 @@ class PersonalBenefits extends React.Component<PersonalBenefitsProps> {
       {
         ID: 'EG_233_mensual',
         name: <Trans>Ajuts de menjador escolar</Trans>,
-        periode: 'dia',
+        amountText: 'Entre 3 - 6 €/dia',
         url: '/ajuts/menjador',
         from: newDate(2018, 9, 3),
         to: newDate(2018, 9, 14)
@@ -113,21 +113,6 @@ class PersonalBenefits extends React.Component<PersonalBenefitsProps> {
                 : <NoBenefitRow/>
             }
           </Grid>
-        </Grid>
-    );
-  }
-
-  renderPersonalBenefitList(
-      personsData: Map<PersonID, Person>,
-      personsWithBenefits: any
-  ) {
-    return (
-        <Grid className='ResultList'>
-          {personsData
-              .valueSeq()
-              .map((person: Person) =>
-                  this.renderPersonalBenefits(person, personsWithBenefits[person.id])
-              )}
         </Grid>
     );
   }

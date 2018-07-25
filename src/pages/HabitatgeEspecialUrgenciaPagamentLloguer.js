@@ -119,7 +119,7 @@ class InfoEspecialUrgenciaPagamentLloguer extends React.Component {
                 documentalment la renovació del contracte.
               </li>
             </ul>
-            Requisits de la prestació complementària per al pagament de deutes de lloguer
+            <h3>Requisits de la prestació complementària per al pagament de deutes de lloguer</h3>
             <ul>
               <li>Les persones sol·licitants beneficiàries de la prestació per al pagament de deutes de lloguer
                 subjectes d'un procés judicial de desnonament, se'ls podrà concedir la prestació complementària.
