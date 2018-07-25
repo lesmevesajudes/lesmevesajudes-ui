@@ -100,7 +100,6 @@ const createAFamilyWithAllPersons = (persones) => {
 const residenceDataToAPI = (residenceData: ResidenceData) => ({
   codi_postal_habitatge: currentMonth(residenceData.codi_postal_habitatge),
   demarcacio_de_lhabitatge: currentMonth(residenceData.demarcacio_de_lhabitatge),
-  des_de_quan_teniu_deutes_de_lloguer: currentMonth(residenceData.des_de_quan_teniu_deutes_de_lloguer),
   existeix_deute_en_el_pagament_del_lloguer: currentMonth(residenceData.existeix_deute_en_el_pagament_del_lloguer),
   existeix_deute_en_el_pagament_de_la_hipoteca: currentMonth(residenceData.existeix_deute_en_el_pagament_de_la_hipoteca),
   fa_mes_de_12_mesos_que_existeix_el_deute_de_hipoteca: currentMonth(residenceData.fa_mes_de_12_mesos_que_existeix_el_deute_de_hipoteca),

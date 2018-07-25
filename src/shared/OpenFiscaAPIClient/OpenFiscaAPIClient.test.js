@@ -899,9 +899,6 @@ describe('OpenFiscaAPIClient', () => {
                                     "barcelona_ciutat"
                               }
                           ,
-                          "des_de_quan_teniu_deutes_de_lloguer":
-                              {}
-                          ,
                           "existeix_deute_en_el_pagament_de_la_hipoteca":
                               {}
                           ,

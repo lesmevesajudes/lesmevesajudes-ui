@@ -215,13 +215,6 @@ const ResidenceForm = (props: Props) => {
                     <Trans>Ha pagat almenys 3 quotes de lloguer des de la signatura del contracte?</Trans>
                   </YesNoQuestion>}
 
-                  {existeixDeutePagamentLloguer &&
-                  <MultipleAnswerQuestion name='des_de_quan_teniu_deutes_de_lloguer'
-                                          label={<Trans>Des de quan teniu deutes de pagament de lloguer?</Trans>}>
-                    <MenuItem value='menys_dun_any'><Trans>Fa menys d'un any</Trans></MenuItem>
-                    <MenuItem value='mes_dun_any'><Trans>Fa més d'un any</Trans></MenuItem>
-                  </MultipleAnswerQuestion>}
-
                   {esLlogater && existeixDeutePagamentLloguer &&
                   <YesNoQuestion name='relacio_de_parentiu_amb_el_propietari'>
                     <Trans>Algun membre de la família té relació de parentiu amb el propietari de l'habitatge</Trans>
