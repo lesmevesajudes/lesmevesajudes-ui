@@ -10,6 +10,7 @@ export type ResidenceData = {
   fa_mes_de_12_mesos_que_existeix_el_deute_de_hipoteca: boolean,
   ha_pagat_almenys_3_quotes_del_lloguer: boolean,
   ha_perdut_lhabitatge_en_els_ultims_2_anys: boolean,
+  ha_rebut_una_notificacio_de_desnonament: boolean,
   ha_rebut_oferta_per_accedir_a_habitatge_i_lha_rebutjada: boolean,
   ha_pagat_12_mesos_daquesta_hipoteca: boolean,
   ha_participat_en_un_proces_de_mediacio: boolean,

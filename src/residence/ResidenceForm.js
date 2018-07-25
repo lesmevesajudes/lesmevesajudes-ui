@@ -38,6 +38,7 @@ type Props = {
   existeixHipoteca: boolean,
   haEstatDesnonat: boolean,
   haParticipatEnUnProcesDeMediacio: boolean,
+  haRebutNotificacio: boolean,
   haSeleccionatAlgunaRelacioAmbLHabitatge: boolean,
   initialValues: ?ResidenceData,
   noTeHabitatgeFix: boolean,
@@ -60,6 +61,7 @@ const ResidenceForm = (props: Props) => {
     existeixHipoteca,
     haEstatDesnonat,
     haParticipatEnUnProcesDeMediacio,
+    haRebutNotificacio,
     haSeleccionatAlgunaRelacioAmbLHabitatge,
     noTeHabitatgeFix,
     properContracteDeLloguer,
@@ -104,8 +106,14 @@ const ResidenceForm = (props: Props) => {
                   </YesNoQuestion>}
 
                   {esLlogater && existeixDeutePagamentLloguer &&
+                  <YesNoQuestion name='ha_rebut_una_notificacio_de_desnonament'>
+                    <Trans>Li han notificat una demanda de desnonament per aquest habitatge?</Trans>
+                  </YesNoQuestion>}
+
+                  {esLlogater && existeixDeutePagamentLloguer && typeof haRebutNotificacio !== 'undefined'&&
                   <MoneyQuestion name='import_deute_en_el_pagament_del_lloguer'>
-                    <Trans>Indiqui l'import del deute en el pagament del lloguer:</Trans>
+                    {haRebutNotificacio && <Trans>Indiqui l'import del deute en el pagament del lloguer:</Trans>}
+                    {!haRebutNotificacio && <Trans>Indiqui l'import del deute acumulat en el pagament del lloguer en els darrers 12 mesos:</Trans>}
                   </MoneyQuestion>}
 
                   {existeixHipoteca &&
@@ -288,6 +296,7 @@ function mapStateToProps(state) {
       || selector(state, 'relacio_habitatge') === 'propietari_hipoteca');
   const existeixHipoteca = selector(state, 'relacio_habitatge') === 'propietari_hipoteca';
   const esCessio = selector(state, 'relacio_habitatge') === 'cessio';
+  const haRebutNotificacio = selector(state, 'ha_rebut_una_notificacio_de_desnonament');
   const haSeleccionatAlgunaRelacioAmbLHabitatge = selector(state, 'relacio_habitatge') != null;
   const noTeHabitatgeFix = selector(state, 'relacio_habitatge') === 'no_en_te';
   const properContracteDeLloguer = selector(state, 'proper_contracte_de_lloguer');
@@ -303,6 +312,7 @@ function mapStateToProps(state) {
     existeixHipoteca: existeixHipoteca,
     haEstatDesnonat: selector(state, 'ha_perdut_lhabitatge_en_els_ultims_2_anys'),
     haParticipatEnUnProcesDeMediacio: selector(state, 'ha_participat_en_un_proces_de_mediacio'),
+    haRebutNotificacio: haRebutNotificacio,
     haSeleccionatAlgunaRelacioAmbLHabitatge: haSeleccionatAlgunaRelacioAmbLHabitatge,
     initialValues: state.residence,
     noTeHabitatgeFix: noTeHabitatgeFix,
