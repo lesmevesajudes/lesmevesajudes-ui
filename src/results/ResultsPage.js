@@ -36,7 +36,7 @@ class ResultsPage extends React.Component<Props> {
         .then(function (response) {
           console.log('saved successfully', response);
           //kill em all
-          window.location.reload(true);
+          window.location.replace('/');
         })
         .catch(function (error) {
           console.error(error);

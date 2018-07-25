@@ -17,5 +17,4 @@ export const rootReducer = combineReducers({
   modals: ModalReducer,
   showMeOnceModals: ShowMeOnceReducer,
   form: reduxFormReducer
-
 });

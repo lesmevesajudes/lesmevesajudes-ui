@@ -28,7 +28,7 @@ let StepperButtons = (props: Props) => {
           {typeof props.nextAction === 'undefined' &&
           <Button className={classNames('right-button', 'buttonTheme')}
                   color='secondary' variant='contained'
-                  onClick={() => window.location.reload(true)}
+                  onClick={() => window.location.replace('/')}
                   disabled={!props.buttonEnabled}>
             <Trans>Nou càlcul</Trans>
           </Button>
