@@ -37,7 +37,6 @@ type Props = {
   existeixDeutePagamentHipoteca: boolean,
   existeixHipoteca: boolean,
   haEstatDesnonat: boolean,
-  haParticipatEnUnProcesDeMediacio: boolean,
   haRebutNotificacio: boolean,
   haSeleccionatAlgunaRelacioAmbLHabitatge: boolean,
   initialValues: ?ResidenceData,
@@ -60,7 +59,6 @@ const ResidenceForm = (props: Props) => {
     existeixDeutePagamentLloguer,
     existeixHipoteca,
     haEstatDesnonat,
-    haParticipatEnUnProcesDeMediacio,
     haRebutNotificacio,
     haSeleccionatAlgunaRelacioAmbLHabitatge,
     noTeHabitatgeFix,
@@ -126,14 +124,6 @@ const ResidenceForm = (props: Props) => {
                     <Trans>Indiqui l'import del deute en el pagament de la hipoteca:</Trans>
                   </MoneyQuestion>}
 
-                  {esLlogater &&
-                  <YesNoQuestion name='ha_participat_en_un_proces_de_mediacio'>
-                    <Trans>
-                      Ha participat en un procés de mediació del servei de mediació de la Xarxa d’Oficines d’Habitatge
-                      de Barcelona?
-                    </Trans>
-                  </YesNoQuestion>}
-
                   {haSeleccionatAlgunaRelacioAmbLHabitatge && !esPropietari &&
                   <YesNoQuestion name='ha_perdut_lhabitatge_en_els_ultims_2_anys'>
                     <Trans>
@@ -166,7 +156,7 @@ const ResidenceForm = (props: Props) => {
                     <Trans>Quina és la quota mensual de la seva hipoteca?</Trans>
                   </MoneyQuestion>}
 
-                  {(esLlogater || properContracteDeLloguer) && (existeixDeutePagamentLloguer || haParticipatEnUnProcesDeMediacio || haEstatDesnonat) &&
+                  {(esLlogater || properContracteDeLloguer) && (existeixDeutePagamentLloguer || haEstatDesnonat) &&
                   <MultipleAnswerQuestion name='titular_contracte_de_lloguer_id'
                                           label={<Trans>Persona titular del contracte de lloguer</Trans>}>
                     {props.personesQuePodenTenirContracte.valueSeq().map((persona) => (
@@ -311,7 +301,6 @@ function mapStateToProps(state) {
     existeixDeutePagamentHipoteca: selector(state, 'existeix_deute_en_el_pagament_de_la_hipoteca'),
     existeixHipoteca: existeixHipoteca,
     haEstatDesnonat: selector(state, 'ha_perdut_lhabitatge_en_els_ultims_2_anys'),
-    haParticipatEnUnProcesDeMediacio: selector(state, 'ha_participat_en_un_proces_de_mediacio'),
     haRebutNotificacio: haRebutNotificacio,
     haSeleccionatAlgunaRelacioAmbLHabitatge: haSeleccionatAlgunaRelacioAmbLHabitatge,
     initialValues: state.residence,
@@ -329,7 +318,6 @@ export default connect(mapStateToProps)(reduxForm(
     {
       form: 'ResidenceForm',
       onChange: (values, dispatch) => {
-        console.log(values);
         dispatch(addResidenceData(values));
       }
     })(ResidenceForm));
