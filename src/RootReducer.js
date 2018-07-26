@@ -7,6 +7,7 @@ import ResidenceReducer from './residence/ResidenceReducer';
 import StepReducer from './components/Steps/StepsReducer'
 import ModalReducer from './components/Modals/ModalReducer';
 import {ShowMeOnceReducer} from './components/ShowMeOnceModal/ShowMeOnceReducer';
+import ReportBugReducer from "./reportBug/ReportBugReducer";
 
 export const rootReducer = combineReducers({
   results: ResultsReducer,
@@ -15,6 +16,7 @@ export const rootReducer = combineReducers({
   residence: ResidenceReducer,
   step: StepReducer,
   modals: ModalReducer,
+  reportBug: ReportBugReducer,
   showMeOnceModals: ShowMeOnceReducer,
   form: reduxFormReducer
 });

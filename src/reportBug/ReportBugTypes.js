@@ -4,5 +4,7 @@ export type BugReport = {
   nom_informador: String,
   correu_informador: String,
   resultat_esperat: String,
-  application_state: String
+  application_state: String,
+  comments: String,
+  invalid_result: boolean
 };

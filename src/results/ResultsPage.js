@@ -5,20 +5,20 @@ import PersonalBenefits from './PersonalBenefits';
 import FamilyBenefits from './FamilyBenefits';
 import type {Person, PersonID} from '../persons/PersonTypes';
 import ReportBug from '../reportBug/ReportBugPage';
-import axios from 'axios/index';
 import {Grid, Typography} from '@material-ui/core';
 import {IconFont} from '../components/IconFont/IconFont';
 import UnitatDeConvivenciaBenefits from './UnitatDeConvivenciaBenefits';
 import {Trans} from 'react-i18next';
 import ShowMeOnceModal from '../components/ShowMeOnceModal'
-import {REPORT_BUG_URL} from '../config';
-import Spinner from './spinner.svg';
+import Spinner from '../shared/spinner.svg';
+import {submitReport} from "../reportBug/ReportBugActions";
 
 type Props = {
   isError: boolean,
   isRequestDone: boolean,
   simulationData: any,
   resultsData: any,
+  dispatch: Function,
   persons: Map<PersonID, Person>
 };
 
@@ -26,28 +26,8 @@ class ResultsPage extends React.Component<Props> {
   submitReport = values => {
     // print the form values to the console
     console.log('form submit:', values);
-    axios
-        .post(REPORT_BUG_URL, {
-          comments: values.comments || '',
-          expected_result: values.resultat_esperat || '',
-          application_state: values.application_state,
-          valid_result: !values.invalid_result
-        })
-        .then(function (response) {
-          console.log('saved successfully', response);
-          //kill em all
-          window.location.replace('/');
-        })
-        .catch(function (error) {
-          console.error(error);
-          alert(error);
-        });
+    this.props.submitReport(values);
   };
-
-  constructor() {
-    super();
-    this.period = '2017-01';
-  }
 
   enoughDataForSimulation() {
     return this.props.persons.count() > 0;
@@ -57,6 +37,11 @@ class ResultsPage extends React.Component<Props> {
     if (this.enoughDataForSimulation()) this.props.fetchSimulation(this.props.simulationData);
   }
 
+  constructor(props) {
+    super(props);
+    this.period = '2017-01';
+    this.submitReport = this.submitReport.bind(this);
+  }
   render() {
     if (!this.enoughDataForSimulation()) {
       return (
@@ -180,4 +165,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, {fetchSimulation})(ResultsPage);
+export default connect(mapStateToProps, {fetchSimulation, submitReport})(ResultsPage);
