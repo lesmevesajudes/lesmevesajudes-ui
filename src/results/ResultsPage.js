@@ -104,7 +104,7 @@ class ResultsPage extends React.Component<Props> {
                   <Grid container direction='column' className='ResultList'>
                     <Grid item className='ItemResult'>
                       <Trans>Detalls:</Trans>
-                      <Typography>{this.props.errorData.message}</Typography>
+                      <Typography>{this.props.resultsData.message}</Typography>
                     </Grid>
                   </Grid>
                 </Grid>
@@ -176,7 +176,6 @@ function mapStateToProps(state) {
     isRequestDone: state.results.isRequestDone,
     simulationData: state,
     resultsData: state.results.response,
-    errorData: state.results.errorData,
     persons: state.persons
   };
 }

@@ -19,7 +19,7 @@ export default function(
     case FETCH_SIMULATION_ERROR:
       console.log('error:', action.payload);
       return {
-        errorData: action.payload,
+        response: action.payload,
         isError: true,
         isRequestDone: true
       };
