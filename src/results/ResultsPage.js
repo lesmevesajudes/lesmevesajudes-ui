@@ -109,11 +109,7 @@ class ResultsPage extends React.Component<Props> {
                       <Grid item>
                         <Typography>Details:</Typography>
                         <Typography>
-                          {JSON.stringify(
-                              typeof this.props.resultsData.response !== 'undefined' ? JSON.parse(this.props.resultsData.response.request.responseText) : '',
-                              null,
-                              2
-                          )}
+                          {this.props.resultsData}
                         </Typography>
                       </Grid>
                     </Grid>

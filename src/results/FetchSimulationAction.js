@@ -5,7 +5,9 @@ import type {ResidenceData} from '../residence/ResidenceTypes';
 import OpenFiscaAPIClient from '../shared/OpenFiscaAPIClient/OpenFiscaAPIClient';
 import {API_URL} from "../config";
 
-export const FETCH_SIMULATION = 'fetch_simulation';
+export const START_FETCH_SIMULATION = 'START_FETCH_SIMULATION';
+export const FETCH_SIMULATION = 'FETCH_SIMULATION';
+export const FETCH_SIMULATION_ERROR = 'FETCH_SIMULATION_ERROR';
 
 export type SimulationData = {
   persons: PersonsState,
@@ -14,10 +16,18 @@ export type SimulationData = {
   parelles: Object
 };
 
-export function fetchSimulation(simulationData: SimulationData) {
+export const fetchSimulation = (simulationData: SimulationData) => (dispatch: any) => {
+  dispatch({
+    type: START_FETCH_SIMULATION
+  });
+
   let client = new OpenFiscaAPIClient(API_URL);
-  return {
+
+  return client.makeSimulation(simulationData).then(result => dispatch({
     type: FETCH_SIMULATION,
-    payload: client.makeSimulation(simulationData)
-  };
-}
+    payload: result
+  })).catch(error => dispatch({
+    type: FETCH_SIMULATION_ERROR,
+    payload: error
+  }));
+};
