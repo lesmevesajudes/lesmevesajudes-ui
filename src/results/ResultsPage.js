@@ -94,24 +94,17 @@ class ResultsPage extends React.Component<Props> {
       </Fragment>;
     }
 
-    if (this.props.isError) {
+    if (this.props.isRequestDone && this.props.isError) {
       return (
           <Fragment>
             <Grid container className='bg-container' justify='center'>
               <Grid item xs={12} className='bg-form-exterior'>
                 <Grid item xs={12}>
                   <Typography variant='title'>Error fent la petició</Typography>
-                  <Grid className='ResultList'>
-                    <Grid container direction='column' className='ItemResult'>
-                      <Grid item>
-                        <Typography>{this.props.resultsData.message}</Typography>
-                      </Grid>
-                      <Grid item>
-                        <Typography>Details:</Typography>
-                        <Typography>
-                          {this.props.resultsData}
-                        </Typography>
-                      </Grid>
+                  <Grid container direction='column' className='ResultList'>
+                    <Grid item className='ItemResult'>
+                      <Trans>Detalls:</Trans>
+                      <Typography>{this.props.errorData.message}</Typography>
                     </Grid>
                   </Grid>
                 </Grid>
@@ -183,6 +176,7 @@ function mapStateToProps(state) {
     isRequestDone: state.results.isRequestDone,
     simulationData: state,
     resultsData: state.results.response,
+    errorData: state.results.errorData,
     persons: state.persons
   };
 }
