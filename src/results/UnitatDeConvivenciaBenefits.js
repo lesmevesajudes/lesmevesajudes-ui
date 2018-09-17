@@ -49,7 +49,7 @@ const possibleBenefits = [
   },
   {
     ID: 'HA_005',
-    name: <Trans>Subvencions de pagament de lloguer (MIFO)</Trans>,
+    name: <Trans>Subvencions de pagament de lloguer</Trans>,
     amountText: 'Fins a 200 € /mes màxim 12 mesos',
     url: '/ajuts/lloguer',
     from: newDate(2018, 5, 19),
