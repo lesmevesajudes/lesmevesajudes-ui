@@ -203,8 +203,8 @@ let PersonForm = (props: Props) => {
                   </MoneyQuestion>
                   <MoneyQuestion name='ingressos_bruts_ultims_sis_mesos' validate={[required]}>
                     {isTheUserInFrontOfTheComputer
-                        ? <Trans>Indiqui els seus ingressos dels últims sis mesos</Trans>
-                        : <Trans>Indiqui els ingressos dels últims sis mesos d'aquesta persona</Trans>
+                        ? <Trans>Indiqui la suma dels seus ingressos dels últims sis mesos</Trans>
+                        : <Trans>Indiqui la suma dels ingressos dels últims sis mesos d'aquesta persona</Trans>
                     }
                   </MoneyQuestion>
                   {esFamiliarOUsuari &&
