@@ -89,7 +89,7 @@ const IndexPage = (props) =>
           </Hidden>
           <div className='BlockText'>
                 <span className='titleLogo'>
-                  <Trans>Vols saber a quins ajuts públics pots accedir?</Trans>
+                  <Trans>Vol saber a quines ajudes públiques pot accedir?</Trans>
                 </span>
             <Link className='CTALink' to='/wizard/'>
               <Button variant='contained' color='primary' className={props.classes.button}>
