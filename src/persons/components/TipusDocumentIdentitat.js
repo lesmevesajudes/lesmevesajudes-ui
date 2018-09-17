@@ -15,6 +15,9 @@ export const TipusDocumentIdentitat = () =>
       <MenuItem value='passaport'>
         <Trans>Passaport</Trans>
       </MenuItem>
+      <MenuItem value='sense_documents'>
+        <Trans>Sense documents</Trans>
+      </MenuItem>
       <MenuItem value='altres'>
         <Trans>Altres</Trans>
       </MenuItem>
