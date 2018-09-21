@@ -193,46 +193,47 @@ let PersonForm = (props: Props) => {
                       <Trans>Ha tornat d’aquest període de treball en els darrers 12 mesos?</Trans>
                     </YesNoQuestion>}
                   </Fragment>}
-
-                  <FormSubTitle>Ingressos</FormSubTitle>
-                  <MoneyQuestion name='ingressos_bruts' validate={[required]}>
-                    {isTheUserInFrontOfTheComputer
-                        ? <Trans>Indiqui els seus ingressos anuals de l’any passat</Trans>
-                        : <Trans>Indiqui els ingressos anuals de l’any passat d'aquesta persona</Trans>
-                    }
-                  </MoneyQuestion>
-                  <MoneyQuestion name='ingressos_bruts_ultims_sis_mesos' validate={[required]}>
-                    {isTheUserInFrontOfTheComputer
-                        ? <Trans>Indiqui la suma dels seus ingressos dels últims sis mesos</Trans>
-                        : <Trans>Indiqui la suma dels ingressos dels últims sis mesos d'aquesta persona</Trans>
-                    }
-                  </MoneyQuestion>
-                  {esFamiliarOUsuari &&
-                  <YesNoQuestion name='cobra_algun_tipus_de_pensio_no_contributiva'>
-                    <Trans>Cobra algun tipus de pensió no contributiva?</Trans>
-                  </YesNoQuestion>}
-
-                  {esFamiliarOUsuari && cobraAlgunTipusDePensioNoContributiva &&
+                  {potTreballar &&
                   <Fragment>
-                    <MoneyQuestion name='ingressos_per_pnc' validate={pncInclosAIngressosBruts}>
-                      <Trans>
-                        Indiqui la suma dels imports anuals que percep en concepte de pensions no contributives
-                      </Trans>
+                    <FormSubTitle>Ingressos</FormSubTitle>
+                    <MoneyQuestion name='ingressos_bruts' validate={[required]}>
+                      {isTheUserInFrontOfTheComputer
+                          ? <Trans>Indiqui els seus ingressos anuals de l’any passat</Trans>
+                          : <Trans>Indiqui els ingressos anuals de l’any passat d'aquesta persona</Trans>
+                      }
                     </MoneyQuestion>
+                    <MoneyQuestion name='ingressos_bruts_ultims_sis_mesos' validate={[required]}>
+                      {isTheUserInFrontOfTheComputer
+                          ? <Trans>Indiqui la suma dels seus ingressos dels últims sis mesos</Trans>
+                          : <Trans>Indiqui la suma dels ingressos dels últims sis mesos d'aquesta persona</Trans>
+                      }
+                    </MoneyQuestion>
+                    {esFamiliarOUsuari &&
+                    <YesNoQuestion name='cobra_algun_tipus_de_pensio_no_contributiva'>
+                      <Trans>Cobra algun tipus de pensió no contributiva?</Trans>
+                    </YesNoQuestion>}
+
+                    {esFamiliarOUsuari && cobraAlgunTipusDePensioNoContributiva &&
+                    <Fragment>
+                      <MoneyQuestion name='ingressos_per_pnc' validate={pncInclosAIngressosBruts}>
+                        <Trans>
+                          Indiqui la suma dels imports anuals que percep en concepte de pensions no contributives
+                        </Trans>
+                      </MoneyQuestion>
+                    </Fragment>}
+
+                    {esFamiliarOUsuari && inscritComADemandantDocupacio &&
+                    <YesNoQuestion name='gaudeix_de_prestacio_contributiva_o_subsidi_desocupacio'>
+                      <Trans>Gaudeix actualment d’una prestació contributiva o subsidi per desocupació?</Trans>
+                    </YesNoQuestion>}
+
+                    {esFamiliarOUsuari && esAturat &&
+                    <YesNoQuestion name='percep_prestacions_incompatibles_amb_la_feina'>
+                      <Trans>
+                        Percep alguna ajuda i/o prestació econòmica de la seguretat social que no li permeti treballar?
+                      </Trans>
+                    </YesNoQuestion>}
                   </Fragment>}
-
-                  {esFamiliarOUsuari && inscritComADemandantDocupacio &&
-                  <YesNoQuestion name='gaudeix_de_prestacio_contributiva_o_subsidi_desocupacio'>
-                    <Trans>Gaudeix actualment d’una prestació contributiva o subsidi per desocupació?</Trans>
-                  </YesNoQuestion>}
-
-                  {esFamiliarOUsuari && esAturat &&
-                  <YesNoQuestion name='percep_prestacions_incompatibles_amb_la_feina'>
-                    <Trans>
-                      Percep alguna ajuda i/o prestació econòmica de la seguretat social que no li permeti treballar?
-                    </Trans>
-                  </YesNoQuestion>}
-
                   {esFamiliarOUsuari &&
                   <Fragment>
                     <FormSubTitle>Situació personal</FormSubTitle>
