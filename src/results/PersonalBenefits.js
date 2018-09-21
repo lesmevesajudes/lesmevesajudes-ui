@@ -19,7 +19,8 @@ class PersonalBenefits extends React.Component<PersonalBenefitsProps> {
       {
         ID: 'AE_230_mensual',
         name: <Trans>Fons extraordinari d’ajuts d’emergència social per a infants de 0 a 16 anys</Trans>,
-        periode: 'mes màxim 9 mesos',
+        periode: 'mes',
+        conditions: 'màxim 9 mesos',
         url: '/ajuts/fons_infancia',
         from: newDate(2018, 4, 25),
         to: newDate(2018, 5, 25)

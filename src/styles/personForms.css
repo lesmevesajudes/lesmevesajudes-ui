@@ -43,6 +43,11 @@
     color: #009900;
 }
 
+.resultIconOutOfPeriod {
+    font-size: 18px !important;
+    height: 0.9rem;
+    color: #858585;
+}
 .resultIconError {
     font-size: 18px !important;
     height: 0.9rem;
