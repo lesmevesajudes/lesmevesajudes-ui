@@ -5,7 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import {withStyles} from '@material-ui/core/styles';
 import {styles} from '../../styles/theme';
-import InfoOutlinedIcon from '@material-ui/icons/InfoOutline';
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 
 const toHelpID = (fieldName: string): string => fieldName.split(".")[0];
 
