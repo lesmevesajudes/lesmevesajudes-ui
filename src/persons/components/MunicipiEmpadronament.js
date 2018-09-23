@@ -2,10 +2,13 @@ import React from 'react';
 import MenuItem from '@material-ui/core/MenuItem';
 import {Trans} from 'react-i18next';
 import MultipleAnswerQuestion from './MultipleAnswerQuestion';
+import { required } from "../../shared/formValidators";
 
 export const MunicipiEmpadronament = () =>
     <MultipleAnswerQuestion label={<Trans>En quin municipi està empadronat/ada actualment?</Trans>}
-                            name='municipi_empadronament'>
+                            name='municipi_empadronament'
+                            validate={[required]}
+    >
       <MenuItem data-test='barcelona' value='barcelona'>
         <Trans>Barcelona</Trans>
       </MenuItem>

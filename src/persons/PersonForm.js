@@ -136,7 +136,7 @@ let PersonForm = (props: Props) => {
                 </YesNoQuestion>}
 
                 {esFamiliarOUsuari && membreDeFamiliaReagrupada &&
-                <YesNoQuestion name='es_una_persona_divorciada'>
+                <YesNoQuestion name='es_una_persona_divorciada' validate={[required]}>
                   <Trans>És una persona divorciada legalment?</Trans>
                 </YesNoQuestion>}
 
@@ -155,29 +155,33 @@ let PersonForm = (props: Props) => {
                   <SituacioLaboral/>
                   {esFamiliarOUsuari && esAturat &&
                   <Fragment>
-                    <YesNoQuestion name='inscrit_com_a_demandant_docupacio'>
+                    <YesNoQuestion name='inscrit_com_a_demandant_docupacio' validate={[required]}>
                       <Trans>Està inscrit/a com a demandant d’ocupació?</Trans>
                     </YesNoQuestion>
 
                     {inscritComADemandantDocupacio &&
-                    <YesNoQuestion name='inscrit_com_a_demandant_docupacio_mes_de_12_mesos'>
+                    <YesNoQuestion name='inscrit_com_a_demandant_docupacio_mes_de_12_mesos' validate={[required]}>
                       <Trans>Ha estat inscrit/a de forma continuada com a demandant d'ocupació més de 12
                         mesos?</Trans>
                     </YesNoQuestion>}
 
                     {esAturat &&
-                    <YesNoQuestion name='en_els_ultims_12_mesos_ha_fet_baixa_voluntaria_de_la_feina'>
+                    <YesNoQuestion name='en_els_ultims_12_mesos_ha_fet_baixa_voluntaria_de_la_feina'
+                                   validate={[required]}>
                       <Trans>Ha deixat la feina de forma voluntària en els darrers 12 mesos?</Trans>
                     </YesNoQuestion>}
                   </Fragment>}
 
-                  {esFamiliarOUsuari && (tipusDocumentIdentitat === "DNI" || tipusDocumentIdentitat === "NIE") && (esAturat || treballaPerCompteDAltriParcial) &&
-                  <YesNoQuestion name='ha_treballat_a_l_estranger_6_mesos'>
+                  {esFamiliarOUsuari
+                  && (tipusDocumentIdentitat === "DNI" || tipusDocumentIdentitat === "NIE")
+                  && (esAturat || treballaPerCompteDAltriParcial) &&
+                  <YesNoQuestion name='ha_treballat_a_l_estranger_6_mesos' validate={[required]}>
                     <Trans>Ha treballat a l’estranger un mínim de 6 mesos?</Trans>
                   </YesNoQuestion>}
 
                   {haTreballatALEstranger6Mesos &&
-                  <YesNoQuestion name='ha_treballat_a_l_estranger_6_mesos_i_ha_retornat_en_els_ultims_12_mesos'>
+                  <YesNoQuestion name='ha_treballat_a_l_estranger_6_mesos_i_ha_retornat_en_els_ultims_12_mesos'
+                                 validate={[required]}>
                     <Trans>Ha tornat d’aquest període de treball en els darrers 12 mesos?</Trans>
                   </YesNoQuestion>}
                 </Fragment>}
@@ -197,13 +201,13 @@ let PersonForm = (props: Props) => {
                     }
                   </MoneyQuestion>
                   {esFamiliarOUsuari &&
-                  <YesNoQuestion name='cobra_algun_tipus_de_pensio_no_contributiva'>
+                  <YesNoQuestion name='cobra_algun_tipus_de_pensio_no_contributiva' validate={[required]}>
                     <Trans>Cobra algun tipus de pensió no contributiva?</Trans>
                   </YesNoQuestion>}
 
                   {esFamiliarOUsuari && cobraAlgunTipusDePensioNoContributiva &&
                   <Fragment>
-                    <MoneyQuestion name='ingressos_per_pnc' validate={pncInclosAIngressosBruts}>
+                    <MoneyQuestion name='ingressos_per_pnc' validate={[pncInclosAIngressosBruts, required]}>
                       <Trans>
                         Indiqui la suma dels imports anuals que percep en concepte de pensions no contributives
                       </Trans>
@@ -211,12 +215,12 @@ let PersonForm = (props: Props) => {
                   </Fragment>}
 
                   {esFamiliarOUsuari && inscritComADemandantDocupacio &&
-                  <YesNoQuestion name='gaudeix_de_prestacio_contributiva_o_subsidi_desocupacio'>
+                  <YesNoQuestion name='gaudeix_de_prestacio_contributiva_o_subsidi_desocupacio' validate={[required]}>
                     <Trans>Gaudeix actualment d’una prestació contributiva o subsidi per desocupació?</Trans>
                   </YesNoQuestion>}
 
                   {esFamiliarOUsuari && esAturat &&
-                  <YesNoQuestion name='percep_prestacions_incompatibles_amb_la_feina'>
+                  <YesNoQuestion name='percep_prestacions_incompatibles_amb_la_feina' validate={[required]}>
                     <Trans>
                       Percep alguna ajuda i/o prestació econòmica de la seguretat social que no li permeti treballar?
                     </Trans>
@@ -225,35 +229,35 @@ let PersonForm = (props: Props) => {
                 {esFamiliarOUsuari &&
                 <Fragment>
                   <FormSubTitle>Situació personal</FormSubTitle>
-                  <YesNoQuestion name='te_algun_grau_de_discapacitat_reconegut'>
+                  <YesNoQuestion name='te_algun_grau_de_discapacitat_reconegut' validate={[required]}>
                     <Trans>Té algun grau de discapacitat reconegut?</Trans>
                   </YesNoQuestion>
 
                   {teAlgunGrauDeDiscapacitatReconegut &&
-                  <PercentageQuestion name='grau_discapacitat'>
+                  <PercentageQuestion name='grau_discapacitat' validate={[required]}>
                     <Trans>Indiqui quin és el grau de discapacitat, expressat en percentatge</Trans>
                   </PercentageQuestion>}
 
                   {potTreballar && esDona &&
-                  <YesNoQuestion name='victima_violencia_de_genere'>
+                  <YesNoQuestion name='victima_violencia_de_genere' validate={[required]}>
                     <Trans>És víctima violència de gènere o domèstica?</Trans>
                   </YesNoQuestion>}
                   {potTreballar && esHome &&
-                  <YesNoQuestion name='victima_violencia_domestica'>
+                  <YesNoQuestion name='victima_violencia_domestica' validate={[required]}>
                     <Trans>És víctima violència domèstica?</Trans>
                   </YesNoQuestion>}
 
                   {(edat > 2 && edat < 16) &&
-                  <YesNoQuestion name='es_escolaritzat_entre_P3_i_4rt_ESO'>
+                  <YesNoQuestion name='es_escolaritzat_entre_P3_i_4rt_ESO' validate={[required]}>
                     <Trans>És escolaritzat/ada entre P3 i 4rt ESO a la ciutat de Barcelona?</Trans>
                   </YesNoQuestion>}
 
                   {(edat > 18 && edat < 23) && !(esFill || esFillastre) &&
-                  <YesNoQuestion name='es_orfe_dels_dos_progenitors'>
+                  <YesNoQuestion name='es_orfe_dels_dos_progenitors' validate={[required]}>
                     <Trans>És orfe/na dels dos progenitors?</Trans>
                   </YesNoQuestion>}
 
-                  <YesNoQuestion name='beneficiari_de_prestacio_residencial'>
+                  <YesNoQuestion name='beneficiari_de_prestacio_residencial' validate={[required]}>
                     <Trans>És beneficiari/aria d’una prestació pública o privada de servei residencial
                       permanent?</Trans>
                   </YesNoQuestion>
