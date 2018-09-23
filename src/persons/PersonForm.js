@@ -21,21 +21,9 @@ import FormSubTitle from "./components/FormSubTitle";
 import Sticky from "react-stickynode";
 import { currentFocussedFieldSelector } from "../shared/selectorUtils";
 import { IconFont } from "../components/IconFont/IconFont";
+import { anysEmpadronatInferiorAEdat, menorDe120, pncInclosAIngressosBruts, required } from "../shared/formValidators";
 
 export type PersonFormInitialValues = Person | { is_the_person_in_front_of_the_computer: boolean };
-const required = value => value ? undefined : <Trans>Aquest camp és requerit</Trans>;
-const pncInclosAIngressosBruts = (value, allValues) =>
-  value && value > parseInt(allValues.ingressos_bruts, 10)
-    ? <Trans>Els ingressos per pensions no contributives has d'estar inclosos en els ingressos bruts</Trans>
-    : undefined;
-const anysEmpadronatInferiorAEdat = (value, allValues) =>
-  value && value > parseInt(allValues.edat, 10)
-    ? <Trans>Els anys d'empadronament han de ser iguals o inferiors a l'edat</Trans>
-    : undefined;
-const menorDe120 = (value) =>
-  value && value >= 120
-    ? <Trans>No es contemplen edats superiors als 120 anys</Trans>
-    : undefined;
 
 type Props = {
   cobraAlgunTipusDePensioNoContributiva: Boolean,
@@ -123,7 +111,7 @@ let PersonForm = (props: Props) => {
                     <Trans>Quina és la seva edat?</Trans>
                   </TimePeriodQuestion>
 
-                  <MultipleAnswerQuestion label={<Trans>Sexe</Trans>} name='sexe'>
+                  <MultipleAnswerQuestion label={<Trans>Sexe</Trans>} name='sexe' validate={[required]}>
                     <MenuItem data-test='sexe_dona' value='dona'>
                       <Trans>Femení</Trans>
                     </MenuItem>
@@ -137,13 +125,13 @@ let PersonForm = (props: Props) => {
 
                   <TipusDocumentIdentitat/>
 
-                  <YesNoQuestion name='porta_dos_anys_o_mes_empadronat_a_catalunya'>
+                  <YesNoQuestion name='porta_dos_anys_o_mes_empadronat_a_catalunya' validate={[required]}>
                     <Trans>Fa dos anys o més que està empadronat/ada a Catalunya?</Trans>
                   </YesNoQuestion>
                 </Fragment>}
 
                 {esFamiliarOUsuari && esDona && tipusDocumentIdentitat === "passaport" && portaDosAnysOMesEmpadronatACatalunya &&
-                <YesNoQuestion name='membre_de_familia_reagrupada'>
+                <YesNoQuestion name='membre_de_familia_reagrupada' validate={[required]}>
                   <Trans>És membre d'una família reagrupada?</Trans>
                 </YesNoQuestion>}
 

@@ -162,7 +162,6 @@ export function possiblesParellesDe(person: Person, persons: Map<PersonID, Perso
 }
 
 export function sustentadorsSolitarisIPossiblesParelles(sustentadors: Array<Person>, persones: Map<PersonID, Person>) {
-  console.log("persones", persones);
   return sustentadors.reduce((result, current) => {
     // $FlowFixMe
     result[current.id] = possiblesParellesDe(current, persones);
