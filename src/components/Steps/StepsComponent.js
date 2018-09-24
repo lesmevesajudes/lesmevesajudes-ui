@@ -9,17 +9,19 @@ import {Trans} from 'react-i18next';
 import {styles} from '../../styles/theme';
 import {IconFont} from '../IconFont/IconFont';
 import Tooltip from "@material-ui/core/Tooltip";
+import {getFormSyncErrors, isValid, touch} from "redux-form";
 
 type Props = {
   appState: Object,
-  classes: Object,
-  steps: Array<any>,
-  nextStep: Function,
   backStep: Function,
-  setActualStep: Function,
-  currentStep: number,
   buttonEnabled: boolean,
-  buttonVisible: boolean
+  buttonVisible: boolean,
+  currentStep: number,
+  classes: Object,
+  dispatch: Function,
+  nextStep: Function,
+  setActualStep: Function,
+  steps: Array<any>,
 }
 
 type State = {
@@ -49,12 +51,21 @@ const BACKWARD = -1;
 
 class StepsComponent extends React.Component<Props, State> {
   nextStep = () => {
-    let step = this.state.current_step;
-    step = this.findNextPageThatShouldShow(step, FORWARD);
-    this.setState({
-      current_step: step,
-      max_step_reached: step > this.state.max_step_reached ? step : this.state.max_step_reached
-    });
+    const currentStep = this.state.current_step;
+    const formToValidate = this.props.steps[currentStep].validateFormToEnableNext;
+    const formIsValid = isValid(formToValidate);
+    console.log("formToValidate", formToValidate, formIsValid(this.props.appState));
+    if (typeof formToValidate !== 'undefined' && !formIsValid(this.props.appState)) {
+      const errors = getFormSyncErrors(formToValidate)(this.props.appState);
+      const visibleFields = Object.keys(errors);
+      this.props.dispatch(touch(formToValidate, ...visibleFields));
+    } else {
+      const nextStep = this.findNextPageThatShouldShow(currentStep, FORWARD);
+      this.setState({
+        current_step: nextStep,
+        max_step_reached: nextStep > this.state.max_step_reached ? nextStep : this.state.max_step_reached
+      });
+    }
   };
 
   backStep = () => {

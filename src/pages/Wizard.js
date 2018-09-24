@@ -28,12 +28,14 @@ const steps = [
     label: <Trans>Families amb menors</Trans>,
     optional: true,
     shouldShowStep: shouldShowFamilyStep,
+    validateFormToEnableNext: 'FamilyForm',
     component: <FamilyForm/>,
     icon: 'familia' // Icono de familia, niños corriendo
   },
   {
     label: <Trans>Domicili Habitual</Trans>,
     optional: false,
+    validateFormToEnableNext: 'ResidenceForm',
     component: <ResidenceForm/>,
     icon: 'domicili' // Icono Casa
   },
