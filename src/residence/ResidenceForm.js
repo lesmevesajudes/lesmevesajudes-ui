@@ -238,11 +238,6 @@ const ResidenceForm = (props: Props) => {
                   <Trans>Ha pagat com a mínim 12 quotes d’aquesta hipoteca?</Trans>
                 </YesNoQuestion>}
 
-                {existeixDeutePagamentHipoteca &&
-                <YesNoQuestion name='fa_mes_de_12_mesos_que_existeix_el_deute_de_hipoteca' validate={[required]}>
-                  <Trans>Fa més de 12 mesos que no paga les quotes de la hipoteca?</Trans>
-                </YesNoQuestion>}
-
                 {(teHabitatgeHabitual || properContracteDeLloguer) &&
                 <YesNoQuestion name='tinc_alguna_propietat_a_part_habitatge_habitual' validate={[required]}>
                   <Trans>

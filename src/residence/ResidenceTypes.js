@@ -6,7 +6,6 @@ export type ResidenceData = {
   es_ocupant_dun_habitatge_gestionat_per_lagencia_de_lhabitatge: boolean,
   existeix_deute_en_el_pagament_del_lloguer: boolean,
   existeix_deute_en_el_pagament_de_la_hipoteca: boolean,
-  fa_mes_de_12_mesos_que_existeix_el_deute_de_hipoteca: boolean,
   ha_pagat_almenys_3_quotes_del_lloguer: boolean,
   ha_perdut_lhabitatge_en_els_ultims_2_anys: boolean,
   ha_rebut_una_notificacio_de_desnonament: boolean,
