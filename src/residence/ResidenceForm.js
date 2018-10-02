@@ -161,7 +161,7 @@ const ResidenceForm = (props: Props) => {
                   <Trans>Quina és la quota mensual de la seva hipoteca?</Trans>
                 </MoneyQuestion>}
 
-                {(esLlogater || properContracteDeLloguer) && (existeixDeutePagamentLloguer || haEstatDesnonat) &&
+                {(esLlogater || properContracteDeLloguer) &&
                 <MultipleAnswerQuestion name='titular_contracte_de_lloguer_id'
                                         label={<Trans>Persona titular del contracte de lloguer</Trans>}
                                         validate={[required]}
@@ -188,7 +188,6 @@ const ResidenceForm = (props: Props) => {
                 </MultipleAnswerQuestion>}
 
                 {esLlogater
-                && existeixDeutePagamentLloguer
                 && typeof titularContracteLloguer !== "undefined"
                 && titularContracteLloguer !== "no-conviu" &&
                 <MultipleAnswerQuestion name='titular_contracte_lloguer_temps_empadronat'
