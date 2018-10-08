@@ -1,10 +1,11 @@
 // @flow
 
 export type BugReport = {
-  nom_informador: String,
-  correu_informador: String,
-  resultat_esperat: String,
-  application_state: String,
-  comments: String,
-  invalid_result: boolean
+  accepted_result: boolean,
+  application_state: string,
+  comments: string,
+  expected_result: string,
+  reporter_email: string,
+  simulation_id: string,
+  test_group: string,
 };

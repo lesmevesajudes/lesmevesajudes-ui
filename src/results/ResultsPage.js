@@ -1,17 +1,17 @@
+import {Grid, Typography} from '@material-ui/core';
 import React, {Fragment} from 'react';
+import {Trans} from 'react-i18next';
 import {connect} from 'react-redux';
+import {IconFont} from '../components/IconFont/IconFont';
+import ShowMeOnceModal from '../components/ShowMeOnceModal'
+import type {Person, PersonID} from '../persons/PersonTypes';
+import {submitReport} from "../reportBug/ReportBugActions";
+import ReportBug from '../reportBug/ReportBugForm';
+import Spinner from '../shared/spinner.svg';
+import FamilyBenefits from './FamilyBenefits';
 import {fetchSimulation} from './FetchSimulationAction';
 import PersonalBenefits from './PersonalBenefits';
-import FamilyBenefits from './FamilyBenefits';
-import type {Person, PersonID} from '../persons/PersonTypes';
-import ReportBug from '../reportBug/ReportBugPage';
-import {Grid, Typography} from '@material-ui/core';
-import {IconFont} from '../components/IconFont/IconFont';
 import UnitatDeConvivenciaBenefits from './UnitatDeConvivenciaBenefits';
-import {Trans} from 'react-i18next';
-import ShowMeOnceModal from '../components/ShowMeOnceModal'
-import Spinner from '../shared/spinner.svg';
-import {submitReport} from "../reportBug/ReportBugActions";
 
 type Props = {
   isError: boolean,
@@ -28,6 +28,11 @@ class ResultsPage extends React.Component<Props> {
     console.log('form submit:', values);
     this.props.submitReport(values);
   };
+  getReportBugDataFromLocalStorage = () => (
+      {
+        ...(typeof localStorage.getItem('reporter_email') !== 'undefined' && {reporter_email: localStorage.getItem('reporter_email')}),
+        ...(typeof localStorage.getItem('test_group') !== 'undefined' && {test_group: localStorage.getItem('test_group')})
+      });
 
   enoughDataForSimulation() {
     return this.props.persons.count() > 0;
@@ -42,6 +47,7 @@ class ResultsPage extends React.Component<Props> {
     this.period = '2017-01';
     this.submitReport = this.submitReport.bind(this);
   }
+
   render() {
     if (!this.enoughDataForSimulation()) {
       return (
@@ -61,22 +67,21 @@ class ResultsPage extends React.Component<Props> {
     }
 
     if (!this.props.isRequestDone) {
-      return <Fragment>
-        <Grid container direction='column' justify='center' alignItems='center' className='bg-container'>
-          <Grid item xs={12} className='bg-form-exterior'>
-            <Grid container direction='column' justify='center' alignItems='center'>
-              <Grid item>
-                <img className="spinner" src={Spinner} width="40" alt="carregant"/>
-              </Grid>
-              <Grid item>
-                <Typography align='center'>
-                  <Trans>Carregant...</Trans>
-                </Typography>
+      return (
+          <Grid container direction='column' justify='center' alignItems='center' className='bg-container'>
+            <Grid item xs={12} className='bg-form-exterior'>
+              <Grid container direction='column' justify='center' alignItems='center'>
+                <Grid item>
+                  <img className="spinner" src={Spinner} width="40" alt="carregant"/>
+                </Grid>
+                <Grid item>
+                  <Typography align='center'>
+                    <Trans>Carregant...</Trans>
+                  </Typography>
+                </Grid>
               </Grid>
             </Grid>
-          </Grid>
-        </Grid>
-      </Fragment>;
+          </Grid>);
     }
 
     if (this.props.isRequestDone && this.props.isError) {
@@ -135,7 +140,7 @@ class ResultsPage extends React.Component<Props> {
                 />
               </Grid>
               <Grid item xs={12}>
-                <Typography>
+                <Typography gutterBottom>
                   <Trans>
                     Li recordem que la concessió d’una d’aquestes ajudes pot fer variar els seus ingressos i/o
                     requisits
@@ -146,7 +151,9 @@ class ResultsPage extends React.Component<Props> {
                 </Typography>
               </Grid>
               <Grid item xs={12}>
-                <ReportBug onSubmit={this.submitReport}/>
+                {console.log('qqq ', this.getReportBugDataFromLocalStorage())}
+
+                <ReportBug initialValues={this.getReportBugDataFromLocalStorage()} onSubmit={this.submitReport}/>
               </Grid>
             </Grid>
           </Grid>

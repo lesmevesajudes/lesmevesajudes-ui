@@ -1,16 +1,16 @@
 //@flow
 import React from 'react';
-import PersonsViewer from './PersonsViewer';
+import {connect} from 'react-redux';
+import {enableButtons, hideButtons, showButtons} from '../components/Steps/StepsActions';
+import * as UUID from '../shared/UUID';
+import HowManyPersonsLiveTogetherPage from './HowManyPersonsLiveTogetherPage';
 import type {PersonFormInitialValues} from './PersonForm';
 import PersonForm from './PersonForm';
-import {connect} from 'react-redux';
+import {addPerson, removePerson, updatePerson} from './PersonsActions';
+import {serialize} from './PersonsReducer';
+import PersonsViewer from './PersonsViewer';
 import type {Person, PersonID} from './PersonTypes';
 import {HowManyPersonsLiveTogetherType} from './PersonTypes';
-import {serialize} from './PersonsReducer';
-import * as UUID from '../shared/UUID';
-import {addPerson, removePerson, updatePerson} from './PersonsActions';
-import HowManyPersonsLiveTogetherPage from './HowManyPersonsLiveTogetherPage';
-import {enableButtons, hideButtons, showButtons} from '../components/Steps/StepsActions';
 
 type State = {
   step: string,
@@ -20,7 +20,7 @@ type State = {
 
 type Props = {
   persons: Array<Person>,
-  PersonRole: String,
+  PersonRole: string,
   dispatch: Function
 };
 
