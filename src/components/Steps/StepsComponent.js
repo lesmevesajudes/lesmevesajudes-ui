@@ -1,15 +1,15 @@
 //@flow
-import React from 'react';
-import {connect} from 'react-redux';
-import {withStyles} from '@material-ui/core/styles';
 import {Grid, Step, StepButton, Stepper} from '@material-ui/core';
-import StepperButtons from './StepperButtons';
+import {withStyles} from '@material-ui/core/styles';
+import Tooltip from "@material-ui/core/Tooltip";
 import Typography from '@material-ui/core/Typography';
+import React from 'react';
 import {Trans} from 'react-i18next';
+import {connect} from 'react-redux';
+import {getFormSyncErrors, isValid, touch} from "redux-form";
 import {styles} from '../../styles/theme';
 import {IconFont} from '../IconFont/IconFont';
-import Tooltip from "@material-ui/core/Tooltip";
-import {getFormSyncErrors, isValid, touch} from "redux-form";
+import StepperButtons from './StepperButtons';
 
 type Props = {
   appState: Object,
@@ -54,7 +54,6 @@ class StepsComponent extends React.Component<Props, State> {
     const currentStep = this.state.current_step;
     const formToValidate = this.props.steps[currentStep].validateFormToEnableNext;
     const formIsValid = isValid(formToValidate);
-    console.log("formToValidate", formToValidate, formIsValid(this.props.appState));
     if (typeof formToValidate !== 'undefined' && !formIsValid(this.props.appState)) {
       const errors = getFormSyncErrors(formToValidate)(this.props.appState);
       const visibleFields = Object.keys(errors);

@@ -32,7 +32,6 @@ const resetForm = (reset: Function) => {
 
 const ReportBugForm = (props: Props) => {
   const {handleSubmit, resultatIncorrecte, isError, isRequestDone, requestInProgress, reset} = props;
-      console.log('props: ', props);
       if (requestInProgress) return (
           <Grid container direction='column'>
             <Grid item sm={12}>
@@ -78,7 +77,7 @@ const ReportBugForm = (props: Props) => {
                   </Grid>
                   <Grid item xs={11}>
                     <label>Faciliti el seu correu electrònic</label>
-                    <Field name='reporter_email' placeholder='john@doe.com' component={TextField}
+                    <Field name='reporter_email' placeholder='john@doe.com' fullWidth component={TextField}
                            validate={[required, email]}/>
                   </Grid>
                   <Grid item xs={11}>
@@ -135,7 +134,7 @@ const ReportBugForm = (props: Props) => {
     }
 ;
 
-const selector = formValueSelector('ReportBug');
+const selector = formValueSelector('ReportBugForm');
 
 function mapStateToProps(state, ownProps) {
   return {
