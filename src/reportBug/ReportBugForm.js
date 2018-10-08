@@ -22,9 +22,16 @@ type Props = {
   reset: Function,
   requestInProgress: boolean,
 }
+const resetForm = (reset: Function) => {
+  return () => {
+    localStorage.removeItem('reporter_email');
+    localStorage.removeItem('test_group');
+    return reset();
+  }
+};
 
 const ReportBugForm = (props: Props) => {
-      const {handleSubmit, resultatIncorrecte, isError, isRequestDone, requestInProgress} = props;
+  const {handleSubmit, resultatIncorrecte, isError, isRequestDone, requestInProgress, reset} = props;
       console.log('props: ', props);
       if (requestInProgress) return (
           <Grid container direction='column'>
@@ -92,9 +99,13 @@ const ReportBugForm = (props: Props) => {
                   </Grid>
                   <Field component='input' name='application_state' type='hidden'/>
                   <Field component='input' name='simulation_id' type='hidden'/>
-                  <Grid container direction='row'>
+                  <Grid container direction='row' justify='space-around'>
                     <Grid item className='margin-buttons'>
                       <Button variant='raised' color='primary' type='submit'><Trans>Informar</Trans></Button>
+                    </Grid>
+                    <Grid item className='margin-buttons'>
+                      <Button variant='raised' color='secondary'
+                              onClick={resetForm(reset)}><Trans>Netejar</Trans></Button>
                     </Grid>
                   </Grid>
                 </form>

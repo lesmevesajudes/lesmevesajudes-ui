@@ -5,10 +5,16 @@ import connect from "react-redux/es/connect/connect";
 import {submitReport} from "./ReportBugActions";
 import ReportBug from "./ReportBugForm";
 
+const getReportBugDataFromLocalStorage = () => (
+    {
+      ...(typeof localStorage.getItem('reporter_email') !== 'undefined' && {reporter_email: localStorage.getItem('reporter_email')}),
+      ...(typeof localStorage.getItem('test_group') !== 'undefined' && {test_group: localStorage.getItem('test_group')})
+    });
+
 const ReportBugPage = (props) =>
     <Grid container direction='column' justify='center' alignItems='center' className='bg-container'>
       <Grid item xs={12} className='bg-form-exterior'>
-        <ReportBug onSubmit={values => props.submitReport(values)}/>
+        <ReportBug initialValues={getReportBugDataFromLocalStorage()} onSubmit={values => props.submitReport(values)}/>
       </Grid>
     </Grid>;
 

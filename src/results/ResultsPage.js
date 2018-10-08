@@ -151,8 +151,6 @@ class ResultsPage extends React.Component<Props> {
                 </Typography>
               </Grid>
               <Grid item xs={12}>
-                {console.log('qqq ', this.getReportBugDataFromLocalStorage())}
-
                 <ReportBug initialValues={this.getReportBugDataFromLocalStorage()} onSubmit={this.submitReport}/>
               </Grid>
             </Grid>
