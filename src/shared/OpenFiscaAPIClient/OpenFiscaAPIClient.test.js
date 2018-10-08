@@ -905,9 +905,6 @@ describe('OpenFiscaAPIClient', () => {
                           "existeix_deute_en_el_pagament_del_lloguer":
                               {}
                           ,
-                          "fa_mes_de_12_mesos_que_existeix_el_deute_de_hipoteca":
-                              {}
-                          ,
                           "ha_pagat_12_mesos_daquesta_hipoteca":
                               {}
                           ,

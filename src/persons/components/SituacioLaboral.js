@@ -2,9 +2,10 @@ import React from 'react';
 import MenuItem from '@material-ui/core/MenuItem';
 import {Trans} from 'react-i18next';
 import MultipleAnswerQuestion from './MultipleAnswerQuestion';
+import { required } from "../../shared/formValidators";
 
 export const SituacioLaboral = () =>
-    <MultipleAnswerQuestion label={<Trans>Indiqui la seva situació laboral:</Trans>} name='situacio_laboral'>
+    <MultipleAnswerQuestion label={<Trans>Indiqui la seva situació laboral:</Trans>} name='situacio_laboral' validate={[required]}>
       <MenuItem data-test='treball_compte_propi' value='treball_compte_propi'>
         <Trans>Treballa per compte propi</Trans>
       </MenuItem>

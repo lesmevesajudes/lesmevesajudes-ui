@@ -36,7 +36,7 @@ class PersonalBenefits extends React.Component<PersonalBenefitsProps> {
       },
       {
         ID: 'EG_233_mensual',
-        name: <Trans>Ajuts de menjador escolar</Trans>,
+        name: <Trans>Ajuts de menjador escolar de Barcelona</Trans>,
         amountText: 'Entre 3 - 6 €/dia',
         url: '/ajuts/menjador',
         from: newDate(2018, 9, 3),

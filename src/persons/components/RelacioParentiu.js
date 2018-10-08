@@ -4,10 +4,11 @@ import {Trans} from 'react-i18next';
 import Grid from '@material-ui/core/Grid';
 import MultipleAnswerQuestion from './MultipleAnswerQuestion';
 import Icon from '@material-ui/core/Icon';
+import { required } from "../../shared/formValidators";
 
 export const RelacioParentiu = () =>
     <Grid item>
-      <MultipleAnswerQuestion name='relacio_parentiu' label={<Trans>Aquesta persona és el/la seu/va?</Trans>}>
+      <MultipleAnswerQuestion name='relacio_parentiu' label={<Trans>Aquesta persona és el/la seu/va?</Trans>} validate={[required]}>
         <MenuItem data-test='parella' value='parella'>
           <Trans>Cònjuge / parella</Trans>
         </MenuItem>
