@@ -13,6 +13,10 @@ export const pncInclosAIngressosBruts = (value, allValues) =>
   value && value > parseInt(allValues.ingressos_bruts, 10)
     ? <Trans>Els ingressos per pensions no contributives has d'estar inclosos en els ingressos bruts</Trans>
     : undefined;
+export const empadronamentABarcelonaInferiorAEmpadronamentACatalunya = (value, allValues) =>
+    value && allValues.porta_dos_anys_o_mes_empadronat_a_catalunya === false && value > 2
+        ? <Trans>El temps d'empadronament a Barcelona no pot ésser superior a l'empadronament a Catalunya</Trans>
+        : undefined;
 export const menorDe120 = (value) =>
   value && value >= 120
     ? <Trans>No es contemplen edats superiors als 120 anys</Trans>
