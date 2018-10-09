@@ -1,8 +1,8 @@
+//@flow
 import {Grid, MenuItem} from "@material-ui/core";
 import Icon from "@material-ui/core/Icon/Icon";
 import Typography from "@material-ui/core/Typography";
 import {Map} from "immutable";
-//@flow
 import React from "react";
 import {Trans} from "react-i18next";
 import {connect} from "react-redux";
