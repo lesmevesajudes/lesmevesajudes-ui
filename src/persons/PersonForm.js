@@ -258,10 +258,10 @@ let PersonForm = (props: Props) => {
                       <Trans>És víctima violència domèstica?</Trans>
                     </YesNoQuestion>}
 
-                    {(edat > 2 && edat < 16) &&
-                    <YesNoQuestion name='es_escolaritzat_entre_P3_i_4rt_ESO' validate={[required]}>
-                      <Trans>És escolaritzat/ada entre P3 i 4rt ESO a la ciutat de Barcelona?</Trans>
-                    </YesNoQuestion>}
+                  {(edat > 2 && edat <= 16) &&
+                  <YesNoQuestion name='es_escolaritzat_entre_P3_i_4rt_ESO' validate={[required]}>
+                    <Trans>És escolaritzat/ada entre P3 i 4rt ESO a la ciutat de Barcelona?</Trans>
+                  </YesNoQuestion>}
 
                     {(edat > 18 && edat < 23) && !(esFill || esFillastre) &&
                     <YesNoQuestion name='es_orfe_dels_dos_progenitors' validate={[required]}>
