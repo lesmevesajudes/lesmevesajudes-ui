@@ -1,11 +1,11 @@
-import React from 'react';
+import {Grid, Typography} from '@material-ui/core';
 import {Map} from 'immutable';
+import React from 'react';
+import {Trans} from 'react-i18next';
 import type {PersonID} from '../persons/PersonTypes';
 import {Person} from '../persons/PersonTypes';
-import {Grid, Typography} from '@material-ui/core';
-import {Trans} from 'react-i18next';
-import BenefitRow, {NoBenefitRow} from './BenefitRow';
 import {newDate} from "../shared/dateUtils";
+import BenefitRow, {NoBenefitRow} from './BenefitRow';
 
 type PersonalBenefitsProps = {
   benefitsForPersons: any,
@@ -36,7 +36,7 @@ class PersonalBenefits extends React.Component<PersonalBenefitsProps> {
       },
       {
         ID: 'EG_233_mensual',
-        name: <Trans>Ajuts de menjador escolar de Barcelona</Trans>,
+        name: <Trans>Beques menjador escolar de Barcelona</Trans>,
         amountText: 'Entre 3 - 6 €/dia',
         url: '/ajuts/menjador',
         from: newDate(2018, 9, 3),
@@ -75,7 +75,7 @@ class PersonalBenefits extends React.Component<PersonalBenefitsProps> {
       {
         ID: 'GG_270_mensual',
         name: <Trans>Renda garantida ciutadana</Trans>,
-        periode: 'mes',
+        amountText: '-',
         url: '/ajuts/rgc',
         from: undefined,
         to: undefined,
