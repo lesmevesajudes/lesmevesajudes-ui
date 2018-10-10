@@ -35,7 +35,7 @@ function benefitStatus(benefit): BenefitStatus {
   }
 }
 
-const Period = ({ benefit }) => {
+const Period = ({benefit}) => {
   const status = benefitStatus(benefit);
 
   if (status === "permanent") {
@@ -51,7 +51,7 @@ const Period = ({ benefit }) => {
   }
 };
 
-export const BenefitRow = ({ benefit, subject }: Props) =>
+export const BenefitRow = ({benefit, subject}: Props) =>
     <Grid
         className='ResultPage'
         container
@@ -68,16 +68,16 @@ export const BenefitRow = ({ benefit, subject }: Props) =>
           }/>
         </Grid>
         <Grid item xs={7}>
-          <Typography style={{ color: "#004a8e", fontSize: "1rem" }}>{benefit.name}</Typography>
+          <Typography style={{color: "#004a8e", fontSize: "1rem"}}>{benefit.name}</Typography>
           <Period benefit={benefit}/>
         </Grid>
         <Grid item className='Separator' xs={2}>
-          <Typography style={{ color: "#004a8e", fontSize: "1rem", paddingTop: "1rem" }}>
+          <Typography style={{color: "#004a8e", fontSize: "1rem", paddingTop: "1rem"}}>
             {typeof benefit.amountText !== "undefined"
                 ? benefit.amountText
                 : `${subject[benefit.ID][Object.keys(subject[benefit.ID])[0]]} € / ${benefit.periode}`}
           </Typography>
-          <Typography style={{ color: "#004a8e", fontSize: "1rem" }}>
+          <Typography style={{color: "#004a8e", fontSize: "1rem"}}>
             {benefit.conditions}
           </Typography>
         </Grid>
@@ -87,7 +87,7 @@ export const BenefitRow = ({ benefit, subject }: Props) =>
                      title='Si vol saber si reuneix tots els requisits necessaris per accedir a aquest ajut, cliqui aquí'
                      placement='right'>
               <Button variant='contained' color='primary' key={benefit.ID} className={"buttonResultsXS"}>
-                <Typography style={{ color: "#ffffff" }}>
+                <Typography style={{color: "#ffffff"}}>
                   <Trans>
                     Més informació
                   </Trans>
@@ -105,7 +105,7 @@ export const NoBenefitRow = () =>
         <ClearIcon className='resultIconError'/>
       </Grid>
       <Grid item xs={11}>
-        <Typography style={{ color: "#004a8e", fontSize: "1rem" }}>
+        <Typography style={{color: "#004a8e", fontSize: "1rem"}}>
           <Trans>No opta a cap ajuda</Trans>
         </Typography>
       </Grid>
