@@ -123,6 +123,17 @@ class ResultsPage extends React.Component<Props> {
               </Typography>
             </Grid>
             <Grid item xs={12} className='bg-form-exterior'>
+              <Typography style={{background: '#f2f2f2', zIndex: 4}} gutterBottom>
+                <Trans>
+                  Li recordem que la concessió d’una d’aquestes ajudes pot fer variar els seus ingressos i/o
+                  requisits
+                  fent que algunes de les ajudes llistades no puguin ser concedides.
+                  Per tant, a la pràctica, pot trobar ajudes incompatibles entre sí.
+                  Informi-se’n clicant sobre cada ajut.
+                </Trans>
+              </Typography>
+            </Grid>
+            <Grid item xs={12} className='bg-form-exterior'>
               <Grid item xs={12}>
                 <PersonalBenefits
                     benefitsForPersons={this.props.resultsData.persones}
@@ -138,17 +149,6 @@ class ResultsPage extends React.Component<Props> {
                     persons={this.props.persons}
                     period={this.period}
                 />
-              </Grid>
-              <Grid item xs={12}>
-                <Typography gutterBottom>
-                  <Trans>
-                    Li recordem que la concessió d’una d’aquestes ajudes pot fer variar els seus ingressos i/o
-                    requisits
-                    fent que algunes de les ajudes llistades no puguin ser concedides.&nbsp;
-                    Per tant, a la pràctica, pot trobar ajudes incompatibles entre sí.&nbsp;
-                    Informi-se’n clicant sobre cada ajut..
-                  </Trans>
-                </Typography>
               </Grid>
               <Grid item xs={12}>
                 <ReportBug initialValues={this.getReportBugDataFromLocalStorage()} onSubmit={this.submitReport}/>

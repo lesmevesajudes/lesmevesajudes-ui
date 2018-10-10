@@ -1,16 +1,16 @@
+import Button from "@material-ui/core/Button";
 //@flow
 import Grid from "@material-ui/core/Grid";
-import React from "react";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
+import {withStyles} from "@material-ui/core/styles";
 import Tooltip from "@material-ui/core/Tooltip";
-import { Link } from "react-router-dom";
-import { Trans } from "react-i18next";
-import DoneIcon from "@material-ui/icons/Done";
+import Typography from "@material-ui/core/Typography";
 import ClearIcon from "@material-ui/icons/Clear";
-import { styles } from "../styles/theme";
-import { withStyles } from "@material-ui/core/styles";
-import { dateToString } from "../shared/dateUtils";
+import DoneIcon from "@material-ui/icons/Done";
+import React from "react";
+import {Trans} from "react-i18next";
+import {Link} from "react-router-dom";
+import {dateToString} from "../shared/dateUtils";
+import {styles} from "../styles/theme";
 
 type Props = {
   benefit: Object,
@@ -30,6 +30,8 @@ function benefitStatus(benefit): BenefitStatus {
     return "outOfPeriodNextUnknown";
   } else if (now < benefit.from) {
     return "outOfPeriodNextKnown";
+  } else { // Just to keep flow happy
+    return "outOfPeriodNextUnknown"
   }
 }
 
@@ -50,63 +52,63 @@ const Period = ({ benefit }) => {
 };
 
 export const BenefitRow = ({ benefit, subject }: Props) =>
-  <Grid
-    className='ResultPage'
-    container
-    justify='center'
-    alignItems='center'
-    key={benefit.ID}
-  >
-    <Grid container direction='row' justify='center' alignItems='center' key={benefit.ID} className='ItemResult'>
-      <Grid item xs={1}>
-        <DoneIcon className={
-          benefitStatus(benefit) === "active" || benefitStatus(benefit) === "permanent"
-            ? "resultIconSuccess"
-            : "resultIconOutOfPeriod"
-        }/>
+    <Grid
+        className='ResultPage'
+        container
+        justify='center'
+        alignItems='center'
+        key={benefit.ID}
+    >
+      <Grid container direction='row' justify='center' alignItems='center' key={benefit.ID} className='ItemResult'>
+        <Grid item xs={1}>
+          <DoneIcon className={
+            benefitStatus(benefit) === "active" || benefitStatus(benefit) === "permanent"
+                ? "resultIconSuccess"
+                : "resultIconOutOfPeriod"
+          }/>
+        </Grid>
+        <Grid item xs={7}>
+          <Typography style={{ color: "#004a8e", fontSize: "1rem" }}>{benefit.name}</Typography>
+          <Period benefit={benefit}/>
+        </Grid>
+        <Grid item className='Separator' xs={2}>
+          <Typography style={{ color: "#004a8e", fontSize: "1rem", paddingTop: "1rem" }}>
+            {typeof benefit.amountText !== "undefined"
+                ? benefit.amountText
+                : `${subject[benefit.ID][Object.keys(subject[benefit.ID])[0]]} € / ${benefit.periode}`}
+          </Typography>
+          <Typography style={{ color: "#004a8e", fontSize: "1rem" }}>
+            {benefit.conditions}
+          </Typography>
+        </Grid>
+        <Grid item className='Separator' xs={2}>
+          <Link className={"linkBenefits"} to={benefit.url}>
+            <Tooltip id='mes-info-tooltip'
+                     title='Si vol saber si reuneix tots els requisits necessaris per accedir a aquest ajut, cliqui aquí'
+                     placement='right'>
+              <Button variant='contained' color='primary' key={benefit.ID} className={"buttonResultsXS"}>
+                <Typography style={{ color: "#ffffff" }}>
+                  <Trans>
+                    Més informació
+                  </Trans>
+                </Typography>
+              </Button>
+            </Tooltip>
+          </Link>
+        </Grid>
       </Grid>
-      <Grid item xs={7}>
-        <Typography style={{ color: "#004a8e", fontSize: "1rem" }}>{benefit.name}</Typography>
-        <Period benefit={benefit}/>
-      </Grid>
-      <Grid item className='Separator' xs={2}>
-        <Typography style={{ color: "#004a8e", fontSize: "1rem", paddingTop: "1rem" }}>
-          {typeof benefit.amountText !== "undefined"
-            ? benefit.amountText
-            : `${subject[benefit.ID][Object.keys(subject[benefit.ID])[0]]} € / ${benefit.periode}`}
-        </Typography>
-        <Typography style={{ color: "#004a8e", fontSize: "1rem" }}>
-          {benefit.conditions}
-        </Typography>
-      </Grid>
-      <Grid item className='Separator' xs={2}>
-        <Link className={"linkBenefits"} to={benefit.url}>
-          <Tooltip id='mes-info-tooltip'
-                   title='Si vol saber si reuneix tots els requisits necessaris per accedir a aquest ajut, cliqui aquí'
-                   placement='right'>
-            <Button variant='contained' color='primary' key={benefit.ID} className={"buttonResultsXS"}>
-              <Typography style={{ color: "#ffffff" }}>
-                <Trans>
-                  Més informació
-                </Trans>
-              </Typography>
-            </Button>
-          </Tooltip>
-        </Link>
-      </Grid>
-    </Grid>
-  </Grid>;
+    </Grid>;
 
 export const NoBenefitRow = () =>
-  <Grid container justify='center' alignItems='center' className='ItemResult'>
-    <Grid item xs={1}>
-      <ClearIcon className='resultIconError'/>
-    </Grid>
-    <Grid item xs={11}>
-      <Typography style={{ color: "#004a8e", fontSize: "1rem" }}>
-        <Trans>No opta a cap ajuda</Trans>
-      </Typography>
-    </Grid>
-  </Grid>;
+    <Grid container justify='center' alignItems='center' className='ItemResult'>
+      <Grid item xs={1}>
+        <ClearIcon className='resultIconError'/>
+      </Grid>
+      <Grid item xs={11}>
+        <Typography style={{ color: "#004a8e", fontSize: "1rem" }}>
+          <Trans>No opta a cap ajuda</Trans>
+        </Typography>
+      </Grid>
+    </Grid>;
 
 export default (withStyles(styles)(BenefitRow));

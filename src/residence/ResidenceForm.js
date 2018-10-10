@@ -108,6 +108,11 @@ const ResidenceForm = (props: Props) => {
                     <Trans>Existeix un deute en el pagament del lloguer?</Trans>
                   </YesNoQuestion>}
 
+                  {esLlogater && existeixDeutePagamentLloguer &&
+                  <YesNoQuestion name='ha_rebut_una_notificacio_de_desnonament' validate={[required]}>
+                    <Trans>Li han notificat una demanda de desnonament per aquest habitatge?</Trans>
+                  </YesNoQuestion>}
+
                   {esLlogater && existeixDeutePagamentLloguer && typeof haRebutNotificacio !== "undefined" &&
                   <MoneyQuestion name='import_deute_en_el_pagament_del_lloguer' validate={[required]}>
                     {haRebutNotificacio && <Trans>Indiqui l'import del deute en el pagament del lloguer:</Trans>}
@@ -115,11 +120,6 @@ const ResidenceForm = (props: Props) => {
                     <Trans>Indiqui l'import del deute acumulat en el pagament del lloguer en els darrers 12
                       mesos:</Trans>}
                   </MoneyQuestion>}
-
-                  {esLlogater && existeixDeutePagamentLloguer &&
-                  <YesNoQuestion name='ha_rebut_una_notificacio_de_desnonament' validate={[required]}>
-                    <Trans>Li han notificat una demanda de desnonament per aquest habitatge?</Trans>
-                  </YesNoQuestion>}
 
                   {existeixHipoteca &&
                   <YesNoQuestion name='existeix_deute_en_el_pagament_de_la_hipoteca' validate={[required]}>
