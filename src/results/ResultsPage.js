@@ -76,7 +76,7 @@ class ResultsPage extends React.Component<Props> {
                 </Grid>
                 <Grid item>
                   <Typography align='center'>
-                    <Trans>Carregant...</Trans>
+                    <Trans>Calculant ajuts...</Trans>
                   </Typography>
                 </Grid>
               </Grid>
