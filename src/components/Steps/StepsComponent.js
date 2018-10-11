@@ -117,7 +117,7 @@ class StepsComponent extends React.Component<Props, State> {
     const childComponent = steps[currentStep].component;
     return (
         <div className={classes.root}>
-          <Stepper activeStep={currentStep} nonLinear alternativeLabel className='stepperContainer'>
+          <Stepper activeStep={currentStep} nonLinear alternativeLabel className={classes.stepperContainer}>
             {steps.map((step, index) => {
               const labelProps = step.optional ? {
                 optional: <Tooltip id='unknown-tooltip'

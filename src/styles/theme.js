@@ -16,25 +16,25 @@ export const colors = {
 };
 
 export const styles = theme => ({
-  root: {
-    width: '100%',
-  },
-  marginButtons: {
-    marginBottom: 30 + 'px'
-  },
-  buttonIcon: {
-    margin: theme.spacing.unit,
-  },
   addMemberButton: {
     margin: theme.spacing.unit,
     backgroundColor: '#fff !important',
     marginLeft: '15px'
+  },
+  buttonIcon: {
+    margin: theme.spacing.unit,
   },
   leftIcon: {
     marginLeft: theme.spacing.unit,
   },
   rightIcon: {
     marginRight: theme.spacing.unit,
+  },
+  marginButtons: {
+    marginBottom: 30 + 'px'
+  },
+  root: {
+    width: '100%',
   },
   grayBackground: {
     backgroundColor: colors.white,
@@ -43,7 +43,7 @@ export const styles = theme => ({
       backgroundColor: colors.disabled_text
     },
     '&:hover': {
-      backgroundColor: colors.disabled_text 
+      backgroundColor: colors.disabled_text
     }
   },
   completedStep: {
@@ -76,12 +76,10 @@ export const styles = theme => ({
     //minHeight: '200px',
     //overflowY: 'scroll'
   },
-  titleDescriptionText: {
-    color: colors.blackest,
-    fontWeight: '600',
-    fontSize: '1.125rem',
-    fontFamily: 'Source Sans Pro, sans-serif',
-    textAlign: 'justify'
+  buttonResultsXS: {
+    [theme.breakpoints.down('sm')]: {
+      padding: '0px 0px'
+    }
   },
   modalContainer: {
     [theme.breakpoints.down('xs')]: {
@@ -96,10 +94,20 @@ export const styles = theme => ({
     boxShadow: 'px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 5px 8px 0px rgba(0, 0, 0, 0.14), 0px 1px 14px 0px rgba(0, 0, 0, 0.12);',
 
   },
-  buttonResultsXS: {
-    [theme.breakpoints.down('sm')]: {
-      padding: '0px 0px'
-    }
+  titleDescriptionText: {
+    color: colors.blackest,
+    fontWeight: '600',
+    fontSize: '1.125rem',
+    fontFamily: 'Source Sans Pro, sans-serif',
+    textAlign: 'justify'
+  },
+  titleText: {
+    lineHeight: '48px',
+  },
+  titlePage: {
+    textAlign: 'left',
+    marginLeft: '90px',
+    float: 'left',
   },
   helpContainer: {
     [theme.breakpoints.down('sm')]: {
@@ -125,23 +133,32 @@ export const styles = theme => ({
     marginRight: 'auto',
     backgroundColor: '#00acd4',
     padding: '5px',
-}
+  }
 });
 
 export default createMuiTheme({
   typography: {
     fontFamily: 'Source Sans Pro',
     fontSize: 14,
+    htmlFontSize: 14,
+    h2: {
+      textTransform: 'uppercase',
+      fontSize: '1.5rem',
+      fontWeight: 600,
+      color: colors.secondary,
+    },
+    caption: {
+      color: 'rgba(0, 0, 0, 0.54)',
+    },
     useNextVariants: true,
-    htmlFontSize: 14
   },
   palette: {
-    primary: { 
+    primary: {
       main: colors.primary,
       dark: colors.primary_dark,
       contrastText: colors.white
-    }, 
-    secondary: { 
+    },
+    secondary: {
       main: colors.gray,
       dark: colors.disabled,
       contrastText: colors.primary
@@ -164,7 +181,7 @@ export default createMuiTheme({
         fontWeight: '600 !important',
       }
     },
-    MuiStepConnector:{
+    MuiStepConnector: {
       root: {
         backgroundColor: '#dedede',
         height: '2px'
@@ -191,28 +208,16 @@ export default createMuiTheme({
         paddingBottom: '0px'
       }
     },
-    MuiTypography: {
-      title: {
-        marginTop:'10px',
-        fontFamily: 'Source Sans Pro, sans-serif',
-        textTransform: 'uppercase',
-        fontWeight: 600,
-        color: colors.secondary
-      },
-      subtitle1: {
-        color: colors.secondary
-      }
-    },
     MuiInput: {
       underline: {
-        '&::after':{
+        '&::after': {
           borderBottomColor: colors.secondary,
           borderBottomStyle: 'solid',
           borderBottomWidth: '2px'
         }
       },
       error: {
-        '&::after':{
+        '&::after': {
           border: '1px solid red',
           backgroundColor: 'red'
         }
@@ -230,11 +235,11 @@ export default createMuiTheme({
       contained: {
         boxShadow: 'none',
         '&:active': {
-            boxShadow: 'none',
-          },
-          '&:focus': {
-            boxShadow: 'none'
-          },
+          boxShadow: 'none',
+        },
+        '&:focus': {
+          boxShadow: 'none'
+        },
       },
       flat: { // Normal Button
         disableRipple: true,
@@ -242,7 +247,7 @@ export default createMuiTheme({
         boxShadow: 'none',
         '&:hover': {
           bosShadow: 'none'
-        },'&:active': {
+        }, '&:active': {
           bosShadow: 'none'
         }
       },

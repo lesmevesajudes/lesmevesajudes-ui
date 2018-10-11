@@ -39,14 +39,6 @@ body {
     float: left;
 }
 
-.titleText {
-    line-height: 48px;
-}
-
-.stepperContainer {
-    background: #fbfbfb !important;
-}
-
 .FormContainer {
     margin-left: auto;
     margin-right: auto;
