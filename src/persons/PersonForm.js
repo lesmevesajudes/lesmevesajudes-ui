@@ -86,15 +86,14 @@ let PersonForm = (props: Props) => {
       <Grid container className='bg-container'>
 
         <Grid item xs={12} sm={12} className='titleContainer'>
-          {isTheUserInFrontOfTheComputer ?
-              <Typography variant='h5' className='titlePage'>
-                <IconFont icon='persona' sizeSphere={48} fontSize={32}/>
-                <span className='titleText'><Trans>Informació sobre vostè</Trans></span>
-              </Typography> :
-              <Typography variant='h5' className='titlePage'>
-                <IconFont icon='persona' sizeSphere={48} fontSize={32}/>
+          <Typography variant='h5' className='titlePage'>
+            <IconFont icon='persona' sizeSphere={48} fontSize={32}/>
+            {isTheUserInFrontOfTheComputer
+                ? <span className='titleText'><Trans>Informació sobre vostè</Trans></span>
+                :
                 <span className='titleText'><Trans>Informació sobre aquesta persona que conviu amb vostè</Trans></span>
-              </Typography>}
+            }
+          </Typography>
         </Grid>
         <Grid item xs={12} className='bg-form-exterior bg-form formMinHeight'>
           <form onSubmit={handleSubmit}>
@@ -258,10 +257,10 @@ let PersonForm = (props: Props) => {
                       <Trans>És víctima violència domèstica?</Trans>
                     </YesNoQuestion>}
 
-                  {(edat > 2 && edat <= 16) &&
-                  <YesNoQuestion name='es_escolaritzat_entre_P3_i_4rt_ESO' validate={[required]}>
-                    <Trans>És escolaritzat/ada entre P3 i 4rt ESO a la ciutat de Barcelona?</Trans>
-                  </YesNoQuestion>}
+                    {(edat > 2 && edat <= 16) &&
+                    <YesNoQuestion name='es_escolaritzat_entre_P3_i_4rt_ESO' validate={[required]}>
+                      <Trans>És escolaritzat/ada entre P3 i 4rt ESO a la ciutat de Barcelona?</Trans>
+                    </YesNoQuestion>}
 
                     {(edat > 18 && edat < 23) && !(esFill || esFillastre) &&
                     <YesNoQuestion name='es_orfe_dels_dos_progenitors' validate={[required]}>
