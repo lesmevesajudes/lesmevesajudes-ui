@@ -46,7 +46,7 @@
     "start": "yarn git-info; react-scripts start",
     "serve": "serve -l 3000 -s  build ",
     "build": "yarn git-info;react-scripts build",
-    "test": "react-app-rewired test --env=jsdom",
+    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "browser_tests": "ls test/browser/*.js |xargs -n 1 nightwatch -c nightwatch.json",
     "selenium_server": "java -jar node_modules/selenium-server-standalone/index.jar ",
