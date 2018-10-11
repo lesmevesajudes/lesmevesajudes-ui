@@ -3,7 +3,7 @@ const chalk = require('chalk');
 
 module.exports = {
     options: {
-        debug: true,
+      debug: false,
         func: {
             list: [ 't'],
             extensions: ['.js', '.jsx']
