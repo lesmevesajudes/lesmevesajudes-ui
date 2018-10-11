@@ -1,7 +1,7 @@
 import {Grid} from "@material-ui/core";
 import React from "react";
 import {withNamespaces} from "react-i18next";
-import connect from "react-redux/es/connect/connect";
+import {connect} from "react-redux";
 import {submitReport} from "./ReportBugActions";
 import ReportBug from "./ReportBugForm";
 
