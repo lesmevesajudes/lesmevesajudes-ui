@@ -1,11 +1,11 @@
-import React from 'react';
-import {helpText, isHelpAvailable} from '../HelpText';
 import {Hidden, Typography} from '@material-ui/core';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 import {withStyles} from '@material-ui/core/styles';
-import {styles} from '../../styles/theme';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
+import React from 'react';
+import {styles} from '../../styles/theme';
+import {helpText, isHelpAvailable} from '../HelpText';
 
 const toHelpID = (fieldName: string): string => fieldName.split(".")[0];
 
@@ -18,14 +18,14 @@ const DescriptionText = (props) =>
                 <Paper className={props.classes.boxDescriptionText}>
                   <Grid container direction='column' spacing={8}>
                     <Grid item>
-                      <Typography variant='display1' component='h3' className={props.classes.titleDescriptionText}>
+                      <Typography variant='h4' component='h3' className={props.classes.titleDescriptionText}>
                         <InfoOutlinedIcon style={{verticalAlign: 'top'}} className={props.classes.tertiaryColor}/>&nbsp;
                         {findHelpTextFor(props.currentField).title}
                       </Typography>
                     </Grid>
                     <Grid item>
                       <Typography component='div' align='justify'>
-                        {findHelpTextFor(props.currentField).body}
+                        con {findHelpTextFor(props.currentField).body}
                       </Typography>
                     </Grid>
                   </Grid>

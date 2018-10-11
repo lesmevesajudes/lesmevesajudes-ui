@@ -1,13 +1,13 @@
 //@flow
-import React from 'react';
-import {Link} from 'react-router-dom';
-import './indexPage/IndexPage.css';
-import AppHeader from '../components/AppHeader/AppHeader';
-import {Trans, translate} from 'react-i18next';
 import {Button, Grid, Hidden, Typography} from '@material-ui/core';
-import {styles} from '../styles/theme';
 import {withStyles} from '@material-ui/core/styles';
+import React from 'react';
+import {Trans, withNamespaces} from 'react-i18next';
+import {Link} from 'react-router-dom';
+import AppHeader from '../components/AppHeader/AppHeader';
 import Caroussel from '../components/Caroussel/Caroussel';
+import {styles} from '../styles/theme';
+import './indexPage/IndexPage.css';
 
 const content = [
   {
@@ -115,15 +115,15 @@ const IndexPage = (props) =>
       </div>
       <div className='sliderContainer'>
         <div className='Presentation'>
-          <Typography variant='title' align='center' className={props.classes.sliderContainerTitle} gutterBottom>Ajudes
+          <Typography variant='h6' align='center' className={props.classes.sliderContainerTitle} gutterBottom>Ajudes
             destacades</Typography>
           <Hidden smUp>
             {content.slice(0, 3).map((slideContent, index) =>
-                <div key={index} index={index}>
+                <div key={index}>
                   <Grid container direction='column'>
                     <Grid item xs={12} className={props.classes.helpContainer}>
                       <Grid item>
-                        <Typography variant='title' className='sliderTitle' gutterBottom>
+                        <Typography variant='h6' className='sliderTitle' gutterBottom>
                           {slideContent.title}
                         </Typography>
                       </Grid>
@@ -149,4 +149,4 @@ const IndexPage = (props) =>
       </div>
     </div>;
 
-export default translate('translations')(withStyles(styles)(IndexPage));
+export default withNamespaces('translations')(withStyles(styles)(IndexPage));

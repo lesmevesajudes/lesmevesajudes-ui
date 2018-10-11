@@ -74,7 +74,7 @@ const ResidenceForm = (props: Props) => {
   return (
       <Grid container className='bg-container'>
         <Grid item xs={12} sm={12} className='titleContainer'>
-          <Typography variant='headline' className='titlePage'>
+          <Typography variant='h5' className='titlePage'>
             <IconFont icon='domicili' sizeSphere={48} fontSize={32}/>
             <span className='titleText'><Trans>Afegeixi informació del seu domicili habitual</Trans></span>
           </Typography>

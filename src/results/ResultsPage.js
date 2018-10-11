@@ -90,7 +90,7 @@ class ResultsPage extends React.Component<Props> {
             <Grid container className='bg-container' justify='center'>
               <Grid item xs={12} className='bg-form-exterior'>
                 <Grid item xs={12}>
-                  <Typography variant='title'>Error fent la petició</Typography>
+                  <Typography variant='h6'>Error fent la petició</Typography>
                   <Grid container direction='column' className='ResultList'>
                     <Grid item className='ItemResult'>
                       <Trans>Detalls:</Trans>
@@ -117,7 +117,7 @@ class ResultsPage extends React.Component<Props> {
           <Grid container className='bg-container' justify='center'>
 
             <Grid item xs={12} sm={12} className='titleContainer'>
-              <Typography variant='headline' className='titlePage'>
+              <Typography variant='h5' className='titlePage'>
                 <IconFont icon='resultats' sizeSphere={48} fontSize={32}/>
                 <span className='titleText'><Trans>A partir de la informació que ens ha facilitat, a continuació li informem que:</Trans></span>
               </Typography>

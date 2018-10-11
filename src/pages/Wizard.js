@@ -1,15 +1,15 @@
-import React from 'react';
-import './Wizard.css';
-import AppHeader from '../components/AppHeader/AppHeader';
-import {Trans, translate} from 'react-i18next';
 import {Grid} from '@material-ui/core';
+import {withStyles} from '@material-ui/core/styles';
+import React from 'react';
+import {Trans, withNamespaces} from 'react-i18next';
+import AppHeader from '../components/AppHeader/AppHeader';
 import StepsComponent from '../components/Steps/StepsComponent';
-import PersonsPage from '../persons/PersonsPage'
 import FamilyForm from '../family/FamilyForm';
+import PersonsPage from '../persons/PersonsPage'
 import ResidenceForm from '../residence/ResidenceForm';
 import ResultsPage from '../results/ResultsPage';
 import {styles} from '../styles/theme';
-import {withStyles} from '@material-ui/core/styles';
+import './Wizard.css';
 
 const shouldShowFamilyStep = (state) => {
   const menors = state.persons.valueSeq().toArray().filter((persona) => persona.edat <= 16);
@@ -54,4 +54,4 @@ const WizardPage = () =>
       <StepsComponent steps={steps}/>
     </Grid>;
 
-export default translate('translations')(withStyles(styles)(WizardPage));
+export default withNamespaces('translations')(withStyles(styles)(WizardPage));

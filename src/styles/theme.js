@@ -132,6 +132,7 @@ export default createMuiTheme({
   typography: {
     fontFamily: 'Source Sans Pro',
     fontSize: 14,
+    useNextVariants: true,
     htmlFontSize: 14
   },
   palette: {
@@ -198,7 +199,7 @@ export default createMuiTheme({
         fontWeight: 600,
         color: colors.secondary
       },
-      subheading: {
+      subtitle1: {
         color: colors.secondary
       }
     },

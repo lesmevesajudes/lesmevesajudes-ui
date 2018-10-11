@@ -87,11 +87,11 @@ let PersonForm = (props: Props) => {
 
         <Grid item xs={12} sm={12} className='titleContainer'>
           {isTheUserInFrontOfTheComputer ?
-              <Typography variant='headline' className='titlePage'>
+              <Typography variant='h5' className='titlePage'>
                 <IconFont icon='persona' sizeSphere={48} fontSize={32}/>
                 <span className='titleText'><Trans>Informació sobre vostè</Trans></span>
               </Typography> :
-              <Typography variant='headline' className='titlePage'>
+              <Typography variant='h5' className='titlePage'>
                 <IconFont icon='persona' sizeSphere={48} fontSize={32}/>
                 <span className='titleText'><Trans>Informació sobre aquesta persona que conviu amb vostè</Trans></span>
               </Typography>}
@@ -288,7 +288,7 @@ let PersonForm = (props: Props) => {
                 <Button variant='contained' color='secondary' onClick={props.onCancel}>
                   <Trans>Cancelar</Trans>
                 </Button>}
-                <Button variant='raised' color='primary' type='submit' name='ButtonValidar'>
+                <Button variant='contained' color='primary' type='submit' name='ButtonValidar'>
                   <Trans>Validar</Trans>
                 </Button>
               </Grid>

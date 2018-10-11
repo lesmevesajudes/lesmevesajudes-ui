@@ -1,18 +1,16 @@
-import React from 'react';
-import {ButtonBack, ButtonNext, CarouselProvider, Slide, Slider} from 'pure-react-carousel';
-import 'pure-react-carousel/dist/react-carousel.es.css';
-import {Link} from 'react-router-dom';
-import Typography from '@material-ui/core/Typography';
 import {Button, Grid} from '@material-ui/core/';
+import Typography from '@material-ui/core/Typography';
 import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
-
-
+import {ButtonBack, ButtonNext, CarouselProvider, Slide, Slider} from 'pure-react-carousel';
+import 'pure-react-carousel/dist/react-carousel.es.css';
+import React from 'react';
+import {Link} from 'react-router-dom';
 
 
 export default class extends React.Component {
   render() {
-    const {content} = this.props
+    const {content} = this.props;
     return (
       <CarouselProvider
       naturalSlideWidth={100}
@@ -25,7 +23,7 @@ export default class extends React.Component {
           <Slide key={index} index={index}>
             <Grid container direction='column' className='sliderItem'>
               <Grid item justify='flex-start' style={{height: 90}}>
-                <Typography variant='title' className='sliderTitle' gutterBottom>
+                <Typography variant='h6' className='sliderTitle' gutterBottom>
                   {slideContent.title}
                 </Typography>
               </Grid>

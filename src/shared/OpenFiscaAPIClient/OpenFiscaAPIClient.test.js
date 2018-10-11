@@ -1,5 +1,4 @@
 import React from 'react';
-import PersonsReducer, {initPersonState} from '../../persons/PersonsReducer';
 import {
   aMan,
   aPerson,
@@ -9,10 +8,10 @@ import {
   isThePersonInFromOfTheComputer,
   ofAge
 } from '../../../test/fixtures/Persons';
-import {addPerson} from '../../persons/PersonsActions';
-import {buildRequest} from '../../results/FetchSimulationAction';
-import OpenFiscaAPIClient from './OpenFiscaAPIClient';
 import {API_URL} from "../../config";
+import {addPerson} from '../../persons/PersonsActions';
+import PersonsReducer, {initPersonState} from '../../persons/PersonsReducer';
+import OpenFiscaAPIClient from './OpenFiscaAPIClient';
 
 describe('OpenFiscaAPIClient', () => {
   it('Can make a simulation', () => {

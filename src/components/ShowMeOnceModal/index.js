@@ -1,11 +1,12 @@
-import React from 'react';
+import Icon from '@material-ui/core/Icon';
+import Modal from '@material-ui/core/Modal';
 import {withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import Modal from '@material-ui/core/Modal';
-import {modalSeenAction} from './ShowMeOnceReducer';
+import React from 'react';
 import {connect} from 'react-redux';
-import Icon from '@material-ui/core/Icon';
 import {styles} from '../../styles/theme'
+import {modalSeenAction} from './ShowMeOnceReducer';
+
 function getModalStyle() {
   const top = 50;
   const left = 50;
@@ -51,7 +52,7 @@ class ShowMeOnceModal extends React.Component<Props, State> {
               <Icon onClick={this.handleClose} style={closeImg} color='primary'>
                 close
               </Icon>
-            <Typography variant='title' id='modal-title' gutterBottom>
+            <Typography variant='h6' id='modal-title' gutterBottom>
               {title}
             </Typography>
             <Typography id='simple-modal-description' align='justify'>

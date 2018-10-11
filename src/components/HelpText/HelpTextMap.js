@@ -1,8 +1,8 @@
 //@flow
 
-import React from "react";
-import { Trans } from "react-i18next";
 import Typography from "@material-ui/core/Typography";
+import React from "react";
+import {Trans} from "react-i18next";
 
 const HelpTextMap = {
   "anys_empadronat_a_barcelona": {
@@ -44,7 +44,7 @@ const HelpTextMap = {
   "custodies": {
     title: <Trans>Tipus de custòdia</Trans>,
     body: <Trans>
-      <Typography variant='subheading' className='subtitle' gutterBottom>Guarda i custòdia</Typography>
+      <Typography variant='subtitle1' className='subtitle' gutterBottom>Guarda i custòdia</Typography>
 
       Com a guarda i custòdia s’entén viure amb els fills o filles, cuidar-los i assistir-los. Es pot atribuir a una
       de les persones progenitores, compartida entre ambdues o a una tercera persona. Abans d’acordar el règim de
@@ -52,7 +52,7 @@ const HelpTextMap = {
       suficient judici quan s’estimi necessari.
       Cal un document acreditatiu.
 
-      <Typography variant='subheading' className='subtitle' gutterBottom>Tutela legal</Typography>
+      <Typography variant='subtitle1' className='subtitle' gutterBottom>Tutela legal</Typography>
       La tutela és la institució principal en la protecció de les persones incapacitades, a les quals ha d'assegurar
       la protecció, l'administració i la guarda de drets i béns. Normalment, és l'autoritat conferida a una persona
       física o jurídica, anomenada tutor o tutora, per tenir cura d'una persona i els seus béns pel fet que sigui
@@ -72,7 +72,7 @@ const HelpTextMap = {
       S'entén per família monoparental (tant de categoria especial com de categoria general) la família formada per un
       fill o filla o més, menors de 21 anys, o de 26 anys, si estudien, que conviuen i depenen econòmicament d'una sola
       persona.
-      <Typography variant='subheading' className='subtitle' gutterBottom>Títol de família monoparental</Typography>
+      <Typography variant='subtitle1' className='subtitle' gutterBottom>Títol de família monoparental</Typography>
       El títol de família monoparental atorga diversos beneficis, avantatges fiscals i bonificacions.
       Juntament amb el títol col·lectiu per a tota la família, també dona dret a la possessió d’un títol individual per
       a cada una de les persones membres que en són beneficiàries.
@@ -180,14 +180,14 @@ const HelpTextMap = {
   "relacio_habitatge": {
     title: <Trans>Situacions respecte a l’habitatge</Trans>,
     body: <Trans>
-      <Typography variant='subheading' className='subtitle' gutterBottom>Cessió d’ús</Typography>
+      <Typography variant='subtitle1' className='subtitle' gutterBottom>Cessió d’ús</Typography>
       És un contracte pel qual se cedeix l’ús d’un habitatge per un temps determinat a canvi del pagament d’un preu
       equiparable a un lloguer tou.</Trans>
   },
   "relacio_parentiu": {
     title: <Trans>Relacions familiars</Trans>,
     body: <Trans>
-      <Typography variant='subheading' className='subtitle' gutterBottom>Infant en acolliment</Typography>
+      <Typography variant='subtitle1' className='subtitle' gutterBottom>Infant en acolliment</Typography>
       L'acolliment familiar d'un infant comporta confiar temporalment la guarda d'una persona menor a una família o
       persona sola, sense que hi hagi finalitat adoptiva.
       És una mesura temporal per oferir als infants el millor entorn possible per créixer fins que la seva família
@@ -203,7 +203,7 @@ const HelpTextMap = {
         proximitat es determina pel nombre de generacions que separen dos parents i es mesura en graus. Cada grau
         correspon a la separació entre una persona i els seus pares o mares, fills o filles.<br/>
         Aquests vincles de parentiu consanguini s'organitzen en graus de parentiu. </p>
-      <Typography variant='subheading' className='subtitle' gutterBottom>Vincle de parentiu d'afinitat</Typography>
+      <Typography variant='subtitle1' className='subtitle' gutterBottom>Vincle de parentiu d'afinitat</Typography>
       <p>L'afinitat és el vincle que s'estableix entre un dels cònjuges i els parents consanguinis de l'altre o,
         recíprocament, entre una persona i els cònjuges dels seus parents consanguinis. El grau i la línia de l'afinitat
         es determinen segons el grau i la línia de la consanguinitat. És a dir, una persona és parent per afinitat de

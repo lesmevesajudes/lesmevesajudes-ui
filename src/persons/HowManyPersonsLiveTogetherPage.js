@@ -1,15 +1,15 @@
 //@flow
-import React from 'react';
-import {TextField} from 'redux-form-material-ui';
 import {Button, Grid} from '@material-ui/core';
-import {Trans} from 'react-i18next';
-import {Field} from 'redux-form/';
-import {reduxForm} from 'redux-form';
-import {allowOnlyPositive} from '../components/Common/NormalizeCommon';
 import Typography from '@material-ui/core/Typography';
+import React from 'react';
+import {Trans} from 'react-i18next';
+import {withRouter} from 'react-router-dom'
+import {reduxForm} from 'redux-form';
+import {TextField} from 'redux-form-material-ui';
+import {Field} from 'redux-form/';
+import {allowOnlyPositive} from '../components/Common/NormalizeCommon';
 import {IconFont} from '../components/IconFont/IconFont'
 import ShowMeOnceModal from '../components/ShowMeOnceModal'
-import {withRouter} from 'react-router-dom'
 
 const validate = values => {
   const errors = {};
@@ -32,7 +32,7 @@ let HowManyPersonsLiveTogetherPage = props => {
       <Grid container className='bg-container' justify='center'>
         <Grid item xs={12} sm={12} className='titleContainer'>
 
-          <Typography variant='headline' className='titlePage'>
+          <Typography variant='h5' className='titlePage'>
             <IconFont icon='persona' sizeSphere={48} fontSize={32}/>
             <span
                 className='titleText'><Trans>Quantes persones viuen en el seu domicili? (amb vostè inclòs)</Trans></span>

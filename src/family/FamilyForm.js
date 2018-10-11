@@ -1,31 +1,26 @@
 //@flow
-import React, { Fragment } from 'react';
-import { addFamilyData } from './FamilyDataActions';
-import { connect } from 'react-redux';
-import type { FamilyData } from './FamilyDataTypes';
-import { Select } from 'redux-form-material-ui';
-import { reduxForm } from 'redux-form';
 import Grid from '@material-ui/core/Grid';
 import MenuItem from '@material-ui/core/MenuItem';
-import type { Person, PersonID } from '../persons/PersonTypes';
-import { Map } from 'immutable';
-import {
-  currentFocussedFieldSelector,
-  esFill,
-  esSustentador,
-  personsByRelacioDeParentiu
-} from '../shared/selectorUtils';
-import DescriptionText from '../components/Common/DescriptionText';
-import { Trans } from 'react-i18next';
 import Typography from '@material-ui/core/Typography';
-import { YesNoQuestion } from '../persons/components/YesNoQuestion';
-import FormSubTitle from '../persons/components/FormSubTitle';
-import { detectaFamiliesAPartirDeCustodies } from './detectaFamiliesAPartirDeCustodies';
-import { createFamilyName, toArray } from './createFamilyName';
+import {Map} from 'immutable';
+import React, {Fragment} from 'react';
+import {Trans} from 'react-i18next';
+import {connect} from 'react-redux';
 import Sticky from 'react-stickynode';
-import { IconFont } from '../components/IconFont/IconFont';
-import { IRemoveMyValueWhenUnmountedField } from '../components/IRemoveMyValueWhenUnmountedField';
-import { required } from '../shared/formValidators';
+import {reduxForm} from 'redux-form';
+import {Select} from 'redux-form-material-ui';
+import DescriptionText from '../components/Common/DescriptionText';
+import {IconFont} from '../components/IconFont/IconFont';
+import {IRemoveMyValueWhenUnmountedField} from '../components/IRemoveMyValueWhenUnmountedField';
+import FormSubTitle from '../persons/components/FormSubTitle';
+import {YesNoQuestion} from '../persons/components/YesNoQuestion';
+import type {Person, PersonID} from '../persons/PersonTypes';
+import {required} from '../shared/formValidators';
+import {currentFocussedFieldSelector, esFill, esSustentador, personsByRelacioDeParentiu} from '../shared/selectorUtils';
+import {createFamilyName, toArray} from './createFamilyName';
+import {detectaFamiliesAPartirDeCustodies} from './detectaFamiliesAPartirDeCustodies';
+import {addFamilyData} from './FamilyDataActions';
+import type {FamilyData} from './FamilyDataTypes';
 
 type Props = {
   addHouseholdData: Function,
@@ -53,7 +48,7 @@ const FamilyForm = (props: Props) => {
   return (
     <Grid container className='bg-container'>
       <Grid item xs={12} sm={12} className='titleContainer'>
-        <Typography variant='headline' className='titlePage'>
+        <Typography variant='h5' className='titlePage'>
           <IconFont icon='familia' sizeSphere={48} fontSize={32}/>
           <span className='titleText'><Trans>Informació sobre la família</Trans></span>
         </Typography>

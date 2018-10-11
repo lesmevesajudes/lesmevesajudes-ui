@@ -104,7 +104,7 @@ class PersonalBenefits extends React.Component<PersonalBenefitsProps> {
   renderPersonalBenefits(person: Person, personBenefits: any) {
     return (
         <Grid className='ItemResultOut' key={person.id}>
-          <Typography variant='subheading' gutterBottom className="titleResultPerson">
+          <Typography variant='subtitle1' gutterBottom className="titleResultPerson">
             Ajudes de les que podria ser beneficiàri/a: <b>{person.nom}</b>
           </Typography>
 

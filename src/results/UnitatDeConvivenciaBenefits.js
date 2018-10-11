@@ -1,8 +1,8 @@
-import React from 'react';
 import {Grid, Typography} from '@material-ui/core';
-import BenefitRow, {NoBenefitRow} from './BenefitRow';
+import React from 'react';
 import {Trans} from "react-i18next";
 import {newDate} from "../shared/dateUtils";
+import BenefitRow, {NoBenefitRow} from './BenefitRow';
 
 const possibleBenefits = [
   {
@@ -73,7 +73,7 @@ const renderUnitatDeConvivenciaBenefitList = (unitatDeConvivencia, persons, peri
     <Grid container justify='space-between' alignItems='center'>
       <Grid item xs={12} sm={12}>
         <Grid className='ItemResultOut'>
-          <Typography variant='subheading' gutterBottom className="titleResultPerson">
+          <Typography variant='subtitle1' gutterBottom className="titleResultPerson">
             Ajudes per a l'habitatge:
           </Typography>
           <Grid container className='ResultPage' justify='space-between'>

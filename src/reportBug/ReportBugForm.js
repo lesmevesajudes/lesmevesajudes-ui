@@ -52,7 +52,7 @@ const ReportBugForm = (props: Props) => {
         return (
             <Grid container direction='column' className='ItemResult'>
               <Grid item sm={12}>
-                <Typography variant='headline' gutterBottom>Informar del resultat de la simulació</Typography>
+                <Typography variant='h5' gutterBottom>Informar del resultat de la simulació</Typography>
               </Grid>
               <Grid container direction='column' justify='space-between' spacing={16}>
                 <form onSubmit={handleSubmit}>
@@ -100,10 +100,10 @@ const ReportBugForm = (props: Props) => {
                   <Field component='input' name='simulation_id' type='hidden'/>
                   <Grid container direction='row' justify='space-around'>
                     <Grid item className='margin-buttons'>
-                      <Button variant='raised' color='primary' type='submit'><Trans>Informar</Trans></Button>
+                      <Button variant='contained' color='primary' type='submit'><Trans>Informar</Trans></Button>
                     </Grid>
                     <Grid item className='margin-buttons'>
-                      <Button variant='raised' color='secondary'
+                      <Button variant='contained' color='secondary'
                               onClick={resetForm(reset)}><Trans>Netejar</Trans></Button>
                     </Grid>
                   </Grid>
@@ -116,7 +116,7 @@ const ReportBugForm = (props: Props) => {
         return (
             <Grid container direction='column'>
               <Grid item sm={12}>
-                <Typography variant='headline' gutterBottom>
+                <Typography variant='h5' gutterBottom>
                   <Trans>Gràcies per informar del resultat de la simulació</Trans>
                 </Typography>
               </Grid>
@@ -125,7 +125,7 @@ const ReportBugForm = (props: Props) => {
       } else if (isRequestDone && isError) {
         return (<Grid container direction='column'>
           <Grid item sm={12}>
-            <Typography variant='headline' gutterBottom>
+            <Typography variant='h5' gutterBottom>
               <Trans>Hi ha hagut un error informant de l'errada.</Trans>
             </Typography>
           </Grid>

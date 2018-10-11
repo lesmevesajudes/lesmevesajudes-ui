@@ -1,17 +1,17 @@
 //@flow
-import React from 'react';
-import type {Person} from './PersonTypes';
-import {Trans, translate} from 'react-i18next';
 import {Avatar, Card, Divider, Grid, Icon, List, ListItem, ListItemText} from '@material-ui/core';
-import {create} from '../shared/UUID';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import Button from '@material-ui/core/Button';
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+import {withStyles} from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
-import {withStyles} from '@material-ui/core/styles';
-import {styles} from '../styles/theme';
-import {IconFont} from '../components/IconFont/IconFont';
 import withWidth, {isWidthUp} from "@material-ui/core/withWidth";
+import React from 'react';
+import {Trans, withNamespaces} from 'react-i18next';
+import {IconFont} from '../components/IconFont/IconFont';
+import {create} from '../shared/UUID';
+import {styles} from '../styles/theme';
+import type {Person} from './PersonTypes';
 
 const initials = (name: string) => {
   const initials = name.replace(/[^a-zA-Z- ]/g, '').match(/\b\w/g);
@@ -119,7 +119,7 @@ export const PersonsViewer = (props: Props) => {
     return (
         <Grid container className='bg-container'>
           <Grid item xs={12} sm={12} className='titleContainer'>
-            <Typography variant='headline' className='titlePage'>
+            <Typography variant='h5' className='titlePage'>
               <IconFont icon='persona' sizeSphere={48} fontSize={32}/>
               <span className='titleText'><Trans>Persones que viuen en el seu domicili</Trans></span>
               </Typography>
@@ -149,8 +149,8 @@ export const PersonsViewer = (props: Props) => {
               <Grid item sm={12} className='addPersonContainer'>
                 <Tooltip id='add-person-tooltip'
                          title='Si vol afegir un altra persona que convisqui amb vostè cliqui aquí' placement='right'>
-                  <Button className={props.classes.addMemberButton} color='secondary' variant='raised'
-                            onClick={props.onAddPersonClick}>Afegir una persona convivent <Icon
+                  <Button className={props.classes.addMemberButton} color='secondary' variant='contained'
+                          onClick={props.onAddPersonClick}>Afegir una persona convivent <Icon
                         className={props.classes.rightIcon}>add_circle</Icon></Button>
                   </Tooltip>
                 </Grid>
@@ -161,4 +161,4 @@ export const PersonsViewer = (props: Props) => {
     );
 };
 
-export default translate('translations')(withStyles(styles)(PersonsViewer));
+export default withNamespaces('translations')(withStyles(styles)(PersonsViewer));
