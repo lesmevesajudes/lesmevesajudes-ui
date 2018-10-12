@@ -88,11 +88,12 @@ let PersonForm = (props: Props) => {
         <Grid item xs={12} sm={12} className='titleContainer'>
           <Typography variant='h5' className='titlePage'>
             <IconFont icon='persona' sizeSphere={48} fontSize={32}/>
+            <span className='titleText'>
             {isTheUserInFrontOfTheComputer
-                ? <span className='titleText'><Trans>Informació sobre vostè</Trans></span>
-                :
-                <span className='titleText'><Trans>Informació sobre aquesta persona que conviu amb vostè</Trans></span>
+                ? <Trans>Informació sobre vostè</Trans>
+                : <Trans>Informació sobre aquesta persona que conviu amb vostè</Trans>
             }
+              </span>
           </Typography>
         </Grid>
         <Grid item xs={12} className='bg-form-exterior bg-form formMinHeight'>
@@ -280,8 +281,7 @@ let PersonForm = (props: Props) => {
                 </Sticky>
               </Grid>
             </Grid>
-            <div id='stop'/>
-            <Grid item sm={12} className='margin-buttons'>
+            <Grid id='stop' item sm={12} className='margin-buttons'>
               <Grid container justify='space-around'>
                 {(isTheUserInFrontOfTheComputer !== true || updating === true) &&
                 <Button variant='contained' color='secondary' onClick={props.onCancel}>
