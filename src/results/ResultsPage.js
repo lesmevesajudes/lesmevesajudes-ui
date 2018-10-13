@@ -1,8 +1,8 @@
 import {Grid, Typography} from '@material-ui/core';
-import React, {Fragment} from 'react';
+import React from 'react';
 import {Trans} from 'react-i18next';
 import {connect} from 'react-redux';
-import {IconFont} from '../components/IconFont/IconFont';
+import {AppForm, AppFormContainer, AppFormTitle} from '../components/AppForms';
 import ShowMeOnceModal from '../components/ShowMeOnceModal'
 import type {Person, PersonID} from '../persons/PersonTypes';
 import {submitReport} from "../reportBug/ReportBugActions";
@@ -49,26 +49,25 @@ class ResultsPage extends React.Component<Props> {
   }
 
   render() {
+    const {isError, isRequestDone, resultsData, persons} = this.props;
     if (!this.enoughDataForSimulation()) {
       return (
-          <Grid container xs={12}>
-            <Grid item xs={12} className='bg-container'>
-              <h1>Ajudes a les que podria optar</h1>
-              <Grid container xs={12}>
-                <Grid item xs={12}>
-                  <Typography className='errorText'>
-                    <Trans>Falten dades per a executar la simulació</Trans>
-                  </Typography>
-                </Grid>
+          <AppFormContainer>
+            <h1>Ajudes a les que podria optar</h1>
+            <Grid container xs={12}>
+              <Grid item xs={12}>
+                <Typography className='errorText'>
+                  <Trans>Falten dades per a executar la simulació</Trans>
+                </Typography>
               </Grid>
             </Grid>
-          </Grid>
+          </AppFormContainer>
       );
     }
 
-    if (!this.props.isRequestDone) {
+    if (!isRequestDone) {
       return (
-          <Grid container direction='column' justify='center' alignItems='center' className='bg-container'>
+          <AppFormContainer>
             <Grid item xs={12} className='bg-form-exterior'>
               <Grid container direction='column' justify='center' alignItems='center'>
                 <Grid item>
@@ -81,31 +80,27 @@ class ResultsPage extends React.Component<Props> {
                 </Grid>
               </Grid>
             </Grid>
-          </Grid>);
+          </AppFormContainer>);
     }
 
-    if (this.props.isRequestDone && this.props.isError) {
+    if (isRequestDone && isError) {
       return (
-          <Fragment>
-            <Grid container className='bg-container' justify='center'>
-              <Grid item xs={12} className='bg-form-exterior'>
-                <Grid item xs={12}>
-                  <Typography variant='h6'>Error fent la petició</Typography>
-                  <Grid container direction='column' className='ResultList'>
-                    <Grid item className='ItemResult'>
-                      <Trans>Detalls:</Trans>
-                      <Typography>{this.props.resultsData.message}</Typography>
-                    </Grid>
-                  </Grid>
+          <AppFormContainer>
+            <Grid item xs={12}>
+              <Typography variant='h6'>Error fent la petició</Typography>
+              <Grid container direction='column' className='ResultList'>
+                <Grid item className='ItemResult'>
+                  <Trans>Detalls:</Trans>
+                  <Typography>{resultsData.message}</Typography>
                 </Grid>
               </Grid>
             </Grid>
-          </Fragment>
+          </AppFormContainer>
       );
     }
     //Añadir Trans en titlePage
     return (
-        <Fragment>
+        <AppFormContainer>
           <ShowMeOnceModal name='resultsModal' title='Ajudes a les que podria optar'>
             <Trans>A continuació es mostrarà el conjunt d’ajudes a les quals podria arribar a optar.
               L’informem que la concessió d’una d’elles pot fer variar els llindars d’ingressos i/o requisits que
@@ -114,48 +109,42 @@ class ResultsPage extends React.Component<Props> {
               Per tant, a la pràctica, pot trobar ajudes incompatibles entre sí.&nbsp;
               Informi-se’n clicant sobre cada ajut.</Trans>
           </ShowMeOnceModal>
-          <Grid container className='bg-container' justify='center'>
-
-            <Grid item xs={12} sm={12} className='titleContainer'>
-              <Typography variant='h5' className='titlePage'>
-                <IconFont icon='resultats' sizeSphere={48} fontSize={32}/>
-                <span className='titleText'><Trans>A partir de la informació que ens ha facilitat, a continuació li informem que:</Trans></span>
-              </Typography>
+          <AppFormTitle iconName='resultats'>
+            <Trans>A partir de la informació que ens ha facilitat, a continuació li informem que:</Trans>
+          </AppFormTitle>
+          <AppForm>
+            <Typography style={{background: '#f2f2f2', zIndex: 4}} gutterBottom>
+              <Trans>
+                Li recordem que la concessió d’una d’aquestes ajudes pot fer variar els seus ingressos i/o
+                requisits
+                fent que algunes de les ajudes llistades no puguin ser concedides.
+                Per tant, a la pràctica, pot trobar ajudes incompatibles entre sí.
+                Informi-se’n clicant sobre cada ajut.
+              </Trans>
+            </Typography>
+          </AppForm>
+          <Grid item xs={12} className='bg-form-exterior'>
+            <Grid item xs={12}>
+              <PersonalBenefits
+                  benefitsForPersons={resultsData.persones}
+                  persons={persons}
+              />
             </Grid>
-            <Grid item xs={12} className='bg-form-exterior'>
-              <Typography style={{background: '#f2f2f2', zIndex: 4}} gutterBottom>
-                <Trans>
-                  Li recordem que la concessió d’una d’aquestes ajudes pot fer variar els seus ingressos i/o
-                  requisits
-                  fent que algunes de les ajudes llistades no puguin ser concedides.
-                  Per tant, a la pràctica, pot trobar ajudes incompatibles entre sí.
-                  Informi-se’n clicant sobre cada ajut.
-                </Trans>
-              </Typography>
+            <Grid item xs={12}>
+              <FamilyBenefits benefits={resultsData.families}/>
             </Grid>
-            <Grid item xs={12} className='bg-form-exterior'>
-              <Grid item xs={12}>
-                <PersonalBenefits
-                    benefitsForPersons={this.props.resultsData.persones}
-                    persons={this.props.persons}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <FamilyBenefits benefits={this.props.resultsData.families}/>
-              </Grid>
-              <Grid item xs={12}>
-                <UnitatDeConvivenciaBenefits
-                    unitatDeConvivencia={this.props.resultsData.unitats_de_convivencia}
-                    persons={this.props.persons}
-                    period={this.period}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <ReportBug initialValues={this.getReportBugDataFromLocalStorage()} onSubmit={this.submitReport}/>
-              </Grid>
+            <Grid item xs={12}>
+              <UnitatDeConvivenciaBenefits
+                  unitatDeConvivencia={resultsData.unitats_de_convivencia}
+                  persons={persons}
+                  period={this.period}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <ReportBug initialValues={this.getReportBugDataFromLocalStorage()} onSubmit={this.submitReport}/>
             </Grid>
           </Grid>
-        </Fragment>
+        </AppFormContainer>
     );
   }
 }
