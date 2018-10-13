@@ -1,5 +1,5 @@
 //@flow
-import {Button, Grid, MenuItem, Typography} from "@material-ui/core";
+import {Button, Grid, MenuItem, Typography, withStyles} from "@material-ui/core";
 import React, {Fragment} from "react";
 import {Trans} from "react-i18next";
 import {connect} from "react-redux";
@@ -16,6 +16,7 @@ import {
   required
 } from "../shared/formValidators";
 import {currentFocussedFieldSelector} from "../shared/selectorUtils";
+import {styles} from '../styles/theme';
 import FormSubTitle from "./components/FormSubTitle";
 import {MoneyQuestion} from "./components/MoneyQuestion";
 import MultipleAnswerQuestion from "./components/MultipleAnswerQuestion";
@@ -32,6 +33,7 @@ import type {Person, PersonRole} from "./PersonTypes";
 export type PersonFormInitialValues = Person | { is_the_person_in_front_of_the_computer: boolean };
 
 type Props = {
+  classes: Object,
   cobraAlgunTipusDePensioNoContributiva: Boolean,
   currentField: string,
   edat: number,
@@ -59,6 +61,7 @@ type Props = {
 
 let PersonForm = (props: Props) => {
   const {
+    classes,
     cobraAlgunTipusDePensioNoContributiva,
     currentField,
     edat,
@@ -83,12 +86,11 @@ let PersonForm = (props: Props) => {
   } = props;
 
   return (
-      <Grid container className='bg-container'>
-
-        <Grid item xs={12} sm={12} className='titleContainer'>
-          <Typography variant='h5' className='titlePage'>
+      <Grid container justify='center' className={classes.formContainer}>
+        <Grid item xs={12} md={11} className={classes.titleContainer}>
+          <Typography variant='h5'>
             <IconFont icon='persona' sizeSphere={48} fontSize={32}/>
-            <span className='titleText'>
+            <span className={classes.titleText}>
             {isTheUserInFrontOfTheComputer
                 ? <Trans>Informació sobre vostè</Trans>
                 : <Trans>Informació sobre aquesta persona que conviu amb vostè</Trans>
@@ -96,13 +98,13 @@ let PersonForm = (props: Props) => {
               </span>
           </Typography>
         </Grid>
-        <Grid item xs={12} className='bg-form-exterior bg-form formMinHeight'>
+        <Grid item xs={12} md={11} className={classes.form}>
           <form onSubmit={handleSubmit}>
             <Field component='input' name='id' type='hidden'/>
             <Field component='input' name='is_the_user_in_front_of_the_computer' type='hidden'/>
             <Grid container direction='row' justify='space-around' alignItems='stretch' spacing={16}>
-              <Grid item xs={12} sm={6}>
-                <Grid container direction='column' alignItems='stretch' spacing={16}>
+              <Grid item xs={11} sm={6}>
+                <Grid container direction='column' alignItems='stretch' spacing={8}>
                   <FormSubTitle><Trans>Informació personal</Trans></FormSubTitle>
                   <Question name='nom' placeholder='Nom' component={TextField} validate={[required]} autoFocus>
                     {isTheUserInFrontOfTheComputer ? <Trans>Identifiqui's amb un nom</Trans> :
@@ -118,10 +120,10 @@ let PersonForm = (props: Props) => {
                     </TimePeriodQuestion>
 
                     <MultipleAnswerQuestion label={<Trans>Sexe</Trans>} name='sexe' validate={[required]}>
-                      <MenuItem data-test='sexe_dona' value='dona'>
+                      <MenuItem value='dona'>
                         <Trans>Femení</Trans>
                       </MenuItem>
-                      <MenuItem data-test='sexe_home' value='home'>
+                      <MenuItem value='home'>
                         <Trans>Masculí</Trans>
                       </MenuItem>
                     </MultipleAnswerQuestion>
@@ -281,7 +283,7 @@ let PersonForm = (props: Props) => {
                 </Sticky>
               </Grid>
             </Grid>
-            <Grid id='stop' item sm={12} className='margin-buttons'>
+            <Grid id='stop' item>
               <Grid container justify='space-around'>
                 {(isTheUserInFrontOfTheComputer !== true || updating === true) &&
                 <Button variant='contained' color='secondary' onClick={props.onCancel}>
@@ -294,7 +296,6 @@ let PersonForm = (props: Props) => {
             </Grid>
           </form>
         </Grid>
-
       </Grid>
 
   );
@@ -352,4 +353,4 @@ PersonForm = connect(state => {
   };
 })(PersonForm);
 
-export default PersonForm;
+export default withStyles(styles)(PersonForm);

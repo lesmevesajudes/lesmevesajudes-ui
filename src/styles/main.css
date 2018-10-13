@@ -221,22 +221,6 @@ input.cercabcn {
     height: 40px;
 }
 
-@media only screen and (max-width: 1140px) {
-    .titlePage {
-        float: left;
-        margin-left: 16px !important;
-    }
-
-    .bg-form-exterior {
-        margin-left: 0px !important;
-        margin-right: 0px !important;
-    }
-
-    .addPersonContainer {
-        margin-left: 0px !important;
-    }
-}
-
 .sliderItemContainer {
 
 }
@@ -274,6 +258,23 @@ input.cercabcn {
     text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15)
 }
 
+@media only screen and (max-width: 1140px) {
+    .titlePage {
+        float: left;
+        margin-left: 16px !important;
+    }
+
+    .bgFormExterior {
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+    }
+
+    .addPersonContainer {
+        margin-left: 0px !important;
+    }
+}
+
+
 @media only screen and (max-width: 600px) {
     .titlePage {
         float: left;
@@ -281,15 +282,15 @@ input.cercabcn {
         line-height: 1.35417em !important;
     }
 
-    .buttons-container .left-button {
+    .buttonsContainer .leftButton {
         margin-right: 15px;
     }
 
-    .buttons-container .right-button {
+    .buttonsContainer .rightButton {
         margin-left: 15px;
     }
 
-    .bg-form-exterior {
+    .bgFormExterior {
         margin-left: 0px !important;
         margin-right: 0px !important;
     }
@@ -298,7 +299,7 @@ input.cercabcn {
         margin-left: 0px !important;
     }
 
-    .bg-container {
+    .bgContainer {
         background: none;
         margin: 0px auto;
         padding: 0px;

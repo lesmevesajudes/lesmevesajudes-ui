@@ -101,13 +101,58 @@ export const styles = theme => ({
     fontFamily: 'Source Sans Pro, sans-serif',
     textAlign: 'justify'
   },
-  titleText: {
-    lineHeight: '48px',
-  },
   titlePage: {
     textAlign: 'left',
     marginLeft: '90px',
     float: 'left',
+  },
+  formMinHeight: {
+    minHeight: '600px',
+  },
+
+  '@media only screen and (max-width: 1140px)': {
+    titlePage: {
+      float: 'left',
+      marginLeft: '16px !important'
+    },
+    bgFormExterior: {
+      marginLeft: '0px !important',
+      marginRight: '0px !important',
+    },
+    addPersonContainer: {
+      marginLeft: '0px !important',
+    }
+  },
+  '@media only screen and (max-width: 600px)': {
+    titlePage: {
+      float: 'left',
+      marginLeft: '16px !important',
+      lineHeight: '1.35417em !important'
+    },
+
+    buttonsContainer: {
+      leftButton: {
+        marginRight: '15px'
+      },
+      rightButton: {
+        marginLeft: '15px'
+      },
+    },
+    bgFormExterior: {
+      marginLeft: '0px !important',
+      marginRight: '0px !important',
+    },
+    addPersonContainer: {
+      marginLeft: '0px !important'
+    },
+    bgContainer: {
+      background: 'none',
+      margin: '0px auto',
+      padding: '0px',
+    },
+    buttonResultsXS: {
+      padding: '0px !important',
+    }
   },
   helpContainer: {
     [theme.breakpoints.down('sm')]: {
@@ -133,7 +178,30 @@ export const styles = theme => ({
     marginRight: 'auto',
     backgroundColor: '#00acd4',
     padding: '5px',
+  },
+
+  // verified styles
+  formContainer: {
+    background: '#f2f2f2',
+    borderRadius: '4px',
+    maxWidth: '1140px',
+    margin: '30px auto',
+  },
+  titleContainer: {
+    paddingTop: '16px',
+    paddingBottom: '16px'
+  },
+  titleText: {
+    lineHeight: '48px',
+  },
+  form: {
+    minHeight: '600px',
+    background: '#fff',
+    paddingTop: '16px',
+    paddingBottom: '16px',
+    marginBottom: '16px'
   }
+
 });
 
 export default createMuiTheme({
