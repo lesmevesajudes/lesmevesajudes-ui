@@ -6,8 +6,8 @@ import {connect} from "react-redux";
 import Sticky from "react-stickynode";
 import {Field, formValueSelector, reduxForm} from "redux-form";
 import {TextField} from "redux-form-material-ui";
+import {AppForm, AppFormContainer, AppFormTitle} from '../components/AppForms';
 import DescriptionText from "../components/Common/DescriptionText";
-import {IconFont} from "../components/IconFont/IconFont";
 import {
   anysEmpadronatInferiorAEdat,
   empadronamentABarcelonaInferiorAEmpadronamentACatalunya,
@@ -86,19 +86,16 @@ let PersonForm = (props: Props) => {
   } = props;
 
   return (
-      <Grid container justify='center' className={classes.formContainer}>
-        <Grid item xs={12} md={11} className={classes.titleContainer}>
-          <Typography variant='h5'>
-            <IconFont icon='persona' sizeSphere={48} fontSize={32}/>
+      <AppFormContainer>
+        <AppFormTitle iconName='persona'>
             <span className={classes.titleText}>
             {isTheUserInFrontOfTheComputer
                 ? <Trans>Informació sobre vostè</Trans>
                 : <Trans>Informació sobre aquesta persona que conviu amb vostè</Trans>
             }
               </span>
-          </Typography>
-        </Grid>
-        <Grid item xs={12} md={11} className={classes.form}>
+        </AppFormTitle>
+        <AppForm>
           <form onSubmit={handleSubmit}>
             <Field component='input' name='id' type='hidden'/>
             <Field component='input' name='is_the_user_in_front_of_the_computer' type='hidden'/>
@@ -295,8 +292,8 @@ let PersonForm = (props: Props) => {
               </Grid>
             </Grid>
           </form>
-        </Grid>
-      </Grid>
+        </AppForm>
+      </AppFormContainer>
 
   );
 };

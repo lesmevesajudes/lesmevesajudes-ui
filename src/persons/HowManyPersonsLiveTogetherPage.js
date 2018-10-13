@@ -1,14 +1,13 @@
 //@flow
 import {Button, Grid} from '@material-ui/core';
-import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import {Trans} from 'react-i18next';
 import {withRouter} from 'react-router-dom'
 import {reduxForm} from 'redux-form';
 import {TextField} from 'redux-form-material-ui';
 import {Field} from 'redux-form/';
+import {AppForm, AppFormContainer, AppFormTitle} from '../components/AppForms';
 import {allowOnlyPositive} from '../components/Common/NormalizeCommon';
-import {IconFont} from '../components/IconFont/IconFont'
 import ShowMeOnceModal from '../components/ShowMeOnceModal'
 
 const validate = values => {
@@ -26,18 +25,20 @@ const validate = values => {
   }
   return errors
 };
-let HowManyPersonsLiveTogetherPage = props => {
+type Props = {
+  classes: Object,
+  history: Object,
+  handleSubmit: Function
+}
+
+let HowManyPersonsLiveTogetherPage = (props: Props) => {
   const {handleSubmit, history} = props;
   return (
-      <Grid container className='bg-container' justify='center'>
-        <Grid item xs={12} sm={12} className='titleContainer'>
+      <AppFormContainer>
+        <AppFormTitle iconName='persona'>
+          <Trans>Quantes persones viuen en el seu domicili? (amb vostè inclòs)</Trans>
+        </AppFormTitle>
 
-          <Typography variant='h5' className='titlePage'>
-            <IconFont icon='persona' sizeSphere={48} fontSize={32}/>
-            <span
-                className='titleText'><Trans>Quantes persones viuen en el seu domicili? (amb vostè inclòs)</Trans></span>
-          </Typography>
-        </Grid>
         <ShowMeOnceModal name='howManyPersonsModal' title='Dades sobre les persones'>
           <Trans>
             Pot començar la simulació.<br/>
@@ -51,17 +52,19 @@ let HowManyPersonsLiveTogetherPage = props => {
             (RGPD)
           </Trans>
         </ShowMeOnceModal>
-        <Grid item xs={12} className='bg-form-exterior bg-form'>
+        <AppForm>
           <form onSubmit={handleSubmit}>
-            <Grid container justify='space-between' direction='column' spacing={16}>
-              <Grid item xs={12} sm={12}>
-                <Field name='how_many_persons_live_together' placeholder='0' type='number'
-                       component={TextField} normalize={allowOnlyPositive} autoFocus/>
+            <Grid container direction='column' spacing={16}>
+              <Grid container direction='column' alignItems='center' spacing={16}>
+                <Grid item xs={8} alignItems='center' justify='stretch'>
+                  <Field name='how_many_persons_live_together' placeholder='0' type='number'
+                         component={TextField} normalize={allowOnlyPositive} fullwidth autoFocus/>
+                </Grid>
               </Grid>
 
-              <Grid item xs={12} sm={12}>
-                <Grid container direction='row' className='margin-buttons' justify='flex-end'>
-                  <Grid item xs={2}>
+              <Grid item xs={11}>
+                <Grid container direction='row' justify='flex-end'>
+                  <Grid item xs={3}>
                     <Button variant='contained' name='ButtonTornar' onClick={() => {
                       history.push('/')
                     }}>
@@ -77,8 +80,8 @@ let HowManyPersonsLiveTogetherPage = props => {
               </Grid>
             </Grid>
           </form>
-        </Grid>
-      </Grid>
+        </AppForm>
+      </AppFormContainer>
   );
 };
 
