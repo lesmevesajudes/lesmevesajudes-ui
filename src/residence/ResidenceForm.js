@@ -1,7 +1,6 @@
 //@flow
 import {Grid, MenuItem} from "@material-ui/core";
 import Icon from "@material-ui/core/Icon/Icon";
-import Typography from "@material-ui/core/Typography";
 import {Map} from "immutable";
 import React from "react";
 import {Trans} from "react-i18next";
@@ -9,8 +8,8 @@ import {connect} from "react-redux";
 import Sticky from "react-stickynode";
 import {formValueSelector, reduxForm} from "redux-form";
 import {TextField} from "redux-form-material-ui";
+import {AppForm, AppFormContainer, AppFormTitle} from '../components/AppForms';
 import DescriptionText from "../components/Common/DescriptionText";
-import {IconFont} from "../components/IconFont/IconFont";
 import {MoneyQuestion} from "../persons/components/MoneyQuestion";
 import MultipleAnswerQuestion from "../persons/components/MultipleAnswerQuestion";
 import {Question} from "../persons/components/Question";
@@ -72,18 +71,15 @@ const ResidenceForm = (props: Props) => {
     titularContracteHipoteca
   } = props;
   return (
-      <Grid container className='bg-container'>
-        <Grid item xs={12} sm={12} className='titleContainer'>
-          <Typography variant='h5' className='titlePage'>
-            <IconFont icon='domicili' sizeSphere={48} fontSize={32}/>
-            <span className='titleText'><Trans>Afegeixi informació del seu domicili habitual</Trans></span>
-          </Typography>
-        </Grid>
-        <Grid item xs={12} className='bg-form-exterior bg-form formMinHeight'>
+      <AppFormContainer>
+        <AppFormTitle iconName='domicili'>
+          <Trans>Afegeixi informació del seu domicili habitual</Trans>
+        </AppFormTitle>
+        <AppForm>
           <form name='ResidenceForm'>
             <Grid container direction='row' justify='space-around' alignItems='stretch' spacing={16}>
-              <Grid item sm={6}>
-                <Grid container direction='column' alignItems='stretch' spacing={16}>
+              <Grid item xs={11} sm={6}>
+                <Grid container direction='column' alignItems='stretch' spacing={8}>
                   <MultipleAnswerQuestion name='relacio_habitatge'
                                           label={<Trans>Quina és la seva situació respecte a l’habitatge</Trans>}
                                           validate={[required]}
@@ -291,8 +287,8 @@ const ResidenceForm = (props: Props) => {
               </Grid>
             </Grid>
           </form>
-        </Grid>
-      </Grid>
+        </AppForm>
+      </AppFormContainer>
   );
 };
 

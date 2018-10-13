@@ -56,9 +56,9 @@ let HowManyPersonsLiveTogetherPage = (props: Props) => {
           <form onSubmit={handleSubmit}>
             <Grid container direction='column' spacing={16}>
               <Grid container direction='column' alignItems='center' spacing={16}>
-                <Grid item xs={8} alignItems='center' justify='stretch'>
+                <Grid item xs={8} alignItems='center'>
                   <Field name='how_many_persons_live_together' placeholder='0' type='number'
-                         component={TextField} normalize={allowOnlyPositive} fullwidth autoFocus/>
+                         component={TextField} normalize={allowOnlyPositive} autoFocus/>
                 </Grid>
               </Grid>
 

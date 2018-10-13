@@ -200,7 +200,14 @@ export const styles = theme => ({
     paddingTop: '16px',
     paddingBottom: '16px',
     marginBottom: '16px'
+  },
+  andSeparator: { // FIXME: KILLME
+    textAlign: 'center',
+    fontSize: '18px !important',
+    color: '#202020 !important',
+    marginTop: '8px !important'
   }
+
 
 });
 
