@@ -1,5 +1,5 @@
 //@flow
-import {Button, Grid, MenuItem, Typography, withStyles} from "@material-ui/core";
+import {Button, Grid, MenuItem, Typography} from "@material-ui/core";
 import React, {Fragment} from "react";
 import {Trans} from "react-i18next";
 import {connect} from "react-redux";
@@ -16,7 +16,6 @@ import {
   required
 } from "../shared/formValidators";
 import {currentFocussedFieldSelector} from "../shared/selectorUtils";
-import {styles} from '../styles/theme';
 import FormSubTitle from "./components/FormSubTitle";
 import {MoneyQuestion} from "./components/MoneyQuestion";
 import MultipleAnswerQuestion from "./components/MultipleAnswerQuestion";
@@ -33,7 +32,6 @@ import type {Person, PersonRole} from "./PersonTypes";
 export type PersonFormInitialValues = Person | { is_the_person_in_front_of_the_computer: boolean };
 
 type Props = {
-  classes: Object,
   cobraAlgunTipusDePensioNoContributiva: Boolean,
   currentField: string,
   edat: number,
@@ -61,7 +59,6 @@ type Props = {
 
 let PersonForm = (props: Props) => {
   const {
-    classes,
     cobraAlgunTipusDePensioNoContributiva,
     currentField,
     edat,
@@ -88,12 +85,10 @@ let PersonForm = (props: Props) => {
   return (
       <AppFormContainer>
         <AppFormTitle iconName='persona'>
-            <span className={classes.titleText}>
-            {isTheUserInFrontOfTheComputer
-                ? <Trans>Informació sobre vostè</Trans>
-                : <Trans>Informació sobre aquesta persona que conviu amb vostè</Trans>
-            }
-              </span>
+          {isTheUserInFrontOfTheComputer
+              ? <Trans>Informació sobre vostè</Trans>
+              : <Trans>Informació sobre aquesta persona que conviu amb vostè</Trans>
+          }
         </AppFormTitle>
         <AppForm>
           <form onSubmit={handleSubmit}>
@@ -350,4 +345,4 @@ PersonForm = connect(state => {
   };
 })(PersonForm);
 
-export default withStyles(styles)(PersonForm);
+export default PersonForm;
