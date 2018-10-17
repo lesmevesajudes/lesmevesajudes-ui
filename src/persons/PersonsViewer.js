@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import withWidth, {isWidthUp} from "@material-ui/core/withWidth";
 import React from 'react';
 import {Trans, withNamespaces} from 'react-i18next';
-import {IconFont} from '../components/IconFont/IconFont';
+import {AppFormContainer, AppFormTitle} from '../components/AppForms';
 import {create} from '../shared/UUID';
 import {styles} from '../styles/theme';
 import type {Person} from './PersonTypes';
@@ -117,16 +117,13 @@ type Props = {
 export const PersonsViewer = (props: Props) => {
   const missingPersons = Math.max(props.expectedNumberOfPersons - props.persons.length, 0);
     return (
-        <Grid container className='bg-container'>
-          <Grid item xs={12} sm={12} className='titleContainer'>
-            <Typography variant='h5' className='titlePage'>
-              <IconFont icon='persona' sizeSphere={48} fontSize={32}/>
-              <span className='titleText'><Trans>Persones que viuen en el seu domicili</Trans></span>
-              </Typography>
-          </Grid>
-          <Grid item xs={12}>
-            <Grid container direction='row' justify='space-around' alignItems='stretch' spacing={16}>
-              <Grid item xs={12} sm={12} className='bg-form-exterior'>
+        <AppFormContainer>
+          <AppFormTitle iconName='familia'>
+            <Trans>Persones que viuen en el seu domicili</Trans>
+          </AppFormTitle>
+          <Grid item xs={12} md={11} className={props.classes.personListContainer}>
+            <Grid container direction='column' justify='space-around' alignItems='stretch' spacing={16}>
+              <Grid item xs={12}>
                 <Card>
                     <List>
                       {[...props.persons.map(person =>
@@ -146,7 +143,7 @@ export const PersonsViewer = (props: Props) => {
                 </Card>
               </Grid>
               {missingPersons === 0 &&
-              <Grid item sm={12} className='addPersonContainer'>
+              <Grid item sm={12}>
                 <Tooltip id='add-person-tooltip'
                          title='Si vol afegir un altra persona que convisqui amb vostè cliqui aquí' placement='right'>
                   <Button className={props.classes.addMemberButton} color='secondary' variant='contained'
@@ -157,7 +154,7 @@ export const PersonsViewer = (props: Props) => {
               }
             </Grid>
           </Grid>
-        </Grid>
+        </AppFormContainer>
     );
 };
 

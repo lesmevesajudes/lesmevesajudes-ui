@@ -1,10 +1,11 @@
-import {Grid, Typography} from '@material-ui/core';
+import {Grid, Typography, withStyles} from '@material-ui/core';
 import {Map} from 'immutable';
 import React from 'react';
 import {Trans} from 'react-i18next';
 import type {PersonID} from '../persons/PersonTypes';
 import {Person} from '../persons/PersonTypes';
 import {newDate} from "../shared/dateUtils";
+import styles from '../styles/theme';
 import BenefitRow, {NoBenefitRow} from './BenefitRow';
 
 type PersonalBenefitsProps = {
@@ -103,24 +104,21 @@ class PersonalBenefits extends React.Component<PersonalBenefitsProps> {
 
   renderPersonalBenefits(person: Person, personBenefits: any) {
     return (
-        <Grid className='ItemResultOut' key={person.id}>
-          <Typography variant='subtitle1' gutterBottom className="titleResultPerson">
+        <Grid container direction='column' className={this.props.classes.ResultItemResultOut} key={person.id}>
+          <Typography variant='subtitle1' gutterBottom>
             Ajudes de les que podria ser beneficiàri/a: <b>{person.nom}</b>
           </Typography>
-
-          <Grid container className='ItemList'>
             {(this.hasAnyBenefit(personBenefits))
                 ? this.possibleBenefits.map(benefit => this.renderAPersonalBenefit(benefit, personBenefits))
                 : <NoBenefitRow/>
             }
-          </Grid>
         </Grid>
     );
   }
 
   render() {
     return (
-        <Grid className='ResultList'>
+        <Grid>
           {this.props.persons
               .valueSeq()
               .map((person: Person) =>
@@ -131,4 +129,4 @@ class PersonalBenefits extends React.Component<PersonalBenefitsProps> {
   }
 }
 
-export default PersonalBenefits;
+export default withStyles(styles)(PersonalBenefits);

@@ -86,10 +86,11 @@ class PersonsPage extends React.Component<Props, State> {
     this.setState({
       ...this.state,
       numberOfPersonsLivingTogether: formValues.how_many_persons_live_together,
-      step: 'addPerson',
+      step: this.areThereAnyPersons(this.props.persons) ? 'personsList' : 'addPerson',
       initialFormValues: {is_the_person_in_front_of_the_computer: true}
     });
   };
+  areThereAnyPersons = (persons: Array<Person>) => typeof persons !== 'undefined' && persons.length > 0;
 
   constructor(props) {
     super(props);
@@ -100,7 +101,7 @@ class PersonsPage extends React.Component<Props, State> {
     this.handleSubmitPersonForm = this.handleSubmitPersonForm.bind(this);
     this.handleSubmitHowManyPersonsLiveTogether = this.handleSubmitHowManyPersonsLiveTogether.bind(this);
     this.state = {
-      step: (typeof this.props.persons !== 'undefined' && this.props.persons.length > 0) ?
+      step: (this.areThereAnyPersons(this.props.persons)) ?
           'personsList' : 'NumberOfPersonsLivingTogether',
       initialFormValues: undefined,
       numberOfPersonsLivingTogether: 0

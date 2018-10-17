@@ -145,7 +145,7 @@ const FamilyForm = (props: Props) => {
                 </Grid>
               </Grid>
               <Grid item xs sm={5}>
-                <Sticky enabled={true} top={10} bottomBoundary='.bg-container'>
+                <Sticky enabled={true} top={10}>
                   <DescriptionText currentField={currentField}/>
                 </Sticky>
               </Grid>

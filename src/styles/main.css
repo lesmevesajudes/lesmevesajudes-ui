@@ -5,165 +5,9 @@
     src: url('icoajuntament.ttf') format('truetype');
 }
 
-.App-intro {
-    font-size: large;
-}
-
 body {
     background: #fbfbfb !important;
     font-family: 'Source Sans Pro', sans-serif
-}
-
-.iconAjuntament {
-    font-family: 'Ajuntament';
-}
-
-.iconTitle {
-    color: #fff;
-}
-
-.iconTitle-container {
-    float: left;
-    background: #00ACD4;
-    border-radius: 100%;
-    text-align: center !important;
-}
-
-.titleContainer {
-    margin-bottom: 15px !important;
-}
-
-.titlePage {
-    text-align: left;
-    margin-left: 90px !important;
-    float: left;
-}
-
-.FormContainer {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 768px;
-}
-
-input {
-    min-width: 700px;
-}
-
-.hiddenInput {
-    display: none;
-}
-
-.root {
-    flex: 1;
-}
-
-h1 {
-    box-sizing: border-box;
-    display: block;
-    position: relative;
-    text-align: center;
-    line-height: 1.1;
-    min-height: 35px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-}
-
-.field {
-    display: block;
-    margin-bottom: 0.5rem;
-}
-
-label {
-    display: block;
-    font-size: 0.8rem;
-    line-height: 1.4rem;
-    font-weight: 600;
-    color: #9a9a9a;
-}
-
-input:focus {
-    outline: none;
-}
-
-input[type='radio'], input[type='checkbox'] {
-    margin-right: 0.5rem;
-}
-
-button {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    padding: 1rem 2rem;
-    font-size: 0.8rem;
-    background: #00acd4;
-    color: white;
-    border: none;
-    margin: 0.5rem 0.5rem;
-    border-radius: 0;
-}
-
-.progtrckr {
-    text-align: center;
-}
-
-.bg-container {
-    background: #f2f2f2;
-    border-radius: 4px;
-    min-height: 180px;
-    max-width: 1140px;
-    margin: 30px auto;
-    padding: 20px;
-}
-
-.bg-form-exterior {
-    margin-left: 90px !important;
-    margin-right: 90px !important;
-}
-
-.bg-form {
-    background: #fff;
-    padding: 20px;
-}
-
-.formMinHeight {
-    min-height: 600px;
-}
-
-.border-family {
-    border: #dbdbdb 1px solid;
-    border-radius: 4px;
-    padding: 8px
-}
-
-.titlecurrentStepTypePerson {
-    margin-bottom: 50px
-}
-
-.extra-padding {
-    padding: 20px;
-}
-
-.Item {
-    display: block;
-    text-align: center;
-    font-size: 16px;
-    line-height: 55px;
-    font-weight: bold;
-    background: white;
-    margin: 0 0 15px 0;
-}
-
-.ItemParent {
-    border-radius: 8px;
-    display: block;
-    text-align: center;
-    font-size: 16px;
-    font-weight: bold;
-    background: white;
-    width: 100%;
-}
-
-.fixFlex {
-    margin-top: 8px !important
 }
 
 input.cercabcn {
@@ -186,45 +30,6 @@ input.cercabcn {
     float: right
 }
 
-.checkOption {
-    padding: 5px;
-    text-align: center;
-    width: 35px;
-    display: inline-block;
-    height: auto;
-    border-radius: 6px;
-    border: #c2c2c2 1px solid;
-    cursor: default;
-}
-
-.checkOption:first-child {
-    margin-right: 5px;
-}
-
-.checkOption.active {
-    background: rgb(194, 98, 170);
-    border: rgb(170, 82, 148) 1px solid;
-}
-
-.boxDescriptionText {
-    box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.15);
-    padding: 10px;
-    border-radius: 4px;
-    font-size: 14px !important;
-}
-
-.addPersonContainer {
-    margin-left: 75px !important
-}
-
-.buttonTheme {
-    height: 40px;
-}
-
-.sliderItemContainer {
-
-}
-
 .sliderItem {
     padding: 20px;
     border-radius: 4px;
@@ -245,6 +50,44 @@ input.cercabcn {
     float: right;
 }
 
+.sliderButtons {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 1rem 2rem;
+    font-size: .8rem;
+    background: #00acd4;
+    color: #fff;
+    border: none;
+    margin: .5rem;
+    border-radius: 0;
+}
+
+.sliderTitle {
+    box-sizing: border-box;
+    color: rgb(0, 74, 142);
+    display: block;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    height: 84px;
+    line-height: 28.0001px;
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
+    margin-block-end: 8.4px;
+    margin-block-start: 10px;
+    margin-bottom: 8.4px;
+    margin-inline-end: 0px;
+    margin-inline-start: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 10px;
+    text-align: left;
+    text-transform: uppercase;
+    width: 340px;
+    -webkit-font-smoothing: antialiased;
+}
+
 .sliderContainer {
     background: #f2f2f2;
 }
@@ -258,54 +101,7 @@ input.cercabcn {
     text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15)
 }
 
-@media only screen and (max-width: 1140px) {
-    .titlePage {
-        float: left;
-        margin-left: 16px !important;
-    }
-
-    .bgFormExterior {
-        margin-left: 0px !important;
-        margin-right: 0px !important;
-    }
-
-    .addPersonContainer {
-        margin-left: 0px !important;
-    }
-}
-
-
-@media only screen and (max-width: 600px) {
-    .titlePage {
-        float: left;
-        margin-left: 16px !important;
-        line-height: 1.35417em !important;
-    }
-
-    .buttonsContainer .leftButton {
-        margin-right: 15px;
-    }
-
-    .buttonsContainer .rightButton {
-        margin-left: 15px;
-    }
-
-    .bgFormExterior {
-        margin-left: 0px !important;
-        margin-right: 0px !important;
-    }
-
-    .addPersonContainer {
-        margin-left: 0px !important;
-    }
-
-    .bgContainer {
-        background: none;
-        margin: 0px auto;
-        padding: 0px;
-    }
-
-    .buttonResultsXS {
-        padding: 0px !important
-    }
+.container-family {
+    max-width: 960px;
+    margin: 30px auto;
 }

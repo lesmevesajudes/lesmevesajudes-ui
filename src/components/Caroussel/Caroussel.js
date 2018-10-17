@@ -12,38 +12,40 @@ export default class extends React.Component {
   render() {
     const {content} = this.props;
     return (
-      <CarouselProvider
-      naturalSlideWidth={100}
-      naturalSlideHeight={75}
-      totalSlides={content.length}
-      visibleSlides={3}
-  >
-    <Slider>
-      {content.map((slideContent, index) =>
-          <Slide key={index} index={index}>
-            <Grid container direction='column' className='sliderItem'>
-              <Grid item justify='flex-start' style={{height: 90}}>
-                <Typography variant='h6' className='sliderTitle' gutterBottom>
+        <CarouselProvider
+            naturalSlideWidth={100}
+            naturalSlideHeight={75}
+            totalSlides={content.length}
+            visibleSlides={3}
+        >
+          <Slider>
+            {content.map((slideContent, index) =>
+                <Slide key={index} index={index}>
+                  <Grid container direction='column' className='sliderItem'>
+                    <Grid item justify='flex-start' style={{height: 90}}>
+                      <Typography className='sliderTitle' gutterBottom>
+                  <span className='sliderTitle'>
                   {slideContent.title}
-                </Typography>
-              </Grid>
-              <Grid item justify='flex-start' style={{height: 120}}>
-                <Typography className='sliderBody'>
-                  {slideContent.body}
-                </Typography>
-              </Grid>
-              <Grid item xs={12} sm={12}>
-                <Link to={slideContent.link}>
-                  <Button color='primary' variant='contained' className='sliderButton'> Més informació</Button>
-                </Link>
-              </Grid>
-            </Grid>
-          </Slide>
-      )}
-    </Slider>
-    <ButtonBack><KeyboardArrowLeftIcon/></ButtonBack>
-    <ButtonNext><KeyboardArrowRightIcon/></ButtonNext>
-  </CarouselProvider>
+                  </span>
+                      </Typography>
+                    </Grid>
+                    <Grid item justify='flex-start' style={{height: 120}}>
+                      <Typography className='sliderBody'>
+                        {slideContent.body}
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={12} sm={12}>
+                      <Link to={slideContent.link}>
+                        <Button color='primary' variant='contained' className='sliderButton'> Més informació</Button>
+                      </Link>
+                    </Grid>
+                  </Grid>
+                </Slide>
+            )}
+          </Slider>
+          <ButtonBack className='sliderButtons'><KeyboardArrowLeftIcon/></ButtonBack>
+          <ButtonNext className='sliderButtons'><KeyboardArrowRightIcon/></ButtonNext>
+        </CarouselProvider>
     );
   }
 }

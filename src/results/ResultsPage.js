@@ -1,17 +1,22 @@
-import {Grid, Typography} from '@material-ui/core';
+import {Grid, Typography, withStyles} from '@material-ui/core';
 import React from 'react';
 import {Trans} from 'react-i18next';
 import {connect} from 'react-redux';
-import {AppForm, AppFormContainer, AppFormTitle} from '../components/AppForms';
+import {AppFormContainer, AppFormTitle} from '../components/AppForms';
 import ShowMeOnceModal from '../components/ShowMeOnceModal'
 import type {Person, PersonID} from '../persons/PersonTypes';
 import {submitReport} from "../reportBug/ReportBugActions";
 import ReportBug from '../reportBug/ReportBugForm';
 import Spinner from '../shared/spinner.svg';
-import FamilyBenefits from './FamilyBenefits';
+import {styles} from '../styles/theme';
 import {fetchSimulation} from './FetchSimulationAction';
 import PersonalBenefits from './PersonalBenefits';
 import UnitatDeConvivenciaBenefits from './UnitatDeConvivenciaBenefits';
+
+export const ResultsContainer = withStyles(styles)((props: AppFormProps) =>
+    <Grid item xs={12} md={11} className={props.classes.resultsContainer}>
+      {props.children}
+    </Grid>);
 
 type Props = {
   isError: boolean,
@@ -55,8 +60,8 @@ class ResultsPage extends React.Component<Props> {
           <AppFormContainer>
             <h1>Ajudes a les que podria optar</h1>
             <Grid container xs={12}>
-              <Grid item xs={12}>
-                <Typography className='errorText'>
+              <Grid item xs={12} md={11}>
+                <Typography className={this.props.classes.errorText}>
                   <Trans>Falten dades per a executar la simulació</Trans>
                 </Typography>
               </Grid>
@@ -68,7 +73,7 @@ class ResultsPage extends React.Component<Props> {
     if (!isRequestDone) {
       return (
           <AppFormContainer>
-            <Grid item xs={12} className='bg-form-exterior'>
+            <Grid item xs={12} md={11}>
               <Grid container direction='column' justify='center' alignItems='center'>
                 <Grid item>
                   <img className="spinner" src={Spinner} width="40" alt="carregant"/>
@@ -89,7 +94,7 @@ class ResultsPage extends React.Component<Props> {
             <Grid item xs={12}>
               <Typography variant='h6'>Error fent la petició</Typography>
               <Grid container direction='column' className='ResultList'>
-                <Grid item className='ItemResult'>
+                <Grid item className={this.props.classes.ItemResult}>
                   <Trans>Detalls:</Trans>
                   <Typography>{resultsData.message}</Typography>
                 </Grid>
@@ -112,7 +117,7 @@ class ResultsPage extends React.Component<Props> {
           <AppFormTitle iconName='resultats'>
             <Trans>A partir de la informació que ens ha facilitat, a continuació li informem que:</Trans>
           </AppFormTitle>
-          <AppForm>
+          <ResultsContainer>
             <Typography style={{background: '#f2f2f2', zIndex: 4}} gutterBottom>
               <Trans>
                 Li recordem que la concessió d’una d’aquestes ajudes pot fer variar els seus ingressos i/o
@@ -122,16 +127,12 @@ class ResultsPage extends React.Component<Props> {
                 Informi-se’n clicant sobre cada ajut.
               </Trans>
             </Typography>
-          </AppForm>
-          <Grid item xs={12} className='bg-form-exterior'>
+
             <Grid item xs={12}>
               <PersonalBenefits
                   benefitsForPersons={resultsData.persones}
                   persons={persons}
               />
-            </Grid>
-            <Grid item xs={12}>
-              <FamilyBenefits benefits={resultsData.families}/>
             </Grid>
             <Grid item xs={12}>
               <UnitatDeConvivenciaBenefits
@@ -143,7 +144,7 @@ class ResultsPage extends React.Component<Props> {
             <Grid item xs={12}>
               <ReportBug initialValues={this.getReportBugDataFromLocalStorage()} onSubmit={this.submitReport}/>
             </Grid>
-          </Grid>
+          </ResultsContainer>
         </AppFormContainer>
     );
   }

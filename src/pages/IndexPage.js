@@ -115,8 +115,8 @@ const IndexPage = (props) =>
       </div>
       <div className='sliderContainer'>
         <div className='Presentation'>
-          <Typography variant='h6' align='center' className={props.classes.sliderContainerTitle} gutterBottom>Ajudes
-            destacades</Typography>
+          <Typography variant='h4' align='center' className={props.classes.sliderContainerTitle} gutterBottom>AJUDES
+            DESTACADES</Typography>
           <Hidden smUp>
             {content.slice(0, 3).map((slideContent, index) =>
                 <div key={index}>

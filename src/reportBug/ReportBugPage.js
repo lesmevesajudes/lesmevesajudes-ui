@@ -12,8 +12,8 @@ const getReportBugDataFromLocalStorage = () => (
     });
 
 const ReportBugPage = (props) =>
-    <Grid container direction='column' justify='center' alignItems='center' className='bg-container'>
-      <Grid item xs={12} className='bg-form-exterior'>
+    <Grid container direction='column' justify='center' alignItems='center'>
+      <Grid item xs={12} md={11}>
         <ReportBug initialValues={getReportBugDataFromLocalStorage()} onSubmit={values => props.submitReport(values)}/>
       </Grid>
     </Grid>;

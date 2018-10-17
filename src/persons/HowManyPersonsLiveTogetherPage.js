@@ -54,7 +54,6 @@ let HowManyPersonsLiveTogetherPage = (props: Props) => {
         </ShowMeOnceModal>
         <AppForm>
           <form onSubmit={handleSubmit}>
-            <Grid container direction='column' spacing={16}>
               <Grid container direction='column' alignItems='center' spacing={16}>
                 <Grid item xs={8}>
                   <Field name='how_many_persons_live_together' placeholder='0' type='number'
@@ -63,22 +62,21 @@ let HowManyPersonsLiveTogetherPage = (props: Props) => {
               </Grid>
 
               <Grid item xs={11}>
-                <Grid container direction='row' justify='flex-end'>
-                  <Grid item xs={3}>
+                <Grid container direction='row' justify='flex-end' spacing={16}>
+                  <Grid item xs={1}>
                     <Button variant='contained' name='ButtonTornar' onClick={() => {
                       history.push('/')
                     }}>
                       <Trans>Tornar</Trans>
                     </Button>
                   </Grid>
-                  <Grid item xs={2}>
+                  <Grid item xs={1}>
                     <Button variant='contained' color='primary' type='submit' name='ButtonValidar'>
                       <Trans>Validar</Trans>
                     </Button>
                   </Grid>
                 </Grid>
               </Grid>
-            </Grid>
           </form>
         </AppForm>
       </AppFormContainer>

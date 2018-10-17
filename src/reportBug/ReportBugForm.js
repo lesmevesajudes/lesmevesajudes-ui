@@ -1,18 +1,21 @@
 //@flow
-import {Button, Grid, MenuItem} from '@material-ui/core';
+import {Button, Grid, MenuItem, withStyles} from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import {Trans} from "react-i18next";
 import {connect} from 'react-redux';
 import {Field, formValueSelector, reduxForm} from 'redux-form';
 import {TextField} from 'redux-form-material-ui';
+import {AppForm} from '../components/AppForms';
 import MultipleAnswerQuestion from '../persons/components/MultipleAnswerQuestion';
 import {YesNoQuestion} from '../persons/components/YesNoQuestion';
 import {email, required} from '../shared/formValidators';
 import Spinner from '../shared/spinner.svg';
 import * as UUID from '../shared/UUID';
+import styles from '../styles/theme'
 
 type Props = {
+  classes: Object,
   currentState: any,
   handleSubmit: Function,
   resultatIncorrecte: boolean,
@@ -50,19 +53,20 @@ const ReportBugForm = (props: Props) => {
       );
       if (!isRequestDone) {
         return (
-            <Grid container direction='column' className='ItemResult'>
+            <AppForm>
               <Grid item sm={12}>
                 <Typography variant='h5' gutterBottom>Informar del resultat de la simulació</Typography>
               </Grid>
-              <Grid container direction='column' justify='space-between' spacing={16}>
-                <form onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit}>
+                <Grid container direction='row' justify='space-around'>
+                  <Grid container item xs={11} direction='column' alignItems='stretch' spacing={16}>
                   <Grid item>
                     <YesNoQuestion name='accepted_result' validate={[required]}>
                       <Trans>El resultat de la simulació és correcte?</Trans>
                     </YesNoQuestion>
                   </Grid>
                   {resultatIncorrecte &&
-                  <Grid item xs={11}>
+                  <Grid item>
                     <label>
                       <Trans>
                         Indiqui quin és el resultat esperat (ajuda que esperava rebre, persones que l'hauríen de rebre, .. )
@@ -71,16 +75,16 @@ const ReportBugForm = (props: Props) => {
                     <Field name='expected_result' placeholder='...' fullWidth component={TextField} validate={[required]}/>
                   </Grid>
                   }
-                  <Grid item xs={11}>
+                    <Grid item>
                     <label>Comentaris o millores</label>
                     <Field name='comments' placeholder='...' fullWidth component={TextField}/>
                   </Grid>
-                  <Grid item xs={11}>
+                    <Grid item>
                     <label>Faciliti el seu correu electrònic</label>
                     <Field name='reporter_email' placeholder='john@doe.com' fullWidth component={TextField}
                            validate={[required, email]}/>
                   </Grid>
-                  <Grid item xs={11}>
+                    <Grid item>
                     <MultipleAnswerQuestion label={<Trans>Grup de probes</Trans>} name='test_group' validate={[required]}>
                       <MenuItem value='professional_serveis_socials'>
                         <Trans>Professional serveis socials</Trans>
@@ -107,9 +111,10 @@ const ReportBugForm = (props: Props) => {
                               onClick={resetForm(reset)}><Trans>Netejar</Trans></Button>
                     </Grid>
                   </Grid>
-                </form>
-              </Grid>
-            </Grid>
+                  </Grid>
+                </Grid>
+              </form>
+            </AppForm>
 
         );
       } else if (isRequestDone && !isError) {
@@ -147,6 +152,6 @@ function mapStateToProps(state, ownProps) {
   };
 }
 
-export default connect(mapStateToProps)(reduxForm({
+export default withStyles(styles)(connect(mapStateToProps)(reduxForm({
   form: 'ReportBugForm',
-})(ReportBugForm));
+})(ReportBugForm)));

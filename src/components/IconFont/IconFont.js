@@ -1,8 +1,31 @@
+import {withStyles} from '@material-ui/core';
 import React from 'react';
 
-export const IconFont = (props) => {
+const myStyles = () => ({
+  iconAjuntament: {
+    fontFamily: 'Ajuntament',
+    color: '#fff'
+  },
+  iconTitleContainer: {
+    float: 'left',
+    background: '#00ACD4',
+    borderRadius: '100%',
+    textAlign: 'center !important',
+  }
+});
+
+type IconFontProps = {
+  active: boolean,
+  classes: Object,
+  completed: boolean,
+  fontSize: number,
+  isStepperIcon: boolean,
+  sizeSphere: number,
+}
+
+export const IconFont = withStyles(myStyles)((props: IconFontProps) => {
   let icon = '';
-  switch(props.icon){
+  switch (props.icon) {
     case 'persona':
       icon = '';
       break;
@@ -15,7 +38,7 @@ export const IconFont = (props) => {
     case 'resultats':
       icon = '';
       break;
-    default: 
+    default:
       icon = props.icon;
       break;
   }
@@ -40,12 +63,13 @@ export const IconFont = (props) => {
     width: props.sizeSphere + 'px',
     backgroundColor: props.active ? colors.active : props.completed ? colors.completed : colors.uncompleted,
   };
+
   return (
-      <div className='iconTitle-container' style={props.isStepperIcon ? StepperIcon : noStepperIcon}>
-        <span className='iconAjuntament iconTitle' style={iconStyle}>{icon}</span>
-    </div>
+      <div className={props.classes.iconTitleContainer} style={props.isStepperIcon ? StepperIcon : noStepperIcon}>
+        <span className={props.classes.iconAjuntament} style={iconStyle}>{icon}</span>
+      </div>
   )
-};
+});
 IconFont.defaultProps = {
   fontSize: 36,
   sizeSphere: 64,

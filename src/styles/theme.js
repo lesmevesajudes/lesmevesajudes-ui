@@ -12,14 +12,14 @@ export const colors = {
   disabled_text: '#f7f7f7',
   white: '#fff',
   blackest: '#202020',
-  gray: '#f2f2f2'
+  gray: '#f2f2f2',
+  dark_gray: '#858585',
+  green: '#009900',
 };
 
 export const styles = theme => ({
   addMemberButton: {
-    margin: theme.spacing.unit,
-    backgroundColor: '#fff !important',
-    marginLeft: '15px'
+    backgroundColor: '#fff !important'
   },
   buttonIcon: {
     margin: theme.spacing.unit,
@@ -75,11 +75,6 @@ export const styles = theme => ({
     //maxHeight: '550px',
     //minHeight: '200px',
     //overflowY: 'scroll'
-  },
-  buttonResultsXS: {
-    [theme.breakpoints.down('sm')]: {
-      padding: '0px 0px'
-    }
   },
   modalContainer: {
     [theme.breakpoints.down('xs')]: {
@@ -165,6 +160,7 @@ export const styles = theme => ({
     marginTop: '0px !important',
     paddingTop: '25px !important',
     fontSize: '28px',
+    fontWeight: '600',
     color: '#333333 !important',
   },
   helpContainerBody: {
@@ -195,7 +191,6 @@ export const styles = theme => ({
     lineHeight: '48px',
   },
   form: {
-    minHeight: '600px',
     background: '#fff',
     paddingTop: '16px',
     paddingBottom: '16px',
@@ -206,9 +201,54 @@ export const styles = theme => ({
     fontSize: '18px !important',
     color: '#202020 !important',
     marginTop: '8px !important'
+  },
+  resultsContainer: {
+    paddingTop: '16px',
+    paddingBottom: '16px',
+    marginBottom: '16px'
+  },
+  errorText: {
+    color: '#c60c30'
+  },
+  linkBenefits: {
+    textDecoration: 'none'
+  },
+  personListContainer: {
+    marginBottom: '16px'
+  },
+  ResultPage: {
+    color: '#265a96'
+  },
+  ResultItemResultOut: {
+    margin: '0 0 15px 0',
+    lineHeight: '55px',
+    listStyle: 'none',
+  },
+  ItemResult: {
+    padding: '10px',
+    background: colors.white,
+    margin: '0 0 16px 0',
+  },
+  ResultsBenefitText: {
+    color: '#004a8e',
+    fontSize: '1rem'
+  },
+  ResultsSeparator: {
+    minHeight: '75px',
+    borderLeft: '1px solid #cdcdcd',
+    fontSize: '14px',
+    lineHeight: '74px',
+    textAlign: 'center'
+  },
+  whiteText: {
+    color: colors.white
+  },
+  darkGrayText: {
+    color: colors.dark_gray
+  },
+  greenText: {
+    color: colors.green
   }
-
-
 });
 
 export default createMuiTheme({
