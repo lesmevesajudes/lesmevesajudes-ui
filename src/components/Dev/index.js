@@ -1,7 +1,7 @@
 import {Button} from '@material-ui/core';
 import Grid from '@material-ui/core/Grid/Grid';
 import React from 'react';
-import connect from 'react-redux/es/connect/connect';
+import {connect} from 'react-redux';
 import {addPerson} from '../../persons/PersonsActions';
 import {addResidenceData} from '../../residence/ResidenceActions';
 import {create as create_UUID} from '../../shared/UUID';
