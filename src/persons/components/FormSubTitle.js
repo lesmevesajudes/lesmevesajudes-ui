@@ -4,7 +4,7 @@ import React from 'react';
 
 const FormSubTitle = (props) =>
     <Grid item>
-      <Typography variant='h2' gutterBottom>
+      <Typography variant='h2'>
         {props.children}
       </Typography>
     </Grid>;

@@ -190,7 +190,7 @@ export const styles = theme => ({
   titleText: {
     lineHeight: '48px',
   },
-  form: {
+  appForm: {
     background: '#fff',
     paddingTop: '16px',
     paddingBottom: '16px',
@@ -248,6 +248,11 @@ export const styles = theme => ({
   },
   greenText: {
     color: colors.green
+  },
+  blueTitle: {
+    textTransform: 'uppercase',
+    color: colors.secondary_dark,
+    fontWeight: 600
   }
 });
 

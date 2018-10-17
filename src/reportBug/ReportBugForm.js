@@ -6,13 +6,12 @@ import {Trans} from "react-i18next";
 import {connect} from 'react-redux';
 import {Field, formValueSelector, reduxForm} from 'redux-form';
 import {TextField} from 'redux-form-material-ui';
-import {AppForm} from '../components/AppForms';
 import MultipleAnswerQuestion from '../persons/components/MultipleAnswerQuestion';
 import {YesNoQuestion} from '../persons/components/YesNoQuestion';
 import {email, required} from '../shared/formValidators';
 import Spinner from '../shared/spinner.svg';
 import * as UUID from '../shared/UUID';
-import styles from '../styles/theme'
+import {styles} from '../styles/theme'
 
 type Props = {
   classes: Object,
@@ -34,7 +33,7 @@ const resetForm = (reset: Function) => {
 };
 
 const ReportBugForm = (props: Props) => {
-  const {handleSubmit, resultatIncorrecte, isError, isRequestDone, requestInProgress, reset} = props;
+  const {handleSubmit, resultatIncorrecte, isError, isRequestDone, requestInProgress, reset, classes} = props;
       if (requestInProgress) return (
           <Grid container direction='column'>
             <Grid item sm={12}>
@@ -51,70 +50,80 @@ const ReportBugForm = (props: Props) => {
             </Grid>
           </Grid>
       );
+  console.log("classes: ", classes.appForm);
       if (!isRequestDone) {
         return (
-            <AppForm>
-              <Grid item sm={12}>
-                <Typography variant='h5' gutterBottom>Informar del resultat de la simulació</Typography>
-              </Grid>
-              <form onSubmit={handleSubmit}>
-                <Grid container direction='row' justify='space-around'>
-                  <Grid container item xs={11} direction='column' alignItems='stretch' spacing={16}>
-                  <Grid item>
-                    <YesNoQuestion name='accepted_result' validate={[required]}>
-                      <Trans>El resultat de la simulació és correcte?</Trans>
-                    </YesNoQuestion>
-                  </Grid>
-                  {resultatIncorrecte &&
-                  <Grid item>
-                    <label>
-                      <Trans>
-                        Indiqui quin és el resultat esperat (ajuda que esperava rebre, persones que l'hauríen de rebre, .. )
-                      </Trans>
-                    </label>
-                    <Field name='expected_result' placeholder='...' fullWidth component={TextField} validate={[required]}/>
-                  </Grid>
-                  }
+            <Grid container direction='row' justify='space-around' className={classes.appForm}>
+              <Grid item xs={11}>
+                <Grid container direction='column'>
+                  <form onSubmit={handleSubmit}>
+                    <Grid item xs={12}>
+                      <Typography variant='h5' gutterBottom>Informar del resultat de la simulació</Typography>
+                    </Grid>
+                    <Grid container item xs={6} direction='column' spacing={16}>
+                      <Grid item>
+                        <YesNoQuestion name='accepted_result' validate={[required]}>
+                          <Trans>El resultat de la simulació és correcte?</Trans>
+                        </YesNoQuestion>
+                      </Grid>
+                      {resultatIncorrecte &&
+                      <Grid item>
+                        <label>
+                          <Trans>
+                            Indiqui quin és el resultat esperat (ajuda que esperava rebre, persones que l'hauríen de
+                            rebre, ..
+                            )
+                          </Trans>
+                        </label>
+                        <Field name='expected_result' placeholder='...' fullWidth component={TextField}
+                               validate={[required]}/>
+                      </Grid>
+                      }
                     <Grid item>
-                    <label>Comentaris o millores</label>
-                    <Field name='comments' placeholder='...' fullWidth component={TextField}/>
-                  </Grid>
+                      <label>Comentaris o millores</label>
+                      <Field name='comments' placeholder='...' fullWidth component={TextField}/>
+                    </Grid>
                     <Grid item>
-                    <label>Faciliti el seu correu electrònic</label>
-                    <Field name='reporter_email' placeholder='john@doe.com' fullWidth component={TextField}
-                           validate={[required, email]}/>
-                  </Grid>
+                      <label>Faciliti el seu correu electrònic</label>
+                      <Field name='reporter_email' placeholder='john@doe.com' fullWidth component={TextField}
+                             validate={[required, email]}/>
+                    </Grid>
                     <Grid item>
-                    <MultipleAnswerQuestion label={<Trans>Grup de probes</Trans>} name='test_group' validate={[required]}>
-                      <MenuItem value='professional_serveis_socials'>
-                        <Trans>Professional serveis socials</Trans>
-                      </MenuItem>
-                      <MenuItem value='entitat_del_tercer_sector'>
-                        <Trans>Entitat del tercer sector</Trans>
-                      </MenuItem>
-                      <MenuItem value='altre_personal_de_l_ajuntament_de_barcelona'>
-                        <Trans>Altre personal de l'ajuntament de barcelona</Trans>
-                      </MenuItem>
-                      <MenuItem value='altres'>
-                        <Trans>Altres</Trans>
-                      </MenuItem>
-                    </MultipleAnswerQuestion>
-                  </Grid>
-                  <Field component='input' name='application_state' type='hidden'/>
-                  <Field component='input' name='simulation_id' type='hidden'/>
-                  <Grid container direction='row' justify='space-around'>
+                      <MultipleAnswerQuestion label={<Trans>Grup de probes</Trans>} name='test_group'
+                                              validate={[required]}>
+                        <MenuItem value='professional_serveis_socials'>
+                          <Trans>Professional serveis socials</Trans>
+                        </MenuItem>
+                        <MenuItem value='entitat_del_tercer_sector'>
+                          <Trans>Entitat del tercer sector</Trans>
+                        </MenuItem>
+                        <MenuItem value='altre_personal_de_l_ajuntament_de_barcelona'>
+                          <Trans>Altre personal de l'ajuntament de barcelona</Trans>
+                        </MenuItem>
+                        <MenuItem value='altres'>
+                          <Trans>Altres</Trans>
+                        </MenuItem>
+                      </MultipleAnswerQuestion>
+                    </Grid>
+                      <Field component='input' name='application_state' type='hidden'/>
+                      <Field component='input' name='simulation_id' type='hidden'/>
+                    </Grid>
+                    <Grid container direction='row' justify='space-around' style={{paddingTop: '32px'}}>
                     <Grid item className='margin-buttons'>
-                      <Button variant='contained' color='primary' type='submit'><Trans>Informar</Trans></Button>
+                      <Button variant='contained' color='primary' type='submit'>
+                        <Trans>Informar</Trans>
+                      </Button>
                     </Grid>
                     <Grid item className='margin-buttons'>
-                      <Button variant='contained' color='secondary'
-                              onClick={resetForm(reset)}><Trans>Netejar</Trans></Button>
+                      <Button variant='contained' color='secondary' onClick={resetForm(reset)}>
+                        <Trans>Netejar</Trans>
+                      </Button>
                     </Grid>
                   </Grid>
-                  </Grid>
+                  </form>
                 </Grid>
-              </form>
-            </AppForm>
+              </Grid>
+            </Grid>
 
         );
       } else if (isRequestDone && !isError) {
@@ -152,6 +161,6 @@ function mapStateToProps(state, ownProps) {
   };
 }
 
-export default withStyles(styles)(connect(mapStateToProps)(reduxForm({
+export default connect(mapStateToProps)(reduxForm({
   form: 'ReportBugForm',
-})(ReportBugForm)));
+})(withStyles(styles)(ReportBugForm)));

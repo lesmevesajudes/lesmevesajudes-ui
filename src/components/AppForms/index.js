@@ -20,11 +20,9 @@ type AppFormTitleProps = {
 
 export const AppFormTitle = withStyles(styles)((props: AppFormTitleProps) =>
     <Grid item xs={12} md={11} className={props.classes.titleContainer}>
-      <Typography variant='h5'>
+      <Typography variant='h5' className={props.classes.titleText}>
         <IconFont icon={props.iconName} sizeSphere={48} fontSize={32}/>
-        <span className={props.classes.titleText}>
           {props.children}
-        </span>
       </Typography>
     </Grid>);
 
@@ -33,7 +31,7 @@ type AppFormProps = {
   classes: Object
 };
 export const AppForm = withStyles(styles)((props: AppFormProps) =>
-    <Grid item xs={12} md={11} className={props.classes.form}>
+    <Grid item xs={12} md={11} className={props.classes.appForm}>
       {props.children}
     </Grid>);
 

@@ -52,7 +52,7 @@ class ShowMeOnceModal extends React.Component<Props, State> {
               <Icon onClick={this.handleClose} style={closeImg} color='primary'>
                 close
               </Icon>
-            <Typography variant='h6' id='modal-title' gutterBottom>
+            <Typography variant='h2' gutterBottom>
               {title}
             </Typography>
             <Typography id='simple-modal-description' align='justify'>
