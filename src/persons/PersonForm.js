@@ -96,7 +96,7 @@ let PersonForm = (props: Props) => {
             <Field component='input' name='is_the_user_in_front_of_the_computer' type='hidden'/>
             <Grid container direction='row' justify='space-around' alignItems='stretch' spacing={16}>
               <Grid item xs={11} sm={6}>
-                <Grid container direction='column' alignItems='stretch' spacing={8}>
+                <Grid container direction='column' alignItems='stretch' spacing={16}>
                   <FormSubTitle><Trans>Informació personal</Trans></FormSubTitle>
                   <Question name='nom' placeholder='Nom' component={TextField} validate={[required]} autoFocus>
                     {isTheUserInFrontOfTheComputer ? <Trans>Identifiqui's amb un nom</Trans> :
@@ -275,15 +275,20 @@ let PersonForm = (props: Props) => {
                 </Sticky>
               </Grid>
             </Grid>
-            <Grid id='stop' item>
-              <Grid container justify='space-around'>
+            <Grid item id='stop'>
+              <Grid container direction='row' spacing={16} justify='space-around'>
                 {(isTheUserInFrontOfTheComputer !== true || updating === true) &&
-                <Button variant='contained' color='secondary' onClick={props.onCancel}>
-                  <Trans>Cancelar</Trans>
-                </Button>}
-                <Button variant='contained' color='primary' type='submit' name='ButtonValidar'>
-                  <Trans>Validar</Trans>
-                </Button>
+                <Grid item>
+                  <Button variant='contained' color='secondary' onClick={props.onCancel}>
+                    <Trans>Cancelar</Trans>
+                  </Button>
+                </Grid>}
+
+                <Grid item>
+                  <Button variant='contained' color='primary' type='submit' name='ButtonValidar'>
+                    <Trans>Validar</Trans>
+                  </Button>
+                </Grid>
               </Grid>
             </Grid>
           </form>
