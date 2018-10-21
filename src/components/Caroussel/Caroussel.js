@@ -21,15 +21,15 @@ export default class extends React.Component {
           <Slider>
             {content.map((slideContent, index) =>
                 <Slide key={index} index={index}>
-                  <Grid container direction='column' className='sliderItem'>
-                    <Grid item justify='flex-start' style={{height: 90}}>
+                  <Grid container direction='column' className='sliderItem' justify='flex-start'>
+                    <Grid item style={{height: 90}}>
                       <Typography className='sliderTitle' gutterBottom>
                   <span className='sliderTitle'>
                   {slideContent.title}
                   </span>
                       </Typography>
                     </Grid>
-                    <Grid item justify='flex-start' style={{height: 120}}>
+                    <Grid item style={{height: 120}}>
                       <Typography className='sliderBody'>
                         {slideContent.body}
                       </Typography>
