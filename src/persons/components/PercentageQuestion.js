@@ -1,18 +1,19 @@
+import InputAdornment from '@material-ui/core/InputAdornment';
 import React from 'react';
-import {Question} from './Question';
+import {Trans} from 'react-i18next';
 import {TextField} from 'redux-form-material-ui';
 import {allowOnlyPositive} from '../../components/Common/NormalizeCommon';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import {Trans} from 'react-i18next';
+import {Question} from './Question';
 
 // TODO Max 100
 const max100 = value =>
     value && (value > 100 || value < 0)
         ? <Trans>Només s'admeten valors entre 0 i 100</Trans>
-    : undefined;
+        : undefined;
 
 export const PercentageQuestion = (props) =>
-    <Question {...props} type='number' normalize={allowOnlyPositive} component={TextField} validate={max100}
+    <Question {...props} type='number' normalize={allowOnlyPositive} component={TextField}
+              validate={[max100, ...props.validate]}
               InputProps={{
                 endAdornment: <InputAdornment position='end'>%</InputAdornment>,
               }}>
