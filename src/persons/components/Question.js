@@ -1,9 +1,9 @@
+import Grid from '@material-ui/core/Grid';
+import Hidden from '@material-ui/core/Hidden';
+import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import HelpIcon from '../../components/HelpIcon';
 import {isHelpAvailable} from '../../components/HelpText';
-import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
-import Hidden from '@material-ui/core/Hidden';
 import {IRemoveMyValueWhenUnmountedField} from "../../components/IRemoveMyValueWhenUnmountedField";
 
 type Props = {
@@ -11,7 +11,7 @@ type Props = {
 }
 export const Question = (props: Props) =>
     <Grid item>
-      <label>
+      <label id={props.name}>
         <Typography gutterBottom>
           {props.children}
           {isHelpAvailable(props.name) &&

@@ -9,7 +9,7 @@ type Props = {
 }
 const MultipleAnswerQuestion = (props: Props) =>
     <Grid item xs={12}>
-      <label>
+      <label id={props.name}>
         <Typography>
           {props.label}
         </Typography>

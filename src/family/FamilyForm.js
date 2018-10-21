@@ -17,6 +17,7 @@ import FormSubTitle from '../persons/components/FormSubTitle';
 import {YesNoQuestion} from '../persons/components/YesNoQuestion';
 import type {Person, PersonID} from '../persons/PersonTypes';
 import {required} from '../shared/formValidators';
+import {focusFirstQuestionWithName, namefirstFieldWithError} from '../shared/reduxFormTools';
 import {currentFocussedFieldSelector, esFill, esSustentador, personsByRelacioDeParentiu} from '../shared/selectorUtils';
 import {styles} from '../styles/theme';
 import {createFamilyName, toArray} from './createFamilyName';
@@ -204,5 +205,8 @@ export default withStyles(styles)(connect(mapStateToProps, {addHouseholdData: ad
           form: 'FamilyForm',
           onChange: (values, dispatch) => {
             dispatch(addFamilyData(values));
-          }
+          },
+          onSubmitFail: (error) => {
+            focusFirstQuestionWithName(namefirstFieldWithError(error))
+          },
         })(FamilyForm)));

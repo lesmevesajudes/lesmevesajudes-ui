@@ -50,8 +50,8 @@ const ReportBugForm = (props: Props) => {
             </Grid>
           </Grid>
       );
-  console.log("classes: ", classes.appForm);
-      if (!isRequestDone) {
+
+  if (!isRequestDone) {
         return (
             <Grid container direction='row' justify='space-around' className={classes.appForm}>
               <Grid item xs={11}>

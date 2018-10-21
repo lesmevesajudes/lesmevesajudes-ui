@@ -1,25 +1,26 @@
+import {Grid} from "@material-ui/core";
 import React from "react";
+import {Trans} from 'react-i18next';
+import {Choice} from "../Choice";
 import MultipleChoice from "../MultipleChoice";
-import { Choice } from "../Choice";
-import { Grid } from "@material-ui/core";
 
 const YesNo = ({input, meta}) => {
-
-
   return <Grid container direction='column'>
     <Grid container direction='row'>
+      <input name={input.name} type="hidden" value=""/>
       <MultipleChoice
-        currentState={input.value}
-        onFocus={input.onFocus}
-        optionSelected={input.onChange}
-        meta
+          currentState={input.value}
+          onFocus={input.onFocus}
+          optionSelected={input.onChange}
+          meta
       >
         <Choice value={true} variant='outlined'>
-          Si
+          <Trans>Si</Trans>
         </Choice>
         <Choice value={false} variant='outlined'>
-          No
+          <Trans>No</Trans>
         </Choice>
+
       </MultipleChoice>
     </Grid>
     <Grid item>

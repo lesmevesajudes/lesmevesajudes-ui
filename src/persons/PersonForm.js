@@ -15,6 +15,7 @@ import {
   pncInclosAIngressosBruts,
   required
 } from "../shared/formValidators";
+import {focusFirstQuestionWithName, namefirstFieldWithError} from '../shared/reduxFormTools';
 import {currentFocussedFieldSelector} from "../shared/selectorUtils";
 import FormSubTitle from "./components/FormSubTitle";
 import {MoneyQuestion} from "./components/MoneyQuestion";
@@ -299,7 +300,10 @@ let PersonForm = (props: Props) => {
 };
 
 PersonForm = reduxForm({
-  form: "PersonForm"
+  form: "PersonForm",
+  onSubmitFail: (error) => {
+    focusFirstQuestionWithName(namefirstFieldWithError(error))
+  },
 })(PersonForm);
 
 const selector = formValueSelector("PersonForm");

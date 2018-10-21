@@ -16,6 +16,7 @@ import {Question} from "../persons/components/Question";
 import {YesNoQuestion} from "../persons/components/YesNoQuestion";
 import type {Person, PersonID} from "../persons/PersonTypes";
 import {required} from "../shared/formValidators";
+import {focusFirstQuestionWithName, namefirstFieldWithError} from '../shared/reduxFormTools';
 import {currentFocussedFieldSelector, esFill} from "../shared/selectorUtils";
 import {addResidenceData} from "./ResidenceActions";
 import type {ResidenceData} from "./ResidenceTypes";
@@ -334,5 +335,8 @@ export default connect(mapStateToProps)(reduxForm(
       form: "ResidenceForm",
       onChange: (values, dispatch) => {
         dispatch(addResidenceData(values));
-      }
+      },
+      onSubmitFail: (error) => {
+        focusFirstQuestionWithName(namefirstFieldWithError(error))
+      },
     })(ResidenceForm));
