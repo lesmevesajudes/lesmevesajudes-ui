@@ -136,10 +136,10 @@ class StepsComponent extends React.Component<Props, State> {
             }
           </Stepper>
           <Grid container>
-            <Grid item sm={12} xs={12} md={12}>
+            <Grid item xs={12}>
               {childComponent}
             </Grid>
-            <Grid item sm={12} xs={12} md={12}>
+            <Grid item xs={12}>
               <StepperButtons nextAction={(currentStep === steps.length - 1) ? undefined : this.nextStep}
                               backAction={(currentStep === 0) ? undefined : this.backStep} classes={classes}
                               buttonEnabled={buttonEnabled} buttonVisible={buttonVisible}

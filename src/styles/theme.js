@@ -302,18 +302,11 @@ export default createMuiTheme({
       }
     },
     MuiStepConnector: {
-      root: {
-        backgroundColor: '#dedede',
-        height: '2px'
-      },
-      lineHorizontal: {
-        border: '0px solid #fff',
-        borderTopWidth: '0px'
-      },
       alternativeLabel: {
-        top: '23px',
-        left: 'calc(50% + 27px)',
-        right: 'calc(-50% + 27px)',
+        top: '24px',
+        left: 'calc(-50% + 30px)',
+        right: 'calc(50% + 30px)',
+        position: 'absolute',
       }
     },
     MuiPaper: {
