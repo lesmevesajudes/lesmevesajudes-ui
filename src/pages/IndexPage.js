@@ -6,6 +6,7 @@ import {Trans, withNamespaces} from 'react-i18next';
 import {Link} from 'react-router-dom';
 import AppHeader from '../components/AppHeader/AppHeader';
 import Caroussel from '../components/Caroussel/Caroussel';
+import {getCodeVersion, getReleaseDate} from '../shared/getCodeVersion';
 import {styles} from '../styles/theme';
 import './indexPage/IndexPage.css';
 
@@ -146,6 +147,9 @@ const IndexPage = (props) =>
             <Caroussel content={content}/>
           </Hidden>
         </div>
+      </div>
+      <div style={{float: 'right', color: '#bfbfbf', paddingTop: '30px', paddingRight: '30px'}}>
+        Release Date: {getReleaseDate()} Version: {getCodeVersion()}
       </div>
     </div>;
 

@@ -41,7 +41,7 @@
     "wait-on": "^3.0.1"
   },
   "scripts": {
-    "git-info": "echo export default \"{\\\"versionHash\\\": \\\"$(echo $SOURCE_VERSION)\\\"}\"  > src/_git_commit.js",
+    "git-info": "echo export default \"{\\\"versionHash\\\": \\\"$(echo $SOURCE_VERSION)\\\", \\\"releaseDate\\\": \\\"$(date +%Y%m%d-%H%M)\\\"}\"  > src/_git_commit.js",
     "flow": "flow",
     "start": "yarn git-info; react-scripts start",
     "serve": "serve -l 3000 -s  build ",

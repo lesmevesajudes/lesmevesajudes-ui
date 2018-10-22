@@ -1,5 +1,5 @@
 //@flow
 import GitCommit from '../_git_commit';
 
-const getCodeVersion = (): string => GitCommit.versionHash;
-export default getCodeVersion;
+export const getCodeVersion = (): string => GitCommit.versionHash;
+export const getReleaseDate = (): string => GitCommit.releaseDate;

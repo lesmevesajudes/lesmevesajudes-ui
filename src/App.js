@@ -20,7 +20,7 @@ import InfoRGC from './pages/InfoRGC';
 import InfoLloguerMediacio from "./pages/lloguerMediacio";
 import WizardPage from './pages/Wizard';
 import ReportBugPage from './reportBug/ReportBugPage';
-import getCodeVersion from "./shared/getCodeVersion";
+import {getCodeVersion, getReleaseDate} from "./shared/getCodeVersion";
 import isDevelopment from './shared/isDevelopment';
 import configureStore from './Store';
 import './styles/main.css';
@@ -30,7 +30,7 @@ if (isDevelopment) {
   console.log('Environment: ' + ENVIRONMENT);
 }
 
-console.log('App version: ', getCodeVersion());
+console.log(`Code version: ${getCodeVersion()} Release Date: ${getReleaseDate()}`);
 console.log('API: ', API_URL);
 console.log('Simulation Report API: ', REPORT_BUG_URL);
 
