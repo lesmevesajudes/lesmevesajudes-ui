@@ -62,15 +62,15 @@ let HowManyPersonsLiveTogetherPage = (props: Props) => {
               </Grid>
 
             <Grid item>
-              <Grid container direction='row' justify='space-around' spacing={16}>
-                <Grid item xs={2}>
+              <Grid container direction='row' justify='space-around' alignContent='center' spacing={16}>
+                <Grid item container direction='column' xs={2}>
                     <Button variant='contained' name='ButtonTornar' onClick={() => {
                       history.push('/')
                     }}>
                       <Trans>Tornar</Trans>
                     </Button>
                   </Grid>
-                <Grid item xs={2}>
+                <Grid item container direction='column' xs={2}>
                     <Button variant='contained' color='primary' type='submit' name='ButtonValidar'>
                       <Trans>Validar</Trans>
                     </Button>
