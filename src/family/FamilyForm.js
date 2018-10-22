@@ -9,7 +9,7 @@ import {Trans} from 'react-i18next';
 import {connect} from 'react-redux';
 import Sticky from 'react-stickynode';
 import {reduxForm} from 'redux-form';
-import {Select} from 'redux-form-material-ui';
+import {Select, TextField} from 'redux-form-material-ui';
 import {AppForm, AppFormContainer, AppFormTitle} from '../components/AppForms';
 import DescriptionText from '../components/Common/DescriptionText';
 import {IRemoveMyValueWhenUnmountedField} from '../components/IRemoveMyValueWhenUnmountedField';
@@ -71,7 +71,7 @@ const FamilyForm = (props: Props) => {
                         <Grid container direction='row' justify='space-between'>
                           <Grid item xs={5}>
                             <IRemoveMyValueWhenUnmountedField name={'custodies.' + infant.id + '.primer'}
-                                                              component={Select}
+                                                              component={TextField} select label=''
                                                               fullWidth validate={[required]}>
                               {possiblesSustentadors.valueSeq().map((sustentador: Person) =>
                                   <MenuItem key={`primer-${sustentador.id}`} value={sustentador.id}>
@@ -86,7 +86,7 @@ const FamilyForm = (props: Props) => {
                           </Grid>
                           <Grid item xs={5}>
                             <IRemoveMyValueWhenUnmountedField name={'custodies.' + infant.id + '.segon'}
-                                                              component={Select}
+                                                              component={TextField} select label=''
                                                               fullWidth validate={[required]}>
                               {possiblesSustentadors.valueSeq().map((sustentador: Person) =>
                                   typeof custodies[infant.id] !== 'undefined' && custodies[infant.id].primer === sustentador.id
@@ -118,7 +118,8 @@ const FamilyForm = (props: Props) => {
                               </Typography>
                             </label>
                             <IRemoveMyValueWhenUnmountedField name={'parelles.' + familia.sustentadors_i_custodia[0]}
-                                                              component={Select} fullWidth validate={[required]}>
+                                                              component={TextField} select label='' fullWidth
+                                                              validate={[required]}>
                               {// $FlowFixMe
                                 sustentadorsSolitarisAmbPossiblesParelles[familia.sustentadors_i_custodia[0]].map((possibleParella: Person) =>
                                     <MenuItem

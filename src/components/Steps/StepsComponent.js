@@ -7,6 +7,7 @@ import React from 'react';
 import {Trans} from 'react-i18next';
 import {connect} from 'react-redux';
 import {getFormSyncErrors, isValid, touch} from "redux-form";
+import {flatten} from '../../shared/flatten';
 import {styles} from '../../styles/theme';
 import {IconFont} from '../IconFont/IconFont';
 import StepperButtons from './StepperButtons';
@@ -28,6 +29,7 @@ type State = {
   current_step: number,
   max_step_reached: number
 }
+const flattenErrors = (errors: Object) => flatten(errors, {maxDepth: 3});
 
 const chooseIcon = (props: Object, currentStep: number, maxStepReached: number, index: number) => {
   const iconStep = props.steps[index].icon;
@@ -56,7 +58,7 @@ class StepsComponent extends React.Component<Props, State> {
     const formIsValid = isValid(formToValidate);
     if (typeof formToValidate !== 'undefined' && !formIsValid(this.props.appState)) {
       const errors = getFormSyncErrors(formToValidate)(this.props.appState);
-      const visibleFields = Object.keys(errors);
+      const visibleFields = Object.keys(flattenErrors(errors));
       this.props.dispatch(touch(formToValidate, ...visibleFields));
     } else {
       const nextStep = this.findNextPageThatShouldShow(currentStep, FORWARD);
