@@ -46,7 +46,7 @@ const relacioDeParentiuATextDelLListatDePersones = (relacioDeParentiu: string) =
     fillastre: 'és el seu fillastre/a',
     infant_acollit: 'és un infant acollit',
     net: 'és el seu net/a',
-    pare: 'és el seu pare',
+    pare: 'és el seu pare/mare',
     avi: 'és el seu avi/a',
     sogre: 'és el seu sogre/a',
     germa: 'és el seu germà/na',
