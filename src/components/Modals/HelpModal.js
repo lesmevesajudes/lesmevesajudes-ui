@@ -8,6 +8,7 @@ import {withStyles} from '@material-ui/core/styles';
 import {compose} from 'redux';
 import Icon from '@material-ui/core/Icon';
 import {styles} from '../../styles/theme'
+
 type Props = {
   open: Boolean,
   title: string,
