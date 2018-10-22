@@ -9,7 +9,7 @@ import {Trans} from 'react-i18next';
 import {connect} from 'react-redux';
 import Sticky from 'react-stickynode';
 import {reduxForm} from 'redux-form';
-import {Select, TextField} from 'redux-form-material-ui';
+import {TextField} from 'redux-form-material-ui';
 import {AppForm, AppFormContainer, AppFormTitle} from '../components/AppForms';
 import DescriptionText from '../components/Common/DescriptionText';
 import {IRemoveMyValueWhenUnmountedField} from '../components/IRemoveMyValueWhenUnmountedField';
@@ -49,7 +49,8 @@ const FamilyForm = (props: Props) => {
     fills,
     persones,
     possiblesSustentadors,
-    sustentadorsSolitarisAmbPossiblesParelles } = props;
+    sustentadorsSolitarisAmbPossiblesParelles
+  } = props;
   return (
       <AppFormContainer>
         <AppFormTitle iconName='familia'>
