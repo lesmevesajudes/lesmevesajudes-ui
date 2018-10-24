@@ -1,5 +1,4 @@
 import Grid from '@material-ui/core/Grid';
-import Hidden from '@material-ui/core/Hidden';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import HelpIcon from '../../components/HelpIcon';
@@ -15,7 +14,7 @@ export const Question = (props: Props) =>
         <Typography gutterBottom>
           {props.children}
           {isHelpAvailable(props.name) &&
-          <Hidden smUp> <HelpIcon name={props.name}/> </Hidden>
+          <HelpIcon name={props.name}/>
           }
         </Typography>
       </label>

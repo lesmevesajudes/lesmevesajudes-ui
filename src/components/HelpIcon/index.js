@@ -1,22 +1,44 @@
 //@flow
-import React, {Fragment} from 'react';
-import {openModal} from '../Modals/ModalActions';
-import {connect} from 'react-redux';
+import {withWidth} from '@material-ui/core';
 import Icon from '@material-ui/core/Icon';
-import HelpModal from '../Modals/HelpModal';
+import React, {Component, Fragment} from 'react';
+import {connect} from 'react-redux';
+import {showHelpFor} from '../HelpSystem/HelpSystemReducer';
 import {helpText} from '../HelpText';
+import HelpModal from '../Modals/HelpModal';
+import {openModal} from '../Modals/ModalActions';
 
 type Props = {
+  showHelpFor: Function,
+  name: string,
   openModal: Function,
-  name: string
+  width: string
 }
-const HelpIcon = (props: Props) =>
-    <Fragment>
-      <Icon onClick={(e) => props.openModal(props.name, e.clientY - 9, e.clientX + 11)} style={{float: 'right'}}
-            color='action'>info</Icon>
-      <HelpModal name={props.name}>
-        {helpText(props.name).body}
-      </HelpModal>
-    </Fragment>;
 
-export default connect(null, {openModal})(HelpIcon);
+class HelpIcon extends Component<Props> {
+  onClick = (event) => {
+    const {name, width} = this.props;
+    if (['xs', 'sm'].includes(width)) {
+      this.props.openModal(name, event.clientY - 9, event.clientX + 11)
+    } else {
+      this.props.showHelpFor(name)
+    }
+  };
+
+  constructor(props) {
+    super(props);
+    this.onClick = this.onClick.bind(this);
+  }
+
+  render() {
+    const {name} = this.props;
+    return (<Fragment>
+      <Icon onClick={this.onClick} style={{float: 'right'}} color='action'>info</Icon>
+      <HelpModal name={name}>
+        {helpText(name).body}
+      </HelpModal>
+    </Fragment>);
+  }
+}
+
+export default withWidth()(connect(null, {openModal, showHelpFor})(HelpIcon));

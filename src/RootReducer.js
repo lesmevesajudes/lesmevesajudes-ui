@@ -1,5 +1,6 @@
 import {combineReducers} from 'redux';
 import {reducer as reduxFormReducer} from 'redux-form';
+import HelpSystemReducer from './components/HelpSystem/HelpSystemReducer';
 import ModalReducer from './components/Modals/ModalReducer';
 import {ShowMeOnceReducer} from './components/ShowMeOnceModal/ShowMeOnceReducer';
 import StepReducer from './components/Steps/StepsReducer'
@@ -10,15 +11,16 @@ import ResidenceReducer from './residence/ResidenceReducer';
 import ResultsReducer from './results/ResultsReducer';
 
 const rootReducer = combineReducers({
-  results: ResultsReducer,
-  persons: PersonsReducer,
   family: FamilyReducer,
-  residence: ResidenceReducer,
-  step: StepReducer,
+  form: reduxFormReducer,
+  helpSystem: HelpSystemReducer,
   modals: ModalReducer,
-  reportBug: ReportBugReducer,
+  persons: PersonsReducer,
+  results: ResultsReducer,
+  residence: ResidenceReducer,
   showMeOnceModals: ShowMeOnceReducer,
-  form: reduxFormReducer
+  step: StepReducer,
+  reportBug: ReportBugReducer,
 });
 
 export default rootReducer;

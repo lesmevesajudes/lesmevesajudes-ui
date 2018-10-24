@@ -1,5 +1,5 @@
 //@flow
-import {Button, Grid, MenuItem, Typography} from "@material-ui/core";
+import {Button, Grid, Hidden, MenuItem, Typography} from "@material-ui/core";
 import React, {Fragment} from "react";
 import {Trans} from "react-i18next";
 import {connect} from "react-redux";
@@ -16,7 +16,6 @@ import {
   required
 } from "../shared/formValidators";
 import {focusFirstQuestionWithName, namefirstFieldWithError} from '../shared/reduxFormTools';
-import {currentFocussedFieldSelector} from "../shared/selectorUtils";
 import FormSubTitle from "./components/FormSubTitle";
 import {MoneyQuestion} from "./components/MoneyQuestion";
 import MultipleAnswerQuestion from "./components/MultipleAnswerQuestion";
@@ -34,7 +33,6 @@ export type PersonFormInitialValues = Person | { is_the_person_in_front_of_the_c
 
 type Props = {
   cobraAlgunTipusDePensioNoContributiva: Boolean,
-  currentField: string,
   edat: number,
   esAturat: Boolean,
   esDona: Boolean,
@@ -44,6 +42,7 @@ type Props = {
   esHome: Boolean,
   handleSubmit: Function,
   haTreballatALEstranger6Mesos: Boolean,
+  helpTopic: string,
   inscritComADemandantDocupacio: Boolean,
   isTheUserInFrontOfTheComputer: Boolean,
   membreDeFamiliaReagrupada: Boolean,
@@ -58,10 +57,11 @@ type Props = {
   updating: Boolean
 };
 
+const formName = 'PersonForm';
+
 let PersonForm = (props: Props) => {
   const {
     cobraAlgunTipusDePensioNoContributiva,
-    currentField,
     edat,
     esAturat,
     esDona,
@@ -70,6 +70,7 @@ let PersonForm = (props: Props) => {
     esFillastre,
     esHome,
     handleSubmit,
+    helpTopic,
     haTreballatALEstranger6Mesos,
     inscritComADemandantDocupacio,
     isTheUserInFrontOfTheComputer,
@@ -221,14 +222,16 @@ let PersonForm = (props: Props) => {
                     </Fragment>}
 
                     {esFamiliarOUsuari && inscritComADemandantDocupacio &&
-                    <YesNoQuestion name='gaudeix_de_prestacio_contributiva_o_subsidi_desocupacio' validate={[required]}>
+                    <YesNoQuestion name='gaudeix_de_prestacio_contributiva_o_subsidi_desocupacio'
+                                   validate={[required]}>
                       <Trans>Gaudeix actualment d’una prestació contributiva o subsidi per desocupació?</Trans>
                     </YesNoQuestion>}
 
                     {esFamiliarOUsuari && esAturat &&
                     <YesNoQuestion name='percep_prestacions_incompatibles_amb_la_feina' validate={[required]}>
                       <Trans>
-                        Percep alguna ajuda i/o prestació econòmica de la seguretat social que no li permeti treballar?
+                        Percep alguna ajuda i/o prestació econòmica de la seguretat social que no li permeti
+                        treballar?
                       </Trans>
                     </YesNoQuestion>}
                   </Fragment>}
@@ -270,9 +273,11 @@ let PersonForm = (props: Props) => {
                   </Fragment>}
                 </Grid>
               </Grid>
-              <Grid item xs={5} sm={5}>
+              <Grid item xs={5}>
                 <Sticky enabled top={10} bottomBoundary='#stop'>
-                  <DescriptionText currentField={currentField}/>
+                  <Hidden smDown>
+                    <DescriptionText currentField={helpTopic}/>
+                  </Hidden>
                 </Sticky>
               </Grid>
             </Grid>
@@ -295,18 +300,17 @@ let PersonForm = (props: Props) => {
           </form>
         </AppForm>
       </AppFormContainer>
-
   );
 };
 
 PersonForm = reduxForm({
-  form: "PersonForm",
+  form: formName,
   onSubmitFail: (error) => {
     focusFirstQuestionWithName(namefirstFieldWithError(error))
   },
 })(PersonForm);
 
-const selector = formValueSelector("PersonForm");
+const selector = formValueSelector(formName);
 
 PersonForm = connect(state => {
   const cobraAlgunTipusDePensioNoContributiva = selector(state, "cobra_algun_tipus_de_pensio_no_contributiva");
@@ -328,11 +332,11 @@ PersonForm = connect(state => {
   const teAlgunGrauDeDiscapacitatReconegut = selector(state, "te_algun_grau_de_discapacitat_reconegut");
   const tipusDocumentIdentitat = selector(state, "tipus_document_identitat");
   const treballaPerCompteDAltriParcial = selector(state, "situacio_laboral") === "treball_compte_daltri_jornada_parcial";
-  const currentField = currentFocussedFieldSelector("PersonForm")(state);
+  const helpTopic = state.helpSystem.currentHelpTopic;
 
   return {
     cobraAlgunTipusDePensioNoContributiva,
-    currentField,
+    helpTopic,
     edat,
     esAturat,
     esDona,
