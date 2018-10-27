@@ -10,22 +10,25 @@ const HelpTextMap = {
     body: <Trans>Si fa menys d’un any que està empadronat indiqui 0</Trans>
   },
   "edat": {
-    title: <Trans>Edat</Trans>,
-    body: <Trans>Si té menys d’un any indiqui 0</Trans>
+    title: <Trans i18nKey='edat'>Edat</Trans>,
+    body: <Trans i18nKey='edat_text_llarg'>Si té menys d’un any indiqui 0</Trans>
   },
   "nom": {
-    title: <Trans>Nom</Trans>,
-    body: <Trans>Aquesta dada es farà servir només perquè l'aplicació es pugui referir a la persona. No
+    title: <Trans i18nKey='nom'>Nom</Trans>,
+    body: <Trans i18nKey='nom_text_llarg'>Aquesta dada es farà servir només perquè l'aplicació es pugui referir a la
+      persona. No
       ha de permetre'n la identificació, per tant no escrigui cognoms, DNI, ...</Trans>
   },
   "beneficiari_de_prestacio_residencial": {
-    title: <Trans>Beneficiari de prestació residencial</Trans>,
-    body: <Trans>S’ha de trobar amb la situació d’estar ingressat en un centre
+    title: <Trans i18nKey='beneficiari_de_prestacio_residencial'>Beneficiari de prestació residencial</Trans>,
+    body: <Trans i18nKey='beneficiari_de_prestacio_residencial_text_llarg'>S’ha de trobar amb la situació d’estar
+      ingressat en un centre
       sociosanitari, comunitat terapèutica, geriàtrica o similars</Trans>
   },
   "cobra_algun_tipus_de_pensio_no_contributiva": {
-    title: <Trans> Perstacions no contributives</Trans>,
-    body: <Trans><p>Les pensions no contributives són uns ingressos econòmics
+    title: <Trans i18nKey='cobra_algun_tipus_de_pensio_no_contributiva'>Prestacions no contributives</Trans>,
+    body: <Trans i18nKey='cobra_algun_tipus_de_pensio_no_contributiva_text_llarg'><p>Les pensions no contributives són
+      uns ingressos econòmics
       mensuals que l'Estat garanteix a les persones que no tenen recursos suficients per subsistir i no poden acollir-se
       —perquè no cotitzen a la Seguretat Social— a les pensions contributives.</p>
       <p>Les persones beneficiàries d'aquestes pensions gaudeixen de la condició de pensionistes de la Seguretat Social.
@@ -213,8 +216,9 @@ const HelpTextMap = {
     </Trans>
   },
   "sexe": {
-    title: <Trans>Sexe</Trans>,
-    body: <Trans>Per al càlcul dels diferents ajuts, i segons marca la normativa vigent, cal que a l'apartat 'SEXE'
+    title: <Trans i18nKey='sexe'>Sexe</Trans>,
+    body: <Trans i18nKey='sexe_text_llarg'>Per al càlcul dels diferents ajuts, i segons marca la normativa vigent, cal
+      que a l'apartat 'SEXE'
       seleccioneu el que consta oficialment en el vostre DNI en vigor. L'Ajuntament de Barcelona, atenent a la
       diversitat sexual i de gènere, està treballant perquè cada persona pugui expressar, si així ho desitja, el seu
       gènere i “nom sentit” en tots els documents d’àmbit municipal en els quals calgui informar del sexe</Trans>

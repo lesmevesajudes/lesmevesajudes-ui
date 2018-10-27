@@ -36,11 +36,12 @@ let HowManyPersonsLiveTogetherPage = (props: Props) => {
   return (
       <AppFormContainer>
         <AppFormTitle iconName='persona'>
-          <Trans>Quantes persones viuen en el seu domicili? (amb vostè inclòs)</Trans>
+          <Trans i18nKey='quantes_persones_viuen_en_el_domicili'>Quantes persones viuen en el seu domicili? (amb vostè
+            inclòs)</Trans>
         </AppFormTitle>
 
         <ShowMeOnceModal name='howManyPersonsModal' title='Dades sobre les persones'>
-          <Trans>
+          <Trans i18nKey='text_avis_inci_simulacio'>
             Pot començar la simulació.<br/>
             A partir d’aquest moment, li formularem una sèrie de preguntes sobre vostè i sobre els membres de la seva
             llar
@@ -67,12 +68,12 @@ let HowManyPersonsLiveTogetherPage = (props: Props) => {
                     <Button variant='contained' name='ButtonTornar' onClick={() => {
                       history.push('/')
                     }}>
-                      <Trans>Tornar</Trans>
+                      <Trans i18nKey='tornar'>Tornar</Trans>
                     </Button>
                   </Grid>
                 <Grid item container direction='column' xs={2}>
                     <Button variant='contained' color='primary' type='submit' name='ButtonValidar'>
-                      <Trans>Validar</Trans>
+                      <Trans i18nKey='validar'>Validar</Trans>
                     </Button>
                   </Grid>
                 </Grid>
