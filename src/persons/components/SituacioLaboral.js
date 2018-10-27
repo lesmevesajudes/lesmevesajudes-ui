@@ -5,7 +5,8 @@ import {required} from "../../shared/formValidators";
 import MultipleAnswerQuestion from './MultipleAnswerQuestion';
 
 export const SituacioLaboral = () =>
-    <MultipleAnswerQuestion label={<Trans>Indiqui la seva situació laboral:</Trans>} name='situacio_laboral' validate={[required]}>
+    <MultipleAnswerQuestion label={<Trans>Indica la teva situació laboral:</Trans>} name='situacio_laboral'
+                            validate={[required]}>
       <MenuItem value='treball_compte_propi'>
         <Trans>Treballa per compte propi</Trans>
       </MenuItem>

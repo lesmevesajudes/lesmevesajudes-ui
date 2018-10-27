@@ -5123,9 +5123,9 @@ i18next-xhr-backend@^1.5.0:
   integrity sha512-9OLdC/9YxDvTFcgsH5t2BHCODHEotHCa6h7Ly0EUlUC7Y2GS09UeoHOGj3gWKQ3HCqXz8NlH4gOrK3NNc9vPuw==
 
 i18next@^11.9.0:
-  version "11.10.1"
-  resolved "https://registry.yarnpkg.com/i18next/-/i18next-11.10.1.tgz#260d1114e94c0eedc330e5bd5624c77387376f19"
-  integrity sha512-cXSA0vc+jmpcQ4EKP+SFQ5WSKwTnEr3j5+SU5E5rpefhvfxSQ5Av5wCWqL7I5b8HJSWEiV9JtzYAMuVvxx7e1A==
+  version "11.10.2"
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-11.10.2.tgz#e5f10346f6320ecf15595419926c25255381a56c"
+  integrity sha512-1rowdX8PqrvsdFhYb3v0A/LlIHLQL1HTa4ia29IzhvNAg2fesNV7R1jXibWLmLQdz3FfTB8RuqSqDEjIawXruA==
 
 iconv-lite@0.4.23:
   version "0.4.23"
@@ -9091,9 +9091,9 @@ react-event-listener@^0.6.2:
     warning "^4.0.1"
 
 react-i18next@^8.0.0:
-  version "8.1.0"
-  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-8.1.0.tgz#a191abd46d7e526ffa37f1a885c95c4ceb7908a4"
-  integrity sha512-oYb12EVaeXy6yHEPUTgICT2zSEmZ/eqeP5/GoyHrHVwwElZFWWYhc/Y4n+1I4e8NZ20BJFEOmqc3RQh+p1RtAw==
+  version "8.1.1"
+  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-8.1.1.tgz#c8c4938dbcd74d6618f69c64a4914e36e656285f"
+  integrity sha512-o/33dyl5Wc8z/6QTsj6zU567oRK2pIDhlhNzelpTSmKrZuCsBPZZxEEOW6T+5MgDpCfr6RCsZbL1M2S+RH6i1w==
   dependencies:
     "@babel/runtime" "^7.1.2"
     create-react-context "0.2.3"

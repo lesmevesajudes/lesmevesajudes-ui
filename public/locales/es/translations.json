@@ -317,5 +317,9 @@
   "Correu electrònic invàlid": "Correu electrònic invàlid",
   "El temps d'empadronament a Barcelona no pot ésser superior a l'empadronament a Catalunya": "El temps d'empadronament a Barcelona no pot ésser superior a l'empadronament a Catalunya",
   "Si": "Si",
-  "No": "No"
+  "No": "No",
+  "Indica la teva situació laboral:": "Indica la teva situació laboral:",
+  "personForm.nom": "__NOT_TRANSLATED__",
+  "personForm.nom_": "__NOT_TRANSLATED__",
+  "personForm.nom_second": "__NOT_TRANSLATED__"
 }

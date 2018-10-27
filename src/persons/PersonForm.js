@@ -1,7 +1,8 @@
 //@flow
 import {Button, Grid, Hidden, MenuItem, Typography} from "@material-ui/core";
+import Icon from '@material-ui/core/Icon/Icon';
 import React, {Fragment} from "react";
-import {Trans} from "react-i18next";
+import {Trans, withNamespaces} from "react-i18next";
 import {connect} from "react-redux";
 import Sticky from "react-stickynode";
 import {Field, formValueSelector, reduxForm} from "redux-form";
@@ -19,10 +20,8 @@ import {focusFirstQuestionWithName, namefirstFieldWithError} from '../shared/red
 import FormSubTitle from "./components/FormSubTitle";
 import {MoneyQuestion} from "./components/MoneyQuestion";
 import MultipleAnswerQuestion from "./components/MultipleAnswerQuestion";
-import {MunicipiEmpadronament} from "./components/MunicipiEmpadronament";
 import {PercentageQuestion} from "./components/PercentageQuestion";
 import {Question} from "./components/Question";
-import {RelacioParentiu} from "./components/RelacioParentiu";
 import {SituacioLaboral} from "./components/SituacioLaboral";
 import {TimePeriodQuestion} from "./components/TimePeriodQuestion";
 import {TipusDocumentIdentitat} from "./components/TipusDocumentIdentitat";
@@ -83,14 +82,17 @@ let PersonForm = (props: Props) => {
     treballaPerCompteDAltriParcial,
     updating
   } = props;
-
+  console.log(props);
+  const buildTranslationContext = (items: Array<string>) => ({context: items.join('_')});
+  const personTranslationContext = buildTranslationContext([isTheUserInFrontOfTheComputer ? 'second' : 'third']);
+  const personAndSexTranslationContext = buildTranslationContext([isTheUserInFrontOfTheComputer ? 'second' : 'third', esDona ? 'femenine' : 'masculine']);
+  const sexTranslationContext = buildTranslationContext([esDona ? 'femenine' : 'masculine']);
+  const transkey = (keyname: string, context: Object) => ({i18nKey: [keyname, context.context].join('_')});
+  console.log("translationContext: ", personTranslationContext);
   return (
       <AppFormContainer>
         <AppFormTitle iconName='persona'>
-          {isTheUserInFrontOfTheComputer
-              ? <Trans>Informació sobre vostè</Trans>
-              : <Trans>Informació sobre aquesta persona que conviu amb vostè</Trans>
-          }
+          <Trans {...transkey('titol', personTranslationContext)}>Informació sobre vostè</Trans>
         </AppFormTitle>
         <AppForm>
           <form onSubmit={handleSubmit}>
@@ -99,28 +101,79 @@ let PersonForm = (props: Props) => {
             <Grid container direction='row' justify='space-around' alignItems='stretch' spacing={16}>
               <Grid item xs={11} sm={6}>
                 <Grid container direction='column' alignItems='stretch' spacing={16}>
-                  <FormSubTitle><Trans>Informació personal</Trans></FormSubTitle>
+                  <FormSubTitle>
+                    <Trans>Informació personal</Trans>
+                  </FormSubTitle>
                   <Question name='nom' placeholder='Nom' component={TextField} validate={[required]} autoFocus>
-                    {isTheUserInFrontOfTheComputer ? <Trans>Identifiqui's amb un nom</Trans> :
-                        <Trans>Identifiqui aquesta persona amb un nom</Trans>}
+                    <Trans {...transkey('nom', personTranslationContext)}>
+                      Identifiqui's amb un nom
+                    </Trans>
                   </Question>
 
-                  {!isTheUserInFrontOfTheComputer && <RelacioParentiu/>}
+                  <MultipleAnswerQuestion label={<Trans>Sexe</Trans>} name='sexe' validate={[required]}>
+                    <MenuItem value='dona'>
+                      <Trans>Femení</Trans>
+                    </MenuItem>
+                    <MenuItem value='home'>
+                      <Trans>Masculí</Trans>
+                    </MenuItem>
+                  </MultipleAnswerQuestion>
+
+                  {!isTheUserInFrontOfTheComputer && (esHome || esDona) &&
+                  <MultipleAnswerQuestion name='relacio_parentiu'
+                                          label={
+                                            <Trans {...transkey('relacio_parentiu', personTranslationContext)}>Aquesta
+                                              persona és el/la seu/va?</Trans>}
+                                          validate={[required]}>
+                    <MenuItem value='parella'>
+                      <Trans>Cònjuge / parella</Trans>
+                    </MenuItem>
+                    <MenuItem value='fill'>
+                      <Trans {...transkey('fill', sexTranslationContext)}>Fill/a</Trans>
+                    </MenuItem>
+                    <MenuItem value='fillastre'>
+                      <Trans {...transkey('fillastre', sexTranslationContext)}>Fillastre/a (o fill/a de la parella
+                        actual)</Trans>
+                    </MenuItem>
+                    <MenuItem value='net'>
+                      <Trans {...transkey('net', sexTranslationContext)}>Nét/a</Trans>
+                    </MenuItem>
+                    <MenuItem value='infant_acollit'>
+                      <Trans>Infant en acolliment </Trans><Icon>info</Icon>
+                    </MenuItem>
+                    <MenuItem value='pare'>
+                      <Trans {...transkey('pare', sexTranslationContext)}>Pare o mare</Trans>
+                    </MenuItem>
+                    <MenuItem value='avi'>
+                      <Trans {...transkey('avi', sexTranslationContext)}>Avi / Àvia</Trans>
+                    </MenuItem>
+                    <MenuItem value='sogre'>
+                      <Trans {...transkey('sogre', sexTranslationContext)}>Sogre/a</Trans>
+                    </MenuItem>
+                    <MenuItem value='germa'>
+                      <Trans {...transkey('germa', sexTranslationContext)}>Germà/germana</Trans>
+                    </MenuItem>
+                    <MenuItem value='cunyat'>
+                      <Trans {...transkey('cunyat', sexTranslationContext)}>Cunyat/da</Trans>
+                    </MenuItem>
+                    <MenuItem value='gendre'>
+                      <Trans {...transkey('gendre', sexTranslationContext)}>Gendre/Nora/Parella del meu fill/a</Trans>
+                    </MenuItem>
+                    <MenuItem value='altres'>
+                      <Trans>Altres familiars</Trans>
+                    </MenuItem>
+                    <MenuItem value='cap'>
+                      <Trans>Sense relació de parentiu</Trans>
+                    </MenuItem>
+                  </MultipleAnswerQuestion>
+                  }
 
                   {esFamiliarOUsuari &&
                   <Fragment>
                     <TimePeriodQuestion name='edat' validate={[menorDe120, required]}>
-                      <Trans>Quina és la seva edat?</Trans>
+                      <Trans {...transkey('edat', personTranslationContext)}>Quina és la seva edat?</Trans>
                     </TimePeriodQuestion>
 
-                    <MultipleAnswerQuestion label={<Trans>Sexe</Trans>} name='sexe' validate={[required]}>
-                      <MenuItem value='dona'>
-                        <Trans>Femení</Trans>
-                      </MenuItem>
-                      <MenuItem value='home'>
-                        <Trans>Masculí</Trans>
-                      </MenuItem>
-                    </MultipleAnswerQuestion>
 
                     <Typography gutterBottom/>
                     <FormSubTitle>Informació sobre el padró</FormSubTitle>
@@ -128,21 +181,41 @@ let PersonForm = (props: Props) => {
                     <TipusDocumentIdentitat/>
 
                     <YesNoQuestion name='porta_dos_anys_o_mes_empadronat_a_catalunya' validate={[required]}>
-                      <Trans>Fa dos anys o més que està empadronat/ada a Catalunya?</Trans>
+                      <Trans {...transkey('porta_dos_anys_o_mes_empadronat_a_catalunya', personAndSexTranslationContext)}>Fa
+                        dos anys o més que està empadronat/ada a Catalunya?</Trans>
                     </YesNoQuestion>
                   </Fragment>}
 
                   {esFamiliarOUsuari && esDona && tipusDocumentIdentitat === "passaport" && portaDosAnysOMesEmpadronatACatalunya &&
                   <YesNoQuestion name='membre_de_familia_reagrupada' validate={[required]}>
-                    <Trans>És membre d'una família reagrupada?</Trans>
+                    <Trans {...transkey('membre_de_familia_reagrupada', personTranslationContext)}>És membre d'una
+                      família reagrupada?</Trans>
                   </YesNoQuestion>}
 
                   {esFamiliarOUsuari && membreDeFamiliaReagrupada &&
                   <YesNoQuestion name='es_una_persona_divorciada' validate={[required]}>
-                    <Trans>És una persona divorciada legalment?</Trans>
+                    <Trans {...transkey('es_una_persona_divorciada', personAndSexTranslationContext)}>És una persona
+                      divorciada legalment?</Trans>
                   </YesNoQuestion>}
 
-                  {esFamiliarOUsuari && <MunicipiEmpadronament/>}
+                  {esFamiliarOUsuari &&
+                  <MultipleAnswerQuestion
+                      label={<Trans {...transkey('municipi_empadronament', personAndSexTranslationContext)}>En quin
+                        municipi està empadronat/ada actualment?</Trans>}
+                      name='municipi_empadronament'
+                      validate={[required]}
+                  >
+                    <MenuItem data-test='barcelona' value='barcelona'>
+                      <Trans>Barcelona</Trans>
+                    </MenuItem>
+                    <MenuItem data-test='altres' value='altres'>
+                      <Trans>Altres municipis catalans</Trans>
+                    </MenuItem>
+                    <MenuItem data-test='no_empadronat_a_cat' value='no_empadronat_a_cat'>
+                      <Trans>No estic empadronat a Catalunya</Trans>
+                    </MenuItem>
+                  </MultipleAnswerQuestion>
+                  }
 
                   {municipiEmpadronament === "barcelona" &&
                   <TimePeriodQuestion name='anys_empadronat_a_barcelona'
@@ -152,7 +225,9 @@ let PersonForm = (props: Props) => {
                                         empadronamentABarcelonaInferiorAEmpadronamentACatalunya,
                                         required
                                       ]}>
-                    <Trans>Quants anys fa que està empadronat/ada a Barcelona?</Trans>
+                    <Trans {...transkey('anys_empadronat_a_barcelona', personAndSexTranslationContext)}>
+                      Quants anys fa que està empadronat/ada a Barcelona?
+                    </Trans>
                   </TimePeriodQuestion>}
 
                   {esFamiliarOUsuari && potTreballar &&
@@ -163,13 +238,16 @@ let PersonForm = (props: Props) => {
                     {esFamiliarOUsuari && esAturat &&
                     <Fragment>
                       <YesNoQuestion name='inscrit_com_a_demandant_docupacio' validate={[required]}>
-                        <Trans>Està inscrit/a com a demandant d’ocupació?</Trans>
+                        <Trans {...transkey('inscrit_com_a_demandant_docupacio', personAndSexTranslationContext)}>
+                          Està inscrit/a com a demandant d’ocupació?
+                        </Trans>
                       </YesNoQuestion>
 
                       {inscritComADemandantDocupacio &&
                       <YesNoQuestion name='inscrit_com_a_demandant_docupacio_mes_de_12_mesos' validate={[required]}>
-                        <Trans>Ha estat inscrit/a de forma continuada com a demandant d'ocupació més de 12
-                          mesos?</Trans>
+                        <Trans>
+                          Ha estat inscrit/a de forma continuada com a demandant d'ocupació més de 12 mesos?
+                        </Trans>
                       </YesNoQuestion>}
 
                       {esAturat &&
@@ -312,7 +390,7 @@ PersonForm = reduxForm({
 
 const selector = formValueSelector(formName);
 
-PersonForm = connect(state => {
+PersonForm = withNamespaces('translations')(connect(state => {
   const cobraAlgunTipusDePensioNoContributiva = selector(state, "cobra_algun_tipus_de_pensio_no_contributiva");
   const edat = selector(state, "edat");
   const esAturat = selector(state, "situacio_laboral") === "aturat";
@@ -356,6 +434,6 @@ PersonForm = connect(state => {
     tipusDocumentIdentitat,
     treballaPerCompteDAltriParcial
   };
-})(PersonForm);
+})(PersonForm));
 
 export default PersonForm;
