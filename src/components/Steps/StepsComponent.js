@@ -4,7 +4,7 @@ import {withStyles} from '@material-ui/core/styles';
 import Tooltip from "@material-ui/core/Tooltip";
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
-import {Trans} from 'react-i18next';
+import {Trans, withNamespaces} from 'react-i18next';
 import {connect} from 'react-redux';
 import {getFormSyncErrors, isValid, touch} from "redux-form";
 import {flatten} from '../../shared/flatten';
@@ -23,6 +23,7 @@ type Props = {
   nextStep: Function,
   setActualStep: Function,
   steps: Array<any>,
+  t: Function,
 }
 
 type State = {
@@ -113,7 +114,7 @@ class StepsComponent extends React.Component<Props, State> {
   }
 
   render() {
-    const {classes, steps, buttonEnabled, buttonVisible} = this.props;
+    const {classes, steps, buttonEnabled, buttonVisible, t} = this.props;
     const currentStep = this.state.current_step;
     const maxStepReached = this.state.max_step_reached;
     const childComponent = steps[currentStep].component;
@@ -123,10 +124,10 @@ class StepsComponent extends React.Component<Props, State> {
             {steps.map((step, index) => {
               const labelProps = step.optional ? {
                 optional: <Tooltip id='unknown-tooltip'
-                                   title='Aquesta opció només està disponible si les dades ho requereixen'
+                                   title={t('opcional_text_llarg')}
                                    placement='bottom-start'>
                   <Typography variant='caption'>
-                    <Trans>Opcional</Trans>
+                    <Trans i18nKey='opcional'>Opcional</Trans>
                   </Typography>
                 </Tooltip>
               } : {};
@@ -161,4 +162,4 @@ const mapStateToProps = (state) => {
   }
 };
 
-export default connect(mapStateToProps)(withStyles(styles)(StepsComponent));
+export default connect(mapStateToProps)(withStyles(styles)(withNamespaces('translations')(StepsComponent)));
