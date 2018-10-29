@@ -89,7 +89,7 @@ const ReportBugForm = (props: Props) => {
                              validate={[required, email]}/>
                     </Grid>
                     <Grid item>
-                      <MultipleAnswerQuestion label={<Trans>Grup de probes</Trans>} name='test_group'
+                      <MultipleAnswerQuestion label={<Trans>Grup de proves</Trans>} name='test_group'
                                               validate={[required]}>
                         <MenuItem value='professional_serveis_socials'>
                           <Trans>Professional serveis socials</Trans>
