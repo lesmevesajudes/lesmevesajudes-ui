@@ -81,7 +81,6 @@ let PersonForm = (props: Props) => {
     treballaPerCompteDAltriParcial,
     updating
   } = props;
-  console.log(props);
   const buildTranslationContext = (items: Array<string>) => ({context: items.join('_')});
   const personDecider = () => isTheUserInFrontOfTheComputer ? 'second' : 'third';
   const sexDecider = () => esDona ? 'feminine' : 'masculine';
@@ -89,9 +88,6 @@ let PersonForm = (props: Props) => {
   const personAndSexTranslationContext = buildTranslationContext([personDecider(), sexDecider()]);
   const sexTranslationContext = buildTranslationContext([sexDecider()]);
   const i18nKey = (keyname: string, context: Object) => ({i18nKey: [keyname, context.context].join('_')});
-
-  console.log("translationContext: ", personTranslationContext);
-  console.log("personAndSexTranslationContext: ", personAndSexTranslationContext);
 
   return (
       <AppFormContainer>
