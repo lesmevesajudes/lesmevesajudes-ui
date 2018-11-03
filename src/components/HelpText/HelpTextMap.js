@@ -6,8 +6,8 @@ import {Trans} from "react-i18next";
 
 const HelpTextMap = {
   "anys_empadronat_a_barcelona": {
-    title: <Trans>Anys d'empadronament</Trans>,
-    body: <Trans>Si fa menys d’un any que està empadronat indiqui 0</Trans>
+    title: <Trans i18nKey='anys_d_empadronament'>Anys d'empadronament</Trans>,
+    body: <Trans i18nKey='anys_d_empadronament_text_llarg'>Si fa menys d’un any que està empadronat indiqui 0</Trans>
   },
   "edat": {
     title: <Trans i18nKey='edat'>Edat</Trans>,
@@ -82,8 +82,10 @@ const HelpTextMap = {
     </Trans>
   },
   "gaudeix_de_prestacio_contributiva_o_subsidi_desocupacio": {
-    title: <Trans>Prestacions contributives</Trans>,
-    body: <Trans>
+    title: <Trans i18nKey='gaudeix_de_prestacio_contributiva_o_subsidi_desocupacio'>
+      Prestacions contributives
+    </Trans>,
+    body: <Trans i18nKey='gaudeix_de_prestacio_contributiva_o_subsidi_desocupacio_text_llarg'>
       La concessió de les prestacions econòmiques generalment està supeditada a una relació jurídica prèvia amb la
       Seguretat Social (acreditar un període mínim de cotització en determinats casos), sempre que es compleixin els
       altres requisits exigits.
@@ -127,8 +129,11 @@ const HelpTextMap = {
     </Trans>
   },
   "ha_treballat_a_l_estranger_6_mesos": {
-    title: <Trans>Treball a l'extranger</Trans>,
-    body: <Trans>S’haurà d’acreditar aportant la documentació següent:
+    title: <Trans i18nKey='ha_treballat_a_l_estranger_6_mesos'>
+      Treball a l'extranger
+    </Trans>,
+    body: <Trans i18nKey='ha_treballat_a_l_estranger_6_mesos_text_llarg'>
+      S’haurà d’acreditar aportant la documentació següent:
       <ul>
         <li>Si torna d’un país membre de la Unió Europea o de l’Espai Econòmic Europeu, el formulari U1 o E-301.</li>
         <li>En el cas dels emigrants de Suïssa, el certificat de l'Agregadoria Laboral d’aquell país o el formulari U1.
@@ -144,8 +149,8 @@ const HelpTextMap = {
     </Trans>
   },
   "ingressos_bruts": {
-    title: <Trans>Ingressos</Trans>,
-    body: <Trans>Es consideren ingressos propis els que es generen per:
+    title: <Trans i18nKey='ingressos_bruts'>Ingressos</Trans>,
+    body: <Trans i18nKey='ingressos_bruts_text_llarg'>Es consideren ingressos propis els que es generen per:
       <ul>
         <li>Rendiment del treball</li>
         <li>Pensions o prestacions socials</li>
@@ -158,9 +163,11 @@ const HelpTextMap = {
     </Trans>
   },
   "inscrit_com_a_demandant_docupacio": {
-    title: <Trans>Inscrit/a com a demandant d'ocupació</Trans>,
-    body: <Trans>Persona inscrita a les
-      oficines de Treball.
+    title: <Trans i18nKey='inscrit_com_a_demandant_docupacio'>
+      Inscrit/a com a demandant d'ocupació
+    </Trans>,
+    body: <Trans i18nKey='inscrit_com_a_demandant_docupacio_text_llarg'>
+      Persona inscrita a les oficines de Treball.
       La inscripció com a demandant d’ocupació és el pas previ per accedir a tots els serveis del Servei d'Ocupació
       de Catalunya.
       Aquesta inscripció és gratuïta i voluntària, amb l’excepció de les persones perceptores de prestacions per
@@ -224,8 +231,8 @@ const HelpTextMap = {
       gènere i “nom sentit” en tots els documents d’àmbit municipal en els quals calgui informar del sexe</Trans>
   },
   "te_algun_grau_de_discapacitat_reconegut": {
-    title: <Trans>Grau de discapacitat</Trans>,
-    body: <Trans>
+    title: <Trans i18nKey='grau_de_discapacitat'>Grau de discapacitat</Trans>,
+    body: <Trans i18nKey='grau_de_discapacitat_text_llarg'>
       El grau de discapacitat acredita la condició de discapacitat i l'accés a les ajudes que se'n deriven.
       Cal acreditar el grau de discapacitat mitjançant el certificat de reconeixement de la discapacitat. La condició
       de
@@ -258,8 +265,8 @@ const HelpTextMap = {
     </Trans>
   },
   "tipus_document_identitat": {
-    title: <Trans>Document d'identitat</Trans>,
-    body: <Trans>
+    title: <Trans i18nKey='tipus_document_identitat'>Document d'identitat</Trans>,
+    body: <Trans i18nKey='tipus_document_identitat_text_llarg'>
       El tipus de document d’identitat és un requisit que pot determinar l’accés a alguns ajuts.
       Si disposa de més d’un document d’identitat li recomanem que segueixi el següent criteri:
       <ul>
@@ -279,8 +286,8 @@ const HelpTextMap = {
       l'habitatge.</Trans>
   },
   "victima_violencia_de_genere": {
-    title: <Trans>Víctima de violència de gènere o domèstica</Trans>,
-    body: <Trans>
+    title: <Trans i18nKey='victima_violencia_de_genere'>Víctima de violència de gènere o domèstica</Trans>,
+    body: <Trans i18nKey='victima_violencia_de_genere_text_llarg'>
       <p>Es considera víctima de violència de gènere la dona que és o ha estat objecte d'actes de violència
         física o
         psicològica, agressions a la llibertat sexual, amenaces, coacció o privació de llibertat exercida pel seu
@@ -295,8 +302,8 @@ const HelpTextMap = {
     </Trans>
   },
   "victima_violencia_domestica": {
-    title: <Trans>Víctima de violència de gènere o domèstica</Trans>,
-    body: <Trans>
+    title: <Trans i18nKey='victima_violencia_de_genere'>Víctima de violència de gènere o domèstica</Trans>,
+    body: <Trans i18nKey='victima_violencia_de_genere_text_llarg'>
       <p>Es considera víctima de violència de gènere la dona que és o ha estat objecte d'actes de violència física o
         psicològica, agressions a la llibertat sexual, amenaces, coacció o privació de llibertat exercida pel seu
         cònjuge,
