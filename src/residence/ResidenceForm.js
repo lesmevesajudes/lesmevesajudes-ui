@@ -3,7 +3,7 @@ import {Grid, MenuItem} from "@material-ui/core";
 import Icon from "@material-ui/core/Icon/Icon";
 import {Map} from "immutable";
 import React from "react";
-import {Trans} from "react-i18next";
+import {Trans, withNamespaces} from "react-i18next";
 import {connect} from "react-redux";
 import Sticky from "react-stickynode";
 import {formValueSelector, reduxForm} from "redux-form";
@@ -40,6 +40,7 @@ type Props = {
   haEstatDesnonat: boolean,
   haRebutNotificacio: boolean,
   haSeleccionatAlgunaRelacioAmbLHabitatge: boolean,
+  t: Function,
   initialValues: ?ResidenceData,
   nombreDePersonesQueConviuen: number,
   noTeHabitatgeFix: boolean,
@@ -66,6 +67,7 @@ const ResidenceForm = (props: Props) => {
     nombreDePersonesQueConviuen,
     noTeHabitatgeFix,
     properContracteDeLloguer,
+    t,
     teAlgunaPropietat,
     teHabitatgeHabitual,
     titularContracteLloguer,
@@ -74,7 +76,7 @@ const ResidenceForm = (props: Props) => {
   return (
       <AppFormContainer>
         <AppFormTitle iconName='domicili'>
-          <Trans>Afegeixi informació del seu domicili habitual</Trans>
+          <Trans i18nKey='informacio_domicili_habitual'>Afegeixi informació del seu domicili habitual</Trans>
         </AppFormTitle>
         <AppForm>
           <form name='ResidenceForm'>
@@ -82,55 +84,78 @@ const ResidenceForm = (props: Props) => {
               <Grid item xs={11} sm={6}>
                 <Grid container direction='column' alignItems='stretch' spacing={8}>
                   <MultipleAnswerQuestion name='relacio_habitatge'
-                                          label={<Trans>Quina és la seva situació respecte a l’habitatge</Trans>}
+                                          label={
+                                            <Trans i18nKey='situacio_respecte_habitatge'>
+                                              Quina és la seva situació respecte a l’habitatge
+                                            </Trans>}
                                           validate={[required]}
                   >
-                    <MenuItem value='llogater' data-test='llogater'><Trans>Visc de lloguer</Trans></MenuItem>
-                    <MenuItem value='propietari'><Trans>Visc en un habitatge de propietat sense
-                      hipoteca</Trans></MenuItem>
+                    <MenuItem value='llogater'><Trans i18nKey='visc_de_lloguer'>Visc de lloguer</Trans></MenuItem>
+                    <MenuItem value='propietari'>
+                      <Trans i18nKey='habitatge_en_propietat'>
+                        Visc en un habitatge de propietat sense hipoteca
+                      </Trans>
+                    </MenuItem>
                     <MenuItem value='propietari_hipoteca'>
-                      <Trans>
+                      <Trans i18nKey='propietari_hipoteca'>
                         Visc en un habitatge de propietat amb hipoteca
                       </Trans>
                     </MenuItem>
-                    <MenuItem value='no_en_te'><Trans>No tinc un habitatge fix</Trans></MenuItem>
-                    <MenuItem value='cessio'>
-                      <Trans>Visc en un habitatge en cessió d'ús</Trans>&nbsp;&nbsp;<Icon>info</Icon>
+                    <MenuItem value='no_en_te'>
+                      <Trans i18nKey='no_te_habitatge_fix'>
+                        No tinc un habitatge fix
+                      </Trans>
                     </MenuItem>
-                    <MenuItem value='altres'><Trans>Altres</Trans></MenuItem>
+                    <MenuItem value='cessio'>
+                      <Trans i18nKey='habitatge_en_cessio_dus'>
+                        Visc en un habitatge en cessió d'ús
+                      </Trans>
+                      &nbsp;&nbsp;<Icon>info</Icon>
+                    </MenuItem>
+                    <MenuItem value='altres'><Trans i18nKey='altres'>Altres</Trans></MenuItem>
                   </MultipleAnswerQuestion>
 
                   {esLlogater &&
                   <YesNoQuestion name='existeix_deute_en_el_pagament_del_lloguer' validate={[required]}>
-                    <Trans>Existeix un deute en el pagament del lloguer?</Trans>
+                    <Trans i18nKey='existeix_deute_en_el_pagament_del_lloguer'>Existeix un deute en el pagament del
+                      lloguer?</Trans>
                   </YesNoQuestion>}
 
                   {esLlogater && existeixDeutePagamentLloguer &&
                   <YesNoQuestion name='ha_rebut_una_notificacio_de_desnonament' validate={[required]}>
-                    <Trans>Li han notificat una demanda de desnonament per aquest habitatge?</Trans>
+                    <Trans i18nKey='ha_rebut_una_notificacio_de_desnonament'>
+                      Li han notificat una demanda de desnonament per aquest habitatge?
+                    </Trans>
                   </YesNoQuestion>}
 
                   {esLlogater && existeixDeutePagamentLloguer && typeof haRebutNotificacio !== "undefined" &&
                   <MoneyQuestion name='import_deute_en_el_pagament_del_lloguer' validate={[required]}>
-                    {haRebutNotificacio && <Trans>Indiqui l'import del deute en el pagament del lloguer:</Trans>}
+                    {haRebutNotificacio && <Trans i18nKey='import_deute_en_el_pagament_del_lloguer'>
+                      Indiqui l'import del deute en el pagament del lloguer:
+                    </Trans>}
                     {!haRebutNotificacio &&
-                    <Trans>Indiqui l'import del deute acumulat en el pagament del lloguer en els darrers 12
-                      mesos:</Trans>}
+                    <Trans i18nKey='import_deute_en_el_pagament_del_lloguer_12_mesos'>
+                      Indiqui l'import del deute acumulat en el pagament del lloguer en els darrers 12 mesos:
+                    </Trans>}
                   </MoneyQuestion>}
 
                   {existeixHipoteca &&
                   <YesNoQuestion name='existeix_deute_en_el_pagament_de_la_hipoteca' validate={[required]}>
-                    <Trans>Té alguna quota de la hipoteca que no ha pogut pagar?</Trans>
+                    <Trans i18nKey='existeix_deute_en_el_pagament_de_la_hipoteca'>
+                      Té alguna quota de la hipoteca que no ha pogut pagar?
+                    </Trans>
                   </YesNoQuestion>}
 
                   {existeixHipoteca && existeixDeutePagamentHipoteca &&
                   <MoneyQuestion name='import_deute_en_el_pagament_hipoteca' validate={[required]}>
-                    <Trans>Indiqui l'import del deute en el pagament de la hipoteca:</Trans>
+                    <Trans i18nKey='import_deute_en_el_pagament_hipoteca'>
+                      Indiqui l'import del deute en el pagament de la hipoteca:
+                    </Trans>
                   </MoneyQuestion>}
 
                   {haSeleccionatAlgunaRelacioAmbLHabitatge && !esPropietari &&
                   <YesNoQuestion name='ha_perdut_lhabitatge_en_els_ultims_2_anys' validate={[required]}>
-                    <Trans>
+                    <Trans i18nKey='ha_perdut_lhabitatge_en_els_ultims_2_anys'>
                       Ha perdut el seu habitatge habitual degut a una execució hipotecària o desnonament en els últims 2
                       anys?
                     </Trans>
@@ -138,7 +163,7 @@ const ResidenceForm = (props: Props) => {
 
                   {noTeHabitatgeFix && haEstatDesnonat &&
                   <YesNoQuestion name='proper_contracte_de_lloguer' validate={[required]}>
-                    <Trans>
+                    <Trans i18nKey='proper_contracte_de_lloguer'>
                       Ha signat un contracte de lloguer per al seu nou habitatge o està en procés de fer-ho en els
                       propers 60 díes?
                     </Trans>
@@ -147,42 +172,50 @@ const ResidenceForm = (props: Props) => {
                   {(teHabitatgeHabitual || properContracteDeLloguer) &&
                   <Question required name='codi_postal_habitatge' placeholder='08000' normalize={onlyNumbers}
                             component={TextField} validate={[seemsPostalCode, required]}>
-                    <Trans>Codi postal on es troba l'habitatge</Trans>
+                    <Trans i18nKey='codi_postal_habitatge'>
+                      Codi postal on es troba l'habitatge
+                    </Trans>
                   </Question>}
 
                   {(esLlogater || properContracteDeLloguer) &&
                   <MoneyQuestion name='import_del_lloguer' validate={[required]}>
-                    <Trans>Quin és l’import mensual d’aquest lloguer?</Trans>
+                    <Trans i18nKey='import_del_lloguer'>Quin és l’import mensual d’aquest lloguer?</Trans>
                   </MoneyQuestion>}
 
                   {existeixHipoteca &&
                   <MoneyQuestion name='import_de_la_hipoteca' validate={[required]}>
-                    <Trans>Quina és la quota mensual de la seva hipoteca?</Trans>
+                    <Trans i18nKey='import_de_la_hipoteca'>Quina és la quota mensual de la seva hipoteca?</Trans>
                   </MoneyQuestion>}
 
                   {(esLlogater || properContracteDeLloguer) &&
                   <MultipleAnswerQuestion name='titular_contracte_de_lloguer_id'
-                                          label={<Trans>Persona titular del contracte de lloguer</Trans>}
+                                          label={
+                                            <Trans i18nKey='titular_contracte_de_lloguer'>
+                                              Persona titular del contracte de lloguer
+                                            </Trans>}
                                           validate={[required]}
                   >
                     {props.personesQuePodenTenirContracte.valueSeq().map((persona) => (
                         <MenuItem key={persona.id} value={persona.id}>{persona.nom}</MenuItem>
                     ))}
                     <MenuItem key='no-conviu' value='no-conviu'>
-                      <Trans>Una persona que no viu a l'habitatge</Trans>
+                      <Trans i18nKey='no_conviu'>Una persona que no viu a l'habitatge</Trans>
                     </MenuItem>
                   </MultipleAnswerQuestion>}
 
                   {existeixHipoteca && existeixDeutePagamentHipoteca &&
                   <MultipleAnswerQuestion name='titular_hipoteca_id'
-                                          label={<Trans>Persona titular de la hipoteca:</Trans>}
+                                          label={
+                                            <Trans i18nKey='titular_hipoteca'>
+                                              Persona titular de la hipoteca:
+                                            </Trans>}
                                           validate={[required]}
                   >
                     {props.personesQuePodenTenirContracte.valueSeq().map((persona) => (
                         <MenuItem key={persona.id} value={persona.id}>{persona.nom}</MenuItem>
                     ))}
                     <MenuItem key='no-conviu' value='no-conviu'>
-                      <Trans>Una persona que no viu a l'habitatge</Trans>
+                      <Trans i18nKey='no_conviu'>Una persona que no viu a l'habitatge</Trans>
                     </MenuItem>
                   </MultipleAnswerQuestion>}
 
@@ -190,17 +223,14 @@ const ResidenceForm = (props: Props) => {
                   && typeof titularContracteLloguer !== "undefined"
                   && titularContracteLloguer !== "no-conviu" &&
                   <MultipleAnswerQuestion name='titular_contracte_lloguer_temps_empadronat'
-                                          label={
-                                            <Trans>
-                                              Quant temps fa que <b>{titularContracteLloguer.nom}</b> està
-                                              empadronat/ada en
-                                              aquest habitatge?
-                                            </Trans>}
+                                          label={t('titular_contracte_lloguer_temps_empadronat', {titularContracteLloguer})}
                                           validate={[required]}
                   >
-                    <MenuItem value='no_empadronat'><Trans>No està empadronat/ada</Trans></MenuItem>
-                    <MenuItem value='menys_nou_mesos'><Trans>Menys de 9 mesos</Trans></MenuItem>
-                    <MenuItem value='nou_mesos_o_mes' data-test='llogater'><Trans>9 mesos o més</Trans></MenuItem>
+                    <MenuItem value='no_empadronat'><Trans i18nKey='no_empadronat'>No està
+                      empadronat/ada</Trans></MenuItem>
+                    <MenuItem value='menys_nou_mesos'><Trans i18nKey='menys_nou_mesos'>Menys de 9
+                      mesos</Trans></MenuItem>
+                    <MenuItem value='nou_mesos_o_mes'><Trans i18nKey='nou_mesos_o_mes'>9 mesos o més</Trans></MenuItem>
                   </MultipleAnswerQuestion>}
 
                   {existeixHipoteca
@@ -208,50 +238,54 @@ const ResidenceForm = (props: Props) => {
                   && typeof titularContracteHipoteca !== "undefined"
                   && titularContracteHipoteca !== "no-conviu" &&
                   <MultipleAnswerQuestion name='titular_hipoteca_temps_empadronat'
-                                          label={
-                                            <Trans>
-                                              Quant temps fa que <b>{titularContracteHipoteca.nom}</b> està
-                                              empadronat/ada en
-                                              aquest habitatge?
-                                            </Trans>}
+                                          label={t('titular_hipoteca_temps_empadronat', {titularContracteHipoteca})}
                                           validate={[required]}
                   >
-                    <MenuItem value='no_empadronat'><Trans>No està empadronat/ada</Trans></MenuItem>
-                    <MenuItem value='menys_nou_mesos'><Trans>Menys de 9 mesos</Trans></MenuItem>
-                    <MenuItem value='nou_mesos_o_mes' data-test='llogater'><Trans>9 mesos o més</Trans></MenuItem>
+                    <MenuItem value='no_empadronat'><Trans i18nKey='no_empadronat'>No està
+                      empadronat/ada</Trans></MenuItem>
+                    <MenuItem value='menys_nou_mesos'><Trans i18nKey='menys_nou_mesos'>Menys de 9
+                      mesos</Trans></MenuItem>
+                    <MenuItem value='nou_mesos_o_mes'><Trans i18nKey='nou_mesos_o_mes'>9 mesos o més</Trans></MenuItem>
                   </MultipleAnswerQuestion>}
 
                   {existeixDeutePagamentLloguer &&
                   <YesNoQuestion name='ha_pagat_almenys_3_quotes_del_lloguer' validate={[required]}>
-                    <Trans>Ha pagat almenys 3 quotes de lloguer des de la signatura del contracte?</Trans>
+                    <Trans i18nKey='ha_pagat_almenys_3_quotes_del_lloguer'>
+                      Ha pagat almenys 3 quotes de lloguer des de la signatura del contracte?
+                    </Trans>
                   </YesNoQuestion>}
 
                   {esLlogater && existeixDeutePagamentLloguer &&
                   <YesNoQuestion name='relacio_de_parentiu_amb_el_propietari' validate={[required]}>
                     {nombreDePersonesQueConviuen === 1 &&
-                    <Trans>
+                    <Trans i18nKey='relacio_de_parentiu_amb_el_propietari_one'>
                       Té relació de parentiu amb el propietari de l'habitatge
                     </Trans>
                     }
                     {nombreDePersonesQueConviuen !== 1 &&
-                    <Trans>Alguna persona que conviu en aquest habitatge té relació de parentiu amb el propietari de l'habitatge</Trans>
+                    <Trans i18nKey='relacio_de_parentiu_amb_el_propietari_multiple'>
+                      Alguna persona que conviu en aquest habitatge té relació de parentiu amb el propietari de
+                      l'habitatge
+                    </Trans>
                     }
                   </YesNoQuestion>}
 
                   {existeixDeutePagamentHipoteca &&
                   <YesNoQuestion name='ha_pagat_12_mesos_daquesta_hipoteca' validate={[required]}>
-                    <Trans>Ha pagat com a mínim 12 quotes d’aquesta hipoteca?</Trans>
+                    <Trans i18nKey='ha_pagat_12_mesos_daquesta_hipoteca'>
+                      Ha pagat com a mínim 12 quotes d’aquesta hipoteca?
+                    </Trans>
                   </YesNoQuestion>}
 
                   {(teHabitatgeHabitual || properContracteDeLloguer) &&
                   <YesNoQuestion name='tinc_alguna_propietat_a_part_habitatge_habitual' validate={[required]}>
                     {nombreDePersonesQueConviuen === 1 &&
-                    <Trans>
+                    <Trans i18nKey='tinc_alguna_propietat_a_part_habitatge_habitual_one'>
                       Té alguna propietat a part de l'habitatge habitual?
                     </Trans>
                     }
                     {nombreDePersonesQueConviuen !== 1 &&
-                    <Trans>
+                    <Trans i18nKey='tinc_alguna_propietat_a_part_habitatge_habitual_multiple'>
                       Alguna persona que conviu en aquest habitatge té una segona residència en propietat?
                     </Trans>
                     }
@@ -260,13 +294,21 @@ const ResidenceForm = (props: Props) => {
                   {teAlgunaPropietat &&
                   <YesNoQuestion name='tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit'
                                  validate={[required]}>
-                    <Trans>Disposa de l’usdefruit d’aquesta propietat?</Trans>
+                    {nombreDePersonesQueConviuen === 1 &&
+                    <Trans i18nKey='tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit_one'>
+                      Disposes de l’usdefruit d’aquesta propietat?
+                    </Trans>}
+                    {nombreDePersonesQueConviuen !== 1 &&
+                    <Trans i18nKey='tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit_multiple'>
+                      Aquesta/es persona disposa/en de l’usdefruit d’aquesta propietat?
+                    </Trans>}
+
                   </YesNoQuestion>}
 
                   {((esLlogater && existeixDeutePagamentLloguer) || properContracteDeLloguer) &&
                   <YesNoQuestion name='es_ocupant_dun_habitatge_gestionat_per_lagencia_de_lhabitatge'
                                  validate={[required]}>
-                    <Trans>
+                    <Trans i18nKey='es_ocupant_dun_habitatge_gestionat_per_lagencia_de_lhabitatge'>
                       És ocupant d’un habitatge gestionat per l’Agència de l’Habitatge de Catalunya o de l’Institut
                       Municipal d’Habitatge?
                     </Trans>
@@ -274,7 +316,7 @@ const ResidenceForm = (props: Props) => {
 
                   {esLlogater && existeixDeutePagamentLloguer &&
                   <YesNoQuestion name='ha_rebut_oferta_per_accedir_a_habitatge_i_lha_rebutjada' validate={[required]}>
-                    <Trans>
+                    <Trans i18nKey='ha_rebut_oferta_per_accedir_a_habitatge_i_lha_rebutjada'>
                       Ha rebut mai una oferta per accedir a un habitatge de parc públic de lloguer i no l’ha acceptat?
                     </Trans>
                   </YesNoQuestion>}
@@ -330,7 +372,7 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(reduxForm(
+export default withNamespaces("translations")(connect(mapStateToProps)(reduxForm(
     {
       form: "ResidenceForm",
       onChange: (values, dispatch) => {
@@ -339,4 +381,4 @@ export default connect(mapStateToProps)(reduxForm(
       onSubmitFail: (error) => {
         focusFirstQuestionWithName(namefirstFieldWithError(error))
       },
-    })(ResidenceForm));
+    })(ResidenceForm)));

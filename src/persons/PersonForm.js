@@ -1,13 +1,13 @@
 //@flow
-import { Button, Grid, Hidden, MenuItem, Typography } from "@material-ui/core";
+import {Button, Grid, Hidden, MenuItem, Typography} from "@material-ui/core";
 import Icon from "@material-ui/core/Icon/Icon";
-import React, { Fragment } from "react";
-import { Trans, withNamespaces } from "react-i18next";
-import { connect } from "react-redux";
+import React, {Fragment} from "react";
+import {Trans, withNamespaces} from "react-i18next";
+import {connect} from "react-redux";
 import Sticky from "react-stickynode";
-import { Field, formValueSelector, reduxForm } from "redux-form";
-import { TextField } from "redux-form-material-ui";
-import { AppForm, AppFormContainer, AppFormTitle } from "../components/AppForms";
+import {Field, formValueSelector, reduxForm} from "redux-form";
+import {TextField} from "redux-form-material-ui";
+import {AppForm, AppFormContainer, AppFormTitle} from "../components/AppForms";
 import DescriptionText from "../components/Common/DescriptionText";
 import {
   anysEmpadronatInferiorAEdat,
@@ -16,15 +16,15 @@ import {
   pncInclosAIngressosBruts,
   required
 } from "../shared/formValidators";
-import { focusFirstQuestionWithName, namefirstFieldWithError } from "../shared/reduxFormTools";
+import {focusFirstQuestionWithName, namefirstFieldWithError} from "../shared/reduxFormTools";
 import FormSubTitle from "./components/FormSubTitle";
-import { MoneyQuestion } from "./components/MoneyQuestion";
+import {MoneyQuestion} from "./components/MoneyQuestion";
 import MultipleAnswerQuestion from "./components/MultipleAnswerQuestion";
-import { PercentageQuestion } from "./components/PercentageQuestion";
-import { Question } from "./components/Question";
-import { TimePeriodQuestion } from "./components/TimePeriodQuestion";
-import { YesNoQuestion } from "./components/YesNoQuestion";
-import type { Person, PersonRole } from "./PersonTypes";
+import {PercentageQuestion} from "./components/PercentageQuestion";
+import {Question} from "./components/Question";
+import {TimePeriodQuestion} from "./components/TimePeriodQuestion";
+import {YesNoQuestion} from "./components/YesNoQuestion";
+import type {Person, PersonRole} from "./PersonTypes";
 
 export type PersonFormInitialValues = Person | { is_the_person_in_front_of_the_computer: boolean };
 
@@ -304,7 +304,7 @@ let PersonForm = (props: Props) => {
                       </Trans>
                     </MenuItem>
                     <MenuItem value='altres'>
-                      <Trans i18nKey='altres'>Altres situacions</Trans>
+                      <Trans i18nKey='altres_situacions'>Altres situacions</Trans>
                     </MenuItem>
                   </MultipleAnswerQuestion>
                   {esFamiliarOUsuari && esAturat &&

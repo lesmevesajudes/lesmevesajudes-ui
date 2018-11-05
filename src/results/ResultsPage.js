@@ -62,7 +62,7 @@ class ResultsPage extends React.Component<Props> {
             <Grid container xs={12}>
               <Grid item xs={12} md={11}>
                 <Typography className={this.props.classes.errorText}>
-                  <Trans>Falten dades per a executar la simulació</Trans>
+                  <Trans i18nKey='falten_dades'>Falten dades per a executar la simulació</Trans>
                 </Typography>
               </Grid>
             </Grid>
@@ -80,7 +80,7 @@ class ResultsPage extends React.Component<Props> {
                 </Grid>
                 <Grid item>
                   <Typography align='center'>
-                    <Trans>Calculant ajuts...</Trans>
+                    <Trans i18nKey='calculant_ajuts'>Calculant ajuts...</Trans>
                   </Typography>
                 </Grid>
               </Grid>
@@ -92,10 +92,10 @@ class ResultsPage extends React.Component<Props> {
       return (
           <AppFormContainer>
             <Grid item xs={12}>
-              <Typography variant='h6'>Error fent la petició</Typography>
+              <Typography variant='h6'><Trans i18nKey='error_fent_la_peticio'>Error fent la petició</Trans></Typography>
               <Grid container direction='column' className='ResultList'>
-                <Grid item className={this.props.classes.ItemResult}>
-                  <Trans>Detalls:</Trans>
+                <Grid item>
+                  <Trans i18nKey='detalls'>Detalls:</Trans>
                   <Typography>{resultsData.message}</Typography>
                 </Grid>
               </Grid>
@@ -107,7 +107,8 @@ class ResultsPage extends React.Component<Props> {
     return (
         <AppFormContainer>
           <ShowMeOnceModal name='resultsModal' title='Ajudes a les que podria optar'>
-            <Trans>A continuació es mostrarà el conjunt d’ajudes a les quals podria arribar a optar.
+            <Trans i18nKey='avis_ajudes_a_les_que_podria_optar'>A continuació es mostrarà el conjunt d’ajudes a les
+              quals podria arribar a optar.
               L’informem que la concessió d’una d’elles pot fer variar els llindars d’ingressos i/o requisits que
               les
               altres ajudes preveuen per a ser concedides.&nbsp;
@@ -115,11 +116,13 @@ class ResultsPage extends React.Component<Props> {
               Informi-se’n clicant sobre cada ajut.</Trans>
           </ShowMeOnceModal>
           <AppFormTitle iconName='resultats'>
-            <Trans>A partir de la informació que ens ha facilitat, a continuació li informem que:</Trans>
+            <Trans i18nKey='a_partir_de_la_informacio_facilitada_linformem_que'>
+              A partir de la informació que ens ha facilitat, a continuació li informem que:
+            </Trans>
           </AppFormTitle>
           <ResultsContainer>
             <Typography style={{background: '#f2f2f2', zIndex: 4}} gutterBottom>
-              <Trans>
+              <Trans i18nKey='avis_variacio_ajuts'>
                 Li recordem que la concessió d’una d’aquestes ajudes pot fer variar els seus ingressos i/o
                 requisits
                 fent que algunes de les ajudes llistades no puguin ser concedides.

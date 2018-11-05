@@ -5,7 +5,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Typography from '@material-ui/core/Typography';
 import {Map} from 'immutable';
 import React, {Fragment} from 'react';
-import {Trans} from 'react-i18next';
+import {Trans, withNamespaces} from 'react-i18next';
 import {connect} from 'react-redux';
 import Sticky from 'react-stickynode';
 import {reduxForm} from 'redux-form';
@@ -54,7 +54,7 @@ const FamilyForm = (props: Props) => {
   return (
       <AppFormContainer>
         <AppFormTitle iconName='familia'>
-          <Trans>Informació sobre la família</Trans>
+          <Trans i18nKey='informacio_sobre_la_familia'>Informació sobre la família</Trans>
         </AppFormTitle>
         <AppForm>
           <form name='FamilyForm'>
@@ -66,7 +66,8 @@ const FamilyForm = (props: Props) => {
 
                         <label>
                           <Typography gutterBottom>
-                            <Trans>Qui té la guarda i custòdia o tutela legal de: </Trans><b>{infant.nom}</b>
+                            <Trans i18nKey='qui_te_la_guardia_i_custodia'>Qui té la guarda i custòdia o tutela legal
+                              de:</Trans> <b>{infant.nom}</b>
                           </Typography>
                         </label>
                         <Grid container direction='row' justify='space-between'>
@@ -76,14 +77,15 @@ const FamilyForm = (props: Props) => {
                                                               fullWidth validate={[required]}>
                               {possiblesSustentadors.valueSeq().map((sustentador: Person) =>
                                   <MenuItem key={`primer-${sustentador.id}`} value={sustentador.id}>
-                                    {sustentador.nom} ({sustentador.edat} <Trans>anys</Trans>)
+                                    {sustentador.nom} ({sustentador.edat} <Trans i18nKey='anys'>anys</Trans>)
                                   </MenuItem>
                               )}
-                              <MenuItem value='no_conviu'><Trans>Una persona que no conviu</Trans></MenuItem>
+                              <MenuItem value='no_conviu'><Trans i18nKey='una_persona_que_no_conviu'>Una persona que no
+                                conviu</Trans></MenuItem>
                             </IRemoveMyValueWhenUnmountedField>
                           </Grid>
                           <Grid item xs={1}>
-                            <Typography className={classes.andSeparator}><Trans>i</Trans></Typography>
+                            <Typography className={classes.andSeparator}><Trans i18nKey='i'>i</Trans></Typography>
                           </Grid>
                           <Grid item xs={5}>
                             <IRemoveMyValueWhenUnmountedField name={'custodies.' + infant.id + '.segon'}
@@ -93,11 +95,12 @@ const FamilyForm = (props: Props) => {
                                   typeof custodies[infant.id] !== 'undefined' && custodies[infant.id].primer === sustentador.id
                                       ? null
                                       : <MenuItem key={`segon-${sustentador.id}`} value={sustentador.id}>
-                                        {sustentador.nom} ({sustentador.edat} <Trans>anys</Trans>)
+                                        {sustentador.nom} ({sustentador.edat} <Trans i18nKey='anys'>anys</Trans>)
                                       </MenuItem>
                               )}
-                              <MenuItem value='no_conviu'><Trans>Una persona que no conviu</Trans></MenuItem>
-                              <MenuItem value='ningu_mes'><Trans>Ningú més</Trans></MenuItem>
+                              <MenuItem value='no_conviu'><Trans i18nKey='una_persona_que_no_conviu'>Una persona que no
+                                conviu</Trans></MenuItem>
+                              <MenuItem value='ningu_mes'><Trans i18nKey='ningu_mes'>Ningú més</Trans></MenuItem>
                             </IRemoveMyValueWhenUnmountedField>
                           </Grid>
                         </Grid>
@@ -106,7 +109,8 @@ const FamilyForm = (props: Props) => {
                   {families.length > 0 &&
                   families.map((familia) =>
                       <Fragment key={familia.ID}>
-                        <FormSubTitle><Trans>Família de: </Trans> {createFamilyName(familia, persones)} </FormSubTitle>
+                        <FormSubTitle><Trans i18nKey='familia_de'>Família
+                          de:</Trans> {createFamilyName(familia, persones)}</FormSubTitle>
                         { // $FlowFixMe
                           typeof sustentadorsSolitarisAmbPossiblesParelles[familia.sustentadors_i_custodia[0]] !== 'undefined' &&
                           // $FlowFixMe
@@ -114,7 +118,7 @@ const FamilyForm = (props: Props) => {
                           <Fragment>
                             <label>
                               <Typography gutterBottom>
-                                <Trans>Existeix una parella de: </Trans>
+                                <Trans i18nKey='existeix_una_parella'>Existeix una parella de:</Trans>
                                 <b>{persones.get(familia.sustentadors_i_custodia[0]).nom}</b>
                               </Typography>
                             </label>
@@ -136,11 +140,12 @@ const FamilyForm = (props: Props) => {
                         {familia.monoparental &&
                         <YesNoQuestion name={'disposa_de_carnet_familia_monoparental.' + familia.ID}
                                        validate={[required]}>
-                          <Trans>Té el carnet de família monoparental?</Trans>
+                          <Trans i18nKey='te_carnet_monoparental'>Té el carnet de família monoparental?</Trans>
                         </YesNoQuestion>}
 
                         <YesNoQuestion name={'usuari_serveis_socials.' + familia.ID} validate={[required]}>
-                          <Trans>Aquesta família és usuària de serveis socials en seguiment a un CSS o servei
+                          <Trans i18nKey='familia_usuaria_css'>Aquesta família és usuària de serveis socials en
+                            seguiment a un CSS o servei
                             especialitzat de l'Ajuntament de Barcelona des d'abans del 31/12/2017?</Trans>
                         </YesNoQuestion>
                       </Fragment>
@@ -201,7 +206,7 @@ function mapStateToProps(state) {
   };
 }
 
-export default withStyles(styles)(connect(mapStateToProps, {addHouseholdData: addFamilyData})(
+export default withNamespaces("translations")(withStyles(styles)(connect(mapStateToProps, {addHouseholdData: addFamilyData})(
     reduxForm(
         {
           form: 'FamilyForm',
@@ -211,4 +216,4 @@ export default withStyles(styles)(connect(mapStateToProps, {addHouseholdData: ad
           onSubmitFail: (error) => {
             focusFirstQuestionWithName(namefirstFieldWithError(error))
           },
-        })(FamilyForm)));
+        })(FamilyForm))));

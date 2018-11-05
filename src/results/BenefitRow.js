@@ -6,7 +6,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 import Typography from "@material-ui/core/Typography";
 import ClearIcon from "@material-ui/icons/Clear";
 import DoneIcon from "@material-ui/icons/Done";
-import React from "react";
+import React, {Fragment} from "react";
 import {Trans} from "react-i18next";
 import {Link} from "react-router-dom";
 import {dateToString} from "../shared/dateUtils";
@@ -40,15 +40,22 @@ const Period = ({benefit}) => {
   const status = benefitStatus(benefit);
 
   if (status === "permanent") {
-    return <Typography variant='caption'><Trans>Convocatòria permanent</Trans></Typography>;
+    return <Typography variant='caption'><Trans i18nKey='convocatoria_permanent'>Convocatòria
+      permanent</Trans></Typography>;
   } else if (status === "active") {
-    return <Typography variant='caption'><Trans>Convocatòria
-      entre {dateToString(benefit.from)} i {dateToString(benefit.to)}</Trans></Typography>;
+    return <Typography variant='caption'>
+      <Trans i18nKey='convocatoria_entre'>Convocatòria entre {dateToString(benefit.from)} i {dateToString(benefit.to)}
+      </Trans></Typography>;
   } else if (status === "outOfPeriodNextUnknown") {
-    return <Typography variant='caption'><Trans>Convocatòria finalitzada</Trans></Typography>;
+    return <Typography variant='caption'>
+      <Trans i18nKey='convocatoria_finalitzada'>Convocatòria finalitzada</Trans>
+    </Typography>;
   } else if (status === "outOfPeriodNextKnown") {
-    return <Typography variant='caption'><Trans>Propera convocatòria
-      entre {dateToString(benefit.from)} i {dateToString(benefit.to)}</Trans></Typography>;
+    return <Typography variant='caption'>
+      <Trans i18nKey='propera_convocatoria'>
+        Propera convocatòria entre {dateToString(benefit.from)} i {dateToString(benefit.to)}
+      </Trans>
+    </Typography>;
   }
 };
 
@@ -73,7 +80,7 @@ export const BenefitRow = ({benefit, subject, classes}: Props) =>
         <Typography className={classes.ResultsBenefitText}>
           {typeof benefit.amountText !== "undefined"
               ? benefit.amountText
-              : `${subject[benefit.ID][Object.keys(subject[benefit.ID])[0]]} € / ${benefit.periode}`}
+              : <Fragment>{subject[benefit.ID][Object.keys(subject[benefit.ID])[0]]} € / {benefit.periode}</Fragment>}
         </Typography>
         <Typography className={classes.ResultsBenefitText}>
           {benefit.conditions}
@@ -86,7 +93,7 @@ export const BenefitRow = ({benefit, subject, classes}: Props) =>
                    placement='right'>
             <Button variant='contained' color='primary' key={benefit.ID}>
               <Typography className={classes.whiteText}>
-                <Trans>
+                <Trans i18nKey='mes_informacio'>
                   Més informació
                 </Trans>
               </Typography>
@@ -103,7 +110,7 @@ export const NoBenefitRow = withStyles(styles)(({classes}: Props) =>
       </Grid>
       <Grid item xs={11}>
         <Typography className={classes.ResultsBenefitText}>
-          <Trans>No opta a cap ajuda</Trans>
+          <Trans i18nKey='no_opta_a_cap_ajuda'>No opta a cap ajuda</Trans>
         </Typography>
       </Grid>
     </Grid>);

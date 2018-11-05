@@ -43,7 +43,7 @@ const ReportBugForm = (props: Props) => {
                 </Grid>
                 <Grid item>
                   <Typography align='center'>
-                    <Trans>Carregant...</Trans>
+                    <Trans i18nKey='carregant'>Carregant...</Trans>
                   </Typography>
                 </Grid>
               </Grid>
@@ -58,18 +58,24 @@ const ReportBugForm = (props: Props) => {
                 <Grid container direction='column'>
                   <form onSubmit={handleSubmit}>
                     <Grid item xs={12}>
-                      <Typography variant='h5' gutterBottom>Informar del resultat de la simulació</Typography>
+                      <Typography variant='h5' gutterBottom>
+                        <Trans i18nKey='informar_resultat_simulacio'>
+                          Informar del resultat de la simulació
+                        </Trans>
+                      </Typography>
                     </Grid>
                     <Grid container item xs={6} direction='column' spacing={16}>
                       <Grid item>
                         <YesNoQuestion name='accepted_result' validate={[required]}>
-                          <Trans>El resultat de la simulació és correcte?</Trans>
+                          <Trans i18nKey='el_resultat_es_correcte'>
+                            El resultat de la simulació és correcte?
+                          </Trans>
                         </YesNoQuestion>
                       </Grid>
                       {resultatIncorrecte &&
                       <Grid item>
                         <label>
-                          <Trans>
+                          <Trans i18nKey='resultat_esperat'>
                             Indiqui quin és el resultat esperat (ajuda que esperava rebre, persones que l'hauríen de
                             rebre, ..
                             )
@@ -80,28 +86,32 @@ const ReportBugForm = (props: Props) => {
                       </Grid>
                       }
                     <Grid item>
-                      <label>Comentaris o millores</label>
+                      <label><Trans i18nKey='comentaris_o_millores'>Comentaris o millores</Trans></label>
                       <Field name='comments' placeholder='...' fullWidth component={TextField}/>
                     </Grid>
                     <Grid item>
-                      <label>Faciliti el seu correu electrònic</label>
+                      <label><Trans i18nKey='faciliti_correu_electronic'>Faciliti el seu correu
+                        electrònic</Trans></label>
                       <Field name='reporter_email' placeholder='john@doe.com' fullWidth component={TextField}
                              validate={[required, email]}/>
                     </Grid>
                     <Grid item>
-                      <MultipleAnswerQuestion label={<Trans>Grup de proves</Trans>} name='test_group'
+                      <MultipleAnswerQuestion label={<Trans i18nKey='grup_de_proves'>Grup de proves</Trans>}
+                                              name='test_group'
                                               validate={[required]}>
                         <MenuItem value='professional_serveis_socials'>
-                          <Trans>Professional serveis socials</Trans>
+                          <Trans i18nKey='professional_serveis_socials'>Professional serveis socials</Trans>
                         </MenuItem>
                         <MenuItem value='entitat_del_tercer_sector'>
-                          <Trans>Entitat del tercer sector</Trans>
+                          <Trans i18nKey='entitat_tercer_sector'>Entitat del tercer sector</Trans>
                         </MenuItem>
                         <MenuItem value='altre_personal_de_l_ajuntament_de_barcelona'>
-                          <Trans>Altre personal de l'ajuntament de barcelona</Trans>
+                          <Trans i18nKey='altre_personal_de_l_ajuntament_de_barcelona'>
+                            Altre personal de l'ajuntament de barcelona
+                          </Trans>
                         </MenuItem>
                         <MenuItem value='altres'>
-                          <Trans>Altres</Trans>
+                          <Trans i18nKey='altres_grups_de_proves'>Altres</Trans>
                         </MenuItem>
                       </MultipleAnswerQuestion>
                     </Grid>
@@ -111,12 +121,12 @@ const ReportBugForm = (props: Props) => {
                     <Grid container direction='row' justify='space-around' style={{paddingTop: '32px'}}>
                     <Grid item className='margin-buttons'>
                       <Button variant='contained' color='primary' type='submit'>
-                        <Trans>Informar</Trans>
+                        <Trans i18nKey='informar'>Informar</Trans>
                       </Button>
                     </Grid>
                     <Grid item className='margin-buttons'>
                       <Button variant='contained' color='secondary' onClick={resetForm(reset)}>
-                        <Trans>Netejar</Trans>
+                        <Trans i18nKey='netejar'>Netejar</Trans>
                       </Button>
                     </Grid>
                   </Grid>
@@ -131,7 +141,7 @@ const ReportBugForm = (props: Props) => {
             <Grid container direction='column'>
               <Grid item sm={12}>
                 <Typography variant='h5' gutterBottom>
-                  <Trans>Gràcies per informar del resultat de la simulació</Trans>
+                  <Trans i18nKey='gracies_per_informar'>Gràcies per informar del resultat de la simulació</Trans>
                 </Typography>
               </Grid>
             </Grid>
@@ -140,7 +150,7 @@ const ReportBugForm = (props: Props) => {
         return (<Grid container direction='column'>
           <Grid item sm={12}>
             <Typography variant='h5' gutterBottom>
-              <Trans>Hi ha hagut un error informant de l'errada.</Trans>
+              <Trans i18nKey='hi_ha_hagut_una_errada'>Hi ha hagut un error informant de l'errada.</Trans>
             </Typography>
           </Grid>
         </Grid>)

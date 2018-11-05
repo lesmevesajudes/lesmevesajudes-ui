@@ -195,8 +195,8 @@ const HelpTextMap = {
       equiparable a un lloguer tou.</Trans>
   },
   "relacio_parentiu": {
-    title: <Trans>Relacions familiars</Trans>,
-    body: <Trans>
+    title: <Trans i18nKey='relacio_parentiu'>Relacions familiars</Trans>,
+    body: <Trans i18nKey='infant_en_acolliment_text_llarg'>
       <Typography variant='subtitle1' gutterBottom>Infant en acolliment</Typography>
       L'acolliment familiar d'un infant comporta confiar temporalment la guarda d'una persona menor a una família o
       persona sola, sense que hi hagi finalitat adoptiva.
