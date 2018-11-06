@@ -21,8 +21,6 @@
     "beneficiari_de_prestacio_residencial_text_llarg": "Se ha de encontrar con la situación de estar ingresado en un centro sociosanitario, comunidad terapéutica, geriátrica o similares",
     "nom_second": "Identifícate con un nombre",
     "nom_third": "Identifica esta persona con un nombre",
-    "relacio_parentiu_second": "Esta persona es tu?",
-    "relacio_parentiu_third": "Esta persona es tu?",
     "edat_second": "¿Cuál es tu edad?",
     "edat_third": "¿Cuál es su edad?",
     "porta_dos_anys_o_mes_empadronat_a_catalunya_second_masculine": "Hace dos años o más que estás empadronado en Cataluña?",
@@ -298,5 +296,7 @@
     "ajudes_a_les_que_podria_optar": "Ayudas a las que podría optar",
     "ajudes_a_les_que_opta_persona": "Ayudas que podría ser beneficiario/a:",
     "ajudes_a_les_que_opta_habitatge": "Ayudas para la vivienda:",
-    "maxim_9_mesos": "Máximo 9 meses"
+    "maxim_9_mesos": "Máximo 9 meses",
+    "relacio_parentiu_masculine": "Esta persona es tu...",
+    "relacio_parentiu_feminine": "Esta persona es tu..."
 }
