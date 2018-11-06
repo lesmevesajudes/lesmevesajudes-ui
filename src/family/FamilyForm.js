@@ -37,7 +37,8 @@ type Props = {
   initialValues: FamilyData,
   persones: Map<PersonID, Person>,
   possiblesSustentadors: Map<PersonID, Person>,
-  sustentadorsSolitarisAmbPossiblesParelles: Map<Person, Array<Person>>
+  sustentadorsSolitarisAmbPossiblesParelles: Map<Person, Array<Person>>,
+  t: Function
 };
 
 const FamilyForm = (props: Props) => {
@@ -49,7 +50,8 @@ const FamilyForm = (props: Props) => {
     fills,
     persones,
     possiblesSustentadors,
-    sustentadorsSolitarisAmbPossiblesParelles
+    sustentadorsSolitarisAmbPossiblesParelles,
+    t
   } = props;
   return (
       <AppFormContainer>
@@ -109,8 +111,11 @@ const FamilyForm = (props: Props) => {
                   {families.length > 0 &&
                   families.map((familia) =>
                       <Fragment key={familia.ID}>
-                        <FormSubTitle><Trans i18nKey='familia_de'>Família
-                          de:</Trans> {createFamilyName(familia, persones)}</FormSubTitle>
+                        <FormSubTitle>
+                          <Trans i18nKey='familia_de'>
+                            Família de:
+                          </Trans> {createFamilyName(familia, persones, t)}
+                        </FormSubTitle>
                         { // $FlowFixMe
                           typeof sustentadorsSolitarisAmbPossiblesParelles[familia.sustentadors_i_custodia[0]] !== 'undefined' &&
                           // $FlowFixMe

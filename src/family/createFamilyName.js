@@ -8,14 +8,14 @@ export const toArray = (anObject: Object) =>
         , []
     );
 
-function placeCommasAndAnds(arr: Array<string>) {
+function placeCommasAndAnds(arr: Array<string>, t: Function) {
   let outStr = '';
   if (arr.length === 1) {
     outStr = arr[0];
   } else if (arr.length === 2) {
-    outStr = arr.join(' i ');
+    outStr = arr.join(` ${t('i')} `);
   } else if (arr.length > 2 && arr.length <= 4) {
-    outStr = arr.slice(0, -1).join(', ') + ' i ' + arr.slice(-1)[0];
+    outStr = arr.slice(0, -1).join(', ') + ` ${t('i')} ` + arr.slice(-1)[0];
   } else if (arr.length > 4) {
     outStr = arr.slice(0, 3).join(', ') + '...';
   }
@@ -26,5 +26,5 @@ const getNamesOf = (IDs: Array<string>, persones: Map<string, Person>): Array<st
   return IDs.map((key) => persones.get(key).nom);
 };
 
-export const createFamilyName = (familia, persones) =>
-    placeCommasAndAnds([...getNamesOf(familia.sustentadors_i_custodia, persones), ...getNamesOf(familia.menors, persones)]);
+export const createFamilyName = (familia, persones, t: Function) =>
+    placeCommasAndAnds([...getNamesOf(familia.sustentadors_i_custodia, persones), ...getNamesOf(familia.menors, persones)], t);

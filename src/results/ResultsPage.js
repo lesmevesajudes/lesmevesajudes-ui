@@ -58,7 +58,7 @@ class ResultsPage extends React.Component<Props> {
     if (!this.enoughDataForSimulation()) {
       return (
           <AppFormContainer>
-            <h1>Ajudes a les que podria optar</h1>
+            <h1><Trans i18nKey='ajudes_a_les_que_podria_optar'>Ajudes a les que podria optar</Trans></h1>
             <Grid container xs={12}>
               <Grid item xs={12} md={11}>
                 <Typography className={this.props.classes.errorText}>
@@ -106,7 +106,8 @@ class ResultsPage extends React.Component<Props> {
     //Añadir Trans en titlePage
     return (
         <AppFormContainer>
-          <ShowMeOnceModal name='resultsModal' title='Ajudes a les que podria optar'>
+          <ShowMeOnceModal name='resultsModal'
+                           title={<Trans i18nKey='ajudes_a_les_que_podria_optar'>Ajudes a les que podria optar</Trans>}>
             <Trans i18nKey='avis_ajudes_a_les_que_podria_optar'>A continuació es mostrarà el conjunt d’ajudes a les
               quals podria arribar a optar.
               L’informem que la concessió d’una d’elles pot fer variar els llindars d’ingressos i/o requisits que

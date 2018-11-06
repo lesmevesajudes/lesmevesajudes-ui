@@ -22,7 +22,7 @@ class PersonalBenefits extends React.Component<PersonalBenefitsProps> {
         name: <Trans i18nKey='AE_230_mensual_title'>Fons extraordinari d’ajuts d’emergència social per a infants de 0 a
           16 anys</Trans>,
         periode: <Trans i18nKey='mes'>mes</Trans>,
-        conditions: 'màxim 9 mesos',
+        conditions: <Trans i18nKey='maxim_9_mesos'>màxim 9 mesos</Trans>,
         url: '/ajuts/fons_infancia',
         from: newDate(2018, 4, 25),
         to: newDate(2018, 5, 25)
@@ -109,7 +109,8 @@ class PersonalBenefits extends React.Component<PersonalBenefitsProps> {
     return (
         <Grid container direction='column' className={this.props.classes.ResultItemResultOut} key={person.id}>
           <Typography variant='subtitle1' gutterBottom>
-            Ajudes de les que podria ser beneficiàri/a: <b>{person.nom}</b>
+            <Trans i18nKey='ajudes_a_les_que_opta_persona'>Ajudes de les que podria ser
+              beneficiàri/a:</Trans><b>{person.nom}</b>
           </Typography>
           {(this.hasAnyBenefit(personBenefits))
               ? this.possibleBenefits.map(benefit => this.renderAPersonalBenefit(benefit, personBenefits))

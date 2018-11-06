@@ -40,7 +40,8 @@ let HowManyPersonsLiveTogetherPage = (props: Props) => {
             inclòs)</Trans>
         </AppFormTitle>
 
-        <ShowMeOnceModal name='howManyPersonsModal' title='Dades sobre les persones'>
+        <ShowMeOnceModal name='howManyPersonsModal'
+                         title={<Trans i18nKey='dades_sobre_les_persones'>Dades sobre les persones</Trans>}>
           <Trans i18nKey='text_avis_inci_simulacio'>
             A partir d’aquest moment et formularem una sèrie de preguntes personals i també sobre els membres de la teva
             llar que són necessàries per conèixer els ajuts als quals pots arribar a optar.
