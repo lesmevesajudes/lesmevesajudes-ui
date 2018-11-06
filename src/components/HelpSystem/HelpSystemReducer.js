@@ -10,6 +10,13 @@ export type ReduxFormFocus = {
     form: string
   }
 }
+
+export type ReduxFormDestroy = {
+  type: '@@redux-form/DESTROY',
+  meta: {
+    form: Array<string>
+  }
+}
 export type ShowHelpFor = {
   type: 'SHOW_HELP_FOR',
   meta: {
@@ -24,7 +31,7 @@ export const showHelpFor = (topic: string) => (
       }
     });
 
-export type HelpSystemActions = ReduxFormFocus | ShowHelpFor;
+export type HelpSystemActions = ReduxFormFocus | ReduxFormDestroy | ShowHelpFor;
 
 export default function (
     state: HelpSystemState = {currentHelpTopic: ''},
@@ -33,6 +40,8 @@ export default function (
   switch (action.type) {
     case '@@redux-form/FOCUS':
       return {currentHelpTopic: action.meta.field};
+    case '@@redux-form/DESTROY':
+      return {currentHelpTopic: ''};
     case 'SHOW_HELP_FOR':
       return {currentHelpTopic: action.meta.topic};
     default:

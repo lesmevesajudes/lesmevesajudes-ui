@@ -12,6 +12,8 @@ import {reduxForm} from 'redux-form';
 import {TextField} from 'redux-form-material-ui';
 import {AppForm, AppFormContainer, AppFormTitle} from '../components/AppForms';
 import DescriptionText from '../components/Common/DescriptionText';
+import HelpIcon from '../components/HelpIcon';
+import {isHelpAvailable} from '../components/HelpText';
 import {IRemoveMyValueWhenUnmountedField} from '../components/IRemoveMyValueWhenUnmountedField';
 import FormSubTitle from '../persons/components/FormSubTitle';
 import {YesNoQuestion} from '../persons/components/YesNoQuestion';
@@ -34,6 +36,7 @@ type Props = {
   esUsuariServeisSocials: boolean,
   families: Array<Object>,
   fills: Map<PersonID, Person>,
+  helpTopic: string,
   initialValues: FamilyData,
   persones: Map<PersonID, Person>,
   possiblesSustentadors: Map<PersonID, Person>,
@@ -44,10 +47,10 @@ type Props = {
 const FamilyForm = (props: Props) => {
   const {
     classes,
-    currentField,
     custodies,
     families,
     fills,
+    helpTopic,
     persones,
     possiblesSustentadors,
     sustentadorsSolitarisAmbPossiblesParelles,
@@ -65,12 +68,15 @@ const FamilyForm = (props: Props) => {
                 <Grid container direction='column' alignItems='stretch' spacing={8}>
                   {fills.valueSeq().map((infant: Person) =>
                       <Grid item xs={12} key={infant.id}>
-
                         <label>
                           <Typography gutterBottom>
                             <Trans i18nKey='qui_te_la_guardia_i_custodia'>Qui té la guarda i custòdia o tutela legal
                               de:</Trans> <b>{infant.nom}</b>
+                            {isHelpAvailable('custodies') &&
+                            <HelpIcon name='custodies'/>
+                            }
                           </Typography>
+
                         </label>
                         <Grid container direction='row' justify='space-between'>
                           <Grid item xs={5}>
@@ -159,7 +165,7 @@ const FamilyForm = (props: Props) => {
               </Grid>
               <Grid item xs sm={5}>
                 <Sticky enabled={true} top={10}>
-                  <DescriptionText currentField={currentField}/>
+                  <DescriptionText currentField={helpTopic}/>
                 </Sticky>
               </Grid>
             </Grid>
@@ -198,12 +204,13 @@ function mapStateToProps(state) {
   const sustentadorsUnicsIDs = familiesMonoparentals.map((familia) => familia.sustentadors_i_custodia[0]);
   const sustentadorsSolitaris = state.persons.filter((person: Person) => sustentadorsUnicsIDs.includes(person.id));
   const sustentadorsSolitarisAmbPossiblesParelles = sustentadorsSolitarisIPossiblesParelles(sustentadorsSolitaris, state.persons.toArray());
-
+  const helpTopic = state.helpSystem.currentHelpTopic;
   return {
     currentField: currentField,
     custodies: custodies,
     families: families,
     fills: state.persons.filter((person: Person) => esFill(person)),
+    helpTopic: helpTopic,
     initialValues: state.family,
     persones: state.persons,
     possiblesSustentadors: state.persons.filter((person: Person) => esSustentador(person)),

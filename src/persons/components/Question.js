@@ -8,13 +8,15 @@ import {IRemoveMyValueWhenUnmountedField} from "../../components/IRemoveMyValueW
 type Props = {
   name: string
 }
+const getCanonicalName = (name: string) => name.split('.')[0];
 export const Question = (props: Props) =>
     <Grid item>
       <label id={props.name}>
         <Typography gutterBottom>
           {props.children}
-          {isHelpAvailable(props.name) &&
-          <HelpIcon name={props.name}/>
+          {console.log("Canonical name: ", getCanonicalName(props.name))}
+          {isHelpAvailable(getCanonicalName(props.name)) &&
+          <HelpIcon name={getCanonicalName(props.name)}/>
           }
         </Typography>
       </label>
