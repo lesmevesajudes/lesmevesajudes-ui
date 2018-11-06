@@ -90,12 +90,12 @@ const IndexPage = (props) =>
           </Hidden>
           <div className='BlockText'>
                 <span className='titleLogo'>
-                  <Trans>Vol saber a quines ajudes públiques pot accedir?</Trans>
+                  <Trans>Vols saber a quines ajudes pots accedir?</Trans>
                 </span>
             <Link className='CTALink' to='/wizard/'>
               <Button variant='contained' color='primary' className={props.classes.button}>
                 <b>
-                  <Trans>CONEGUI LES SEVES AJUDES</Trans>
+                  <Trans>Iniciar</Trans>
                 </b>
               </Button>
             </Link>
@@ -105,12 +105,10 @@ const IndexPage = (props) =>
       <div className='CTA'>
         <p className='PresentationText' style={{textAlign: 'center'}}>
           <Trans>
-            Aquesta eina li permetrà consultar a quins ajuts i prestacions socials pot arribar a optar. Ha de declarar,
-            sota la seva responsabilitat, que les respostes són certes.
-            Pot trobar-hi ajudes gestionades per l’Ajuntament, la Generalitat i l’Estat. El simulador, que es troba en
-            fase inicial, anirà incorporant ajuts nous.
-            Aquest assistent no tramita la sol·licitud.
-
+            Aquesta eina et permetrà consultar a quins ajuts i prestacions socials pots optar.
+            El simulador, que es troba en fase inicial, anirà incorporant noves ajudes, tant de l’Ajuntament de
+            Barcelona
+            com de la Generalitat i l’Estat.
           </Trans>
         </p>
       </div>

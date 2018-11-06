@@ -91,7 +91,7 @@ let PersonForm = (props: Props) => {
   return (
     <AppFormContainer>
       <AppFormTitle iconName='persona'>
-        <Trans {...i18nKey("titol", personTranslationContext)}>Informació sobre vostè</Trans>
+        <Trans {...i18nKey("titol", personTranslationContext)}>Informació sobre tu</Trans>
       </AppFormTitle>
       <AppForm>
         <form onSubmit={handleSubmit}>
@@ -105,7 +105,7 @@ let PersonForm = (props: Props) => {
                 </FormSubTitle>
                 <Question name='nom' component={TextField} validate={[required]} autoFocus>
                   <Trans {...i18nKey("nom", personTranslationContext)}>
-                    Identifiqui's amb un nom
+                    Identifica’t amb un nom
                   </Trans>
                 </Question>
 

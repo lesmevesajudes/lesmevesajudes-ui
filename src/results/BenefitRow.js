@@ -89,7 +89,8 @@ export const BenefitRow = ({benefit, subject, classes}: Props) =>
       <Grid item className={classes.ResultsSeparator} xs={2}>
         <Link className={classes.linkBenefits} to={benefit.url}>
           <Tooltip id='mes-info-tooltip'
-                   title='Si vol saber si reuneix tots els requisits necessaris per accedir a aquest ajut, cliqui aquí'
+                   title={<Trans i18nKey='si_vol_saber_si_reuneix_requisits'>Si vols saber si reuneixes tots els
+                     requisits necessaris per accedir a aquest ajut, clica aquí</Trans>}
                    placement='right'>
             <Button variant='contained' color='primary' key={benefit.ID}>
               <Typography className={classes.whiteText}>
