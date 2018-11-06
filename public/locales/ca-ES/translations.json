@@ -21,8 +21,6 @@
     "beneficiari_de_prestacio_residencial_text_llarg": "S’ha de trobar amb la situació d’estar ingressat en un centre sociosanitari, comunitat terapèutica, geriàtrica o similars",
     "nom_second": "Identifiqui's amb un nom",
     "nom_third": "Identifiqui aquesta persona amb un nom",
-    "relacio_parentiu_second": "Aquesta persona és el teu?",
-    "relacio_parentiu_third": "Aquesta persona és el seu?",
     "edat_second": "Quina és la teva edat?",
     "edat_third": "Quina és la seva edat?",
     "porta_dos_anys_o_mes_empadronat_a_catalunya_second_masculine": "Fa dos anys o més que estàs empadronat a Catalunya?",
@@ -298,5 +296,7 @@
     "ajudes_a_les_que_podria_optar": "Ajudes a les que podria optar",
     "ajudes_a_les_que_opta_persona": "Ajudes de les que podria ser beneficiàri/a:",
     "ajudes_a_les_que_opta_habitatge": "Ajudes per a l'habitatge:",
-    "maxim_9_mesos": "Màxim 9 mesos"
+    "maxim_9_mesos": "Màxim 9 mesos",
+    "relacio_parentiu_masculine": "Aquesta persona és el teu...",
+    "relacio_parentiu_feminine": "Aquesta persona és la teva..."
 }
