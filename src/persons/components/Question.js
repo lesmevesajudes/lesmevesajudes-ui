@@ -14,7 +14,6 @@ export const Question = (props: Props) =>
       <label id={props.name}>
         <Typography gutterBottom>
           {props.children}
-          {console.log("Canonical name: ", getCanonicalName(props.name))}
           {isHelpAvailable(getCanonicalName(props.name)) &&
           <HelpIcon name={getCanonicalName(props.name)}/>
           }
