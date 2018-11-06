@@ -121,8 +121,9 @@ let PersonForm = (props: Props) => {
                 {!isTheUserInFrontOfTheComputer && (esHome || esDona) &&
                 <MultipleAnswerQuestion name='relacio_parentiu'
                                         label={
-                                          <Trans {...i18nKey("relacio_parentiu", personTranslationContext)}>Aquesta
-                                            persona és el/la seu/va?</Trans>}
+                                          <Trans {...i18nKey("relacio_parentiu", sexTranslationContext)}>
+                                            Aquesta persona és el/la seu/va?
+                                          </Trans>}
                                         validate={[required]}>
                   <MenuItem value='parella'>
                     <Trans i18nKey='parella'>Cònjuge / parella</Trans>
