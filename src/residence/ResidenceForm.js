@@ -380,6 +380,6 @@ export default withNamespaces("translations")(connect(mapStateToProps)(reduxForm
         dispatch(addResidenceData(values));
       },
       onSubmitFail: (error) => {
-        focusFirstQuestionWithName(namefirstFieldWithError(error))
+        focusFirstQuestionWithName(namefirstFieldWithError(error));
       },
     })(ResidenceForm)));

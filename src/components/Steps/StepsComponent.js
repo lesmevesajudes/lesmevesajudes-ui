@@ -30,7 +30,8 @@ type State = {
   current_step: number,
   max_step_reached: number
 }
-const flattenErrors = (errors: Object) => flatten(errors, {maxDepth: 3});
+
+const flattenErrors = (errors: Object) => flatten(errors, {removeKeys: ['$$typeof', 'type', 'key', 'ref', 'props', '_owner', '_store']});
 
 const chooseIcon = (props: Object, currentStep: number, maxStepReached: number, index: number) => {
   const iconStep = props.steps[index].icon;
@@ -57,12 +58,15 @@ class StepsComponent extends React.Component<Props, State> {
     const currentStep = this.state.current_step;
     const formToValidate = this.props.steps[currentStep].validateFormToEnableNext;
     const formIsValid = isValid(formToValidate);
+
     if (typeof formToValidate !== 'undefined' && !formIsValid(this.props.appState)) {
       const errors = getFormSyncErrors(formToValidate)(this.props.appState);
       const visibleFields = Object.keys(flattenErrors(errors));
+
       this.props.dispatch(touch(formToValidate, ...visibleFields));
     } else {
       const nextStep = this.findNextPageThatShouldShow(currentStep, FORWARD);
+
       this.setState({
         current_step: nextStep,
         max_step_reached: nextStep > this.state.max_step_reached ? nextStep : this.state.max_step_reached
