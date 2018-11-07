@@ -14,10 +14,10 @@ const YesNo = ({input, meta}) => {
           meta
       >
         <Choice value={true} variant='outlined'>
-          <Trans>Si</Trans>
+          <Trans i18nKey='si'>Si</Trans>
         </Choice>
         <Choice value={false} variant='outlined'>
-          <Trans>No</Trans>
+          <Trans i18nKey='no'>No</Trans>
         </Choice>
 
       </MultipleChoice>

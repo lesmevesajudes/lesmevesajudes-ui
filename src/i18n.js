@@ -8,13 +8,13 @@ i18n
   .use(LanguageDetector)
   .use(reactI18nextModule)
   .init({
-    fallbackLng: 'ct',
+    fallbackLng: 'ca-ES',
 
     // have a common namespace used around the full app
     ns: ['translations'],
     defaultNS: 'translations',
 
-    debug: false,
+    debug: true,
 
     interpolation: {
       escapeValue: false // not needed for react!!

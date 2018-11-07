@@ -4,7 +4,7 @@ import {withStyles} from '@material-ui/core/styles';
 import Tooltip from "@material-ui/core/Tooltip";
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
-import {Trans} from 'react-i18next';
+import {Trans, withNamespaces} from 'react-i18next';
 import {connect} from 'react-redux';
 import {getFormSyncErrors, isValid, touch} from "redux-form";
 import {flatten} from '../../shared/flatten';
@@ -23,13 +23,15 @@ type Props = {
   nextStep: Function,
   setActualStep: Function,
   steps: Array<any>,
+  t: Function,
 }
 
 type State = {
   current_step: number,
   max_step_reached: number
 }
-const flattenErrors = (errors: Object) => flatten(errors, {maxDepth: 3});
+
+const flattenErrors = (errors: Object) => flatten(errors, {removeKeys: ['$$typeof', 'type', 'key', 'ref', 'props', '_owner', '_store']});
 
 const chooseIcon = (props: Object, currentStep: number, maxStepReached: number, index: number) => {
   const iconStep = props.steps[index].icon;
@@ -56,12 +58,15 @@ class StepsComponent extends React.Component<Props, State> {
     const currentStep = this.state.current_step;
     const formToValidate = this.props.steps[currentStep].validateFormToEnableNext;
     const formIsValid = isValid(formToValidate);
+
     if (typeof formToValidate !== 'undefined' && !formIsValid(this.props.appState)) {
       const errors = getFormSyncErrors(formToValidate)(this.props.appState);
       const visibleFields = Object.keys(flattenErrors(errors));
+
       this.props.dispatch(touch(formToValidate, ...visibleFields));
     } else {
       const nextStep = this.findNextPageThatShouldShow(currentStep, FORWARD);
+
       this.setState({
         current_step: nextStep,
         max_step_reached: nextStep > this.state.max_step_reached ? nextStep : this.state.max_step_reached
@@ -113,7 +118,7 @@ class StepsComponent extends React.Component<Props, State> {
   }
 
   render() {
-    const {classes, steps, buttonEnabled, buttonVisible} = this.props;
+    const {classes, steps, buttonEnabled, buttonVisible, t} = this.props;
     const currentStep = this.state.current_step;
     const maxStepReached = this.state.max_step_reached;
     const childComponent = steps[currentStep].component;
@@ -123,10 +128,10 @@ class StepsComponent extends React.Component<Props, State> {
             {steps.map((step, index) => {
               const labelProps = step.optional ? {
                 optional: <Tooltip id='unknown-tooltip'
-                                   title='Aquesta opció només està disponible si les dades ho requereixen'
+                                   title={t('opcional_text_llarg')}
                                    placement='bottom-start'>
                   <Typography variant='caption'>
-                    <Trans>Opcional</Trans>
+                    <Trans i18nKey='opcional'>Opcional</Trans>
                   </Typography>
                 </Tooltip>
               } : {};
@@ -161,4 +166,4 @@ const mapStateToProps = (state) => {
   }
 };
 
-export default connect(mapStateToProps)(withStyles(styles)(StepsComponent));
+export default connect(mapStateToProps)(withStyles(styles)(withNamespaces('translations')(StepsComponent)));

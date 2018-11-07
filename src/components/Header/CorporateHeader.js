@@ -86,10 +86,10 @@ class CorporateHeader extends Component {
                    style={{maxHeight: '0px', display: 'none'}}>
                 <ul className='bcnbrand-list' aria-expanded='false'>
 
-                  <li><a href='https://vacances.barcelona.cat' tabIndex='8' className='active' lang='ca'
-                         title='Català' data-ga='CA'>Català</a></li>
+                  <li><a href='/?lng=ca-ES' tabIndex='8' className='active' lang='ca'
+                         title='Català22' data-ga='CA'>Català</a></li>
                   <li><a href='https://vacances.barcelona.cat/es/' tabIndex='8' lang='es' title='Castellano'
-                         data-ga='ES'>Castellano</a></li>
+                         data-ga='/?lng=es'>Castellano</a></li>
                 </ul>
                 <a className='bcnbrand-close' tabIndex='9' title='Tanca' aria-label='Tanca' aria-expanded='false'
                    aria-controls='bcnbrand-lang-nav' data-ga='Tanca-Idioma'>
@@ -133,9 +133,14 @@ class CorporateHeader extends Component {
                        data-ga='Idioma'>
                       <span className='bcnbrand-icon bcn-icon-idioma'/>
                       <span className='bcnbrand-select-lang'>
+                         <a href='/?lng=ca-ES'>
                                             <span className='bcnbrand-lang-text'>Català</span>
-                                            <span className='bcnbrand-icon bcn-icon-baix-bold'/>
-                                            <span className='bcnbrand-icon bcn-icon-dalt-bold'/>
+                         </a>
+                                        </span>
+                      <span className='bcnbrand-select-lang' style={{marginLeft: '30px'}}>
+                        <a href='/?lng=es'>
+                                            <span className='bcnbrand-lang-text'>Castellà</span>
+                        </a>
                                         </span>
                     </a>
                   </li>

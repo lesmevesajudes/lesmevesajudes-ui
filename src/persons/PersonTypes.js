@@ -31,7 +31,7 @@ export type Person = {
   percep_prestacions_incompatibles_amb_la_feina: boolean;
   porta_dos_anys_o_mes_empadronat_a_catalunya: boolean;
   relacio_parentiu: 'parella' | 'fill' | 'fillastre' | 'net' | 'infant_acollit' | 'pare' | 'avi' | 'sogre' | 'germa' | 'cunyat' | 'gendre' | 'altres' | 'cap';
-  sexe: string;
+  sexe: 'home' | 'dona';
   situacio_laboral: string;
   te_algun_grau_de_discapacitat_reconegut: boolean;
   tipus_document_identitat: string;

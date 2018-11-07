@@ -6,26 +6,29 @@ import {Trans} from "react-i18next";
 
 const HelpTextMap = {
   "anys_empadronat_a_barcelona": {
-    title: <Trans>Anys d'empadronament</Trans>,
-    body: <Trans>Si fa menys d’un any que està empadronat indiqui 0</Trans>
+    title: <Trans i18nKey='anys_d_empadronament'>Anys d'empadronament</Trans>,
+    body: <Trans i18nKey='anys_d_empadronament_text_llarg'>Si fa menys d’un any que està empadronat indiqui 0</Trans>
   },
   "edat": {
-    title: <Trans>Edat</Trans>,
-    body: <Trans>Si té menys d’un any indiqui 0</Trans>
+    title: <Trans i18nKey='edat'>Edat</Trans>,
+    body: <Trans i18nKey='edat_text_llarg'>Si té menys d’un any indiqui 0</Trans>
   },
   "nom": {
-    title: <Trans>Nom</Trans>,
-    body: <Trans>Aquesta dada es farà servir només perquè l'aplicació es pugui referir a la persona. No
+    title: <Trans i18nKey='nom'>Nom</Trans>,
+    body: <Trans i18nKey='nom_text_llarg'>Aquesta dada es farà servir només perquè l'aplicació es pugui referir a la
+      persona. No
       ha de permetre'n la identificació, per tant no escrigui cognoms, DNI, ...</Trans>
   },
   "beneficiari_de_prestacio_residencial": {
-    title: <Trans>Beneficiari de prestació residencial</Trans>,
-    body: <Trans>S’ha de trobar amb la situació d’estar ingressat en un centre
+    title: <Trans i18nKey='beneficiari_de_prestacio_residencial'>Beneficiari de prestació residencial</Trans>,
+    body: <Trans i18nKey='beneficiari_de_prestacio_residencial_text_llarg'>S’ha de trobar amb la situació d’estar
+      ingressat en un centre
       sociosanitari, comunitat terapèutica, geriàtrica o similars</Trans>
   },
   "cobra_algun_tipus_de_pensio_no_contributiva": {
-    title: <Trans> Perstacions no contributives</Trans>,
-    body: <Trans><p>Les pensions no contributives són uns ingressos econòmics
+    title: <Trans i18nKey='cobra_algun_tipus_de_pensio_no_contributiva'>Prestacions no contributives</Trans>,
+    body: <Trans i18nKey='cobra_algun_tipus_de_pensio_no_contributiva_text_llarg'><p>Les pensions no contributives són
+      uns ingressos econòmics
       mensuals que l'Estat garanteix a les persones que no tenen recursos suficients per subsistir i no poden acollir-se
       —perquè no cotitzen a la Seguretat Social— a les pensions contributives.</p>
       <p>Les persones beneficiàries d'aquestes pensions gaudeixen de la condició de pensionistes de la Seguretat Social.
@@ -42,8 +45,8 @@ const HelpTextMap = {
     </Trans>
   },
   "custodies": {
-    title: <Trans>Tipus de custòdia</Trans>,
-    body: <Trans>
+    title: <Trans i18nKey='custodies'>Tipus de custòdia</Trans>,
+    body: <Trans i18nKey='custodies_text_llarg'>
       <Typography variant='subtitle1' gutterBottom>Guarda i custòdia</Typography>
 
       Com a guarda i custòdia s’entén viure amb els fills o filles, cuidar-los i assistir-los. Es pot atribuir a una
@@ -67,8 +70,8 @@ const HelpTextMap = {
     </Trans>
   },
   "disposa_de_carnet_familia_monoparental": {
-    title: <Trans>Família monoparental</Trans>,
-    body: <Trans>
+    title: <Trans i18nKey='disposa_de_carnet_familia_monoparental'>Família monoparental</Trans>,
+    body: <Trans i18nKey='disposa_de_carnet_familia_monoparental_text_llarg'>
       S'entén per família monoparental (tant de categoria especial com de categoria general) la família formada per un
       fill o filla o més, menors de 21 anys, o de 26 anys, si estudien, que conviuen i depenen econòmicament d'una sola
       persona.
@@ -79,8 +82,10 @@ const HelpTextMap = {
     </Trans>
   },
   "gaudeix_de_prestacio_contributiva_o_subsidi_desocupacio": {
-    title: <Trans>Prestacions contributives</Trans>,
-    body: <Trans>
+    title: <Trans i18nKey='gaudeix_de_prestacio_contributiva_o_subsidi_desocupacio'>
+      Prestacions contributives
+    </Trans>,
+    body: <Trans i18nKey='gaudeix_de_prestacio_contributiva_o_subsidi_desocupacio_text_llarg'>
       La concessió de les prestacions econòmiques generalment està supeditada a una relació jurídica prèvia amb la
       Seguretat Social (acreditar un període mínim de cotització en determinats casos), sempre que es compleixin els
       altres requisits exigits.
@@ -102,8 +107,8 @@ const HelpTextMap = {
     </Trans>
   },
   "ha_participat_en_un_proces_de_mediacio": {
-    title: <Trans>Procés de mediació en l’habitatge</Trans>,
-    body: <Trans>
+    title: <Trans i18nKey='ha_participat_en_un_proces_de_mediacio'>Procés de mediació en l’habitatge</Trans>,
+    body: <Trans i18nKey='ha_participat_en_un_proces_de_mediacio_text_llarg'>
       <p>L'Ajuntament de Barcelona i la Generalitat de Catalunya, mitjançant el Consorci de l’Habitatge de Barcelona,
         posen
         al servei de la ciutadania unes eines de mediació i assessorament amb l’objectiu de garantir un ús digne de
@@ -124,8 +129,11 @@ const HelpTextMap = {
     </Trans>
   },
   "ha_treballat_a_l_estranger_6_mesos": {
-    title: <Trans>Treball a l'extranger</Trans>,
-    body: <Trans>S’haurà d’acreditar aportant la documentació següent:
+    title: <Trans i18nKey='ha_treballat_a_l_estranger_6_mesos'>
+      Treball a l'extranger
+    </Trans>,
+    body: <Trans i18nKey='ha_treballat_a_l_estranger_6_mesos_text_llarg'>
+      S’haurà d’acreditar aportant la documentació següent:
       <ul>
         <li>Si torna d’un país membre de la Unió Europea o de l’Espai Econòmic Europeu, el formulari U1 o E-301.</li>
         <li>En el cas dels emigrants de Suïssa, el certificat de l'Agregadoria Laboral d’aquell país o el formulari U1.
@@ -141,8 +149,8 @@ const HelpTextMap = {
     </Trans>
   },
   "ingressos_bruts": {
-    title: <Trans>Ingressos</Trans>,
-    body: <Trans>Es consideren ingressos propis els que es generen per:
+    title: <Trans i18nKey='ingressos_bruts'>Ingressos</Trans>,
+    body: <Trans i18nKey='ingressos_bruts_text_llarg'>Es consideren ingressos propis els que es generen per:
       <ul>
         <li>Rendiment del treball</li>
         <li>Pensions o prestacions socials</li>
@@ -155,9 +163,11 @@ const HelpTextMap = {
     </Trans>
   },
   "inscrit_com_a_demandant_docupacio": {
-    title: <Trans>Inscrit/a com a demandant d'ocupació</Trans>,
-    body: <Trans>Persona inscrita a les
-      oficines de Treball.
+    title: <Trans i18nKey='inscrit_com_a_demandant_docupacio'>
+      Inscrit/a com a demandant d'ocupació
+    </Trans>,
+    body: <Trans i18nKey='inscrit_com_a_demandant_docupacio_text_llarg'>
+      Persona inscrita a les oficines de Treball.
       La inscripció com a demandant d’ocupació és el pas previ per accedir a tots els serveis del Servei d'Ocupació
       de Catalunya.
       Aquesta inscripció és gratuïta i voluntària, amb l’excepció de les persones perceptores de prestacions per
@@ -167,8 +177,9 @@ const HelpTextMap = {
       demanda d'ocupació (denominat DARDO).</Trans>
   },
   "membre_de_familia_reagrupada": {
-    title: <Trans>Famílies reagrupades</Trans>,
-    body: <Trans>Segons l'article 16 de la Llei d'estrangeria, les persones estrangeres
+    title: <Trans i18nKey='families_reagrupades'>Famílies reagrupades</Trans>,
+    body: <Trans i18nKey='families_reagrupades_text_llarg'>Segons l'article 16 de la Llei d'estrangeria, les persones
+      estrangeres
       residents
       tenen dret a la vida en família i a la intimitat familiar. En exercici d'aquest dret que les persones estrangeres
       residents poden reagrupar determinats familiars.
@@ -178,15 +189,15 @@ const HelpTextMap = {
     </Trans>
   },
   "relacio_habitatge": {
-    title: <Trans>Situacions respecte a l’habitatge</Trans>,
-    body: <Trans>
+    title: <Trans i18nKey='situacions_respecte_lhabitatge'>Situacions respecte a l’habitatge</Trans>,
+    body: <Trans i18nKey='situacions_respecte_lhabitatge_text_llarg'>
       <Typography variant='subtitle1' gutterBottom>Cessió d’ús</Typography>
       És un contracte pel qual se cedeix l’ús d’un habitatge per un temps determinat a canvi del pagament d’un preu
       equiparable a un lloguer tou.</Trans>
   },
   "relacio_parentiu": {
-    title: <Trans>Relacions familiars</Trans>,
-    body: <Trans>
+    title: <Trans i18nKey='relacio_parentiu'>Relacions familiars</Trans>,
+    body: <Trans i18nKey='relacio_parentiu_text_llarg'>
       <Typography variant='subtitle1' gutterBottom>Infant en acolliment</Typography>
       L'acolliment familiar d'un infant comporta confiar temporalment la guarda d'una persona menor a una família o
       persona sola, sense que hi hagi finalitat adoptiva.
@@ -196,8 +207,8 @@ const HelpTextMap = {
     </Trans>
   },
   "relacio_de_parentiu_amb_el_propietari": {
-    title: <Trans>Vincle de parentiu per consanguinitat</Trans>,
-    body: <Trans>
+    title: <Trans i18nKey='relacio_de_parentiu_amb_el_propietari'>Vincle de parentiu per consanguinitat</Trans>,
+    body: <Trans i18nKey='relacio_de_parentiu_amb_el_propietari_text_llarg'>
       <p>El parentiu per consanguinitat, o simplement la consanguinitat, és la relació entre persones unides per un
         vincle de sang, és a dir, que tenen almenys un ascendent en comú. En el parentiu per consanguinitat, la
         proximitat es determina pel nombre de generacions que separen dos parents i es mesura en graus. Cada grau
@@ -213,15 +224,16 @@ const HelpTextMap = {
     </Trans>
   },
   "sexe": {
-    title: <Trans>Sexe</Trans>,
-    body: <Trans>Per al càlcul dels diferents ajuts, i segons marca la normativa vigent, cal que a l'apartat 'SEXE'
+    title: <Trans i18nKey='sexe'>Sexe</Trans>,
+    body: <Trans i18nKey='sexe_text_llarg'>Per al càlcul dels diferents ajuts, i segons marca la normativa vigent, cal
+      que a l'apartat 'SEXE'
       seleccioneu el que consta oficialment en el vostre DNI en vigor. L'Ajuntament de Barcelona, atenent a la
       diversitat sexual i de gènere, està treballant perquè cada persona pugui expressar, si així ho desitja, el seu
       gènere i “nom sentit” en tots els documents d’àmbit municipal en els quals calgui informar del sexe</Trans>
   },
   "te_algun_grau_de_discapacitat_reconegut": {
-    title: <Trans>Grau de discapacitat</Trans>,
-    body: <Trans>
+    title: <Trans i18nKey='grau_de_discapacitat'>Grau de discapacitat</Trans>,
+    body: <Trans i18nKey='grau_de_discapacitat_text_llarg'>
       El grau de discapacitat acredita la condició de discapacitat i l'accés a les ajudes que se'n deriven.
       Cal acreditar el grau de discapacitat mitjançant el certificat de reconeixement de la discapacitat. La condició
       de
@@ -240,8 +252,8 @@ const HelpTextMap = {
     </Trans>
   },
   "tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit": {
-    title: <Trans>Usdefruit</Trans>,
-    body: <Trans>
+    title: <Trans i18nKey='tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit'>Usdefruit</Trans>,
+    body: <Trans i18nKey='tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit_text_llarg'>
       <p>Dret real de gaudi sobre una cosa d'altri, que atorga a la persona usufructuària les facultats d’usar-la i
         percebre'n tots els fruits, si bé amb les limitacions d'haver de conservar-ne la forma i la substància.
         L'usdefruit és un dret real, la qual cosa implica que és independent de qui en tingui la nua propietat. La
@@ -254,8 +266,8 @@ const HelpTextMap = {
     </Trans>
   },
   "tipus_document_identitat": {
-    title: <Trans>Document d'identitat</Trans>,
-    body: <Trans>
+    title: <Trans i18nKey='tipus_document_identitat'>Document d'identitat</Trans>,
+    body: <Trans i18nKey='tipus_document_identitat_text_llarg'>
       El tipus de document d’identitat és un requisit que pot determinar l’accés a alguns ajuts.
       Si disposa de més d’un document d’identitat li recomanem que segueixi el següent criteri:
       <ul>
@@ -265,18 +277,20 @@ const HelpTextMap = {
     </Trans>
   },
   "titular_contracte_de_lloguer_id": {
-    title: <Trans>Titular del contracte de lloguer</Trans>,
-    body: <Trans>En cas que hi hagi més d'un titular escolliu-ne només un, prefentment aquell que visqui a
+    title: <Trans i18nKey='titular_contracte_de_lloguer'>Titular del contracte de lloguer</Trans>,
+    body: <Trans i18nKey='titular_contracte_de_lloguer_text_llarg'>En cas que hi hagi més d'un titular escolliu-ne només
+      un, prefentment aquell que visqui a
       l'habitatge.</Trans>
   },
   "titular_hipoteca_id": {
-    title: <Trans>Titular del contracte de hipoteca</Trans>,
-    body: <Trans>En cas que hi hagi més d'un titular escolliu-ne només un, prefentment aquell que visqui a
+    title: <Trans i18nKey='titular_hipoteca_help'>Titular del contracte de hipoteca</Trans>,
+    body: <Trans i18nKey='titular_hipoteca_text_llarg'>En cas que hi hagi més d'un titular escolliu-ne només un,
+      prefentment aquell que visqui a
       l'habitatge.</Trans>
   },
   "victima_violencia_de_genere": {
-    title: <Trans>Víctima de violència de gènere o domèstica</Trans>,
-    body: <Trans>
+    title: <Trans i18nKey='victima_violencia_de_genere'>Víctima de violència de gènere o domèstica</Trans>,
+    body: <Trans i18nKey='victima_violencia_de_genere_text_llarg'>
       <p>Es considera víctima de violència de gènere la dona que és o ha estat objecte d'actes de violència
         física o
         psicològica, agressions a la llibertat sexual, amenaces, coacció o privació de llibertat exercida pel seu
@@ -291,8 +305,8 @@ const HelpTextMap = {
     </Trans>
   },
   "victima_violencia_domestica": {
-    title: <Trans>Víctima de violència de gènere o domèstica</Trans>,
-    body: <Trans>
+    title: <Trans i18nKey='victima_violencia_de_genere'>Víctima de violència de gènere o domèstica</Trans>,
+    body: <Trans i18nKey='victima_violencia_de_genere_text_llarg'>
       <p>Es considera víctima de violència de gènere la dona que és o ha estat objecte d'actes de violència física o
         psicològica, agressions a la llibertat sexual, amenaces, coacció o privació de llibertat exercida pel seu
         cònjuge,

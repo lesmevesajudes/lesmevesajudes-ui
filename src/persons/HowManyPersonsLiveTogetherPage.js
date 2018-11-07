@@ -36,20 +36,20 @@ let HowManyPersonsLiveTogetherPage = (props: Props) => {
   return (
       <AppFormContainer>
         <AppFormTitle iconName='persona'>
-          <Trans>Quantes persones viuen en el seu domicili? (amb vostè inclòs)</Trans>
+          <Trans i18nKey='quantes_persones_viuen_en_el_domicili'>Quantes persones viuen en el teu domicili? (amb tu
+            inclòs)</Trans>
         </AppFormTitle>
 
-        <ShowMeOnceModal name='howManyPersonsModal' title='Dades sobre les persones'>
-          <Trans>
-            Pot començar la simulació.<br/>
-            A partir d’aquest moment, li formularem una sèrie de preguntes sobre vostè i sobre els membres de la seva
-            llar
-            que són necessàries per conèixer els ajuts als quals pot arribar a optar.<br/>
-            Li informem que les dades de caràcter personal que es recullin a través dels recursos disponibles en el
-            portal
-            es tractaran de forma confidencial i en cap cas no s'utilitzaran amb finalitats incompatibles amb la Llei
-            orgànica de protecció de dades de caràcter personal (LOPD) i/o Reglament general de protecció de dades
-            (RGPD)
+        <ShowMeOnceModal name='howManyPersonsModal'
+                         title={<Trans i18nKey='dades_sobre_les_persones'>Dades sobre les persones</Trans>}>
+          <Trans i18nKey='text_avis_inci_simulacio'>
+            A partir d’aquest moment et formularem una sèrie de preguntes personals i també sobre els membres de la teva
+            llar que són necessàries per conèixer els ajuts als quals pots arribar a optar.
+            T’informem que les dades que incorporis per a la simulació no poden identificar les persones que
+            l'utilitzen,
+            per la qual cosa no es requereix cap consentiment.
+            Aquesta eina no tramita les sol·licituds.
+            Pots començar la simulació.
           </Trans>
         </ShowMeOnceModal>
         <AppForm>
@@ -67,12 +67,12 @@ let HowManyPersonsLiveTogetherPage = (props: Props) => {
                     <Button variant='contained' name='ButtonTornar' onClick={() => {
                       history.push('/')
                     }}>
-                      <Trans>Tornar</Trans>
+                      <Trans i18nKey='tornar'>Tornar</Trans>
                     </Button>
                   </Grid>
                 <Grid item container direction='column' xs={2}>
                     <Button variant='contained' color='primary' type='submit' name='ButtonValidar'>
-                      <Trans>Validar</Trans>
+                      <Trans i18nKey='validar'>Validar</Trans>
                     </Button>
                   </Grid>
                 </Grid>
