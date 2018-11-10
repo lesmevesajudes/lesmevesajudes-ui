@@ -48,7 +48,6 @@ export const PersonCard = withWidth()(withNamespaces("translations")((props: Per
   const { nom, edat, sexe } = person;
   const rol_traduit = t(`${person.relacio_parentiu}_${sexe === "dona" ? "feminine" : "masculine"}`);
   const el_teu_traduit = t(`el_teu_${sexe === "dona" ? "feminine" : "masculine"}`);
-  console.log("rol: ", person.relacio_parentiu);
   const secondaryText = rolesThatShowExtraInfo.includes(person.relacio_parentiu) ?
     <Trans i18nKey='descripcio_persona' nom={edat} rol_traduit={rol_traduit} el_teu_traduit={el_teu_traduit}>
       {{ edat }} anys és {{ el_teu_traduit }} {{ rol_traduit }}
