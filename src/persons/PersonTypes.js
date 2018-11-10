@@ -4,7 +4,7 @@ import {Map} from 'immutable';
 export type PersonID = string;
 
 export type PersonRole = 'pares' | 'fill' | 'altres_adults' | 'altres_adults_familiars';
-
+export const rolesThatShowExtraInfo = ['parella', 'fill','fillastre','net','infant_acollit','pare','avi','sogre','germa','cunyat', 'gendre'];
 export type Person = {
   anys_empadronat_a_barcelona: number;
   beneficiari_de_prestacio_residencial: boolean;
