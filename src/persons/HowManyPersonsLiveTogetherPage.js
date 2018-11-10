@@ -57,7 +57,7 @@ let HowManyPersonsLiveTogetherPage = (props: Props) => {
               <Grid container direction='column' alignItems='center' spacing={16}>
                 <Grid item xs={8}>
                   <Field name='how_many_persons_live_together' placeholder='0' type='number'
-                         component={TextField} normalize={allowOnlyPositive} autoFocus/>
+                         component={TextField} normalize={allowOnlyPositive}/>
                 </Grid>
               </Grid>
 

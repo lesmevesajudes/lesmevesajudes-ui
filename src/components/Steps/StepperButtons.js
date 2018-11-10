@@ -1,7 +1,7 @@
-import React, { Fragment } from "react";
 import {Button, Grid, Icon} from '@material-ui/core';
-import {Trans} from 'react-i18next';
 import classNames from 'classnames';
+import React, {Fragment} from "react";
+import {Trans} from 'react-i18next';
 
 type Props = {
   nextIsResults: boolean,
@@ -12,6 +12,10 @@ type Props = {
   classes: Object
 };
 
+const printPage = function () {
+  window.print();
+  return false;
+};
 
 let StepperButtons = (props: Props) => {
   const content = (
@@ -24,6 +28,14 @@ let StepperButtons = (props: Props) => {
             <Icon className={props.classes.rightIcon}>keyboard_arrow_left</Icon><Trans i18nKey='anterior'>Anterior</Trans>
           </Button>}
         </Grid>
+        {typeof props.nextAction === 'undefined' &&
+        <Grid item sm={2} md={2}>
+          <Button color='secondary' variant='contained'
+                  onClick={printPage}>
+            <Icon>print</Icon><Trans i18nKey='imprimir'>Imprimir</Trans>
+          </Button>
+        </Grid>
+        }
         <Grid item sm={2} md={2}>
           {typeof props.nextAction === 'undefined' &&
           <Button className={classNames('right-button', 'buttonTheme')}
