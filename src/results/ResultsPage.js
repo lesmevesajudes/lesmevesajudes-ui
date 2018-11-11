@@ -19,12 +19,13 @@ export const ResultsContainer = withStyles(styles)((props: AppFormProps) =>
     </Grid>);
 
 type Props = {
+  dispatch: Function,
   isError: boolean,
   isRequestDone: boolean,
-  simulationData: any,
+  persons: Map<PersonID, Person>,
   resultsData: any,
-  dispatch: Function,
-  persons: Map<PersonID, Person>
+  simulationData: any,
+  simulationID: string,
 };
 
 class ResultsPage extends React.Component<Props> {
@@ -54,7 +55,7 @@ class ResultsPage extends React.Component<Props> {
   }
 
   render() {
-    const {isError, isRequestDone, resultsData, persons} = this.props;
+    const {isError, isRequestDone, resultsData, persons, simulationID} = this.props;
     if (!this.enoughDataForSimulation()) {
       return (
           <AppFormContainer>
@@ -148,6 +149,9 @@ class ResultsPage extends React.Component<Props> {
             <Grid item xs={12}>
               <ReportBug initialValues={this.getReportBugDataFromLocalStorage()} onSubmit={this.submitReport}/>
             </Grid>
+            <Grid item>
+              simulation ID: {simulationID}
+            </Grid>
           </ResultsContainer>
         </AppFormContainer>
     );
@@ -160,6 +164,7 @@ function mapStateToProps(state) {
     isRequestDone: state.results.isRequestDone,
     simulationData: state,
     resultsData: state.results.response,
+    simulationID: state.results.response !== null ? state.results.response.id : 'none',
     persons: state.persons
   };
 }

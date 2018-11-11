@@ -1,9 +1,11 @@
 //@flow
-import type {PersonsState} from '../persons/PersonTypes';
+import {API_URL, SIMULATION_STORE_URL} from "../config";
 import type {FamilyData} from '../family/FamilyDataTypes';
+import type {PersonsState} from '../persons/PersonTypes';
 import type {ResidenceData} from '../residence/ResidenceTypes';
 import OpenFiscaAPIClient from '../shared/OpenFiscaAPIClient/OpenFiscaAPIClient';
-import {API_URL} from "../config";
+import SimulationStoreClient from '../shared/SimulationStoreAPIClient';
+import {create as createUUID} from '../shared/UUID';
 
 export const START_FETCH_SIMULATION = 'START_FETCH_SIMULATION';
 export const FETCH_SIMULATION = 'FETCH_SIMULATION';
@@ -21,12 +23,17 @@ export const fetchSimulation = (simulationData: SimulationData) => (dispatch: an
     type: START_FETCH_SIMULATION
   });
 
-  let client = new OpenFiscaAPIClient(API_URL);
-
-  return client.makeSimulation(simulationData).then(result => dispatch({
-    type: FETCH_SIMULATION,
-    payload: result
-  })).catch(error => dispatch({
+  const openFisca = new OpenFiscaAPIClient(API_URL);
+  const simulationStore = new SimulationStoreClient(SIMULATION_STORE_URL);
+  return openFisca.makeSimulation(simulationData).then(result => {
+    const id = createUUID();
+    simulationStore.uploadSimulation(id, result.data);
+    result.data['id'] = id;
+    return dispatch({
+      type: FETCH_SIMULATION,
+      payload: result
+    })
+  }).catch(error => dispatch({
     type: FETCH_SIMULATION_ERROR,
     payload: error
   }));
