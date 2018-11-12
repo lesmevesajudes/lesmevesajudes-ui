@@ -29,7 +29,6 @@ import theme from './styles/theme.js';
 if (isDevelopment) {
   console.log('Environment: ' + ENVIRONMENT);
 }
-
 console.log(`Code version: ${getCodeVersion()} Release Date: ${getReleaseDate()}`);
 console.log('API: ', API_URL);
 console.log('Simulation Report API: ', REPORT_BUG_URL);
