@@ -25,25 +25,6 @@ const HelpTextMap = {
       ingressat en un centre
       sociosanitari, comunitat terapèutica, geriàtrica o similars</Trans>
   },
-  "cobra_algun_tipus_de_pensio_no_contributiva": {
-    title: <Trans i18nKey='cobra_algun_tipus_de_pensio_no_contributiva'>Prestacions no contributives</Trans>,
-    body: <Trans i18nKey='cobra_algun_tipus_de_pensio_no_contributiva_text_llarg'><p>Les pensions no contributives són
-      uns ingressos econòmics
-      mensuals que l'Estat garanteix a les persones que no tenen recursos suficients per subsistir i no poden acollir-se
-      —perquè no cotitzen a la Seguretat Social— a les pensions contributives.</p>
-      <p>Les persones beneficiàries d'aquestes pensions gaudeixen de la condició de pensionistes de la Seguretat Social.
-        El
-        reconeixement del dret d'accés a una pensió no contributiva comporta l'accés a l'assistència mèdica i
-        farmacèutica
-        de la Seguretat Social.</p>
-      <p>Les pensions no contributives atenen dos col·lectius: persones grans i persones amb discapacitat, fet que dona
-        lloc a dues modalitats de pensions no contributives:</p>
-      <ul>
-        <li>Jubilació</li>
-        <li>Invalidesa</li>
-      </ul>
-    </Trans>
-  },
   "custodies": {
     title: <Trans i18nKey='custodies'>Tipus de custòdia</Trans>,
     body: <Trans i18nKey='custodies_text_llarg'>
