@@ -11,11 +11,6 @@ export const required = value => typeof value !== 'undefined' && value !== "" ? 
 export const email = value =>
     value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value) ?
         <Trans i18nKey='correu_electronic_invalid'>Correu electrònic invàlid</Trans> : undefined;
-export const pncInclosAIngressosBruts = (value, allValues) =>
-  value && value > parseInt(allValues.ingressos_bruts, 10)
-      ? <Trans i18nKey='ingressos_pnc_inclosos_ingressos_bruts'>Els ingressos per pensions no contributives han d'estar
-        inclosos en els ingressos bruts</Trans>
-    : undefined;
 export const empadronamentABarcelonaInferiorAEmpadronamentACatalunya = (value, allValues) =>
     value && allValues.porta_dos_anys_o_mes_empadronat_a_catalunya === false && value > 2
         ? <Trans i18nKey='temps_empadronament_bcn_superior_a_cat'>El temps d'empadronament a Barcelona no pot ésser
