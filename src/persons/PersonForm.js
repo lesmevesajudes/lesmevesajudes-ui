@@ -13,7 +13,6 @@ import {
   anysEmpadronatInferiorAEdat,
   empadronamentABarcelonaInferiorAEmpadronamentACatalunya,
   menorDe120,
-  pncInclosAIngressosBruts,
   required
 } from '../shared/formValidators';
 import {focusFirstQuestionWithName, namefirstFieldWithError} from '../shared/reduxFormTools';
@@ -29,7 +28,6 @@ import type {Person, PersonRole} from './PersonTypes';
 export type PersonFormInitialValues = Person | { is_the_person_in_front_of_the_computer: boolean };
 
 type Props = {
-  cobraAlgunTipusDePensioNoContributiva: Boolean,
   edat: number,
   esAturat: Boolean,
   esDona: Boolean,
@@ -58,7 +56,6 @@ const formName = 'PersonForm';
 
 let PersonForm = (props: Props) => {
   const {
-    cobraAlgunTipusDePensioNoContributiva,
     edat,
     esAturat,
     esDona,
@@ -365,21 +362,6 @@ let PersonForm = (props: Props) => {
                       Indiqui la suma dels seus ingressos dels últims sis mesos
                     </Trans>
                   </MoneyQuestion>
-                  {esFamiliarOUsuari &&
-                  <YesNoQuestion name='cobra_algun_tipus_de_pensio_no_contributiva' validate={[required]}>
-                    <Trans {...i18nKey('cobra_algun_tipus_de_pensio_no_contributiva', personTranslationContext)}>
-                      Cobra algun tipus de pensió no contributiva?
-                    </Trans>
-                  </YesNoQuestion>}
-
-                  {esFamiliarOUsuari && cobraAlgunTipusDePensioNoContributiva &&
-                  <Fragment>
-                    <MoneyQuestion name='ingressos_per_pnc' validate={[pncInclosAIngressosBruts, required]}>
-                      <Trans {...i18nKey('ingressos_per_pnc', personTranslationContext)}>
-                        Indiqui la suma dels imports anuals que percep en concepte de pensions no contributives
-                      </Trans>
-                    </MoneyQuestion>
-                  </Fragment>}
 
                   {esFamiliarOUsuari && inscritComADemandantDocupacio &&
                   <YesNoQuestion name='gaudeix_de_prestacio_contributiva_o_subsidi_desocupacio'
@@ -486,7 +468,6 @@ PersonForm = reduxForm({
 const selector = formValueSelector(formName);
 
 PersonForm = withNamespaces('translations')(connect(state => {
-  const cobraAlgunTipusDePensioNoContributiva = selector(state, 'cobra_algun_tipus_de_pensio_no_contributiva');
   const edat = selector(state, 'edat');
   const esAturat = selector(state, 'situacio_laboral') === 'aturat';
   const esDona = selector(state, 'sexe') === 'dona';
@@ -508,7 +489,6 @@ PersonForm = withNamespaces('translations')(connect(state => {
   const helpTopic = state.helpSystem.currentHelpTopic;
 
   return {
-    cobraAlgunTipusDePensioNoContributiva,
     helpTopic,
     edat,
     esAturat,
