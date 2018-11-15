@@ -1,18 +1,18 @@
 //@flow
-import { Avatar, Card, Divider, Grid, Icon, List, ListItem, ListItemText } from "@material-ui/core";
+import {Avatar, Card, Divider, Grid, Icon, List, ListItem, ListItemText} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
-import { withStyles } from "@material-ui/core/styles";
+import {withStyles} from "@material-ui/core/styles";
 import Tooltip from "@material-ui/core/Tooltip";
 import Typography from "@material-ui/core/Typography";
-import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
+import withWidth, {isWidthUp} from "@material-ui/core/withWidth";
 import React from "react";
-import { Trans, withNamespaces } from "react-i18next";
-import { AppFormContainer, AppFormTitle } from "../components/AppForms";
-import { create } from "../shared/UUID";
-import { styles } from "../styles/theme";
-import type { Person } from "./PersonTypes";
-import { rolesThatShowExtraInfo } from "./PersonTypes";
+import {Trans, withNamespaces} from "react-i18next";
+import {AppFormContainer, AppFormTitle} from "../components/AppForms";
+import {create} from "../shared/UUID";
+import {styles} from "../styles/theme";
+import type {Person} from "./PersonTypes";
+import {rolesThatShowExtraInfo} from "./PersonTypes";
 
 const initials = (name: string) => {
   const initials = name.replace(/[^a-zA-Z- ]/g, "").match(/\b\w/g);
@@ -46,11 +46,10 @@ type PersonCardProps = {
 export const PersonCard = withWidth()(withNamespaces("translations")((props: PersonCardProps) => {
   const { classes, person, t } = props;
   const { nom, edat, sexe } = person;
-  const rol_traduit = t(`${person.relacio_parentiu}_${sexe === "dona" ? "feminine" : "masculine"}`);
-  const el_teu_traduit = t(`el_teu_${sexe === "dona" ? "feminine" : "masculine"}`);
+  const rol_traduit = t(`es_${person.relacio_parentiu}_${sexe === "dona" ? "feminine" : "masculine"}`);
   const secondaryText = rolesThatShowExtraInfo.includes(person.relacio_parentiu) ?
-    <Trans i18nKey='descripcio_persona' nom={edat} rol_traduit={rol_traduit} el_teu_traduit={el_teu_traduit}>
-      {{ edat }} anys és {{ el_teu_traduit }} {{ rol_traduit }}
+      <Trans i18nKey='descripcio_persona' nom={edat} rol_traduit={rol_traduit}>
+        {{edat}} anys és {{rol_traduit}}
     </Trans> : "";
 
   return (
