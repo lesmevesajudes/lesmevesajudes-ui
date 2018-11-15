@@ -79,7 +79,7 @@ class PersonalBenefits extends React.Component<PersonalBenefitsProps> {
       {
         ID: 'GG_270_mensual',
         name: <Trans i18nKey='GG_270_mensual_title'>Renda garantida ciutadana</Trans>,
-        amountText: '-',
+        doNotShowAmount: true,
         url: '/ajuts/rgc',
         from: undefined,
         to: undefined,

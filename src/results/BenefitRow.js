@@ -68,7 +68,7 @@ export const BenefitRow = ({benefit, subject, classes}: Props) =>
               : classes.darkGrayText
         }/>
       </Grid>
-      <Grid item container direction='column' xs={7} justify='center'>
+      <Grid item container direction='column' xs={benefit.doNotShowAmount === true ? 9 : 7} justify='center'>
         <Grid item>
           <Typography className={classes.ResultsBenefitText}>{benefit.name}</Typography>
         </Grid>
@@ -76,6 +76,7 @@ export const BenefitRow = ({benefit, subject, classes}: Props) =>
           <Period benefit={benefit}/>
         </Grid>
       </Grid>
+      {benefit.doNotShowAmount !== true &&
       <Grid item container className={classes.ResultsSeparator} xs={2} alignItems='center' justify='center'>
         <Typography className={classes.ResultsBenefitText}>
           {typeof benefit.amountText !== "undefined"
@@ -85,7 +86,7 @@ export const BenefitRow = ({benefit, subject, classes}: Props) =>
         <Typography className={classes.ResultsBenefitText}>
           {benefit.conditions}
         </Typography>
-      </Grid>
+      </Grid>}
       <Grid item className={classes.ResultsSeparator} xs={2}>
         <Link className={classes.linkBenefits} to={benefit.url}>
           <Tooltip id='mes-info-tooltip'
