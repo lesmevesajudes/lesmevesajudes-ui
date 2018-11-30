@@ -19,8 +19,7 @@ const possibleBenefits = [
   {
     ID: 'HA_002',
     name: <Trans i18nKey='HA_002_title'>Prestacions econòmiques d’especial urgència davant la pèrdua de l’habitatge per
-      desnonament o execució
-      hipotecària</Trans>,
+      desnonament o execució hipotecària</Trans>,
     amountText: <Trans i18nKey='HA_002_import'>Fins a 200 € /mes</Trans>,
     conditions: <Trans i18nKey='maxim_12_mesos'>Màxim 12 mesos</Trans>,
     url: '/ajuts/desnonament_especial_urgencia',

@@ -110,7 +110,7 @@ class PersonalBenefits extends React.Component<PersonalBenefitsProps> {
         <Grid container direction='column' className={this.props.classes.ResultItemResultOut} key={person.id}>
           <Typography variant='subtitle1' gutterBottom>
             <Trans i18nKey='ajudes_a_les_que_opta_persona'>Ajudes de les que podria ser
-              beneficiàri/a:</Trans><b>{person.nom}</b>
+              beneficiàri/a: </Trans><b>{person.nom}</b>
           </Typography>
           {(this.hasAnyBenefit(personBenefits))
               ? this.possibleBenefits.map(benefit => this.renderAPersonalBenefit(benefit, personBenefits))
