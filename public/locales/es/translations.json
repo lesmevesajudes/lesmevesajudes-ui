@@ -319,5 +319,7 @@
     "es_cunyat_masculine": "tu cuñado",
     "es_cunyat_feminine": "tu cuñada",
     "es_gendre_masculine": "tu yerno",
-    "es_gendre_feminine": "tu nuera"
+    "es_gendre_feminine": "tu nuera",
+    "es_net_feminine": "es tu nieta",
+    "es_net_masculine": "es tu nieto"
 }
