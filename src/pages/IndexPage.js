@@ -12,40 +12,40 @@ import './indexPage/IndexPage.css';
 
 const content = [
   {
-    title: <Trans>Fons d'ajut d'emergència social per a infants</Trans>,
-    body: <Trans>Ajut extraordinari adreçat a famílies en situació de vulnerabilitat per cobrir les necessitats bàsiques
-      de subsistència d\'infants i adolescents de 0 a 16 anys.</Trans>,
+    title: <Trans>Ajudes d’urgència social per a famílies amb infants de 0 a 16 anys</Trans>,
+    body: <Trans>Ajuda extraordinaria adreçada a famílies en situació de vulnerabilitat per cobrir
+      les necessitats bàsiques de subsistència d'infants i adolescents de 0 a 16 anys.</Trans>,
     link: '/ajuts/fons_infancia'
   }, {
-    title: <Trans>Ajuts individuals de menjador</Trans>,
-    body: <Trans>Ajut individual orientat a cobrir el cost del servei de menjador de l'alumnat que pertany a famílies en
-      situacions socioeconòmiques desafavorides.</Trans>,
+    title: <Trans>Ajuts de menjador escolar</Trans>,
+    body: <Trans>Ajut individual orientat a cobrir el cost del servei de menjador de l'alumnat
+      que pertany a famílies en situacions socioeconòmiques desafavorides.</Trans>,
     link: '/ajuts/menjador'
   }, {
-    title: <Trans>Prestacions d'urgència social derivades de la mediació a Barcelona</Trans>,
-    body: <Trans>Prestació econòmica de caràcter temporal adreçada a persones residents a Barcelona amb dificultats per
-      fer front al pagament del lloguer.</Trans>,
+    title: <Trans>Prestacions econòmiques d'urgència social derivades de la mediació a Barcelona</Trans>,
+    body: <Trans>Prestació econòmica de caràcter temporal adreçada a persones residents a
+      Barcelona amb dificultats per fer front al pagament del lloguer.</Trans>,
     link: '/ajuts/lloguer_mediacio'
   }, {
-    title: <Trans>Prestacions d’especial urgència per al pagament de deutes del lloguer</Trans>,
+    title: <Trans>Prestació econòmica per al pagament de deutes del lloguer</Trans>,
     body: <Trans>
-      Prestació econòmica que s’atorga a persones amb deutes contrets per rebuts impagats de rendes de
-      lloguer.
+      Prestació econòmica que s’atorga a persones amb deutes contrets per
+      rebuts impagats de rendes de lloguer.
     </Trans>,
     link: '/ajuts/lloguer_especial_urgencia'
   }, {
-    title: <Trans>Prestacions d’especial urgència per al pagament de quotes d'hipoteca</Trans>,
+    title: <Trans>Prestació econòmica d’urgència per al pagament de deutes d’hipoteca</Trans>,
     body: <Trans>
-      Prestació a fons perdut que s’atorga a persones amb deutes contrets per rebuts impagats de quotes
-      d’amortització del préstec hipotecari.
+      Prestació a fons perdut que s’atorga a persones amb deutes contrets per
+      rebuts impagats de quotes d’amortització del préstec hipotecari.
     </Trans>,
     link: '/ajuts/hipoteca_especial_urgencia'
   }, {
-    title: <Trans>Prestacions d’especial urgència per la pèrdua de l’habitatge </Trans>,
+    title: <Trans>Ajuda per pèrdua de l’habitatge</Trans>,
     body: <Trans>
-      Prestació econòmica d’urgència que s’atorga a persones que han perdut l’habitatge com a
-      conseqüència d’un
-      procés de desnonament o d’execució hipotecària.
+      Prestació econòmica d’urgència que s’atorga a persones que han perdut
+      l’habitatge com a conseqüència d’un procés de desnonament o d’execució
+      hipotecària.
     </Trans>,
     link: '/ajuts/desnonament_especial_urgencia'
   }, {
@@ -58,23 +58,17 @@ const content = [
   }, {
     title: <Trans>Renda activa d'inserció</Trans>,
     body: <Trans>
-      Ajut econòmic destinat a incrementar les oportunitats d’inserció en el mercat laboral a
-      treballadors en
-      atur amb necessitats econòmiques especials, com ara:
-      Aturats de llarga durada
-      Persones amb discapacitat
-      Emigrants retornats
-      Víctimes de violència de gènere o domèstica
+      Ajuda econòmica destinada a incrementar les oportunitats d’inserció en el
+      mercat laboral a treballadors/es en atur amb necessitats econòmiques
+      especials.
     </Trans>,
     link: '/ajuts/rai'
   }, {
-    title: <Trans>Renda Garantida Ciutadana</Trans>,
+    title: <Trans>Renda garantida de ciutadania</Trans>,
     body: <Trans>
-      Renda destinada a garantir que tots els ciutadans i ciutadanes de Catalunya es puguin fer càrrec
-      de les
-      despeses essencials per al manteniment propi o de les persones que integren la unitat familiar o
-      de
-      convivència.
+      Renda destinada a garantir que tots els ciutadans i ciutadanes de Catalunya
+      es puguin fer càrrec de les despeses essencials per al manteniment propi o
+      de les persones que integren la unitat familiar o de convivència.
     </Trans>,
     link: '/ajuts/rgc'
   }
