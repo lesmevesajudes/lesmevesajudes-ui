@@ -112,9 +112,8 @@ class ResultsPage extends React.Component<Props> {
             <Trans i18nKey='avis_ajudes_a_les_que_podria_optar'>A continuació es mostrarà el conjunt d’ajudes a les
               quals podria arribar a optar.
               L’informem que la concessió d’una d’elles pot fer variar els llindars d’ingressos i/o requisits que
-              les
-              altres ajudes preveuen per a ser concedides.&nbsp;
-              Per tant, a la pràctica, pot trobar ajudes incompatibles entre sí.&nbsp;
+              les altres ajudes preveuen per a ser concedides.<br/>
+              Per tant, a la pràctica, pot trobar ajudes incompatibles entre sí.<br/>
               Informi-se’n clicant sobre cada ajut.</Trans>
           </ShowMeOnceModal>
           <AppFormTitle iconName='resultats'>

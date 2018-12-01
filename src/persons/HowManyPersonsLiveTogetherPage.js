@@ -44,12 +44,11 @@ let HowManyPersonsLiveTogetherPage = (props: Props) => {
                          title={<Trans i18nKey='dades_sobre_les_persones'>Dades sobre les persones</Trans>}>
           <Trans i18nKey='text_avis_inci_simulacio'>
             A partir d’aquest moment et formularem una sèrie de preguntes personals i també sobre els membres de la teva
-            llar que són necessàries per conèixer els ajuts als quals pots arribar a optar.
+            llar que són necessàries per conèixer els ajuts als quals pots arribar a optar.<br/>
             T’informem que les dades que incorporis per a la simulació no poden identificar les persones que
-            l'utilitzen,
-            per la qual cosa no es requereix cap consentiment.
-            Aquesta eina no tramita les sol·licituds.
-            Pots començar la simulació.
+            l'utilitzen, per la qual cosa no es requereix cap consentiment.<br/>
+            Aquesta eina no tramita les sol·licituds.<br/>
+            Pots començar la simulació
           </Trans>
         </ShowMeOnceModal>
         <AppForm>
