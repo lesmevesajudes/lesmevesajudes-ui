@@ -3,6 +3,8 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import Backend from 'i18next-xhr-backend';
 import {reactI18nextModule} from 'react-i18next';
 
+const {homepage} = require('../package.json');
+
 i18n
   .use(Backend)
   .use(LanguageDetector)
@@ -19,7 +21,10 @@ i18n
     interpolation: {
       escapeValue: false // not needed for react!!
     },
-
+    backend: {
+      // for all available options read the backend's repository readme file
+      loadPath: homepage + '/locales/{{lng}}/{{ns}}.json'
+    },
     react: {
       wait: true
     }
