@@ -1,8 +1,6 @@
-import {Grid} from '@material-ui/core';
 import {withStyles} from '@material-ui/core/styles';
 import React from 'react';
 import {Trans, withNamespaces} from 'react-i18next';
-import AppHeader from '../components/AppHeader/AppHeader';
 import StepsComponent from '../components/Steps/StepsComponent';
 import FamilyForm from '../family/FamilyForm';
 import PersonsPage from '../persons/PersonsPage'
@@ -49,9 +47,6 @@ const steps = [
 
 
 const WizardPage = () =>
-    <Grid>
-      <AppHeader/>
-      <StepsComponent steps={steps}/>
-    </Grid>;
+    <StepsComponent steps={steps}/>;
 
 export default withNamespaces('translations')(withStyles(styles)(WizardPage));
