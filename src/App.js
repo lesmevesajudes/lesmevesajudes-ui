@@ -3,7 +3,7 @@ import {MuiThemeProvider} from '@material-ui/core/styles';
 import React, {Component} from 'react';
 import {Provider} from 'react-redux';
 import {Route, Switch} from 'react-router-dom';
-import HashRouter from 'react-router-dom/es/HashRouter';
+import HashRouter from 'react-router-dom/HashRouter';
 import ScrollToTop from './components/Common/ScrollToTop';
 import {dev} from './components/Dev';
 import CorporateHeader from './components/Header/CorporateHeader';
