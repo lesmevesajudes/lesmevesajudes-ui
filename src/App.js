@@ -2,7 +2,8 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import {MuiThemeProvider} from '@material-ui/core/styles';
 import React, {Component} from 'react';
 import {Provider} from 'react-redux';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
+import HashRouter from 'react-router-dom/es/HashRouter';
 import ScrollToTop from './components/Common/ScrollToTop';
 import {dev} from './components/Dev';
 import CorporateHeader from './components/Header/CorporateHeader';
@@ -37,6 +38,7 @@ const preloadedState = window.__PRELOADED_STATE__;
 
 const store = configureStore(preloadedState);
 
+
 class App extends Component {
   render() {
     return (
@@ -45,9 +47,9 @@ class App extends Component {
             <CorporateHeader/>
             <CssBaseline/>
             <Provider store={store}>
-              <BrowserRouter>
-                <Switch>
-                  <ScrollToTop>
+              <HashRouter>
+                <ScrollToTop>
+                  <Switch>
                     <Route exact={true} path='/' component={IndexPage}/>
                     <Route path='/wizard' component={WizardPage}/>
                     <Route path='/reportBug' component={ReportBugPage}/>
@@ -65,9 +67,9 @@ class App extends Component {
                     {isDevelopment &&
                     <Route path='/wizard_dev' component={dev(WizardPage)}/>
                     }
-                  </ScrollToTop>
-                </Switch>
-              </BrowserRouter>
+                  </Switch>
+                </ScrollToTop>
+              </HashRouter>
             </Provider>
           </div>
         </MuiThemeProvider>

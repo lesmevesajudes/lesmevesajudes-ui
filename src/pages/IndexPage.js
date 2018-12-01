@@ -105,10 +105,9 @@ const IndexPage = (props) =>
       <div className='CTA'>
         <p className='PresentationText' style={{textAlign: 'center'}}>
           <Trans>
-            Aquesta eina et permetrà consultar a quins ajuts i prestacions socials pots optar.
-            El simulador, que es troba en fase inicial, anirà incorporant noves ajudes, tant de l’Ajuntament de
-            Barcelona
-            com de la Generalitat i l’Estat.
+            Aquesta eina et permetrà consultar a quins ajuts i prestacions socials pots optar. El simulador, que es
+            troba en fase inicial, anirà incorporant noves ajudes, tant de l’Ajuntament de Barcelona com de la
+            Generalitat i l’Estat.
           </Trans>
         </p>
       </div>
