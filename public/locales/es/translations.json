@@ -199,7 +199,7 @@
     "nou_mesos_o_mes": "9 meses o más",
     "titular_hipoteca_temps_empadronat_masculine": "¿Cuánto tiempo hace que {{titularContracteHipoteca.nom}} está empadronado en esta vivienda?",
     "ha_pagat_almenys_3_quotes_del_lloguer": "¿Se han pagado 3 o más cuotas de alquiler desde la firma del contrato?",
-    "relacio_de_parentiu_amb_el_propietari_one": "Tienes relación de parentesco con el propietario de la vivienda",
+    "relacio_de_parentiu_amb_el_propietari_one": "¿Tienes relación de parentesco con el propietario de la vivienda?",
     "relacio_de_parentiu_amb_el_propietari_multiple": "¿Alguna persona que convive en esta vivienda tiene relación de parentesco con el propietario de la vivienda?",
     "ha_pagat_12_mesos_daquesta_hipoteca": "¿Has pagado 12 cuotas o más de esta hipoteca?",
     "tinc_alguna_propietat_a_part_habitatge_habitual_one": "¿Tienes alguna propiedad aparte de la vivienda habitual?",
