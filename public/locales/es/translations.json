@@ -201,13 +201,13 @@
     "ha_pagat_almenys_3_quotes_del_lloguer": "¿Se han pagado 3 o más cuotas de alquiler desde la firma del contrato?",
     "relacio_de_parentiu_amb_el_propietari_one": "Tienes relación de parentesco con el propietario de la vivienda",
     "relacio_de_parentiu_amb_el_propietari_multiple": "¿Alguna persona que convive en esta vivienda tiene relación de parentesco con el propietario de la vivienda?",
-    "ha_pagat_12_mesos_daquesta_hipoteca": "¿Has pagado al menos 12 cuotas de esta hipoteca?",
+    "ha_pagat_12_mesos_daquesta_hipoteca": "¿Has pagado 12 cuotas o más de esta hipoteca?",
     "tinc_alguna_propietat_a_part_habitatge_habitual_one": "¿Tienes alguna propiedad aparte de la vivienda habitual?",
     "tinc_alguna_propietat_a_part_habitatge_habitual_multiple": "¿Alguna persona que convive en esta vivienda tiene una segunda residencia en propiedad?",
     "tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit_one": "¿Dispones del usufructo de esta propiedad?",
     "tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit_multiple": "¿Esta/s persona/s dispone/n del usufructo de esta propiedad?",
-    "es_ocupant_dun_habitatge_gestionat_per_lagencia_de_lhabitatge": "¿Eres ocupante de una vivienda gestionado por la Agencia de la Vivienda de Cataluña o del Instituto Municipal de Vivienda?",
-    "ha_rebut_oferta_per_accedir_a_habitatge_i_lha_rebutjada_one": "¿Se ha recibido una oferta para acceder a una vivienda de parque público de alquiler y no ha sido aceptada?",
+    "es_ocupant_dun_habitatge_gestionat_per_lagencia_de_lhabitatge": "¿Esta vivienda está gestionada por la Agencia de la Vivienda de Cataluña o del Instituto Municipal de Vivienda?",
+    "ha_rebut_oferta_per_accedir_a_habitatge_i_lha_rebutjada_one": "¿Has recibido una oferta para acceder a una vivienda de parque público de alquiler y no la has aceptado?",
     "falten_dades": "Faltan datos para ejecutar la simulación",
     "calculant_ajuts": "Calculando ayudas ...",
     "error_fent_la_peticio": "Error haciendo la petición",
@@ -325,5 +325,5 @@
     "titular_contracte_lloguer_temps_empadronat_feminine": "¿Cuánto tiempo hace que {{titularContracteLloguer.nom}} está empadronada en esta vivienda?",
     "titular_hipoteca_temps_empadronat_feminine": "¿Cuánto tiempo hace que {{titularContracteHipoteca.nom}} está empadronada en esta vivienda?",
     "no_empadronat_feminine": "No está empadronada",
-    "ha_rebut_oferta_per_accedir_a_habitatge_i_lha_rebutjada_multiple": ""
+    "ha_rebut_oferta_per_accedir_a_habitatge_i_lha_rebutjada_multiple": "¿Habéis recibido una oferta para acceder a una vivienda de parque público de alquiler y no la habéis aceptado?"
 }
