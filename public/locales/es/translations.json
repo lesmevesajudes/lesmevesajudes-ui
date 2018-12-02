@@ -193,7 +193,7 @@
     "titular_contracte_de_lloguer": "¿Quién es el titular del contrato de alquiler?",
     "no_conviu": "Una persona que no vive en la vivienda",
     "titular_hipoteca": "¿Quién es el titular de la hipoteca?",
-    "titular_contracte_lloguer_temps_empadronat": "¿Cuánto tiempo hace que {{titularContracteLloguer.nom}} está empadronado/a en esta vivienda?",
+    "titular_contracte_lloguer_temps_empadronat_masculine": "¿Cuánto tiempo hace que {{titularContracteLloguer.nom}} está empadronado en esta vivienda?",
     "no_empadronat": "No está empadronado/a",
     "menys_nou_mesos": "Menos de 9 meses",
     "nou_mesos_o_mes": "9 meses o más",
@@ -321,5 +321,6 @@
     "es_gendre_masculine": "tu yerno",
     "es_gendre_feminine": "tu nuera",
     "es_net_feminine": "es tu nieta",
-    "es_net_masculine": "es tu nieto"
+    "es_net_masculine": "es tu nieto",
+    "titular_contracte_lloguer_temps_empadronat_feminine": "¿Cuánto tiempo hace que {{titularContracteLloguer.nom}} está empadronada en esta vivienda?"
 }
