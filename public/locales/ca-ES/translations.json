@@ -205,7 +205,7 @@
     "tinc_alguna_propietat_a_part_habitatge_habitual_one": "Tens alguna propietat a part de l'habitatge habitual?",
     "tinc_alguna_propietat_a_part_habitatge_habitual_multiple": "Alguna persona que conviu amb tu té alguna propietat a part de l'habitatge habitual?",
     "tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit_one": "Disposes de l’usdefruit d’aquesta propietat?",
-    "tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit": "Aquesta/es persona/es disposa/en de l’usdefruit d’aquesta propietat?",
+    "tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit_multiple": "Aquesta/es persona/es disposa/en de l’usdefruit d’aquesta propietat?",
     "es_ocupant_dun_habitatge_gestionat_per_lagencia_de_lhabitatge": "Ets ocupant d’un habitatge gestionat per l’Agència de l’Habitatge de Catalunya o de l’Institut Municipal d’Habitatge?",
     "ha_rebut_oferta_per_accedir_a_habitatge_i_lha_rebutjada": "Heu rebut una oferta per accedir a un habitatge de parc públic de lloguer i no ha estat acceptada?",
     "falten_dades": "Falten dades per a executar la simulació",
