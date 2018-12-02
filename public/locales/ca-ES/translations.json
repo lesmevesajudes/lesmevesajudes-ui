@@ -197,7 +197,7 @@
     "no_empadronat": "No està empadronat/ada",
     "menys_nou_mesos": "Menys de 9 mesos",
     "nou_mesos_o_mes": "9 mesos o més",
-    "titular_hipoteca_temps_empadronat": "Quant temps fa que {{titularContracteHipoteca.nom}} està empadronat/da en aquest habitatge?",
+    "titular_hipoteca_temps_empadronat_masculine": "Quant temps fa que {{titularContracteHipoteca.nom}} està empadronat en aquest habitatge?",
     "ha_pagat_almenys_3_quotes_del_lloguer": "Has pagat almenys 3 quotes de lloguer des de la signatura del contracte?",
     "relacio_de_parentiu_amb_el_propietari_one": "Tens relació de parentiu amb el propietari de l'habitatge?",
     "relacio_de_parentiu_amb_el_propietari_multiple": "Alguna persona que conviu en aquest habitatge té relació de parentiu amb el propietari de l'habitatge?",
@@ -322,5 +322,6 @@
     "es_gendre_feminine": "la teva jove",
     "es_net_feminine": "és la teva néta",
     "es_net_masculine": "és el teu nét",
-    "titular_contracte_lloguer_temps_empadronat_feminine": "Quant temps fa que {{titularContracteLloguer.nom}} està empadronada en aquest habitatge?"
+    "titular_contracte_lloguer_temps_empadronat_feminine": "Quant temps fa que {{titularContracteLloguer.nom}} està empadronada en aquest habitatge?",
+    "titular_hipoteca_temps_empadronat_feminine": "Quant temps fa que {{titularContracteHipoteca.nom}} està empadronada en aquest habitatge?"
 }
