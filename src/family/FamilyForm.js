@@ -1,5 +1,5 @@
 //@flow
-import {withStyles} from '@material-ui/core';
+import {Hidden, withStyles} from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import MenuItem from '@material-ui/core/MenuItem';
 import Typography from '@material-ui/core/Typography';
@@ -64,7 +64,7 @@ const FamilyForm = (props: Props) => {
         <AppForm>
           <form name='FamilyForm'>
             <Grid container direction='row' justify='space-around' alignItems='stretch' spacing={16}>
-              <Grid item xs={11} sm={6}>
+              <Grid item xs={11} md={6}>
                 <Grid container direction='column' alignItems='stretch' spacing={8}>
                   {fills.valueSeq().map((infant: Person) =>
                       <Grid item xs={12} key={infant.id}>
@@ -163,9 +163,11 @@ const FamilyForm = (props: Props) => {
                   )}
                 </Grid>
               </Grid>
-              <Grid item xs sm={5}>
-                <Sticky enabled={true} top={10}>
-                  <DescriptionText currentField={helpTopic}/>
+              <Grid item xs={5}>
+                <Sticky enabled top={10} bottomBoundary='#stop'>
+                  <Hidden smDown>
+                    <DescriptionText currentField={helpTopic}/>
+                  </Hidden>
                 </Sticky>
               </Grid>
             </Grid>

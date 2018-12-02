@@ -1,5 +1,5 @@
 //@flow
-import {Grid, MenuItem} from "@material-ui/core";
+import {Grid, Hidden, MenuItem} from "@material-ui/core";
 import Icon from "@material-ui/core/Icon/Icon";
 import {Map} from "immutable";
 import React from "react";
@@ -74,6 +74,7 @@ const ResidenceForm = (props: Props) => {
     titularContracteLloguer,
     titularContracteHipoteca
   } = props;
+
   const buildTranslationContext = (items: Array<string>) => ({context: items.join('_')});
   const sexDecider = (person: Person) => person.sexe === 'dona' ? 'feminine' : 'masculine';
   const numberOfPersonsDecider = (numberOfPersons: number) => numberOfPersons === 1 ? 'one' : 'multiple';
@@ -89,7 +90,7 @@ const ResidenceForm = (props: Props) => {
         <AppForm>
           <form name='ResidenceForm'>
             <Grid container direction='row' justify='space-around' alignItems='stretch' spacing={16}>
-              <Grid item xs={11} sm={6}>
+              <Grid item xs={11} md={6}>
                 <Grid container direction='column' alignItems='stretch' spacing={8}>
                   <MultipleAnswerQuestion name='relacio_habitatge'
                                           label={
@@ -333,9 +334,11 @@ const ResidenceForm = (props: Props) => {
 
                 </Grid>
               </Grid>
-              <Grid item sm={5}>
-                <Sticky enabled={true} top={10} bottomBoundary='#stop'>
-                  <DescriptionText currentField={helpTopic}/>
+              <Grid item xs={5}>
+                <Sticky enabled top={10} bottomBoundary='#stop'>
+                  <Hidden smDown>
+                    <DescriptionText currentField={helpTopic}/>
+                  </Hidden>
                 </Sticky>
               </Grid>
             </Grid>

@@ -61,8 +61,8 @@ class ResultsPage extends React.Component<Props> {
           <AppFormContainer>
             <h1><Trans i18nKey='ajudes_a_les_que_podria_optar'>Ajudes a les que podria optar</Trans></h1>
             <Grid container xs={12}>
-              <Grid item xs={12} md={11}>
-                <Typography className={this.props.classes.errorText}>
+              <Grid item xs={12} sm={11}>
+                <Typography variant='h6'>
                   <Trans i18nKey='falten_dades'>Falten dades per a executar la simulació</Trans>
                 </Typography>
               </Grid>
@@ -74,7 +74,7 @@ class ResultsPage extends React.Component<Props> {
     if (!isRequestDone) {
       return (
           <AppFormContainer>
-            <Grid item xs={12} md={11}>
+            <Grid item xs={12} sm={11}>
               <Grid container direction='column' justify='center' alignItems='center'>
                 <Grid item>
                   <img className="spinner" src={Spinner} width="40" alt="carregant"/>
@@ -92,7 +92,7 @@ class ResultsPage extends React.Component<Props> {
     if (isRequestDone && isError) {
       return (
           <AppFormContainer>
-            <Grid item xs={12}>
+            <Grid item xs={12} sm={11}>
               <Typography variant='h6'><Trans i18nKey='error_fent_la_peticio'>Error fent la petició</Trans></Typography>
               <Grid container direction='column' className='ResultList'>
                 <Grid item>
@@ -108,7 +108,8 @@ class ResultsPage extends React.Component<Props> {
     return (
         <AppFormContainer>
           <ShowMeOnceModal name='resultsModal'
-                           title={<Trans i18nKey='ajudes_a_les_que_podria_optar'>Ajudes a les que podria optar</Trans>}>
+                           title={<Trans i18nKey='ajudes_a_les_que_podria_optar'>Ajudes a les que podria
+                             optar</Trans>}>
             <Trans i18nKey='avis_ajudes_a_les_que_podria_optar'>A continuació es mostrarà el conjunt d’ajudes a les
               quals podria arribar a optar.
               L’informem que la concessió d’una d’elles pot fer variar els llindars d’ingressos i/o requisits que
