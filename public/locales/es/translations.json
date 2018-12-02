@@ -205,7 +205,7 @@
     "tinc_alguna_propietat_a_part_habitatge_habitual_one": "¿Tienes alguna propiedad aparte de la vivienda habitual?",
     "tinc_alguna_propietat_a_part_habitatge_habitual_multiple": "¿Alguna persona que convive en esta vivienda tiene una segunda residencia en propiedad?",
     "tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit_one": "¿Dispones del usufructo de esta propiedad?",
-    "tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit": "¿Esta/s persona/s dispone/n del usufructo de esta propiedad?",
+    "tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit_multiple": "¿Esta/s persona/s dispone/n del usufructo de esta propiedad?",
     "es_ocupant_dun_habitatge_gestionat_per_lagencia_de_lhabitatge": "¿Eres ocupante de una vivienda gestionado por la Agencia de la Vivienda de Cataluña o del Instituto Municipal de Vivienda?",
     "ha_rebut_oferta_per_accedir_a_habitatge_i_lha_rebutjada": "¿Se ha recibido una oferta para acceder a una vivienda de parque público de alquiler y no ha sido aceptada?",
     "falten_dades": "Faltan datos para ejecutar la simulación",
