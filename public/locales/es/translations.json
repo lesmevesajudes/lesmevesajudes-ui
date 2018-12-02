@@ -207,7 +207,7 @@
     "tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit_one": "¿Dispones del usufructo de esta propiedad?",
     "tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit_multiple": "¿Esta/s persona/s dispone/n del usufructo de esta propiedad?",
     "es_ocupant_dun_habitatge_gestionat_per_lagencia_de_lhabitatge": "¿Eres ocupante de una vivienda gestionado por la Agencia de la Vivienda de Cataluña o del Instituto Municipal de Vivienda?",
-    "ha_rebut_oferta_per_accedir_a_habitatge_i_lha_rebutjada": "¿Se ha recibido una oferta para acceder a una vivienda de parque público de alquiler y no ha sido aceptada?",
+    "ha_rebut_oferta_per_accedir_a_habitatge_i_lha_rebutjada_one": "¿Se ha recibido una oferta para acceder a una vivienda de parque público de alquiler y no ha sido aceptada?",
     "falten_dades": "Faltan datos para ejecutar la simulación",
     "calculant_ajuts": "Calculando ayudas ...",
     "error_fent_la_peticio": "Error haciendo la petición",
@@ -324,5 +324,6 @@
     "es_net_masculine": "es tu nieto",
     "titular_contracte_lloguer_temps_empadronat_feminine": "¿Cuánto tiempo hace que {{titularContracteLloguer.nom}} está empadronada en esta vivienda?",
     "titular_hipoteca_temps_empadronat_feminine": "¿Cuánto tiempo hace que {{titularContracteHipoteca.nom}} está empadronada en esta vivienda?",
-    "no_empadronat_feminine": "No está empadronada"
+    "no_empadronat_feminine": "No está empadronada",
+    "ha_rebut_oferta_per_accedir_a_habitatge_i_lha_rebutjada_multiple": ""
 }
