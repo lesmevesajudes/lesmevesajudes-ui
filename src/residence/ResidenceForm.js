@@ -73,6 +73,11 @@ const ResidenceForm = (props: Props) => {
     titularContracteLloguer,
     titularContracteHipoteca
   } = props;
+  const buildTranslationContext = (items: Array<string>) => ({context: items.join('_')});
+  const sexDecider = (person: Person) => person.sexe === 'dona' ? 'feminine' : 'masculine';
+  const sexTranslationContext = (person: Person) => buildTranslationContext([sexDecider(person)]);
+  const i18nKey = (keyname: string, context: Object) => [keyname, context.context].join('_');
+  const i18nKeyObject = (keyname: string, context: Object) => ({i18nKey: i18nKey(keyname, context)});
   return (
       <AppFormContainer>
         <AppFormTitle iconName='domicili'>
@@ -224,11 +229,14 @@ const ResidenceForm = (props: Props) => {
                   && typeof titularContracteLloguer !== "undefined"
                   && titularContracteLloguer !== "no-conviu" &&
                   <MultipleAnswerQuestion name='titular_contracte_lloguer_temps_empadronat'
-                                          label={t('titular_contracte_lloguer_temps_empadronat', {titularContracteLloguer})}
+                                          label={t(i18nKey('titular_contracte_lloguer_temps_empadronat', sexTranslationContext(titularContracteLloguer)), {titularContracteLloguer})}
                                           validate={[required]}
                   >
-                    <MenuItem value='no_empadronat'><Trans i18nKey='no_empadronat'>No està
-                      empadronat/ada</Trans></MenuItem>
+                    <MenuItem value='no_empadronat'>
+                      <Trans {...i18nKeyObject('no_empadronat', sexTranslationContext(titularContracteLloguer))}>
+                        No està empadronat/ada
+                      </Trans>
+                    </MenuItem>
                     <MenuItem value='menys_nou_mesos'><Trans i18nKey='menys_nou_mesos'>Menys de 9
                       mesos</Trans></MenuItem>
                     <MenuItem value='nou_mesos_o_mes'><Trans i18nKey='nou_mesos_o_mes'>9 mesos o més</Trans></MenuItem>
@@ -239,14 +247,24 @@ const ResidenceForm = (props: Props) => {
                   && typeof titularContracteHipoteca !== "undefined"
                   && titularContracteHipoteca !== "no-conviu" &&
                   <MultipleAnswerQuestion name='titular_hipoteca_temps_empadronat'
-                                          label={t('titular_hipoteca_temps_empadronat', {titularContracteHipoteca})}
+                                          label={t(i18nKey('titular_hipoteca_temps_empadronat', sexTranslationContext(titularContracteHipoteca)), {titularContracteHipoteca})}
                                           validate={[required]}
                   >
-                    <MenuItem value='no_empadronat'><Trans i18nKey='no_empadronat'>No està
-                      empadronat/ada</Trans></MenuItem>
-                    <MenuItem value='menys_nou_mesos'><Trans i18nKey='menys_nou_mesos'>Menys de 9
-                      mesos</Trans></MenuItem>
-                    <MenuItem value='nou_mesos_o_mes'><Trans i18nKey='nou_mesos_o_mes'>9 mesos o més</Trans></MenuItem>
+                    <MenuItem value='no_empadronat'>
+                      <Trans {...i18nKeyObject('no_empadronat', sexTranslationContext(titularContracteHipoteca))}>
+                        No està empadronat/ada
+                      </Trans>
+                    </MenuItem>
+                    <MenuItem value='menys_nou_mesos'>
+                      <Trans i18nKey='menys_nou_mesos'>
+                        Menys de 9 mesos
+                      </Trans>
+                    </MenuItem>
+                    <MenuItem value='nou_mesos_o_mes'>
+                      <Trans i18nKey='nou_mesos_o_mes'>
+                        9 mesos o més
+                      </Trans>
+                    </MenuItem>
                   </MultipleAnswerQuestion>}
 
                   {existeixDeutePagamentLloguer &&
@@ -350,7 +368,9 @@ function mapStateToProps(state) {
   const properContracteDeLloguer = selector(state, "proper_contracte_de_lloguer");
   const titularContracteLloguer = state.persons.get(selector(state, "titular_contracte_de_lloguer_id"));
   const titularContracteHipoteca = state.persons.get(selector(state, "titular_hipoteca_id"));
-
+  if (typeof titularContracteLloguer !== 'undefined') {
+    console.log("Holi: ", titularContracteLloguer);
+  }
   return {
     currentField: currentFocussedFieldSelector("ResidenceForm")(state),
     esLlogater: esLlogater,
