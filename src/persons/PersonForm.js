@@ -95,7 +95,7 @@ let PersonForm = (props: Props) => {
           <Field component='input' name='id' type='hidden'/>
           <Field component='input' name='is_the_user_in_front_of_the_computer' type='hidden'/>
           <Grid container direction='row' justify='space-around' alignItems='stretch' spacing={16}>
-            <Grid item xs={11} sm={6}>
+            <Grid item xs={11} md={6}>
               <Grid container direction='column' alignItems='stretch' spacing={16}>
                 <FormSubTitle>
                   <Trans i18nKey='informacio_personal'>Informació personal</Trans>
