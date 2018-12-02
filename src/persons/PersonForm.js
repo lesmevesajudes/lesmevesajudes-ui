@@ -489,7 +489,6 @@ PersonForm = withNamespaces('translations')(connect(state => {
   const helpTopic = state.helpSystem.currentHelpTopic;
 
   return {
-    helpTopic,
     edat,
     esAturat,
     esDona,
@@ -498,6 +497,7 @@ PersonForm = withNamespaces('translations')(connect(state => {
     esFillastre,
     esHome,
     haTreballatALEstranger6Mesos,
+    helpTopic,
     inscritComADemandantDocupacio,
     isTheUserInFrontOfTheComputer,
     membreDeFamiliaReagrupada,

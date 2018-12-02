@@ -40,13 +40,14 @@ type Props = {
   haEstatDesnonat: boolean,
   haRebutNotificacio: boolean,
   haSeleccionatAlgunaRelacioAmbLHabitatge: boolean,
-  t: Function,
+  helpTopic: string,
   initialValues: ?ResidenceData,
   nombreDePersonesQueConviuen: number,
   noTeHabitatgeFix: boolean,
   personesQuePodenTenirContracte: Map<PersonID, Person>,
   properContracteDeLloguer: boolean,
   state: any,
+  t: Function,
   teAlgunaPropietat: boolean,
   teHabitatgeHabitual: boolean,
   titularContracteLloguer: Person,
@@ -55,7 +56,6 @@ type Props = {
 
 const ResidenceForm = (props: Props) => {
   const {
-    currentField,
     esLlogater,
     esPropietari,
     existeixDeutePagamentHipoteca,
@@ -64,6 +64,7 @@ const ResidenceForm = (props: Props) => {
     haEstatDesnonat,
     haRebutNotificacio,
     haSeleccionatAlgunaRelacioAmbLHabitatge,
+    helpTopic,
     nombreDePersonesQueConviuen,
     noTeHabitatgeFix,
     properContracteDeLloguer,
@@ -75,7 +76,9 @@ const ResidenceForm = (props: Props) => {
   } = props;
   const buildTranslationContext = (items: Array<string>) => ({context: items.join('_')});
   const sexDecider = (person: Person) => person.sexe === 'dona' ? 'feminine' : 'masculine';
+  const numberOfPersonsDecider = (numberOfPersons: number) => numberOfPersons === 1 ? 'one' : 'multiple';
   const sexTranslationContext = (person: Person) => buildTranslationContext([sexDecider(person)]);
+  const numberOfPersonsTranslationContext = (numberOfPersons: number) => buildTranslationContext([numberOfPersonsDecider(numberOfPersons)]);
   const i18nKey = (keyname: string, context: Object) => [keyname, context.context].join('_');
   const i18nKeyObject = (keyname: string, context: Object) => ({i18nKey: i18nKey(keyname, context)});
   return (
@@ -276,17 +279,11 @@ const ResidenceForm = (props: Props) => {
 
                   {esLlogater && existeixDeutePagamentLloguer &&
                   <YesNoQuestion name='relacio_de_parentiu_amb_el_propietari' validate={[required]}>
-                    {nombreDePersonesQueConviuen === 1 &&
-                    <Trans i18nKey='relacio_de_parentiu_amb_el_propietari_one'>
+
+                    <Trans {...i18nKeyObject('relacio_de_parentiu_amb_el_propietari',
+                        numberOfPersonsTranslationContext(nombreDePersonesQueConviuen))}>
                       Té relació de parentiu amb el propietari de l'habitatge
                     </Trans>
-                    }
-                    {nombreDePersonesQueConviuen !== 1 &&
-                    <Trans i18nKey='relacio_de_parentiu_amb_el_propietari_multiple'>
-                      Alguna persona que conviu en aquest habitatge té relació de parentiu amb el propietari de
-                      l'habitatge
-                    </Trans>
-                    }
                   </YesNoQuestion>}
 
                   {existeixDeutePagamentHipoteca &&
@@ -298,28 +295,21 @@ const ResidenceForm = (props: Props) => {
 
                   {(teHabitatgeHabitual || properContracteDeLloguer) &&
                   <YesNoQuestion name='tinc_alguna_propietat_a_part_habitatge_habitual' validate={[required]}>
-                    {nombreDePersonesQueConviuen === 1 &&
-                    <Trans i18nKey='tinc_alguna_propietat_a_part_habitatge_habitual_one'>
+                    <Trans {...i18nKeyObject('tinc_alguna_propietat_a_part_habitatge_habitual',
+                        numberOfPersonsTranslationContext(nombreDePersonesQueConviuen))}>
                       Té alguna propietat a part de l'habitatge habitual?
                     </Trans>
-                    }
-                    {nombreDePersonesQueConviuen !== 1 &&
-                    <Trans i18nKey='tinc_alguna_propietat_a_part_habitatge_habitual_multiple'>
-                      Alguna persona que conviu en aquest habitatge té una segona residència en propietat?
-                    </Trans>
-                    }
                   </YesNoQuestion>}
 
                   {teAlgunaPropietat &&
                   <YesNoQuestion name='tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit'
                                  validate={[required]}>
                     {nombreDePersonesQueConviuen === 1 &&
-                    <Trans i18nKey='tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit_one'>
-                      Disposes de l’usdefruit d’aquesta propietat?
-                    </Trans>}
-                    {nombreDePersonesQueConviuen !== 1 &&
-                    <Trans i18nKey='tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit_multiple'>
-                      Aquesta/es persona disposa/en de l’usdefruit d’aquesta propietat?
+                    <Trans
+                        {...i18nKeyObject('tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit',
+                            numberOfPersonsTranslationContext(nombreDePersonesQueConviuen))}
+                    >
+                      Disposeu de l’usdefruit d’aquesta propietat?
                     </Trans>}
 
                   </YesNoQuestion>}
@@ -335,7 +325,8 @@ const ResidenceForm = (props: Props) => {
 
                   {esLlogater && existeixDeutePagamentLloguer &&
                   <YesNoQuestion name='ha_rebut_oferta_per_accedir_a_habitatge_i_lha_rebutjada' validate={[required]}>
-                    <Trans i18nKey='ha_rebut_oferta_per_accedir_a_habitatge_i_lha_rebutjada'>
+                    <Trans {...i18nKeyObject('ha_rebut_oferta_per_accedir_a_habitatge_i_lha_rebutjada',
+                        numberOfPersonsTranslationContext(nombreDePersonesQueConviuen))}>
                       Ha rebut mai una oferta per accedir a un habitatge de parc públic de lloguer i no l’ha acceptat?
                     </Trans>
                   </YesNoQuestion>}
@@ -344,7 +335,7 @@ const ResidenceForm = (props: Props) => {
               </Grid>
               <Grid item sm={5}>
                 <Sticky enabled={true} top={10} bottomBoundary='#stop'>
-                  <DescriptionText currentField={currentField}/>
+                  <DescriptionText currentField={helpTopic}/>
                 </Sticky>
               </Grid>
             </Grid>
@@ -368,6 +359,7 @@ function mapStateToProps(state) {
   const properContracteDeLloguer = selector(state, "proper_contracte_de_lloguer");
   const titularContracteLloguer = state.persons.get(selector(state, "titular_contracte_de_lloguer_id"));
   const titularContracteHipoteca = state.persons.get(selector(state, "titular_hipoteca_id"));
+  const helpTopic = state.helpSystem.currentHelpTopic;
 
   return {
     currentField: currentFocussedFieldSelector("ResidenceForm")(state),
@@ -379,6 +371,7 @@ function mapStateToProps(state) {
     haEstatDesnonat: selector(state, "ha_perdut_lhabitatge_en_els_ultims_2_anys"),
     haRebutNotificacio: haRebutNotificacio,
     haSeleccionatAlgunaRelacioAmbLHabitatge: haSeleccionatAlgunaRelacioAmbLHabitatge,
+    helpTopic,
     initialValues: state.residence,
     nombreDePersonesQueConviuen: state.persons.count(),
     noTeHabitatgeFix: noTeHabitatgeFix,
