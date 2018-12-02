@@ -207,7 +207,7 @@
     "tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit_one": "Disposes de l’usdefruit d’aquesta propietat?",
     "tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit_multiple": "Aquesta/es persona/es disposa/en de l’usdefruit d’aquesta propietat?",
     "es_ocupant_dun_habitatge_gestionat_per_lagencia_de_lhabitatge": "Ets ocupant d’un habitatge gestionat per l’Agència de l’Habitatge de Catalunya o de l’Institut Municipal d’Habitatge?",
-    "ha_rebut_oferta_per_accedir_a_habitatge_i_lha_rebutjada": "Heu rebut una oferta per accedir a un habitatge de parc públic de lloguer i no ha estat acceptada?",
+    "ha_rebut_oferta_per_accedir_a_habitatge_i_lha_rebutjada_one": "Has rebut una oferta per accedir a un habitatge de parc públic de lloguer i no l'has acceptada?",
     "falten_dades": "Falten dades per a executar la simulació",
     "calculant_ajuts": "Calculant ajudes...",
     "error_fent_la_peticio": "Error fent la petició",
@@ -324,5 +324,6 @@
     "es_net_masculine": "és el teu nét",
     "titular_contracte_lloguer_temps_empadronat_feminine": "Quant temps fa que {{titularContracteLloguer.nom}} està empadronada en aquest habitatge?",
     "titular_hipoteca_temps_empadronat_feminine": "Quant temps fa que {{titularContracteHipoteca.nom}} està empadronada en aquest habitatge?",
-    "no_empadronat_feminine": "No està empadronada"
+    "no_empadronat_feminine": "No està empadronada",
+    "ha_rebut_oferta_per_accedir_a_habitatge_i_lha_rebutjada_multiple": "Heu rebut una oferta per accedir a un habitatge de parc públic de lloguer i no l'heu acceptada?"
 }
