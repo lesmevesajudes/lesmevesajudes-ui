@@ -208,7 +208,7 @@ const HelpTextMap = {
     title: <Trans i18nKey='sexe'>Sexe</Trans>,
     body: <Trans i18nKey='sexe_text_llarg'>Per al càlcul dels diferents ajuts, i segons marca la normativa vigent, cal
       que a l'apartat 'SEXE'
-      seleccioneu el que consta oficialment en el vostre DNI en vigor. L'Ajuntament de Barcelona, atenent a la
+      seleccioneu el que consta oficialment en el vostre DNI en vigor. <br/>L'Ajuntament de Barcelona, atenent a la
       diversitat sexual i de gènere, està treballant perquè cada persona pugui expressar, si així ho desitja, el seu
       gènere i “nom sentit” en tots els documents d’àmbit municipal en els quals calgui informar del sexe</Trans>
   },
