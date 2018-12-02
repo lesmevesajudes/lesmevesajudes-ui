@@ -368,9 +368,7 @@ function mapStateToProps(state) {
   const properContracteDeLloguer = selector(state, "proper_contracte_de_lloguer");
   const titularContracteLloguer = state.persons.get(selector(state, "titular_contracte_de_lloguer_id"));
   const titularContracteHipoteca = state.persons.get(selector(state, "titular_hipoteca_id"));
-  if (typeof titularContracteLloguer !== 'undefined') {
-    console.log("Holi: ", titularContracteLloguer);
-  }
+
   return {
     currentField: currentFocussedFieldSelector("ResidenceForm")(state),
     esLlogater: esLlogater,
