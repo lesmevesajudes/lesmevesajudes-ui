@@ -320,7 +320,7 @@ let PersonForm = (props: Props) => {
                       </Trans>
                     </YesNoQuestion>}
 
-                    {esAturat &&
+                    {esAturat && !inscritComADemandantDocupacio &&
                     <YesNoQuestion name='en_els_ultims_12_mesos_ha_fet_baixa_voluntaria_de_la_feina'
                                    validate={[required]}>
                       <Trans {...i18nKey('en_els_ultims_12_mesos_ha_fet_baixa_voluntaria_de_la_feina', personTranslationContext)}>
