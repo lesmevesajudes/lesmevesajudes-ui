@@ -305,13 +305,12 @@ const ResidenceForm = (props: Props) => {
                   {teAlgunaPropietat &&
                   <YesNoQuestion name='tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit'
                                  validate={[required]}>
-                    {nombreDePersonesQueConviuen === 1 &&
                     <Trans
                         {...i18nKeyObject('tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit',
                             numberOfPersonsTranslationContext(nombreDePersonesQueConviuen))}
                     >
                       Disposeu de l’usdefruit d’aquesta propietat?
-                    </Trans>}
+                    </Trans>
 
                   </YesNoQuestion>}
 
