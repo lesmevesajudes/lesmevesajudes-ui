@@ -34,12 +34,6 @@ class ResultsPage extends React.Component<Props> {
     console.log('form submit:', values);
     this.props.submitReport(values);
   };
-  getReportBugDataFromLocalStorage = () => (
-      {
-        ...(typeof localStorage.getItem('reporter_email') !== 'undefined' && {reporter_email: localStorage.getItem('reporter_email')}),
-        ...(typeof localStorage.getItem('test_group') !== 'undefined' && {test_group: localStorage.getItem('test_group')})
-      });
-
   enoughDataForSimulation() {
     return this.props.persons.count() > 0;
   }
