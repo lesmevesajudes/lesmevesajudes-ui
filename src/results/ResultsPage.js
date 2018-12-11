@@ -6,7 +6,6 @@ import {AppFormContainer, AppFormTitle} from '../components/AppForms';
 import ShowMeOnceModal from '../components/ShowMeOnceModal'
 import type {Person, PersonID} from '../persons/PersonTypes';
 import {submitReport} from "../reportBug/ReportBugActions";
-import ReportBug from '../reportBug/ReportBugForm';
 import Spinner from '../shared/spinner.svg';
 import {styles} from '../styles/theme';
 import {fetchSimulation} from './FetchSimulationAction';
@@ -145,9 +144,6 @@ class ResultsPage extends React.Component<Props> {
                   persons={persons}
                   period={this.period}
               />
-            </Grid>
-            <Grid item xs={12}>
-              <ReportBug initialValues={this.getReportBugDataFromLocalStorage()} onSubmit={this.submitReport}/>
             </Grid>
             <Grid item>
               simulation ID: {simulationID}
