@@ -24,6 +24,7 @@ type Props = {
   reset: Function,
   requestInProgress: boolean,
 }
+
 const resetForm = (reset: Function) => {
   return () => {
     localStorage.removeItem('reporter_email');
@@ -85,51 +86,51 @@ const ReportBugForm = (props: Props) => {
                                validate={[required]}/>
                       </Grid>
                       }
-                    <Grid item>
-                      <label><Trans i18nKey='comentaris_o_millores'>Comentaris o millores</Trans></label>
-                      <Field name='comments' placeholder='...' fullWidth component={TextField}/>
-                    </Grid>
-                    <Grid item>
-                      <label><Trans i18nKey='faciliti_correu_electronic'>Faciliti el seu correu
-                        electrònic</Trans></label>
-                      <Field name='reporter_email' placeholder='john@doe.com' fullWidth component={TextField}
-                             validate={[required, email]}/>
-                    </Grid>
-                    <Grid item>
-                      <MultipleAnswerQuestion label={<Trans i18nKey='grup_de_proves'>Grup de proves</Trans>}
-                                              name='test_group'
-                                              validate={[required]}>
-                        <MenuItem value='professional_serveis_socials'>
-                          <Trans i18nKey='professional_serveis_socials'>Professional serveis socials</Trans>
-                        </MenuItem>
-                        <MenuItem value='entitat_del_tercer_sector'>
-                          <Trans i18nKey='entitat_tercer_sector'>Entitat del tercer sector</Trans>
-                        </MenuItem>
-                        <MenuItem value='altre_personal_de_l_ajuntament_de_barcelona'>
-                          <Trans i18nKey='altre_personal_de_l_ajuntament_de_barcelona'>
-                            Altre personal de l'ajuntament de barcelona
-                          </Trans>
-                        </MenuItem>
-                        <MenuItem value='altres'>
-                          <Trans i18nKey='altres_grups_de_proves'>Altres</Trans>
-                        </MenuItem>
-                      </MultipleAnswerQuestion>
-                    </Grid>
+                      <Grid item>
+                        <label><Trans i18nKey='comentaris_o_millores'>Comentaris o millores</Trans></label>
+                        <Field name='comments' placeholder='...' fullWidth component={TextField}/>
+                      </Grid>
+                      <Grid item>
+                        <label><Trans i18nKey='faciliti_correu_electronic'>Faciliti el seu correu
+                          electrònic</Trans></label>
+                        <Field name='reporter_email' placeholder='john@doe.com' fullWidth component={TextField}
+                               validate={[required, email]}/>
+                      </Grid>
+                      <Grid item>
+                        <MultipleAnswerQuestion label={<Trans i18nKey='grup_de_proves'>Grup de proves</Trans>}
+                                                name='test_group'
+                                                validate={[required]}>
+                          <MenuItem value='professional_serveis_socials'>
+                            <Trans i18nKey='professional_serveis_socials'>Professional serveis socials</Trans>
+                          </MenuItem>
+                          <MenuItem value='entitat_del_tercer_sector'>
+                            <Trans i18nKey='entitat_tercer_sector'>Entitat del tercer sector</Trans>
+                          </MenuItem>
+                          <MenuItem value='altre_personal_de_l_ajuntament_de_barcelona'>
+                            <Trans i18nKey='altre_personal_de_l_ajuntament_de_barcelona'>
+                              Altre personal de l'ajuntament de barcelona
+                            </Trans>
+                          </MenuItem>
+                          <MenuItem value='altres'>
+                            <Trans i18nKey='altres_grups_de_proves'>Altres</Trans>
+                          </MenuItem>
+                        </MultipleAnswerQuestion>
+                      </Grid>
                       <Field component='input' name='application_state' type='hidden'/>
                       <Field component='input' name='simulation_id' type='hidden'/>
                     </Grid>
                     <Grid container direction='row' justify='space-around' style={{paddingTop: '32px'}}>
-                    <Grid item className='margin-buttons'>
-                      <Button variant='contained' color='primary' type='submit'>
-                        <Trans i18nKey='informar'>Informar</Trans>
-                      </Button>
+                      <Grid item className='margin-buttons'>
+                        <Button variant='contained' color='primary' type='submit'>
+                          <Trans i18nKey='informar'>Informar</Trans>
+                        </Button>
+                      </Grid>
+                      <Grid item className='margin-buttons'>
+                        <Button variant='contained' color='secondary' onClick={resetForm(reset)}>
+                          <Trans i18nKey='netejar'>Netejar</Trans>
+                        </Button>
+                      </Grid>
                     </Grid>
-                    <Grid item className='margin-buttons'>
-                      <Button variant='contained' color='secondary' onClick={resetForm(reset)}>
-                        <Trans i18nKey='netejar'>Netejar</Trans>
-                      </Button>
-                    </Grid>
-                  </Grid>
                   </form>
                 </Grid>
               </Grid>
