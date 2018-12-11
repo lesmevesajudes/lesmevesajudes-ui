@@ -18,6 +18,7 @@ export const ResultsContainer = withStyles(styles)((props: AppFormProps) =>
     </Grid>);
 
 type Props = {
+  classes: Object,
   dispatch: Function,
   isError: boolean,
   isRequestDone: boolean,
@@ -54,7 +55,7 @@ class ResultsPage extends React.Component<Props> {
   }
 
   render() {
-    const {isError, isRequestDone, resultsData, persons, simulationID} = this.props;
+    const {isError, isRequestDone, resultsData, persons, simulationID, classes} = this.props;
     if (!this.enoughDataForSimulation()) {
       return (
           <AppFormContainer>
@@ -146,7 +147,9 @@ class ResultsPage extends React.Component<Props> {
               />
             </Grid>
             <Grid item>
-              simulation ID: {simulationID}
+              <Typography className={classes.darkGrayText}>
+                <Trans i18nKey='identificador_simulacio'>Identificador simulació</Trans>: {simulationID}
+              </Typography>
             </Grid>
           </ResultsContainer>
         </AppFormContainer>
@@ -165,4 +168,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, {fetchSimulation, submitReport})(ResultsPage);
+export default withStyles(styles)(connect(mapStateToProps, {fetchSimulation, submitReport})(ResultsPage));
