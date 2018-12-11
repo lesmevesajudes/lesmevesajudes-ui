@@ -26,11 +26,11 @@ const preloadedState = window.__PRELOADED_STATE__;
 
 const store = configureStore(preloadedState);
 
+
 class App extends Component {
   render() {
     return (
         <MuiThemeProvider theme={theme}>
-          <div>
             <CssBaseline/>
             <Provider store={store}>
               <HashRouter>
@@ -46,7 +46,6 @@ class App extends Component {
                 </ScrollToTop>
               </HashRouter>
             </Provider>
-          </div>
         </MuiThemeProvider>
     );
   }
