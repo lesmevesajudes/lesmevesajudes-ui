@@ -259,8 +259,8 @@ export const styles = theme => ({
 export default createMuiTheme({
   typography: {
     fontFamily: 'Source Sans Pro',
-    fontSize: 14,
-    htmlFontSize: 14,
+    fontSize: 16,
+    htmlFontSize: 10,
     h2: {
       textTransform: 'uppercase',
       fontSize: '1.5rem',
