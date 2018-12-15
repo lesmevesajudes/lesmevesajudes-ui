@@ -17,7 +17,7 @@ const DescriptionText = (props) =>
         <Paper className={props.classes.boxDescriptionText}>
           <Grid container direction='column' spacing={8}>
             <Grid item>
-              <Typography variant='h4' component='h3' className={props.classes.titleDescriptionText}>
+              <Typography variant='h4' className={props.classes.titleDescriptionText}>
                 <InfoOutlinedIcon style={{verticalAlign: "top"}} className={props.classes.tertiaryColor}/>&nbsp;
                 {findHelpTextFor(props.currentField).title}
               </Typography>

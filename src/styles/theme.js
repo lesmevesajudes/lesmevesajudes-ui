@@ -92,7 +92,7 @@ export const styles = theme => ({
   titleDescriptionText: {
     color: colors.blackest,
     fontWeight: '600',
-    fontSize: '1.125rem',
+    fontSize: '2.4rem',
     fontFamily: 'Source Sans Pro, sans-serif',
     textAlign: 'justify'
   },
@@ -231,7 +231,6 @@ export const styles = theme => ({
   },
   ResultsBenefitText: {
     color: '#004a8e',
-    fontSize: '1rem'
   },
   ResultsSeparator: {
     minHeight: '75px',
@@ -263,7 +262,7 @@ export default createMuiTheme({
     htmlFontSize: 10,
     h2: {
       textTransform: 'uppercase',
-      fontSize: '1.5rem',
+      fontSize: '2.4rem',
       fontWeight: 600,
       color: colors.secondary,
     },
