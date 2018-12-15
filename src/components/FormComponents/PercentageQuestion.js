@@ -2,7 +2,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import React from 'react';
 import {Trans} from 'react-i18next';
 import {TextField} from 'redux-form-material-ui';
-import {allowOnlyPositive} from '../../components/Common/NormalizeCommon';
+import {allowOnlyPositive} from '../Common/NormalizeCommon';
 import {Question} from './Question';
 
 // TODO Max 100

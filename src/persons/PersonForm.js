@@ -9,6 +9,13 @@ import {Field, formValueSelector, reduxForm} from 'redux-form';
 import {TextField} from 'redux-form-material-ui';
 import {AppForm, AppFormContainer, AppFormTitle} from '../components/AppForms';
 import DescriptionText from '../components/Common/DescriptionText';
+import FormSubTitle from '../components/FormComponents/FormSubTitle';
+import {MoneyQuestion} from '../components/FormComponents/MoneyQuestion';
+import MultipleAnswerQuestion from '../components/FormComponents/MultipleAnswerQuestion';
+import {PercentageQuestion} from '../components/FormComponents/PercentageQuestion';
+import {Question} from '../components/FormComponents/Question';
+import {TimePeriodQuestion} from '../components/FormComponents/TimePeriodQuestion';
+import {YesNoQuestion} from '../components/FormComponents/YesNoQuestion';
 import {
   anysEmpadronatInferiorAEdat,
   empadronamentABarcelonaInferiorAEmpadronamentACatalunya,
@@ -16,13 +23,6 @@ import {
   required
 } from '../shared/formValidators';
 import {focusFirstQuestionWithName, namefirstFieldWithError} from '../shared/reduxFormTools';
-import FormSubTitle from './components/FormSubTitle';
-import {MoneyQuestion} from './components/MoneyQuestion';
-import MultipleAnswerQuestion from './components/MultipleAnswerQuestion';
-import {PercentageQuestion} from './components/PercentageQuestion';
-import {Question} from './components/Question';
-import {TimePeriodQuestion} from './components/TimePeriodQuestion';
-import {YesNoQuestion} from './components/YesNoQuestion';
 import type {Person, PersonRole} from './PersonTypes';
 
 export type PersonFormInitialValues = Person | { is_the_person_in_front_of_the_computer: boolean };

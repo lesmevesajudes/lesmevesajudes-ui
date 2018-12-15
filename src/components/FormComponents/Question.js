@@ -1,10 +1,10 @@
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
-import HelpIcon from '../../components/HelpIcon';
-import {isHelpAvailable} from '../../components/HelpText';
-import {IRemoveMyValueWhenUnmountedField} from "../../components/IRemoveMyValueWhenUnmountedField";
 import {getCanonicalName} from '../../shared/getCanonicalName';
+import HelpIcon from '../HelpIcon';
+import {isHelpAvailable} from '../HelpText';
+import {IRemoveMyValueWhenUnmountedField} from "../IRemoveMyValueWhenUnmountedField";
 
 type Props = {
   name: string
