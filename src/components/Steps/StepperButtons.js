@@ -1,15 +1,15 @@
-import {Button, Grid, Icon} from '@material-ui/core';
-import classNames from 'classnames';
+import {Button, Grid, Icon, withStyles} from '@material-ui/core';
 import React, {Fragment} from "react";
 import {Trans} from 'react-i18next';
+import {styles} from '../../styles/theme';
 
 type Props = {
-  nextIsResults: boolean,
-  buttonVisible: boolean,
-  buttonEnabled: boolean,
-  nextAction: Function,
   backAction: Function,
-  classes: Object
+  buttonEnabled: boolean,
+  buttonVisible: boolean,
+  classes: Object,
+  nextAction: Function,
+  nextIsResults: boolean,
 };
 
 const printPage = function () {
@@ -18,39 +18,41 @@ const printPage = function () {
 };
 
 let StepperButtons = (props: Props) => {
+  const {classes, backAction, buttonEnabled, nextAction, nextIsResults} = props;
   const content = (
-      <Grid container justify={'flex-end'} alignItems={'center'} className='buttons-container'>
-        <Grid item sm={2} md={2}>
-          {typeof props.backAction !== 'undefined' &&
+      <Grid container justify={'flex-end'} alignItems={'center'} className={classes.buttonsContainer}>
+        <Grid item container sm={2} md={2} justify={'flex-end'}>
+          {typeof backAction !== 'undefined' &&
           <Button color='secondary' variant='contained'
-                  disabled={!props.buttonEnabled} onClick={props.backAction}
-                  className={classNames(props.classes.backButton, 'left-button')} >
-            <Icon className={props.classes.rightIcon}>keyboard_arrow_left</Icon><Trans i18nKey='anterior'>Anterior</Trans>
+                  disabled={!buttonEnabled} onClick={backAction}
+                  className={classes.backButton}>
+            <Icon className={classes.leftIcon}>keyboard_arrow_left</Icon><Trans i18nKey='anterior'>Anterior</Trans>
           </Button>}
         </Grid>
-        {typeof props.nextAction === 'undefined' &&
-        <Grid item sm={2} md={2}>
+        {typeof nextAction === 'undefined' &&
+        <Grid item container sm={2} md={2} justify={'flex-end'}>
           <Button color='secondary' variant='contained'
                   onClick={printPage}>
-            <Icon>print</Icon><Trans i18nKey='imprimir'>Imprimir</Trans>
+            <Icon className={classes.leftIcon}>print</Icon><Trans i18nKey='imprimir'>Imprimir</Trans>
           </Button>
         </Grid>
         }
-        <Grid item sm={2} md={2}>
-          {typeof props.nextAction === 'undefined' &&
-          <Button className={classNames('right-button', 'buttonTheme')}
-                  color='secondary' variant='contained'
+        <Grid item container sm={2} md={2} justify={'flex-end'}>
+          {typeof nextAction === 'undefined' &&
+          <Button color='secondary' variant='contained'
                   onClick={() => window.location.replace('/')}
-                  disabled={!props.buttonEnabled}>
+                  disabled={!buttonEnabled}>
+            <Icon className={classes.leftIcon}>cached</Icon>
             <Trans i18nKey='nou_calcul'>Nou càlcul</Trans>
           </Button>
           }
-          {typeof props.nextAction !== 'undefined' &&
-          <Button className={classNames('right-button', 'buttonTheme')}
-                  color='primary' variant='contained'
-                  onClick={props.nextAction}
-                  disabled={!props.buttonEnabled}>
-            {props.nextIsResults ? <Trans i18nKey='veure_resultats'>Veure resultats</Trans> : <Fragment><Trans i18nKey='seguent'>Següent</Trans><Icon className={props.classes.leftIcon}>keyboard_arrow_right</Icon></Fragment>}
+          {typeof nextAction !== 'undefined' &&
+          <Button color='primary' variant='contained'
+                  onClick={nextAction}
+                  disabled={!buttonEnabled}>
+            {nextIsResults ? <Trans i18nKey='veure_resultats'>Veure resultats</Trans> :
+                <Fragment><Trans i18nKey='seguent'>Següent</Trans><Icon
+                    className={classes.rightIcon}>keyboard_arrow_right</Icon></Fragment>}
           </Button>}
         </Grid>
       </Grid>
@@ -58,4 +60,4 @@ let StepperButtons = (props: Props) => {
   return props.buttonVisible ? content : null;
 };
 
-export default StepperButtons;
+export default withStyles(styles)(StepperButtons);

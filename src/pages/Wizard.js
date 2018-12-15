@@ -1,4 +1,3 @@
-import {withStyles} from '@material-ui/core/styles';
 import React from 'react';
 import {Trans, withNamespaces} from 'react-i18next';
 import StepsComponent from '../components/Steps/StepsComponent';
@@ -6,7 +5,6 @@ import FamilyForm from '../family/FamilyForm';
 import PersonsPage from '../persons/PersonsPage'
 import ResidenceForm from '../residence/ResidenceForm';
 import ResultsPage from '../results/ResultsPage';
-import {styles} from '../styles/theme';
 
 const shouldShowFamilyStep = (state) => {
   const menors = state.persons.valueSeq().toArray().filter((persona) => persona.edat <= 16);
@@ -48,4 +46,4 @@ const steps = [
 const WizardPage = () =>
     <StepsComponent steps={steps}/>;
 
-export default withNamespaces('translations')(withStyles(styles)(WizardPage));
+export default withNamespaces('translations')(WizardPage);

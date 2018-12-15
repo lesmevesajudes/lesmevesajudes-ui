@@ -1,4 +1,5 @@
 import {Grid, Typography, withStyles} from '@material-ui/core';
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import React from 'react';
 import {Trans} from 'react-i18next';
 import {connect} from 'react-redux';
@@ -34,6 +35,7 @@ class ResultsPage extends React.Component<Props> {
     console.log('form submit:', values);
     this.props.submitReport(values);
   };
+
   enoughDataForSimulation() {
     return this.props.persons.count() > 0;
   }
@@ -116,7 +118,7 @@ class ResultsPage extends React.Component<Props> {
             </Trans>
           </AppFormTitle>
           <ResultsContainer>
-            <Typography style={{background: '#f2f2f2', zIndex: 4}} gutterBottom>
+            <Typography className={classes.ResultWarning} gutterBottom>
               <Trans i18nKey='avis_variacio_ajuts'>
                 Li recordem que la concessió d’una d’aquestes ajudes pot fer variar els seus ingressos i/o
                 requisits
@@ -139,10 +141,20 @@ class ResultsPage extends React.Component<Props> {
                   period={this.period}
               />
             </Grid>
-            <Grid item>
-              <Typography className={classes.darkGrayText}>
-                <Trans i18nKey='identificador_simulacio'>Identificador simulació</Trans>: {simulationID}
-              </Typography>
+            <Grid container justify='center' alignItems='center' className={classes.ItemResult}>
+              <Grid item container xs={1} justify='center' alignItems='center'>
+                <InfoOutlinedIcon className={classes.darkGrayText}>info</InfoOutlinedIcon>
+              </Grid>
+              <Grid item xs={7}>
+                <Typography className={classes.ResultsBenefitText}>
+                  <Trans i18nKey='identificador_simulacio'>Identificador simulació</Trans>
+                </Typography>
+              </Grid>
+              <Grid item container className={classes.ResultsSeparator} xs={4} alignItems='center' justify='center'>
+                <Typography className={classes.ResultsBenefitText}>
+                  {simulationID}
+                </Typography>
+              </Grid>
             </Grid>
           </ResultsContainer>
         </AppFormContainer>

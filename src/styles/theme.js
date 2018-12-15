@@ -22,10 +22,10 @@ export const styles = theme => ({
     backgroundColor: '#fff !important'
   },
   leftIcon: {
-    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
   },
   rightIcon: {
-    marginRight: theme.spacing.unit,
+    marginLeft: theme.spacing.unit,
   },
   root: {
     width: '100%',
@@ -40,6 +40,9 @@ export const styles = theme => ({
     textAlign: 'center'
   },
   stepperContainer: {
+    maxWidth: '1140px',
+    marginLeft: 'auto',
+    marginRight: 'auto',
     backgroundColor: '#fbfbfb'
   },
   boxDescriptionText: {
@@ -71,7 +74,14 @@ export const styles = theme => ({
     background: colors.gray,
     borderRadius: '4px',
     maxWidth: '1140px',
-    margin: 'auto',
+    marginBottom: '30px',
+    marginRight: 'auto',
+    marginLeft: 'auto',
+  },
+  buttonsContainer: {
+    maxWidth: '1140px',
+    marginRight: 'auto',
+    marginLeft: 'auto',
   },
   titleContainer: {
     paddingTop: '16px',
@@ -102,6 +112,10 @@ export const styles = theme => ({
   },
   personListContainer: {
     marginBottom: '16px'
+  },
+  ResultWarning: {
+    background: colors.gray,
+    zIndex: 4
   },
   ResultPage: {
     color: '#265a96'
