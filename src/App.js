@@ -1,11 +1,11 @@
 import CssBaseline from '@material-ui/core/CssBaseline';
 import {MuiThemeProvider} from '@material-ui/core/styles';
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import {Provider} from 'react-redux';
 import {Route, Switch} from 'react-router-dom';
 import HashRouter from 'react-router-dom/HashRouter';
 import ScrollToTop from './components/Common/ScrollToTop';
-import {dev} from './components/Dev';
+import {intents} from './components/Intents';
 import {API_URL, ENVIRONMENT, REPORT_BUG_URL} from "./config";
 import WizardPage from './pages/Wizard';
 import ReportBugPage from './reportBug/ReportBugPage';
@@ -37,10 +37,11 @@ class App extends Component {
                 <ScrollToTop>
                   <Switch>
                     <Route exact={true} path='/' component={WizardPage}/>
-                    <Route path='/wizard' component={WizardPage}/>
-                    <Route path='/reportBug' component={ReportBugPage}/>
                     {isDevelopment &&
-                    <Route path='/wizard_dev' component={dev(WizardPage)}/>
+                    <Fragment>
+                      <Route path='/reportBug' component={ReportBugPage}/>
+                      <Route path='/intents' component={intents(WizardPage)}/>
+                    </Fragment>
                     }
                   </Switch>
                 </ScrollToTop>

@@ -34,6 +34,50 @@ const aWoman = {
   id: create_UUID()
 };
 
+const aMan = {
+  is_the_person_in_front_of_the_computer: false,
+  nom: 'Pere',
+  edat: '35',
+  sexe: 'home',
+  relacio_parentiu: "parella",
+  tipus_document_identitat: 'DNI',
+  porta_dos_anys_o_mes_empadronat_a_catalunya: true,
+  municipi_empadronament: 'barcelona',
+  anys_empadronat_a_barcelona: '4',
+  situacio_laboral: 'aturat',
+  inscrit_com_a_demandant_docupacio: true,
+  inscrit_com_a_demandant_docupacio_mes_de_12_mesos: true,
+  en_els_ultims_12_mesos_ha_fet_baixa_voluntaria_de_la_feina: false,
+  ha_treballat_a_l_estranger_6_mesos: true,
+  ha_treballat_a_l_estranger_6_mesos_i_ha_retornat_en_els_ultims_12_mesos: true,
+  ingressos_bruts: '4500',
+  ingressos_bruts_ultims_sis_mesos: '1200',
+  cobra_algun_tipus_de_pensio_no_contributiva: false,
+  gaudeix_de_prestacio_contributiva_o_subsidi_desocupacio: false,
+  percep_prestacions_incompatibles_amb_la_feina: false,
+  te_algun_grau_de_discapacitat_reconegut: true,
+  grau_discapacitat: '77',
+  victima_violencia_domestica: false,
+  beneficiari_de_prestacio_residencial: false,
+  id: create_UUID(),
+
+};
+
+const aChild = {
+  nom: 'Nora',
+  sexe: 'dona',
+  relacio_parentiu: 'fill',
+  edat: '11',
+  tipus_document_identitat: 'DNI',
+  porta_dos_anys_o_mes_empadronat_a_catalunya: true,
+  municipi_empadronament: 'barcelona',
+  anys_empadronat_a_barcelona: '5',
+  te_algun_grau_de_discapacitat_reconegut: false,
+  es_escolaritzat_entre_P3_i_4rt_ESO: true,
+  beneficiari_de_prestacio_residencial: false,
+  id: create_UUID(),
+};
+
 const residenceData = {
   relacio_habitatge: 'llogater',
   existeix_deute_en_el_pagament_del_lloguer: true,
@@ -57,18 +101,28 @@ const enableAndShowButtons = (props) => {
   props.showButtons();
 };
 
-export const dev = (WizardPage) =>
+export const intents = (WizardPage) =>
     connect(null, {addPerson, enableButtons, showButtons, addResidenceData})((props) =>
         <Grid container direction='column'>
-          <Grid container direction='row'>
+          <Grid container direction='row' style={{height: '100px'}}>
             <Grid item xs={1}>
               <Button variant='contained' onClick={() => props.addPerson(aWoman)}>
-                Add a person
+                Add Maria
+              </Button>
+            </Grid>
+            <Grid item xs={1}>
+              <Button variant='contained' onClick={() => props.addPerson(aMan)}>
+                Add Pere
+              </Button>
+            </Grid>
+            <Grid item xs={1}>
+              <Button variant='contained' onClick={() => props.addPerson(aChild)}>
+                Add Nora
               </Button>
             </Grid>
             <Grid item xs={1}>
               <Button variant='contained' onClick={() => enableAndShowButtons(props)}>
-                Enable buttons
+                Buttons ON
               </Button>
             </Grid>
             <Grid item xs={1}>
