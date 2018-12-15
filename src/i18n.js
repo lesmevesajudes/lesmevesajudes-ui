@@ -2,10 +2,10 @@ import i18n from 'i18next';
 import LngDetector from 'i18next-browser-languagedetector';
 import Backend from 'i18next-xhr-backend';
 import {reactI18nextModule} from 'react-i18next';
+import {STATIC_ROOT} from './config';
 import isDevelopment from './shared/isDevelopment';
 import pathTransformLngDetector from './shared/pathTransformLngDetector';
 
-const {homepage} = require('../package.json');
 const lngDetector = new LngDetector();
 
 lngDetector.addDetector(pathTransformLngDetector);
@@ -36,7 +36,7 @@ i18n
     },
     backend: {
       // for all available options read the backend's repository readme file
-      loadPath: isDevelopment ? '/locales/{{lng}}/{{ns}}.json' : homepage + '/locales/{{lng}}/{{ns}}.json'
+      loadPath: STATIC_ROOT + '/locales/{{lng}}/{{ns}}.json'
     },
     react: {
       wait: true

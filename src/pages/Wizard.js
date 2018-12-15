@@ -7,7 +7,6 @@ import PersonsPage from '../persons/PersonsPage'
 import ResidenceForm from '../residence/ResidenceForm';
 import ResultsPage from '../results/ResultsPage';
 import {styles} from '../styles/theme';
-import './Wizard.css';
 
 const shouldShowFamilyStep = (state) => {
   const menors = state.persons.valueSeq().toArray().filter((persona) => persona.edat <= 16);

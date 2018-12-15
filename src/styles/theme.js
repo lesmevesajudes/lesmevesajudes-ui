@@ -21,39 +21,14 @@ export const styles = theme => ({
   addMemberButton: {
     backgroundColor: '#fff !important'
   },
-  buttonIcon: {
-    margin: theme.spacing.unit,
-  },
   leftIcon: {
     marginLeft: theme.spacing.unit,
   },
   rightIcon: {
     marginRight: theme.spacing.unit,
   },
-  marginButtons: {
-    marginBottom: 30 + 'px'
-  },
   root: {
     width: '100%',
-  },
-  grayBackground: {
-    backgroundColor: colors.white,
-    color: colors.primary,
-    '&:active': {
-      backgroundColor: colors.disabled_text
-    },
-    '&:hover': {
-      backgroundColor: colors.disabled_text
-    }
-  },
-  completedStep: {
-    color: colors.tertiary,
-  },
-  actualStep: {
-    color: colors.primary,
-  },
-  AvatarUnknownPerson: {
-    backgroundColor: '#bbbbbb'
   },
   titleUnknownPerson: {
     color: colors.primary + ' !important'
@@ -72,14 +47,8 @@ export const styles = theme => ({
     padding: '10px',
     borderRadius: '4px',
     fontSize: '14px !important',
-    //maxHeight: '550px',
-    //minHeight: '200px',
-    //overflowY: 'scroll'
   },
   modalContainer: {
-    [theme.breakpoints.down('xs')]: {
-      width: '300px',
-    },
     [theme.breakpoints.down('sm')]: {
       width: '300px',
     },
@@ -92,96 +61,17 @@ export const styles = theme => ({
   titleDescriptionText: {
     color: colors.blackest,
     fontWeight: '600',
-    fontSize: '2.4rem',
-    fontFamily: 'Source Sans Pro, sans-serif',
+    fontSize: '2.2rem',
     textAlign: 'justify'
   },
-  titlePage: {
-    textAlign: 'left',
-    marginLeft: '90px',
-    float: 'left',
-  },
-  formMinHeight: {
-    minHeight: '600px',
-  },
 
-  '@media only screen and (max-width: 1140px)': {
-    titlePage: {
-      float: 'left',
-      marginLeft: '16px !important'
-    },
-    bgFormExterior: {
-      marginLeft: '0px !important',
-      marginRight: '0px !important',
-    },
-    addPersonContainer: {
-      marginLeft: '0px !important',
-    }
-  },
-  '@media only screen and (max-width: 600px)': {
-    titlePage: {
-      float: 'left',
-      marginLeft: '16px !important',
-      lineHeight: '1.35417em !important'
-    },
-
-    buttonsContainer: {
-      leftButton: {
-        marginRight: '15px'
-      },
-      rightButton: {
-        marginLeft: '15px'
-      },
-    },
-    bgFormExterior: {
-      marginLeft: '0px !important',
-      marginRight: '0px !important',
-    },
-    addPersonContainer: {
-      marginLeft: '0px !important'
-    },
-    bgContainer: {
-      background: 'none',
-      margin: '0px auto',
-      padding: '0px',
-    },
-    buttonResultsXS: {
-      padding: '0px !important',
-    }
-  },
-  helpContainer: {
-    [theme.breakpoints.down('sm')]: {
-      margin: '15px',
-      backgroundColor: '#fff',
-      padding: '10px'
-    }
-  },
-  sliderContainerTitle: {
-    marginTop: '0px !important',
-    paddingTop: '25px !important',
-    fontSize: '28px',
-    fontWeight: '600',
-    color: '#333333 !important',
-  },
-  helpContainerBody: {
-    marginTop: '15px',
-    marginBottom: '15px'
-  },
-  logoContainer: {
-    maxWidth: '1080px',
-    minHeight: '410px',
-    margin: '0 auto',
-    marginRight: 'auto',
-    backgroundColor: '#00acd4',
-    padding: '5px',
-  },
 
   // verified styles
   formContainer: {
-    background: '#f2f2f2',
+    background: colors.gray,
     borderRadius: '4px',
     maxWidth: '1140px',
-    margin: '30px auto',
+    margin: 'auto',
   },
   titleContainer: {
     paddingTop: '16px',
@@ -191,24 +81,21 @@ export const styles = theme => ({
     lineHeight: '48px',
   },
   appForm: {
-    background: '#fff',
+    background: colors.white,
     paddingTop: '16px',
     paddingBottom: '16px',
     marginBottom: '16px'
   },
-  andSeparator: { // FIXME: KILLME
+  andSeparator: {
     textAlign: 'center',
     fontSize: '18px !important',
-    color: '#202020 !important',
+    color: colors.blackest,
     marginTop: '8px !important'
   },
   resultsContainer: {
     paddingTop: '16px',
     paddingBottom: '16px',
     marginBottom: '16px'
-  },
-  errorText: {
-    color: '#c60c30'
   },
   linkBenefits: {
     textDecoration: 'none'
@@ -230,7 +117,7 @@ export const styles = theme => ({
     margin: '0 0 16px 0',
   },
   ResultsBenefitText: {
-    color: '#004a8e',
+    color: colors.secondary,
   },
   ResultsSeparator: {
     minHeight: '75px',
@@ -247,11 +134,6 @@ export const styles = theme => ({
   },
   greenText: {
     color: colors.green
-  },
-  blueTitle: {
-    textTransform: 'uppercase',
-    color: colors.secondary_dark,
-    fontWeight: 600
   }
 });
 

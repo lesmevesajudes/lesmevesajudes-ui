@@ -98,7 +98,6 @@ class ResultsPage extends React.Component<Props> {
           </AppFormContainer>
       );
     }
-    //Añadir Trans en titlePage
     return (
         <AppFormContainer>
           <ShowMeOnceModal name='resultsModal'
