@@ -16,9 +16,11 @@ export default {
         }
       }
     }
+
     if (typeof options.transforms[found] !== 'undefined') {
       found = options.transforms[found]
     }
+
     return found;
   }
 };

@@ -2,7 +2,7 @@
   "name": "lesmevesajudes-ui",
   "version": "0.1.0",
   "private": true,
-  "homepage": " http://lesmevesajudes-cms-production.herokuapp.com/sites/all/libraries/lesmevesajudes/",
+  "homepage": "/lesmevesajudes/sites/all/libraries/lesmevesajudes",
   "dependencies": {
     "@material-ui/core": "^3.1.0",
     "@material-ui/icons": "^3.0.0",
