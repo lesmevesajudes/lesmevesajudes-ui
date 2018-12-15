@@ -4,11 +4,12 @@ import React from 'react';
 import HelpIcon from '../../components/HelpIcon';
 import {isHelpAvailable} from '../../components/HelpText';
 import {IRemoveMyValueWhenUnmountedField} from "../../components/IRemoveMyValueWhenUnmountedField";
+import {getCanonicalName} from '../../shared/getCanonicalName';
 
 type Props = {
   name: string
 }
-const getCanonicalName = (name: string) => name.split('.')[0];
+
 export const Question = (props: Props) =>
     <Grid item>
       <label id={props.name}>
