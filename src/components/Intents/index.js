@@ -34,7 +34,7 @@ const aWoman = {
   id: create_UUID()
 };
 
-const aMan = {
+const aMan = (id = create_UUID()) => ({
   is_the_person_in_front_of_the_computer: false,
   nom: 'Pere',
   edat: '35',
@@ -59,11 +59,11 @@ const aMan = {
   grau_discapacitat: '77',
   victima_violencia_domestica: false,
   beneficiari_de_prestacio_residencial: false,
-  id: create_UUID(),
+  id: id,
 
-};
+});
 
-const aChild = {
+const aChild = (id = create_UUID()) => ({
   nom: 'Nora',
   sexe: 'dona',
   relacio_parentiu: 'fill',
@@ -75,8 +75,8 @@ const aChild = {
   te_algun_grau_de_discapacitat_reconegut: false,
   es_escolaritzat_entre_P3_i_4rt_ESO: true,
   beneficiari_de_prestacio_residencial: false,
-  id: create_UUID(),
-};
+  id: id,
+});
 
 const residenceData = {
   relacio_habitatge: 'llogater',
@@ -111,12 +111,12 @@ export const intents = (WizardPage) =>
               </Button>
             </Grid>
             <Grid item xs={1}>
-              <Button variant='contained' onClick={() => props.addPerson(aMan)}>
+              <Button variant='contained' onClick={() => props.addPerson(aMan())}>
                 Add Pere
               </Button>
             </Grid>
             <Grid item xs={1}>
-              <Button variant='contained' onClick={() => props.addPerson(aChild)}>
+              <Button variant='contained' onClick={() => props.addPerson(aChild())}>
                 Add Nora
               </Button>
             </Grid>
