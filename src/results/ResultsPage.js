@@ -92,8 +92,12 @@ class ResultsPage extends React.Component<Props> {
               <Typography variant='h6'><Trans i18nKey='error_fent_la_peticio'>Error fent la petició</Trans></Typography>
               <Grid container direction='column' className='ResultList'>
                 <Grid item>
-                  <Trans i18nKey='detalls'>Detalls:</Trans>
+                  <Typography><Trans i18nKey='detalls'>Detalls:</Trans></Typography>
                   <Typography>{resultsData.message}</Typography>
+                  <Typography>{JSON.stringify(resultsData.response.data, null, 2)}</Typography>
+                  <Typography><Trans i18nKey='identificador_simulacio'>Identificador simulació</Trans>: {simulationID}
+                  </Typography>
+
                 </Grid>
               </Grid>
             </Grid>
@@ -168,7 +172,7 @@ function mapStateToProps(state) {
     isRequestDone: state.results.isRequestDone,
     simulationData: state,
     resultsData: state.results.response,
-    simulationID: state.results.response !== null ? state.results.response.id : 'none',
+    simulationID: state.results.simulationID !== null ? state.results.simulationID : 'none',
     persons: state.persons
   };
 }
