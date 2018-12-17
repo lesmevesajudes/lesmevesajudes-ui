@@ -326,5 +326,13 @@
     "titular_hipoteca_temps_empadronat_feminine": "Quant temps fa que {{titularContracteHipoteca.nom}} està empadronada en aquest habitatge?",
     "no_empadronat_feminine": "No està empadronada",
     "ha_rebut_oferta_per_accedir_a_habitatge_i_lha_rebutjada_multiple": "Heu rebut una oferta per accedir a un habitatge de parc públic de lloguer i no l'heu acceptada?",
-    "identificador_simulacio": "Identificador simulació"
+    "identificador_simulacio": "Identificador simulació",
+    "link_EG_233": "/lesmevesajudes/ca/ajudes/ajuts-de-menjador-escolar",
+    "link_AE_230": "/lesmevesajudes/ca/ajudes/fons-extraordinari-d’ajuts-d’emergència-social-infants-de-0-16-anys",
+    "link_GE_51": "/lesmevesajudes/ca/ajudes/renda-activa-d’inserció",
+    "link_GG_270": "/lesmevesajudes/ca/ajudes/renda-garantida-de-ciutadania",
+    "link_HA_001": "/lesmevesajudes/ca/ajudes/prestacions-econòmiques-durgència-social-derivades-de-la-mediació-barcelona",
+    "link_HA_002": "/lesmevesajudes/ca/ajudes/prestacions-econòmiques-d’especial-urgència-davant-la-pèrdua-de-l’habitatge-desnonament-o",
+    "link_HA_003": "/lesmevesajudes/ca/ajudes/prestacions-econòmiques-d’especial-urgència-al-pagament-de-quotes-damortització-hipotecària",
+    "link_HA_005": "/lesmevesajudes/ca/ajudes/subvencions-al-pagament-de-lloguer"
 }
