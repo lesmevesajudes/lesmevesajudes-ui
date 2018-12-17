@@ -185,6 +185,10 @@ export function possiblesParellesDe(person: Person, persons: Map<PersonID, Perso
       return personsByRelacioDeParentiu('gendre', persons);
     case 'germa':
       return personsByRelacioDeParentiu('cunyat', persons);
+    case 'pare':
+      return personsByRelacioDeParentiu('pare', persons).filter((persona) => persona.id !== person.id);
+    case 'avi':
+      return personsByRelacioDeParentiu('avi', persons).filter((persona) => persona.id !== person.id);
     default:
       return [];
   }
