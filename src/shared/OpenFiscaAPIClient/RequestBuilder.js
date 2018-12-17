@@ -1,12 +1,12 @@
-import type {Person, PersonID} from "../../persons/PersonTypes";
-import {demarcacioDelCodiPostal, zonaDelCodiPostal} from "../CodisPostals";
-import {serialize} from "../../persons/PersonsReducer";
-import {create as createUUID} from '../UUID';
 import {detectaFamiliesAPartirDeCustodies} from "../../family/detectaFamiliesAPartirDeCustodies";
-import type {ResidenceData} from "../../residence/ResidenceTypes";
-import {esInfantAcollit} from "../selectorUtils";
-import type {SimulationData} from "../../results/FetchSimulationAction";
 import {possiblesParellesDe} from "../../family/FamilyForm";
+import {serialize} from "../../persons/PersonsReducer";
+import type {Person, PersonID} from "../../persons/PersonTypes";
+import type {ResidenceData} from "../../residence/ResidenceTypes";
+import type {SimulationData} from "../../results/FetchSimulationAction";
+import {demarcacioDelCodiPostal, zonaDelCodiPostal} from "../CodisPostals";
+import {esInfantAcollit} from "../selectorUtils";
+import {create as createUUID} from '../UUID';
 
 const currentMonth = value => ({'2017-01': value});
 const lastYear = value => ({'2016': value});
@@ -26,15 +26,28 @@ function afegeixSustentadorsSenseCustodies(familiesFromCustodies, families, pers
   return Object.keys(familiesFromCustodies).reduce(
       (acc, familiaID) => {
         let familia = familiesFromCustodies[familiaID];
-        if (familia.monoparental) {
+        // Per families (segons custòdia) que només tenen un sustentador intenta veure si hi ha parelles que convisquin
+        if (familia.sustentadors_i_custodia[1] === 'no-conviu' || familia.sustentadors_i_custodia[1] === 'no-existeix') {
           const sustentador = familia.sustentadors_i_custodia[0];
+          // Si el sustentador ja és part d'alguna família vol dir que ja l'hem tingut en compte.
+          if (Object.keys(acc).some(id_familia => acc[id_familia].sustentadors_i_custodia[0] === sustentador || acc[id_familia].sustentadors_i_custodia[1] === sustentador)) {
+            return acc;
+          }
+          // Busca una parella a les pareles forçades o bé segons algoritme (l'algoritme hauria de tornar només un resultat, ja ho ha comprovat la form)
           const possibleParella = typeof families.parelles !== 'undefined' && typeof families.parelles[sustentador] !== 'undefined'
               ? families.parelles[sustentador]
-              : possiblesParellesDe(sustentador, persons).map((persona: Person) => persona.id)[0];
+              : possiblesParellesDe(persons.filter(persona => persona.id === sustentador)[0], persons).map((persona: Person) => persona.id)[0];
+          // Si ha trobat una parella fa merge de la possible família de la parella i inclou la parella a sustentadors_i_custodia
           if (typeof possibleParella !== 'undefined') {
-            familia.sustentadors = [possibleParella]
+            familia.sustentadors_i_custodia = [sustentador, possibleParella];
+            if (typeof familiesFromCustodies[possibleParella + 'no-conviu'] !== 'undefined') {
+              familia.menors = [...familia.menors, ...familiesFromCustodies[possibleParella + 'no-conviu'].menors]
+            }
+            if (typeof familiesFromCustodies[possibleParella + 'no-existeix'] !== 'undefined') {
+              familia.menors = [...familia.menors, ...familiesFromCustodies[possibleParella + 'no-existeix'].menors]
+            }
           }
-          acc[familiaID] = familia;
+          acc[familia.sustentadors_i_custodia.sort().join('')] = familia;
         } else {
           acc[familiaID] = familia;
         }
@@ -43,14 +56,14 @@ function afegeixSustentadorsSenseCustodies(familiesFromCustodies, families, pers
       {});
 }
 
-const buildFamilies016 = (custodies, persons, families) => {
+export const buildFamilies016 = (custodies, persons, families) => {
   const familiesFromCustodies = detectaFamiliesAPartirDeCustodies(custodies, persons);
   const families016 = afegeixSustentadorsSenseCustodies(familiesFromCustodies, families, persons);
 
   let completedFamilies = Object.keys(families016).reduce((result, familiaID) => {
     const carnetMonoparental =
-        typeof(families.disposa_de_carnet_familia_monoparental) !== 'undefined'
-        && typeof(families.disposa_de_carnet_familia_monoparental[familiaID]) !== 'undefined'
+        typeof (families.disposa_de_carnet_familia_monoparental) !== 'undefined'
+        && typeof (families.disposa_de_carnet_familia_monoparental[familiaID]) !== 'undefined'
         && families.disposa_de_carnet_familia_monoparental[familiaID]
             ? 'general' : 'nop';
 
