@@ -1,5 +1,5 @@
 //@flow
-import {Button, Grid} from '@material-ui/core';
+import {Button, Grid, withStyles} from '@material-ui/core';
 import React from 'react';
 import {Trans} from 'react-i18next';
 import {withRouter} from 'react-router-dom'
@@ -9,6 +9,7 @@ import {Field} from 'redux-form/';
 import {AppForm, AppFormContainer, AppFormTitle} from '../components/AppForms';
 import {allowOnlyPositive} from '../components/Common/NormalizeCommon';
 import ShowMeOnceModal from '../components/ShowMeOnceModal'
+import {styles} from '../styles/theme';
 
 const validate = values => {
   const errors = {};
@@ -32,7 +33,7 @@ type Props = {
 }
 
 let HowManyPersonsLiveTogetherPage = (props: Props) => {
-  const {handleSubmit, history} = props;
+  const {handleSubmit, classes} = props;
   return (
       <AppFormContainer>
         <AppFormTitle iconName='persona'>
@@ -63,11 +64,11 @@ let HowManyPersonsLiveTogetherPage = (props: Props) => {
             <Grid item>
               <Grid container direction='row' justify='space-around' alignContent='center' spacing={16}>
                 <Grid item container direction='column' xs={2}>
-                    <Button variant='contained' name='ButtonTornar' onClick={() => {
-                      history.push('/')
-                    }}>
+                  <a href='/lesmevesajudes' className={classes.link}>
+                    <Button variant='contained' name='ButtonTornar'>
                       <Trans i18nKey='tornar'>Tornar</Trans>
                     </Button>
+                  </a>
                   </Grid>
                 <Grid item container direction='column' xs={2}>
                     <Button variant='contained' color='primary' type='submit' name='ButtonValidar'>
@@ -87,4 +88,4 @@ HowManyPersonsLiveTogetherPage = reduxForm({
   validate
 })(HowManyPersonsLiveTogetherPage);
 
-export default withRouter(HowManyPersonsLiveTogetherPage);
+export default withRouter(withStyles(styles)(HowManyPersonsLiveTogetherPage));

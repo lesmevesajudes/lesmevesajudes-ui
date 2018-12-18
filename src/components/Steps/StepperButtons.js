@@ -40,7 +40,7 @@ let StepperButtons = (props: Props) => {
         <Grid item container sm={2} md={2} justify={'flex-end'}>
           {typeof nextAction === 'undefined' &&
           <Button color='secondary' variant='contained'
-                  onClick={() => window.location.replace('/')}
+                  onClick={() => window.location.reload()}
                   disabled={!buttonEnabled}>
             <Icon className={classes.leftIcon}>cached</Icon>
             <Trans i18nKey='nou_calcul'>Nou càlcul</Trans>

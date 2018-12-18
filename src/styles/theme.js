@@ -107,9 +107,6 @@ export const styles = theme => ({
     paddingBottom: '16px',
     marginBottom: '16px'
   },
-  linkBenefits: {
-    textDecoration: 'none'
-  },
   personListContainer: {
     marginBottom: '16px'
   },
@@ -148,6 +145,9 @@ export const styles = theme => ({
   },
   greenText: {
     color: colors.green
+  },
+  link: {
+    textDecoration: 'none'
   }
 });
 
