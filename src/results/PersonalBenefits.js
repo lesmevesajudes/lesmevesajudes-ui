@@ -15,10 +15,6 @@ type PersonalBenefitsProps = {
 };
 
 class PersonalBenefits extends React.Component<PersonalBenefitsProps> {
-  constructor() {
-    super();
-  }
-
   componentWillMount() {
     this.possibleBenefits = [
       {
