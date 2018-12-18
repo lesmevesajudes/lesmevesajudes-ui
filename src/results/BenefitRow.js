@@ -87,7 +87,7 @@ export const BenefitRow = ({benefit, subject, classes}: Props) =>
         </Typography>
       </Grid>}
       <Grid item className={classes.ResultsSeparator} xs={2}>
-        <a className={classes.link} href={benefit.url.toString()} target="_blank">
+        <a className={classes.link} href={benefit.url.toString()} target="_blank" rel="noopener noreferrer">
           <Tooltip id='mes-info-tooltip'
                    title={<Trans i18nKey='si_vol_saber_si_reuneix_requisits'>Si vols saber si reuneixes tots els
                      requisits necessaris per accedir a aquest ajut, clica aquí</Trans>}

@@ -14,10 +14,6 @@ type UnitatDeConvivenciaBenefitsProps = {
 };
 
 class UnitatDeConvivenciaBenefits extends React.Component<UnitatDeConvivenciaBenefitsProps> {
-  constructor() {
-    super();
-  }
-
   componentWillMount(): void {
     const {t} = this.props;
     this.possibleBenefits = [
