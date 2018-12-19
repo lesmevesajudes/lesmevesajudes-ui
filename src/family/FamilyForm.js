@@ -219,7 +219,7 @@ function mapStateToProps(state) {
   const sustentadorsSolitaris = state.persons.filter((person: Person) => sustentadorsUnicsIDs.includes(person.id));
   const sustentadorsSolitarisAmbPossiblesParelles = sustentadorsSolitarisIPossiblesParelles(sustentadorsSolitaris, state.persons.toArray());
   const helpTopic = state.helpSystem.currentHelpTopic;
-  console.log("families: ", families);
+
   return {
     currentField: currentField,
     custodies: custodies,
