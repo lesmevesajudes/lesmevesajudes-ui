@@ -85,7 +85,7 @@ class UnitatDeConvivenciaBenefits extends React.Component<UnitatDeConvivenciaBen
         : this.possibleBenefits.reduce((acc, benefit) => acc + unitatDeConvivencia[benefit.ID][period], 0) > 0;
   }
 
-  static renderABenefit(benefit, unitatDeConvivencia, period, classes: Object) {
+  renderABenefit(benefit, unitatDeConvivencia, period, classes: Object) {
     return unitatDeConvivencia[benefit.ID][period] > 0
         ? <Grid container className={classes.ResultPage} justify='center' alignItems='center' key={benefit.ID}>
           <BenefitRow benefit={benefit} subject={unitatDeConvivencia}/>

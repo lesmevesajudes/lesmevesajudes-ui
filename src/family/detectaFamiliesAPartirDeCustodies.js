@@ -7,7 +7,7 @@ export type Custodia = {
 
 const familyID = (menorID: PersonID, sustentadors) => sustentadors.sort().join('');
 
-export const elMenorTeDosCustodiantsConvivents = (menorID: PersonID, custodies) => typeof custodies[menorID] !== 'undefined'
+export const familiaComplerta = (menorID: PersonID, custodies) => typeof custodies[menorID] !== 'undefined'
     && typeof custodies[menorID].primer === 'string'
     && typeof custodies[menorID].segon === 'string';
 
@@ -16,6 +16,9 @@ const personesAmbCustodiaConvivents = (menorID: PersonID, custodies) => [custodi
 export const detectaFamiliesAPartirDeCustodies = (custodies: { [string]: Custodia }): Object =>
     Object.keys(custodies).reduce(
         (families: Object, menorID: string) => {
+          if (!familiaComplerta(menorID, custodies)) {
+            return families;
+          }
           const sustentadors = personesAmbCustodiaConvivents(menorID, custodies);
           if (sustentadors.length > 0) {
             const familiaID = familyID(menorID, sustentadors);
