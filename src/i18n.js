@@ -26,7 +26,7 @@ i18n
     detection: languageDetectorOptions,
 
     // have a common namespace used around the full app
-    ns: ['translations', 'index'],
+    ns: ['translations'],
     defaultNS: 'translations',
 
     debug: isDevelopment,
