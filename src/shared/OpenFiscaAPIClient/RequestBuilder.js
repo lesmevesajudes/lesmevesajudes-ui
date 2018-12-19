@@ -22,45 +22,53 @@ const seleccionaElsAltresMembresDeLaUnitatDeConvivenciaQueSiguinFamiliarsFinsASe
     (family016Members: Array<PersonID>, persons: Array<Person>) =>
         seleccionaFamiliarsFinsASegonGrau(persons).filter((personaID: PersonID) => family016Members.indexOf(personaID) === -1);
 
-function afegeixSustentadorsSenseCustodies(familiesFromCustodies, families, persons) {
-  return Object.keys(familiesFromCustodies).reduce(
-      (acc, familiaID) => {
-        let familia = familiesFromCustodies[familiaID];
-        // Per families (segons custòdia) que només tenen un sustentador intenta veure si hi ha parelles que convisquin
-        if (familia.sustentadors_i_custodia[1] === 'no-conviu' || familia.sustentadors_i_custodia[1] === 'no-existeix') {
+const toKey = (persons: Array<Person>) => persons.sort().join('');
+
+function findAPartnerForMonoparentalFamilies(familiesFromCustodies, parelles, persons) {
+  return Object.values(familiesFromCustodies).map(familia => {
+        if (familia.sustentadors_i_custodia.length === 1 || familia.sustentadors_i_custodia[1] === 'no_conviu' || familia.sustentadors_i_custodia[1] === 'ningu_mes') {
           const sustentador = familia.sustentadors_i_custodia[0];
-          // Si el sustentador ja és part d'alguna família vol dir que ja l'hem tingut en compte.
-          if (Object.keys(acc).some(id_familia => acc[id_familia].sustentadors_i_custodia[0] === sustentador || acc[id_familia].sustentadors_i_custodia[1] === sustentador)) {
-            return acc;
-          }
-          // Busca una parella a les pareles forçades o bé segons algoritme (l'algoritme hauria de tornar només un resultat, ja ho ha comprovat la form)
-          const possibleParella = typeof families.parelles !== 'undefined' && typeof families.parelles[sustentador] !== 'undefined'
-              ? families.parelles[sustentador]
+          const possibleParella = typeof parelles !== 'undefined' && typeof parelles[sustentador] !== 'undefined'
+              ? parelles[sustentador]
               : possiblesParellesDe(persons.filter(persona => persona.id === sustentador)[0], persons).map((persona: Person) => persona.id)[0];
-          // Si ha trobat una parella fa merge de la possible família de la parella i inclou la parella a sustentadors_i_custodia
           if (typeof possibleParella !== 'undefined') {
-            familia.sustentadors_i_custodia = [sustentador, possibleParella];
-            if (typeof familiesFromCustodies[possibleParella + 'no-conviu'] !== 'undefined') {
-              familia.menors = [...familia.menors, ...familiesFromCustodies[possibleParella + 'no-conviu'].menors]
-            }
-            if (typeof familiesFromCustodies[possibleParella + 'no-existeix'] !== 'undefined') {
-              familia.menors = [...familia.menors, ...familiesFromCustodies[possibleParella + 'no-existeix'].menors]
-            }
+            familia.sustentadors_i_custodia[1] = possibleParella;
+            familia.monoparental = false;
           }
-          acc[familia.sustentadors_i_custodia.sort().join('')] = familia;
-        } else {
-          acc[familiaID] = familia;
         }
-        return acc;
-      },
-      {});
+        return familia;
+      }
+  )
 }
 
-export const buildFamilies016 = (custodies, persons, families) => {
-  const familiesFromCustodies = detectaFamiliesAPartirDeCustodies(custodies, persons);
-  const families016 = afegeixSustentadorsSenseCustodies(familiesFromCustodies, families, persons);
+function merge_two_families(first_family, second_family) {
 
-  let completedFamilies = Object.keys(families016).reduce((result, familiaID) => {
+  return {
+    sustentadors_i_custodia: first_family.sustentadors_i_custodia,
+    menors: [...first_family.menors, ...second_family.menors],
+    monoparental: false,
+    tipus_custodia: first_family.tipus_custodia
+  };
+}
+
+const consolidate_families = (families) => {
+  return families.reduce((acc, familia) => {
+    acc[toKey(familia.sustentadors_i_custodia)] = typeof acc[toKey(familia.sustentadors_i_custodia)] !== 'undefined' ?
+        merge_two_families(acc[toKey(familia.sustentadors_i_custodia)], familia) : familia;
+    return acc;
+  }, {})
+};
+
+export const families016 = (custodies, persons, families) => {
+  const familiesFromCustodies = detectaFamiliesAPartirDeCustodies(custodies, persons);
+  console.log(familiesFromCustodies, persons);
+  return consolidate_families(findAPartnerForMonoparentalFamilies(familiesFromCustodies, families.parelles, persons));
+
+};
+export const buildFamilies016 = (custodies, persons, families) => {
+  const families016Complertes = families016(custodies, persons, families);
+
+  let completedFamilies = Object.keys(families016Complertes).reduce((result, familiaID) => {
     const carnetMonoparental =
         typeof (families.disposa_de_carnet_familia_monoparental) !== 'undefined'
         && typeof (families.disposa_de_carnet_familia_monoparental[familiaID]) !== 'undefined'
@@ -68,14 +76,14 @@ export const buildFamilies016 = (custodies, persons, families) => {
             ? 'general' : 'nop';
 
     result[familiaID] = {
-      sustentadors_i_custodia: typeof families016[familiaID].sustentadors_i_custodia !== 'undefined' ? families016[familiaID].sustentadors_i_custodia : [],
-      sustentadors: typeof families016[familiaID].sustentadors !== 'undefined' ? families016[familiaID].sustentadors : [],
-      menors: typeof families016[familiaID].menors !== 'undefined' ? families016[familiaID].menors : [],
+      sustentadors_i_custodia: typeof families016Complertes[familiaID].sustentadors_i_custodia !== 'undefined' ? families016Complertes[familiaID].sustentadors_i_custodia : [],
+      sustentadors: typeof families016Complertes[familiaID].sustentadors !== 'undefined' ? families016Complertes[familiaID].sustentadors : [],
+      menors: typeof families016Complertes[familiaID].menors !== 'undefined' ? families016Complertes[familiaID].menors : [],
       altres_persones: [],
       altres_familiars: [],
       es_usuari_serveis_socials: currentMonth(families.usuari_serveis_socials[familiaID]),
       tipus_familia_monoparental: currentMonth(carnetMonoparental),
-      tipus_custodia: currentMonth(families016[familiaID].tipus_custodia)
+      tipus_custodia: currentMonth(families016Complertes[familiaID].tipus_custodia)
     };
     return result;
   }, {});

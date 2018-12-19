@@ -19,11 +19,17 @@ import {isHelpAvailable} from '../components/HelpText';
 import {IRemoveMyValueWhenUnmountedField} from '../components/IRemoveMyValueWhenUnmountedField';
 import type {Person, PersonID} from '../persons/PersonTypes';
 import {required} from '../shared/formValidators';
+import {families016} from '../shared/OpenFiscaAPIClient/RequestBuilder';
 import {focusFirstQuestionWithName, namefirstFieldWithError} from '../shared/reduxFormTools';
-import {currentFocussedFieldSelector, esFill, esSustentador, personsByRelacioDeParentiu} from '../shared/selectorUtils';
+import {
+  currentFocussedFieldSelector,
+  esFill,
+  esSustentador,
+  personInFrontOfTheComputer,
+  personsByRelacioDeParentiu
+} from '../shared/selectorUtils';
 import {styles} from '../styles/theme';
 import {createFamilyName, toArray} from './createFamilyName';
-import {detectaFamiliesAPartirDeCustodies} from './detectaFamiliesAPartirDeCustodies';
 import {addFamilyData} from './FamilyDataActions';
 import type {FamilyData} from './FamilyDataTypes';
 
@@ -181,6 +187,8 @@ export function possiblesParellesDe(person: Person, persons: Map<PersonID, Perso
   switch (person.relacio_parentiu) {
     case undefined:
       return personsByRelacioDeParentiu('parella', persons);
+    case 'parella':
+      return personInFrontOfTheComputer(persons);
     case 'fill':
       return personsByRelacioDeParentiu('gendre', persons);
     case 'germa':
@@ -205,12 +213,13 @@ export function sustentadorsSolitarisIPossiblesParelles(sustentadors: Array<Pers
 function mapStateToProps(state) {
   const currentField = currentFocussedFieldSelector('FamilyForm')(state);
   const custodies = typeof state.family.custodies !== 'undefined' ? state.family.custodies : {};
-  const families = toArray(detectaFamiliesAPartirDeCustodies(custodies, state.persons));
+  const families = toArray(families016(custodies, state.persons.toArray(), state.family));
   const familiesMonoparentals = families.filter((familia) => familia.monoparental);
   const sustentadorsUnicsIDs = familiesMonoparentals.map((familia) => familia.sustentadors_i_custodia[0]);
   const sustentadorsSolitaris = state.persons.filter((person: Person) => sustentadorsUnicsIDs.includes(person.id));
   const sustentadorsSolitarisAmbPossiblesParelles = sustentadorsSolitarisIPossiblesParelles(sustentadorsSolitaris, state.persons.toArray());
   const helpTopic = state.helpSystem.currentHelpTopic;
+  console.log("families: ", families);
   return {
     currentField: currentField,
     custodies: custodies,
