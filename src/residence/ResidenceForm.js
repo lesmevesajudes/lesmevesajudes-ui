@@ -206,7 +206,8 @@ const ResidenceForm = (props: Props) => {
                                           validate={[required]}
                   >
                     {props.personesQuePodenTenirContracte.valueSeq().map((persona) => (
-                        <MenuItem key={persona.id} value={persona.id}>{persona.nom} ({persona.edat})</MenuItem>
+                        <MenuItem key={persona.id} value={persona.id}>{persona.nom} ({persona.edat} <Trans
+                            i18nKey='anys'>anys</Trans>)</MenuItem>
                     ))}
                     <MenuItem key='no-conviu' value='no-conviu'>
                       <Trans i18nKey='no_conviu'>Una persona que no viu a l'habitatge</Trans>

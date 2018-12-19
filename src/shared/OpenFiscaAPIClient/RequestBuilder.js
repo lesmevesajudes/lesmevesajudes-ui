@@ -61,7 +61,6 @@ const consolidate_families = (families) => {
 
 export const families016 = (custodies, persons, families) => {
   const familiesFromCustodies = detectaFamiliesAPartirDeCustodies(custodies, persons);
-  console.log(familiesFromCustodies, persons);
   return consolidate_families(findAPartnerForMonoparentalFamilies(familiesFromCustodies, families.parelles, persons));
 
 };
