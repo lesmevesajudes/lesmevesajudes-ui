@@ -2,23 +2,15 @@
 
 [![CircleCI](https://circleci.com/gh/lesmevesajudes/lesmevesajudes-ui.svg?style=svg)](https://circleci.com/gh/jvalduvieco/lesmevesajudes-ui)
 
+This is a webapp used in the Les meves ajudes project sponsored by Barcelona City council. This is a simple React + Redux forms + redux App.
+
 ## Useful commands
 * start development server:
 ```
 yarn start
 ```
 
-* Find new strings to be translated:
+* Run tests headless:
 ```
-yarn scan_for_translations
-```
-
-* Run UI tests:
-```
-yarn browser_tests
-```
-
-* Run UI tests headless:
-```
-yarn browser_tests --env chrome_headless
+yarn test
 ```
