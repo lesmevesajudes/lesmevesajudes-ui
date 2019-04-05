@@ -83,6 +83,22 @@ class PersonalBenefits extends React.Component<PersonalBenefitsProps> {
         url: this.props.t('link_GG_270'),
         from: undefined,
         to: undefined,
+      },
+      {
+        ID: 'GA_246_01',
+        name: <Trans i18nKey='GA_246_01_title'>Targeta rosa</Trans>,
+        url: this.props.t('link_GA_246'),
+        amountText: <Trans i18nKey='GA_246_01_import'>Gratuïta</Trans>,
+        from: undefined,
+        to: undefined
+      },
+      {
+        ID: 'GA_246_02',
+        name: <Trans i18nKey='GA_246_02_title'>Targeta rosa</Trans>,
+        url: this.props.t('link_GA_246'),
+        amountText: <Trans i18nKey='GA_246_02_import'>Reduïda</Trans>,
+        from: undefined,
+        to: undefined
       }
     ];
     this.period = '2017-01';
