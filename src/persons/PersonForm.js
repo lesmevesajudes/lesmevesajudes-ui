@@ -426,6 +426,14 @@ let PersonForm = (props: Props) => {
                         És beneficiari/aria d’una prestació pública o privada de servei residencial permanent?
                       </Trans>
                     </YesNoQuestion>
+
+                    {edat > 64 &&
+                    <YesNoQuestion name='sentirse_sol'>
+                      <Trans {...i18nKey('sentirse_sol', personAndSexTranslationContext)}>
+                        Et sents sol/a?
+                      </Trans>
+                    </YesNoQuestion>}
+
                   </Fragment>}
                 </Grid>
               </Grid>
@@ -481,6 +489,7 @@ PersonForm = withNamespaces('translations')(connect(state => {
   const isTheUserInFrontOfTheComputer = selector(state, 'is_the_person_in_front_of_the_computer');
   const membreDeFamiliaReagrupada = selector(state, 'membre_de_familia_reagrupada');
   const municipiEmpadronament = selector(state, 'municipi_empadronament');
+  const sentirseSol = selector(state, 'sentirse_sol');
   const potTreballar = selector(state, 'edat') >= 16;
   const portaDosAnysOMesEmpadronatACatalunya = selector(state, 'porta_dos_anys_o_mes_empadronat_a_catalunya');
   const rol = selector(state, 'rol');
@@ -503,6 +512,7 @@ PersonForm = withNamespaces('translations')(connect(state => {
     isTheUserInFrontOfTheComputer,
     membreDeFamiliaReagrupada,
     municipiEmpadronament,
+    sentirseSol,
     potTreballar,
     portaDosAnysOMesEmpadronatACatalunya,
     rol,
