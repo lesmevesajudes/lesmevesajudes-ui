@@ -19,6 +19,11 @@
     "edat_text_llarg": "Si la edad de la persona es inferior a 1 año, indicar '0'.",
     "beneficiari_de_prestacio_residencial": "Beneficiario/a de prestación residencial",
     "beneficiari_de_prestacio_residencial_text_llarg": "La persona debe estar ingresada en un centro sociosanitario, comunidad terapéutica, geriátrica o similares",
+    "sentirse_sol": "Te sientes solo?",
+    "sentirse_sol_second_feminine": "Te sientes sola?",
+    "sentirse_sol_second_masculine": "Te sientes solo?",
+    "sentirse_sol_third_feminine": "Se siente sola?",
+    "sentirse_sol_third_masculine": "Se siente solo?",
     "nom_second": "Identifícate con un nombre",
     "nom_third": "Identifica a esta persona con un nombre",
     "edat_second": "Edad",
@@ -240,6 +245,8 @@
     "GA_246_01_amountText": "Gratuita",
     "GA_246_02_title": "Targeta rosa",
     "GA_246_02_amountText": "Reducida",
+    "GA_234_01_title": "Vínculos",
+    "GA_234_01_import": "Gratuita",
     "maxim_12_mesos": "Máximo 12 meses",
     "pagament_unic": "Pago único",
     "mes": "mes",
@@ -341,4 +348,5 @@
     "link_HA_005": "/lesmevesajudes/es/ayudas/subvenciones-para-el-pago-de-alquiler",
     "link_HA_004": "/lesmevesajudes/es/ayudas/prestaciones-económicas-de-especial-urgencia-para-el-pago-de-deudas-del-alquiler",
     "link_GA_246": "/lesmevesajudes/es/ayudas/targeta-rosa"
+    "link_GA_234": "/lesmevesajudes/es/ayudas/vinculos",
 }

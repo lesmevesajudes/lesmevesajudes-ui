@@ -1,0 +1,13 @@
+version: "3.5"
+ 
+services:
+  lesmevesajudes-ui:
+    image: "node:11"
+    container_name: lesmevesajudes
+    volumes:
+      - "../:/mnt"
+    working_dir: /mnt
+    network_mode: "bridge"
+    ports:
+      - "3000:3000"
+    command: ["bash", "-c", "yarn install && yarn start" ]
