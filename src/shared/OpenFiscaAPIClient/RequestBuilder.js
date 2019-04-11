@@ -191,6 +191,7 @@ const personToOpenFiscaPerson = (person: Person) => ({
   tipus_document_identitat: currentMonth(person.tipus_document_identitat),
   victima_violencia_de_genere: currentMonth(person.victima_violencia_de_genere),
   victima_violencia_domestica: currentMonth(person.victima_violencia_domestica),
+  sentirse_sol: currentMonth(person.sentirse_sol),
   AE_230_mensual: currentMonth(null),
   AE_230_01_mensual: currentMonth(null),
   EG_233_mensual: currentMonth(null),
@@ -198,7 +199,8 @@ const personToOpenFiscaPerson = (person: Person) => ({
   GE_051_01_mensual: currentMonth(null),
   GE_051_02_mensual: currentMonth(null),
   GE_051_03_mensual: currentMonth(null),
-  GG_270_mensual: currentMonth(null)
+  GG_270_mensual: currentMonth(null),
+  GA_234_01: currentMonth(null)
 });
 
 function numeraMenorsDeFamilies016(families, personalData) {

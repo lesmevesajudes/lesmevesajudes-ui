@@ -19,6 +19,10 @@
     "edat_text_llarg": "Si l'edat de la persona és inferior a 1 any, indicar '0'.",
     "beneficiari_de_prestacio_residencial": "Beneficiari/ària de prestació residencial",
     "beneficiari_de_prestacio_residencial_text_llarg": "La persona ha d'estar ingressada en un centre sociosanitari, comunitat terapèutica, geriàtrica o similars.",
+    "sentirse_sol_second_feminine": "Et sents sola?",
+    "sentirse_sol_second_masculine": "Et sents sol?",
+    "sentirse_sol_third_feminine": "Es sent sola?",
+    "sentirse_sol_third_masculine": "Es sent sol?",
     "nom_second": "Identifica’t amb un nom",
     "nom_third": "Identifica aquesta persona amb un nom",
     "edat_second": "Edat",
@@ -236,6 +240,8 @@
     "GE_051_02_mensual_title": "Renda activa d'inserció per a emigrants retornats",
     "GE_051_03_mensual_title": "Renda activa d'inserció per a víctimes de violència de gènere o domèstica",
     "GG_270_mensual_title": "Renda garantida de ciutadania (RGC)",
+    "GA_234_01_title": "Vincles",
+    "GA_234_01_import": "Gratuïta",
     "maxim_12_mesos": "Màxim 12 mesos",
     "pagament_unic": "Pagament únic",
     "mes": "mes",
@@ -335,5 +341,6 @@
     "link_HA_002": "/lesmevesajudes/ca/ajudes/prestacions-econòmiques-d’especial-urgència-davant-la-pèrdua-de-l’habitatge-desnonament-o",
     "link_HA_003": "/lesmevesajudes/ca/ajudes/prestacions-econòmiques-d’especial-urgència-al-pagament-de-quotes-damortització-hipotecària",
     "link_HA_005": "/lesmevesajudes/ca/ajudes/subvencions-al-pagament-de-lloguer",
-    "link_HA_004": "/lesmevesajudes/ca/ajudes/prestacions-econòmiques-d’especial-urgència-al-pagament-de-deutes-del-lloguer"
+    "link_HA_004": "/lesmevesajudes/ca/ajudes/prestacions-econòmiques-d’especial-urgència-al-pagament-de-deutes-del-lloguer",
+    "link_GA_234": "/lesmevesajudes/ca/ajudes/vincles"
 }
