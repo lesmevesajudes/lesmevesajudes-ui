@@ -99,7 +99,8 @@ class PersonalBenefits extends React.Component<PersonalBenefitsProps> {
         amountText: <Trans i18nKey='GA_246_02_import'>Reduïda</Trans>,
         from: undefined,
         to: undefined
-      }
+      },
+      {
        ID: 'GA_234_01',
        name: <Trans i18nKey='GA_234_01_title'>Vincles</Trans>,
        url: this.props.t('link_GA_234'),
