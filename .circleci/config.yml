@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:9.11.1-browsers
+      - image: circleci/node:11-browsers
     steps:
       - checkout
       - run: mkdir reports
