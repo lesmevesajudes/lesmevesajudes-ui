@@ -241,6 +241,10 @@
     "GE_051_02_mensual_title": "Renta activa de inserción para emigrantes retornados",
     "GE_051_03_mensual_title": "Renta activa de inserción para víctimas de violencia de género o doméstica",
     "GG_270_mensual_title": "Renta garantizada de ciudadanía (RGC)",
+    "GA_246_01_title": "Targeta rosa",
+    "GA_246_01_amountText": "Gratuita",
+    "GA_246_02_title": "Targeta rosa",
+    "GA_246_02_amountText": "Reducida",
     "GA_234_01_title": "Vínculos",
     "GA_234_01_import": "Gratuita",
     "maxim_12_mesos": "Máximo 12 meses",
@@ -343,5 +347,6 @@
     "link_HA_003": "/lesmevesajudes/es/ayudas/prestaciones-económicas-de-especial-urgencia-para-el-pago-de-cuotas-de-amortización",
     "link_HA_005": "/lesmevesajudes/es/ayudas/subvenciones-para-el-pago-de-alquiler",
     "link_HA_004": "/lesmevesajudes/es/ayudas/prestaciones-económicas-de-especial-urgencia-para-el-pago-de-deudas-del-alquiler",
+    "link_GA_246": "/lesmevesajudes/es/ayudas/targeta-rosa"
     "link_GA_234": "/lesmevesajudes/es/ayudas/vinculos",
 }

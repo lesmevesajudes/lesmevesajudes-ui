@@ -200,6 +200,8 @@ const personToOpenFiscaPerson = (person: Person) => ({
   GE_051_02_mensual: currentMonth(null),
   GE_051_03_mensual: currentMonth(null),
   GG_270_mensual: currentMonth(null),
+  GA_246_01: currentMonth(null),
+  GA_246_02: currentMonth(null)
   GA_234_01: currentMonth(null)
 });
 
