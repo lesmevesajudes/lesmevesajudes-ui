@@ -24,8 +24,8 @@ class UnitatDeConvivenciaBenefits extends React.Component<UnitatDeConvivenciaBen
         url: t('link_HA_001'),
         amountText: <Trans i18nKey='HA_001_import'>Fins a 300 € /mes</Trans>,
         conditions: <Trans i18nKey='maxim_12_mesos'>Màxim 12 mesos</Trans>,
-        from: newDate(2018, 6, 12),
-        to: newDate(2018, 12, 7)
+        from: newDate(2019, 2, 20),
+        to: newDate(2019, 12, 5)
       },
       {
         ID: 'HA_002',
