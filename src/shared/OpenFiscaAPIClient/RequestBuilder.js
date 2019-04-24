@@ -1,4 +1,4 @@
-import Moment from 'moment';
+import moment from 'moment';
 import {detectaFamiliesAPartirDeCustodies} from "../../family/detectaFamiliesAPartirDeCustodies";
 import {possiblesParellesDe} from "../../family/FamilyForm";
 import {serialize} from "../../persons/PersonsReducer";
@@ -9,8 +9,8 @@ import {demarcacioDelCodiPostal, zonaDelCodiPostal} from "../CodisPostals";
 import {esInfantAcollit} from "../selectorUtils";
 import {create as createUUID} from '../UUID';
 
-const currentDateKey = Moment().format('YYYY-MM');
-const lastYearKey = Moment().subtract(1, 'y').format('YYYY');
+const currentDateKey = moment().format('YYYY-MM');
+const lastYearKey = moment().subtract(1, 'y').format('YYYY');
 const currentMonth = value => ({[currentDateKey]: value});
 const lastYear = value => ({[lastYearKey]: value});
 const seleccionaFamiliarsFinsASegonGrau = (persons: Array<Person>) => persons.filter((persona: Person) => persona.relacio_parentiu !== 'cap' && persona.relacio_parentiu !== 'altres').map((persona: Person) => persona.id);

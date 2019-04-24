@@ -1,4 +1,5 @@
 import React from 'react';
+import mockMoment from 'moment';
 import {
   aMan,
   aPerson,
@@ -13,8 +14,17 @@ import {addPerson} from '../../persons/PersonsActions';
 import PersonsReducer, {initPersonState} from '../../persons/PersonsReducer';
 import OpenFiscaAPIClient from './OpenFiscaAPIClient';
 
+const mymoment = require("moment");
+jest.mock("moment", () => () => ({
+  format: (dateFormat) => dateFormat === 'YYYY' ?  '2016' : '2017-01',
+  subtract: () => mockMoment('2016', 'YYYY')
+})
+)
+
 describe('OpenFiscaAPIClient', () => {
+
   it('Can make a simulation', () => {
+
     const maria = isThePersonInFromOfTheComputer(ofAge(45, aWoman(aPerson({id: '23c1a8ca-8c2d-46bf-8469-ad1e1d5190c1'}))));
     const pere = isPartner(ofAge(45, aMan(aPerson({id: '42c5f2a9-4f60-47ad-87cd-63a08b19b360'}))));
     const josep = isSon(ofAge(12, aMan(aPerson({id: 'd2c2c1f0-3399-4143-a2c2-8c3263b493f3'}))));
@@ -113,6 +123,18 @@ describe('OpenFiscaAPIClient', () => {
                               {
                                 "2017-01":
                                     0
+                              }
+                          ,
+                          "GA_234_01": {
+                                "2017-01": 0,
+                              }
+                          ,
+                          "GA_246_01": {
+                                "2017-01": 1,
+                              }
+                          ,
+                          "GA_246_02": {
+                                "2017-01": 0,
                               }
                           ,
                           "GE_051_00_mensual":
@@ -288,6 +310,9 @@ describe('OpenFiscaAPIClient', () => {
                                 "2017-01":
                                     true
                               }
+                          ,
+                          "sentirse_sol":
+                              {}
                         }
                     ,
                     "42c5f2a9-4f60-47ad-87cd-63a08b19b360":
@@ -308,6 +333,18 @@ describe('OpenFiscaAPIClient', () => {
                               {
                                 "2017-01":
                                     0
+                              }
+                          ,
+                          "GA_234_01": {
+                                "2017-01": 0,
+                              }
+                          ,
+                          "GA_246_01": {
+                                "2017-01": 1,
+                              }
+                          ,
+                          "GA_246_02": {
+                                "2017-01": 0,
                               }
                           ,
                           "GE_051_00_mensual":
@@ -471,6 +508,9 @@ describe('OpenFiscaAPIClient', () => {
                                 "2017-01":
                                     true
                               }
+                          ,
+                          "sentirse_sol":
+                              {}
                         }
                     ,
                     "6bbc763b-03f3-4114-a4c7-df49c50108d4":
@@ -491,6 +531,18 @@ describe('OpenFiscaAPIClient', () => {
                               {
                                 "2017-01":
                                     0
+                              }
+                          ,
+                          "GA_234_01": {
+                                "2017-01": 0,
+                              }
+                          ,
+                          "GA_246_01": {
+                                "2017-01": 1,
+                              }
+                          ,
+                          "GA_246_02": {
+                                "2017-01": 0,
                               }
                           ,
                           "GE_051_00_mensual":
@@ -660,6 +712,9 @@ describe('OpenFiscaAPIClient', () => {
                                 "2017-01":
                                     true
                               }
+                          ,
+                          "sentirse_sol":
+                              {}
                         }
                     ,
                     "d2c2c1f0-3399-4143-a2c2-8c3263b493f3":
@@ -680,6 +735,18 @@ describe('OpenFiscaAPIClient', () => {
                               {
                                 "2017-01":
                                     0
+                              }
+                          ,
+                          "GA_234_01": {
+                                "2017-01": 0,
+                              }
+                          ,
+                          "GA_246_01": {
+                                "2017-01": 1,
+                              }
+                          ,
+                          "GA_246_02": {
+                                "2017-01": 0,
                               }
                           ,
                           "GE_051_00_mensual":
@@ -849,6 +916,9 @@ describe('OpenFiscaAPIClient', () => {
                                 "2017-01":
                                     true
                               }
+                          ,
+                          "sentirse_sol":
+                              {}
                         }
                   }
               ,
@@ -880,6 +950,10 @@ describe('OpenFiscaAPIClient', () => {
                                     0
                               }
                           ,
+                          "HA_004_01":
+                              {
+                                "2017-01": 0,
+                              },
                           "HA_005":
                               {
                                 "2017-01":
