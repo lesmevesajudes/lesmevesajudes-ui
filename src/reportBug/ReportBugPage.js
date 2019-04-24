@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 import {submitReport} from "./ReportBugActions";
 import ReportBug from "./ReportBugForm";
 
-const getReportBugDataFromLocalStorage = () => (
+export const getReportBugDataFromLocalStorage = () => (
     {
       ...(typeof localStorage.getItem('reporter_email') !== 'undefined' && {reporter_email: localStorage.getItem('reporter_email')}),
       ...(typeof localStorage.getItem('test_group') !== 'undefined' && {test_group: localStorage.getItem('test_group')})

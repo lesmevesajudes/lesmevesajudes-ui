@@ -5,8 +5,11 @@ import {Trans} from 'react-i18next';
 import {connect} from 'react-redux';
 import {AppFormContainer, AppFormTitle} from '../components/AppForms';
 import ShowMeOnceModal from '../components/ShowMeOnceModal'
+import {SHOW_REPORT_BUG} from '../config';
 import type {Person, PersonID} from '../persons/PersonTypes';
 import {submitReport} from "../reportBug/ReportBugActions";
+import ReportBugForm from '../reportBug/ReportBugForm';
+import {getReportBugDataFromLocalStorage} from '../reportBug/ReportBugPage';
 import Spinner from '../shared/spinner.svg';
 import {styles} from '../styles/theme';
 import {fetchSimulation} from './FetchSimulationAction';
@@ -160,6 +163,9 @@ class ResultsPage extends React.Component<Props> {
                 </Typography>
               </Grid>
             </Grid>
+            {SHOW_REPORT_BUG && <Grid item xs={12} className={classes.ItemResult}>
+              <ReportBugForm initialValues={getReportBugDataFromLocalStorage()} onSubmit={this.submitReport}/>
+            </Grid>}
           </ResultsContainer>
         </AppFormContainer>
     );
