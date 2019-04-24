@@ -1,3 +1,4 @@
+import Moment from 'moment';
 import {detectaFamiliesAPartirDeCustodies} from "../../family/detectaFamiliesAPartirDeCustodies";
 import {possiblesParellesDe} from "../../family/FamilyForm";
 import {serialize} from "../../persons/PersonsReducer";
@@ -8,8 +9,10 @@ import {demarcacioDelCodiPostal, zonaDelCodiPostal} from "../CodisPostals";
 import {esInfantAcollit} from "../selectorUtils";
 import {create as createUUID} from '../UUID';
 
-const currentMonth = value => ({'2017-01': value});
-const lastYear = value => ({'2016': value});
+const currentDateKey = Moment().format('YYYY-MM');
+const lastYearKey = Moment().subtract(1, 'y').format('YYYY');
+const currentMonth = value => ({[currentDateKey]: value});
+const lastYear = value => ({[lastYearKey]: value});
 const seleccionaFamiliarsFinsASegonGrau = (persons: Array<Person>) => persons.filter((persona: Person) => persona.relacio_parentiu !== 'cap' && persona.relacio_parentiu !== 'altres').map((persona: Person) => persona.id);
 const allPersonsIDs = (persons: Array<Person>) => persons.map((persona: Person) => persona.id);
 const esUnSustentadorConvivent = (sustentador: ?string) => typeof sustentador === 'string' && sustentador !== 'ningu_mes' && sustentador !== 'no_conviu';
