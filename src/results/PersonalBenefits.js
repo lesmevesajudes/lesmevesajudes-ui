@@ -2,6 +2,7 @@ import {Grid, Typography, withStyles} from '@material-ui/core';
 import {Map} from 'immutable';
 import React from 'react';
 import {Trans, translate} from 'react-i18next';
+import Moment from 'moment';
 import type {PersonID} from '../persons/PersonTypes';
 import {Person} from '../persons/PersonTypes';
 import {newDate} from "../shared/dateUtils";
@@ -109,7 +110,7 @@ class PersonalBenefits extends React.Component<PersonalBenefitsProps> {
        to: undefined
      }
     ];
-    this.period = '2017-01';
+    this.period = Moment().format('YYYY-MM');
   }
 
   hasAnyBenefit(personWithBenefits) {

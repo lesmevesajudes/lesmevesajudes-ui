@@ -3,6 +3,7 @@ import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import React from 'react';
 import {Trans} from 'react-i18next';
 import {connect} from 'react-redux';
+import Moment from 'moment';
 import {AppFormContainer, AppFormTitle} from '../components/AppForms';
 import ShowMeOnceModal from '../components/ShowMeOnceModal'
 import {SHOW_REPORT_BUG} from '../config';
@@ -49,7 +50,7 @@ class ResultsPage extends React.Component<Props> {
 
   constructor(props) {
     super(props);
-    this.period = '2017-01';
+    this.period = Moment().format('YYYY-MM');
     this.submitReport = this.submitReport.bind(this);
   }
 
