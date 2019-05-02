@@ -10,6 +10,7 @@ import {connect} from 'react-redux';
 import Sticky from 'react-stickynode';
 import {reduxForm} from 'redux-form';
 import {TextField} from 'redux-form-material-ui';
+import moment from 'moment';
 import {AppForm, AppFormContainer, AppFormTitle} from '../components/AppForms';
 import DescriptionText from '../components/Common/DescriptionText';
 import FormSubTitle from '../components/FormComponents/FormSubTitle';
@@ -62,6 +63,7 @@ const FamilyForm = (props: Props) => {
     sustentadorsSolitarisAmbPossiblesParelles,
     t
   } = props;
+  const year = moment().subtract(1, 'year').format('YYYY');
   return (
       <AppFormContainer>
         <AppFormTitle iconName='familia'>
@@ -161,9 +163,11 @@ const FamilyForm = (props: Props) => {
                         </YesNoQuestion>}
 
                         <YesNoQuestion name={'usuari_serveis_socials.' + familia.ID} validate={[required]}>
-                          <Trans i18nKey='familia_usuaria_css'>Aquesta família és usuària de serveis socials en
-                            seguiment a un CSS o servei
-                            especialitzat de l'Ajuntament de Barcelona des d'abans del 31/12/2017?</Trans>
+                          <Trans
+                            i18nKey='familia_usuaria_css'
+                            year={year} >
+                            Aquesta família és usuària de serveis socials en seguiment a un CSS o servei especialitzat de l'Ajuntament de Barcelona des d'abans del 31/12/{{ year }}?
+                          </Trans>
                         </YesNoQuestion>
                       </Fragment>
                   )}

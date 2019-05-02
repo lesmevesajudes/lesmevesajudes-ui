@@ -31,7 +31,7 @@
   "Ningú més": "Ningú més",
   "Família de:": "Família de:",
   "Té el carnet de família monoparental?": "Té el carnet de família monoparental?",
-  "Aquesta família és usuària de serveis socials en seguiment a un CSS o servei especialitzat de l'Ajuntament de Barcelona des d'abans del 31/12/2017?": "Aquesta família és usuària de serveis socials en seguiment a un CSS o servei especialitzat de l'Ajuntament de Barcelona des d'abans del 31/12/2017?",
+  "familia_usuaria_css": "Aquesta família és usuària de serveis socials en seguiment a un CSS o servei especialitzat de l'Ajuntament de Barcelona des d'abans del 31/12/{{year}}?",
   "Vols saber a quins ajuts públics pots accedir?": "Vols saber a quins ajuts públics pots accedir?",
   "CONEGUI LES SEVES AJUDES": "CONEGUI LES SEVES AJUDES",
   "Aquesta eina us permetrà consultar a quins ajuts i prestacions socials podeu arribar a optar. Heu de declarar, sota la vostra responsabilitat, que les respostes són certes.Podreu trobar-hi ajudes gestionades per l’Ajuntament, la Generalitat i l’Estat.<1></1> El simulador, que es troba en fase inicial, anirà incorporant ajuts nous. <3></3>Aquest assistent no tramita la sol·licitud.": "Aquesta eina us permetrà consultar a quins ajuts i prestacions socials podeu arribar a optar. Heu de declarar, sota la vostra responsabilitat, que les respostes són certes.Podreu trobar-hi ajudes gestionades per l’Ajuntament, la Generalitat i l’Estat.<1></1> El simulador, que es troba en fase inicial, anirà incorporant ajuts nous. <3></3>Aquest assistent no tramita la sol·licitud.",

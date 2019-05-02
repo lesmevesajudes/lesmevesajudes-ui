@@ -23,10 +23,10 @@ class PersonalBenefits extends React.Component<PersonalBenefitsProps> {
         name: <Trans i18nKey='AE_230_mensual_title'>Fons extraordinari d’ajuts d’emergència social per a infants de 0 a
           16 anys</Trans>,
         periode: <Trans i18nKey='mes'>mes</Trans>,
-        conditions: <Trans i18nKey='maxim_9_mesos'>màxim 9 mesos</Trans>,
+        conditions: <Trans i18nKey='maxim_8_mesos'>màxim 8 mesos</Trans>,
         url: this.props.t('link_AE_230'),
-        from: newDate(2018, 4, 25),
-        to: newDate(2018, 5, 25)
+        from: Moment().date(25).month(2).toDate(),
+        to: Moment().date(24).month(5).toDate()
       },
       {
         ID: 'AE_230_01_mensual',
@@ -35,8 +35,8 @@ class PersonalBenefits extends React.Component<PersonalBenefitsProps> {
           monoparentals</Trans>,
         periode: <Trans i18nKey='any'>any</Trans>,
         url: this.props.t('link_AE_230'),
-        from: newDate(2018, 4, 25),
-        to: newDate(2018, 5, 25)
+        from: newDate(2019, 4, 25),
+        to: newDate(2019, 5, 25)
       },
       {
         ID: 'EG_233_mensual',
