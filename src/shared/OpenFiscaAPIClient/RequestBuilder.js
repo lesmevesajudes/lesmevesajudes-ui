@@ -206,6 +206,7 @@ const personToOpenFiscaPerson = (person: Person) => ({
   GA_246_01: currentMonth(null),
   GA_246_02: currentMonth(null),
   GA_234_01: currentMonth(null),
+  GA_234_02: currentMonth(null),
 });
 
 function numeraMenorsDeFamilies016(families, personalData) {
