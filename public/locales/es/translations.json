@@ -171,7 +171,7 @@
     "una_persona_que_no_conviu": "Una persona que no convive",
     "ningu_mes": "Nadie más",
     "te_carnet_monoparental": "¿Tiene el carnet de familia monoparental?",
-    "familia_usuaria_css": "¿Esta familia es usuaria de servicios sociales en seguimiento en un centro de Servicios Sociales o servicio especializado del Ayuntamiento de Barcelona desde antes del 31/12/{year}?",
+    "familia_usuaria_css": "¿Esta familia es usuaria de servicios sociales en seguimiento en un centro de Servicios Sociales o servicio especializado del Ayuntamiento de Barcelona desde antes del 31/12/{previous_year}?",
     "anys": "años",
     "i": "y",
     "familia_de": "Familia de:",

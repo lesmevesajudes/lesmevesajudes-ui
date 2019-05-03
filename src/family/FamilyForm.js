@@ -63,7 +63,7 @@ const FamilyForm = (props: Props) => {
     sustentadorsSolitarisAmbPossiblesParelles,
     t
   } = props;
-  const year = moment().subtract(1, 'year').format('YYYY');
+  const previous_year = moment().subtract(1, 'year').format('YYYY');
   return (
       <AppFormContainer>
         <AppFormTitle iconName='familia'>
@@ -165,8 +165,8 @@ const FamilyForm = (props: Props) => {
                         <YesNoQuestion name={'usuari_serveis_socials.' + familia.ID} validate={[required]}>
                           <Trans
                             i18nKey='familia_usuaria_css'
-                            year={year} >
-                            Aquesta família és usuària de serveis socials en seguiment a un CSS o servei especialitzat de l'Ajuntament de Barcelona des d'abans del 31/12/{{ year }}?
+                            previous_year={previous_year} >
+                            Aquesta família és usuària de serveis socials en seguiment a un CSS o servei especialitzat de l'Ajuntament de Barcelona des d'abans del 31/12/{{ previous_year }}?
                           </Trans>
                         </YesNoQuestion>
                       </Fragment>

@@ -25,8 +25,8 @@ class PersonalBenefits extends React.Component<PersonalBenefitsProps> {
         periode: <Trans i18nKey='mes'>mes</Trans>,
         conditions: <Trans i18nKey='maxim_8_mesos'>màxim 8 mesos</Trans>,
         url: this.props.t('link_AE_230'),
-        from: Moment().date(25).month(2).toDate(),
-        to: Moment().date(24).month(5).toDate()
+        from: newDate(2019, 4, 25),
+        to: newDate(2019, 5, 24)
       },
       {
         ID: 'AE_230_01_mensual',
@@ -36,7 +36,7 @@ class PersonalBenefits extends React.Component<PersonalBenefitsProps> {
         periode: <Trans i18nKey='any'>any</Trans>,
         url: this.props.t('link_AE_230'),
         from: newDate(2019, 4, 25),
-        to: newDate(2019, 5, 25)
+        to: newDate(2019, 5, 24)
       },
       {
         ID: 'EG_233_mensual',
