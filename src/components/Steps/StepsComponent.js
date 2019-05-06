@@ -43,7 +43,7 @@ const chooseIcon = (props: Object, currentStep: number, maxStepReached: number, 
   else if (maxStepReached >= index) {
     completed = true;
   }
-  return <IconFont icon={iconStep} completed={completed} active={active} isStepperIcon sizeSphere={48} fontSize={32}/>
+  return <IconFont icon={iconStep} completed={completed} active={active} isStepperIcon sizeSphere={60} fontSize={24}/>
 };
 
 const isOptionalStep = (step) => {
