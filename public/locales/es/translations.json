@@ -245,8 +245,10 @@
     "GA_246_01_amountText": "Gratuita",
     "GA_246_02_title": "Targeta rosa",
     "GA_246_02_amountText": "Reducida",
-    "GA_234_01_title": "Vínculos",
-    "GA_234_01_import": "Gratuita",
+    "GA_234_01_title": "Vincles",
+    "GA_234_01_import": "",
+    "GA_234_02_title": "Vincles",
+    "GA_234_02_import": "",
     "maxim_12_mesos": "Máximo 12 meses",
     "pagament_unic": "Pago único",
     "mes": "mes",
@@ -348,5 +350,5 @@
     "link_HA_005": "/lesmevesajudes/es/ayudas/subvenciones-para-el-pago-de-alquiler",
     "link_HA_004": "/lesmevesajudes/es/ayudas/prestaciones-económicas-de-especial-urgencia-para-el-pago-de-deudas-del-alquiler",
     "link_GA_246": "/lesmevesajudes/es/ayudas/targeta-rosa",
-    "link_GA_234": "/lesmevesajudes/es/ayudas/vinculos"
+    "link_GA_234": "/lesmevesajudes/es/ayudas/vincles"
 }
