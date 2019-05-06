@@ -56,8 +56,9 @@ export const styles = theme => ({
       width: '300px',
     },
     position: 'absolute',
-    padding: '32px',
+    padding: '30px 60px 60px',
     backgroundColor: '#fff',
+    textColor: '#696973 !important',
     boxShadow: 'px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 5px 8px 0px rgba(0, 0, 0, 0.14), 0px 1px 14px 0px rgba(0, 0, 0, 0.12);',
 
   },
@@ -89,12 +90,14 @@ export const styles = theme => ({
   },
   titleText: {
     lineHeight: '48px',
+    paddingTop: '50px',
+    paddingBottom: '30px'
   },
   appForm: {
     background: colors.white,
     paddingTop: '16px',
     paddingBottom: '16px',
-    marginBottom: '16px'
+    marginBottom: '60px'
   },
   andSeparator: {
     textAlign: 'center',
@@ -157,10 +160,12 @@ export default createMuiTheme({
     fontSize: 16,
     htmlFontSize: 10,
     h2: {
-      textTransform: 'uppercase',
-      fontSize: '2.4rem',
+      textTransform: 'none',
+      fontSize: '2.8rem',
       fontWeight: 600,
       color: colors.secondary,
+      marginTop: '32px',
+      marginBottom: '34px'
     },
     caption: {
       color: 'rgba(0, 0, 0, 0.54)',
@@ -185,6 +190,11 @@ export default createMuiTheme({
         backgroundColor: 'rgba(0, 0, 0, 0.85)'
       }
     },
+    MuiTypography: {
+      body2: {
+        color: '#696973 !important'
+      }
+    },
     MuiStepLabel: {
       root: {
         fontFamily: 'Source Sans Pro, sans-serif'
@@ -194,14 +204,22 @@ export default createMuiTheme({
       },
       completed: {
         fontWeight: '600 !important',
+      },
+      active: {
+        color: colors.secondary + ' !important',
       }
     },
     MuiStepConnector: {
       alternativeLabel: {
-        top: '24px',
+        top: '30px',
         left: 'calc(-50% + 30px)',
         right: 'calc(50% + 30px)',
         position: 'absolute',
+        zIndex: '0'
+      },
+      lineHorizontal: {
+        borderTopWidth: '2px',
+        borderColor: '#EBEBEB'
       }
     },
     MuiPaper: {
@@ -248,6 +266,10 @@ export default createMuiTheme({
         '&:focus': {
           boxShadow: 'none'
         },
+      },
+      containedSecondary: {
+		fontSize: '1.4rem',
+		height: '40px'
       },
       flat: { // Normal Button
         disableRipple: true,
