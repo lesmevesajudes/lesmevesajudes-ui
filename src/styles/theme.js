@@ -29,6 +29,7 @@ export const styles = theme => ({
   },
   root: {
     width: '100%',
+    backgroundImage: 'linear-gradient(#F6F6F6, white)',
   },
   titleUnknownPerson: {
     color: colors.primary + ' !important'
@@ -43,7 +44,7 @@ export const styles = theme => ({
     maxWidth: '1140px',
     marginLeft: 'auto',
     marginRight: 'auto',
-    backgroundColor: '#fbfbfb'
+    backgroundColor: 'transparent'
   },
   boxDescriptionText: {
     boxShadow: '0px 0px 7px rgba(0, 0, 0, 0.15)',
@@ -75,18 +76,21 @@ export const styles = theme => ({
     background: colors.gray,
     borderRadius: '4px',
     maxWidth: '1140px',
-    marginBottom: '30px',
     marginRight: 'auto',
     marginLeft: 'auto',
   },
   buttonsContainer: {
+	background: colors.gray,
     maxWidth: '1140px',
     marginRight: 'auto',
     marginLeft: 'auto',
+    paddingRight: '30px',
   },
   titleContainer: {
+	marginRight: '155px',
+    marginLeft: '155px',
     paddingTop: '16px',
-    paddingBottom: '16px'
+    paddingBottom: '16px',
   },
   titleText: {
     lineHeight: '48px',
@@ -97,7 +101,9 @@ export const styles = theme => ({
     background: colors.white,
     paddingTop: '16px',
     paddingBottom: '16px',
-    marginBottom: '60px'
+    marginBottom: '60px',
+    marginRight: '155px',
+    marginLeft: '155px'
   },
   andSeparator: {
     textAlign: 'center',
@@ -111,7 +117,9 @@ export const styles = theme => ({
     marginBottom: '16px'
   },
   personListContainer: {
-    marginBottom: '16px'
+    marginBottom: '16px',
+	marginRight: '155px',
+    marginLeft: '155px',
   },
   ResultWarning: {
     background: colors.gray,
@@ -200,20 +208,25 @@ export default createMuiTheme({
         fontFamily: 'Source Sans Pro, sans-serif'
       },
       alternativeLabel: {
-        marginTop: '0px !important'
+        marginTop: '0px !important',
+        zIndex: '1'
       },
+      labelContainer: {
+		marginTop: '7px !important'
+	  },
       completed: {
         fontWeight: '600 !important',
       },
       active: {
         color: colors.secondary + ' !important',
+        fontWeight: '600 !important',
       }
     },
     MuiStepConnector: {
       alternativeLabel: {
         top: '30px',
-        left: 'calc(-50% + 30px)',
-        right: 'calc(50% + 30px)',
+        left: 'calc(-50% + 20px)',
+        right: 'calc(50% + 20px)',
         position: 'absolute',
         zIndex: '0'
       },
@@ -225,7 +238,8 @@ export default createMuiTheme({
     MuiPaper: {
       elevation2: {
         boxShadow: 'none',
-        borderRadius: '4px'
+        borderRadius: '4px',
+        marginTop: '32px',
       }
     },
     MuiList: {
@@ -267,9 +281,13 @@ export default createMuiTheme({
           boxShadow: 'none'
         },
       },
+      containedPrimary: {
+		marginBottom: '30px',
+      },
       containedSecondary: {
 		fontSize: '1.4rem',
-		height: '40px'
+		height: '40px',
+		marginBottom: '30px',
       },
       flat: { // Normal Button
         disableRipple: true,
