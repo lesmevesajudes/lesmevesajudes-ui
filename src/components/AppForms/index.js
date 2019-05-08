@@ -21,7 +21,7 @@ type AppFormTitleProps = {
 export const AppFormTitle = withStyles(styles)((props: AppFormTitleProps) =>
     <Grid item xs={12} md={11} className={props.classes.titleContainer}>
       <Typography variant='h5' className={props.classes.titleText}>
-        <IconFont icon={props.iconName} sizeSphere={48} fontSize={32}/>
+        <IconFont icon={props.iconName} sizeSphere={60} fontSize={26}/>
           {props.children}
       </Typography>
     </Grid>);

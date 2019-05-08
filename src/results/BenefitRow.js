@@ -93,11 +93,9 @@ export const BenefitRow = ({benefit, subject, classes}: Props) =>
                      requisits necessaris per accedir a aquest ajut, clica aquí</Trans>}
                    placement='right'>
             <Button variant='contained' color='primary' key={benefit.ID}>
-              <Typography className={classes.whiteText}>
                 <Trans i18nKey='mes_informacio'>
                   Més informació
                 </Trans>
-              </Typography>
             </Button>
           </Tooltip>
         </a>
