@@ -21,10 +21,13 @@ const seleccionaNoFamiliarsFinsASegonGrau = (persons: Array<Person>) => persons.
 const getAllPersonsInA016Family = (familia016) => [...familia016.sustentadors_i_custodia, ...familia016.sustentadors, ...familia016.menors, ...familia016.altres_familiars, ...familia016.altres_persones];
 const allMembersOfFamilies = (families) => Object.values(families).map(getAllPersonsInA016Family).reduce((acc, val) => acc.concat(val), []);
 
+const seleccionaSustentadorsEnFamiliesSenseMenors = (persons: Array<Person>) => persons.filter((persona: Person) =>
+    persona.is_the_person_in_front_of_the_computer === true || persona.relacio_parentiu === 'parella')
+  .map((persona: Person) => persona.id);
+
 const seleccionaElsAltresMembresDeLaUnitatDeConvivenciaQueSiguinFamiliarsFinsASegonGrau =
     (family016Members: Array<PersonID>, persons: Array<Person>) =>
-        seleccionaFamiliarsFinsASegonGrau(persons).filter((personaID: PersonID) => family016Members.indexOf(personaID) === -1);
-
+        seleccionaFamiliarsFinsASegonGrau(persons).filter((personaID: PersonID) => family016Members.indexOf(personaID) === -1 && seleccionaSustentadorsEnFamiliesSenseMenors(persons).indexOf(personaID) === -1);
 const toKey = (persons: Array<Person>) => persons.sort().join('');
 
 function findAPartnerForMonoparentalFamilies(familiesFromCustodies, parelles, persons) {
@@ -105,12 +108,14 @@ export const buildFamilies016 = (custodies, persons, families) => {
   return completedFamilies;
 };
 
-const createAFamilyWithAllPersons = (persones) => {
+export const createAFamilyWithAllPersons = (persones) => {
+  console.log("createAFamilyWithAllPersons");
+  console.log(JSON.stringify(persones));
   const id = createUUID();
   let result = {};
   result[id] = {
     sustentadors_i_custodia: [],
-    sustentadors: [],
+    sustentadors: seleccionaSustentadorsEnFamiliesSenseMenors(serialize(persones)),
     menors: [],
     altres_persones: seleccionaNoFamiliarsFinsASegonGrau(serialize(persones)),
     altres_familiars: seleccionaElsAltresMembresDeLaUnitatDeConvivenciaQueSiguinFamiliarsFinsASegonGrau(
