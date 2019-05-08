@@ -283,11 +283,13 @@ export default createMuiTheme({
       },
       containedPrimary: {
 		marginBottom: '30px',
+		color: colors.white,
       },
       containedSecondary: {
 		fontSize: '1.4rem',
 		height: '40px',
 		marginBottom: '30px',
+		backgroundColor: colors.white,
       },
       flat: { // Normal Button
         disableRipple: true,
