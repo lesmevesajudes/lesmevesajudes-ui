@@ -113,7 +113,7 @@ class PersonalBenefits extends React.Component<PersonalBenefitsProps> {
       ID: 'GA_234_02',
       name: <Trans i18nKey='GA_234_02_title'>Vincles</Trans>,
       url: this.props.t('link_GA_234'),
-      amountText: <Trans i18nKey='GA_234_02_import'>Gratuïta</Trans>,
+      amountText: <Trans i18nKey='GA_234_02_import'>Amb tauleta pròpia</Trans>,
       from: undefined,
       to: undefined
     }
