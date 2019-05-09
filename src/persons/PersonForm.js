@@ -428,7 +428,7 @@ let PersonForm = (props: Props) => {
                     </YesNoQuestion>
 
                     {edat > 64 &&
-                    <YesNoQuestion name='sentirse_sol'>
+                    <YesNoQuestion name='sentirse_sol' validate={[required]}>
                       <Trans {...i18nKey('sentirse_sol', personAndSexTranslationContext)}>
                         Et sents sol/a?
                       </Trans>
