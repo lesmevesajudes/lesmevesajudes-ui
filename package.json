@@ -7,7 +7,7 @@
     "@material-ui/core": "3.9.3",
     "@material-ui/icons": "^3.0.2",
     "axios": "^0.18.0",
-    "i18next": "^11.9.0",
+    "i18next": "13.0.0",
     "i18next-browser-languagedetector": "^2.2.0",
     "i18next-xhr-backend": "^1.5.0",
     "immutable": "^3.8.0",
