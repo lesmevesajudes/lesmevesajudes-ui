@@ -1,6 +1,6 @@
 import {Grid, Typography, withStyles} from '@material-ui/core';
 import React from 'react';
-import {Trans, translate} from 'react-i18next';
+import {Trans, withNamespaces} from 'react-i18next';
 import {newDate} from '../shared/dateUtils';
 import styles from '../styles/theme';
 import BenefitRow, {NoBenefitRow} from './BenefitRow';
@@ -117,4 +117,4 @@ class UnitatDeConvivenciaBenefits extends React.Component<UnitatDeConvivenciaBen
 }
 
 
-export default translate("translations")(withStyles(styles)(UnitatDeConvivenciaBenefits));
+export default withNamespaces("translations")(withStyles(styles)(UnitatDeConvivenciaBenefits));

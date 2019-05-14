@@ -1,7 +1,7 @@
 import {Grid, Typography, withStyles} from '@material-ui/core';
 import {Map} from 'immutable';
 import React from 'react';
-import {Trans, translate} from 'react-i18next';
+import {Trans, withNamespaces} from 'react-i18next';
 import Moment from 'moment';
 import type {PersonID} from '../persons/PersonTypes';
 import {Person} from '../persons/PersonTypes';
@@ -166,4 +166,4 @@ class PersonalBenefits extends React.Component<PersonalBenefitsProps> {
   }
 }
 
-export default translate("translations")(withStyles(styles)(PersonalBenefits));
+export default withNamespaces("translations")(withStyles(styles)(PersonalBenefits));
