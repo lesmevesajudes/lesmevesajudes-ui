@@ -9612,10 +9612,10 @@ react-event-listener@^0.6.2:
     prop-types "^15.6.0"
     warning "^4.0.1"
 
-react-i18next@^8.0.0:
-  version "8.1.1"
-  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-8.1.1.tgz#c8c4938dbcd74d6618f69c64a4914e36e656285f"
-  integrity sha512-o/33dyl5Wc8z/6QTsj6zU567oRK2pIDhlhNzelpTSmKrZuCsBPZZxEEOW6T+5MgDpCfr6RCsZbL1M2S+RH6i1w==
+react-i18next@8.4.0:
+  version "8.4.0"
+  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-8.4.0.tgz#e9f0c5b9938b155eaa6051360614719c08cae72f"
+  integrity sha512-zIO/bc1L0UUGdaws2y40cTiSQHuQud5e9SSodYM6MTzhJTI3iayxCCdgvotblOLM4taOD77Ct2/fUbheQIhyeg==
   dependencies:
     "@babel/runtime" "^7.1.2"
     create-react-context "0.2.3"
