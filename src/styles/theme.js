@@ -301,7 +301,7 @@ export default createMuiTheme({
           bosShadow: 'none'
         }
       },
-      disabled: { // Disabled Button
+      "&$disabled": { // Disabled Button
         background: colors.disabled,
         color: colors.disabled_text
       }
