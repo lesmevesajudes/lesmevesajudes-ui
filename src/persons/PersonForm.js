@@ -2,7 +2,7 @@
 import {Button, Grid, Hidden, MenuItem, Typography} from '@material-ui/core';
 import Icon from '@material-ui/core/Icon/Icon';
 import React, {Fragment} from 'react';
-import {Trans, withNamespaces} from 'react-i18next';
+import {Trans, withTranslation} from 'react-i18next';
 import {connect} from 'react-redux';
 import Sticky from 'react-stickynode';
 import {Field, formValueSelector, reduxForm} from 'redux-form';
@@ -476,7 +476,7 @@ PersonForm = reduxForm({
 
 const selector = formValueSelector(formName);
 
-PersonForm = withNamespaces('translations')(connect(state => {
+PersonForm = withTranslation('translations')(connect(state => {
   const edat = selector(state, 'edat');
   const esAturat = selector(state, 'situacio_laboral') === 'aturat';
   const esDona = selector(state, 'sexe') === 'dona';

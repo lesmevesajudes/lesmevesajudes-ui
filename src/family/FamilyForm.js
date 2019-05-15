@@ -5,7 +5,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Typography from '@material-ui/core/Typography';
 import {Map} from 'immutable';
 import React, {Fragment} from 'react';
-import {Trans, withNamespaces} from 'react-i18next';
+import {Trans, withTranslation} from 'react-i18next';
 import {connect} from 'react-redux';
 import Sticky from 'react-stickynode';
 import {reduxForm} from 'redux-form';
@@ -237,7 +237,7 @@ function mapStateToProps(state) {
   };
 }
 
-export default withNamespaces("translations")(withStyles(styles)(connect(mapStateToProps, {addHouseholdData: addFamilyData})(
+export default withTranslation("translations")(withStyles(styles)(connect(mapStateToProps, {addHouseholdData: addFamilyData})(
     reduxForm(
         {
           form: 'FamilyForm',

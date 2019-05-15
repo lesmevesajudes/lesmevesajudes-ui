@@ -1,5 +1,5 @@
 import React from 'react';
-import {Trans, withNamespaces} from 'react-i18next';
+import {Trans, withTranslation} from 'react-i18next';
 import StepsComponent from '../components/Steps/StepsComponent';
 import FamilyForm from '../family/FamilyForm';
 import PersonsPage from '../persons/PersonsPage'
@@ -46,4 +46,4 @@ const steps = [
 const WizardPage = () =>
     <StepsComponent steps={steps}/>;
 
-export default withNamespaces('translations')(WizardPage);
+export default withTranslation('translations')(WizardPage);
