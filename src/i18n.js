@@ -39,8 +39,7 @@ i18n
       loadPath: STATIC_ROOT + '/locales/{{lng}}/{{ns}}.json'
     },
     react: {
-      wait: true,
-      useSuspense: false
+      useSuspense: true
     }
   });
 
