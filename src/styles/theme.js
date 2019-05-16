@@ -300,10 +300,6 @@ export default createMuiTheme({
         }, '&:active': {
           bosShadow: 'none'
         }
-      },
-      "&$disabled": { // Disabled Button
-        background: colors.disabled,
-        color: colors.disabled_text
       }
     }
   }
