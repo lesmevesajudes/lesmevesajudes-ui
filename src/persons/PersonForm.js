@@ -449,7 +449,7 @@ let PersonForm = (props: Props) => {
               <Grid container direction='row' spacing={16} justify='space-around'>
                 {(isTheUserInFrontOfTheComputer !== true || updating === true) &&
                 <Grid item>
-                  <Button variant='contained' color='secondary' onClick={props.onCancel}>
+                  <Button variant='contained' color='default' onClick={props.onCancel}>
                     <Trans i18nKey='cancelar'>Cancelar</Trans>
                   </Button>
                 </Grid>}

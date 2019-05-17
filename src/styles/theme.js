@@ -55,6 +55,7 @@ export const styles = theme => ({
   modalContainer: {
     [theme.breakpoints.down('sm')]: {
       width: '300px',
+      padding: '10px 20px 20px',
     },
     position: 'absolute',
     padding: '30px 60px 60px',
@@ -73,6 +74,10 @@ export const styles = theme => ({
 
   // verified styles
   formContainer: {
+	[theme.breakpoints.down('sm')]: {
+		width: '100%',
+		margin: '0px',
+    },
     background: colors.gray,
     borderRadius: '4px',
     maxWidth: '1140px',
@@ -80,24 +85,39 @@ export const styles = theme => ({
     marginLeft: 'auto',
   },
   buttonsContainer: {
+	[theme.breakpoints.down('sm')]: {
+		paddingRight: '15px',
+    },
 	background: colors.gray,
     maxWidth: '1140px',
     marginRight: 'auto',
     marginLeft: 'auto',
-    paddingRight: '30px',
+    paddingRight: '140px',
   },
   titleContainer: {
+	[theme.breakpoints.down('sm')]: {
+		marginRight: '7px',
+		marginLeft: '7px',
+    },
 	marginRight: '155px',
     marginLeft: '155px',
     paddingTop: '16px',
     paddingBottom: '16px',
   },
   titleText: {
+	[theme.breakpoints.down('sm')]: {
+		paddingTop: '25px',
+	    paddingBottom: '25px'
+    },
     lineHeight: '48px',
     paddingTop: '50px',
     paddingBottom: '30px'
   },
   appForm: {
+	[theme.breakpoints.down('sm')]: {
+		marginRight: '7px',
+		marginLeft: '7px',
+    },
     background: colors.white,
     paddingTop: '16px',
     paddingBottom: '16px',
@@ -117,6 +137,10 @@ export const styles = theme => ({
     marginBottom: '16px'
   },
   personListContainer: {
+	[theme.breakpoints.down('sm')]: {
+		marginRight: '7px',
+		marginLeft: '7px',
+    },
     marginBottom: '16px',
 	marginRight: '155px',
     marginLeft: '155px',
