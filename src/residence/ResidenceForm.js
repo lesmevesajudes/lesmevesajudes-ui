@@ -3,7 +3,7 @@ import {Grid, Hidden, MenuItem} from "@material-ui/core";
 import Icon from "@material-ui/core/Icon/Icon";
 import {Map} from "immutable";
 import React from "react";
-import {Trans, withNamespaces} from "react-i18next";
+import {Trans, withTranslation} from "react-i18next";
 import {connect} from "react-redux";
 import Sticky from "react-stickynode";
 import {formValueSelector, reduxForm} from "redux-form";
@@ -387,7 +387,7 @@ function mapStateToProps(state) {
   };
 }
 
-export default withNamespaces("translations")(connect(mapStateToProps)(reduxForm(
+export default withTranslation("translations")(connect(mapStateToProps)(reduxForm(
     {
       form: "ResidenceForm",
       onChange: (values, dispatch) => {
