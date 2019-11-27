@@ -49,6 +49,7 @@ type Props = {
   teAlgunGrauDeDiscapacitatReconegut: Boolean,
   tipusDocumentIdentitat: Boolean,
   treballaPerCompteDAltriParcial: Boolean,
+  sentirseSol: Boolean,
   updating: Boolean
 };
 
@@ -75,6 +76,7 @@ let PersonForm = (props: Props) => {
     teAlgunGrauDeDiscapacitatReconegut,
     tipusDocumentIdentitat,
     treballaPerCompteDAltriParcial,
+    sentirseSol,
     updating
   } = props;
   const buildTranslationContext = (items: Array<string>) => ({context: items.join('_')});
@@ -431,6 +433,13 @@ let PersonForm = (props: Props) => {
                     <YesNoQuestion name='sentirse_sol' validate={[required]}>
                       <Trans {...i18nKey('sentirse_sol', personAndSexTranslationContext)}>
                         Et sents sol/a?
+                      </Trans>
+                    </YesNoQuestion>}
+
+                    {edat > 64 && sentirseSol &&
+                    <YesNoQuestion name='te_dispositiu_inteligent_amb_connexio_a_internet' validate={[required]}>
+                      <Trans i18nKey='te_dispositiu_inteligent_amb_connexio_a_internet'>
+                        Disposes de tauleta o mòbil intel·ligent amb connexió a internet?
                       </Trans>
                     </YesNoQuestion>}
 
