@@ -8,6 +8,7 @@ import ClearIcon from "@material-ui/icons/Clear";
 import DoneIcon from "@material-ui/icons/Done";
 import React, {Fragment} from "react";
 import {Trans} from "react-i18next";
+import classNames from "classnames";
 import {dateToString} from "../shared/dateUtils";
 import {styles} from "../styles/theme";
 
@@ -74,6 +75,11 @@ export const BenefitRow = ({benefit, subject, classes}: Props) =>
         <Grid item>
           <Period benefit={benefit}/>
         </Grid>
+        <a className="printable-only" href={benefit.url.toString()}>
+        <Trans i18nKey='mes_informacio'>
+          Més informació
+        </Trans>
+        </a>
       </Grid>
       {benefit.doNotShowAmount !== true &&
       <Grid item container className={classes.ResultsSeparator} xs={2} alignItems='center' justify='center'>
@@ -86,7 +92,7 @@ export const BenefitRow = ({benefit, subject, classes}: Props) =>
           {benefit.conditions}
         </Typography>
       </Grid>}
-      <Grid item className={classes.ResultsSeparator} xs={2}>
+      <Grid item className={classNames(classes.ResultsSeparator, 'screen-only')} xs={2}>
         <a className={classes.link} href={benefit.url.toString()} target="_blank" rel="noopener noreferrer">
           <Tooltip id='mes-info-tooltip'
                    title={<Trans i18nKey='si_vol_saber_si_reuneix_requisits'>Si vols saber si reuneixes tots els

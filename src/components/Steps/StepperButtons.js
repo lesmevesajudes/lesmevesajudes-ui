@@ -1,6 +1,7 @@
 import {Button, Grid, Icon, withStyles} from '@material-ui/core';
 import React, {Fragment} from "react";
 import {Trans} from 'react-i18next';
+import classNames from "classnames";
 import {styles} from '../../styles/theme';
 
 type Props = {
@@ -20,7 +21,7 @@ const printPage = function () {
 let StepperButtons = (props: Props) => {
   const {classes, backAction, buttonEnabled, nextAction, nextIsResults} = props;
   const content = (
-      <Grid container justify={'flex-end'} alignItems={'center'} className={classes.buttonsContainer}>
+      <Grid container justify={'flex-end'} alignItems={'center'} className={classNames(classes.buttonsContainer, 'screen-only')}>
         <Grid item container sm={2} md={2} justify={'flex-end'}>
           {typeof backAction !== 'undefined' &&
           <Button color='secondary' variant='contained'

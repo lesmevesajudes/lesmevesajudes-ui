@@ -19,3 +19,60 @@ html {
     font-weight: 400;
     font-family: 'Source Sans Pro', sans-serif;
 }
+
+.printable-only {
+    display: none;
+}
+
+@media print {
+
+  .Component-titleText-1395 {
+      padding: 0;
+  }
+
+  .screen-only {
+      display: none !important;
+  }
+
+  .printable-only {
+      display: inline;
+  }
+
+  div.MuiGrid-container-142 {
+    display: block;
+  }
+  div.MuiGrid-item-143 {
+    margin: 0;
+  }
+  h5 {
+    padding: 0 !important;
+  }
+
+  div.MuiGrid-container-142.MuiGrid-align-items-xs-center-150.MuiGrid-justify-xs-center-159 {
+    padding: 0;
+    width: 100%;
+    position:relative;
+    page-break-before: auto;
+    page-break-inside: avoid;
+  }
+  div[class*='BenefitRow-ItemResult'] {
+    page-break-inside: avoid;
+    display: flex;
+  }
+
+  div[class*='BenefitRow-ItemResult']>div {
+    page-break-inside: avoid;
+  }
+
+  div[class*='BenefitRow-ItemResult'] a.printable-only::after{
+    content: ": " attr(href);
+  }
+
+  h6[class^='MuiTypography-root'] {
+    font-size: 20px;
+  }
+
+  div[class*='Connect-ResultsPage'] {
+    display: flex;
+  }
+}
