@@ -149,7 +149,7 @@ export const styles = theme => ({
     textAlign: 'center'
   },
   whiteText: {
-    color: colors.white
+    color: '#fff !important'
   },
   darkGrayText: {
     color: colors.dark_gray
