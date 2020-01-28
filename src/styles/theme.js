@@ -55,6 +55,7 @@ export const styles = theme => ({
   modalContainer: {
     [theme.breakpoints.down('sm')]: {
       width: '300px',
+      padding: '0px 10px 10px',
     },
     position: 'absolute',
     padding: '30px 60px 60px',
@@ -87,7 +88,11 @@ export const styles = theme => ({
     paddingRight: '30px',
   },
   titleContainer: {
-	marginRight: '155px',
+    [theme.breakpoints.down('sm')]: {
+      marginRight: '15px',
+      marginLeft: '15px',
+    },
+	  marginRight: '155px',
     marginLeft: '155px',
     paddingTop: '16px',
     paddingBottom: '16px',
@@ -98,6 +103,10 @@ export const styles = theme => ({
     paddingBottom: '30px'
   },
   appForm: {
+    [theme.breakpoints.down('sm')]: {
+      marginRight: '15px',
+      marginLeft: '15px',
+    },
     background: colors.white,
     paddingTop: '16px',
     paddingBottom: '16px',
@@ -118,7 +127,11 @@ export const styles = theme => ({
   },
   personListContainer: {
     marginBottom: '16px',
-	marginRight: '155px',
+    [theme.breakpoints.down('sm')]: {
+      marginRight: '15px',
+      marginLeft: '15px',
+    },
+	  marginRight: '155px',
     marginLeft: '155px',
   },
   ResultWarning: {
