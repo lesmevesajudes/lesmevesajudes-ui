@@ -498,7 +498,8 @@ let PersonForm = (props: Props) => {
 PersonForm = reduxForm({
   form: formName,
   onSubmitFail: (error) => {
-    focusFirstQuestionWithName(namefirstFieldWithError(error));
+	  console.log(error);
+	  focusFirstQuestionWithName(namefirstFieldWithError(error));
   }
 })(PersonForm);
 

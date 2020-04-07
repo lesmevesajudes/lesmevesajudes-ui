@@ -11,6 +11,8 @@ export default function (
   switch (action.type) {
     case 'ADD_RESIDENCE_DATA':
       return action.residenceData;
+    case 'SHOW_SIMULATION':
+    	return action.simulation.residence;
     default:
       return state;
   }

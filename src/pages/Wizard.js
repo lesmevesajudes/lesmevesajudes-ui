@@ -46,8 +46,12 @@ const steps = [
   }
 ];
 
+export const isAdmin = (props) => {
+	return props.location.pathname === '/admin';
+}
 
-const WizardPage = () =>
-    <StepsComponent steps={steps}/>;
+const WizardPage = props => {
+	return <StepsComponent steps={steps} isAdmin={isAdmin(props)}/>;
+}
 
 export default withTranslation('translations')(WizardPage);

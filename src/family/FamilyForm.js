@@ -47,6 +47,7 @@ type Props = {
   persones: Map<PersonID, Person>,
   possiblesSustentadors: Map<PersonID, Person>,
   sustentadorsSolitarisAmbPossiblesParelles: Map<Person, Array<Person>>,
+  custodiesValues: Map<string, string>,
   t: Function
 };
 const formName = 'FamilyForm';
@@ -93,7 +94,7 @@ const FamilyForm = (props: Props) => {
                               validate={[required]}
                               hidelabel>
                               {possiblesSustentadors.valueSeq().map((sustentador: Person) =>
-                                  <MenuItem key={`primer-${sustentador.id}`} value={sustentador.id}>
+                              <MenuItem key={`primer-${sustentador.id}`} value={sustentador.id}>
                                     {sustentador.nom} ({sustentador.edat} <Trans i18nKey='anys'>anys</Trans>)
                                   </MenuItem>
                               )}
@@ -231,7 +232,8 @@ function mapStateToProps(state) {
     initialValues: state.family,
     persones: state.persons,
     possiblesSustentadors: state.persons.filter((person: Person) => esSustentador(person)),
-    sustentadorsSolitarisAmbPossiblesParelles: sustentadorsSolitarisAmbPossiblesParelles
+    sustentadorsSolitarisAmbPossiblesParelles: sustentadorsSolitarisAmbPossiblesParelles,
+    custodiesValues: state.family.custodiesValues,
   };
 }
 

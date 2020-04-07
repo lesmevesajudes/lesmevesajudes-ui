@@ -1,5 +1,6 @@
 import {Button, Grid, Icon, withStyles} from '@material-ui/core';
 import React, {Fragment} from "react";
+import {connect} from 'react-redux';
 import {Trans} from 'react-i18next';
 import classNames from "classnames";
 import {styles} from '../../styles/theme';
@@ -11,6 +12,9 @@ type Props = {
   classes: Object,
   nextAction: Function,
   nextIsResults: boolean,
+  fetchSimulation: Function,
+  simulationData: any,
+  isAdmin: boolean,
 };
 
 const printPage = function () {
@@ -47,6 +51,7 @@ let StepperButtons = (props: Props) => {
             <Trans i18nKey='nou_calcul'>Nou càlcul</Trans>
           </Button>
           }
+          
           {typeof nextAction !== 'undefined' &&
           <Button color='primary' variant='contained'
                   onClick={nextAction}
@@ -61,4 +66,4 @@ let StepperButtons = (props: Props) => {
   return props.buttonVisible ? content : null;
 };
 
-export default withStyles(styles)(StepperButtons);
+export default withStyles(styles)(connect()(StepperButtons));
