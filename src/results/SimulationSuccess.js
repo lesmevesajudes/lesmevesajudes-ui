@@ -19,12 +19,14 @@ const ResultsContainer = withStyles(styles)((props: AppFormProps) =>
       {props.children}
     </Grid>);
 
-const SimulationSuccessComponent = ({resultsData, persons, classes, simulationID}) => (
+const SimulationSuccessComponent = ({resultsData, persons, classes, simulationID, initialSimulationId, isShowSimulation}) => (
   <AppFormContainer>
+    {isShowSimulation &&
     <ShowMeOnceModal name='resultsModal'
                      title={<Trans i18nKey='ajudes_a_les_que_podria_optar'/>}>
       <Trans i18nKey='avis_ajudes_a_les_que_podria_optar'/>
     </ShowMeOnceModal>
+  }
     <AppFormTitle iconName='resultats'>
       <Trans i18nKey='a_partir_de_la_informacio_facilitada_linformem_que'/>
     </AppFormTitle>
@@ -61,6 +63,25 @@ const SimulationSuccessComponent = ({resultsData, persons, classes, simulationID
           </Typography>
         </Grid>
       </Grid>
+          {initialSimulationId &&
+              <Grid container justify='center' alignItems='center' className={classes.ItemResult}>
+                <Grid item container xs={1} justify='center' alignItems='center'>
+                  <InfoOutlinedIcon className={classes.darkGrayText}>info</InfoOutlinedIcon>
+                </Grid>
+                <Grid item xs={7}>
+                  <Typography className={classes.ResultsBenefitText}>
+                    <Trans i18nKey='identificador_simulacio_inicial'>Identificador simulació inicial</Trans>
+                  </Typography>
+                </Grid>
+                <Grid item container className={classes.ResultsSeparator} xs={4} alignItems='center' justify='center'>
+                  <Typography className={classes.ResultsBenefitText}>
+                    {initialSimulationId}
+                  </Typography>
+                </Grid>
+              </Grid>
+
+            }
+
       {SHOW_REPORT_BUG && <Grid item xs={12} className={classes.ItemResult}>
         <ReportBugForm initialValues={getReportBugDataFromLocalStorage()} onSubmit={this.submitReport}/>
       </Grid>}

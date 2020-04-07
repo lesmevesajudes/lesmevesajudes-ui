@@ -11,6 +11,7 @@ import {AppForm, AppFormContainer, AppFormTitle} from '../components/AppForms';
 import {allowOnlyPositive} from '../components/Common/NormalizeCommon';
 import ShowMeOnceModal from '../components/ShowMeOnceModal'
 import {styles} from '../styles/theme';
+import {isAdmin} from '../pages/Wizard.js';
 
 const validate = values => {
   const errors = {};
@@ -35,6 +36,7 @@ type Props = {
 
 let HowManyPersonsLiveTogetherPage = (props: Props) => {
   const {handleSubmit, classes} = props;
+  
   return (
       <AppFormContainer>
         <AppFormTitle iconName='persona'>
@@ -42,7 +44,8 @@ let HowManyPersonsLiveTogetherPage = (props: Props) => {
             inclòs)</Trans>
         </AppFormTitle>
 
-        <ShowMeOnceModal name='howManyPersonsModal'
+        {!isAdmin(props) && 
+          <ShowMeOnceModal name='howManyPersonsModal'
                          title={<Trans i18nKey='dades_sobre_les_persones'>Dades sobre les persones</Trans>}>
           <b className="highlightedText">
 	        <Trans i18nKey='text_avis_covid'>
@@ -61,6 +64,7 @@ let HowManyPersonsLiveTogetherPage = (props: Props) => {
             Pots començar la simulació.
           </Trans>
         </ShowMeOnceModal>
+        }
         <AppForm>
           <form onSubmit={handleSubmit}>
               <Grid container direction='column' alignItems='center' spacing={2}>

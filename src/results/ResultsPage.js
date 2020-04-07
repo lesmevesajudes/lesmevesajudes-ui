@@ -1,5 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Trans} from 'react-i18next';
+import {AppFormContainer} from '../components/AppForms';
 import type {Person, PersonID} from '../persons/PersonTypes';
 import {submitReport} from "../reportBug/ReportBugActions";
 import {fetchSimulation} from './FetchSimulationAction';
@@ -7,6 +9,7 @@ import SimulationMissingData from './SimulationMissingData';
 import SimulationLoading from './SimulationLoading';
 import SimulationError from './SimulationError';
 import SimulationSuccess from './SimulationSuccess';
+import {isAdmin} from '../pages/Wizard';
 
 type Props = {
   dispatch: Function,
@@ -16,6 +19,9 @@ type Props = {
   resultsData: any,
   simulationData: any,
   simulationID: string,
+  initialSimulationId: string,
+  isShowSimulation: boolean,
+  isAdmin: boolean,
 };
 
 class ResultsPage extends React.Component<Props> {
@@ -30,9 +36,9 @@ class ResultsPage extends React.Component<Props> {
   }
 
   componentDidMount() {
-    console.log("component did mount");
-    console.log(this.props.persons.count);
-    if (this.enoughDataForSimulation()) this.props.fetchSimulation(this.props.simulationData);
+	  if (this.enoughDataForSimulation() && !this.props.isShowSimulation) {
+		  this.props.fetchSimulation(this.props.simulationData);
+	  }
   }
 
   constructor(props) {
@@ -41,10 +47,18 @@ class ResultsPage extends React.Component<Props> {
   }
 
   render() {
-    const {isError, isRequestDone, resultsData, persons, simulationID} = this.props;
-    if (!this.enoughDataForSimulation()) {
+    const {isError, isRequestDone, resultsData, persons, simulationID, initialSimulationId, classes, isShowSimulation, isAdmin} = this.props;
+    if (!this.enoughDataForSimulation() && !isAdmin) {
       return (<SimulationMissingData/>);
     }
+
+    if (!this.enoughDataForSimulation() && isAdmin) {
+        return (
+            <AppFormContainer>
+              <h1><Trans i18nKey='introdueix_codi_simulació'>Introdueix el codi de la simulació</Trans></h1>
+            </AppFormContainer>
+        );
+      }
 
     if (!isRequestDone) {
       return (<SimulationLoading/>);
@@ -57,6 +71,8 @@ class ResultsPage extends React.Component<Props> {
       resultsData={resultsData}
       persons={persons}
       simulationID={simulationID}
+      initialSimulationId={initialSimulationId}
+      isShowSimulation={isShowSimulation}
       />);
   }
 }
@@ -68,7 +84,10 @@ function mapStateToProps(state) {
     simulationData: state,
     resultsData: state.results.response,
     simulationID: state.results.simulationID !== null ? state.results.simulationID : 'none',
-    persons: state.persons
+    initialSimulationId : state.results.initialSimulationId !== undefined ? state.results.initialSimulationId : null,
+    persons: state.persons,
+    isShowSimulation: state.step.is_show_simulation,
+    isAdmin: state.admin.isAdmin,
   };
 }
 

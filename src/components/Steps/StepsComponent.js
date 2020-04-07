@@ -7,10 +7,13 @@ import React from 'react';
 import {Trans, withTranslation} from 'react-i18next';
 import {connect} from 'react-redux';
 import {getFormSyncErrors, isValid, touch} from "redux-form";
+import {bindActionCreators} from 'redux'
 import {flatten} from '../../shared/flatten';
 import {styles} from '../../styles/theme';
 import {IconFont} from '../IconFont/IconFont';
 import StepperButtons from './StepperButtons';
+import AdminForm from '../../admin/AdminForm'
+import {retrieveSimulation, fetchSimulation} from '../../results/FetchSimulationAction';
 
 type Props = {
   appState: Object,
@@ -23,6 +26,11 @@ type Props = {
   nextStep: Function,
   setActualStep: Function,
   steps: Array<any>,
+  simulationData: any,
+  isAdmin: boolean,
+  isShowSimulation: boolean,
+  retrieveSimulationError: string,
+  fetchSimulation: Function,
   t: Function,
 }
 
@@ -85,7 +93,7 @@ class StepsComponent extends React.Component<Props, State> {
   };
 
   setStep = (index: number) => {
-    if (index <= this.state.max_step_reached && this.shouldShowStep(index)) {
+    if ((index <= this.state.max_step_reached && this.shouldShowStep(index)) || this.props.isShowSimulation) {
       this.setState({
         ...this.state,
         current_step: index,
@@ -100,7 +108,7 @@ class StepsComponent extends React.Component<Props, State> {
 
   constructor(props) {
     super(props);
-    this.state = {current_step: 0, max_step_reached: 0};
+    this.state = {current_step: (props.isAdmin ? 3 : 0), max_step_reached: 0};
     this.nextStep = this.nextStep.bind(this);
     this.backStep = this.backStep.bind(this);
     this.setStep = this.setStep.bind(this);
@@ -118,15 +126,30 @@ class StepsComponent extends React.Component<Props, State> {
     }
     return index;
   }
+  submitSimulationId = values => {
+	  // print the form values to the console
+	  console.log(values.simulation_id)
+	  this.props.retrieveSimulation(values.simulation_id);
+  }
 
   render() {
-    const {classes, steps, buttonEnabled, buttonVisible, t} = this.props;
+    const {classes, steps, buttonEnabled, buttonVisible, t, isAdmin} = this.props;
     const currentStep = this.state.current_step;
-    const maxStepReached = this.state.max_step_reached;
+    let maxStepReached;
+    if (this.props.isShowSimulation) {
+    	maxStepReached = 3;
+    } else if (isAdmin) {
+    	maxStepReached = -1;
+    } else {
+    	maxStepReached = this.state.max_step_reached;
+    }
     const childComponent = steps[currentStep].component;
     return (
         <div className={classes.root}>
-          <Stepper activeStep={currentStep} nonLinear alternativeLabel className={classes.stepperContainer}>
+    	{isAdmin &&
+    		<AdminForm onSubmit={this.submitSimulationId} retrieveSimulationError={this.props.retrieveSimulationError}/>
+    	}
+        <Stepper activeStep={currentStep} nonLinear alternativeLabel className={classes.stepperContainer}>
             {steps.map((step, index) => {
               const labelProps = step.optional ? {
                 optional: <Tooltip id='unknown-tooltip'
@@ -152,7 +175,10 @@ class StepsComponent extends React.Component<Props, State> {
               <StepperButtons nextAction={(currentStep === steps.length - 1) ? undefined : this.nextStep}
                               backAction={(currentStep === 0) ? undefined : this.backStep} classes={classes}
                               buttonEnabled={buttonEnabled} buttonVisible={buttonVisible}
-                              nextIsResults={currentStep === steps.length - 2}/>
+                              nextIsResults={currentStep === steps.length - 2}
+              				  fetchSimulation={fetchSimulation}
+              				  simulationData={this.props.simulationData}
+              				  isAdmin={isAdmin}/>
             </Grid>
           </Grid>
         </div>
@@ -165,7 +191,18 @@ const mapStateToProps = (state) => {
     appState: state,
     buttonEnabled: state.step.button_enabled,
     buttonVisible: state.step.button_visible,
+    isShowSimulation: state.step.is_show_simulation,
+    simulationData: state,
+    retrieveSimulationError: state.step.retrieveSimulationError,
   }
 };
 
-export default connect(mapStateToProps)(withStyles(styles)(withTranslation('translations')(StepsComponent)));
+const mapDispatchToProps = (dispatch, ownProps) => {
+	  return {
+		retrieveSimulation: bindActionCreators(retrieveSimulation, dispatch),
+		fetchSimulation: bindActionCreators(fetchSimulation, dispatch),
+		dispatch
+	  }
+	}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(withTranslation('translations')(StepsComponent)));
