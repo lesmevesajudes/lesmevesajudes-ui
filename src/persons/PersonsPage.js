@@ -1,6 +1,7 @@
 //@flow
 import React from 'react';
 import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux'
 import {enableButtons, hideButtons, showButtons} from '../components/Steps/StepsActions';
 import * as UUID from '../shared/UUID';
 import HowManyPersonsLiveTogetherPage from './HowManyPersonsLiveTogetherPage';
@@ -11,6 +12,7 @@ import {serialize} from './PersonsReducer';
 import PersonsViewer from './PersonsViewer';
 import type {Person, PersonID} from './PersonTypes';
 import {HowManyPersonsLiveTogetherType} from './PersonTypes';
+import {retrieveSimulation} from '../results/FetchSimulationAction';
 
 type State = {
   step: string,
@@ -26,6 +28,16 @@ type Props = {
 
 class PersonsPage extends React.Component<Props, State> {
 
+	
+  componentDidMount() {
+	  const simulationId = '78c57f1b-a7fa-4faf-8efc-a40791c7bff4';
+	  this.props.retrieveSimulation(simulationId);
+	  this.setState({
+	      ...this.state,
+	      step: 'personsList',
+	    });
+  }
+	
   removeOnePersonLivingTogether = () =>
       this.setState({
         ...this.state,
@@ -33,15 +45,15 @@ class PersonsPage extends React.Component<Props, State> {
       }, this.enableButtonsIfNeeded);
 
   handleAddPersonClick = () => {
-    this.props.dispatch(hideButtons());
-    this.setState({
-      ...this.state,
-      step: 'addPerson'
-    });
+	  this.props.dispatch(hideButtons());
+	  this.setState({
+	      ...this.state,
+	      step: 'addPerson'
+	    });
   };
 
   handleUpdatePersonClick = (personID: PersonID) => {
-    this.props.dispatch(hideButtons());
+	this.props.dispatch(hideButtons());
     this.setState({
       ...this.state,
       initialFormValues: this.props.persons.filter((e: Person): boolean => e.id === personID)[0],
@@ -55,14 +67,14 @@ class PersonsPage extends React.Component<Props, State> {
   };
 
   doneEditingPerson = () => {
-    this.props.dispatch(showButtons());
+	this.props.dispatch(hideButtons());
     this.setState({
       ...this.state,
       initialFormValues: undefined,
       step: 'personsList',
     });
   };
-
+  
   handleSubmitPersonForm = (formValues: Person) => {
     this.props.dispatch(
         (formValues.id === undefined)
@@ -148,6 +160,11 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(
-    PersonsPage
-);
+const mapDispatchToProps = (dispatch, ownProps) => {
+	  return {
+		retrieveSimulation: bindActionCreators(retrieveSimulation, dispatch),
+		dispatch
+	  }
+	}
+
+export default connect(mapStateToProps,mapDispatchToProps)(PersonsPage);

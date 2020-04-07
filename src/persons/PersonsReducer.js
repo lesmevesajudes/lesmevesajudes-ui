@@ -2,6 +2,7 @@
 import {Map} from 'immutable';
 
 import type {Person, PersonID, PersonsState} from './PersonTypes';
+import {parse} from './PersonTypes';
 import type {PersonActions} from './PersonsActions';
 
 function removePerson(state: PersonsState, personIDToBeRemoved: PersonID): PersonsState {
@@ -10,6 +11,12 @@ function removePerson(state: PersonsState, personIDToBeRemoved: PersonID): Perso
 
 function addPerson(state: PersonsState, personToBeAdded: Person): PersonsState {
   return state.set(personToBeAdded.id, personToBeAdded);
+}
+
+function addPersons(state: PersonsState, personsToBeAdded: Array<Person>): PersonsState {
+	var person = parse(personsToBeAdded);
+	state = addPerson(state, person);
+	return state;
 }
 
 function updatePerson(state: PersonsState, personToBeUpdated: Person): PersonsState {
@@ -43,7 +50,10 @@ export default function (
       return removePerson(state, action.personID);
     case 'UPDATE_PERSON':
       return updatePerson(state, action.person);
+    case 'SHOW_SIMULATION':
+       return addPersons(state, action.simulation.persones);
     default:
+    	
       return state;
   }
 }

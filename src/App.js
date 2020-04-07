@@ -36,7 +36,8 @@ class App extends Component {
               <HashRouter>
                 <ScrollToTop>
                   <Switch>
-                    <Route exact={true} path='/' component={WizardPage}/>
+                    <Route exact={true} path='/:simulationId' component={WizardPage}/>
+                    // <Route exact={true} path='/edit?:simulationId' component={WizardPage}/>
                     {isDevelopment &&
                     <Fragment>
                       <Route path='/reportBug' component={ReportBugPage}/>
