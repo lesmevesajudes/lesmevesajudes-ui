@@ -45,13 +45,13 @@ export class HowManyPersonsLiveTogetherType {
 
 export type PersonsState = Map<PersonID, Person>;
 
-export const parse = (personesJson: string) => {
-	const persona = personesJson[Object.keys(personesJson)[0]];
+export const parse = (persona: string, id:string) => {
+//	const persona = personesJson[Object.keys(personesJson)[0]];
 	
 	const dateKey = Object.keys(persona.sexe)[0];
 	
 	var person = new Object();
-	person.id = Object.keys(personesJson)[0];
+	person.id = id;
 	person.nom = 'mock name';
 	person.sexe = persona.sexe[dateKey];
 	person.edat = persona.edat[dateKey];
@@ -81,7 +81,7 @@ export const parse = (personesJson: string) => {
 //	  relacio_parentiu: 'parella' | 'fill' | 'fillastre' | 'net' | 'infant_acollit' | 'pare' | 'avi' | 'sogre' | 'germa' | 'cunyat' | 'gendre' | 'altres' | 'cap';
 	person.relacio_parentiu= 'parella';
 	person.situacio_laboral = persona.situacio_laboral[dateKey];
-	person.te_algun_grau_de_discapacitat_reconegut = persona.grau_discapacitat.length > 0;
+	person.te_algun_grau_de_discapacitat_reconegut = (persona.grau_discapacitat[dateKey] != null) && persona.grau_discapacitat[dateKey].length > 0;
 	if (person.te_algun_grau_de_discapacitat_reconegut) {
 		person.te_algun_grau_de_discapacitat_reconegut = true;
 		person.grau_discapacitat = persona.grau_discapacitat[dateKey];

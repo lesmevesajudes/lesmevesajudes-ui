@@ -14,8 +14,12 @@ function addPerson(state: PersonsState, personToBeAdded: Person): PersonsState {
 }
 
 function addPersons(state: PersonsState, personsToBeAdded: Array<Person>): PersonsState {
-	var person = parse(personsToBeAdded);
-	state = addPerson(state, person);
+	Object.keys(personsToBeAdded).forEach(function(key) {
+			var person = parse(personsToBeAdded[key], key);
+			state = addPerson(state, person);
+	    });
+//	var person = parse(personsToBeAdded);
+//	state = addPerson(state, person);
 	return state;
 }
 
