@@ -7,10 +7,13 @@ import React from 'react';
 import {Trans, withNamespaces} from 'react-i18next';
 import {connect} from 'react-redux';
 import {getFormSyncErrors, isValid, touch} from "redux-form";
+import {bindActionCreators} from 'redux'
 import {flatten} from '../../shared/flatten';
 import {styles} from '../../styles/theme';
 import {IconFont} from '../IconFont/IconFont';
 import StepperButtons from './StepperButtons';
+import AdminForm from '../../admin/AdminForm'
+import {retrieveSimulation} from '../../results/FetchSimulationAction';
 
 type Props = {
   appState: Object,
@@ -23,6 +26,7 @@ type Props = {
   nextStep: Function,
   setActualStep: Function,
   steps: Array<any>,
+  isAdmin: boolean,
   t: Function,
 }
 
@@ -116,15 +120,23 @@ class StepsComponent extends React.Component<Props, State> {
     }
     return index;
   }
+  submitSimulationId = values => {
+	  // print the form values to the console
+	  console.log(values.simulation_id)
+	  this.props.retrieveSimulation(values.simulation_id);
+  }
 
   render() {
-    const {classes, steps, buttonEnabled, buttonVisible, t} = this.props;
+    const {classes, steps, buttonEnabled, buttonVisible, t, handleSubmit, isAdmin} = this.props;
     const currentStep = this.state.current_step;
     const maxStepReached = this.state.max_step_reached;
     const childComponent = steps[currentStep].component;
     return (
         <div className={classes.root}>
-          <Stepper activeStep={currentStep} nonLinear alternativeLabel className={classes.stepperContainer}>
+    	{isAdmin &&
+    		<AdminForm onSubmit={this.submitSimulationId}/>
+    	}
+        <Stepper activeStep={currentStep} nonLinear alternativeLabel className={classes.stepperContainer}>
             {steps.map((step, index) => {
               const labelProps = step.optional ? {
                 optional: <Tooltip id='unknown-tooltip'
@@ -166,4 +178,11 @@ const mapStateToProps = (state) => {
   }
 };
 
-export default connect(mapStateToProps)(withStyles(styles)(withNamespaces('translations')(StepsComponent)));
+const mapDispatchToProps = (dispatch, ownProps) => {
+	  return {
+		retrieveSimulation: bindActionCreators(retrieveSimulation, dispatch),
+		dispatch
+	  }
+	}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(withNamespaces('translations')(StepsComponent)));

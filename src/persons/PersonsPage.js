@@ -23,24 +23,12 @@ type State = {
 type Props = {
   persons: Array<Person>,
   PersonRole: string,
-  dispatch: Function
+  dispatch: Function,
+  numberOfPersonsLivingTogether: number,
+  step: string,
 };
 
 class PersonsPage extends React.Component<Props, State> {
-
-	
-  componentDidMount() {
-	  //Id = '78c57f1b-a7fa-4faf-8efc-a40791c7bff4';
-	  const simulationId = '528137e5-38b2-40c2-af13-860a7da0de44';
-	  this.setState({
-	      ...this.state,
-	      step: 'personsList',
-	      numberOfPersonsLivingTogether: 1,
-	    });
-	  this.props.retrieveSimulation(simulationId);
-	  this.props.dispatch(showButtons());
-	  this.enableButtonsIfNeeded(1);
-  }
 	
   removeOnePersonLivingTogether = () =>
       this.setState({
@@ -122,27 +110,33 @@ class PersonsPage extends React.Component<Props, State> {
       initialFormValues: undefined,
       numberOfPersonsLivingTogether: 0
     };
+    
+    this.props = {
+      step: (this.areThereAnyPersons(this.props.persons)) ?
+    		          'personsList' : 'NumberOfPersonsLivingTogether',
+      numberOfPersonsLivingTogether: 0
+    };
   }
 
   render() {
-    const expectedNumberOfPersonsLivingTogether = this.state.numberOfPersonsLivingTogether;
-    const step = this.state.step;
-    let component = undefined;
-
-    if (step === 'NumberOfPersonsLivingTogether') {
-      component = (<HowManyPersonsLiveTogetherPage
-          onSubmit={this.handleSubmitHowManyPersonsLiveTogether}
-      />);
-    } else if (step === 'personsList') {
-      component = (
-          <PersonsViewer
-              persons={this.props.persons}
-              onRemoveClick={this.handleRemovePersonClick}
-              onUpdateClick={this.handleUpdatePersonClick}
-              onAddPersonClick={this.handleAddPersonClick}
-              onRemoveUnknownClick={this.removeOnePersonLivingTogether}
-              expectedNumberOfPersons={expectedNumberOfPersonsLivingTogether}
-          />);
+	  const expectedNumberOfPersonsLivingTogether = this.props.numberOfPersonsLivingTogether;
+	  const step = this.state.step;
+	  let component = undefined;
+	  
+	  if ((this.props.step === 'personsList') || (step === 'personsList')) {
+		  component = (
+		          <PersonsViewer
+		              persons={this.props.persons}
+		              onRemoveClick={this.handleRemovePersonClick}
+		              onUpdateClick={this.handleUpdatePersonClick}
+		              onAddPersonClick={this.handleAddPersonClick}
+		              onRemoveUnknownClick={this.removeOnePersonLivingTogether}
+		              expectedNumberOfPersons={expectedNumberOfPersonsLivingTogether}
+		          />);
+	  } else if (step === 'NumberOfPersonsLivingTogether') {
+	      component = (<HowManyPersonsLiveTogetherPage
+	          onSubmit={this.handleSubmitHowManyPersonsLiveTogether}
+	      />);
     } else if (step === 'addPerson' || step === 'updatePerson') {
 
       component = (
@@ -160,15 +154,17 @@ class PersonsPage extends React.Component<Props, State> {
 
 function mapStateToProps(state) {
   return {
-    persons: serialize(state.persons)
+    persons: serialize(state.persons),
+    numberOfPersonsLivingTogether: state.step.numberOfPersonsLivingTogether,
+    step: state.step.state,
   };
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-	  return {
-		retrieveSimulation: bindActionCreators(retrieveSimulation, dispatch),
-		dispatch
-	  }
-	}
+  return {
+	retrieveSimulation: bindActionCreators(retrieveSimulation, dispatch),
+	dispatch
+  }
+}
 
 export default connect(mapStateToProps,mapDispatchToProps)(PersonsPage);

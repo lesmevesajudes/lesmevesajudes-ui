@@ -6,6 +6,7 @@ import PersonsPage from '../persons/PersonsPage'
 import ResidenceForm from '../residence/ResidenceForm';
 import ResultsPage from '../results/ResultsPage';
 import {retrieveSimulation} from '../results/FetchSimulationAction';
+import { useLocation } from "react-router-dom";
 
 const shouldShowFamilyStep = (state) => {
   const menors = state.persons.valueSeq().toArray().filter((persona) => persona.edat <= 16);
@@ -45,18 +46,12 @@ const steps = [
 
 const queryString = require('query-string');
 
-const WizardPage = props => {
-	//console.log(match.param.simulationId);
-	const searchValues = queryString.parse(props.location.search);
-//	const simulation = retrieveSimulation(searchValues.id);
-	return <StepsComponent steps={steps} />;
+export const isAdmin = (props) => {
+	return props.location.pathname === '/admin';
 }
 
-const WizardEditPage = props => {
-	//console.log(match.param.simulationId);
-	const searchValues = queryString.parse(props.location.search);
-//	const simulation = retrieveSimulation(searchValues.id);
-	return <StepsComponent steps={steps} />;
+const WizardPage = props => {
+	return <StepsComponent steps={steps} isAdmin={isAdmin(props)}/>;
 }
 
 export default withNamespaces('translations')(WizardPage);

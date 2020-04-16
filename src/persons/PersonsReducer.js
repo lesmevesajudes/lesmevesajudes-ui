@@ -18,8 +18,6 @@ function addPersons(state: PersonsState, personsToBeAdded: Array<Person>): Perso
 			var person = parse(personsToBeAdded[key], key);
 			state = addPerson(state, person);
 	    });
-//	var person = parse(personsToBeAdded);
-//	state = addPerson(state, person);
 	return state;
 }
 
@@ -28,7 +26,7 @@ function updatePerson(state: PersonsState, personToBeUpdated: Person): PersonsSt
 }
 
 export function serialize(state: PersonsState): Person[] {
-  return state.toArray();
+	return state.toArray();
 }
 
 export function initPersonState(initialValues: Array<Object> = []): PersonsState {
@@ -44,20 +42,20 @@ export function initPersonState(initialValues: Array<Object> = []): PersonsState
 }
 
 export default function (
-    state: PersonsState = initPersonState(),
+	state: PersonsState = initPersonState(),
     action: PersonActions
 ): PersonsState {
   switch (action.type) {
     case 'ADD_PERSON':
-      return addPerson(state, action.person);
+    	return addPerson(state, action.person)
     case 'REMOVE_PERSON':
-      return removePerson(state, action.personID);
+    	return removePerson(state, action.personID)
     case 'UPDATE_PERSON':
-      return updatePerson(state, action.person);
+    	return updatePerson(state, action.person)
     case 'SHOW_SIMULATION':
-       return addPersons(state, action.simulation.persones);
+    	var personList= action.simulation.persones;
+    	return addPersons(state, personList)
     default:
-    	
       return state;
   }
 }
