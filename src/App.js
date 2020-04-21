@@ -8,7 +8,6 @@ import ScrollToTop from './components/Common/ScrollToTop';
 import {intents} from './components/Intents';
 import {API_URL, ENVIRONMENT, REPORT_BUG_URL} from "./config";
 import WizardPage from './pages/Wizard';
-import AdminPage from './admin/AdminPage';
 import ReportBugPage from './reportBug/ReportBugPage';
 import {getCodeVersion, getReleaseDate} from "./shared/getCodeVersion";
 import isDevelopment from './shared/isDevelopment';

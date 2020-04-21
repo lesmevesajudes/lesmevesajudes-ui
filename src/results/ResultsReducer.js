@@ -1,4 +1,4 @@
-import {FETCH_SIMULATION, FETCH_SIMULATION_ERROR, START_FETCH_SIMULATION} from './FetchSimulationAction';
+import {FETCH_SIMULATION, FETCH_SIMULATION_ERROR, START_FETCH_SIMULATION, SHOW_SIMULATION} from './FetchSimulationAction';
 
 
 export default function(
@@ -11,7 +11,6 @@ export default function(
         isError: false, isRequestDone: false, response: null, simulationID: action.simulation_id
       };
     case FETCH_SIMULATION:
-      console.log('Response: ', action);
       return {
         response: action.payload.data,
         isError: false,
@@ -27,7 +26,11 @@ export default function(
         isRequestDone: true,
         simulationID: state.simulationID
       };
-
+    case SHOW_SIMULATION:
+      return {
+        response: action.simulation,
+        simulationID: action.simulation.id
+      };
     default:
       return state;
   }

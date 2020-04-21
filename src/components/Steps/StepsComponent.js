@@ -27,6 +27,7 @@ type Props = {
   setActualStep: Function,
   steps: Array<any>,
   isAdmin: boolean,
+  isShowSimulation: boolean,
   t: Function,
 }
 
@@ -87,7 +88,7 @@ class StepsComponent extends React.Component<Props, State> {
   };
 
   setStep = (index: number) => {
-    if (index <= this.state.max_step_reached && this.shouldShowStep(index)) {
+    if ((index <= this.state.max_step_reached && this.shouldShowStep(index)) || this.props.isShowSimulation) {
       this.setState({
         ...this.state,
         current_step: index,
@@ -127,9 +128,9 @@ class StepsComponent extends React.Component<Props, State> {
   }
 
   render() {
-    const {classes, steps, buttonEnabled, buttonVisible, t, handleSubmit, isAdmin} = this.props;
+    const {classes, steps, buttonEnabled, buttonVisible, t, isAdmin} = this.props;
     const currentStep = this.state.current_step;
-    const maxStepReached = this.state.max_step_reached;
+    const maxStepReached = this.props.isShowSimulation ? 3 : this.state.max_step_reached;
     const childComponent = steps[currentStep].component;
     return (
         <div className={classes.root}>
@@ -175,6 +176,7 @@ const mapStateToProps = (state) => {
     appState: state,
     buttonEnabled: state.step.button_enabled,
     buttonVisible: state.step.button_visible,
+    isShowSimulation: state.step.is_show_simulation,
   }
 };
 

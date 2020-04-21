@@ -6,8 +6,9 @@ import type {StepsState} from './StepsTypes';
 const initial: StepsState = {
   button_enabled: false,
   button_visible: false,
+  is_show_simulation: false,
   step:'NumberOfPersonsLivingTogether',
-  numberOfPersonsLivingTogether: 0,
+  number_of_persons_living_together: 0,
 };
 
 export default (state: StepsState = initial, action: StepAction): StepsState => {
@@ -35,16 +36,15 @@ export default (state: StepsState = initial, action: StepAction): StepsState => 
         ...state,
         button_visible: false,
         state: '',
-        
       };
     case 'SHOW_SIMULATION':
-      var personList= action.simulation.persones;
       return {
     	...state,
     	button_enabled: true,
     	button_visible: true,
-    	numberOfPersonsLivingTogether: Object.keys(personList).length,
+    	number_of_persons_living_together: Object.keys(action.simulation.persons).length,
     	state: 'personsList',
+    	is_show_simulation: true,
     }
     default:
       return state;

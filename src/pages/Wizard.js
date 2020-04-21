@@ -5,8 +5,6 @@ import FamilyForm from '../family/FamilyForm';
 import PersonsPage from '../persons/PersonsPage'
 import ResidenceForm from '../residence/ResidenceForm';
 import ResultsPage from '../results/ResultsPage';
-import {retrieveSimulation} from '../results/FetchSimulationAction';
-import { useLocation } from "react-router-dom";
 
 const shouldShowFamilyStep = (state) => {
   const menors = state.persons.valueSeq().toArray().filter((persona) => persona.edat <= 16);
@@ -43,8 +41,6 @@ const steps = [
     icon: 'resultats' // Icono Billete
   }
 ];
-
-const queryString = require('query-string');
 
 export const isAdmin = (props) => {
 	return props.location.pathname === '/admin';

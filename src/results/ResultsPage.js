@@ -31,6 +31,7 @@ type Props = {
   resultsData: any,
   simulationData: any,
   simulationID: string,
+  isShowSimulation: boolean,
 };
 
 class ResultsPage extends React.Component<Props> {
@@ -45,7 +46,9 @@ class ResultsPage extends React.Component<Props> {
   }
 
   componentDidMount() {
-    if (this.enoughDataForSimulation()) this.props.fetchSimulation(this.props.simulationData);
+	  if (this.enoughDataForSimulation()) {
+		  this.props.fetchSimulation(this.props.simulationData);
+	  }
   }
 
   constructor(props) {
@@ -180,7 +183,8 @@ function mapStateToProps(state) {
     simulationData: state,
     resultsData: state.results.response,
     simulationID: state.results.simulationID !== null ? state.results.simulationID : 'none',
-    persons: state.persons
+    persons: state.persons,
+    isShowSimulation: state.step.is_show_simulation,
   };
 }
 

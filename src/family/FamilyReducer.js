@@ -16,6 +16,8 @@ export default function (
     case 'UPDATE_PERSON':
     case 'REMOVE_PERSON':
       return init();
+    case 'SHOW_SIMULATION':
+    	return action.simulation.family;
     default:
       return state;
   }

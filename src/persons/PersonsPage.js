@@ -1,7 +1,6 @@
 //@flow
 import React from 'react';
 import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux'
 import {enableButtons, hideButtons, showButtons} from '../components/Steps/StepsActions';
 import * as UUID from '../shared/UUID';
 import HowManyPersonsLiveTogetherPage from './HowManyPersonsLiveTogetherPage';
@@ -12,7 +11,6 @@ import {serialize} from './PersonsReducer';
 import PersonsViewer from './PersonsViewer';
 import type {Person, PersonID} from './PersonTypes';
 import {HowManyPersonsLiveTogetherType} from './PersonTypes';
-import {retrieveSimulation} from '../results/FetchSimulationAction';
 
 type State = {
   step: string,
@@ -155,16 +153,9 @@ class PersonsPage extends React.Component<Props, State> {
 function mapStateToProps(state) {
   return {
     persons: serialize(state.persons),
-    numberOfPersonsLivingTogether: state.step.numberOfPersonsLivingTogether,
+    numberOfPersonsLivingTogether: state.step.number_of_persons_living_together,
     step: state.step.state,
   };
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-	retrieveSimulation: bindActionCreators(retrieveSimulation, dispatch),
-	dispatch
-  }
-}
-
-export default connect(mapStateToProps,mapDispatchToProps)(PersonsPage);
+export default connect(mapStateToProps)(PersonsPage);

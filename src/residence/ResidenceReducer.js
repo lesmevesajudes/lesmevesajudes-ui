@@ -1,7 +1,6 @@
 // @flow
 import type {ResidenceData} from './ResidenceTypes';
 import type {ResidenceActions} from './ResidenceActions';
-import {parse} from './ResidenceTypes';
 
 type ResidenceState = ResidenceData | {};
 
@@ -13,7 +12,7 @@ export default function (
     case 'ADD_RESIDENCE_DATA':
       return action.residenceData;
     case 'SHOW_SIMULATION':
-      return parse(action.simulation.unitats_de_convivencia);
+    	return action.simulation.residence;
     default:
       return state;
   }

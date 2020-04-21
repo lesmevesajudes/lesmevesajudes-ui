@@ -48,6 +48,7 @@ type Props = {
   persones: Map<PersonID, Person>,
   possiblesSustentadors: Map<PersonID, Person>,
   sustentadorsSolitarisAmbPossiblesParelles: Map<Person, Array<Person>>,
+  custodiesValues: Map<string, string>,
   t: Function
 };
 
@@ -70,7 +71,7 @@ const FamilyForm = (props: Props) => {
           <Trans i18nKey='informacio_sobre_la_familia'>Informació sobre la família</Trans>
         </AppFormTitle>
         <AppForm>
-          <form name='FamilyForm'>
+          <form name='FamilyForm' >
             <Grid container direction='row' justify='space-around' alignItems='stretch' spacing={16}>
               <Grid item xs={11} md={6}>
                 <Grid container direction='column' alignItems='stretch' spacing={8}>
@@ -88,11 +89,11 @@ const FamilyForm = (props: Props) => {
                         </label>
                         <Grid container direction='row' justify='space-between'>
                           <Grid item xs={5}>
-                            <IRemoveMyValueWhenUnmountedField name={'custodies.' + infant.id + '.primer'}
+                            <IRemoveMyValueWhenUnmountedField name={'custodies' + infant.id.split("-").join("") + 'primer'}
                                                               component={TextField} select label=''
                                                               fullWidth validate={[required]}>
                               {possiblesSustentadors.valueSeq().map((sustentador: Person) =>
-                                  <MenuItem key={`primer-${sustentador.id}`} value={sustentador.id}>
+                              <MenuItem key={`primer-${sustentador.id}`} value={sustentador.id}>
                                     {sustentador.nom} ({sustentador.edat} <Trans i18nKey='anys'>anys</Trans>)
                                   </MenuItem>
                               )}
@@ -104,7 +105,7 @@ const FamilyForm = (props: Props) => {
                             <Typography className={classes.andSeparator}><Trans i18nKey='i'>i</Trans></Typography>
                           </Grid>
                           <Grid item xs={5}>
-                            <IRemoveMyValueWhenUnmountedField name={'custodies.' + infant.id + '.segon'}
+                            <IRemoveMyValueWhenUnmountedField name={'custodies' + infant.id.split("-").join("") + 'segon'}
                                                               component={TextField} select label=''
                                                               fullWidth validate={[required]}>
                               {possiblesSustentadors.valueSeq().map((sustentador: Person) =>
@@ -233,7 +234,8 @@ function mapStateToProps(state) {
     initialValues: state.family,
     persones: state.persons,
     possiblesSustentadors: state.persons.filter((person: Person) => esSustentador(person)),
-    sustentadorsSolitarisAmbPossiblesParelles: sustentadorsSolitarisAmbPossiblesParelles
+    sustentadorsSolitarisAmbPossiblesParelles: sustentadorsSolitarisAmbPossiblesParelles,
+    custodiesValues: state.family.custodiesValues,
   };
 }
 
