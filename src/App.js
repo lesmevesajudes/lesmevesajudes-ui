@@ -37,7 +37,7 @@ class App extends Component {
                 <ScrollToTop>
                   <Switch>
                     <Route exact={true} path='/' component={WizardPage}/>
-                    <Route exact={true} path='/admin' component={WizardPage}/>
+                    <Route path='/admin' component={WizardPage}/>
                     {isDevelopment &&
                     <Fragment>
                       <Route path='/reportBug' component={ReportBugPage}/>
