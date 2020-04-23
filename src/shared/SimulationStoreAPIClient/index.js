@@ -1,4 +1,6 @@
 import axios from 'axios/index';
+import {SIMULATION_STORE_AUTH_TOKEN} from "../../config";
+
 
 class SimulationStoreaAPIClient {
   url: ?string = undefined;
@@ -20,7 +22,7 @@ class SimulationStoreaAPIClient {
   }
   
   getSimulation(simulation_id: string) {
-	  return axios.get(this.url + "/" + simulation_id);
+	  return axios.get(this.url + "/" + simulation_id, {headers: {'Authentication-Token': SIMULATION_STORE_AUTH_TOKEN}});
   }
 }
 
