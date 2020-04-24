@@ -113,16 +113,18 @@ class ResultsPage extends React.Component<Props> {
     }
     return (
         <AppFormContainer>
-          <ShowMeOnceModal name='resultsModal'
-                           title={<Trans i18nKey='ajudes_a_les_que_podria_optar'>Ajudes a les que podria
-                             optar</Trans>}>
-            <Trans i18nKey='avis_ajudes_a_les_que_podria_optar'>A continuació es mostrarà el conjunt d’ajudes a les
-              quals podria arribar a optar.
-              L’informem que la concessió d’una d’elles pot fer variar els llindars d’ingressos i/o requisits que
-              les altres ajudes preveuen per a ser concedides.<br/>
-              Per tant, a la pràctica, pot trobar ajudes incompatibles entre sí.<br/>
-              Informi-se’n clicant sobre cada ajut.</Trans>
-          </ShowMeOnceModal>
+          {!this.props.isShowSimulation &&
+            <ShowMeOnceModal name='resultsModal'
+                             title={<Trans i18nKey='ajudes_a_les_que_podria_optar'>Ajudes a les que podria
+                               optar</Trans>}>
+              <Trans i18nKey='avis_ajudes_a_les_que_podria_optar'>A continuació es mostrarà el conjunt d’ajudes a les
+                quals podria arribar a optar.
+                L’informem que la concessió d’una d’elles pot fer variar els llindars d’ingressos i/o requisits que
+                les altres ajudes preveuen per a ser concedides.<br/>
+                Per tant, a la pràctica, pot trobar ajudes incompatibles entre sí.<br/>
+                Informi-se’n clicant sobre cada ajut.</Trans>
+            </ShowMeOnceModal>
+          }
           <AppFormTitle iconName='resultats'>
             <Trans i18nKey='a_partir_de_la_informacio_facilitada_linformem_que'>
               A partir de la informació que ens ha facilitat, a continuació li informem que:

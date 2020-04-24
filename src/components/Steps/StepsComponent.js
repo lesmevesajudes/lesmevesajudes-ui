@@ -28,6 +28,7 @@ type Props = {
   steps: Array<any>,
   isAdmin: boolean,
   isShowSimulation: boolean,
+  retrieveSimulationError: string,
   t: Function,
 }
 
@@ -135,7 +136,7 @@ class StepsComponent extends React.Component<Props, State> {
     return (
         <div className={classes.root}>
     	{isAdmin &&
-    		<AdminForm onSubmit={this.submitSimulationId}/>
+    		<AdminForm onSubmit={this.submitSimulationId} retrieveSimulationError={this.props.retrieveSimulationError}/>
     	}
         <Stepper activeStep={currentStep} nonLinear alternativeLabel className={classes.stepperContainer}>
             {steps.map((step, index) => {
@@ -177,6 +178,7 @@ const mapStateToProps = (state) => {
     buttonEnabled: state.step.button_enabled,
     buttonVisible: state.step.button_visible,
     isShowSimulation: state.step.is_show_simulation,
+    retrieveSimulationError: state.step.retrieveSimulationError,
   }
 };
 

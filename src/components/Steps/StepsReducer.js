@@ -9,6 +9,7 @@ const initial: StepsState = {
   is_show_simulation: false,
   step:'NumberOfPersonsLivingTogether',
   number_of_persons_living_together: 0,
+  retrieveSimulationError: '',
 };
 
 export default (state: StepsState = initial, action: StepAction): StepsState => {
@@ -46,6 +47,12 @@ export default (state: StepsState = initial, action: StepAction): StepsState => 
     	state: 'personsList',
     	is_show_simulation: true,
     }
+    case 'RETRIEVE_SIMULATION_ERROR':
+      console.log('step reducer sim error')
+      return {
+        ...state,
+        retrieveSimulationError: action.payload,
+      }
     default:
       return state;
   }

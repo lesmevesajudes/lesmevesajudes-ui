@@ -9,6 +9,7 @@ import PersonsReducer from './persons/PersonsReducer';
 import ReportBugReducer from "./reportBug/ReportBugReducer";
 import ResidenceReducer from './residence/ResidenceReducer';
 import ResultsReducer from './results/ResultsReducer';
+import AdminReducer from './admin/AdminReducer';
 
 const rootReducer = combineReducers({
   family: FamilyReducer,
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   showMeOnceModals: ShowMeOnceReducer,
   step: StepReducer,
   reportBug: ReportBugReducer,
+  admin: AdminReducer,
 });
 
 export default rootReducer;

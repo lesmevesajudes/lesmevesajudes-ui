@@ -1,11 +1,12 @@
 import React from 'react'
+import {connect} from "react-redux";
 import { Field, reduxForm } from 'redux-form'
-import {Button} from "@material-ui/core";
+import {Button,} from "@material-ui/core";
 import Typography from '@material-ui/core/Typography';
 import {Trans} from "react-i18next";
 
-const AdminForm = props => {
-  const { handleSubmit } = props
+const AdminForm = (props) => {
+  const { handleSubmit, retrieveSimulationError } = props
   return (
 		  <form onSubmit={handleSubmit}>
 		  	<table align="center">
@@ -45,13 +46,23 @@ const AdminForm = props => {
 				  			</Button>
 				  		</td>
 			  		</tr>
+            <tr>
+              <td>
+              {retrieveSimulationError &&
+                <Typography color='error'>
+                  <Trans i18nKey='codi_simulacio_incorrecte'>ID incorrecte. Revisa i torna a provar</Trans>
+                </Typography>
+              }
+              </td>
+            </tr>
 		  		</tbody>
 		  	</table>
 		  </form>
-  ) 
+  )
 }
+
+
 
 export default reduxForm({
   form: 'admin'
 })(AdminForm)
-

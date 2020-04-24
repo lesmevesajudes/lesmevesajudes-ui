@@ -11,6 +11,7 @@ export const START_FETCH_SIMULATION = 'START_FETCH_SIMULATION';
 export const FETCH_SIMULATION = 'FETCH_SIMULATION';
 export const FETCH_SIMULATION_ERROR = 'FETCH_SIMULATION_ERROR';
 export const SHOW_SIMULATION = 'SHOW_SIMULATION';
+export const RETRIEVE_SIMULATION_ERROR = 'RETRIEVE_SIMULATION_ERROR';
 
 export type SimulationData = {
   persons: PersonsState,
@@ -30,18 +31,18 @@ export const fetchSimulation = (simulationData: SimulationData) => (dispatch: an
 
   const openFisca = new OpenFiscaAPIClient(API_URL);
   return openFisca.makeSimulation(simulationData).then(result => {
-	var simulation = {};
-	simulation.result = result.data;
-	simulation.data = {};
-	simulation.data.family = simulationData.family;
-	simulation.data.persons = simulationData.persons;
-	simulation.data.residence = simulationData.residence;
-	simulationStore.uploadSimulationResult(id, simulation);
-    result.data['id'] = id;
-    return dispatch({
-      type: FETCH_SIMULATION,
-      payload: result
-    })
+  	var simulation = {};
+  	simulation.result = result.data;
+  	simulation.data = {};
+  	simulation.data.family = simulationData.family;
+  	simulation.data.persons = simulationData.persons;
+  	simulation.data.residence = simulationData.residence;
+  	simulationStore.uploadSimulationResult(id, simulation);
+      result.data['id'] = id;
+      return dispatch({
+        type: FETCH_SIMULATION,
+        payload: result
+      })
   }).catch(error => {
     console.log(JSON.stringify(error, null, 2));
     simulationStore.uploadSimulationError(id, {simulation_error: error.response});
@@ -61,6 +62,11 @@ export const retrieveSimulation = (simulationId: string) =>  (dispatch: any) => 
 			simulation: simulation.data,
 			result: simulation.result,
 		});
-	});
+	}).catch(error => {
+    console.log(JSON.stringify(error, null, 2));
+    dispatch({
+      type: RETRIEVE_SIMULATION_ERROR,
+      payload: error
+    });
+  });
 }
-
