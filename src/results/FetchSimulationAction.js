@@ -32,6 +32,9 @@ export const fetchSimulation = (simulationData: SimulationData) => (dispatch: an
   const openFisca = new OpenFiscaAPIClient(API_URL);
   return openFisca.makeSimulation(simulationData).then(result => {
   	var simulation = {};
+  	if (simulationData.results.initialSimulationId !== undefined) {
+  		simulation.initial_simulation_id = simulationData.results.initialSimulationId;
+  	}
   	simulation.result = result.data;
   	simulation.data = {};
   	simulation.data.family = simulationData.family;
@@ -57,9 +60,11 @@ export const retrieveSimulation = (simulationId: string) =>  (dispatch: any) => 
 	return simulationStore.getSimulation(simulationId).then(result => {
 		console.log(result.data);
 		const simulation = JSON.parse(result.data.simulation);
+		const initialSimulationId = simulation.initial_simulation_id !== undefined ? simulation.initial_simulation_id : result.data.id;
 		return dispatch({
 			type: SHOW_SIMULATION,
 			simulation: simulation.data,
+			initialSimulationId: initialSimulationId,
 			result: simulation.result,
 		});
 	}).catch(error => {

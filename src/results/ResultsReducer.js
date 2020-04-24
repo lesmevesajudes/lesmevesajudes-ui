@@ -2,16 +2,18 @@ import {FETCH_SIMULATION, FETCH_SIMULATION_ERROR, START_FETCH_SIMULATION, SHOW_S
 
 
 export default function(
-    state = {isError: false, isRequestDone: false, response: null, simulationID: null},
+    state = {isError: false, isRequestDone: false, response: null, simulationID: null, initialSimulationID: null},
     action
 ) {
   switch (action.type) {
     case START_FETCH_SIMULATION:
       return {
+    	...state,
         isError: false, isRequestDone: false, response: null, simulationID: action.simulation_id
       };
     case FETCH_SIMULATION:
       return {
+    	...state,
         response: action.payload.data,
         isError: false,
         isRequestDone: true,
@@ -29,7 +31,8 @@ export default function(
     case SHOW_SIMULATION:
       return {
         response: action.simulation,
-        simulationID: action.simulation.id
+        simulationID: action.simulation.id,
+        initialSimulationId: action.initialSimulationId,
       };
     default:
       return state;

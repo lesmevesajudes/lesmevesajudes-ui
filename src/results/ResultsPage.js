@@ -31,6 +31,7 @@ type Props = {
   resultsData: any,
   simulationData: any,
   simulationID: string,
+  initialSimulationId: string,
   isShowSimulation: boolean,
 };
 
@@ -58,7 +59,7 @@ class ResultsPage extends React.Component<Props> {
   }
 
   render() {
-    const {isError, isRequestDone, resultsData, persons, simulationID, classes} = this.props;
+    const {isError, isRequestDone, resultsData, persons, simulationID, initialSimulationId, classes} = this.props;
     if (!this.enoughDataForSimulation()) {
       return (
           <AppFormContainer>
@@ -169,6 +170,24 @@ class ResultsPage extends React.Component<Props> {
                 </Typography>
               </Grid>
             </Grid>
+            {this.props.initialSimulationId &&
+              <Grid container justify='center' alignItems='center' className={classes.ItemResult}>
+                <Grid item container xs={1} justify='center' alignItems='center'>
+                  <InfoOutlinedIcon className={classes.darkGrayText}>info</InfoOutlinedIcon>
+                </Grid>
+                <Grid item xs={7}>
+                  <Typography className={classes.ResultsBenefitText}>
+                    <Trans i18nKey='identificador_simulacio_inicial'>Identificador simulació inicial</Trans>
+                  </Typography>
+                </Grid>
+                <Grid item container className={classes.ResultsSeparator} xs={4} alignItems='center' justify='center'>
+                  <Typography className={classes.ResultsBenefitText}>
+                    {initialSimulationId}
+                  </Typography>
+                </Grid>
+              </Grid>
+
+            }
             {SHOW_REPORT_BUG && <Grid item xs={12} className={classes.ItemResult}>
               <ReportBugForm initialValues={getReportBugDataFromLocalStorage()} onSubmit={this.submitReport}/>
             </Grid>}
@@ -185,6 +204,7 @@ function mapStateToProps(state) {
     simulationData: state,
     resultsData: state.results.response,
     simulationID: state.results.simulationID !== null ? state.results.simulationID : 'none',
+    initialSimulationId : state.results.initialSimulationId !== undefined ? state.results.initialSimulationId : null,
     persons: state.persons,
     isShowSimulation: state.step.is_show_simulation,
   };

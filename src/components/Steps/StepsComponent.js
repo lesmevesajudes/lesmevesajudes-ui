@@ -13,7 +13,7 @@ import {styles} from '../../styles/theme';
 import {IconFont} from '../IconFont/IconFont';
 import StepperButtons from './StepperButtons';
 import AdminForm from '../../admin/AdminForm'
-import {retrieveSimulation} from '../../results/FetchSimulationAction';
+import {retrieveSimulation, fetchSimulation} from '../../results/FetchSimulationAction';
 
 type Props = {
   appState: Object,
@@ -26,9 +26,11 @@ type Props = {
   nextStep: Function,
   setActualStep: Function,
   steps: Array<any>,
+  simulationData: any,
   isAdmin: boolean,
   isShowSimulation: boolean,
   retrieveSimulationError: string,
+  fetchSimulation: Function,
   t: Function,
 }
 
@@ -164,7 +166,10 @@ class StepsComponent extends React.Component<Props, State> {
               <StepperButtons nextAction={(currentStep === steps.length - 1) ? undefined : this.nextStep}
                               backAction={(currentStep === 0) ? undefined : this.backStep} classes={classes}
                               buttonEnabled={buttonEnabled} buttonVisible={buttonVisible}
-                              nextIsResults={currentStep === steps.length - 2}/>
+                              nextIsResults={currentStep === steps.length - 2}
+              				  fetchSimulation={fetchSimulation}
+              				  simulationData={this.props.simulationData}
+              				  isAdmin={isAdmin}/>
             </Grid>
           </Grid>
         </div>
@@ -178,6 +183,7 @@ const mapStateToProps = (state) => {
     buttonEnabled: state.step.button_enabled,
     buttonVisible: state.step.button_visible,
     isShowSimulation: state.step.is_show_simulation,
+    simulationData: state,
     retrieveSimulationError: state.step.retrieveSimulationError,
   }
 };
@@ -185,6 +191,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
 	  return {
 		retrieveSimulation: bindActionCreators(retrieveSimulation, dispatch),
+		fetchSimulation: bindActionCreators(fetchSimulation, dispatch),
 		dispatch
 	  }
 	}
