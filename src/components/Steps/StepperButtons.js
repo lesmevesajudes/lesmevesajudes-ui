@@ -1,5 +1,6 @@
 import {Button, Grid, Icon, withStyles} from '@material-ui/core';
 import React, {Fragment} from "react";
+import {connect} from 'react-redux';
 import {Trans} from 'react-i18next';
 import classNames from "classnames";
 import {styles} from '../../styles/theme';
@@ -22,7 +23,7 @@ const printPage = function () {
 };
 
 let StepperButtons = (props: Props) => {
-  const {classes, backAction, buttonEnabled, nextAction, nextIsResults, fetchSimulation, isAdmin, simulationData} = props;
+  const {classes, backAction, buttonEnabled, nextAction, nextIsResults, fetchSimulation, isAdmin, simulationData, dispatch} = props;
   const content = (
       <Grid container justify={'flex-end'} alignItems={'center'} className={classNames(classes.buttonsContainer, 'screen-only')}>
         <Grid item container sm={2} md={2} justify={'flex-end'}>
@@ -42,7 +43,7 @@ let StepperButtons = (props: Props) => {
         </Grid>
         }
         <Grid item container sm={2} md={2} justify={'flex-end'}>
-          {typeof nextAction === 'undefined'&&
+          {typeof nextAction === 'undefined'&& !isAdmin &&
           <Button color='secondary' variant='contained'
                   onClick={() => window.location.reload()}
                   disabled={!buttonEnabled}>
@@ -50,14 +51,14 @@ let StepperButtons = (props: Props) => {
             <Trans i18nKey='nou_calcul'>Nou càlcul</Trans>
           </Button>
           }
-          {/*typeof nextAction === 'undefined' && isAdmin &&
+          {typeof nextAction === 'undefined' && isAdmin &&
               <Button color='secondary' variant='contained'
-                      onClick={fetchSimulation(simulationData)}
+                      onClick={() => fetchSimulation(simulationData)(dispatch)}
                       disabled={!buttonEnabled}>
                 <Icon className={classes.leftIcon}>cached</Icon>
                 <Trans i18nKey='do_calcul'>Fer càlcul</Trans>
               </Button>
-              */}
+           }
           {typeof nextAction !== 'undefined' &&
           <Button color='primary' variant='contained'
                   onClick={nextAction}
@@ -72,4 +73,4 @@ let StepperButtons = (props: Props) => {
   return props.buttonVisible ? content : null;
 };
 
-export default withStyles(styles)(StepperButtons);
+export default withStyles(styles)(connect()(StepperButtons));

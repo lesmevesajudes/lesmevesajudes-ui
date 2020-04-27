@@ -9,7 +9,10 @@ export default function(
     case START_FETCH_SIMULATION:
       return {
     	...state,
-        isError: false, isRequestDone: false, response: null, simulationID: action.simulation_id
+        isError: false, 
+        isRequestDone: false,
+        response: null, 
+        simulationID: action.simulation_id
       };
     case FETCH_SIMULATION:
       return {
@@ -23,6 +26,7 @@ export default function(
       console.log('error:', action.payload);
       console.log('error:', JSON.stringify(action.payload.response.data, null, 2));
       return {
+      	...state,
         response: action.payload,
         isError: true,
         isRequestDone: true,
@@ -30,8 +34,9 @@ export default function(
       };
     case SHOW_SIMULATION:
       return {
-        response: action.simulation,
-        simulationID: action.simulation.id,
+        isRequestDone: true,
+        simulationID: action.result.id,
+        response: action.result,
         initialSimulationId: action.initialSimulationId,
       };
     default:

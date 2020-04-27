@@ -1,9 +1,10 @@
 // @flow
-import type {AdminState} from './StepsTypes';
+import type {AdminState} from './AdminTypes';
 
 
 const initial: AdminState = {
   retrieveSimulationError: '',
+  isAdmin: true,
 };
 
 export default (state: AdminState = initial, action): AdminsState => {

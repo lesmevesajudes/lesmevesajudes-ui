@@ -58,7 +58,7 @@ export const fetchSimulation = (simulationData: SimulationData) => (dispatch: an
 
 export const retrieveSimulation = (simulationId: string) =>  (dispatch: any) => {
 	return simulationStore.getSimulation(simulationId).then(result => {
-		console.log(result.data);
+//		console.log(result.data);
 		const simulation = JSON.parse(result.data.simulation);
 		const initialSimulationId = simulation.initial_simulation_id !== undefined ? simulation.initial_simulation_id : result.data.id;
 		return dispatch({

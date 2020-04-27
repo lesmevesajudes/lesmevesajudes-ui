@@ -16,6 +16,7 @@ import {styles} from '../styles/theme';
 import {fetchSimulation} from './FetchSimulationAction';
 import PersonalBenefits from './PersonalBenefits';
 import UnitatDeConvivenciaBenefits from './UnitatDeConvivenciaBenefits';
+import {isAdmin} from '../pages/Wizard';
 
 export const ResultsContainer = withStyles(styles)((props: AppFormProps) =>
     <Grid item xs={12} md={11} className={props.classes.resultsContainer}>
@@ -33,6 +34,7 @@ type Props = {
   simulationID: string,
   initialSimulationId: string,
   isShowSimulation: boolean,
+  isAdmin: boolean,
 };
 
 class ResultsPage extends React.Component<Props> {
@@ -47,7 +49,7 @@ class ResultsPage extends React.Component<Props> {
   }
 
   componentDidMount() {
-	  if (this.enoughDataForSimulation()) {
+	  if (this.enoughDataForSimulation() && !this.props.isShowSimulation) {
 		  this.props.fetchSimulation(this.props.simulationData);
 	  }
   }
@@ -59,8 +61,8 @@ class ResultsPage extends React.Component<Props> {
   }
 
   render() {
-    const {isError, isRequestDone, resultsData, persons, simulationID, initialSimulationId, classes} = this.props;
-    if (!this.enoughDataForSimulation()) {
+    const {isError, isRequestDone, resultsData, persons, simulationID, initialSimulationId, classes, isAdmin} = this.props;
+    if (!this.enoughDataForSimulation() && !isAdmin) {
       return (
           <AppFormContainer>
             <h1><Trans i18nKey='ajudes_a_les_que_podria_optar'>Ajudes a les que podria optar</Trans></h1>
@@ -74,6 +76,14 @@ class ResultsPage extends React.Component<Props> {
           </AppFormContainer>
       );
     }
+    
+    if (!this.enoughDataForSimulation() && isAdmin) {
+        return (
+            <AppFormContainer>
+              <h1><Trans i18nKey='introdueix_codi_simulació'>Introdueix el codi de la simulació</Trans></h1>
+            </AppFormContainer>
+        );
+      }
 
     if (!isRequestDone) {
       return (
@@ -207,6 +217,7 @@ function mapStateToProps(state) {
     initialSimulationId : state.results.initialSimulationId !== undefined ? state.results.initialSimulationId : null,
     persons: state.persons,
     isShowSimulation: state.step.is_show_simulation,
+    isAdmin: state.admin.isAdmin,
   };
 }
 

@@ -106,7 +106,7 @@ class StepsComponent extends React.Component<Props, State> {
 
   constructor(props) {
     super(props);
-    this.state = {current_step: 0, max_step_reached: 0};
+    this.state = {current_step: (props.isAdmin ? 3 : 0), max_step_reached: 0};
     this.nextStep = this.nextStep.bind(this);
     this.backStep = this.backStep.bind(this);
     this.setStep = this.setStep.bind(this);
@@ -133,7 +133,14 @@ class StepsComponent extends React.Component<Props, State> {
   render() {
     const {classes, steps, buttonEnabled, buttonVisible, t, isAdmin} = this.props;
     const currentStep = this.state.current_step;
-    const maxStepReached = this.props.isShowSimulation ? 3 : this.state.max_step_reached;
+    let maxStepReached;
+    if (this.props.isShowSimulation) {
+    	maxStepReached = 3;
+    } else if (isAdmin) {
+    	maxStepReached = -1;
+    } else {
+    	maxStepReached = this.state.max_step_reached;
+    }
     const childComponent = steps[currentStep].component;
     return (
         <div className={classes.root}>
