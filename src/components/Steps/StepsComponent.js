@@ -12,8 +12,7 @@ import {flatten} from '../../shared/flatten';
 import {styles} from '../../styles/theme';
 import {IconFont} from '../IconFont/IconFont';
 import StepperButtons from './StepperButtons';
-import AdminForm from '../../admin/AdminForm'
-import {retrieveSimulation, fetchSimulation} from '../../results/FetchSimulationAction';
+import {fetchSimulation} from '../../results/FetchSimulationAction';
 
 type Props = {
   appState: Object,
@@ -124,11 +123,6 @@ class StepsComponent extends React.Component<Props, State> {
     }
     return index;
   }
-  submitSimulationId = values => {
-	  // print the form values to the console
-	  console.log(values.simulation_id)
-	  this.props.retrieveSimulation(values.simulation_id);
-  }
 
   render() {
     const {classes, steps, buttonEnabled, buttonVisible, t, isAdmin} = this.props;
@@ -144,9 +138,6 @@ class StepsComponent extends React.Component<Props, State> {
     const childComponent = steps[currentStep].component;
     return (
         <div className={classes.root}>
-    	{isAdmin &&
-    		<AdminForm onSubmit={this.submitSimulationId} retrieveSimulationError={this.props.retrieveSimulationError}/>
-    	}
         <Stepper activeStep={currentStep} nonLinear alternativeLabel className={classes.stepperContainer}>
             {steps.map((step, index) => {
               const labelProps = step.optional ? {
@@ -173,10 +164,7 @@ class StepsComponent extends React.Component<Props, State> {
               <StepperButtons nextAction={(currentStep === steps.length - 1) ? undefined : this.nextStep}
                               backAction={(currentStep === 0) ? undefined : this.backStep} classes={classes}
                               buttonEnabled={buttonEnabled} buttonVisible={buttonVisible}
-                              nextIsResults={currentStep === steps.length - 2}
-              				  fetchSimulation={fetchSimulation}
-              				  simulationData={this.props.simulationData}
-              				  isAdmin={isAdmin}/>
+                              nextIsResults={currentStep === steps.length - 2}/>
             </Grid>
           </Grid>
         </div>
@@ -197,7 +185,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
 	  return {
-		retrieveSimulation: bindActionCreators(retrieveSimulation, dispatch),
 		fetchSimulation: bindActionCreators(fetchSimulation, dispatch),
 		dispatch
 	  }

@@ -13,10 +13,10 @@ import ReportBugForm from '../reportBug/ReportBugForm';
 import {getReportBugDataFromLocalStorage} from '../reportBug/ReportBugPage';
 import Spinner from '../shared/spinner.svg';
 import {styles} from '../styles/theme';
-import {fetchSimulation} from './FetchSimulationAction';
+import {retrieveSimulation, fetchSimulation} from './FetchSimulationAction';
 import PersonalBenefits from './PersonalBenefits';
 import UnitatDeConvivenciaBenefits from './UnitatDeConvivenciaBenefits';
-import {isAdmin} from '../pages/Wizard';
+import AdminForm from '../admin/AdminForm';
 
 export const ResultsContainer = withStyles(styles)((props: AppFormProps) =>
     <Grid item xs={12} md={11} className={props.classes.resultsContainer}>
@@ -49,7 +49,7 @@ class ResultsPage extends React.Component<Props> {
   }
 
   componentDidMount() {
-	  if (this.enoughDataForSimulation() && !this.props.isShowSimulation) {
+	  if (this.enoughDataForSimulation()) {
 		  this.props.fetchSimulation(this.props.simulationData);
 	  }
   }
@@ -58,6 +58,12 @@ class ResultsPage extends React.Component<Props> {
     super(props);
     this.period = Moment().format('YYYY-MM');
     this.submitReport = this.submitReport.bind(this);
+  }
+  
+  submitSimulationId = values => {
+	  // print the form values to the console
+	  console.log(values.simulation_id)
+	  this.props.retrieveSimulation(values.simulation_id);
   }
 
   render() {
@@ -80,7 +86,11 @@ class ResultsPage extends React.Component<Props> {
     if (!this.enoughDataForSimulation() && isAdmin) {
         return (
             <AppFormContainer>
-              <h1><Trans i18nKey='introdueix_codi_simulació'>Introdueix el codi de la simulació</Trans></h1>
+              <Grid container xs={12}>
+	              <Grid item xs={12} sm={11}>
+		              <AdminForm onSubmit={this.submitSimulationId} retrieveSimulationError={this.props.retrieveSimulationError}/>
+	              </Grid>
+	            </Grid>
             </AppFormContainer>
         );
       }
@@ -176,7 +186,7 @@ class ResultsPage extends React.Component<Props> {
               </Grid>
               <Grid item container className={classes.ResultsSeparator} xs={4} alignItems='center' justify='center'>
                 <Typography className={classes.ResultsBenefitText}>
-                  {simulationID}
+                  {simulationID ? simulationID : 'No disponible'}
                 </Typography>
               </Grid>
             </Grid>
@@ -221,4 +231,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default withStyles(styles)(connect(mapStateToProps, {fetchSimulation, submitReport})(ResultsPage));
+export default withStyles(styles)(connect(mapStateToProps, {fetchSimulation, retrieveSimulation, submitReport})(ResultsPage));

@@ -35,7 +35,7 @@ export default function(
     case SHOW_SIMULATION:
       return {
         isRequestDone: true,
-        simulationID: action.result.id,
+//        simulationID: action.result.id,
         response: action.result,
         initialSimulationId: action.initialSimulationId,
       };
