@@ -1,15 +1,22 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Trans} from 'react-i18next';
+import {Grid} from '@material-ui/core';
 import {AppFormContainer} from '../components/AppForms';
 import type {Person, PersonID} from '../persons/PersonTypes';
-import {submitReport} from "../reportBug/ReportBugActions";
-import {fetchSimulation} from './FetchSimulationAction';
+import {submitReport} from "../reportBug/ReportBugActions";import {retrieveSimulation, fetchSimulation} from './FetchSimulationAction';
 import SimulationMissingData from './SimulationMissingData';
 import SimulationLoading from './SimulationLoading';
 import SimulationError from './SimulationError';
 import SimulationSuccess from './SimulationSuccess';
 import {isAdmin} from '../pages/Wizard';
+import ReportBugForm from '../reportBug/ReportBugForm';
+import {getReportBugDataFromLocalStorage} from '../reportBug/ReportBugPage';
+import Spinner from '../shared/spinner.svg';
+import {styles} from '../styles/theme';
+import PersonalBenefits from './PersonalBenefits';
+import UnitatDeConvivenciaBenefits from './UnitatDeConvivenciaBenefits';
+import AdminForm from '../admin/AdminForm';
 
 type Props = {
   dispatch: Function,
@@ -36,7 +43,7 @@ class ResultsPage extends React.Component<Props> {
   }
 
   componentDidMount() {
-	  if (this.enoughDataForSimulation() && !this.props.isShowSimulation) {
+	  if (this.enoughDataForSimulation()) {
 		  this.props.fetchSimulation(this.props.simulationData);
 	  }
   }
@@ -44,6 +51,12 @@ class ResultsPage extends React.Component<Props> {
   constructor(props) {
     super(props);
     this.submitReport = this.submitReport.bind(this);
+  }
+
+  submitSimulationId = values => {
+	  // print the form values to the console
+	  console.log(values.simulation_id)
+	  this.props.retrieveSimulation(values.simulation_id);
   }
 
   render() {
@@ -55,7 +68,11 @@ class ResultsPage extends React.Component<Props> {
     if (!this.enoughDataForSimulation() && isAdmin) {
         return (
             <AppFormContainer>
-              <h1><Trans i18nKey='introdueix_codi_simulació'>Introdueix el codi de la simulació</Trans></h1>
+              <Grid container xs={12}>
+	              <Grid item xs={12} sm={11}>
+		              <AdminForm onSubmit={this.submitSimulationId} retrieveSimulationError={this.props.retrieveSimulationError}/>
+	              </Grid>
+	            </Grid>
             </AppFormContainer>
         );
       }
@@ -91,4 +108,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, {fetchSimulation, submitReport})(ResultsPage);
+export default connect(mapStateToProps, {fetchSimulation, retrieveSimulation, submitReport})(ResultsPage);

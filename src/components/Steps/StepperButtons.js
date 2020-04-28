@@ -23,7 +23,7 @@ const printPage = function () {
 };
 
 let StepperButtons = (props: Props) => {
-  const {classes, backAction, buttonEnabled, nextAction, nextIsResults, fetchSimulation, isAdmin, simulationData, dispatch} = props;
+  const {classes, backAction, buttonEnabled, nextAction, nextIsResults} = props;
   const content = (
       <Grid container justify={'flex-end'} alignItems={'center'} className={classNames(classes.buttonsContainer, 'screen-only')}>
         <Grid item container sm={2} md={2} justify={'flex-end'}>
@@ -43,7 +43,7 @@ let StepperButtons = (props: Props) => {
         </Grid>
         }
         <Grid item container sm={2} md={2} justify={'flex-end'}>
-          {typeof nextAction === 'undefined'&& !isAdmin &&
+          {typeof nextAction === 'undefined' &&
           <Button color='secondary' variant='contained'
                   onClick={() => window.location.reload()}
                   disabled={!buttonEnabled}>
@@ -51,14 +51,7 @@ let StepperButtons = (props: Props) => {
             <Trans i18nKey='nou_calcul'>Nou càlcul</Trans>
           </Button>
           }
-          {typeof nextAction === 'undefined' && isAdmin &&
-              <Button color='secondary' variant='contained'
-                      onClick={() => fetchSimulation(simulationData)(dispatch)}
-                      disabled={!buttonEnabled}>
-                <Icon className={classes.leftIcon}>cached</Icon>
-                <Trans i18nKey='do_calcul'>Fer càlcul</Trans>
-              </Button>
-           }
+          
           {typeof nextAction !== 'undefined' &&
           <Button color='primary' variant='contained'
                   onClick={nextAction}

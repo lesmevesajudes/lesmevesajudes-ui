@@ -23,7 +23,7 @@ export type SimulationData = {
 const simulationStore = new SimulationStoreClient(SIMULATION_STORE_URL);
 
 export const fetchSimulation = (simulationData: SimulationData) => (dispatch: any) => {
-	const id = createUUID();
+  const id = simulationData.results.simulationID ? simulationData.results.simulationID : createUUID();
   dispatch({
     type: START_FETCH_SIMULATION,
     simulation_id: id
@@ -40,12 +40,16 @@ export const fetchSimulation = (simulationData: SimulationData) => (dispatch: an
   	simulation.data.family = simulationData.family;
   	simulation.data.persons = simulationData.persons;
   	simulation.data.residence = simulationData.residence;
-  	simulationStore.uploadSimulationResult(id, simulation);
-      result.data['id'] = id;
-      return dispatch({
+  	if (simulationData.results.simulationID) {
+  		simulationStore.uploadSimulationResultUpdate(id, simulation);
+  	} else {
+  		simulationStore.uploadSimulationResult(id, simulation);
+  	}
+    result.data['id'] = id;
+    return dispatch({
         type: FETCH_SIMULATION,
         payload: result
-      })
+    })
   }).catch(error => {
     console.log(JSON.stringify(error, null, 2));
     simulationStore.uploadSimulationError(id, {simulation_error: error.response});
@@ -59,13 +63,14 @@ export const fetchSimulation = (simulationData: SimulationData) => (dispatch: an
 export const retrieveSimulation = (simulationId: string) =>  (dispatch: any) => {
 	return simulationStore.getSimulation(simulationId).then(result => {
 //		console.log(result.data);
-		const simulation = JSON.parse(result.data.simulation);
-		const initialSimulationId = simulation.initial_simulation_id !== undefined ? simulation.initial_simulation_id : result.data.id;
+		const simulationData = JSON.parse(result.data.simulation);
+		const simulationResult = JSON.parse(result.data.result);
+		const initialSimulationId = result.data.id_parent !== 'null' ? result.data.id_parent : result.data.id;
 		return dispatch({
 			type: SHOW_SIMULATION,
-			simulation: simulation.data,
+			simulation: simulationData,
 			initialSimulationId: initialSimulationId,
-			result: simulation.result,
+			result: simulationResult,
 		});
 	}).catch(error => {
     console.log(JSON.stringify(error, null, 2));

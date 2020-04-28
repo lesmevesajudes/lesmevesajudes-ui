@@ -1,5 +1,4 @@
 import React from 'react'
-import {connect} from "react-redux";
 import { Field, reduxForm } from 'redux-form'
 import {Button,} from "@material-ui/core";
 import Typography from '@material-ui/core/Typography';
@@ -33,7 +32,7 @@ const AdminForm = (props) => {
 			  			<td>
 				  			<label>
 					  			<Typography gutterBottom>
-					  				Codi
+					  				Codi simulació
 				  				</Typography>
 				  			</label>
 			  			</td>
