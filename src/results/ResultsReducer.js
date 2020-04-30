@@ -1,4 +1,4 @@
-import {FETCH_SIMULATION, FETCH_SIMULATION_ERROR, START_FETCH_SIMULATION, SHOW_SIMULATION} from './FetchSimulationAction';
+import {FETCH_SIMULATION, FETCH_SIMULATION_ERROR, START_FETCH_SIMULATION, SHOW_SIMULATION, RETRIEVE_SIMULATION_ERROR} from './FetchSimulationAction';
 
 
 export default function(
@@ -39,6 +39,12 @@ export default function(
         response: action.result,
         initialSimulationId: action.initialSimulationId,
       };
+    case RETRIEVE_SIMULATION_ERROR:
+        console.log('step reducer sim error')
+        return {
+          ...state,
+          retrieveSimulationError: action.payload,
+        };
     default:
       return state;
   }
