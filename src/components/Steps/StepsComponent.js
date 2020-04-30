@@ -28,7 +28,6 @@ type Props = {
   simulationData: any,
   isAdmin: boolean,
   isShowSimulation: boolean,
-  retrieveSimulationError: string,
   fetchSimulation: Function,
   t: Function,
 }
@@ -181,7 +180,6 @@ const mapStateToProps = (state) => {
     buttonVisible: state.step.button_visible,
     isShowSimulation: state.step.is_show_simulation,
     simulationData: state,
-    retrieveSimulationError: state.step.retrieveSimulationError,
   }
 };
 

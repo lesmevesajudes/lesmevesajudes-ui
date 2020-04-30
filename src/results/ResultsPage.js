@@ -29,6 +29,7 @@ type Props = {
   initialSimulationId: string,
   isShowSimulation: boolean,
   isAdmin: boolean,
+  retrieveSimulationError: string,
 };
 
 class ResultsPage extends React.Component<Props> {
@@ -105,6 +106,7 @@ function mapStateToProps(state) {
     persons: state.persons,
     isShowSimulation: state.step.is_show_simulation,
     isAdmin: state.admin.isAdmin,
+    retrieveSimulationError: state.results.retrieveSimulationError,
   };
 }
 

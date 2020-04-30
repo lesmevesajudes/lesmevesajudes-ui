@@ -47,12 +47,6 @@ export default (state: StepsState = initial, action: StepAction): StepsState => 
     	state: 'personsList',
     	is_show_simulation: true,
     }
-    case 'RETRIEVE_SIMULATION_ERROR':
-      console.log('step reducer sim error')
-      return {
-        ...state,
-        retrieveSimulationError: action.payload,
-      }
     default:
       return state;
   }
