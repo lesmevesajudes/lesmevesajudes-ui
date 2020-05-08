@@ -50,6 +50,7 @@ type Props = {
   sustentadorsSolitarisAmbPossiblesParelles: Map<Person, Array<Person>>,
   t: Function
 };
+const formName = 'FamilyForm';
 
 const FamilyForm = (props: Props) => {
   const {
@@ -70,7 +71,7 @@ const FamilyForm = (props: Props) => {
           <Trans i18nKey='informacio_sobre_la_familia'>Informació sobre la família</Trans>
         </AppFormTitle>
         <AppForm>
-          <form name='FamilyForm'>
+          <form name={formName}>
             <Grid container direction='row' justify='space-around' alignItems='stretch' spacing={16}>
               <Grid item xs={11} md={6}>
                 <Grid container direction='column' alignItems='stretch' spacing={8}>
@@ -88,7 +89,7 @@ const FamilyForm = (props: Props) => {
                         </label>
                         <Grid container direction='row' justify='space-between'>
                           <Grid item xs={5}>
-                            <IRemoveMyValueWhenUnmountedField name={'custodies.' + infant.id + '.primer'}
+                            <IRemoveMyValueWhenUnmountedField formName ={formName} name={'custodies.' + infant.id + '.primer'}
                                                               component={TextField} select label=''
                                                               fullWidth validate={[required]}>
                               {possiblesSustentadors.valueSeq().map((sustentador: Person) =>
@@ -104,7 +105,7 @@ const FamilyForm = (props: Props) => {
                             <Typography className={classes.andSeparator}><Trans i18nKey='i'>i</Trans></Typography>
                           </Grid>
                           <Grid item xs={5}>
-                            <IRemoveMyValueWhenUnmountedField name={'custodies.' + infant.id + '.segon'}
+                            <IRemoveMyValueWhenUnmountedField formName ={formName} name={'custodies.' + infant.id + '.segon'}
                                                               component={TextField} select label=''
                                                               fullWidth validate={[required]}>
                               {possiblesSustentadors.valueSeq().map((sustentador: Person) =>
@@ -141,7 +142,7 @@ const FamilyForm = (props: Props) => {
                                 <b>{persones.get(familia.sustentadors_i_custodia[0]).nom}</b>
                               </Typography>
                             </label>
-                            <IRemoveMyValueWhenUnmountedField name={'parelles.' + familia.sustentadors_i_custodia[0]}
+                            <IRemoveMyValueWhenUnmountedField formName ={formName} name={'parelles.' + familia.sustentadors_i_custodia[0]}
                                                               component={TextField} select label='' fullWidth
                                                               validate={[required]}>
                               {// $FlowFixMe
@@ -157,12 +158,12 @@ const FamilyForm = (props: Props) => {
                           </Fragment>
                         }
                         {familia.monoparental &&
-                        <YesNoQuestion name={'disposa_de_carnet_familia_monoparental.' + familia.ID}
+                        <YesNoQuestion formname={formName} name ={'disposa_de_carnet_familia_monoparental.' + familia.ID}
                                        validate={[required]}>
                           <Trans i18nKey='te_carnet_monoparental'>Té el carnet de família monoparental?</Trans>
                         </YesNoQuestion>}
 
-                        <YesNoQuestion name={'usuari_serveis_socials.' + familia.ID} validate={[required]}>
+                        <YesNoQuestion formname={formName} name ={'usuari_serveis_socials.' + familia.ID} validate={[required]}>
                           <Trans
                             i18nKey='familia_usuaria_css'
                             previous_year={previous_year} >
