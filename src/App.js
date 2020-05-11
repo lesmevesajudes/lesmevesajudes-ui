@@ -3,7 +3,7 @@ import {MuiThemeProvider} from '@material-ui/core/styles';
 import React, {Component, Fragment, Suspense} from 'react';
 import {Provider} from 'react-redux';
 import {Route, Switch} from 'react-router-dom';
-import HashRouter from 'react-router-dom/HashRouter';
+import {HashRouter} from 'react-router-dom';
 import ScrollToTop from './components/Common/ScrollToTop';
 import {intents} from './components/Intents';
 import {API_URL, ENVIRONMENT, REPORT_BUG_URL} from "./config";
