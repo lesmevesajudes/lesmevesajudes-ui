@@ -11,6 +11,8 @@ import {styles} from '../styles/theme';
 import ShowMeOnceModal from '../components/ShowMeOnceModal'
 import PersonalBenefits from './PersonalBenefits';
 import UnitatDeConvivenciaBenefits from './UnitatDeConvivenciaBenefits';
+import ResumePage from "./ResumePage";
+import ResultsComponent from "./ResultsComponent";
 
 const period = Moment().format('YYYY-MM');
 
@@ -19,8 +21,11 @@ const ResultsContainer = withStyles(styles)((props: AppFormProps) =>
       {props.children}
     </Grid>);
 
-const SimulationSuccessComponent = ({resultsData, persons, classes, simulationID, initialSimulationId, isShowSimulation}) => (
+const SimulationSuccessComponent = ({resultsData, persons, classes, simulationID, initialSimulationId, isShowSimulation, printSimulation, simulationData}) => (
   <AppFormContainer>
+    {printSimulation &&
+    <ResumePage persons={persons} residence={simulationData.residence} family={simulationData.family}/>}
+
     {isShowSimulation &&
     <ShowMeOnceModal name='resultsModal'
                      title={<Trans i18nKey='ajudes_a_les_que_podria_optar'/>}>
@@ -81,6 +86,8 @@ const SimulationSuccessComponent = ({resultsData, persons, classes, simulationID
               </Grid>
 
             }
+
+            <ResultsComponent classes={classes} resultsData={resultsData} persons={persons} simulationID={simulationID} initialSimulationId={initialSimulationId} period={this.period}/>
 
       {SHOW_REPORT_BUG && <Grid item xs={12} className={classes.ItemResult}>
         <ReportBugForm initialValues={getReportBugDataFromLocalStorage()} onSubmit={this.submitReport}/>

@@ -7,8 +7,9 @@ const initial: StepsState = {
   button_enabled: false,
   button_visible: false,
   is_show_simulation: false,
+  show_resum: false,
   step:'NumberOfPersonsLivingTogether',
-  number_of_persons_living_together: 0,
+  number_of_persons_living_together: undefined,
   retrieveSimulationError: '',
 };
 
@@ -46,6 +47,11 @@ export default (state: StepsState = initial, action: StepAction): StepsState => 
     	number_of_persons_living_together: Object.keys(action.simulation.persons).length,
     	state: 'personsList',
     	is_show_simulation: true,
+    }
+    case 'SHOW_RESUM':
+      return {
+    	...state,
+    	show_resum: true,
     }
     default:
       return state;

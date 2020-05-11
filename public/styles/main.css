@@ -3,7 +3,7 @@
 
 @font-face {
     font-family: 'Ajuntament';
-    src: url('icoajuntament.ttf') format('truetype');
+    src: url('/fonts/icoajuntament.ttf') format('truetype');
 }
 
 body {
@@ -45,8 +45,10 @@ html {
   div.MuiGrid-container-142 {
     display: block;
   }
+
   div.MuiGrid-item-143 {
     margin: 0;
+	font-size: 14px;    
   }
   h5 {
     padding: 0 !important;
@@ -56,10 +58,20 @@ html {
     padding: 0;
     width: 100%;
     position:relative;
-    page-break-before: auto;
+    page-break-before: avoid;
     page-break-inside: avoid;
   }
   div[class*='BenefitRow-ItemResult'] {
+    page-break-inside: auto;
+    display: flex;
+  }
+  
+  div[class*='Component-ItemResult'] {
+    page-break-inside: avoid;
+    display: flex;
+  }
+  
+  div[class*='Connect-ResultsComponent--ItemResult'] {
     page-break-inside: avoid;
     display: flex;
   }
@@ -78,5 +90,19 @@ html {
 
   div[class*='Connect-ResultsPage'] {
     display: flex;
+  }
+  
+  .page-step {
+    page-break-inside: auto;
+    page-break-after: always;
+  }
+  
+  div.MuiGrid-container-142.family-print {
+  	display: flex;
+    page-break-inside: avoid;
+  }
+  
+  button.hide-print {
+  	display: none;
   }
 }

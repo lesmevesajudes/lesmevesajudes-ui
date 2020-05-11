@@ -1,8 +1,11 @@
 import {FETCH_SIMULATION, FETCH_SIMULATION_ERROR, START_FETCH_SIMULATION, SHOW_SIMULATION, RETRIEVE_SIMULATION_ERROR} from './FetchSimulationAction';
 
 
+export const PRINT_SIMULATION = 'PRINT_SIMULATION';
+export const PRINTED_SIMULATION = 'PRINTED_SIMULATION';
+
 export default function(
-    state = {isError: false, isRequestDone: false, response: null, simulationID: null, initialSimulationID: null},
+    state = {isError: false, isRequestDone: false, response: null, simulationID: null, initialSimulationID: null, printSimulation: false},
     action
 ) {
   switch (action.type) {
@@ -35,7 +38,6 @@ export default function(
     case SHOW_SIMULATION:
       return {
         isRequestDone: true,
-//        simulationID: action.result.id,
         response: action.result,
         initialSimulationId: action.initialSimulationId,
       };
@@ -45,6 +47,16 @@ export default function(
           ...state,
           retrieveSimulationError: action.payload,
         };
+    case PRINT_SIMULATION:
+    	return {
+	  	  ...state,
+		  printSimulation: true,
+	    }
+    case PRINTED_SIMULATION:
+    	return {
+	  	  ...state,
+		  printSimulation: false,
+	    }
     default:
       return state;
   }
