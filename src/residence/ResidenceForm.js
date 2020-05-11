@@ -397,3 +397,10 @@ export default withNamespaces("translations")(connect(mapStateToProps)(reduxForm
         focusFirstQuestionWithName(namefirstFieldWithError(error));
       },
     })(ResidenceForm)));
+
+export const PrintResidenceForm = withNamespaces("translations")(connect(mapStateToProps)(reduxForm(
+	{
+	  form: "PrintResidenceForm",
+	})));
+
+

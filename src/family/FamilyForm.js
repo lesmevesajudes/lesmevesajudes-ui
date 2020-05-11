@@ -250,3 +250,9 @@ export default withNamespaces("translations")(withStyles(styles)(connect(mapStat
             focusFirstQuestionWithName(namefirstFieldWithError(error))
           },
         })(FamilyForm))));
+
+export const PrintFamilyForm = withNamespaces("translations")(withStyles(styles)(connect(mapStateToProps, {addHouseholdData: addFamilyData})(
+    reduxForm(
+        {
+          form: 'PrintFamilyForm',
+        })(FamilyForm))));

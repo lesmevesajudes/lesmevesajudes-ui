@@ -13,6 +13,7 @@ import {styles} from '../../styles/theme';
 import {IconFont} from '../IconFont/IconFont';
 import StepperButtons from './StepperButtons';
 import {fetchSimulation} from '../../results/FetchSimulationAction';
+import {openModal} from '../Modals/ModalActions';
 
 type Props = {
   appState: Object,
@@ -122,10 +123,17 @@ class StepsComponent extends React.Component<Props, State> {
     }
     return index;
   }
+  
+  showResume = (state) => {
+	  this.props.dispatch({
+		  type:'SHOW_RESUME',
+	  });
+  }
+
 
   render() {
-    const {classes, steps, buttonEnabled, buttonVisible, t, isAdmin} = this.props;
-    const currentStep = this.state.current_step;
+    const {classes, steps, buttonEnabled, buttonVisible, t, isAdmin, step} = this.props;
+    const currentStep = step || this.state.current_step;
     let maxStepReached;
     if (this.props.isShowSimulation) {
     	maxStepReached = 3;
@@ -163,7 +171,9 @@ class StepsComponent extends React.Component<Props, State> {
               <StepperButtons nextAction={(currentStep === steps.length - 1) ? undefined : this.nextStep}
                               backAction={(currentStep === 0) ? undefined : this.backStep} classes={classes}
                               buttonEnabled={buttonEnabled} buttonVisible={buttonVisible}
-                              nextIsResults={currentStep === steps.length - 2}/>
+                              nextIsResults={currentStep === steps.length - 2}
+              				  showResume={() => this.showResume(this.props.appState)}
+              				  openModal={this.props.openModal}/>
             </Grid>
           </Grid>
         </div>
@@ -184,8 +194,11 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
 	  return {
 		fetchSimulation: bindActionCreators(fetchSimulation, dispatch),
+		openModal: bindActionCreators(openModal, dispatch),
 		dispatch
 	  }
 	}
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(withNamespaces('translations')(StepsComponent)));
+
+export const PrintStepsComponent = withStyles(styles)(withNamespaces('translations')(StepsComponent));

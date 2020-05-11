@@ -11,7 +11,7 @@ const shouldShowFamilyStep = (state) => {
   return menors.length > 0
 };
 
-const steps = [
+export const steps = [
   {
     label: <Trans i18nKey='persones_que_conviuen'>Persones que conviuen</Trans>,
     optional: false,

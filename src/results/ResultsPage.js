@@ -17,11 +17,9 @@ import {retrieveSimulation, fetchSimulation} from './FetchSimulationAction';
 import PersonalBenefits from './PersonalBenefits';
 import UnitatDeConvivenciaBenefits from './UnitatDeConvivenciaBenefits';
 import AdminForm from '../admin/AdminForm';
-
-export const ResultsContainer = withStyles(styles)((props: AppFormProps) =>
-    <Grid item xs={12} md={11} className={props.classes.resultsContainer}>
-      {props.children}
-    </Grid>);
+import {Button} from "@material-ui/core";
+import ResumePage from "./ResumePage";
+import ResultsComponent from "./ResultsComponent";
 
 type Props = {
   classes: Object,
@@ -36,7 +34,9 @@ type Props = {
   isShowSimulation: boolean,
   isAdmin: boolean,
   retrieveSimulationError: string,
+  isShowResume: boolean,
 };
+
 
 class ResultsPage extends React.Component<Props> {
   submitReport = values => {
@@ -66,9 +66,21 @@ class ResultsPage extends React.Component<Props> {
 	  console.log(values.simulation_id)
 	  this.props.retrieveSimulation(values.simulation_id);
   }
+  
+//  printResume = () => {
+//	  console.log('print resume');
+//	  var printContents = document.getElementById("simulation_resume").innerHTML;
+//	  var popup = window.open('resume');
+//	  popup.document.head.innerHTML = document.head.innerHTML;
+//	  popup.document.body.innerHTML = printContents;
+//	  popup.focus();
+//	  popup.print();
+//	  popup.close();
+//	  
+//  }
 
   render() {
-    const {isError, isRequestDone, resultsData, persons, simulationID, initialSimulationId, classes, isAdmin} = this.props;
+    const {isError, isRequestDone, resultsData, persons, simulationID, initialSimulationId, classes, isAdmin, isShowResume} = this.props;
     if (!this.enoughDataForSimulation() && !isAdmin) {
       return (
           <AppFormContainer>
@@ -133,9 +145,14 @@ class ResultsPage extends React.Component<Props> {
           </AppFormContainer>
       );
     }
+    
     return (
         <AppFormContainer>
-          {!this.props.isShowSimulation &&
+        
+        	{<ResumePage id='simulation_resume' />}
+        	<Button onClick={this.printResume}>print</Button>
+        	
+        	{!this.props.isShowSimulation &&
             <ShowMeOnceModal name='resultsModal'
                              title={<Trans i18nKey='ajudes_a_les_que_podria_optar'>Ajudes a les que podria
                                optar</Trans>}>
@@ -147,72 +164,12 @@ class ResultsPage extends React.Component<Props> {
                 Informi-se’n clicant sobre cada ajut.</Trans>
             </ShowMeOnceModal>
           }
-          <AppFormTitle iconName='resultats'>
-            <Trans i18nKey='a_partir_de_la_informacio_facilitada_linformem_que'>
-              A partir de la informació que ens ha facilitat, a continuació li informem que:
-            </Trans>
-          </AppFormTitle>
-          <ResultsContainer>
-            <Typography className={classes.ResultWarning} gutterBottom>
-              <Trans i18nKey='avis_variacio_ajuts'>
-                Li recordem que la concessió d’una d’aquestes ajudes pot fer variar els seus ingressos i/o
-                requisits
-                fent que algunes de les ajudes llistades no puguin ser concedides.
-                Per tant, a la pràctica, pot trobar ajudes incompatibles entre sí.
-                Informi-se’n clicant sobre cada ajut.
-              </Trans>
-            </Typography>
+        	<ResultsComponent classes={classes} resultsData={resultsData} persons={persons} simulationID={simulationID} initialSimulationId={initialSimulationId} period={this.period}/>
 
-            <Grid item xs={12}>
-              <PersonalBenefits
-                  benefitsForPersons={resultsData.persones}
-                  persons={persons}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <UnitatDeConvivenciaBenefits
-                  unitatDeConvivencia={resultsData.unitats_de_convivencia}
-                  persons={persons}
-                  period={this.period}
-              />
-            </Grid>
-            <Grid container justify='center' alignItems='center' className={classes.ItemResult}>
-              <Grid item container xs={1} justify='center' alignItems='center'>
-                <InfoOutlinedIcon className={classes.darkGrayText}>info</InfoOutlinedIcon>
-              </Grid>
-              <Grid item xs={7}>
-                <Typography className={classes.ResultsBenefitText}>
-                  <Trans i18nKey='identificador_simulacio'>Identificador simulació</Trans>
-                </Typography>
-              </Grid>
-              <Grid item container className={classes.ResultsSeparator} xs={4} alignItems='center' justify='center'>
-                <Typography className={classes.ResultsBenefitText}>
-                  {simulationID ? simulationID : 'No disponible'}
-                </Typography>
-              </Grid>
-            </Grid>
-            {this.props.initialSimulationId &&
-              <Grid container justify='center' alignItems='center' className={classes.ItemResult}>
-                <Grid item container xs={1} justify='center' alignItems='center'>
-                  <InfoOutlinedIcon className={classes.darkGrayText}>info</InfoOutlinedIcon>
-                </Grid>
-                <Grid item xs={7}>
-                  <Typography className={classes.ResultsBenefitText}>
-                    <Trans i18nKey='identificador_simulacio_inicial'>Identificador simulació inicial</Trans>
-                  </Typography>
-                </Grid>
-                <Grid item container className={classes.ResultsSeparator} xs={4} alignItems='center' justify='center'>
-                  <Typography className={classes.ResultsBenefitText}>
-                    {initialSimulationId}
-                  </Typography>
-                </Grid>
-              </Grid>
-
-            }
-            {SHOW_REPORT_BUG && <Grid item xs={12} className={classes.ItemResult}>
+        	{SHOW_REPORT_BUG && 
+        	<Grid item xs={12} className={classes.ItemResult}>
               <ReportBugForm initialValues={getReportBugDataFromLocalStorage()} onSubmit={this.submitReport}/>
             </Grid>}
-          </ResultsContainer>
         </AppFormContainer>
     );
   }
@@ -230,7 +187,9 @@ function mapStateToProps(state) {
     isShowSimulation: state.step.is_show_simulation,
     isAdmin: state.admin.isAdmin,
     retrieveSimulationError: state.results.retrieveSimulationError,
+    isShowResume: state.results.showResume,
   };
 }
 
 export default withStyles(styles)(connect(mapStateToProps, {fetchSimulation, retrieveSimulation, submitReport})(ResultsPage));
+
