@@ -4,6 +4,9 @@ import {connect} from 'react-redux';
 import {Trans} from 'react-i18next';
 import classNames from "classnames";
 import {styles} from '../../styles/theme';
+import {openModal} from '../Modals/ModalActions';
+import {bindActionCreators} from 'redux';
+import {PRINT_SIMULATION} from '../../results/ResultsReducer';
 
 type Props = {
   backAction: Function,
@@ -12,18 +15,19 @@ type Props = {
   classes: Object,
   nextAction: Function,
   nextIsResults: boolean,
-  fetchSimulation: Function,
-  simulationData: any,
-  isAdmin: boolean,
+  dispatch: Function,
 };
 
-const printPage = function () {
-  window.print();
-  return false;
+const printPage = (dispatch) => {
+	dispatch({
+	    type: PRINT_SIMULATION
+	  });
 };
+
+
 
 let StepperButtons = (props: Props) => {
-  const {classes, backAction, buttonEnabled, nextAction, nextIsResults} = props;
+  const {classes, backAction, buttonEnabled, nextAction, nextIsResults, dispatch} = props;
   const content = (
       <Grid container justify={'flex-end'} alignItems={'center'} className={classNames(classes.buttonsContainer, 'screen-only')}>
         <Grid item container sm={2} md={2} justify={'flex-end'}>
@@ -37,7 +41,7 @@ let StepperButtons = (props: Props) => {
         {typeof nextAction === 'undefined' &&
         <Grid item container sm={2} md={2} justify={'flex-end'}>
           <Button color='secondary' variant='contained'
-                  onClick={printPage}>
+                  onClick={() => printPage(dispatch)}>
             <Icon className={classes.leftIcon}>print</Icon><Trans i18nKey='imprimir'>Imprimir</Trans>
           </Button>
         </Grid>
@@ -66,4 +70,11 @@ let StepperButtons = (props: Props) => {
   return props.buttonVisible ? content : null;
 };
 
-export default withStyles(styles)(connect()(StepperButtons));
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+	openModal: bindActionCreators(openModal, dispatch),
+	dispatch
+  }
+}
+
+export default withStyles(styles)(connect(null, mapDispatchToProps)(StepperButtons));

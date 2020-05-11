@@ -3,8 +3,13 @@ import {connect} from 'react-redux';
 import {Trans} from 'react-i18next';
 import {Grid} from '@material-ui/core';
 import {AppFormContainer} from '../components/AppForms';
+import Moment from 'moment';
+import ShowMeOnceModal from '../components/ShowMeOnceModal'
+import {SHOW_REPORT_BUG} from '../config';
+
 import type {Person, PersonID} from '../persons/PersonTypes';
-import {submitReport} from "../reportBug/ReportBugActions";import {retrieveSimulation, fetchSimulation} from './FetchSimulationAction';
+import {submitReport} from "../reportBug/ReportBugActions";
+import {retrieveSimulation, fetchSimulation} from './FetchSimulationAction';
 import SimulationMissingData from './SimulationMissingData';
 import SimulationLoading from './SimulationLoading';
 import SimulationError from './SimulationError';
@@ -30,7 +35,9 @@ type Props = {
   isShowSimulation: boolean,
   isAdmin: boolean,
   retrieveSimulationError: string,
+  printSimulation: boolean,
 };
+
 
 class ResultsPage extends React.Component<Props> {
   submitReport = values => {
@@ -55,13 +62,11 @@ class ResultsPage extends React.Component<Props> {
   }
 
   submitSimulationId = values => {
-	  // print the form values to the console
-	  console.log(values.simulation_id)
 	  this.props.retrieveSimulation(values.simulation_id);
   }
 
   render() {
-    const {isError, isRequestDone, resultsData, persons, simulationID, initialSimulationId, classes, isShowSimulation, isAdmin} = this.props;
+    const {isError, isRequestDone, resultsData, persons, simulationID, initialSimulationId, classes, isShowSimulation, isAdmin, simulationData} = this.props;
     if (!this.enoughDataForSimulation() && !isAdmin) {
       return (<SimulationMissingData/>);
     }
@@ -90,7 +95,8 @@ class ResultsPage extends React.Component<Props> {
       persons={persons}
       simulationID={simulationID}
       initialSimulationId={initialSimulationId}
-      isShowSimulation={isShowSimulation}
+      printSimulation = {this.props.printSimulation}
+      simulationData = {simulationData}
       />);
   }
 }
@@ -107,6 +113,7 @@ function mapStateToProps(state) {
     isShowSimulation: state.step.is_show_simulation,
     isAdmin: state.admin.isAdmin,
     retrieveSimulationError: state.results.retrieveSimulationError,
+    printSimulation: state.results.printSimulation,
   };
 }
 

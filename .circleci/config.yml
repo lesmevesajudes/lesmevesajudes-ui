@@ -2,19 +2,19 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: circleci/node:11-browsers
+      - image: circleci/node:13-browsers
     steps:
       - checkout
       - run: mkdir reports
       - restore_cache:
           keys:
-          - v1.1-dependencies-{{ checksum "package.json" }}
-          - v1.1-dependencies-
+          - v2-dependencies-{{ checksum "package.json" }}
+          - v2-dependencies-
       - run: yarn install
       - save_cache:
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+          key: v2-dependencies-{{ checksum "package.json" }}
       - run:
           name: Start Selenium
           command: |

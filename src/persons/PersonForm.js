@@ -16,6 +16,7 @@ import {PercentageQuestion} from '../components/FormComponents/PercentageQuestio
 import {Question} from '../components/FormComponents/Question';
 import {TimePeriodQuestion} from '../components/FormComponents/TimePeriodQuestion';
 import {YesNoQuestion} from '../components/FormComponents/YesNoQuestion';
+import classNames from "classnames";
 import {
   anysEmpadronatInferiorAEdat,
   empadronamentABarcelonaInferiorAEmpadronamentACatalunya,
@@ -55,8 +56,9 @@ type Props = {
 const formName = 'PersonForm';
 
 let PersonForm = (props: Props) => {
-  const {
-    edat,
+  let {
+	form,
+	edat,
     esAturat,
     esDona,
     esFamiliarOUsuari,
@@ -75,7 +77,7 @@ let PersonForm = (props: Props) => {
     teAlgunGrauDeDiscapacitatReconegut,
     tipusDocumentIdentitat,
     treballaPerCompteDAltriParcial,
-    updating
+    updating,
   } = props;
   const buildTranslationContext = (items: Array<string>) => ({context: items.join('_')});
   const personDecider = () => isTheUserInFrontOfTheComputer ? 'second' : 'third';
@@ -84,6 +86,13 @@ let PersonForm = (props: Props) => {
   const personAndSexTranslationContext = buildTranslationContext([personDecider(), sexDecider()]);
   const sexTranslationContext = buildTranslationContext([sexDecider()]);
   const i18nKey = (keyname: string, context: Object) => ({i18nKey: [keyname, context.context].join('_')});
+
+//  formName = form;
+
+//  const selector = formValueSelector(form);
+//  esFamiliarOUsuari = (typeof selector(state, 'relacio_parentiu') !== 'undefined' && selector(state, 'relacio_parentiu') !== 'cap') || selector(state, 'is_the_person_in_front_of_the_computer') === true;
+//  isTheUserInFrontOfTheComputer = selector(state, 'is_the_person_in_front_of_the_computer');
+//  console.log(form + " - " + edat);
 
   return (
       <AppFormContainer>
@@ -483,7 +492,7 @@ let PersonForm = (props: Props) => {
                 </Grid>}
 
                 <Grid item>
-                  <Button variant='contained' color='primary' type='submit' name='ButtonValidar'>
+                  <Button className={classNames('hide-print')} variant='contained' color='primary' type='submit' name='ButtonValidar'>
                     <Trans i18nKey='validar'>Validar</Trans>
                   </Button>
                 </Grid>
@@ -552,3 +561,5 @@ PersonForm = withTranslation('translations')(connect(state => {
 })(PersonForm));
 
 export default PersonForm;
+
+export const PrintPersonForm = withTranslation('translations')(reduxForm()(PersonForm));
