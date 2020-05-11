@@ -7,7 +7,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 import Typography from "@material-ui/core/Typography";
 import withWidth, {isWidthUp} from "@material-ui/core/withWidth";
 import React from "react";
-import {Trans, withNamespaces} from "react-i18next";
+import {Trans, withTranslation} from "react-i18next";
 import {AppFormContainer, AppFormTitle} from "../components/AppForms";
 import {create} from "../shared/UUID";
 import {styles} from "../styles/theme";
@@ -43,7 +43,7 @@ type PersonCardProps = {
   width: any,
 }
 
-export const PersonCard = withWidth()(withNamespaces("translations")((props: PersonCardProps) => {
+export const PersonCard = withWidth()(withTranslation("translations")((props: PersonCardProps) => {
   const { classes, person, t } = props;
   const { nom, edat, sexe } = person;
   const rol_traduit = t(`es_${person.relacio_parentiu}_${sexe === "dona" ? "feminine" : "masculine"}`);

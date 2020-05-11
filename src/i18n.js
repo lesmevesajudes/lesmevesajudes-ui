@@ -1,7 +1,7 @@
 import i18n from 'i18next';
 import LngDetector from 'i18next-browser-languagedetector';
 import Backend from 'i18next-xhr-backend';
-import {reactI18nextModule} from 'react-i18next';
+import {initReactI18next} from 'react-i18next';
 import {STATIC_ROOT} from './config';
 import isDevelopment from './shared/isDevelopment';
 import pathTransformLngDetector from './shared/pathTransformLngDetector';
@@ -19,7 +19,7 @@ const languageDetectorOptions = {
 i18n
   .use(Backend)
     .use(lngDetector)
-  .use(reactI18nextModule)
+  .use(initReactI18next)
   .init({
     fallbackLng: 'ca-ES',
 

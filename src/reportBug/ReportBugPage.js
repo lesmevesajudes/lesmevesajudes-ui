@@ -1,6 +1,6 @@
 import {Grid} from "@material-ui/core";
 import React from "react";
-import {withNamespaces} from "react-i18next";
+import {withTranslation} from "react-i18next";
 import {connect} from "react-redux";
 import {submitReport} from "./ReportBugActions";
 import ReportBug from "./ReportBugForm";
@@ -26,4 +26,4 @@ const mapStateToProps = (state) => ({
   persons: state.persons
 });
 
-export default withNamespaces('translations')(connect(mapStateToProps, {submitReport})(ReportBugPage));
+export default withTranslation('translations')(connect(mapStateToProps, {submitReport})(ReportBugPage));

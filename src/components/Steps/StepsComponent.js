@@ -4,7 +4,7 @@ import {withStyles} from '@material-ui/core/styles';
 import Tooltip from "@material-ui/core/Tooltip";
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
-import {Trans, withNamespaces} from 'react-i18next';
+import {Trans, withTranslation} from 'react-i18next';
 import {connect} from 'react-redux';
 import {getFormSyncErrors, isValid, touch} from "redux-form";
 import {flatten} from '../../shared/flatten';
@@ -166,4 +166,4 @@ const mapStateToProps = (state) => {
   }
 };
 
-export default connect(mapStateToProps)(withStyles(styles)(withNamespaces('translations')(StepsComponent)));
+export default connect(mapStateToProps)(withStyles(styles)(withTranslation('translations')(StepsComponent)));
