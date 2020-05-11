@@ -13,26 +13,24 @@ type Props = {
   classes: Object,
   nextAction: Function,
   nextIsResults: boolean,
-//  showResum: Function,
 };
 
 const printPage = function () {
-//  window.print();
-//  return false;
 	console.log('print resume');
 	var printContents = document.getElementById("simulation_resume").innerHTML;
-	var popup = window.open('resume');
+	var popup = window.open('','_blank');
+	popup.focus();
 	popup.document.head.innerHTML = document.head.innerHTML;
 	popup.document.body.innerHTML = printContents;
-	popup.focus();
 	popup.print();
 	popup.close();
+	return false;
 };
 
 
 
 let StepperButtons = (props: Props) => {
-  const {classes, backAction, buttonEnabled, nextAction, nextIsResults, showResume, openModal} = props;
+  const {classes, backAction, buttonEnabled, nextAction, nextIsResults} = props;
   const content = (
       <Grid container justify={'flex-end'} alignItems={'center'} className={classNames(classes.buttonsContainer, 'screen-only')}>
         <Grid item container sm={2} md={2} justify={'flex-end'}>
@@ -50,10 +48,6 @@ let StepperButtons = (props: Props) => {
             <Icon className={classes.leftIcon}>print</Icon><Trans i18nKey='imprimir'>Imprimir</Trans>
           </Button>
         </Grid>
-//          <Button color='secondary' variant='contained'
-//              onClick={() => openModal('ResumeModal',50,50)}>
-//		      <Icon className={classes.leftIcon}>print</Icon><Trans i18nKey='resumen'>Resumen</Trans>
-//		    </Button>
         }
         <Grid item container sm={2} md={2} justify={'flex-end'}>
           {typeof nextAction === 'undefined' &&

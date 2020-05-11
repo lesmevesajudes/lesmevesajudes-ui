@@ -524,3 +524,4 @@ PersonForm = withNamespaces('translations')(connect(state => {
 })(PersonForm));
 
 export default PersonForm;
+

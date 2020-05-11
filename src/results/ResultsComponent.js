@@ -3,7 +3,6 @@ import React from 'react';
 import {Trans} from 'react-i18next';
 import {connect} from 'react-redux';
 import {AppFormContainer, AppFormTitle} from '../components/AppForms';
-import type {Person, PersonID} from '../persons/PersonTypes';
 import {styles} from '../styles/theme';
 import PersonalBenefits from './PersonalBenefits';
 import UnitatDeConvivenciaBenefits from './UnitatDeConvivenciaBenefits';

@@ -1,10 +1,9 @@
 import {Grid, Typography, withStyles} from '@material-ui/core';
-import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import React from 'react';
 import {Trans} from 'react-i18next';
 import {connect} from 'react-redux';
 import Moment from 'moment';
-import {AppFormContainer, AppFormTitle} from '../components/AppForms';
+import {AppFormContainer} from '../components/AppForms';
 import ShowMeOnceModal from '../components/ShowMeOnceModal'
 import {SHOW_REPORT_BUG} from '../config';
 import type {Person, PersonID} from '../persons/PersonTypes';
@@ -14,10 +13,7 @@ import {getReportBugDataFromLocalStorage} from '../reportBug/ReportBugPage';
 import Spinner from '../shared/spinner.svg';
 import {styles} from '../styles/theme';
 import {retrieveSimulation, fetchSimulation} from './FetchSimulationAction';
-import PersonalBenefits from './PersonalBenefits';
-import UnitatDeConvivenciaBenefits from './UnitatDeConvivenciaBenefits';
 import AdminForm from '../admin/AdminForm';
-import {Button} from "@material-ui/core";
 import ResumePage from "./ResumePage";
 import ResultsComponent from "./ResultsComponent";
 
@@ -34,7 +30,6 @@ type Props = {
   isShowSimulation: boolean,
   isAdmin: boolean,
   retrieveSimulationError: string,
-  isShowResume: boolean,
 };
 
 
@@ -62,25 +57,11 @@ class ResultsPage extends React.Component<Props> {
   }
   
   submitSimulationId = values => {
-	  // print the form values to the console
-	  console.log(values.simulation_id)
 	  this.props.retrieveSimulation(values.simulation_id);
   }
   
-//  printResume = () => {
-//	  console.log('print resume');
-//	  var printContents = document.getElementById("simulation_resume").innerHTML;
-//	  var popup = window.open('resume');
-//	  popup.document.head.innerHTML = document.head.innerHTML;
-//	  popup.document.body.innerHTML = printContents;
-//	  popup.focus();
-//	  popup.print();
-//	  popup.close();
-//	  
-//  }
-
   render() {
-    const {isError, isRequestDone, resultsData, persons, simulationID, initialSimulationId, classes, isAdmin, isShowResume} = this.props;
+    const {isError, isRequestDone, resultsData, persons, simulationID, initialSimulationId, classes, isAdmin} = this.props;
     if (!this.enoughDataForSimulation() && !isAdmin) {
       return (
           <AppFormContainer>
@@ -149,8 +130,7 @@ class ResultsPage extends React.Component<Props> {
     return (
         <AppFormContainer>
         
-        	{<ResumePage id='simulation_resume' />}
-        	<Button onClick={this.printResume}>print</Button>
+        	{<ResumePage persons={persons} />}
         	
         	{!this.props.isShowSimulation &&
             <ShowMeOnceModal name='resultsModal'
@@ -187,7 +167,6 @@ function mapStateToProps(state) {
     isShowSimulation: state.step.is_show_simulation,
     isAdmin: state.admin.isAdmin,
     retrieveSimulationError: state.results.retrieveSimulationError,
-    isShowResume: state.results.showResume,
   };
 }
 

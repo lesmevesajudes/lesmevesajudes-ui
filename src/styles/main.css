@@ -3,7 +3,8 @@
 
 @font-face {
     font-family: 'Ajuntament';
-    src: url('icoajuntament.ttf') format('truetype');
+    src: url('http://localhost:3000/fonts/icoajuntament.ttf') format('truetype');
+/*     src: url('icoajuntament.ttf') format('truetype'); */
 }
 
 body {
