@@ -52,11 +52,12 @@ type Props = {
   updating: Boolean
 };
 
-const formName = 'PersonForm';
+let formName = undefined;
 
 let PersonForm = (props: Props) => {
   const {
-    edat,
+	formKey,
+	edat,
     esAturat,
     esDona,
     esFamiliarOUsuari,
@@ -85,6 +86,8 @@ let PersonForm = (props: Props) => {
   const sexTranslationContext = buildTranslationContext([sexDecider()]);
   const i18nKey = (keyname: string, context: Object) => ({i18nKey: [keyname, context.context].join('_')});
 
+  formName = formKey;
+  
   return (
       <AppFormContainer>
         <AppFormTitle iconName='persona'>
@@ -467,61 +470,61 @@ let PersonForm = (props: Props) => {
   );
 };
 
-PersonForm = reduxForm({
-  form: formName,
-  onSubmitFail: (error) => {
-	  console.log(error);
-	  focusFirstQuestionWithName(namefirstFieldWithError(error));
-  }
-})(PersonForm);
+const mapStateToProps = state => {
+	  if (formName) {
+		  const selector = formValueSelector(formName);
+		  const edat = selector(state, 'edat');
+		  const esAturat = selector(state, 'situacio_laboral') === 'aturat';
+		  const esDona = selector(state, 'sexe') === 'dona';
+		  const esHome = selector(state, 'sexe') === 'home';
+		  const esFamiliarOUsuari = (typeof selector(state, 'relacio_parentiu') !== 'undefined' && selector(state, 'relacio_parentiu') !== 'cap') || selector(state, 'is_the_person_in_front_of_the_computer') === true;
+		  const esFill = selector(state, 'relacio_parentiu') === 'fill';
+		  const esFillastre = selector(state, 'relacio_parentiu') === 'fillastre';
+		  const haTreballatALEstranger6Mesos = selector(state, 'ha_treballat_a_l_estranger_6_mesos');
+		  const inscritComADemandantDocupacio = selector(state, 'inscrit_com_a_demandant_docupacio');
+		  const isTheUserInFrontOfTheComputer = selector(state, 'is_the_person_in_front_of_the_computer');
+		  const membreDeFamiliaReagrupada = selector(state, 'membre_de_familia_reagrupada');
+		  const municipiEmpadronament = selector(state, 'municipi_empadronament');
+		  const sentirseSol = selector(state, 'sentirse_sol');
+		  const potTreballar = selector(state, 'edat') >= 16;
+		  const portaDosAnysOMesEmpadronatACatalunya = selector(state, 'porta_dos_anys_o_mes_empadronat_a_catalunya');
+		  const rol = selector(state, 'rol');
+		  const teAlgunGrauDeDiscapacitatReconegut = selector(state, 'te_algun_grau_de_discapacitat_reconegut');
+		  const tipusDocumentIdentitat = selector(state, 'tipus_document_identitat');
+		  const treballaPerCompteDAltriParcial = selector(state, 'situacio_laboral') === 'treball_compte_daltri_jornada_parcial';
+		  const helpTopic = state.helpSystem.currentHelpTopic;
+		  
+		  return {
+			  edat,
+			  esAturat,
+			  esDona,
+			  esFamiliarOUsuari,
+			  esFill,
+			  esFillastre,
+			  esHome,
+			  haTreballatALEstranger6Mesos,
+			  helpTopic,
+			  inscritComADemandantDocupacio,
+			  isTheUserInFrontOfTheComputer,
+			  membreDeFamiliaReagrupada,
+			  municipiEmpadronament,
+			  sentirseSol,
+			  potTreballar,
+			  portaDosAnysOMesEmpadronatACatalunya,
+			  rol,
+			  teAlgunGrauDeDiscapacitatReconegut,
+			  tipusDocumentIdentitat,
+			  treballaPerCompteDAltriParcial
+		  };
+	  }
+	  return {};
+	}
 
-const selector = formValueSelector(formName);
-
-PersonForm = withNamespaces('translations')(connect(state => {
-  const edat = selector(state, 'edat');
-  const esAturat = selector(state, 'situacio_laboral') === 'aturat';
-  const esDona = selector(state, 'sexe') === 'dona';
-  const esHome = selector(state, 'sexe') === 'home';
-  const esFamiliarOUsuari = (typeof selector(state, 'relacio_parentiu') !== 'undefined' && selector(state, 'relacio_parentiu') !== 'cap') || selector(state, 'is_the_person_in_front_of_the_computer') === true;
-  const esFill = selector(state, 'relacio_parentiu') === 'fill';
-  const esFillastre = selector(state, 'relacio_parentiu') === 'fillastre';
-  const haTreballatALEstranger6Mesos = selector(state, 'ha_treballat_a_l_estranger_6_mesos');
-  const inscritComADemandantDocupacio = selector(state, 'inscrit_com_a_demandant_docupacio');
-  const isTheUserInFrontOfTheComputer = selector(state, 'is_the_person_in_front_of_the_computer');
-  const membreDeFamiliaReagrupada = selector(state, 'membre_de_familia_reagrupada');
-  const municipiEmpadronament = selector(state, 'municipi_empadronament');
-  const sentirseSol = selector(state, 'sentirse_sol');
-  const potTreballar = selector(state, 'edat') >= 16;
-  const portaDosAnysOMesEmpadronatACatalunya = selector(state, 'porta_dos_anys_o_mes_empadronat_a_catalunya');
-  const rol = selector(state, 'rol');
-  const teAlgunGrauDeDiscapacitatReconegut = selector(state, 'te_algun_grau_de_discapacitat_reconegut');
-  const tipusDocumentIdentitat = selector(state, 'tipus_document_identitat');
-  const treballaPerCompteDAltriParcial = selector(state, 'situacio_laboral') === 'treball_compte_daltri_jornada_parcial';
-  const helpTopic = state.helpSystem.currentHelpTopic;
-
-  return {
-    edat,
-    esAturat,
-    esDona,
-    esFamiliarOUsuari,
-    esFill,
-    esFillastre,
-    esHome,
-    haTreballatALEstranger6Mesos,
-    helpTopic,
-    inscritComADemandantDocupacio,
-    isTheUserInFrontOfTheComputer,
-    membreDeFamiliaReagrupada,
-    municipiEmpadronament,
-    sentirseSol,
-    potTreballar,
-    portaDosAnysOMesEmpadronatACatalunya,
-    rol,
-    teAlgunGrauDeDiscapacitatReconegut,
-    tipusDocumentIdentitat,
-    treballaPerCompteDAltriParcial
-  };
-})(PersonForm));
-
-export default PersonForm;
+export default withNamespaces('translations')(connect(mapStateToProps)(reduxForm({
+//	  form: formName,
+	  onSubmitFail: (error) => {
+		  console.log(error);
+		  focusFirstQuestionWithName(namefirstFieldWithError(error));
+	  }
+	})(PersonForm)));
 

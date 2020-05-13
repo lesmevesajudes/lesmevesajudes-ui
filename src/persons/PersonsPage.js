@@ -139,6 +139,8 @@ class PersonsPage extends React.Component<Props, State> {
 
       component = (
           <PersonForm
+          	  form='PersonForm'
+          	  formKey = 'PersonForm'
               initialValues={this.state.initialFormValues}
               onSubmit={this.handleSubmitPersonForm}
               onCancel={this.doneEditingPerson}

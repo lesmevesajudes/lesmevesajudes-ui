@@ -87,7 +87,7 @@ const FamilyForm = (props: Props) => {
                           </Typography>
 
                         </label>
-                        <Grid container direction='row' justify='space-between'>
+                        <Grid container direction='row' justify='space-between' >
                           <Grid item xs={5}>
                             <IRemoveMyValueWhenUnmountedField name={'custodies' + infant.id.split("-").join("") + 'primer'}
                                                               component={TextField} select label=''

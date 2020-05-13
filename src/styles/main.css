@@ -42,6 +42,7 @@ html {
   div.MuiGrid-container-142 {
     display: block;
   }
+
   div.MuiGrid-item-143 {
     margin: 0;
 	font-size: 14px;    
@@ -54,10 +55,20 @@ html {
     padding: 0;
     width: 100%;
     position:relative;
-    page-break-before: auto;
+    page-break-before: avoid;
     page-break-inside: avoid;
   }
   div[class*='BenefitRow-ItemResult'] {
+    page-break-inside: avoid;
+    display: flex;
+  }
+  
+  div[class*='Component-ItemResult'] {
+    page-break-inside: avoid;
+    display: flex;
+  }
+  
+  div[class*='Connect-ResultsComponent--ItemResult'] {
     page-break-inside: avoid;
     display: flex;
   }
@@ -76,5 +87,14 @@ html {
 
   div[class*='Connect-ResultsPage'] {
     display: flex;
+  }
+  
+  .page-step {
+    page-break-inside: auto;
+    page-break-after: always;
+  }
+  
+  span[class*='MuiIcon-root'] {
+  	display: none;
   }
 }

@@ -7,6 +7,8 @@ import PrintResultsPage from './PrintResultsPage';
 import PrintStepsComponent from '../components/Steps/StepsComponent';
 import {steps} from '../pages/Wizard.js';
 import PersonForm from '../persons/PersonForm';
+import FormSubTitle from '../components/FormComponents/FormSubTitle';
+import {serialize} from '../persons/PersonsReducer';
 
 const ResumePage = ({persons, residence, resultsData, match}) => {
 	const printSteps = [];
@@ -18,27 +20,33 @@ const ResumePage = ({persons, residence, resultsData, match}) => {
 	const fourthStepHeader = <PrintStepsComponent steps={printSteps} buttonVisible={false} step={3}/>;
 	
 	if (persons) {
+		const serializedPersons = serialize(persons);
 		return (
 			<div id="simulation_resume" style={{display:'none'}}>
-				<div style={{'page-break-after':'always'}}>
+				<div className="page-step">
 					{firstStepHeader}
-					{persons.valueSeq().map(person => {
-							return <PersonForm initialValues={person}/>
+					{serializedPersons.map((person,index) => {
+							const formKey = 'PersonForm' + index;
+							return (<div>
+										<FormSubTitle>Persona {index + 1}</FormSubTitle>
+										<PersonForm initialValues={person} form={formKey} formKey={formKey}/>
+									</div>
+							)
 						})
 					}
 				</div>
 				
-				<div style={{'page-break-after':'always'}}>
+				<div className="page-step"> 
 					{secondStepHeader}
 					<PrintFamilyForm/>
 				</div>
 				
-				<div style={{'page-break-after':'always'}}>
+				<div className="page-step">
 					{thirdStepHeader}
 					<PrintResidenceForm/>
 				</div>
 				
-				<div style={{'page-break-after':'always'}}>
+				<div className="page-step">
 					{fourthStepHeader}
 					<PrintResultsPage/>
 				</div>
