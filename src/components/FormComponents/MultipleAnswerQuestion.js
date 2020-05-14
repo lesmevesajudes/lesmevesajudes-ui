@@ -1,27 +1,26 @@
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
-import {TextField} from 'redux-form-material-ui';
+import {Trans} from 'react-i18next';
+import {renderSelectField} from './MaterialUIFields';
 import {getCanonicalName} from '../../shared/getCanonicalName';
 import HelpIcon from '../HelpIcon';
 import {isHelpAvailable} from '../HelpText';
 import {IRemoveMyValueWhenUnmountedField} from "../IRemoveMyValueWhenUnmountedField";
 
-type Props = {
-  label: Object,
-}
-const MultipleAnswerQuestion = (props: Props) =>
+const MultipleAnswerQuestion = ({name, label, hidelabel, children, ...rest}) =>
     <Grid item xs={12}>
-      <label id={props.name}>
+      {!hidelabel &&
+      <label id={name}>
         <Typography>
-          {props.label}
-          {isHelpAvailable(getCanonicalName(props.name)) &&
-          <HelpIcon name={getCanonicalName(props.name)}/>}
+          {typeof label === 'string' ? <Trans i18nKey={label}/> : <Trans {...label}/>}
+          {isHelpAvailable(getCanonicalName(name)) &&
+          <HelpIcon name={getCanonicalName(name)}/>}
         </Typography>
-      </label>
+      </label>}
       {/* We're breaking a bit material guides here as select should show label when there is no value selected */}
-      <IRemoveMyValueWhenUnmountedField {...props} component={TextField} select fullWidth label=''>
-        {props.children}
+      <IRemoveMyValueWhenUnmountedField name={name} {...rest} component={renderSelectField} fullWidth label=''>
+        {children}
       </IRemoveMyValueWhenUnmountedField>
     </Grid>;
 

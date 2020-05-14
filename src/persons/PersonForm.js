@@ -6,7 +6,7 @@ import {Trans, withTranslation} from 'react-i18next';
 import {connect} from 'react-redux';
 import Sticky from 'react-stickynode';
 import {Field, formValueSelector, reduxForm} from 'redux-form';
-import {TextField} from 'redux-form-material-ui';
+import {renderTextField} from '../components/FormComponents/MaterialUIFields';
 import {AppForm, AppFormContainer, AppFormTitle} from '../components/AppForms';
 import DescriptionText from '../components/Common/DescriptionText';
 import FormSubTitle from '../components/FormComponents/FormSubTitle';
@@ -94,19 +94,26 @@ let PersonForm = (props: Props) => {
           <form onSubmit={handleSubmit}>
             <Field component='input' name='id' type='hidden'/>
             <Field component='input' name='is_the_user_in_front_of_the_computer' type='hidden'/>
-            <Grid container direction='row' justify='space-around' alignItems='stretch' spacing={16}>
+            <Grid container direction='row' justify='space-around' alignItems='stretch' spacing={2}>
               <Grid item xs={11} md={6}>
-                <Grid container direction='column' alignItems='stretch' spacing={16}>
+                <Grid container direction='column' alignItems='stretch' spacing={2}>
                   <FormSubTitle>
                     <Trans i18nKey='informacio_personal'>Informació personal</Trans>
                   </FormSubTitle>
-                  <Question formname={formName} name='nom' component={TextField} validate={[required]} autoFocus>
-                    <Trans {...i18nKey('nom', personTranslationContext)}>
-                      Identifica’t amb un nom
-                    </Trans>
-                  </Question>
+                  <Question
+                    formname={formName}
+                    name='nom'
+                    component={renderTextField}
+                    validate={[required]}
+                    autoFocus
+                    label={i18nKey('nom', personTranslationContext)}
+                  />
 
-                  <MultipleAnswerQuestion formname={formName} label={<Trans i18nKey='sexe'>Sexe</Trans>} name='sexe' validate={[required]}>
+                  <MultipleAnswerQuestion
+                    formname={formName}
+                    label={{'i18nKey':'sexe'}}
+                    name='sexe'
+                    validate={[required]}>
                     <MenuItem value='dona'>
                       <Trans i18nKey='femeni'>Femení</Trans>
                     </MenuItem>
@@ -116,12 +123,11 @@ let PersonForm = (props: Props) => {
                   </MultipleAnswerQuestion>
 
                   {!isTheUserInFrontOfTheComputer && (esHome || esDona) &&
-                  <MultipleAnswerQuestion formname={formName} name='relacio_parentiu'
-                                          label={
-                                            <Trans {...i18nKey('relacio_parentiu', sexTranslationContext)}>
-                                              Aquesta persona és el/la seu/va?
-                                            </Trans>}
-                                          validate={[required]}>
+                  <MultipleAnswerQuestion
+                    formname={formName}
+                    name='relacio_parentiu'
+                    label={i18nKey('relacio_parentiu', sexTranslationContext)}
+                    validate={[required]}>
                     <MenuItem value='parella'>
                       <Trans i18nKey='parella'>Cònjuge / parella</Trans>
                     </MenuItem>
@@ -166,11 +172,12 @@ let PersonForm = (props: Props) => {
                   }
 
 
-                  <TimePeriodQuestion formname={formName} name ='edat' validate={[menorDe120, required]}>
-                    <Trans {...i18nKey('edat', personTranslationContext)}>
-                      Quina és la seva edat?
-                    </Trans>
-                  </TimePeriodQuestion>
+                  <TimePeriodQuestion
+                    formname={formName}
+                    name ='edat'
+                    validate={[menorDe120, required]}
+                    label={i18nKey('edat', personTranslationContext)}
+                   />
 
                   {esFamiliarOUsuari &&
                   <Fragment>
@@ -183,8 +190,8 @@ let PersonForm = (props: Props) => {
 
                     <MultipleAnswerQuestion
                         formname={formName}
-                        label={<Trans i18nKey='tipus_document_identitat'>Tipus de document d'identitat</Trans>}
                         name='tipus_document_identitat'
+                        label='tipus_document_identitat'
                         validate={[required]}>
                       <MenuItem value='DNI'>
                         <Trans i18nKey='dni'>DNI</Trans>
@@ -203,36 +210,36 @@ let PersonForm = (props: Props) => {
                       </MenuItem>
                     </MultipleAnswerQuestion>
 
-                    <YesNoQuestion formname={formName} name='porta_dos_anys_o_mes_empadronat_a_catalunya' validate={[required]}>
-                      <Trans {...i18nKey('porta_dos_anys_o_mes_empadronat_a_catalunya', personAndSexTranslationContext)}>
-                        Fa dos anys o més que està empadronat/ada a Catalunya?
-                      </Trans>
-                    </YesNoQuestion>
+                    <YesNoQuestion
+                      formname={formName}
+                      name='porta_dos_anys_o_mes_empadronat_a_catalunya'
+                      validate={[required]}
+                      label={i18nKey('porta_dos_anys_o_mes_empadronat_a_catalunya', personAndSexTranslationContext)}
+                    />
                   </Fragment>}
 
                   {esFamiliarOUsuari && esDona && tipusDocumentIdentitat === 'passaport' && portaDosAnysOMesEmpadronatACatalunya &&
-                  <YesNoQuestion formname={formName} name='membre_de_familia_reagrupada' validate={[required]}>
-                    <Trans {...i18nKey('membre_de_familia_reagrupada', personTranslationContext)}>
-                      És membre d'una família reagrupada?
-                    </Trans>
-                  </YesNoQuestion>}
+                  <YesNoQuestion
+                    formname={formName}
+                    name='membre_de_familia_reagrupada'
+                    validate={[required]}
+                    label={i18nKey('membre_de_familia_reagrupada', personTranslationContext)}
+                   />}
 
                   {esFamiliarOUsuari && membreDeFamiliaReagrupada &&
-                  <YesNoQuestion formname={formName} name ='es_una_persona_divorciada' validate={[required]}>
-                    <Trans {...i18nKey('es_una_persona_divorciada', personAndSexTranslationContext)}>
-                      És una persona divorciada legalment?
-                    </Trans>
-                  </YesNoQuestion>}
+                  <YesNoQuestion
+                    formname={formName}
+                    name ='es_una_persona_divorciada'
+                    validate={[required]}
+                    label={i18nKey('es_una_persona_divorciada', personAndSexTranslationContext)}
+                   />}
 
                   {esFamiliarOUsuari &&
                   <MultipleAnswerQuestion
-                      formname={formName}
-                      label={
-                        <Trans {...i18nKey('municipi_empadronament', personAndSexTranslationContext)}>
-                          En quin municipi està empadronat/ada actualment?
-                        </Trans>}
-                      name='municipi_empadronament'
-                      validate={[required]}
+                    formname={formName}
+                    name='municipi_empadronament'
+                    label={i18nKey('municipi_empadronament', personAndSexTranslationContext)}
+                    validate={[required]}
                   >
                     <MenuItem value='barcelona'>
                       <Trans i18nKey='barcelona'>Barcelona</Trans>
@@ -247,17 +254,17 @@ let PersonForm = (props: Props) => {
                   }
 
                   {municipiEmpadronament === 'barcelona' &&
-                  <TimePeriodQuestion formname={formName} name ='anys_empadronat_a_barcelona'
-                                      validate={[
-                                        anysEmpadronatInferiorAEdat,
-                                        menorDe120,
-                                        empadronamentABarcelonaInferiorAEmpadronamentACatalunya,
-                                        required
-                                      ]}>
-                    <Trans {...i18nKey('anys_empadronat_a_barcelona', personAndSexTranslationContext)}>
-                      Quants anys fa que està empadronat/ada a Barcelona?
-                    </Trans>
-                  </TimePeriodQuestion>}
+                  <TimePeriodQuestion
+                    formname={formName}
+                    name ='anys_empadronat_a_barcelona'
+                    validate={[
+                      anysEmpadronatInferiorAEdat,
+                      menorDe120,
+                      empadronamentABarcelonaInferiorAEmpadronamentACatalunya,
+                      required
+                    ]}
+                    label={i18nKey('anys_empadronat_a_barcelona', personAndSexTranslationContext)}
+                   />}
 
                   {esFamiliarOUsuari && potTreballar &&
                   <Fragment>
@@ -265,10 +272,8 @@ let PersonForm = (props: Props) => {
 
                     <MultipleAnswerQuestion
                         formname={formName}
-                        label={<Trans {...i18nKey('situacio_laboral', personTranslationContext)}>Indiqui la seva
-                          situació
-                          laboral:</Trans>}
                         name='situacio_laboral'
+                        label={i18nKey('situacio_laboral', personTranslationContext)}
                         validate={[required]}>
                       <MenuItem value='treball_compte_propi'>
                         <Trans i18nKey='treball_compte_propi'>
@@ -311,43 +316,47 @@ let PersonForm = (props: Props) => {
                     </MultipleAnswerQuestion>
                     {esFamiliarOUsuari && esAturat &&
                     <Fragment>
-                      <YesNoQuestion formname={formName} name ='inscrit_com_a_demandant_docupacio' validate={[required]}>
-                        <Trans {...i18nKey('inscrit_com_a_demandant_docupacio', personAndSexTranslationContext)}>
-                          Està inscrit/a com a demandant d’ocupació?
-                        </Trans>
-                      </YesNoQuestion>
+                      <YesNoQuestion
+                        formname={formName}
+                        name ='inscrit_com_a_demandant_docupacio'
+                        validate={[required]}
+                        label={i18nKey('inscrit_com_a_demandant_docupacio',personAndSexTranslationContext)}
+                      />
 
                       {inscritComADemandantDocupacio &&
-                      <YesNoQuestion formname={formName} name ='inscrit_com_a_demandant_docupacio_mes_de_12_mesos' validate={[required]}>
-                        <Trans {...i18nKey('inscrit_com_a_demandant_docupacio_mes_de_12_mesos', personAndSexTranslationContext)}>
-                          Ha estat inscrit/a de forma continuada com a demandant d'ocupació més de 12 mesos?
-                        </Trans>
-                      </YesNoQuestion>}
+                      <YesNoQuestion
+                        formname={formName}
+                        name ='inscrit_com_a_demandant_docupacio_mes_de_12_mesos'
+                        validate={[required]}
+                        label={i18nKey('inscrit_com_a_demandant_docupacio_mes_de_12_mesos',personAndSexTranslationContext)}
+                       />}
 
                       {esAturat && !inscritComADemandantDocupacio &&
-                      <YesNoQuestion formname={formName} name ='en_els_ultims_12_mesos_ha_fet_baixa_voluntaria_de_la_feina'
-                                     validate={[required]}>
-                        <Trans {...i18nKey('en_els_ultims_12_mesos_ha_fet_baixa_voluntaria_de_la_feina', personTranslationContext)}>
-                          Ha deixat la feina de forma voluntària en els darrers 12 mesos?</Trans>
-                      </YesNoQuestion>}
+                      <YesNoQuestion
+                        formname={formName}
+                        name ='en_els_ultims_12_mesos_ha_fet_baixa_voluntaria_de_la_feina'
+                        validate={[required]}
+                        label={i18nKey('en_els_ultims_12_mesos_ha_fet_baixa_voluntaria_de_la_feina',personTranslationContext)}
+                       />}
                     </Fragment>}
 
                     {esFamiliarOUsuari
                     && (tipusDocumentIdentitat === 'DNI' || tipusDocumentIdentitat === 'NIE')
                     && (esAturat || treballaPerCompteDAltriParcial) &&
-                    <YesNoQuestion formname={formName} name ='ha_treballat_a_l_estranger_6_mesos' validate={[required]}>
-                      <Trans {...i18nKey('ha_treballat_a_l_estranger_6_mesos', personTranslationContext)}>
-                        Ha treballat a l’estranger un mínim de 6 mesos?
-                      </Trans>
-                    </YesNoQuestion>}
+                    <YesNoQuestion
+                      formname={formName}
+                      name ='ha_treballat_a_l_estranger_6_mesos'
+                      validate={[required]}
+                      label={i18nKey('ha_treballat_a_l_estranger_6_mesos', personTranslationContext)}
+                     />}
 
                     {haTreballatALEstranger6Mesos &&
-                    <YesNoQuestion formname={formName} name ='ha_treballat_a_l_estranger_6_mesos_i_ha_retornat_en_els_ultims_12_mesos'
-                                   validate={[required]}>
-                      <Trans {...i18nKey('ha_treballat_a_l_estranger_6_mesos_i_ha_retornat_en_els_ultims_12_mesos', personTranslationContext)}>
-                        Ha tornat d’aquest període de treball en els darrers 12 mesos?
-                      </Trans>
-                    </YesNoQuestion>}
+                    <YesNoQuestion
+                      formname={formName}
+                      name ='ha_treballat_a_l_estranger_6_mesos_i_ha_retornat_en_els_ultims_12_mesos'
+                      validate={[required]}
+                      label={i18nKey('ha_treballat_a_l_estranger_6_mesos_i_ha_retornat_en_els_ultims_12_mesos', personTranslationContext)}
+                     />}
                   </Fragment>}
                   {potTreballar &&
                   <Fragment>
@@ -356,86 +365,102 @@ let PersonForm = (props: Props) => {
                         Ingressos
                       </Trans>
                     </FormSubTitle>
-                    <MoneyQuestion formname={formName} name ='ingressos_bruts' validate={[required]}>
-                      <Trans {...i18nKey('ingressos_bruts', personTranslationContext)}>
-                        Indiqui els seus ingressos anuals de l’any passat
-                      </Trans>
-                    </MoneyQuestion>
-                    <MoneyQuestion formname={formName} name ='ingressos_bruts_ultims_sis_mesos' validate={[required]}>
-                      <Trans {...i18nKey('ingressos_bruts_ultims_sis_mesos', personTranslationContext)}>
-                        Indiqui la suma dels seus ingressos dels últims sis mesos
-                      </Trans>
-                    </MoneyQuestion>
+
+                    <MoneyQuestion
+                      formname={formName}
+                      name ='ingressos_bruts'
+                      validate={[required]}
+                      label={i18nKey('ingressos_bruts',personTranslationContext)}
+                     />
+
+                    <MoneyQuestion
+                      formname={formName}
+                      name ='ingressos_bruts_ultims_sis_mesos'
+                      validate={[required]}
+                      label={i18nKey('ingressos_bruts_ultims_sis_mesos', personTranslationContext)}
+                     />
 
                     {esFamiliarOUsuari && inscritComADemandantDocupacio &&
-                    <YesNoQuestion formname={formName} name ='gaudeix_de_prestacio_contributiva_o_subsidi_desocupacio'
-                                   validate={[required]}>
-                      <Trans {...i18nKey('gaudeix_de_prestacio_contributiva_o_subsidi_desocupacio', personTranslationContext)}>
-                        Gaudeix actualment d’una prestació contributiva o subsidi per desocupació?
-                      </Trans>
-                    </YesNoQuestion>}
+                    <YesNoQuestion
+                      formname={formName}
+                      name ='gaudeix_de_prestacio_contributiva_o_subsidi_desocupacio'
+                      validate={[required]}
+                      label={i18nKey('gaudeix_de_prestacio_contributiva_o_subsidi_desocupacio', personTranslationContext)}
+                     />}
 
                     {esFamiliarOUsuari && esAturat &&
-                    <YesNoQuestion formname={formName} name ='percep_prestacions_incompatibles_amb_la_feina' validate={[required]}>
-                      <Trans {...i18nKey('percep_prestacions_incompatibles_amb_la_feina', personTranslationContext)}>
-                        Percep alguna ajuda i/o prestació econòmica de la seguretat social que no li permeti treballar?
-                      </Trans>
-                    </YesNoQuestion>}
+                    <YesNoQuestion
+                      formname={formName}
+                      name ='percep_prestacions_incompatibles_amb_la_feina'
+                      validate={[required]}
+                      label={i18nKey('percep_prestacions_incompatibles_amb_la_feina', personTranslationContext)}
+                     />}
                   </Fragment>}
+
                   {esFamiliarOUsuari &&
                   <Fragment>
                     <FormSubTitle>Situació personal</FormSubTitle>
-                    <YesNoQuestion formname={formName} name ='te_algun_grau_de_discapacitat_reconegut' validate={[required]}>
-                      <Trans {...i18nKey('te_algun_grau_de_discapacitat_reconegut', personTranslationContext)}>
-                        Té algun grau de discapacitat reconegut?
-                      </Trans>
-                    </YesNoQuestion>
+                    <YesNoQuestion
+                      formname={formName}
+                      name ='te_algun_grau_de_discapacitat_reconegut'
+                      validate={[required]}
+                      label={i18nKey('te_algun_grau_de_discapacitat_reconegut', personTranslationContext)}
+                     />
 
                     {teAlgunGrauDeDiscapacitatReconegut &&
-                    <PercentageQuestion formname={formName} name='grau_discapacitat' validate={[required]}>
-                      <Trans i18nKey='grau_discapacitat'>
-                        Indiqui quin és el grau de discapacitat, expressat en percentatge
-                      </Trans>
-                    </PercentageQuestion>}
+                    <PercentageQuestion
+                      formname={formName}
+                      name='grau_discapacitat'
+                      validate={[required]}
+                      label='grau_discapacitat'
+                    />}
 
                     {potTreballar && esDona &&
-                    <YesNoQuestion formname={formName} name ='victima_violencia_de_genere' validate={[required]}>
-                      <Trans {...i18nKey('victima_violencia_de_genere', personTranslationContext)}>
-                        És víctima violència de gènere o domèstica?
-                      </Trans>
-                    </YesNoQuestion>}
+                    <YesNoQuestion
+                      formname={formName}
+                      name ='victima_violencia_de_genere'
+                      validate={[required]}
+                      label={i18nKey('victima_violencia_de_genere', personTranslationContext)}
+                     />}
+
                     {potTreballar && esHome &&
-                    <YesNoQuestion formname={formName} name ='victima_violencia_domestica' validate={[required]}>
-                      <Trans {...i18nKey('victima_violencia_domestica', personTranslationContext)}>
-                        És víctima violència domèstica?
-                      </Trans>
-                    </YesNoQuestion>}
+                    <YesNoQuestion
+                      formname={formName}
+                      name ='victima_violencia_domestica'
+                      validate={[required]}
+                      label={i18nKey('victima_violencia_domestica', personTranslationContext)}
+                     />}
 
                     {(edat > 2 && edat <= 16) &&
-                    <YesNoQuestion formname={formName} name='es_escolaritzat_entre_P3_i_4rt_ESO' validate={[required]}>
-                      <Trans {...i18nKey('es_escolaritzat_entre_P3_i_4rt_ESO', sexTranslationContext)}>
-                        És escolaritzat/ada entre P3 i 4rt ESO a la ciutat de Barcelona?
-                      </Trans>
-                    </YesNoQuestion>}
+                    <YesNoQuestion
+                      formname={formName}
+                      name='es_escolaritzat_entre_P3_i_4rt_ESO'
+                      validate={[required]}
+                      label={i18nKey('es_escolaritzat_entre_P3_i_4rt_ESO', sexTranslationContext)}
+                     />}
 
                     {(edat > 18 && edat < 23) && !(esFill || esFillastre) &&
-                    <YesNoQuestion formname={formName} name ='es_orfe_dels_dos_progenitors' validate={[required]}>
-                      <Trans {...i18nKey('es_orfe_dels_dos_progenitors', sexTranslationContext)}>És orfe/na dels dos
-                        progenitors?</Trans>
-                    </YesNoQuestion>}
+                    <YesNoQuestion
+                      formname={formName}
+                      name ='es_orfe_dels_dos_progenitors'
+                      validate={[required]}
+                      label={i18nKey('es_orfe_dels_dos_progenitors', sexTranslationContext)}
+                     />}
 
-                    <YesNoQuestion formname={formName} name ='beneficiari_de_prestacio_residencial' validate={[required]}>
-                      <Trans {...i18nKey('beneficiari_de_prestacio_residencial', personAndSexTranslationContext)}>
-                        És beneficiari/aria d’una prestació pública o privada de servei residencial permanent?
-                      </Trans>
-                    </YesNoQuestion>
+                    <YesNoQuestion
+                      formname={formName}
+                      name ='beneficiari_de_prestacio_residencial'
+                      validate={[required]}
+                      label={i18nKey('beneficiari_de_prestacio_residencial', personAndSexTranslationContext)}
+                     />
 
                     {edat > 64 &&
-                    <YesNoQuestion formname={formName} name='sentirse_sol' validate={[required]}>
-                      <Trans {...i18nKey('sentirse_sol', personAndSexTranslationContext)}>
-                        Et sents sol/a?
-                      </Trans>
-                    </YesNoQuestion>}
+                    <YesNoQuestion
+                      formname={formName}
+                      name='sentirse_sol'
+                      validate={[required]}
+                      label={i18nKey('sentirse_sol', personAndSexTranslationContext)}
+                     />}
 
                   </Fragment>}
                 </Grid>
@@ -449,7 +474,7 @@ let PersonForm = (props: Props) => {
               </Grid>
             </Grid>
             <Grid item id='stop'>
-              <Grid container direction='row' spacing={16} justify='space-around'>
+              <Grid container direction='row' spacing={2} justify='space-around'>
                 {(isTheUserInFrontOfTheComputer !== true || updating === true) &&
                 <Grid item>
                   <Button variant='contained' color='secondary' onClick={props.onCancel}>

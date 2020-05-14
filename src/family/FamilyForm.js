@@ -9,8 +9,9 @@ import {Trans, withTranslation} from 'react-i18next';
 import {connect} from 'react-redux';
 import Sticky from 'react-stickynode';
 import {reduxForm} from 'redux-form';
-import {TextField} from 'redux-form-material-ui';
 import moment from 'moment';
+import {renderTextField} from '../components/FormComponents/MaterialUIFields';
+import MultipleAnswerQuestion from '../components/FormComponents/MultipleAnswerQuestion';
 import {AppForm, AppFormContainer, AppFormTitle} from '../components/AppForms';
 import DescriptionText from '../components/Common/DescriptionText';
 import FormSubTitle from '../components/FormComponents/FormSubTitle';
@@ -72,9 +73,9 @@ const FamilyForm = (props: Props) => {
         </AppFormTitle>
         <AppForm>
           <form name={formName}>
-            <Grid container direction='row' justify='space-around' alignItems='stretch' spacing={16}>
+            <Grid container direction='row' justify='space-around' alignItems='stretch' spacing={2}>
               <Grid item xs={11} md={6}>
-                <Grid container direction='column' alignItems='stretch' spacing={8}>
+                <Grid container direction='column' alignItems='stretch' spacing={1}>
                   {fills.valueSeq().map((infant: Person) =>
                       <Grid item xs={12} key={infant.id}>
                         <label>
@@ -89,9 +90,11 @@ const FamilyForm = (props: Props) => {
                         </label>
                         <Grid container direction='row' justify='space-between'>
                           <Grid item xs={5}>
-                            <IRemoveMyValueWhenUnmountedField formName ={formName} name={'custodies.' + infant.id + '.primer'}
-                                                              component={TextField} select label=''
-                                                              fullWidth validate={[required]}>
+                            <MultipleAnswerQuestion
+                              formname={formName}
+                              name={'custodies.' + infant.id + '.primer'}
+                              validate={[required]}
+                              hidelabel>
                               {possiblesSustentadors.valueSeq().map((sustentador: Person) =>
                                   <MenuItem key={`primer-${sustentador.id}`} value={sustentador.id}>
                                     {sustentador.nom} ({sustentador.edat} <Trans i18nKey='anys'>anys</Trans>)
@@ -99,15 +102,17 @@ const FamilyForm = (props: Props) => {
                               )}
                               <MenuItem value='no_conviu'><Trans i18nKey='una_persona_que_no_conviu'>Una persona que no
                                 conviu</Trans></MenuItem>
-                            </IRemoveMyValueWhenUnmountedField>
+                            </MultipleAnswerQuestion>
                           </Grid>
                           <Grid item xs={1}>
                             <Typography className={classes.andSeparator}><Trans i18nKey='i'>i</Trans></Typography>
                           </Grid>
                           <Grid item xs={5}>
-                            <IRemoveMyValueWhenUnmountedField formName ={formName} name={'custodies.' + infant.id + '.segon'}
-                                                              component={TextField} select label=''
-                                                              fullWidth validate={[required]}>
+                            <MultipleAnswerQuestion
+                              formname ={formName}
+                              name={'custodies.' + infant.id + '.segon'}
+                              fullWidth validate={[required]}
+                              hidelabel>
                               {possiblesSustentadors.valueSeq().map((sustentador: Person) =>
                                   typeof custodies[infant.id] !== 'undefined' && custodies[infant.id].primer === sustentador.id
                                       ? null
@@ -118,7 +123,7 @@ const FamilyForm = (props: Props) => {
                               <MenuItem value='no_conviu'><Trans i18nKey='una_persona_que_no_conviu'>Una persona que no
                                 conviu</Trans></MenuItem>
                               <MenuItem value='ningu_mes'><Trans i18nKey='ningu_mes'>Ningú més</Trans></MenuItem>
-                            </IRemoveMyValueWhenUnmountedField>
+                            </MultipleAnswerQuestion>
                           </Grid>
                         </Grid>
 
@@ -142,8 +147,8 @@ const FamilyForm = (props: Props) => {
                                 <b>{persones.get(familia.sustentadors_i_custodia[0]).nom}</b>
                               </Typography>
                             </label>
-                            <IRemoveMyValueWhenUnmountedField formName ={formName} name={'parelles.' + familia.sustentadors_i_custodia[0]}
-                                                              component={TextField} select label='' fullWidth
+                            <IRemoveMyValueWhenUnmountedField formname ={formName} name={'parelles.' + familia.sustentadors_i_custodia[0]}
+                                                              component={renderTextField} select label='' fullWidth
                                                               validate={[required]}>
                               {// $FlowFixMe
                                 sustentadorsSolitarisAmbPossiblesParelles[familia.sustentadors_i_custodia[0]].map((possibleParella: Person) =>
@@ -158,18 +163,24 @@ const FamilyForm = (props: Props) => {
                           </Fragment>
                         }
                         {familia.monoparental &&
-                        <YesNoQuestion formname={formName} name ={'disposa_de_carnet_familia_monoparental.' + familia.ID}
-                                       validate={[required]}>
-                          <Trans i18nKey='te_carnet_monoparental'>Té el carnet de família monoparental?</Trans>
-                        </YesNoQuestion>}
+                        <YesNoQuestion
+                          formname={formName}
+                          name ={'disposa_de_carnet_familia_monoparental.' + familia.ID}
+                          validate={[required]}
+                          label='te_carnet_monoparental'
+                        />}
 
-                        <YesNoQuestion formname={formName} name ={'usuari_serveis_socials.' + familia.ID} validate={[required]}>
-                          <Trans
-                            i18nKey='familia_usuaria_css'
-                            previous_year={previous_year} >
-                            Aquesta família és usuària de serveis socials en seguiment a un CSS o servei especialitzat de l'Ajuntament de Barcelona des d'abans del 31/12/{{ previous_year }}?
+
+                        <YesNoQuestion
+                          formname={formName}
+                          name ={'usuari_serveis_socials.' + familia.ID}
+                          validate={[required]}
+                        >
+                          <Trans i18nKey='familia_usuaria_css' previous_year={previous_year}>
+                            Aquesta família és usuària de serveis socials en seguiment a un CSS o servei especialitzat de l\'Ajuntament de Barcelona des d'abans del 31/12/{{ previous_year }}?
                           </Trans>
                         </YesNoQuestion>
+
                       </Fragment>
                   )}
                 </Grid>

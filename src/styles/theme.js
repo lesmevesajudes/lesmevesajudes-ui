@@ -22,10 +22,10 @@ export const styles = theme => ({
     backgroundColor: '#fff !important'
   },
   leftIcon: {
-    marginRight: theme.spacing.unit,
+    marginRight: theme.spacing(1),
   },
   rightIcon: {
-    marginLeft: theme.spacing.unit,
+    marginLeft: theme.spacing(1),
   },
   root: {
     width: '100%',
@@ -190,8 +190,7 @@ export default createMuiTheme({
     },
     caption: {
       color: 'rgba(0, 0, 0, 0.54)',
-    },
-    useNextVariants: true,
+    }
   },
   palette: {
     primary: {
@@ -269,10 +268,12 @@ export default createMuiTheme({
           borderBottomWidth: '2px'
         }
       },
-      error: {
-        '&::after': {
-          border: '1px solid red',
-          backgroundColor: 'red'
+      root: {
+        '&$error': {
+          '&::after': {
+            border: '1px solid red',
+            backgroundColor: 'red'
+          }
         }
       }
     },
@@ -283,7 +284,11 @@ export default createMuiTheme({
       root: { // Global variables of buttons
         disableRipple: true,
         fontFamily: 'Source Sans Pro, sans-serif',
-        fontWeight: 500
+        fontWeight: 500,
+        '&$disabled': { // Disabled Button
+          background: colors.disabled,
+          color: colors.disabled_text
+        }
       },
       contained: {
         boxShadow: 'none',
@@ -304,7 +309,7 @@ export default createMuiTheme({
 		marginBottom: '30px',
 		backgroundColor: colors.white,
       },
-      flat: { // Normal Button
+      text: { // Normal Button
         disableRipple: true,
         fontWeight: 400,
         boxShadow: 'none',
@@ -313,10 +318,6 @@ export default createMuiTheme({
         }, '&:active': {
           bosShadow: 'none'
         }
-      },
-      disabled: { // Disabled Button
-        background: colors.disabled,
-        color: colors.disabled_text
       }
     }
   }

@@ -10,7 +10,6 @@ function IRemoveMyValueWhenUnmountedField(props) {
     return () => {
       const {name} = props;
       const {formname} = props;
-      console.log(formname + "." + name);
       dispatch(clearFields(formname, false, false, name));
     }
   }, []);

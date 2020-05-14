@@ -55,7 +55,7 @@ export const PersonCard = withWidth()(withTranslation("translations")((props: Pe
   return (
     <ListItem button onClick={() => props.updatePerson(person.id)}>
       <Avatar style={{ backgroundColor: "#006600" }}>{initials(nom)}</Avatar>
-      <ListItemText
+      <ListItemText style={{padding:"0 16px"}}
         primary={person.is_the_person_in_front_of_the_computer ?
           <Trans i18nKey='voste' nom={nom}>Vostè: {{ nom }}</Trans> : nom}
         secondary={person.is_the_person_in_front_of_the_computer ? "" : secondaryText}
@@ -86,7 +86,7 @@ const UnknownPersonCard = withWidth()((props: UnknownPersonProps) => {
   return (
     <ListItem button onClick={() => props.onAddPersonClick()}>
       <Avatar className={classes.avatarUnknownPerson}>?</Avatar>
-      <ListItemText
+      <ListItemText  style={{padding:"0 16px"}}
         primary={
           <Typography className={classes.titleUnknownPerson}>
             <Trans i18nKey='premi_per_introduir_dades' nombre_persona={nombre_persona}>
@@ -95,7 +95,7 @@ const UnknownPersonCard = withWidth()((props: UnknownPersonProps) => {
           </Typography>
         }/>
       <ListItemSecondaryAction onClick={() => props.onRemoveClick()}>
-        <Tooltip id='unknown-tooltip'
+        <Tooltip id='uyyynknown-tooltip'
                  title={<Trans i18nKey='eliminar_registre'>Aquesta acció eliminarà aquest registre</Trans>}
                  placement='right-start'>
           <Typography className={classes.deleteListItemTitle}> {isWidthUp("sm", props.width) ?
@@ -127,7 +127,7 @@ export const PersonsViewer = (props: Props) => {
         </Trans>
       </AppFormTitle>
       <Grid item xs={12} md={11} className={props.classes.personListContainer}>
-        <Grid container direction='column' justify='space-around' alignItems='stretch' spacing={16}>
+        <Grid container direction='column' justify='space-around' alignItems='stretch' spacing={2}>
           <Grid item xs={12}>
             <Card>
               <List>

@@ -4,7 +4,8 @@ import React from 'react';
 import {Trans} from 'react-i18next';
 import {withRouter} from 'react-router-dom'
 import {reduxForm} from 'redux-form';
-import {TextField} from 'redux-form-material-ui';
+import {renderTextField} from '../components/FormComponents/MaterialUIFields';
+
 import {Field} from 'redux-form/';
 import {AppForm, AppFormContainer, AppFormTitle} from '../components/AppForms';
 import {allowOnlyPositive} from '../components/Common/NormalizeCommon';
@@ -62,15 +63,15 @@ let HowManyPersonsLiveTogetherPage = (props: Props) => {
         </ShowMeOnceModal>
         <AppForm>
           <form onSubmit={handleSubmit}>
-              <Grid container direction='column' alignItems='center' spacing={16}>
+              <Grid container direction='column' alignItems='center' spacing={2}>
                 <Grid item xs={8}>
                   <Field name='how_many_persons_live_together' placeholder='0' type='number'
-                         component={TextField} normalize={allowOnlyPositive}/>
+                         component={renderTextField} normalize={allowOnlyPositive}/>
                 </Grid>
               </Grid>
 
             <Grid item>
-              <Grid container direction='row' justify='space-around' alignContent='center' spacing={16}>
+              <Grid container direction='row' justify='space-around' alignContent='center' spacing={2}>
                 <Grid item container direction='column' xs={2}>
                   <a href='/lesmevesajudes' className={classes.link}>
                     <Button variant='contained' name='ButtonTornar'>
