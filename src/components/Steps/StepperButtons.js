@@ -5,6 +5,7 @@ import {Trans} from 'react-i18next';
 import classNames from "classnames";
 import {styles} from '../../styles/theme';
 import {openModal} from '../Modals/ModalActions';
+import {bindActionCreators} from 'redux'
 
 type Props = {
   backAction: Function,
@@ -13,24 +14,28 @@ type Props = {
   classes: Object,
   nextAction: Function,
   nextIsResults: boolean,
+  dispatch: Function,
 };
 
-const printPage = function () {
+const printPage = function (dispatch) {
 	console.log('print resume');
-	var printContents = document.getElementById("simulation_resume").innerHTML;
-	var popup = window.open('','_blank');
-	popup.focus();
-	popup.document.head.innerHTML = document.head.innerHTML;
-	popup.document.body.innerHTML = printContents;
-	popup.print();
-	popup.close();
-	return false;
+	dispatch({
+	    type: 'PRINT_SIMULATION'
+	  });
+//	var printContents = document.getElementById("simulation_resume").innerHTML;
+//	var popup = window.open('','_blank');
+//	popup.focus();
+//	popup.document.head.innerHTML = document.head.innerHTML;
+//	popup.document.body.innerHTML = printContents;
+//	popup.print();
+//	popup.close();
+//	return false;
 };
 
 
 
 let StepperButtons = (props: Props) => {
-  const {classes, backAction, buttonEnabled, nextAction, nextIsResults} = props;
+  const {classes, backAction, buttonEnabled, nextAction, nextIsResults, dispatch} = props;
   const content = (
       <Grid container justify={'flex-end'} alignItems={'center'} className={classNames(classes.buttonsContainer, 'screen-only')}>
         <Grid item container sm={2} md={2} justify={'flex-end'}>
@@ -44,7 +49,7 @@ let StepperButtons = (props: Props) => {
         {typeof nextAction === 'undefined' &&
         <Grid item container sm={2} md={2} justify={'flex-end'}>
           <Button color='secondary' variant='contained'
-                  onClick={printPage}>
+                  onClick={() => printPage(dispatch)}>
             <Icon className={classes.leftIcon}>print</Icon><Trans i18nKey='imprimir'>Imprimir</Trans>
           </Button>
         </Grid>
@@ -73,4 +78,11 @@ let StepperButtons = (props: Props) => {
   return props.buttonVisible ? content : null;
 };
 
-export default withStyles(styles)(connect(null, {openModal})(StepperButtons));
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+	openModal: bindActionCreators(openModal, dispatch),
+	dispatch
+  }
+}
+
+export default withStyles(styles)(connect(null, mapDispatchToProps)(StepperButtons));

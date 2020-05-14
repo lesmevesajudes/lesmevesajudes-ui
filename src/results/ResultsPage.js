@@ -30,6 +30,7 @@ type Props = {
   isShowSimulation: boolean,
   isAdmin: boolean,
   retrieveSimulationError: string,
+  printSimulation: boolean,
 };
 
 
@@ -130,7 +131,8 @@ class ResultsPage extends React.Component<Props> {
     return (
         <AppFormContainer>
         
-        	{<ResumePage persons={persons} />}
+        	{this.props.printSimulation && 
+        		<ResumePage persons={persons} />}
         	
         	{!this.props.isShowSimulation &&
             <ShowMeOnceModal name='resultsModal'
@@ -167,6 +169,7 @@ function mapStateToProps(state) {
     isShowSimulation: state.step.is_show_simulation,
     isAdmin: state.admin.isAdmin,
     retrieveSimulationError: state.results.retrieveSimulationError,
+    printSimulation: state.results.printSimulation,
   };
 }
 

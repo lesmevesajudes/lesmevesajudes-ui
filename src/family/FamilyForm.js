@@ -22,6 +22,7 @@ import type {Person, PersonID} from '../persons/PersonTypes';
 import {required} from '../shared/formValidators';
 import {families016} from '../shared/OpenFiscaAPIClient/RequestBuilder';
 import {focusFirstQuestionWithName, namefirstFieldWithError} from '../shared/reduxFormTools';
+import classNames from "classnames";
 import {
   currentFocussedFieldSelector,
   esFill,
@@ -87,7 +88,7 @@ const FamilyForm = (props: Props) => {
                           </Typography>
 
                         </label>
-                        <Grid container direction='row' justify='space-between' >
+                        <Grid container className={classNames('family-print')} direction='row' justify='space-between' >
                           <Grid item xs={5}>
                             <IRemoveMyValueWhenUnmountedField name={'custodies' + infant.id.split("-").join("") + 'primer'}
                                                               component={TextField} select label=''

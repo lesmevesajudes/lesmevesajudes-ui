@@ -124,13 +124,6 @@ class StepsComponent extends React.Component<Props, State> {
     return index;
   }
   
-  showResume = (state) => {
-	  this.props.dispatch({
-		  type:'SHOW_RESUME',
-	  });
-  }
-
-
   render() {
     const {classes, steps, buttonEnabled, buttonVisible, t, isAdmin, step} = this.props;
     const currentStep = step || this.state.current_step;
@@ -172,7 +165,6 @@ class StepsComponent extends React.Component<Props, State> {
                               backAction={(currentStep === 0) ? undefined : this.backStep} classes={classes}
                               buttonEnabled={buttonEnabled} buttonVisible={buttonVisible}
                               nextIsResults={currentStep === steps.length - 2}
-              				  showResume={() => this.showResume(this.props.appState)}
               				  openModal={this.props.openModal}/>
             </Grid>
           </Grid>

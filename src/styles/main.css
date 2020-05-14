@@ -97,4 +97,13 @@ html {
   span[class*='MuiIcon-root'] {
   	display: none;
   }
+  
+  div.MuiGrid-container-142  button[class*='MuiButton'] {
+  	display: none;
+  }
+  
+  div.MuiGrid-container-142.family-print {
+  	display: flex;
+    page-break-inside: avoid;
+  }
 }
