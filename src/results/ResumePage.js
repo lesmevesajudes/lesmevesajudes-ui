@@ -27,13 +27,11 @@ class ResumePage extends React.Component<Props, State> {
 		popup.focus();
 		popup.document.head.innerHTML = document.head.innerHTML;
 		popup.document.body.innerHTML = printContents;
-		setTimeout(() => popup.print(), 500);
-//		popup.print();
-		setTimeout(() => popup.close(), 500);
-//		popup.close();
-		this.props.dispatch({
-		    type: PRINTED_SIMULATION
-		  });
+//		setTimeout(() => popup.print(), 500);
+//		setTimeout(() => popup.close(), 500);
+//		this.props.dispatch({
+//		    type: PRINTED_SIMULATION
+//		  });
 		return false;
 	}
 	
