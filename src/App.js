@@ -12,7 +12,7 @@ import ReportBugPage from './reportBug/ReportBugPage';
 import {getCodeVersion, getReleaseDate} from "./shared/getCodeVersion";
 import isDevelopment from './shared/isDevelopment';
 import configureStore from './Store';
-import './styles/main.css';
+//import '/styles/main.css';
 import theme from './styles/theme.js';
 
 if (isDevelopment) {
@@ -30,6 +30,7 @@ class App extends Component {
   render() {
     return (
         <MuiThemeProvider theme={theme}>
+          <link rel="stylesheet" type="text/css" href={'/styles/main.css'} />
           <div>
             <CssBaseline/>
             <Provider store={store}>

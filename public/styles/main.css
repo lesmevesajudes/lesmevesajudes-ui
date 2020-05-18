@@ -3,8 +3,7 @@
 
 @font-face {
     font-family: 'Ajuntament';
-    src: url('https://lesmevesajudes-staging.herokuapp.com/fonts/icoajuntament.ttf') format('truetype');
-/*     src: url('icoajuntament.ttf') format('truetype'); */
+    src: url('/fonts/icoajuntament.ttf') format('truetype');
 }
 
 body {

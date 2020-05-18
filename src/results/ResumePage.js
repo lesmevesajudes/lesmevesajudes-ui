@@ -27,11 +27,11 @@ class ResumePage extends React.Component<Props, State> {
 		popup.focus();
 		popup.document.head.innerHTML = document.head.innerHTML;
 		popup.document.body.innerHTML = printContents;
-//		setTimeout(() => popup.print(), 500);
-//		setTimeout(() => popup.close(), 500);
-//		this.props.dispatch({
-//		    type: PRINTED_SIMULATION
-//		  });
+		setTimeout(() => popup.print(), 500);
+		setTimeout(() => popup.close(), 500);
+		this.props.dispatch({
+		    type: PRINTED_SIMULATION
+		  });
 		return false;
 	}
 	
@@ -43,6 +43,7 @@ class ResumePage extends React.Component<Props, State> {
 		this.print();
 	}
 	
+	
 	render() {
 	    const {persons, residence, family} = this.props;
 	    
@@ -53,6 +54,8 @@ class ResumePage extends React.Component<Props, State> {
 		const secondStepHeader = <PrintStepsComponent steps={printSteps} buttonVisible={false} step={1}/>;
 		const thirdStepHeader = <PrintStepsComponent steps={printSteps} buttonVisible={false} step={2}/>;
 		const fourthStepHeader = <PrintStepsComponent steps={printSteps} buttonVisible={false} step={3}/>;
+		
+//		const hostUrl = window.location.origin;
 		
 		if (persons) {
 			const serializedPersons = serialize(persons);
@@ -72,6 +75,7 @@ class ResumePage extends React.Component<Props, State> {
 			
 			return (
 				<div id="simulation_resume" style={{'display':'none'}}>
+					<link rel="stylesheet" type="text/css" href={window.location.origin + '/styles/main.css'} />
 					<div className="page-step" >
 						{firstStepHeader}
 						{serializedPersons.map((person,index) => {
