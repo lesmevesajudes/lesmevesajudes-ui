@@ -243,7 +243,7 @@ function mapStateToProps(state) {
 export default withNamespaces("translations")(withStyles(styles)(connect(mapStateToProps, {addHouseholdData: addFamilyData})(
     reduxForm(
         {
-          form: 'FamilyForm',
+//          form: 'FamilyForm',
           onChange: (values, dispatch) => {
             dispatch(addFamilyData(values));
           },
@@ -252,8 +252,4 @@ export default withNamespaces("translations")(withStyles(styles)(connect(mapStat
           },
         })(FamilyForm))));
 
-export const PrintFamilyForm = withNamespaces("translations")(withStyles(styles)(connect(mapStateToProps, {addHouseholdData: addFamilyData})(
-    reduxForm(
-        {
-          form: 'PrintFamilyForm',
-        })(FamilyForm))));
+export const PrintFamilyForm = withNamespaces("translations")(withStyles(styles)(reduxForm()(FamilyForm)));

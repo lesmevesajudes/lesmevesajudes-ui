@@ -62,7 +62,7 @@ class ResultsPage extends React.Component<Props> {
   }
   
   render() {
-    const {isError, isRequestDone, resultsData, persons, simulationID, initialSimulationId, classes, isAdmin} = this.props;
+    const {isError, isRequestDone, resultsData, persons, simulationID, initialSimulationId, classes, isAdmin, simulationData} = this.props;
     if (!this.enoughDataForSimulation() && !isAdmin) {
       return (
           <AppFormContainer>
@@ -132,7 +132,7 @@ class ResultsPage extends React.Component<Props> {
         <AppFormContainer>
         
         	{this.props.printSimulation && 
-        		<ResumePage persons={persons} />}
+        		<ResumePage persons={persons} residence={simulationData.residence} family={simulationData.family}/>}
         	
         	{!this.props.isShowSimulation &&
             <ShowMeOnceModal name='resultsModal'

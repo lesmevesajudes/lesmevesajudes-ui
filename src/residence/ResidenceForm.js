@@ -389,7 +389,7 @@ function mapStateToProps(state) {
 
 export default withNamespaces("translations")(connect(mapStateToProps)(reduxForm(
     {
-      form: "ResidenceForm",
+//      form: "ResidenceForm",
       onChange: (values, dispatch) => {
         dispatch(addResidenceData(values));
       },
@@ -398,9 +398,5 @@ export default withNamespaces("translations")(connect(mapStateToProps)(reduxForm
       },
     })(ResidenceForm)));
 
-export const PrintResidenceForm = withNamespaces("translations")(connect(mapStateToProps)(reduxForm(
-	{
-	  form: "PrintResidenceForm",
-	})));
-
-
+// export component form (not connected to the store) for printing
+export const PrintResidenceForm = withNamespaces("translations")(reduxForm()(ResidenceForm));

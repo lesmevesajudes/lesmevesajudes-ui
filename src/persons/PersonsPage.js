@@ -117,7 +117,8 @@ class PersonsPage extends React.Component<Props, State> {
   }
 
   render() {
-	  const expectedNumberOfPersonsLivingTogether = this.props.numberOfPersonsLivingTogether;
+	  // depending on if it is new simulation or an edition numberOfPersonsLivingTogether is informed on props or state
+	  const expectedNumberOfPersonsLivingTogether = this.props.numberOfPersonsLivingTogether || this.state.numberOfPersonsLivingTogether;
 	  const step = this.state.step;
 	  let component = undefined;
 	  
@@ -153,11 +154,12 @@ class PersonsPage extends React.Component<Props, State> {
 }
 
 function mapStateToProps(state) {
-  return {
-    persons: serialize(state.persons),
-    numberOfPersonsLivingTogether: state.step.number_of_persons_living_together,
-    step: state.step.state,
+  var props = {
+	  persons: serialize(state.persons),
+	  step: state.step.state,
+	  numberOfPersonsLivingTogether: state.step.number_of_persons_living_together,
   };
+  return props;
 }
 
 export default connect(mapStateToProps)(PersonsPage);

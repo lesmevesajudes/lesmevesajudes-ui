@@ -5,7 +5,8 @@ import {Trans} from 'react-i18next';
 import classNames from "classnames";
 import {styles} from '../../styles/theme';
 import {openModal} from '../Modals/ModalActions';
-import {bindActionCreators} from 'redux'
+import {bindActionCreators} from 'redux';
+import {PRINT_SIMULATION} from '../../results/ResultsReducer';
 
 type Props = {
   backAction: Function,
@@ -17,19 +18,10 @@ type Props = {
   dispatch: Function,
 };
 
-const printPage = function (dispatch) {
-	console.log('print resume');
+const printPage = (dispatch) => {
 	dispatch({
-	    type: 'PRINT_SIMULATION'
+	    type: PRINT_SIMULATION
 	  });
-//	var printContents = document.getElementById("simulation_resume").innerHTML;
-//	var popup = window.open('','_blank');
-//	popup.focus();
-//	popup.document.head.innerHTML = document.head.innerHTML;
-//	popup.document.body.innerHTML = printContents;
-//	popup.print();
-//	popup.close();
-//	return false;
 };
 
 

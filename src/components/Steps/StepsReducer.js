@@ -9,7 +9,7 @@ const initial: StepsState = {
   is_show_simulation: false,
   show_resum: false,
   step:'NumberOfPersonsLivingTogether',
-  number_of_persons_living_together: 0,
+  number_of_persons_living_together: undefined,
   retrieveSimulationError: '',
 };
 

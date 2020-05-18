@@ -6,9 +6,13 @@ import PersonsPage from '../persons/PersonsPage'
 import ResidenceForm from '../residence/ResidenceForm';
 import ResultsPage from '../results/ResultsPage';
 
+export const areMenors = (persons) => {
+	const menors = persons.valueSeq().toArray().filter((persona) => persona.edat <= 16);
+	return menors.length > 0;
+}
+
 const shouldShowFamilyStep = (state) => {
-  const menors = state.persons.valueSeq().toArray().filter((persona) => persona.edat <= 16);
-  return menors.length > 0
+	return areMenors(state.persons);
 };
 
 export const steps = [
@@ -24,14 +28,14 @@ export const steps = [
     optional: true,
     shouldShowStep: shouldShowFamilyStep,
     validateFormToEnableNext: 'FamilyForm',
-    component: <FamilyForm/>,
+    component: <FamilyForm form="FamilyForm"/>,
     icon: 'familia' // Icono de familia, niños corriendo
   },
   {
     label: <Trans i18nKey='domicili_habitual'>Domicili Habitual</Trans>,
     optional: false,
     validateFormToEnableNext: 'ResidenceForm',
-    component: <ResidenceForm/>,
+    component: <ResidenceForm form='ResidenceForm'/>,
     icon: 'domicili' // Icono Casa
   },
   {

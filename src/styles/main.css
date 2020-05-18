@@ -59,7 +59,7 @@ html {
     page-break-inside: avoid;
   }
   div[class*='BenefitRow-ItemResult'] {
-    page-break-inside: avoid;
+    page-break-inside: auto;
     display: flex;
   }
   
@@ -94,16 +94,12 @@ html {
     page-break-after: always;
   }
   
-  span[class*='MuiIcon-root'] {
-  	display: none;
-  }
-  
-  div.MuiGrid-container-142  button[class*='MuiButton'] {
-  	display: none;
-  }
-  
   div.MuiGrid-container-142.family-print {
   	display: flex;
     page-break-inside: avoid;
+  }
+  
+  button.hide-print {
+  	display: none;
   }
 }
