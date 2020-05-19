@@ -14,6 +14,7 @@ export const colors = {
   blackest: '#202020',
   gray: '#f2f2f2',
   dark_gray: '#858585',
+  darkest_gray: '#696973',
   green: '#009900',
 };
 
@@ -151,9 +152,6 @@ export const styles = theme => ({
     background: colors.white,
     margin: '0 0 16px 0',
   },
-  ResultsBenefitText: {
-    color: colors.secondary,
-  },
   ResultsSeparator: {
     minHeight: '75px',
     borderLeft: '1px solid #cdcdcd',
@@ -211,6 +209,9 @@ export default createMuiTheme({
       }
     },
     MuiTypography: {
+      body1: {
+        color: colors.darkest_gray
+      },
       body2: {
         color: '#696973 !important'
       }
@@ -300,14 +301,14 @@ export default createMuiTheme({
         },
       },
       containedPrimary: {
-		marginBottom: '30px',
-		color: colors.white,
+    		marginBottom: '30px',
+    		color: colors.white,
       },
       containedSecondary: {
-		fontSize: '1.4rem',
-		height: '40px',
-		marginBottom: '30px',
-		backgroundColor: colors.white,
+    		fontSize: '1.4rem',
+    		height: '40px',
+    		marginBottom: '30px',
+		    backgroundColor: colors.white,
       },
       text: { // Normal Button
         disableRipple: true,

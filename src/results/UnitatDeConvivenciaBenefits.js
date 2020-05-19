@@ -2,7 +2,7 @@ import {Grid, Typography, withStyles} from '@material-ui/core';
 import React from 'react';
 import {Trans, withTranslation} from 'react-i18next';
 import {newDate} from '../shared/dateUtils';
-import styles from '../styles/theme';
+import {styles} from '../styles/theme';
 import BenefitRow, {NoBenefitRow} from './BenefitRow';
 
 type UnitatDeConvivenciaBenefitsProps = {
@@ -85,7 +85,7 @@ class UnitatDeConvivenciaBenefits extends React.Component<UnitatDeConvivenciaBen
         : this.possibleBenefits.reduce((acc, benefit) => acc + unitatDeConvivencia[benefit.ID][period], 0) > 0;
   }
 
-  renderABenefit(benefit, unitatDeConvivencia, period, classes: Object) {
+  renderSingleBenefit(benefit, unitatDeConvivencia, period, classes: Object) {
     return unitatDeConvivencia[benefit.ID][period] > 0
         ? <Grid container className={classes.ResultPage} justify='center' alignItems='center' key={benefit.ID}>
           <BenefitRow benefit={benefit} subject={unitatDeConvivencia}/>
@@ -102,7 +102,7 @@ class UnitatDeConvivenciaBenefits extends React.Component<UnitatDeConvivenciaBen
           </Typography>
           <Grid container justify='space-between'>
             {this.hasAnyBenefit(unitatDeConvivencia, period)
-                ? this.possibleBenefits.map((benefit) => this.renderABenefit(benefit, unitatDeConvivencia, period, classes))
+                ? this.possibleBenefits.map((benefit) => this.renderSingleBenefit(benefit, unitatDeConvivencia, period, classes))
                 : <NoBenefitRow/>}
           </Grid>
         </Grid>
