@@ -8,13 +8,13 @@ jobs:
       - run: mkdir reports
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          #- v1-dependencies-
+          - v2-dependencies-{{ checksum "package.json" }}
+          - v2-dependencies-
       - run: yarn install
       - save_cache:
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+          key: v2-dependencies-{{ checksum "package.json" }}
       - run:
           name: Start Selenium
           command: |
