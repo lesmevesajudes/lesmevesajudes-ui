@@ -43,13 +43,21 @@ let HowManyPersonsLiveTogetherPage = (props: Props) => {
 
         <ShowMeOnceModal name='howManyPersonsModal'
                          title={<Trans i18nKey='dades_sobre_les_persones'>Dades sobre les persones</Trans>}>
+          <b>
+	        <Trans i18nKey='text_avis_covid'>
+	        	Estem treballant per actualitzar l'eina, i en concret per incorporar les ajudes sorgides a causa de la situació 
+	        	econòmica derivada de la covid19. Tingues present que la informació que et donarem no és complerta.
+	        	<br/>
+	        	<br/>
+	        </Trans>
+	      </b>
           <Trans i18nKey='text_avis_inci_simulacio'>
             A partir d’aquest moment et formularem una sèrie de preguntes personals i també sobre els membres de la teva
             llar que són necessàries per conèixer els ajuts als quals pots arribar a optar.<br/>
             T’informem que les dades que incorporis per a la simulació no poden identificar les persones que
             l'utilitzen, per la qual cosa no es requereix cap consentiment.<br/>
             Aquesta eina no tramita les sol·licituds.<br/>
-            Pots començar la simulació
+            Pots començar la simulació.
           </Trans>
         </ShowMeOnceModal>
         <AppForm>
