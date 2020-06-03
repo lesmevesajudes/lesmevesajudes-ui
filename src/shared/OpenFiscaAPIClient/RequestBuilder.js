@@ -200,6 +200,7 @@ const personToOpenFiscaPerson = (person: Person) => ({
   victima_violencia_de_genere: currentMonth(person.victima_violencia_de_genere),
   victima_violencia_domestica: currentMonth(person.victima_violencia_domestica),
   sentirse_sol: currentMonth(person.sentirse_sol),
+  te_dispositiu_inteligent_amb_connexio_a_internet: currentMonth(person.te_dispositiu_inteligent_amb_connexio_a_internet),
   AE_230_mensual: currentMonth(null),
   AE_230_01_mensual: currentMonth(null),
   EG_233_mensual: currentMonth(null),

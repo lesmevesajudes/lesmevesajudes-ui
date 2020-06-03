@@ -105,7 +105,7 @@ class PersonalBenefits extends React.Component<PersonalBenefitsProps> {
        ID: 'GA_234_01',
        name: <Trans i18nKey='GA_234_01_title'>Vincles</Trans>,
        url: this.props.t('link_GA_234'),
-       amountText: <Trans i18nKey='GA_234_01_import'>Gratuïta</Trans>,
+       amountText: <Trans i18nKey='GA_234_01_import'>Amb préstec temporal de tauleta amb l'applicació VinclesBCN instal·lada i connexió a internet</Trans>,
        from: undefined,
        to: undefined
      },
