@@ -43,9 +43,9 @@ let HowManyPersonsLiveTogetherPage = (props: Props) => {
 
         <ShowMeOnceModal name='howManyPersonsModal'
                          title={<Trans i18nKey='dades_sobre_les_persones'>Dades sobre les persones</Trans>}>
-          <b>
+          <b className="highlightedText">
 	        <Trans i18nKey='text_avis_covid'>
-	        	Estem treballant per actualitzar l'eina, i en concret per incorporar les ajudes sorgides a causa de la situació 
+	        	Estem treballant per actualitzar l'eina, i en concret per incorporar les ajudes sorgides a causa de la situació
 	        	econòmica derivada de la covid19. Tingues present que la informació que et donarem no és complerta.
 	        	<br/>
 	        	<br/>

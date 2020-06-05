@@ -20,6 +20,10 @@ html {
     font-family: 'Source Sans Pro', sans-serif;
 }
 
+.highlightedText {
+  font-size: 2rem
+}
+
 .printable-only {
     display: none;
 }
