@@ -23,8 +23,6 @@ const Component = ({benefitStatus, from, to}) => {
       captionFrom = dateToString(from);
       captionTo = dateToString(to);
     }
-    console.log('status: ' + benefitStatus);
-    console.log("from: " + captionFrom + " to: " + captionTo);
 
     return (
       <Typography variant='caption'>

@@ -74,7 +74,7 @@ const possibleBenefits = [
   },
 ];
 
-const UnitatDeConvivenciaBenefits = (props) => {
+const UnitatDeConvivenciaBenefits = (props: UnitatDeConvivenciaBenefitsProps) => {
 
   function hasAnyBenefit(unitatDeConvivencia, period) {
     return typeof unitatDeConvivencia === 'undefined'
