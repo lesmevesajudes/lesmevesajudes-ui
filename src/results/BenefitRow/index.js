@@ -3,7 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import {withStyles} from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
-import {Trans} from "react-i18next";
+import {Trans, withTranslation} from 'react-i18next';
 import classNames from "classnames";
 import {styles} from "../../styles/theme";
 import NoBenefitRow from './NoBenefitRow';
@@ -30,7 +30,7 @@ function getBenefitStatus(benefit): BenefitStatus {
   }
 }
 
-const BenefitRow = ({benefit, subject, classes}) => {
+const BenefitRow = ({benefit, subject, classes, t}) => {
     const benefitStatus = getBenefitStatus(benefit);
     return (
     <Grid container direction='row' key={benefit.ID} className={classes.ItemResult}>
@@ -44,7 +44,7 @@ const BenefitRow = ({benefit, subject, classes}) => {
         <Grid item>
           <Period benefitStatus={benefitStatus} from={benefit.from} to={benefit.to}/>
         </Grid>
-        <a className="printable-only" href={benefit.url.toString()}>
+        <a className="printable-only" href={t(benefit.url)}>
         <Trans i18nKey='mes_informacio'>
           Més informació
         </Trans>
@@ -60,5 +60,5 @@ const BenefitRow = ({benefit, subject, classes}) => {
     );
   };
 
-export default withStyles(styles)(BenefitRow);
+export default withTranslation("translations")(withStyles(styles)(BenefitRow));
 export {NoBenefitRow}
