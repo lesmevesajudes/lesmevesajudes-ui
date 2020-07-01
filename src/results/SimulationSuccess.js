@@ -19,13 +19,6 @@ const ResultsContainer = withStyles(styles)((props: AppFormProps) =>
       {props.children}
     </Grid>);
 
-type Props = {
-  classes: Object,
-  persons: Map<PersonID, Person>,
-  resultsData: any,
-  simulationID: string,
-};
-
 const SimulationSuccessComponent = ({resultsData, persons, classes, simulationID}) => (
   <AppFormContainer>
     <ShowMeOnceModal name='resultsModal'

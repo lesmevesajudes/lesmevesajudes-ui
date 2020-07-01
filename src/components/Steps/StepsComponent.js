@@ -137,7 +137,7 @@ class StepsComponent extends React.Component<Props, State> {
                   </Typography>
                 </Tooltip>
               } : {};
-              return <Step key={step}>
+              return <Step key={step.id}>
                 <StepButton {...labelProps} onClick={() => this.setStep(index)}
                             icon={chooseIcon(this.props, currentStep, maxStepReached, index)}>{step.label}</StepButton>
               </Step>

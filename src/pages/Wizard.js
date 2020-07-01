@@ -13,6 +13,7 @@ const shouldShowFamilyStep = (state) => {
 
 const steps = [
   {
+    id: 'person',
     label: <Trans i18nKey='persones_que_conviuen'>Persones que conviuen</Trans>,
     optional: false,
     component: <PersonsPage/>,
@@ -20,6 +21,7 @@ const steps = [
 
   },
   {
+    id: 'family',
     label: <Trans i18nKey='families_amb_menors'>Families amb menors</Trans>,
     optional: true,
     shouldShowStep: shouldShowFamilyStep,
@@ -28,6 +30,7 @@ const steps = [
     icon: 'familia' // Icono de familia, niños corriendo
   },
   {
+    id: 'residence',
     label: <Trans i18nKey='domicili_habitual'>Domicili Habitual</Trans>,
     optional: false,
     validateFormToEnableNext: 'ResidenceForm',
@@ -35,6 +38,7 @@ const steps = [
     icon: 'domicili' // Icono Casa
   },
   {
+    id: 'results',
     label: <Trans i18nKey='resultats'>Resultats</Trans>,
     optional: false,
     component: <ResultsPage/>,
