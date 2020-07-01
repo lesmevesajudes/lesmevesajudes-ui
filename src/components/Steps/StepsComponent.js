@@ -58,6 +58,8 @@ class StepsComponent extends React.Component<Props, State> {
     const currentStep = this.state.current_step;
     const formToValidate = this.props.steps[currentStep].validateFormToEnableNext;
     const formIsValid = isValid(formToValidate);
+    console.log("steps!!!!!!");
+    console.log(JSON.stringify(this.props.steps));
 
     if (typeof formToValidate !== 'undefined' && !formIsValid(this.props.appState)) {
       const errors = getFormSyncErrors(formToValidate)(this.props.appState);
