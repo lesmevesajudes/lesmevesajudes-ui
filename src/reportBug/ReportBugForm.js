@@ -5,7 +5,7 @@ import React from 'react';
 import {Trans} from "react-i18next";
 import {connect} from 'react-redux';
 import {Field, formValueSelector, reduxForm} from 'redux-form';
-import {TextField} from 'redux-form-material-ui';
+import {renderTextField} from '../components/FormComponents/MaterialUIFields';
 import MultipleAnswerQuestion from '../components/FormComponents/MultipleAnswerQuestion';
 import {YesNoQuestion} from '../components/FormComponents/YesNoQuestion';
 import {email, required} from '../shared/formValidators';
@@ -65,7 +65,7 @@ const ReportBugForm = (props: Props) => {
                         </Trans>
                       </Typography>
                     </Grid>
-                    <Grid container item xs={6} direction='column' spacing={16}>
+                    <Grid container item xs={6} direction='column' spacing={2}>
                       <Grid item>
                         <YesNoQuestion name='accepted_result' validate={[required]}>
                           <Trans i18nKey='el_resultat_es_correcte'>
@@ -82,18 +82,18 @@ const ReportBugForm = (props: Props) => {
                             )
                           </Trans>
                         </label>
-                        <Field name='expected_result' placeholder='...' fullWidth component={TextField}
+                        <Field name='expected_result' placeholder='...' fullWidth component={renderTextField}
                                validate={[required]}/>
                       </Grid>
                       }
                       <Grid item>
                         <label><Trans i18nKey='comentaris_o_millores'>Comentaris o millores</Trans></label>
-                        <Field name='comments' placeholder='...' fullWidth component={TextField}/>
+                        <Field name='comments' placeholder='...' fullWidth component={renderTextField}/>
                       </Grid>
                       <Grid item>
                         <label><Trans i18nKey='faciliti_correu_electronic'>Faciliti el seu correu
                           electrònic</Trans></label>
-                        <Field name='reporter_email' placeholder='john@doe.com' fullWidth component={TextField}
+                        <Field name='reporter_email' placeholder='john@doe.com' fullWidth component={renderTextField}
                                validate={[required, email]}/>
                       </Grid>
                       <Grid item>

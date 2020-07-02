@@ -14,8 +14,8 @@ const isHelpAvailableForThisField = (fieldName: string): boolean => typeof field
 
 const DescriptionText = (props) =>
     isHelpAvailableForThisField(props.currentField) ?
-        <Paper className={props.classes.boxDescriptionText}>
-          <Grid container direction='column' spacing={8}>
+        <Paper elevation={2} className={props.classes.boxDescriptionText}>
+          <Grid container direction='column' spacing={1}>
             <Grid item>
               <Typography variant='h4' className={props.classes.titleDescriptionText}>
                 <InfoOutlinedIcon style={{verticalAlign: "top"}} className={props.classes.tertiaryColor}/>&nbsp;

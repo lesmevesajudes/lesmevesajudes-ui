@@ -8,7 +8,7 @@ type AppFormContainerProps = {
   children: any
 }
 export const AppFormContainer = withStyles(styles)((props: AppFormContainerProps) =>
-    <Grid container justify='center' className={props.classes.formContainer} spacing={16}>
+    <Grid container justify='center' className={props.classes.formContainer} spacing={2}>
       {props.children}
     </Grid>);
 

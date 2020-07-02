@@ -1,4 +1,4 @@
-import uuid from 'uuid/v4';
+import {v4 as uuidv4} from 'uuid';
 
 export const aPerson = (props) => ({
   ...{
@@ -10,7 +10,7 @@ export const aPerson = (props) => ({
     grau_discapacitat: '33',
     ha_treballat_a_l_estranger_6_mesos: true,
     ha_treballat_a_l_estranger_6_mesos_i_ha_retornat_en_els_ultims_12_mesos: true,
-    id: uuid(),
+    id: uuidv4(),
     ingressos_bruts: '3000',
     ingressos_per_pnc: '1000',
     inscrit_com_a_demandant_docupacio: true,

@@ -4,7 +4,7 @@ import {withStyles} from '@material-ui/core/styles';
 import Tooltip from "@material-ui/core/Tooltip";
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
-import {Trans, withNamespaces} from 'react-i18next';
+import {Trans, withTranslation} from 'react-i18next';
 import {connect} from 'react-redux';
 import {getFormSyncErrors, isValid, touch} from "redux-form";
 import {flatten} from '../../shared/flatten';
@@ -58,6 +58,8 @@ class StepsComponent extends React.Component<Props, State> {
     const currentStep = this.state.current_step;
     const formToValidate = this.props.steps[currentStep].validateFormToEnableNext;
     const formIsValid = isValid(formToValidate);
+    console.log("steps!!!!!!");
+    console.log(JSON.stringify(this.props.steps));
 
     if (typeof formToValidate !== 'undefined' && !formIsValid(this.props.appState)) {
       const errors = getFormSyncErrors(formToValidate)(this.props.appState);
@@ -135,7 +137,7 @@ class StepsComponent extends React.Component<Props, State> {
                   </Typography>
                 </Tooltip>
               } : {};
-              return <Step key={step}>
+              return <Step key={step.id}>
                 <StepButton {...labelProps} onClick={() => this.setStep(index)}
                             icon={chooseIcon(this.props, currentStep, maxStepReached, index)}>{step.label}</StepButton>
               </Step>
@@ -166,4 +168,4 @@ const mapStateToProps = (state) => {
   }
 };
 
-export default connect(mapStateToProps)(withStyles(styles)(withNamespaces('translations')(StepsComponent)));
+export default connect(mapStateToProps)(withStyles(styles)(withTranslation('translations')(StepsComponent)));

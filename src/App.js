@@ -1,9 +1,9 @@
 import CssBaseline from '@material-ui/core/CssBaseline';
 import {MuiThemeProvider} from '@material-ui/core/styles';
-import React, {Component, Fragment} from 'react';
+import React, {Component, Fragment, Suspense} from 'react';
 import {Provider} from 'react-redux';
 import {Route, Switch} from 'react-router-dom';
-import HashRouter from 'react-router-dom/HashRouter';
+import {HashRouter} from 'react-router-dom';
 import ScrollToTop from './components/Common/ScrollToTop';
 import {intents} from './components/Intents';
 import {API_URL, ENVIRONMENT, REPORT_BUG_URL} from "./config";
@@ -29,6 +29,7 @@ const store = configureStore(preloadedState);
 class App extends Component {
   render() {
     return (
+      <Suspense fallback="">
         <MuiThemeProvider theme={theme}>
           <div>
             <CssBaseline/>
@@ -49,6 +50,7 @@ class App extends Component {
             </Provider>
           </div>
         </MuiThemeProvider>
+      </Suspense>
     );
   }
 }

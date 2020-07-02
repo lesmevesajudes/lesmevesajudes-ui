@@ -1,18 +1,20 @@
-import React from 'react';
-import {change, clearFields, Field} from 'redux-form';
+import React, {useEffect} from 'react';
+import { useDispatch } from 'react-redux'
+import {clearFields, Field} from 'redux-form';
 
-export class IRemoveMyValueWhenUnmountedField extends Field {
-  componentWillUnmount() {
-    super.componentWillUnmount();
-    const {name} = this.props;
-    let action;
-    this.context._reduxForm.dispatch(change(this.context._reduxForm.form, name, null));
-    action = clearFields(this.context._reduxForm.form, false, false, name);
+function IRemoveMyValueWhenUnmountedField(props) {
 
-    this.context._reduxForm.dispatch(action);
-  }
+  const dispatch = useDispatch()
 
-  render() {
-    return <Field {...this.props} />;
-  }
+  useEffect(() => {
+    return () => {
+      const {name} = props;
+      const {formname} = props;
+      dispatch(clearFields(formname, false, false, name));
+    }
+  }, []);
+
+  return <Field {...props} />;
 }
+
+export {IRemoveMyValueWhenUnmountedField};

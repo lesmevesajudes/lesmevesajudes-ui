@@ -1,5 +1,5 @@
 import React from 'react';
-import {Trans, withNamespaces} from 'react-i18next';
+import {Trans, withTranslation} from 'react-i18next';
 import StepsComponent from '../components/Steps/StepsComponent';
 import FamilyForm from '../family/FamilyForm';
 import PersonsPage from '../persons/PersonsPage'
@@ -13,6 +13,7 @@ const shouldShowFamilyStep = (state) => {
 
 const steps = [
   {
+    id: 'person',
     label: <Trans i18nKey='persones_que_conviuen'>Persones que conviuen</Trans>,
     optional: false,
     component: <PersonsPage/>,
@@ -20,6 +21,7 @@ const steps = [
 
   },
   {
+    id: 'family',
     label: <Trans i18nKey='families_amb_menors'>Families amb menors</Trans>,
     optional: true,
     shouldShowStep: shouldShowFamilyStep,
@@ -28,6 +30,7 @@ const steps = [
     icon: 'familia' // Icono de familia, niños corriendo
   },
   {
+    id: 'residence',
     label: <Trans i18nKey='domicili_habitual'>Domicili Habitual</Trans>,
     optional: false,
     validateFormToEnableNext: 'ResidenceForm',
@@ -35,6 +38,7 @@ const steps = [
     icon: 'domicili' // Icono Casa
   },
   {
+    id: 'results',
     label: <Trans i18nKey='resultats'>Resultats</Trans>,
     optional: false,
     component: <ResultsPage/>,
@@ -46,4 +50,4 @@ const steps = [
 const WizardPage = () =>
     <StepsComponent steps={steps}/>;
 
-export default withNamespaces('translations')(WizardPage);
+export default withTranslation('translations')(WizardPage);
