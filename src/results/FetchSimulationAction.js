@@ -52,7 +52,13 @@ export const fetchSimulation = (simulationData: SimulationData) => (dispatch: an
     })
   }).catch(error => {
     console.log(JSON.stringify(error, null, 2));
-    simulationStore.uploadSimulationError(id, {simulation_error: error.response});
+    var simulation = {};
+  	if (simulationData.results.initialSimulationId !== undefined) {
+  		simulation.initial_simulation_id = simulationData.results.initialSimulationId;
+  	}
+  	simulation.result = error.message ? error.message : 'empty error message';
+  	simulation.data = error.response ? error.response : 'empty response';
+    simulationStore.uploadSimulationError(id, simulation)
     dispatch({
       type: FETCH_SIMULATION_ERROR,
       payload: error

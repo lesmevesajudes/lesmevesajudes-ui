@@ -27,7 +27,7 @@ export default function(
       };
     case FETCH_SIMULATION_ERROR:
       console.log('error:', action.payload);
-      console.log('error:', JSON.stringify(action.payload.response.data, null, 2));
+      console.log('error:', JSON.stringify(action.payload.response ? action.payload.response.data : 'error response data is empty', null, 2));
       return {
       	...state,
         response: action.payload,

@@ -1,0 +1,1 @@
+select * from simulations s where s.id::text like '%feca%'

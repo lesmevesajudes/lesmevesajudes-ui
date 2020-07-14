@@ -117,7 +117,7 @@ class ResultsPage extends React.Component<Props> {
                 <Grid item>
                   <Typography><Trans i18nKey='detalls'>Detalls:</Trans></Typography>
                   <Typography>{resultsData.message}</Typography>
-                  <Typography>{JSON.stringify(resultsData.response.data, null, 2)}</Typography>
+                  <Typography>{JSON.stringify(resultsData.response ? resultsData.response.data : 'Unknown error', null, 2)}</Typography>
                   <Typography><Trans i18nKey='identificador_simulacio'>Identificador simulació</Trans>: {simulationID}
                   </Typography>
 

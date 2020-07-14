@@ -18,7 +18,7 @@ class SimulationStoreaAPIClient {
   }
 
   uploadSimulationError(simulation_id: string, error: any) {
-    return axios.post(this.url, {id: simulation_id, outcome: "simulation_error", simulation_error: error});
+    return axios.post(this.url, {id: simulation_id, outcome: "simulation_error", simulation: error});
   }
   
   getSimulation(simulation_id: string) {
