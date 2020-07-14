@@ -52,7 +52,7 @@ class ResultsPage extends React.Component<Props> {
 
   componentDidMount() {
 	  if (this.enoughDataForSimulation()) {
-		  this.props.fetchSimulation(this.props.simulationData);
+		  this.props.fetchSimulation(this.props.simulationID, this.props.simulationData);
 	  }
   }
 
@@ -88,7 +88,7 @@ class ResultsPage extends React.Component<Props> {
     }
 
     if (isRequestDone && isError) {
-      return (<SimulationError resultsData={resultsData} simulationID={simulationID}/>);
+      return (<SimulationError simulationID={simulationID}/>);
     }
     return (<SimulationSuccess
       resultsData={resultsData}
@@ -107,7 +107,7 @@ function mapStateToProps(state) {
     isRequestDone: state.results.isRequestDone,
     simulationData: state,
     resultsData: state.results.response,
-    simulationID: state.results.simulationID !== null ? state.results.simulationID : 'none',
+    simulationID: state.results.simulationID !== null ? state.results.simulationID : null,
     initialSimulationId : state.results.initialSimulationId !== undefined ? state.results.initialSimulationId : null,
     persons: state.persons,
     isShowSimulation: state.step.is_show_simulation,
