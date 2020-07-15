@@ -9,7 +9,6 @@ import {Trans, withTranslation} from 'react-i18next';
 import {connect} from 'react-redux';
 import Sticky from 'react-stickynode';
 import {reduxForm} from 'redux-form';
-import moment from 'moment';
 import {renderTextField} from '../components/FormComponents/MaterialUIFields';
 import MultipleAnswerQuestion from '../components/FormComponents/MultipleAnswerQuestion';
 import {AppForm, AppFormContainer, AppFormTitle} from '../components/AppForms';
@@ -41,7 +40,6 @@ type Props = {
   currentField: string,
   custodies: Object,
   esFamiliaNombrosa: boolean,
-  esUsuariServeisSocials: boolean,
   families: Array<Object>,
   fills: Map<PersonID, Person>,
   helpTopic: string,
@@ -65,7 +63,6 @@ const FamilyForm = (props: Props) => {
     sustentadorsSolitarisAmbPossiblesParelles,
     t
   } = props;
-  const previous_year = moment().subtract(1, 'year').format('YYYY');
   return (
       <AppFormContainer>
         <AppFormTitle iconName='familia'>
@@ -169,17 +166,6 @@ const FamilyForm = (props: Props) => {
                           validate={[required]}
                           label='te_carnet_monoparental'
                         />}
-
-
-                        <YesNoQuestion
-                          formname={formName}
-                          name ={'usuari_serveis_socials.' + familia.ID}
-                          validate={[required]}
-                        >
-                          <Trans i18nKey='familia_usuaria_css' previous_year={previous_year}>
-                            Aquesta família és usuària de serveis socials en seguiment a un CSS o servei especialitzat de l\'Ajuntament de Barcelona des d'abans del 31/12/{{ previous_year }}?
-                          </Trans>
-                        </YesNoQuestion>
 
                       </Fragment>
                   )}

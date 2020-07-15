@@ -46,9 +46,6 @@ describe('OpenFiscaAPIClient', () => {
 
         disposa_de_carnet_familia_monoparental: {
           '23c1a8ca-8c2d-46bf-8469-ad1e1d5190c142c5f2a9-4f60-47ad-87cd-63a08b19b360': 'nop'
-        },
-        usuari_serveis_socials: {
-          '23c1a8ca-8c2d-46bf-8469-ad1e1d5190c142c5f2a9-4f60-47ad-87cd-63a08b19b360': true
         }
       },
       residence: {
@@ -67,12 +64,6 @@ describe('OpenFiscaAPIClient', () => {
                     {
                       "altres_familiars": [],
                       "altres_persones": [],
-                      "es_usuari_serveis_socials":
-                          {
-                            "2017-01":
-                                true
-                          }
-                      ,
                       "menors":
                           ["d2c2c1f0-3399-4143-a2c2-8c3263b493f3", "6bbc763b-03f3-4114-a4c7-df49c50108d4"],
                       "sustentadors": [],
@@ -679,12 +670,6 @@ describe('OpenFiscaAPIClient', () => {
                                 "barcelona"
                           }
                       ,
-                      "ordre_del_menor":
-                          {
-                            "2017-01":
-                                1
-                          }
-                      ,
                       "percep_prestacions_incompatibles_amb_la_feina":
                           {
                             "2017-01":
@@ -885,12 +870,6 @@ describe('OpenFiscaAPIClient', () => {
                           {
                             "2017-01":
                                 "barcelona"
-                          }
-                      ,
-                      "ordre_del_menor":
-                          {
-                            "2017-01":
-                                0
                           }
                       ,
                       "percep_prestacions_incompatibles_amb_la_feina":
