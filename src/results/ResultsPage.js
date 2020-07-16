@@ -47,7 +47,7 @@ class ResultsPage extends React.Component<Props> {
 
   componentDidMount() {
 	  if (this.enoughDataForSimulation()) {
-		  this.props.fetchSimulation(this.props.simulationData);
+		  this.props.fetchSimulation(this.props.simulationID, this.props.simulationData);
 	  }
   }
 
@@ -115,12 +115,13 @@ class ResultsPage extends React.Component<Props> {
               <Typography variant='h6'><Trans i18nKey='error_fent_la_peticio'>Error fent la petició</Trans></Typography>
               <Grid container direction='column' className='ResultList'>
                 <Grid item>
-                  <Typography><Trans i18nKey='detalls'>Detalls:</Trans></Typography>
-                  <Typography>{resultsData.message}</Typography>
-                  <Typography>{JSON.stringify(resultsData.response ? resultsData.response.data : 'Unknown error', null, 2)}</Typography>
-                  <Typography><Trans i18nKey='identificador_simulacio'>Identificador simulació</Trans>: {simulationID}
-                  </Typography>
-
+                  {/*<Typography><Trans i18nKey='detalls'>Detalls:</Trans></Typography>*/}
+                  {/*<Typography>{resultsData.message}</Typography>*/}
+                  {/*<Typography>{JSON.stringify(resultsData.response ? resultsData.response.data : 'Unknown error', null, 2)}</Typography>*/}
+                  <Typography><Trans i18nKey='result_error'>No s'ha pogut realitzar la simulació, provi més tard</Trans></Typography>
+                  {this.props.simulationID &&
+                	  <Typography><Trans i18nKey='identificador_simulacio'>Identificador simulació</Trans>: {simulationID}</Typography>
+                  }
                 </Grid>
               </Grid>
             </Grid>
@@ -163,7 +164,7 @@ function mapStateToProps(state) {
     isRequestDone: state.results.isRequestDone,
     simulationData: state,
     resultsData: state.results.response,
-    simulationID: state.results.simulationID !== null ? state.results.simulationID : 'none',
+    simulationID: state.results.simulationID !== null ? state.results.simulationID : null,
     initialSimulationId : state.results.initialSimulationId !== undefined ? state.results.initialSimulationId : null,
     persons: state.persons,
     isShowSimulation: state.step.is_show_simulation,

@@ -15,7 +15,7 @@ export default function(
         isError: false, 
         isRequestDone: false,
         response: null, 
-        simulationID: action.simulation_id
+//        simulationID: action.simulation_id
       };
     case FETCH_SIMULATION:
       return {
@@ -23,7 +23,8 @@ export default function(
         response: action.payload.data,
         isError: false,
         isRequestDone: true,
-        simulationID: state.simulationID
+        simulationID: action.payload.data.id,
+//        simulationID: state.simulationID
       };
     case FETCH_SIMULATION_ERROR:
       console.log('error:', action.payload);
