@@ -86,7 +86,6 @@ export const buildFamilies016 = (custodies, persons, families) => {
       menors: typeof families016Complertes[familiaID].menors !== 'undefined' ? families016Complertes[familiaID].menors : [],
       altres_persones: [],
       altres_familiars: [],
-      es_usuari_serveis_socials: currentMonth(families.usuari_serveis_socials[familiaID]),
       tipus_familia_monoparental: currentMonth(carnetMonoparental),
       tipus_custodia: currentMonth(families016Complertes[familiaID].tipus_custodia)
     };
@@ -214,15 +213,6 @@ const personToOpenFiscaPerson = (person: Person) => ({
   GA_234_02: currentMonth(null),
 });
 
-function numeraMenorsDeFamilies016(families, personalData) {
-  let result = {...personalData};
-  Object.values(families).map((familia) => familia.menors.map((menor, index) => result[menor] = {
-    ...result[menor],
-    ordre_del_menor: currentMonth(index)
-  }));
-  return result;
-}
-
 export const buildRequest = (simulationData: SimulationData) => {
   const personalData = simulationData.persons.reduce(
       (acc, person: Person) => {
@@ -251,13 +241,12 @@ export const buildRequest = (simulationData: SimulationData) => {
       : createAFamilyWithAllPersons(simulationData.persons);
 
 
-  const personsData = numeraMenorsDeFamilies016(families, personalData);
   const unitatsDeConvivencia = createUnitatDeConvivencia(simulationData.persons, simulationData.residence);
   const familiaFinsASegonGrau = createFamiliaFinsASegonGrau(serialize(simulationData.persons));
 
   return {
     families: families,
-    persones: {...personsData},
+    persones: {...personalData},
     unitats_de_convivencia: unitatsDeConvivencia,
     families_fins_a_segon_grau: familiaFinsASegonGrau
   };

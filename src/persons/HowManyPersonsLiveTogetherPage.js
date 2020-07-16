@@ -47,7 +47,7 @@ let HowManyPersonsLiveTogetherPage = (props: Props) => {
           <b className="highlightedText">
 	        <Trans i18nKey='text_avis_covid'>
 	        	Estem treballant per actualitzar l'eina, i en concret per incorporar les ajudes sorgides a causa de la situació
-	        	econòmica derivada de la covid19. Tingues present que la informació que et donarem no és complerta.
+	        	econòmica derivada de la COVID-19. Tingues present que la informació que et donarem no és completa.
 	        	<br/>
 	        	<br/>
 	        </Trans>

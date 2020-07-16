@@ -4,7 +4,6 @@ import App from './App';
 import './i18n';
 import registerServiceWorker from './registerServiceWorker';
 
-
 const render = () => {
   ReactDOM.render(
       <App/>,
