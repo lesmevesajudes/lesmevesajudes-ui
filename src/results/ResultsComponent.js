@@ -23,7 +23,7 @@ type Props = {
 }
 
 const ResultsComponent = (props: Props) => {
-	const {classes, resultsData, persons,simulationID,initialSimulationId, period} = props;	
+	const {classes, resultsData, persons,simulationID,initialSimulationId, period} = props;
 	return (
     <AppFormContainer >
 	  <AppFormTitle iconName='resultats'>
@@ -41,7 +41,7 @@ const ResultsComponent = (props: Props) => {
 	        Informi-se’n clicant sobre cada ajut.
 	      </Trans>
 	    </Typography>
-	
+
 	    <Grid item xs={12}>
 	      <PersonalBenefits
 	          benefitsForPersons={resultsData.persones}
