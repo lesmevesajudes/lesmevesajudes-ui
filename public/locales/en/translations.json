@@ -322,5 +322,7 @@
   "personForm.nom": "__NOT_TRANSLATED__",
   "personForm.nom_": "__NOT_TRANSLATED__",
   "personForm.nom_second": "__NOT_TRANSLATED__",
-  "result_error":"Simulation could not be done, try it later"
+  "result_error":"Simulation could not be done, try it later",
+  "codi_simulacio_incorrecte":"Incorrect ID. Check it out and try again",
+  "codi_simulacio_caducat":"Simulación has been outdated ",
 }

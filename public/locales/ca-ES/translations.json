@@ -350,5 +350,7 @@
     "link_HA_004": "/lesmevesajudes/ca/ajudes/prestacions-econòmiques-d’especial-urgència-al-pagament-de-deutes-del-lloguer",
     "link_GA_246": "/lesmevesajudes/ca/ajudes/targeta-rosa",
     "link_GA_234": "/lesmevesajudes/ca/ajudes/vincles-bcn",
-    "result_error":"No s'ha pogut realitzar la simulació, provi més tard"
+    "result_error":"No s'ha pogut realitzar la simulació, provi més tard",
+    "codi_simulacio_incorrecte":"ID incorrecte. Revisa i torna a provar",
+    "codi_simulacio_caducat":"La simulació ha estat donada de baixa",
 }

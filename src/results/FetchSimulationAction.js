@@ -12,6 +12,7 @@ export const FETCH_SIMULATION = 'FETCH_SIMULATION';
 export const FETCH_SIMULATION_ERROR = 'FETCH_SIMULATION_ERROR';
 export const SHOW_SIMULATION = 'SHOW_SIMULATION';
 export const RETRIEVE_SIMULATION_ERROR = 'RETRIEVE_SIMULATION_ERROR';
+export const TIMED_OUT_SIMULATION = 'TIMED_OUT_SIMULATION';
 
 export type SimulationData = {
   persons: PersonsState,
@@ -75,6 +76,12 @@ export const saveSimulation = (id: string, simulationData: SimulationData, resul
 export const retrieveSimulation = (simulationId: string) =>  (dispatch: any) => {
 	return simulationStore.getSimulation(simulationId).then(result => {
 //		console.log(result.data);
+		if (result.status == 210) {
+			return dispatch({
+				type: RETRIEVE_SIMULATION_ERROR,
+	      		payload: TIMED_OUT_SIMULATION,			
+			});
+		}
 		const id = result.data.id;
 		const simulationData = JSON.parse(result.data.simulation);
 		const simulationResult = JSON.parse(result.data.result);
@@ -89,7 +96,7 @@ export const retrieveSimulation = (simulationId: string) =>  (dispatch: any) => 
     console.log(JSON.stringify(error, null, 2));
     dispatch({
       type: RETRIEVE_SIMULATION_ERROR,
-      payload: error
+      payload: RETRIEVE_SIMULATION_ERROR,
     });
   });
 }
