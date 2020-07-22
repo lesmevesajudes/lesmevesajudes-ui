@@ -9,10 +9,6 @@ class SimulationStoreaAPIClient {
     this.url = url;
   }
 
-  uploadSimulationResult(id: string, simulation_result: any) {
-    return axios.post(this.url, {id, outcome: "success", simulation: simulation_result});
-  }
-  
   uploadSimulationResult(simulation_result: any) {
     return axios.post(this.url, {outcome: "success", simulation: simulation_result});
   }

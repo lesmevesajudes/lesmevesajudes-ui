@@ -5,7 +5,6 @@ import type {PersonsState} from '../persons/PersonTypes';
 import type {ResidenceData} from '../residence/ResidenceTypes';
 import OpenFiscaAPIClient from '../shared/OpenFiscaAPIClient/OpenFiscaAPIClient';
 import SimulationStoreClient from '../shared/SimulationStoreAPIClient';
-import {create as createUUID} from '../shared/UUID';
 
 export const START_FETCH_SIMULATION = 'START_FETCH_SIMULATION';
 export const FETCH_SIMULATION = 'FETCH_SIMULATION';
@@ -76,13 +75,12 @@ export const saveSimulation = (id: string, simulationData: SimulationData, resul
 export const retrieveSimulation = (simulationId: string) =>  (dispatch: any) => {
 	return simulationStore.getSimulation(simulationId).then(result => {
 //		console.log(result.data);
-		if (result.status == 210) {
+		if (result.status === 210) {
 			return dispatch({
 				type: RETRIEVE_SIMULATION_ERROR,
 	      		payload: TIMED_OUT_SIMULATION,			
 			});
 		}
-		const id = result.data.id;
 		const simulationData = JSON.parse(result.data.simulation);
 		const simulationResult = JSON.parse(result.data.result);
 		const initialSimulationId = result.data.id_parent !== 'null' ? result.data.id_parent : result.data.id;

@@ -48,12 +48,12 @@ const AdminForm = (props) => {
 			  		</tr>
             <tr>
               <td>
-              {retrieveSimulationError && (retrieveSimulationError == RETRIEVE_SIMULATION_ERROR) &&
+              {retrieveSimulationError && (retrieveSimulationError === RETRIEVE_SIMULATION_ERROR) &&
 				 <Typography color='error'>
 				   <Trans i18nKey='codi_simulacio_incorrecte'>ID incorrecte. Revisa i torna a provar</Trans>
 				 </Typography>
               }
-              {retrieveSimulationError && retrieveSimulationError == TIMED_OUT_SIMULATION &&
+              {retrieveSimulationError && retrieveSimulationError === TIMED_OUT_SIMULATION &&
 	             <Typography color='error'>
 	               <Trans i18nKey='codi_simulacio_caducat'>La simulació ha estat donada de baixa</Trans>
 	             </Typography>
