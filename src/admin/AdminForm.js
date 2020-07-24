@@ -3,6 +3,7 @@ import { Field, reduxForm } from 'redux-form'
 import {Button,} from "@material-ui/core";
 import Typography from '@material-ui/core/Typography';
 import {Trans} from "react-i18next";
+import {RETRIEVE_SIMULATION_ERROR, TIMED_OUT_SIMULATION} from '../results/FetchSimulationAction';
 
 const AdminForm = (props) => {
   const { handleSubmit, retrieveSimulationError } = props
@@ -47,11 +48,16 @@ const AdminForm = (props) => {
 			  		</tr>
             <tr>
               <td>
-              {retrieveSimulationError &&
-                <Typography color='error'>
-                  <Trans i18nKey='codi_simulacio_incorrecte'>ID incorrecte. Revisa i torna a provar</Trans>
-                </Typography>
-              }
+              {retrieveSimulationError && (retrieveSimulationError === RETRIEVE_SIMULATION_ERROR) &&
+ 				 <Typography color='error'>
+ 				   <Trans i18nKey='codi_simulacio_incorrecte'>ID incorrecte. Revisa i torna a provar</Trans>
+ 				 </Typography>
+               }
+               {retrieveSimulationError && retrieveSimulationError === TIMED_OUT_SIMULATION &&
+ 	             <Typography color='error'>
+ 	               <Trans i18nKey='codi_simulacio_caducat'>La simulació ha estat donada de baixa</Trans>
+ 	             </Typography>
+ 	           }
               </td>
             </tr>
 		  		</tbody>
