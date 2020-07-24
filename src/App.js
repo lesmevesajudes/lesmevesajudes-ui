@@ -12,7 +12,6 @@ import ReportBugPage from './reportBug/ReportBugPage';
 import {getCodeVersion, getReleaseDate} from "./shared/getCodeVersion";
 import isDevelopment from './shared/isDevelopment';
 import configureStore from './Store';
-//import '/styles/main.css';
 import theme from './styles/theme.js';
 
 if (isDevelopment) {

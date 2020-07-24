@@ -12,9 +12,9 @@ export default function(
     case START_FETCH_SIMULATION:
       return {
     	...state,
-        isError: false, 
+        isError: false,
         isRequestDone: false,
-        response: null, 
+        response: null,
 //        simulationID: action.simulation_id
       };
     case FETCH_SIMULATION:
@@ -48,16 +48,6 @@ export default function(
           ...state,
           retrieveSimulationError: action.payload,
         };
-    case PRINT_SIMULATION:
-    	return {
-	  	  ...state,
-		  printSimulation: true,
-	    }
-    case PRINTED_SIMULATION:
-    	return {
-	  	  ...state,
-		  printSimulation: false,
-	    }
     default:
       return state;
   }

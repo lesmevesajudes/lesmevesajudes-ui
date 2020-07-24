@@ -11,7 +11,6 @@ import {steps} from '../pages/Wizard.js';
 import {PrintPersonForm} from '../persons/PersonForm';
 import FormSubTitle from '../components/FormComponents/FormSubTitle';
 import {serialize} from '../persons/PersonsReducer';
-import {PRINTED_SIMULATION} from '../results/ResultsReducer';
 import {esFill} from '../shared/selectorUtils';
 import {areMenors} from '../pages/Wizard.js';
 import {families016} from '../shared/OpenFiscaAPIClient/RequestBuilder';
@@ -19,47 +18,17 @@ import {toArray} from '../family/createFamilyName';
 import {esSustentador} from '../shared/selectorUtils';
 import {sustentadorsSolitarisIPossiblesParelles} from "../family/FamilyForm";
 
-class ResumePage extends React.Component<Props, State> {
+const ResumePage = (props) => {
 
-	print() {
-		var printContents = document.getElementById("simulation_resume").innerHTML;
-		var popup = window.open('','_blank');
-		popup.focus();
-		popup.document.head.innerHTML = document.head.innerHTML;
-		popup.document.body.innerHTML = printContents;
-		setTimeout(() => popup.print(), 500);
-		setTimeout(() => popup.close(), 500);
-		this.props.dispatch({
-		    type: PRINTED_SIMULATION
-		  });
-		return false;
-	}
-	
-	componentDidMount() {
-		this.print();
-	}
-	
-	componentDidUpdate() {
-		this.print();
-	}
-	
-	
-	render() {
-	    const {persons, residence, family} = this.props;
-	    
+	  const {persons, residence, family} = props;
+
 		const printSteps = [];
 		steps.map((step, index) => printSteps.push({label: step.label, icon: step.icon}));
-		
-		const firstStepHeader = <PrintStepsComponent steps={printSteps} buttonVisible={false} step={0}/>;
-		const secondStepHeader = <PrintStepsComponent steps={printSteps} buttonVisible={false} step={1}/>;
-		const thirdStepHeader = <PrintStepsComponent steps={printSteps} buttonVisible={false} step={2}/>;
-		const fourthStepHeader = <PrintStepsComponent steps={printSteps} buttonVisible={false} step={3}/>;
-		
+
 //		const hostUrl = window.location.origin;
-		
-		if (persons) {
-			const serializedPersons = serialize(persons);
-			
+
+		const serializedPersons = serialize(persons);
+
 			// family consts
 			const custodies = family.custodies;
 			const families = toArray(families016(custodies, persons.toArray(), family));
@@ -67,26 +36,27 @@ class ResumePage extends React.Component<Props, State> {
 			const sustentadorsUnicsIDs = familiesMonoparentals.map((familia) => familia.sustentadors_i_custodia[0]);
 			const sustentadorsSolitaris = persons.filter((person: Person) => sustentadorsUnicsIDs.includes(person.id));
 			const sustentadorsSolitarisAmbPossiblesParelles = sustentadorsSolitarisIPossiblesParelles(sustentadorsSolitaris, persons.toArray());
-			
+
 			// residence consts
 			const esCessio = residence.relacio_habitatge === 'cessio';
 			const esLlogater= residence.relacio_habitatge === 'llogater';
 			const esPropietari = (residence.relacio_habitatge === 'propietari') || (residence.relacio_habitatge === 'propietari_hipoteca');
-			
+
 			return (
-				<div id="simulation_resume" style={{'display':'none'}}>
-					<link rel="stylesheet" type="text/css" href={window.location.origin + '/styles/main.css'} />
-					<div className="page-step" >
-						{firstStepHeader}
+				<Grid>
+					<Grid className="page-step printable-only" >
+						<PrintStepsComponent steps={printSteps} buttonVisible={false} step={0}/>
 						{serializedPersons.map((person,index) => {
 								const formKey = 'PersonForm' + index;
-								return (<div>
+								const esFamiliarOUsuari=(typeof person.relacio_parentiu !== 'undefined'	&& person.relacio_parentiu !== 'cap')
+									|| person.is_the_person_in_front_of_the_computer === true;
+								return (<Grid key={formKey}>
 											<Grid container justify='space-around' alignItems='stretch'>
 												<FormSubTitle>Persona {index + 1}</FormSubTitle>
 											</Grid>
 											{/*since component is not connected to store it we must pass same data managed in mapStateToProps*/}
-											<PrintPersonForm initialValues={person} 
-												esFamiliarOUsuari = {((typeof person.relacio_parentiu !== 'undefined') && (person.relacio_parentiu !== 'cap')) || (person.is_the_person_in_front_of_the_computer === true)}
+											<PrintPersonForm initialValues={person}
+												esFamiliarOUsuari={esFamiliarOUsuari}
 												edat = {person.edat}
 												esAturat = {person.situacio_laboral === 'person.aturat'}
 												esDona = {person.sexe === 'dona'}
@@ -106,15 +76,15 @@ class ResumePage extends React.Component<Props, State> {
 												tipusDocumentIdentitat = {person.tipus_document_identitat}
 												treballaPerCompteDAltriParcial = {person.situacio_laboral === 'treball_compte_daltri_jornada_parcial'}
 												form={formKey} />
-										</div>
+										</Grid>
 								)
 							})
 						}
-					</div>
-					
-					{areMenors(persons) && 
-						<div className="page-step"> 
-							{secondStepHeader}
+					</Grid>
+
+					{areMenors(persons) &&
+						<Grid className="page-step printable-only">
+							<PrintStepsComponent steps={printSteps} buttonVisible={false} step={1}/>
 							<PrintFamilyForm custodies = {custodies}
 							    families = {families}
 							    fills = {persons.filter((person: Person) => esFill(person))}
@@ -124,16 +94,14 @@ class ResumePage extends React.Component<Props, State> {
 							    sustentadorsSolitarisAmbPossiblesParelles = {sustentadorsSolitarisAmbPossiblesParelles}
 							    custodiesValues = {family.custodiesValues}
 								form="PrintFamilyForm"/>
-						</div>
-							
-							
+						</Grid>
 					}
-					
-					<div className="page-step">
-						{thirdStepHeader}
+
+					<Grid className="page-step printable-only">
+						<PrintStepsComponent steps={printSteps} buttonVisible={false} step={2}/>
 
 						{/*since component is not connected to store it we must pass same data managed in mapStateToProps*/}
-						<PrintResidenceForm 
+						<PrintResidenceForm
 							esCessio = {esCessio}
 						    esLlogater= {esLlogater}
 						    esPropietari= {esPropietari}
@@ -153,18 +121,13 @@ class ResumePage extends React.Component<Props, State> {
 						    titularContracteLloguer = {persons.get(residence.titular_contracte_de_lloguer_id)}
 						    titularContracteHipoteca = {persons.get(residence.titular_hipoteca_id)}
 							form="PrintResidenceForm"/>
-					</div>
-					
-					<div className="page-step">
-						{fourthStepHeader}
+					</Grid>
+
+					<Grid className="page-step">
+						<PrintStepsComponent  stepperClassName="printable-only" steps={printSteps} buttonVisible={false} step={3}/>
 						<PrintResultsPage/>
-					</div>
-				</div>);
-		}
-		return '';
-	}
-};
+					</Grid>
+				</Grid>);
+			};
 
 export default withStyles(styles)(connect(null,null)(ResumePage));
-
-

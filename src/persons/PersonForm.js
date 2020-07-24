@@ -55,7 +55,7 @@ type Props = {
 
 const formName = 'PersonForm';
 
-let PersonForm = (props: Props) => {
+let PersonFormComponent = (props: Props) => {
   let {
 	form,
 	edat,
@@ -86,13 +86,6 @@ let PersonForm = (props: Props) => {
   const personAndSexTranslationContext = buildTranslationContext([personDecider(), sexDecider()]);
   const sexTranslationContext = buildTranslationContext([sexDecider()]);
   const i18nKey = (keyname: string, context: Object) => ({i18nKey: [keyname, context.context].join('_')});
-
-//  formName = form;
-
-//  const selector = formValueSelector(form);
-//  esFamiliarOUsuari = (typeof selector(state, 'relacio_parentiu') !== 'undefined' && selector(state, 'relacio_parentiu') !== 'cap') || selector(state, 'is_the_person_in_front_of_the_computer') === true;
-//  isTheUserInFrontOfTheComputer = selector(state, 'is_the_person_in_front_of_the_computer');
-//  console.log(form + " - " + edat);
 
   return (
       <AppFormContainer>
@@ -504,17 +497,17 @@ let PersonForm = (props: Props) => {
   );
 };
 
-PersonForm = reduxForm({
+const PersonFormRedux = reduxForm({
   form: formName,
   onSubmitFail: (error) => {
 	  console.log(error);
 	  focusFirstQuestionWithName(namefirstFieldWithError(error));
   }
-})(PersonForm);
+})(PersonFormComponent);
 
 const selector = formValueSelector(formName);
 
-PersonForm = withTranslation('translations')(connect(state => {
+const PersonForm = withTranslation('translations')(connect(state => {
   const edat = selector(state, 'edat');
   const esAturat = selector(state, 'situacio_laboral') === 'aturat';
   const esDona = selector(state, 'sexe') === 'dona';
@@ -558,8 +551,8 @@ PersonForm = withTranslation('translations')(connect(state => {
     tipusDocumentIdentitat,
     treballaPerCompteDAltriParcial
   };
-})(PersonForm));
+})(PersonFormRedux));
 
 export default PersonForm;
 
-export const PrintPersonForm = withTranslation('translations')(reduxForm()(PersonForm));
+export const PrintPersonForm = withTranslation('translations')(reduxForm()(PersonFormRedux));
