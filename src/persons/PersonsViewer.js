@@ -140,7 +140,7 @@ export const PersonsViewer = (props: Props) => {
                     updatePerson={props.onUpdateClick}/>
                 ),
                   ...repeat(missingPersons,
-                    (i) => <UnknownPersonCard key={i} personNumber={i} classes={props.classes}
+                    (i) => <UnknownPersonCard key={i} personNumber={i + props.persons.length} classes={props.classes}
                                               onRemoveClick={props.onRemoveUnknownClick}
                                               onAddPersonClick={props.onAddPersonClick}/>)]
                   .reduce((arr, current) => [...arr, current, <Divider key={create()}/>], []).slice(0, -1)}
