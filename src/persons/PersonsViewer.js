@@ -82,7 +82,7 @@ type UnknownPersonProps = {
 }
 const UnknownPersonCard = withWidth()((props: UnknownPersonProps) => {
   const { classes } = props;
-  const nombre_persona = props.personNumber + 1;
+  const nombre_persona = props.personNumber + 2;
   return (
     <ListItem button onClick={() => props.onAddPersonClick()}>
       <Avatar className={classes.avatarUnknownPerson}>?</Avatar>
