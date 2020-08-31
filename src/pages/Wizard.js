@@ -55,7 +55,7 @@ export const isAdmin = (props) => {
 }
 
 const WizardPage = props => {
-	return <StepsComponent steps={steps} isAdmin={isAdmin(props)}/>;
+	return <StepsComponent stepperClassName="screen-only" steps={steps} isAdmin={isAdmin(props)}/>;
 }
 
 export default withTranslation('translations')(WizardPage);

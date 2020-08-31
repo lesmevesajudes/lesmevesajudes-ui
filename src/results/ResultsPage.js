@@ -62,11 +62,10 @@ class ResultsPage extends React.Component<Props> {
     if (!this.enoughDataForSimulation() && isAdmin) {
         return (
             <AppFormContainer>
-              <Grid container xs={12}>
+
 	              <Grid item xs={12} sm={11}>
 		              <AdminForm onSubmit={this.submitSimulationId} retrieveSimulationError={this.props.retrieveSimulationError}/>
 	              </Grid>
-	            </Grid>
             </AppFormContainer>
         );
       }

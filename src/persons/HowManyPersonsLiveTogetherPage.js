@@ -36,7 +36,7 @@ type Props = {
 
 let HowManyPersonsLiveTogetherPage = (props: Props) => {
   const {handleSubmit, classes} = props;
-  
+
   return (
       <AppFormContainer>
         <AppFormTitle iconName='persona'>
@@ -44,7 +44,7 @@ let HowManyPersonsLiveTogetherPage = (props: Props) => {
             inclòs)</Trans>
         </AppFormTitle>
 
-        {!isAdmin(props) && 
+        {!isAdmin(props) &&
           <ShowMeOnceModal name='howManyPersonsModal'
                          title={<Trans i18nKey='dades_sobre_les_persones'>Dades sobre les persones</Trans>}>
           <b className="highlightedText">

@@ -27,7 +27,7 @@ type Props = {
 };
 
 class PersonsPage extends React.Component<Props, State> {
-	
+
   removeOnePersonLivingTogether = () =>
       this.setState({
         ...this.state,
@@ -64,7 +64,7 @@ class PersonsPage extends React.Component<Props, State> {
       step: 'personsList',
     });
   };
-  
+
   handleSubmitPersonForm = (formValues: Person) => {
     this.props.dispatch(
         (formValues.id === undefined)
@@ -108,7 +108,7 @@ class PersonsPage extends React.Component<Props, State> {
       initialFormValues: undefined,
       numberOfPersonsLivingTogether: 0
     };
-    
+
     this.props = {
       step: (this.areThereAnyPersons(this.props.persons)) ?
     		          'personsList' : 'NumberOfPersonsLivingTogether',
@@ -121,7 +121,7 @@ class PersonsPage extends React.Component<Props, State> {
 	  const expectedNumberOfPersonsLivingTogether = this.props.numberOfPersonsLivingTogether || this.state.numberOfPersonsLivingTogether;
 	  const step = this.state.step;
 	  let component = undefined;
-	  
+
 	  if ((this.props.step === 'personsList') || (step === 'personsList')) {
 		  component = (
 		          <PersonsViewer

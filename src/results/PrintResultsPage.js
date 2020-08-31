@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {styles} from '../styles/theme';
+import {Grid} from '@material-ui/core';
 import {withStyles} from '@material-ui/core/styles';
 import ResultsComponent from './ResultsComponent';
 import Moment from 'moment';
@@ -19,13 +20,13 @@ class PrintResultPage extends React.Component<Props> {
     super(props);
     this.period = Moment().format('YYYY-MM');
   }
-  
+
   render() {
     const {resultsData, persons, simulationID, initialSimulationId, classes} = this.props;
     return (
-    	<div id="result_page"> 
+    	<Grid id="result_page">
     		<ResultsComponent classes={classes} resultsData={resultsData} persons={persons} simulationID={simulationID} initialSimulationId={initialSimulationId} period={this.period}/>
-        </div>
+        </Grid>
     );
   }
 }

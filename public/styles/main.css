@@ -29,6 +29,38 @@ html {
 }
 
 @media print {
+  .material-icons {
+    display: none;
+  }
+  .MuiTypography-h2 {
+    margin: 16px 0;
+  }
+
+  div[class*="icon"] {
+    display: none;
+  }
+
+  button[class^='MuiButton'] {
+    background: none;
+    border: none;
+  }
+
+  button[class^='MuiButton'] span[class*='icon'] {
+    display: none;
+  }
+
+  button[class^='MuiButton'][class*='MuiStepButton-root'] {
+    display: inherit;
+  }
+
+
+  button[class^='MuiButton'][class*='ajuntament-selected-choice'] {
+    display: block;
+    background: none;
+    color: black;
+    border: 1px solid !important;
+    border-radius: 4px;
+  }
 
   .Component-titleText-1395 {
       padding: 0;
@@ -48,7 +80,7 @@ html {
 
   div.MuiGrid-item-143 {
     margin: 0;
-	font-size: 14px;    
+	font-size: 14px;
   }
   h5 {
     padding: 0 !important;
@@ -65,12 +97,12 @@ html {
     page-break-inside: auto;
     display: flex;
   }
-  
+
   div[class*='Component-ItemResult'] {
     page-break-inside: avoid;
     display: flex;
   }
-  
+
   div[class*='Connect-ResultsComponent--ItemResult'] {
     page-break-inside: avoid;
     display: flex;
@@ -91,17 +123,18 @@ html {
   div[class*='Connect-ResultsPage'] {
     display: flex;
   }
-  
+
   .page-step {
+    display: block;
     page-break-inside: auto;
     page-break-after: always;
   }
-  
+
   div.MuiGrid-container-142.family-print {
   	display: flex;
     page-break-inside: avoid;
   }
-  
+
   button.hide-print {
   	display: none;
   }

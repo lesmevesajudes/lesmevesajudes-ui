@@ -65,8 +65,6 @@ class StepsComponent extends React.Component<Props, State> {
     const currentStep = this.state.current_step;
     const formToValidate = this.props.steps[currentStep].validateFormToEnableNext;
     const formIsValid = isValid(formToValidate);
-    console.log("steps!!!!!!");
-    console.log(JSON.stringify(this.props.steps));
 
     if (typeof formToValidate !== 'undefined' && !formIsValid(this.props.appState)) {
       const errors = getFormSyncErrors(formToValidate)(this.props.appState);
@@ -140,24 +138,26 @@ class StepsComponent extends React.Component<Props, State> {
     const childComponent = steps[currentStep].component;
     return (
         <div className={classes.root}>
-        <Stepper activeStep={currentStep} nonLinear alternativeLabel className={classes.stepperContainer}>
-            {steps.map((step, index) => {
-              const labelProps = step.optional ? {
-                optional: <Tooltip id='unknown-tooltip'
-                                   title={t('opcional_text_llarg')}
-                                   placement='bottom-start'>
-                  <Typography variant='caption'>
-                    <Trans i18nKey='opcional'>Opcional</Trans>
-                  </Typography>
-                </Tooltip>
-              } : {};
-              return <Step key={step.id}>
-                <StepButton {...labelProps} onClick={() => this.setStep(index)}
-                            icon={chooseIcon(this.props, currentStep, maxStepReached, index)}>{step.label}</StepButton>
-              </Step>
-            })
-            }
-          </Stepper>
+        <Grid className={this.props.stepperClassName}>
+          <Stepper activeStep={currentStep} nonLinear alternativeLabel className={classes.stepperContainer}>
+              {steps.map((step, index) => {
+                const labelProps = step.optional ? {
+                  optional: <Tooltip id='unknown-tooltip'
+                                     title={t('opcional_text_llarg')}
+                                     placement='bottom-start'>
+                    <Typography variant='caption'>
+                      <Trans i18nKey='opcional'>Opcional</Trans>
+                    </Typography>
+                  </Tooltip>
+                } : {};
+                return <Step key={step.id}>
+                  <StepButton {...labelProps} onClick={() => this.setStep(index)}
+                              icon={chooseIcon(this.props, currentStep, maxStepReached, index)}>{step.label}</StepButton>
+                </Step>
+              })
+              }
+            </Stepper>
+          </Grid>
           <Grid container>
             <Grid item xs={12}>
               {childComponent}
