@@ -66,11 +66,11 @@ const ResultsComponent = (props: Props) => {
 	      </Grid>
 	      <Grid item container className={classes.ResultsSeparator} xs={4} alignItems='center' justify='center'>
 	        <Typography className={classes.ResultsBenefitText}>
-	          {simulationID ? simulationID : 'No disponible'}
+	          {simulationID ? simulationID : initialSimulationId}
 	        </Typography>
 	      </Grid>
 	    </Grid>
-	    {initialSimulationId &&
+	    {simulationID && initialSimulationId &&
 	      <Grid container justify='center' alignItems='center' className={classes.ItemResult}>
 	        <Grid item container xs={1} justify='center' alignItems='center'>
 	          <InfoOutlinedIcon className={classes.darkGrayText}>info</InfoOutlinedIcon>
