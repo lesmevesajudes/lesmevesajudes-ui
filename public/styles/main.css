@@ -29,6 +29,7 @@ html {
 }
 
 @media print {
+
   .material-icons {
     display: none;
   }
@@ -122,6 +123,10 @@ html {
 
   div[class*='Connect-ResultsPage'] {
     display: flex;
+  }
+
+  .MuiGrid-root {
+    display: block;
   }
 
   .page-step {
