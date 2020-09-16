@@ -2,6 +2,7 @@ import {Grid, Typography, withStyles} from '@material-ui/core';
 import React from 'react';
 import {Trans} from 'react-i18next';
 import {connect} from 'react-redux';
+import classNames from "classnames";
 import {AppFormContainer, AppFormTitle} from '../components/AppForms';
 import {styles} from '../styles/theme';
 import PersonalBenefits from './PersonalBenefits';
@@ -55,8 +56,8 @@ const ResultsComponent = (props: Props) => {
 	          period={period}
 	      />
 	    </Grid>
-	    <Grid container justify='center' alignItems='center' className={classes.ItemResult}>
-	      <Grid item container xs={1} justify='center' alignItems='center'>
+	    <Grid container justify='center' alignItems='center' className={classNames(classes.ItemResult, 'grid-flex-force')}>
+	      <Grid item container xs={1} justify='center' alignItems='center' className={classNames('grid-flex-force')}>
 	        <InfoOutlinedIcon className={classes.darkGrayText}>info</InfoOutlinedIcon>
 	      </Grid>
 	      <Grid item xs={7}>
@@ -64,15 +65,15 @@ const ResultsComponent = (props: Props) => {
 	          <Trans i18nKey='identificador_simulacio'>Identificador simulació</Trans>
 	        </Typography>
 	      </Grid>
-	      <Grid item container className={classes.ResultsSeparator} xs={4} alignItems='center' justify='center'>
+	      <Grid item container className={classNames(classes.ResultsSeparator, 'grid-flex-force')} xs={4} alignItems='center' justify='center'>
 	        <Typography className={classes.ResultsBenefitText}>
 	          {simulationID ? simulationID : initialSimulationId}
 	        </Typography>
 	      </Grid>
 	    </Grid>
 	    {simulationID && initialSimulationId &&
-	      <Grid container justify='center' alignItems='center' className={classes.ItemResult}>
-	        <Grid item container xs={1} justify='center' alignItems='center'>
+	      <Grid container justify='center' alignItems='center' className={classNames(classes.ItemResult, 'grid-flex-force')}>
+	        <Grid item container xs={1} justify='center' alignItems='center' className={classNames('grid-flex-force')}>
 	          <InfoOutlinedIcon className={classes.darkGrayText}>info</InfoOutlinedIcon>
 	        </Grid>
 	        <Grid item xs={7}>
@@ -80,7 +81,7 @@ const ResultsComponent = (props: Props) => {
 	            <Trans i18nKey='identificador_simulacio_inicial'>Identificador simulació inicial</Trans>
 	          </Typography>
 	        </Grid>
-	        <Grid item container className={classes.ResultsSeparator} xs={4} alignItems='center' justify='center'>
+	        <Grid item container className={classNames(classes.ResultsSeparator, 'grid-flex-force')} xs={4} alignItems='center' justify='center'>
 	          <Typography className={classes.ResultsBenefitText}>
 	            {initialSimulationId}
 	          </Typography>

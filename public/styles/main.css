@@ -54,6 +54,9 @@ html {
     display: inherit;
   }
 
+  .MuiGrid-root.yes-no-question {
+      display: flex;
+  }
 
   button[class^='MuiButton'][class*='ajuntament-selected-choice'] {
     display: block;
@@ -63,6 +66,18 @@ html {
     border-radius: 4px;
   }
 
+  .grid-flex-force.MuiGrid-root {
+    display: flex;
+  }
+  .line-height-force {
+    line-height: normal;
+  }
+
+  .flex-width-force {
+    flex-basis: 33%;
+    max-width: 33%;
+ }
+ 
   .Component-titleText-1395 {
       padding: 0;
   }

@@ -1,4 +1,5 @@
 import {Grid, Typography, withStyles} from '@material-ui/core';
+import classNames from "classnames";
 import React from 'react';
 import {Trans, withTranslation} from 'react-i18next';
 import Moment from 'moment';
@@ -131,7 +132,7 @@ const PersonalBenefits = (props) => {
 
   function renderPersonalBenefits(person: Person, personBenefits: any) {
     return (
-        <Grid container  className={props.classes.ResultItemResultOut} direction='column' key={person.id}>
+        <Grid container className={classNames(props.classes.ResultItemResultOut, 'line-height-force')} direction='column' key={person.id}>
           <Typography variant='subtitle1' gutterBottom>
             <Trans i18nKey='ajudes_a_les_que_opta_persona'>Ajudes de les que podria ser
               beneficiàri/a:</Trans> <b>{person.nom}</b>
