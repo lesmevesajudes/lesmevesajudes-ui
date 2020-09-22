@@ -37,7 +37,7 @@ const BenefitRow = ({benefit, subject, classes, t}) => {
       <Grid item container xs={1} justify='center' alignItems='center' className={classNames('grid-flex-force')}>
         <HasBenefitIcon benefitStatus={benefitStatus}/>
       </Grid>
-      <Grid item container direction='column' xs={benefit.doNotShowAmount === true ? 9 : 7} justify='center'>
+      <Grid item container direction='column' xs={benefit.doNotShowAmount === true ? 9 : 7} justify='center' className={classNames('line-height-force')}>
         <Grid item>
           <Typography className={classes.ResultsBenefitText}>{benefit.name}</Typography>
         </Grid>
