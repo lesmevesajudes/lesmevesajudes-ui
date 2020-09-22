@@ -124,7 +124,6 @@ const ResumePage = (props) => {
 					</Grid>
 
 					<Grid className="page-step">
-						<PrintStepsComponent  stepperClassName="printable-only" steps={printSteps} buttonVisible={false} step={3}/>
 						<PrintResultsPage/>
 					</Grid>
 				</Grid>);
