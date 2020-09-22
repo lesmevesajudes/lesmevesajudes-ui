@@ -421,7 +421,7 @@ function mapStateToProps(state) {
 
 export default withTranslation("translations")(connect(mapStateToProps)(reduxForm(
     {
-      form: "ResidenceForm",
+//      form: "ResidenceForm",
       onChange: (values, dispatch) => {
         dispatch(addResidenceData(values));
       },
@@ -429,3 +429,6 @@ export default withTranslation("translations")(connect(mapStateToProps)(reduxFor
         focusFirstQuestionWithName(namefirstFieldWithError(error));
       },
     })(ResidenceForm)));
+
+// export component form (not connected to the store) for printing
+export const PrintResidenceForm = withTranslation("translations")(reduxForm()(ResidenceForm));

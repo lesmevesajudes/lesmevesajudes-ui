@@ -33,15 +33,15 @@ function getBenefitStatus(benefit): BenefitStatus {
 const BenefitRow = ({benefit, subject, classes, t}) => {
     const benefitStatus = getBenefitStatus(benefit);
     return (
-    <Grid container direction='row' key={benefit.ID} className={classes.ItemResult}>
-      <Grid item container xs={1} justify='center' alignItems='center'>
+    <Grid container direction='row' key={benefit.ID} className={classNames(classes.ItemResult, 'grid-flex-force')}>
+      <Grid item container xs={1} justify='center' alignItems='center' className={classNames('grid-flex-force')}>
         <HasBenefitIcon benefitStatus={benefitStatus}/>
       </Grid>
-      <Grid item container direction='column' xs={benefit.doNotShowAmount === true ? 9 : 7} justify='center'>
+      <Grid item container direction='column' xs={benefit.doNotShowAmount === true ? 9 : 7} justify='center' className={classNames('line-height-force')}>
         <Grid item>
           <Typography className={classes.ResultsBenefitText}>{benefit.name}</Typography>
         </Grid>
-        <Grid item>
+        <Grid item className={classNames('line-height-force')}>
           <Period benefitStatus={benefitStatus} from={benefit.from} to={benefit.to}/>
         </Grid>
         <a className="printable-only" href={t(benefit.url)}>

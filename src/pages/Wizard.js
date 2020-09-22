@@ -6,12 +6,16 @@ import PersonsPage from '../persons/PersonsPage'
 import ResidenceForm from '../residence/ResidenceForm';
 import ResultsPage from '../results/ResultsPage';
 
+export const areMenors = (persons) => {
+	const menors = persons.valueSeq().toArray().filter((persona) => persona.edat <= 16);
+	return menors.length > 0;
+}
+
 const shouldShowFamilyStep = (state) => {
-  const menors = state.persons.valueSeq().toArray().filter((persona) => persona.edat <= 16);
-  return menors.length > 0
+	return areMenors(state.persons);
 };
 
-const steps = [
+export const steps = [
   {
     id: 'person',
     label: <Trans i18nKey='persones_que_conviuen'>Persones que conviuen</Trans>,
@@ -26,7 +30,7 @@ const steps = [
     optional: true,
     shouldShowStep: shouldShowFamilyStep,
     validateFormToEnableNext: 'FamilyForm',
-    component: <FamilyForm/>,
+    component: <FamilyForm form="FamilyForm"/>,
     icon: 'familia' // Icono de familia, niños corriendo
   },
   {
@@ -34,7 +38,7 @@ const steps = [
     label: <Trans i18nKey='domicili_habitual'>Domicili Habitual</Trans>,
     optional: false,
     validateFormToEnableNext: 'ResidenceForm',
-    component: <ResidenceForm/>,
+    component: <ResidenceForm form='ResidenceForm'/>,
     icon: 'domicili' // Icono Casa
   },
   {
@@ -46,8 +50,12 @@ const steps = [
   }
 ];
 
+export const isAdmin = (props) => {
+	return props.location.pathname === '/admin';
+}
 
-const WizardPage = () =>
-    <StepsComponent steps={steps}/>;
+const WizardPage = props => {
+	return <StepsComponent stepperClassName="screen-only" steps={steps} isAdmin={isAdmin(props)}/>;
+}
 
 export default withTranslation('translations')(WizardPage);

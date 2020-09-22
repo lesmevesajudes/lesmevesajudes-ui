@@ -1,12 +1,16 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Grid} from '@material-ui/core';
+import {AppFormContainer} from '../components/AppForms';
+
 import type {Person, PersonID} from '../persons/PersonTypes';
 import {submitReport} from "../reportBug/ReportBugActions";
-import {fetchSimulation} from './FetchSimulationAction';
+import {retrieveSimulation, fetchSimulation} from './FetchSimulationAction';
 import SimulationMissingData from './SimulationMissingData';
 import SimulationLoading from './SimulationLoading';
 import SimulationError from './SimulationError';
 import SimulationSuccess from './SimulationSuccess';
+import AdminForm from '../admin/AdminForm';
 
 type Props = {
   dispatch: Function,
@@ -16,7 +20,12 @@ type Props = {
   resultsData: any,
   simulationData: any,
   simulationID: string,
+  initialSimulationId: string,
+  isAdmin: boolean,
+  retrieveSimulationError: string,
+  printSimulation: boolean,
 };
+
 
 class ResultsPage extends React.Component<Props> {
   submitReport = values => {
@@ -30,9 +39,9 @@ class ResultsPage extends React.Component<Props> {
   }
 
   componentDidMount() {
-    console.log("component did mount");
-    console.log(this.props.persons.count);
-    if (this.enoughDataForSimulation()) this.props.fetchSimulation(this.props.simulationData);
+	  if (this.enoughDataForSimulation()) {
+		  this.props.fetchSimulation(this.props.simulationID, this.props.simulationData);
+	  }
   }
 
   constructor(props) {
@@ -40,23 +49,41 @@ class ResultsPage extends React.Component<Props> {
     this.submitReport = this.submitReport.bind(this);
   }
 
+  submitSimulationId = values => {
+	  this.props.retrieveSimulation(values.simulation_id);
+  }
+
   render() {
-    const {isError, isRequestDone, resultsData, persons, simulationID} = this.props;
-    if (!this.enoughDataForSimulation()) {
+    const {isError, isRequestDone, resultsData, persons, simulationID, initialSimulationId, isAdmin, simulationData} = this.props;
+    if (!this.enoughDataForSimulation() && !isAdmin) {
       return (<SimulationMissingData/>);
     }
+
+    if (!this.enoughDataForSimulation() && isAdmin) {
+        return (
+            <AppFormContainer>
+
+	              <Grid item xs={12} sm={11}>
+		              <AdminForm onSubmit={this.submitSimulationId} retrieveSimulationError={this.props.retrieveSimulationError}/>
+	              </Grid>
+            </AppFormContainer>
+        );
+      }
 
     if (!isRequestDone) {
       return (<SimulationLoading/>);
     }
 
     if (isRequestDone && isError) {
-      return (<SimulationError resultsData={resultsData} simulationID={simulationID}/>);
+      return (<SimulationError simulationID={simulationID}/>);
     }
     return (<SimulationSuccess
       resultsData={resultsData}
       persons={persons}
       simulationID={simulationID}
+      initialSimulationId={initialSimulationId}
+      printSimulation = {this.props.printSimulation}
+      simulationData = {simulationData}
       />);
   }
 }
@@ -67,9 +94,13 @@ function mapStateToProps(state) {
     isRequestDone: state.results.isRequestDone,
     simulationData: state,
     resultsData: state.results.response,
-    simulationID: state.results.simulationID !== null ? state.results.simulationID : 'none',
-    persons: state.persons
+    simulationID: state.results.simulationID !== null ? state.results.simulationID : null,
+    initialSimulationId : state.results.initialSimulationId !== undefined ? state.results.initialSimulationId : null,
+    persons: state.persons,
+    isAdmin: state.admin.isAdmin,
+    retrieveSimulationError: state.results.retrieveSimulationError,
+    printSimulation: state.results.printSimulation,
   };
 }
 
-export default connect(mapStateToProps, {fetchSimulation, submitReport})(ResultsPage);
+export default connect(mapStateToProps, {fetchSimulation, retrieveSimulation, submitReport})(ResultsPage);

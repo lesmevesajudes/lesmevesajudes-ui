@@ -6,7 +6,7 @@ import MultipleChoice from "../MultipleChoice";
 
 const YesNo = ({input, meta}) => {
   return <Grid container direction='column'>
-    <Grid container direction='row'>
+    <Grid container direction='row' className="yes-no-question">
       <MultipleChoice
           currentState={input.value}
           onFocus={input.onFocus}

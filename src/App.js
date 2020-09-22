@@ -12,7 +12,6 @@ import ReportBugPage from './reportBug/ReportBugPage';
 import {getCodeVersion, getReleaseDate} from "./shared/getCodeVersion";
 import isDevelopment from './shared/isDevelopment';
 import configureStore from './Store';
-import './styles/main.css';
 import theme from './styles/theme.js';
 
 if (isDevelopment) {
@@ -31,6 +30,7 @@ class App extends Component {
     return (
       <Suspense fallback="">
         <MuiThemeProvider theme={theme}>
+          <link rel="stylesheet" type="text/css" href={'/styles/main.css'} />
           <div>
             <CssBaseline/>
             <Provider store={store}>
@@ -38,6 +38,7 @@ class App extends Component {
                 <ScrollToTop>
                   <Switch>
                     <Route exact={true} path='/' component={WizardPage}/>
+                    <Route path='/admin' component={WizardPage}/>
                     {isDevelopment &&
                     <Fragment>
                       <Route path='/reportBug' component={ReportBugPage}/>

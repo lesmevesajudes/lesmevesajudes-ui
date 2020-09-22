@@ -11,6 +11,7 @@ type Props = {
   classes: Object,
   nextAction: Function,
   nextIsResults: boolean,
+  dispatch: Function,
 };
 
 const printPage = function () {
@@ -44,9 +45,10 @@ let StepperButtons = (props: Props) => {
                   onClick={() => window.location.reload()}
                   disabled={!buttonEnabled}>
             <Icon className={classes.leftIcon}>cached</Icon>
-            <Trans i18nKey='nou_calcul'>Nou càlcul</Trans>
+            <Trans i18nKey='nou_calcul'>Nova simulació</Trans>
           </Button>
           }
+
           {typeof nextAction !== 'undefined' &&
           <Button color='primary' variant='contained'
                   onClick={nextAction}

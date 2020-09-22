@@ -2,14 +2,15 @@ import Grid from "@material-ui/core/Grid";
 import {withStyles} from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import ClearIcon from "@material-ui/icons/Clear";
+import classNames from "classnames";
 import React from "react";
 import {Trans} from "react-i18next";
 import {styles} from "../../styles/theme";
 
 
 const Component = ({classes}) => (
-    <Grid container justify='center' alignItems='center' className={classes.ItemResult}>
-      <Grid item container xs={1} justify='center' alignItems='center'>
+    <Grid container justify='center' alignItems='center' className={classNames(classes.ItemResult, 'grid-flex-force')}>
+      <Grid item container xs={1} justify='center' alignItems='center' className={classNames('grid-flex-force')}>
         <ClearIcon className={classes.darkGrayText}/>
       </Grid>
       <Grid item xs={11}>

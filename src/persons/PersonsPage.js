@@ -21,7 +21,9 @@ type State = {
 type Props = {
   persons: Array<Person>,
   PersonRole: string,
-  dispatch: Function
+  dispatch: Function,
+  numberOfPersonsLivingTogether: number,
+  step: string,
 };
 
 class PersonsPage extends React.Component<Props, State> {
@@ -33,15 +35,15 @@ class PersonsPage extends React.Component<Props, State> {
       }, this.enableButtonsIfNeeded);
 
   handleAddPersonClick = () => {
-    this.props.dispatch(hideButtons());
-    this.setState({
-      ...this.state,
-      step: 'addPerson'
-    });
+	  this.props.dispatch(hideButtons());
+	  this.setState({
+	      ...this.state,
+	      step: 'addPerson'
+	    });
   };
 
   handleUpdatePersonClick = (personID: PersonID) => {
-    this.props.dispatch(hideButtons());
+	this.props.dispatch(hideButtons());
     this.setState({
       ...this.state,
       initialFormValues: this.props.persons.filter((e: Person): boolean => e.id === personID)[0],
@@ -55,7 +57,7 @@ class PersonsPage extends React.Component<Props, State> {
   };
 
   doneEditingPerson = () => {
-    this.props.dispatch(showButtons());
+	this.props.dispatch(showButtons());
     this.setState({
       ...this.state,
       initialFormValues: undefined,
@@ -106,31 +108,40 @@ class PersonsPage extends React.Component<Props, State> {
       initialFormValues: undefined,
       numberOfPersonsLivingTogether: 0
     };
+
+    this.props = {
+      step: (this.areThereAnyPersons(this.props.persons)) ?
+    		          'personsList' : 'NumberOfPersonsLivingTogether',
+      numberOfPersonsLivingTogether: 0
+    };
   }
 
   render() {
-    const expectedNumberOfPersonsLivingTogether = this.state.numberOfPersonsLivingTogether;
-    const step = this.state.step;
-    let component = undefined;
+	  // depending on if it is new simulation or an edition numberOfPersonsLivingTogether is informed on props or state
+	  const expectedNumberOfPersonsLivingTogether = this.props.numberOfPersonsLivingTogether || this.state.numberOfPersonsLivingTogether;
+	  const step = this.state.step;
+	  let component = undefined;
 
-    if (step === 'NumberOfPersonsLivingTogether') {
-      component = (<HowManyPersonsLiveTogetherPage
-          onSubmit={this.handleSubmitHowManyPersonsLiveTogether}
-      />);
-    } else if (step === 'personsList') {
-      component = (
-          <PersonsViewer
-              persons={this.props.persons}
-              onRemoveClick={this.handleRemovePersonClick}
-              onUpdateClick={this.handleUpdatePersonClick}
-              onAddPersonClick={this.handleAddPersonClick}
-              onRemoveUnknownClick={this.removeOnePersonLivingTogether}
-              expectedNumberOfPersons={expectedNumberOfPersonsLivingTogether}
-          />);
+	  if ((this.props.step === 'personsList') || (step === 'personsList')) {
+		  component = (
+		          <PersonsViewer
+		              persons={this.props.persons}
+		              onRemoveClick={this.handleRemovePersonClick}
+		              onUpdateClick={this.handleUpdatePersonClick}
+		              onAddPersonClick={this.handleAddPersonClick}
+		              onRemoveUnknownClick={this.removeOnePersonLivingTogether}
+		              expectedNumberOfPersons={expectedNumberOfPersonsLivingTogether}
+		          />);
+	  } else if (step === 'NumberOfPersonsLivingTogether') {
+	      component = (<HowManyPersonsLiveTogetherPage
+	          onSubmit={this.handleSubmitHowManyPersonsLiveTogether}
+	      />);
     } else if (step === 'addPerson' || step === 'updatePerson') {
 
       component = (
           <PersonForm
+          	  form='PersonForm'
+          	  formKey = 'PersonForm'
               initialValues={this.state.initialFormValues}
               onSubmit={this.handleSubmitPersonForm}
               onCancel={this.doneEditingPerson}
@@ -143,11 +154,12 @@ class PersonsPage extends React.Component<Props, State> {
 }
 
 function mapStateToProps(state) {
-  return {
-    persons: serialize(state.persons)
+  var props = {
+	  persons: serialize(state.persons),
+	  step: state.step.state,
+	  numberOfPersonsLivingTogether: state.step.number_of_persons_living_together,
   };
+  return props;
 }
 
-export default connect(mapStateToProps)(
-    PersonsPage
-);
+export default connect(mapStateToProps)(PersonsPage);

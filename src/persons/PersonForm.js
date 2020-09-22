@@ -16,6 +16,7 @@ import {PercentageQuestion} from '../components/FormComponents/PercentageQuestio
 import {Question} from '../components/FormComponents/Question';
 import {TimePeriodQuestion} from '../components/FormComponents/TimePeriodQuestion';
 import {YesNoQuestion} from '../components/FormComponents/YesNoQuestion';
+import classNames from "classnames";
 import {
   anysEmpadronatInferiorAEdat,
   empadronamentABarcelonaInferiorAEmpadronamentACatalunya,
@@ -54,9 +55,10 @@ type Props = {
 
 const formName = 'PersonForm';
 
-let PersonForm = (props: Props) => {
-  const {
-    edat,
+let PersonFormComponent = (props: Props) => {
+  let {
+	form,
+	edat,
     esAturat,
     esDona,
     esFamiliarOUsuari,
@@ -75,7 +77,7 @@ let PersonForm = (props: Props) => {
     teAlgunGrauDeDiscapacitatReconegut,
     tipusDocumentIdentitat,
     treballaPerCompteDAltriParcial,
-    updating
+    updating,
   } = props;
   const buildTranslationContext = (items: Array<string>) => ({context: items.join('_')});
   const personDecider = () => isTheUserInFrontOfTheComputer ? 'second' : 'third';
@@ -483,7 +485,7 @@ let PersonForm = (props: Props) => {
                 </Grid>}
 
                 <Grid item>
-                  <Button variant='contained' color='primary' type='submit' name='ButtonValidar'>
+                  <Button className={classNames('hide-print')} variant='contained' color='primary' type='submit' name='ButtonValidar'>
                     <Trans i18nKey='validar'>Validar</Trans>
                   </Button>
                 </Grid>
@@ -495,16 +497,17 @@ let PersonForm = (props: Props) => {
   );
 };
 
-PersonForm = reduxForm({
+const PersonFormRedux = reduxForm({
   form: formName,
   onSubmitFail: (error) => {
-    focusFirstQuestionWithName(namefirstFieldWithError(error));
+	  console.log(error);
+	  focusFirstQuestionWithName(namefirstFieldWithError(error));
   }
-})(PersonForm);
+})(PersonFormComponent);
 
 const selector = formValueSelector(formName);
 
-PersonForm = withTranslation('translations')(connect(state => {
+const PersonForm = withTranslation('translations')(connect(state => {
   const edat = selector(state, 'edat');
   const esAturat = selector(state, 'situacio_laboral') === 'aturat';
   const esDona = selector(state, 'sexe') === 'dona';
@@ -548,6 +551,8 @@ PersonForm = withTranslation('translations')(connect(state => {
     tipusDocumentIdentitat,
     treballaPerCompteDAltriParcial
   };
-})(PersonForm));
+})(PersonFormRedux));
 
 export default PersonForm;
+
+export const PrintPersonForm = withTranslation('translations')(reduxForm()(PersonFormRedux));

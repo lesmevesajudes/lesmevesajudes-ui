@@ -162,7 +162,7 @@
     "seguent": "Següent",
     "anterior": "Anterior",
     "veure_resultats": "Veure resultats",
-    "nou_calcul": "Càlcul nou",
+    "nou_calcul": "Nova simulació",
     "premi_per_introduir_dades": "Persona {{nombre_persona}} - Prem aquí per a introduir la informació d'aquesta persona",
     "relacio_parentiu": "Relacions familiars",
     "relacio_parentiu_text_llarg": "<0>Infant en acolliment</0> L'acolliment familiar és una de les formes d'ajut i protecció a infants i adolescents que es troben en una situació familiar que fa que hagin de viure fora de la seva família. L'acolliment ofereix una alternativa a aquests infants. \n\nÉs una mesura temporal per oferir als infants el millor entorn possible per créixer fins que la seva família resolgui els problemes que li impedeixen ocupar-se'n. \n\nL'acolliment familiar d'un infant comporta confiar temporalment la guarda d'una persona menor a una família o persona sola, sense que hi hagi finalitat adoptiva. Cal un document acreditatiu.\n",
@@ -350,5 +350,6 @@
     "link_HA_005": "/lesmevesajudes/ca/ajudes/subvencions-al-pagament-de-lloguer",
     "link_HA_004": "/lesmevesajudes/ca/ajudes/prestacions-econòmiques-d’especial-urgència-al-pagament-de-deutes-del-lloguer",
     "link_GA_246": "/lesmevesajudes/ca/ajudes/targeta-rosa",
-    "link_GA_234": "/lesmevesajudes/ca/ajudes/vincles-bcn"
+    "link_GA_234": "/lesmevesajudes/ca/ajudes/vincles-bcn",
+    "result_error":"No s'ha pogut realitzar la simulació, provi més tard"
 }

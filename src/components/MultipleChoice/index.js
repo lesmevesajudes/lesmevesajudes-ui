@@ -44,6 +44,7 @@ const styles = theme => ({
 });
 
 
+
 type Props = {
   children: ChildrenArray<Element<typeof Choice>>,
   classes: Object,
@@ -56,7 +57,7 @@ const MultipleChoice = (props: Props) => {
   const { classes } = props;
   return React.Children.map(props.children, (child: Element<typeof Choice>) => {
     return cloneElement(child, {
-      className: child.props.value === props.currentState ? classNames(classes.button, classes.selected) : classes.button,
+      className: child.props.value === props.currentState ? classNames(classes.button, classes.selected, 'ajuntament-selected-choice') : classes.button,
       onClick: () => {
         props.optionSelected(child.props.value);
       },
