@@ -45,7 +45,7 @@ let StepperButtons = (props: Props) => {
                   onClick={() => window.location.reload()}
                   disabled={!buttonEnabled}>
             <Icon className={classes.leftIcon}>cached</Icon>
-            <Trans i18nKey='nou_calcul'>Nou càlcul</Trans>
+            <Trans i18nKey='nou_calcul'>Nova simulació</Trans>
           </Button>
           }
 
