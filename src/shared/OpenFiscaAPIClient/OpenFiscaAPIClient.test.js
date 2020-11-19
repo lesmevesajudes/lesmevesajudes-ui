@@ -100,7 +100,7 @@ describe('OpenFiscaAPIClient', () => {
                       "AE_230_01_mensual":
                           {
                             "2017-01":
-                                900
+                                0
                           }
                       ,
                       "AE_230_mensual":
@@ -320,7 +320,7 @@ describe('OpenFiscaAPIClient', () => {
                       "AE_230_01_mensual":
                           {
                             "2017-01":
-                                900
+                                0
                           }
                       ,
                       "AE_230_mensual":
@@ -534,7 +534,7 @@ describe('OpenFiscaAPIClient', () => {
                       "AE_230_mensual":
                           {
                             "2017-01":
-                                75
+                                0
                           }
                       ,
                       "EG_233_mensual":
@@ -742,7 +742,7 @@ describe('OpenFiscaAPIClient', () => {
                       "AE_230_mensual":
                           {
                             "2017-01":
-                                100
+                                0
                           }
                       ,
                       "EG_233_mensual":
