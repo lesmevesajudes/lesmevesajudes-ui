@@ -38,6 +38,14 @@ const possibleBenefits = [
     to: newDate(2018, 9, 14)
   },
   {
+    ID: 'TA_01_00_00',
+    name: <Trans i18nKey='TA_01_00_00_title'>T-16: Targeta de transport públic gratuïta per als nens i nenes de 4 a 16 anys.</Trans>,
+    amountText: <Trans i18nKey='TA_01_00_00_amount'>40€/mes</Trans>,
+    url: 'link_TA_01_00_00',
+    from: undefined,
+    to: undefined,
+  },
+  {
     ID: 'GE_051_04_mensual',
     name: <Trans i18nKey='GE_051_04_mensual_title'>Renda activa d'inserció aturats de llarga durada</Trans>,
     periode: <Trans i18nKey='mes'>mes</Trans>,

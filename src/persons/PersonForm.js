@@ -246,6 +246,9 @@ let PersonFormComponent = (props: Props) => {
                     <MenuItem value='barcelona'>
                       <Trans i18nKey='barcelona'>Barcelona</Trans>
                     </MenuItem>
+                    <MenuItem value='municipis_atm'>
+                      <Trans i18nKey='municipis_atm'>Altres municipis del sistema tarifari integrat de l'ATM</Trans>
+                    </MenuItem>
                     <MenuItem value='altres'>
                       <Trans i18nKey='altres_municipis_catalans'>Altres municipis catalans</Trans>
                     </MenuItem>

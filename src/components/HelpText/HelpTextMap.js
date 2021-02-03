@@ -257,6 +257,15 @@ const HelpTextMap = {
       </ul>
     </Trans>
   },
+  "municipi_empadronament": {
+    title: <Trans i18nKey='municipi_empadronament_actual'>Municipi d'empadronament</Trans>,
+    body: <Trans i18nKey='municipi_empadronament_actual_text_llarg'>
+    <p>El sistema tarifari integrat abraça un total de 296 municipis
+      i es divideix en sis corones i diferents sectors tarifaris.</p>
+      <a href="https://www.atm.cat/web/ca/zonificacio.php" target="_blank" rel="noopener noreferrer">Veure municipis</a>
+
+    </Trans>
+  },
   "titular_contracte_de_lloguer_id": {
     title: <Trans i18nKey='titular_contracte_de_lloguer'>Titular del contracte de lloguer</Trans>,
     body: <Trans i18nKey='titular_contracte_de_lloguer_text_llarg'>En cas que hi hagi més d'un titular escolliu-ne només

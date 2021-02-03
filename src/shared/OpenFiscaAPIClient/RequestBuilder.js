@@ -211,6 +211,7 @@ const personToOpenFiscaPerson = (person: Person) => ({
   GA_246_02: currentMonth(null),
   GA_234_01: currentMonth(null),
   GA_234_02: currentMonth(null),
+  TA_01_00_00: currentMonth(null),
 });
 
 export const buildRequest = (simulationData: SimulationData) => {
