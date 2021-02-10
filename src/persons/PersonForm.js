@@ -50,7 +50,8 @@ type Props = {
   teAlgunGrauDeDiscapacitatReconegut: Boolean,
   tipusDocumentIdentitat: Boolean,
   treballaPerCompteDAltriParcial: Boolean,
-  updating: Boolean
+  updating: Boolean,
+  tePrestacioContributivaOSubsidi: Boolean,
 };
 
 const formName = 'PersonForm';
@@ -77,6 +78,7 @@ let PersonFormComponent = (props: Props) => {
     teAlgunGrauDeDiscapacitatReconegut,
     tipusDocumentIdentitat,
     treballaPerCompteDAltriParcial,
+    tePrestacioContributivaOSubsidi,
     updating,
   } = props;
   const buildTranslationContext = (items: Array<string>) => ({context: items.join('_')});
@@ -392,6 +394,13 @@ let PersonFormComponent = (props: Props) => {
                       validate={[required]}
                       label={i18nKey('gaudeix_de_prestacio_contributiva_o_subsidi_desocupacio', personTranslationContext)}
                      />}
+                     {tePrestacioContributivaOSubsidi &&
+                     <YesNoQuestion
+                       formname={formName}
+                       name ='percep_prestacio_menys_de_950'
+                       validate={[required]}
+                       label={i18nKey('percep_prestacio_menys_de_950', personTranslationContext)}
+                      />}
 
                     {esFamiliarOUsuari && esAturat &&
                     <YesNoQuestion
@@ -400,6 +409,14 @@ let PersonFormComponent = (props: Props) => {
                       validate={[required]}
                       label={i18nKey('percep_prestacions_incompatibles_amb_la_feina', personTranslationContext)}
                      />}
+
+                    {(municipiEmpadronament === 'barcelona' || municipiEmpadronament === 'municipis_atm') && !tePrestacioContributivaOSubsidi &&
+                    <YesNoQuestion
+                      formname={formName}
+                      name ='percep_ajut_serveis_socials_municipals'
+                      validate={[required]}
+                      label={i18nKey('percep_ajut_serveis_socials_municipals', personTranslationContext)}
+                    />}
                   </Fragment>}
 
                   {esFamiliarOUsuari &&
@@ -530,6 +547,7 @@ const PersonForm = withTranslation('translations')(connect(state => {
   const teAlgunGrauDeDiscapacitatReconegut = selector(state, 'te_algun_grau_de_discapacitat_reconegut');
   const tipusDocumentIdentitat = selector(state, 'tipus_document_identitat');
   const treballaPerCompteDAltriParcial = selector(state, 'situacio_laboral') === 'treball_compte_daltri_jornada_parcial';
+  const tePrestacioContributivaOSubsidi = selector(state, 'gaudeix_de_prestacio_contributiva_o_subsidi_desocupacio');
   const helpTopic = state.helpSystem.currentHelpTopic;
 
   return {
@@ -552,7 +570,8 @@ const PersonForm = withTranslation('translations')(connect(state => {
     rol,
     teAlgunGrauDeDiscapacitatReconegut,
     tipusDocumentIdentitat,
-    treballaPerCompteDAltriParcial
+    treballaPerCompteDAltriParcial,
+    tePrestacioContributivaOSubsidi
   };
 })(PersonFormRedux));
 

@@ -15,6 +15,7 @@ export type Person = {
   es_orfe_dels_dos_progenitors: boolean;
   es_una_persona_divorciada: boolean;
   gaudeix_de_prestacio_contributiva_o_subsidi_desocupacio: boolean;
+  percep_prestacio_menys_de_950: boolean;
   grau_discapacitat: number;
   ha_treballat_a_l_estranger_6_mesos: boolean;
   ha_treballat_a_l_estranger_6_mesos_i_ha_retornat_en_els_ultims_12_mesos: boolean;
@@ -29,6 +30,7 @@ export type Person = {
   municipi_empadronament: string;
   nom: string;
   percep_prestacions_incompatibles_amb_la_feina: boolean;
+  percep_ajut_serveis_socials_municipals: boolean;
   porta_dos_anys_o_mes_empadronat_a_catalunya: boolean;
   relacio_parentiu: 'parella' | 'fill' | 'fillastre' | 'net' | 'infant_acollit' | 'pare' | 'avi' | 'sogre' | 'germa' | 'cunyat' | 'gendre' | 'altres' | 'cap';
   sexe: 'home' | 'dona';

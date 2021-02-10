@@ -46,6 +46,14 @@ const possibleBenefits = [
     to: undefined,
   },
   {
+    ID: 'TA_02_00_00',
+    name: <Trans i18nKey='TA_02_00_00_title'>T-Usual bonificada: Targeta de transport amb un descompte aplicat sobre el preu de compra habitual.</Trans>,
+    amountText: <Trans i18nKey='TA_02_00_00_amount'>30,05€/mes</Trans>,
+    url: 'link_TA_02_00_00',
+    from: undefined,
+    to: undefined,
+  },
+  {
     ID: 'GE_051_04_mensual',
     name: <Trans i18nKey='GE_051_04_mensual_title'>Renda activa d'inserció aturats de llarga durada</Trans>,
     periode: <Trans i18nKey='mes'>mes</Trans>,

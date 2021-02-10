@@ -67,24 +67,12 @@ const HelpTextMap = {
       Prestacions contributives
     </Trans>,
     body: <Trans i18nKey='gaudeix_de_prestacio_contributiva_o_subsidi_desocupacio_text_llarg'>
-      La concessió de les prestacions econòmiques generalment està supeditada a una relació jurídica prèvia amb la
-      Seguretat Social (acreditar un període mínim de cotització en determinats casos), sempre que es compleixin els
-      altres requisits exigits.
-      Dins de l'acció protectora del règim general i dels règims especials de la Seguretat Social,, s'inclouen les
-      pensions
-      següents:
-      <ul>
-        <li>Per jubilació: jubilació ordinària i jubilació anticipada .</li>
-        <li>Per incapacitat permanent: total, absoluta i gran invalidesa.</li>
-        <li>Per defunció: viduïtat, orfandat i a favor de familiars.</li>
-      </ul>
-      Dins de l'acció protectora de l'assegurança obligatòria de vellesa i invalidesa (SOVI), s'inclouen les pensions
-      següents:
-      <ul>
-        <li>Vellesa.</li>
-        <li>Invalidesa.</li>
-        <li>Viduïtat.</li>
-      </ul>
+    <Typography variant='subtitle1' gutterBottom>Quines són les principals prestacions contributives?</Typography>
+    <p>Atur, maternitat i paternitat, jubilació, incapacitat permanent i defunció.</p>
+    <p>Generalment estan supeditades al compliment d’un període mínim de cotització a la Seguretat Social, sempre que es compleixin els altres requisits exigits.</p>
+    <Typography variant='subtitle1' gutterBottom>Quins són els principals subsidis per desocupació?</Typography>
+    <p>Majors de 52 anys, esgotament de la prestació contributiva, insuficiència de cotització, fixes discontinus, subsidi extraordinari de desocupació (SED), alliberats de presó, emigrants retornats, entre d’altres.</p>
+    <p>Són ajudes assistencials que es concedeixen a persones demandants d’ocupació i amb manca d’ingressos.</p>
     </Trans>
   },
   "ha_participat_en_un_proces_de_mediacio": {

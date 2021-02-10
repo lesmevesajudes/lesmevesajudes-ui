@@ -260,6 +260,12 @@ describe('OpenFiscaAPIClient', () => {
                                 true
                           }
                       ,
+                      "percep_ajut_serveis_socials_municipals":
+                          {
+                            "2017-01":
+                                true
+                          }
+                      ,
                       "porta_dos_anys_o_mes_empadronat_a_catalunya":
                           {
                             "2017-01":
@@ -474,6 +480,12 @@ describe('OpenFiscaAPIClient', () => {
                                 true
                           }
                       ,
+                      "percep_ajut_serveis_socials_municipals":
+                          {
+                            "2017-01":
+                                true
+                          }
+                      ,
                       "porta_dos_anys_o_mes_empadronat_a_catalunya":
                           {
                             "2017-01":
@@ -676,6 +688,12 @@ describe('OpenFiscaAPIClient', () => {
                                 true
                           }
                       ,
+                      "percep_ajut_serveis_socials_municipals":
+                          {
+                            "2017-01":
+                                true
+                          }
+                      ,
                       "porta_dos_anys_o_mes_empadronat_a_catalunya":
                           {
                             "2017-01":
@@ -873,6 +891,12 @@ describe('OpenFiscaAPIClient', () => {
                           }
                       ,
                       "percep_prestacions_incompatibles_amb_la_feina":
+                          {
+                            "2017-01":
+                                true
+                          }
+                      ,
+                      "percep_ajut_serveis_socials_municipals":
                           {
                             "2017-01":
                                 true

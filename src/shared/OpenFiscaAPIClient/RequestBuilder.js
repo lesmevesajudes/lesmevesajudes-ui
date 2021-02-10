@@ -181,6 +181,7 @@ const personToOpenFiscaPerson = (person: Person) => ({
   es_divorciada_de_familia_reagrupada: currentMonth(person.es_una_persona_divorciada && person.membre_de_familia_reagrupada),
   grau_discapacitat: currentMonth(person.grau_discapacitat),
   ha_esgotat_prestacio_de_desocupacio: currentMonth(!person.gaudeix_de_prestacio_contributiva_o_subsidi_desocupacio),
+  percep_prestacio_menys_de_950: currentMonth(person.percep_prestacio_menys_de_950),
   ha_treballat_a_l_estranger_6_mesos: currentMonth(person.ha_treballat_a_l_estranger_6_mesos),
   ha_treballat_a_l_estranger_6_mesos_i_ha_retornat_en_els_ultims_12_mesos: currentMonth(
       person.ha_treballat_a_l_estranger_6_mesos_i_ha_retornat_en_els_ultims_12_mesos
@@ -192,6 +193,7 @@ const personToOpenFiscaPerson = (person: Person) => ({
   inscrit_com_a_demandant_docupacio_mes_de_12_mesos: currentMonth(person.inscrit_com_a_demandant_docupacio_mes_de_12_mesos),
   municipi_empadronament: currentMonth(person.municipi_empadronament),
   percep_prestacions_incompatibles_amb_la_feina: currentMonth(person.percep_prestacions_incompatibles_amb_la_feina),
+  percep_ajut_serveis_socials_municipals: currentMonth(person.percep_ajut_serveis_socials_municipals),
   porta_dos_anys_o_mes_empadronat_a_catalunya: currentMonth(person.porta_dos_anys_o_mes_empadronat_a_catalunya),
   sexe: currentMonth(person.sexe),
   situacio_laboral: currentMonth(person.situacio_laboral),
@@ -212,6 +214,7 @@ const personToOpenFiscaPerson = (person: Person) => ({
   GA_234_01: currentMonth(null),
   GA_234_02: currentMonth(null),
   TA_01_00_00: currentMonth(null),
+  TA_02_00_00: currentMonth(null),
 });
 
 export const buildRequest = (simulationData: SimulationData) => {
