@@ -40,7 +40,7 @@ const possibleBenefits = [
   {
     ID: 'TA_01_00_00',
     name: <Trans i18nKey='TA_01_00_00_title'>T-16: Targeta de transport públic gratuïta per als nens i nenes de 4 a 16 anys.</Trans>,
-    amountText: <Trans i18nKey='TA_01_00_00_amount'>40€/mes</Trans>,
+    amountText: <Trans i18nKey='TA_01_00_00_amount'>Bonificació valorada en 40 €/mes</Trans>,
     url: 'link_TA_01_00_00',
     from: undefined,
     to: undefined,
@@ -48,7 +48,7 @@ const possibleBenefits = [
   {
     ID: 'TA_02_00_00',
     name: <Trans i18nKey='TA_02_00_00_title'>T-Usual bonificada: Targeta de transport amb un descompte aplicat sobre el preu de compra habitual.</Trans>,
-    amountText: <Trans i18nKey='TA_02_00_00_amount'>30,05€/mes</Trans>,
+    amountText: <Trans i18nKey='TA_02_00_00_amount'>Bonificació valorada en 30,05 €/mes</Trans>,
     url: 'link_TA_02_00_00',
     from: undefined,
     to: undefined,
