@@ -14,6 +14,13 @@ const lastYearKey = moment().subtract(1, 'y').format('YYYY');
 const currentMonth = value => ({[currentDateKey]: value});
 const lastYear = value => ({[lastYearKey]: value});
 const seleccionaFamiliarsFinsASegonGrau = (persons: Array<Person>) => persons.filter((persona: Person) => persona.relacio_parentiu !== 'cap' && persona.relacio_parentiu !== 'altres').map((persona: Person) => persona.id);
+const seleccionaFamiliarsRai = (persons: Array<Person>) => persons.filter((persona: Person) =>
+    persona.is_the_person_in_front_of_the_computer === true || persona.relacio_parentiu === 'parella' || persona.relacio_parentiu === 'infant_acollit'
+    || (persona.relacio_parentiu === 'fill'
+        && (persona.edat < 26 || persona.te_algun_grau_de_discapacitat_reconegut)
+    ))
+    .map((persona: Person) => persona.id);
+
 const allPersonsIDs = (persons: Array<Person>) => persons.map((persona: Person) => persona.id);
 const esUnSustentadorConvivent = (sustentador: ?string) => typeof sustentador === 'string' && sustentador !== 'ningu_mes' && sustentador !== 'no_conviu';
 const areThereAny016Families = (custodies) => custodies.constructor === Object && Object.keys(custodies).filter((custodiaID: string) => (esUnSustentadorConvivent(custodies[custodiaID].primer) || esUnSustentadorConvivent(custodies[custodiaID].segon))).length > 0;
@@ -163,7 +170,16 @@ const createFamiliaFinsASegonGrau = (persons) => {
   let result = {};
   result[id] = {
     familiars: seleccionaFamiliarsFinsASegonGrau(persons),
-    no_familiars: seleccionaNoFamiliarsFinsASegonGrau(persons)
+    no_familiars: seleccionaNoFamiliarsFinsASegonGrau(persons),
+  };
+  return result;
+};
+
+const createFamiliaRai = (persons) => {
+  const id = createUUID();
+  let result = {};
+  result[id] = {
+    familiars: seleccionaFamiliarsRai(persons),
   };
   return result;
 };
@@ -248,10 +264,13 @@ export const buildRequest = (simulationData: SimulationData) => {
   const unitatsDeConvivencia = createUnitatDeConvivencia(simulationData.persons, simulationData.residence);
   const familiaFinsASegonGrau = createFamiliaFinsASegonGrau(serialize(simulationData.persons));
 
+  const familiarRai = createFamiliaRai(serialize(simulationData.persons));
+
   return {
     families: families,
     persones: {...personalData},
     unitats_de_convivencia: unitatsDeConvivencia,
-    families_fins_a_segon_grau: familiaFinsASegonGrau
+    families_fins_a_segon_grau: familiaFinsASegonGrau,
+    families_rai: familiarRai
   };
 };
