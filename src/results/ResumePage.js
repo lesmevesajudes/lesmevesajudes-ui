@@ -58,7 +58,7 @@ const ResumePage = (props) => {
 											<PrintPersonForm initialValues={person}
 												esFamiliarOUsuari={esFamiliarOUsuari}
 												edat = {person.edat}
-												esAturat = {person.situacio_laboral === 'person.aturat'}
+												esAturat = {person.situacio_laboral === 'aturat'}
 												esDona = {person.sexe === 'dona'}
 												esHome = {person.sexe === 'home'}
 												esFill = {person.relacio_parentiu === 'fill'}

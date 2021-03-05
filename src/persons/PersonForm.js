@@ -577,4 +577,4 @@ const PersonForm = withTranslation('translations')(connect(state => {
 
 export default PersonForm;
 
-export const PrintPersonForm = withTranslation('translations')(reduxForm()(PersonFormRedux));
+export const PrintPersonForm = withTranslation('translations')(PersonFormRedux);
