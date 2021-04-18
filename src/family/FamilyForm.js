@@ -28,7 +28,8 @@ import {
   esFill,
   esSustentador,
   personInFrontOfTheComputer,
-  personsByRelacioDeParentiu
+  personsByRelacioDeParentiu,
+  esPossibleFamiliaNumerosa,
 } from '../shared/selectorUtils';
 import {styles} from '../styles/theme';
 import {createFamilyName, toArray} from './createFamilyName';
@@ -41,6 +42,7 @@ type Props = {
   currentField: string,
   custodies: Object,
   esFamiliaNombrosa: boolean,
+  possibleFamiliaNumerosa: boolean,
   families: Array<Object>,
   fills: Map<PersonID, Person>,
   helpTopic: string,
@@ -63,6 +65,7 @@ const FamilyForm = (props: Props) => {
     persones,
     possiblesSustentadors,
     sustentadorsSolitarisAmbPossiblesParelles,
+    possibleFamiliaNumerosa,
     t
   } = props;
   return (
@@ -75,7 +78,17 @@ const FamilyForm = (props: Props) => {
             <Grid container direction='row' justify='space-around' alignItems='stretch' spacing={2}>
               <Grid item xs={11} md={6}>
                 <Grid container direction='column' alignItems='stretch' spacing={1}>
-                  {fills.valueSeq().map((infant: Person) =>
+                {possibleFamiliaNumerosa &&
+                  <Fragment>
+                    <YesNoQuestion
+                      formname={formName}
+                      name ={'disposa_de_carnet_familia_nombrosa'}
+                      validate={[required]}
+                      label='te_carnet_familia_numerosa'
+                    />
+                  </Fragment>
+                }
+                    {fills.valueSeq().map((infant: Person) =>
                       <Grid item xs={12} key={infant.id}>
                         <label>
                           <Typography gutterBottom>
@@ -168,7 +181,6 @@ const FamilyForm = (props: Props) => {
                           validate={[required]}
                           label='te_carnet_monoparental'
                         />}
-
                       </Fragment>
                   )}
                 </Grid>
@@ -223,6 +235,7 @@ function mapStateToProps(state) {
   const sustentadorsSolitaris = state.persons.filter((person: Person) => sustentadorsUnicsIDs.includes(person.id));
   const sustentadorsSolitarisAmbPossiblesParelles = sustentadorsSolitarisIPossiblesParelles(sustentadorsSolitaris, state.persons.toArray());
   const helpTopic = state.helpSystem.currentHelpTopic;
+  const possibleFamiliaNumerosa = esPossibleFamiliaNumerosa(state.persons);
 
   return {
     currentField: currentField,
@@ -235,6 +248,7 @@ function mapStateToProps(state) {
     possiblesSustentadors: state.persons.filter((person: Person) => esSustentador(person)),
     sustentadorsSolitarisAmbPossiblesParelles: sustentadorsSolitarisAmbPossiblesParelles,
     custodiesValues: state.family.custodiesValues,
+    possibleFamiliaNumerosa: possibleFamiliaNumerosa,
   };
 }
 

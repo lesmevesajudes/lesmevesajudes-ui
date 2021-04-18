@@ -20,6 +20,9 @@ const seleccionaFamiliarsRai = (persons: Array<Person>) => persons.filter((perso
         && (persona.edat < 26 || persona.te_algun_grau_de_discapacitat_reconegut)
     ))
     .map((persona: Person) => persona.id);
+    const seleccionaFamiliaNombrosa = (persons: Array<Person>) => persons.filter((persona: Person) =>
+        persona.is_the_person_in_front_of_the_computer === true || persona.relacio_parentiu === 'fill')
+        .map((persona: Person) => persona.id);
 
 const allPersonsIDs = (persons: Array<Person>) => persons.map((persona: Person) => persona.id);
 const esUnSustentadorConvivent = (sustentador: ?string) => typeof sustentador === 'string' && sustentador !== 'ningu_mes' && sustentador !== 'no_conviu';
@@ -184,6 +187,17 @@ const createFamiliaRai = (persons) => {
   return result;
 };
 
+const createFamiliaNombrosa = (persons, family) => {
+  const id = createUUID();
+  let result = {};
+  if (family.disposa_de_carnet_familia_nombrosa === true) {
+    result[id] = {
+      familiars: seleccionaFamiliaNombrosa(persons),
+    };
+  }
+  return result;
+};
+
 const personToOpenFiscaPerson = (person: Person) => ({
   anys_empadronat_a_barcelona: currentMonth(person.anys_empadronat_a_barcelona),
   beneficiari_de_prestacio_residencial: currentMonth(person.beneficiari_de_prestacio_residencial),
@@ -265,12 +279,13 @@ export const buildRequest = (simulationData: SimulationData) => {
   const familiaFinsASegonGrau = createFamiliaFinsASegonGrau(serialize(simulationData.persons));
 
   const familiarRai = createFamiliaRai(serialize(simulationData.persons));
-
+  const familiaNombrosa = createFamiliaNombrosa(serialize(simulationData.persons), simulationData.family);
   return {
     families: families,
     persones: {...personalData},
     unitats_de_convivencia: unitatsDeConvivencia,
     families_fins_a_segon_grau: familiaFinsASegonGrau,
-    families_rai: familiarRai
+    families_rai: familiarRai,
+    families_nombroses: familiaNombrosa
   };
 };

@@ -5,14 +5,14 @@ import FamilyForm from '../family/FamilyForm';
 import PersonsPage from '../persons/PersonsPage'
 import ResidenceForm from '../residence/ResidenceForm';
 import ResultsPage from '../results/ResultsPage';
-
+import { esPossibleFamiliaNumerosa } from '../shared/selectorUtils';
 export const areMenors = (persons) => {
 	const menors = persons.valueSeq().toArray().filter((persona) => persona.edat <= 16);
 	return menors.length > 0;
 }
 
 const shouldShowFamilyStep = (state) => {
-	return areMenors(state.persons);
+	return areMenors(state.persons) || esPossibleFamiliaNumerosa(state.persons);
 };
 
 export const steps = [
@@ -26,7 +26,7 @@ export const steps = [
   },
   {
     id: 'family',
-    label: <Trans i18nKey='families_amb_menors'>Families amb menors</Trans>,
+    label: <Trans i18nKey='families_nombroses_o_amb_menors'>Families nombroses o amb menors</Trans>,
     optional: true,
     shouldShowStep: shouldShowFamilyStep,
     validateFormToEnableNext: 'FamilyForm',
