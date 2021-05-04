@@ -289,12 +289,12 @@ let PersonFormComponent = (props: Props) => {
                       </MenuItem>
                       <MenuItem value='treball_compte_daltri_jornada_complerta'>
                         <Trans i18nKey='treball_per_compte_daltri'>
-                          Treball per compte d'altri jornada complerta
+                          Contracte de treball a jornada completa
                         </Trans>
                       </MenuItem>
                       <MenuItem value='treball_compte_daltri_jornada_parcial'>
                         <Trans i18nKey='altri_jornada_parcial'>
-                          Treball per compte d'altri jornada parcial
+                          Contracte de treball a jornada parcial
                         </Trans>
                       </MenuItem>
                       <MenuItem value='aturat'>
