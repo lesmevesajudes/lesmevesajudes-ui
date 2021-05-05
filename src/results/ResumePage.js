@@ -11,7 +11,7 @@ import {steps} from '../pages/Wizard.js';
 import {PrintPersonForm} from '../persons/PersonForm';
 import FormSubTitle from '../components/FormComponents/FormSubTitle';
 import {serialize} from '../persons/PersonsReducer';
-import {esFill} from '../shared/selectorUtils';
+import {esFill, esPossibleFamiliaNumerosa } from '../shared/selectorUtils';
 import {areMenors} from '../pages/Wizard.js';
 import {families016} from '../shared/OpenFiscaAPIClient/RequestBuilder';
 import {toArray} from '../family/createFamilyName';
@@ -82,7 +82,7 @@ const ResumePage = (props) => {
 						}
 					</Grid>
 
-					{areMenors(persons) &&
+					{(areMenors(persons) || esPossibleFamiliaNumerosa(persons)) &&
 						<Grid className="page-step printable-only">
 							<PrintStepsComponent steps={printSteps} buttonVisible={false} step={1}/>
 							<PrintFamilyForm custodies = {custodies}
@@ -93,6 +93,7 @@ const ResumePage = (props) => {
 							    possiblesSustentadors = {persons.filter((person: Person) => esSustentador(person))}
 							    sustentadorsSolitarisAmbPossiblesParelles = {sustentadorsSolitarisAmbPossiblesParelles}
 							    custodiesValues = {family.custodiesValues}
+									possibleFamiliaNumerosa = {esPossibleFamiliaNumerosa(persons)}
 								form="PrintFamilyForm"/>
 						</Grid>
 					}
