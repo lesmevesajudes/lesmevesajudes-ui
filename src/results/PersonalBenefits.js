@@ -87,7 +87,7 @@ const possibleBenefits = [
   {
     ID: 'GG_270_mensual',
     name: <Trans i18nKey='GG_270_mensual_title'>Renda garantida ciutadana</Trans>,
-    doNotShowAmount: true,
+    amountText: <Trans i18nKey='GG_270_import'>Import segons el nombre de membres de la unitat familiar</Trans>,
     url: 'link_GG_270',
     from: undefined,
     to: undefined,
