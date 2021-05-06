@@ -69,8 +69,8 @@ const possibleBenefits = [
     amountText: <Trans i18nKey='HE_077_00_import'>Fins a 200 € /mes</Trans>,
     conditions: <Trans i18nKey='maxim_12_mesos'>Màxim 12 mesos</Trans>,
     url: 'link_HE_077_00',
-    from: newDate(2018, 5, 19),
-    to: newDate(2018, 6, 29)
+    from: newDate(2021, 4, 27),
+    to: newDate(2021, 6, 4)
   },
 ];
 
