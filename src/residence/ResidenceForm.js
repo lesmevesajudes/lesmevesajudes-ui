@@ -119,7 +119,6 @@ const ResidenceForm = (props: Props) => {
                       <Trans i18nKey='habitatge_en_cessio_dus'>
                         Visc en un habitatge en cessió d'ús
                       </Trans>
-                      &nbsp;&nbsp;<Icon>info</Icon>
                     </MenuItem>
                     <MenuItem value='altres'><Trans i18nKey='altres'>Altres</Trans></MenuItem>
                   </MultipleAnswerQuestion>
