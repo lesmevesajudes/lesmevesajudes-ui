@@ -14,10 +14,10 @@ const possibleBenefits = [
     name: <Trans i18nKey='AE_230_mensual_title'>Fons extraordinari d’ajuts d’emergència social per a infants de 0 a
       16 anys</Trans>,
     periode: <Trans i18nKey='mes'>mes</Trans>,
-    conditions: <Trans i18nKey='maxim_8_mesos'>màxim 8 mesos</Trans>,
+    amountText: <Trans i18nKey='maxim_6_mesos'>ajuda mensual, màxim 6 mesos</Trans>,
     url: 'link_AE_230',
-    from: newDate(2019, 4, 25),
-    to: newDate(2019, 5, 24)
+    from: newDate(2021, 6, 1),
+    to: newDate(2021, 12, 31)
   },
   {
     ID: 'AE_230_01_mensual',
