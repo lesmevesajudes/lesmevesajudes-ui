@@ -70,7 +70,7 @@ const possibleBenefits = [
     conditions: <Trans i18nKey='maxim_12_mesos'>Màxim 12 mesos</Trans>,
     url: 'link_HE_077_00',
     from: newDate(2021, 4, 27),
-    to: newDate(2021, 6, 4)
+    to: newDate(2021, 6, 11)
   },
 ];
 
