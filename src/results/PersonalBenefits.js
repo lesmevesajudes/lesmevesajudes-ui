@@ -94,7 +94,7 @@ const possibleBenefits = [
   },
   {
     ID: 'GA_246_01',
-    name: <Trans i18nKey='GA_246_01_title'>Targeta rosa</Trans>,
+    name: <Trans i18nKey='GA_246_01_title'>Targeta rosa metropolitana</Trans>,
     url: 'link_GA_246',
     amountText: <Trans i18nKey='GA_246_01_import'>Gratuïta</Trans>,
     from: undefined,
@@ -102,7 +102,7 @@ const possibleBenefits = [
   },
   {
     ID: 'GA_246_02',
-    name: <Trans i18nKey='GA_246_02_title'>Targeta rosa</Trans>,
+    name: <Trans i18nKey='GA_246_02_title'>Targeta rosa metropolitana</Trans>,
     url: 'link_GA_246',
     amountText: <Trans i18nKey='GA_246_02_import'>Reduïda</Trans>,
     from: undefined,
