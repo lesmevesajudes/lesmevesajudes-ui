@@ -156,6 +156,7 @@ const residenceDataToAPI = (residenceData: ResidenceData) => ({
   HG_077_04: currentMonth(null),
   HG_077_04_01: currentMonth(null),
   HE_077_00: currentMonth(null),
+  HE_02_01_00: currentMonth(null),
 });
 
 const createUnitatDeConvivencia = (persons, residenceData) => {

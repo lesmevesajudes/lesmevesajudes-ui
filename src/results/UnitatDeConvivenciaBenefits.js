@@ -72,6 +72,14 @@ const possibleBenefits = [
     from: newDate(2021, 4, 27),
     to: newDate(2021, 6, 11)
   },
+  {
+   ID: 'HE_02_01_00',
+   name: <Trans i18nKey='HE_02_01_00_title'>Subvencions per al pagament del lloguer per a persones grans</Trans>,
+   url: 'link_HE_02_01_00',
+   amountText: <Trans i18nKey='HE_02_01_00_import'>Entre 20 i 200€/mes</Trans>,
+   from: undefined,
+   to: newDate(2021, 4, 30)
+  }
 ];
 
 const UnitatDeConvivenciaBenefits = (props: UnitatDeConvivenciaBenefitsProps) => {
