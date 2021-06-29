@@ -99,7 +99,7 @@ const ResultsComponent = (props: Props) => {
 						 	Nota: Algunes de les ajudes publicades al simulador es poden sol·licitar tot l'any,
 							però d'altres es convoquen en períodes limitats. Per conèixer en detall les característiques,
 							els requisits i per obtenir més informació sobre les ajudes i la seva tramitació,
-							et recomanem que consultis el <a href={t('link_llistat_ajudes')} target="_blank">llistat d'ajudes</a> i que visitis els webs a on es tramita cadascuna de les ajudes.
+							et recomanem que consultis el <a href={t('link_llistat_ajudes')} target="_blank" rel="noopener noreferrer">llistat d'ajudes</a> i que visitis els webs a on es tramita cadascuna de les ajudes.
 						 </Trans>
 					 </Typography>
 				 </Grid>
