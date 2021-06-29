@@ -1,6 +1,6 @@
 import {Grid, Typography, withStyles} from '@material-ui/core';
 import React from 'react';
-import {Trans} from 'react-i18next';
+import {Trans, useTranslation} from 'react-i18next';
 import {connect} from 'react-redux';
 import classNames from "classnames";
 import {AppFormContainer, AppFormTitle} from '../components/AppForms';
@@ -24,6 +24,7 @@ type Props = {
 }
 
 const ResultsComponent = (props: Props) => {
+	const { t } = useTranslation();
 	const {classes, resultsData, persons,simulationID,initialSimulationId, period} = props;
 	return (
     <AppFormContainer >
@@ -87,6 +88,23 @@ const ResultsComponent = (props: Props) => {
 	          </Typography>
 	        </Grid>
 	      </Grid>}
+
+				<Grid container justify='center' alignItems='center' className={classNames(classes.ItemResult, 'grid-flex-force')}>
+				 <Grid item container xs={1} justify='center' alignItems='center' className={classNames('grid-flex-force')}>
+					 <InfoOutlinedIcon className={classes.darkGrayText}>info</InfoOutlinedIcon>
+				 </Grid>
+				 <Grid item  xs={11}>
+					 <Typography className={classes.ResultsBenefitText}>
+						 <Trans i18nKey='nota_resultat'>
+						 	Nota: Algunes de les ajudes publicades al simulador es poden sol·licitar tot l'any,
+							però d'altres es convoquen en períodes limitats. Per conèixer en detall les característiques,
+							els requisits i per obtenir més informació sobre les ajudes i la seva tramitació,
+							et recomanem que consultis el <a href={t('link_llistat_ajudes')} target="_blank">llistat d'ajudes</a> i que visitis els webs a on es tramita cadascuna de les ajudes.
+						 </Trans>
+					 </Typography>
+				 </Grid>
+			 </Grid>
+
 	    </ResultsContainer>
     </AppFormContainer>)
 };
