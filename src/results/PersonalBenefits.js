@@ -34,8 +34,8 @@ const possibleBenefits = [
     name: <Trans i18nKey='EG_233_mensual_title'>Beques menjador escolar de Barcelona</Trans>,
     amountText: <Trans i18nKey='EG_233_mensual_amount'>Entre 3 - 6 €/dia</Trans>,
     url: 'link_EG_233',
-    from: newDate(2018, 9, 3),
-    to: newDate(2018, 9, 14)
+    from: newDate(2021, 9, 6),
+    to: newDate(2021, 9, 17)
   },
   {
     ID: 'TA_01_00_00',
