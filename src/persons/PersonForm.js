@@ -48,6 +48,7 @@ type Props = {
   portaDosAnysOMesEmpadronatACatalunya: Boolean,
   rol: PersonRole,
   teAlgunGrauDeDiscapacitatReconegut: Boolean,
+  teAlgunGrauDeDependenciaReconegut: Boolean,
   tipusDocumentIdentitat: Boolean,
   treballaPerCompteDAltriParcial: Boolean,
   updating: Boolean,
@@ -76,6 +77,7 @@ let PersonFormComponent = (props: Props) => {
     potTreballar,
     portaDosAnysOMesEmpadronatACatalunya,
     teAlgunGrauDeDiscapacitatReconegut,
+    teAlgunGrauDeDependenciaReconegut,
     tipusDocumentIdentitat,
     treballaPerCompteDAltriParcial,
     tePrestacioContributivaOSubsidi,
@@ -321,6 +323,15 @@ let PersonFormComponent = (props: Props) => {
                         <Trans i18nKey='altres_situacions'>Altres situacions</Trans>
                       </MenuItem>
                     </MultipleAnswerQuestion>
+
+                    {potTreballar &&
+                    <YesNoQuestion
+                      formname={formName}
+                      name ='es_troba_en_erto'
+                      validate={[required]}
+                      label={i18nKey('es_troba_en_erto', personTranslationContext)}
+                     />}
+
                     {esFamiliarOUsuari && esAturat &&
                     <Fragment>
                       <YesNoQuestion
@@ -437,6 +448,36 @@ let PersonFormComponent = (props: Props) => {
                       label='grau_discapacitat'
                     />}
 
+                    <YesNoQuestion
+                      formname={formName}
+                      name ='te_algun_grau_de_dependencia_reconegut'
+                      validate={[required]}
+                      label={i18nKey('te_algun_grau_de_dependencia_reconegut', personTranslationContext)}
+                    />
+                    {teAlgunGrauDeDependenciaReconegut &&
+                    <MultipleAnswerQuestion
+                        formname={formName}
+                        name='grau_dependencia'
+                        label='grau_dependencia'
+                        validate={[required]}>
+                      <MenuItem value={1}>
+                        <Trans i18nKey='dependencia_grau_1'>
+                          Grau I (Dependència moderada)
+                        </Trans>
+                      </MenuItem>
+                      <MenuItem value={2}>
+                        <Trans i18nKey='dependencia_grau_2'>
+                          Grau II (Dependència severa)
+                        </Trans>
+                      </MenuItem>
+                      <MenuItem value={3}>
+                        <Trans i18nKey='dependencia_grau_3'>
+                          Grau III (Gran dependència)
+                        </Trans>
+                      </MenuItem>
+                    </MultipleAnswerQuestion>
+                    }
+
                     {potTreballar && esDona &&
                     <YesNoQuestion
                       formname={formName}
@@ -545,6 +586,7 @@ const PersonForm = withTranslation('translations')(connect(state => {
   const portaDosAnysOMesEmpadronatACatalunya = selector(state, 'porta_dos_anys_o_mes_empadronat_a_catalunya');
   const rol = selector(state, 'rol');
   const teAlgunGrauDeDiscapacitatReconegut = selector(state, 'te_algun_grau_de_discapacitat_reconegut');
+  const teAlgunGrauDeDependenciaReconegut = selector(state, 'te_algun_grau_de_dependencia_reconegut');
   const tipusDocumentIdentitat = selector(state, 'tipus_document_identitat');
   const treballaPerCompteDAltriParcial = selector(state, 'situacio_laboral') === 'treball_compte_daltri_jornada_parcial';
   const tePrestacioContributivaOSubsidi = selector(state, 'gaudeix_de_prestacio_contributiva_o_subsidi_desocupacio');
@@ -569,6 +611,7 @@ const PersonForm = withTranslation('translations')(connect(state => {
     portaDosAnysOMesEmpadronatACatalunya,
     rol,
     teAlgunGrauDeDiscapacitatReconegut,
+    teAlgunGrauDeDependenciaReconegut,
     tipusDocumentIdentitat,
     treballaPerCompteDAltriParcial,
     tePrestacioContributivaOSubsidi

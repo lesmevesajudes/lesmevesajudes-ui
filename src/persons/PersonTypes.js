@@ -17,6 +17,7 @@ export type Person = {
   gaudeix_de_prestacio_contributiva_o_subsidi_desocupacio: boolean;
   percep_prestacio_menys_de_950: boolean;
   grau_discapacitat: number;
+  grau_dependencia: number;
   ha_treballat_a_l_estranger_6_mesos: boolean;
   ha_treballat_a_l_estranger_6_mesos_i_ha_retornat_en_els_ultims_12_mesos: boolean;
   id: PersonID;
@@ -36,6 +37,7 @@ export type Person = {
   sexe: 'home' | 'dona';
   situacio_laboral: string;
   te_algun_grau_de_discapacitat_reconegut: boolean;
+  te_algun_grau_de_dependencia_reconegut: boolean;
   tipus_document_identitat: string;
   victima_violencia_de_genere: boolean;
   victima_violencia_domestica: boolean;

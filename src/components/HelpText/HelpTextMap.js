@@ -220,6 +220,17 @@ const HelpTextMap = {
       </ul>
     </Trans>
   },
+  "te_algun_grau_de_dependencia_reconegut": {
+    title: <Trans i18nKey='grau_de_dependencia'>Grau de dependència</Trans>,
+    body: <Trans i18nKey='grau_de_dependencia_text_llarg'>
+    La dependència és un estat de caràcter permanent en què es troben les persones que, per raons derivades de l'edat,
+    la malaltia o la discapacitat i relacionades amb la manca o pèrdua d'autonomia física, mental, intel·lectual o sensorial,
+    necessiten l'atenció d'una altra persona o ajuts importants per realitzar les activitats bàsiques de la vida diària.
+    <br/>
+    El reconeixement oficial de la situació de dependència en algun dels graus establerts és un requisit bàsic per accedir
+    a les prestacions econòmiques i de serveis socials reconegudes per la Llei de la dependència.
+    </Trans>
+  },
   "tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit": {
     title: <Trans i18nKey='tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit'>Usdefruit</Trans>,
     body: <Trans i18nKey='tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit_text_llarg'>

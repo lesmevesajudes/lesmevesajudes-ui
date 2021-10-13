@@ -79,7 +79,17 @@ const possibleBenefits = [
    amountText: <Trans i18nKey='HE_02_01_00_import'>Entre 20 i 200€/mes</Trans>,
    from: undefined,
    to: newDate(2021, 4, 30)
-  }
+ },
+  {
+   ID: 'HG_02_00_00',
+   name: <Trans i18nKey='HG_02_00_00_title'>Prestacions econòmiques d’especial urgència, per afrontar situacions d’emergència en
+l’àmbit de l’habitatge.</Trans>,
+   url: 'link_HG_02_00_00',
+   amountText: <Trans i18nKey='HG_02_00_00_import'>Fins a 4500€</Trans>,
+   conditions: <Trans i18nKey='maxim_12_mesos'>Màxim 12 mesos</Trans>,
+   from: undefined,
+   to: undefined,
+ }
 ];
 
 const UnitatDeConvivenciaBenefits = (props: UnitatDeConvivenciaBenefitsProps) => {
