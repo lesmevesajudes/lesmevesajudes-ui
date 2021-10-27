@@ -1,9 +1,9 @@
 import {Grid, Typography, withStyles} from '@material-ui/core';
 import React from 'react';
 import {Trans, withTranslation} from 'react-i18next';
-import {newDate} from '../shared/dateUtils';
 import {styles} from '../styles/theme';
 import BenefitRow, {NoBenefitRow} from './BenefitRow';
+import {getBenefits} from "../shared/benefits";
 
 type UnitatDeConvivenciaBenefitsProps = {
   classes: Object,
@@ -12,86 +12,9 @@ type UnitatDeConvivenciaBenefitsProps = {
   unitatDeConvivencia: Object,
 };
 
-const possibleBenefits = [
-  {
-    ID: 'HA_077_01',
-    name: <Trans i18nKey='HA_077_01_title'>Prestacions econòmiques d'urgència social derivades de la mediació a
-      Barcelona</Trans>,
-    url: 'link_HA_077_01',
-    amountText: <Trans i18nKey='HA_077_01_import'>Fins a 300 € /mes</Trans>,
-    conditions: <Trans i18nKey='maxim_12_mesos'>Màxim 12 mesos</Trans>,
-    from: newDate(2019, 2, 20),
-    to: newDate(2019, 12, 5)
-  },
-  {
-    ID: 'HG_077_02',
-    name: <Trans i18nKey='HG_077_02_title'>Prestacions econòmiques d’especial urgència davant la pèrdua de l’habitatge
-      per desnonament o execució hipotecària</Trans>,
-    amountText: <Trans i18nKey='HG_077_02_import'>Fins a 200 € /mes</Trans>,
-    conditions: <Trans i18nKey='maxim_12_mesos'>Màxim 12 mesos</Trans>,
-    url: 'link_HG_077_02',
-    from: undefined,
-    to: undefined
-  },
-  {
-    ID: 'HG_077_03',
-    name: <Trans i18nKey='HG_077_03_title'>Prestacions econòmiques d’especial urgència per al pagament de quotes
-      d'amortització hipotecària</Trans>,
-    amountText: <Trans i18nKey='HG_077_03_import'>Fins a 3000 € /any</Trans>,
-    conditions: <Trans i18nKey='pagament_unic'>pagament únic</Trans>,
-    url: 'link_HG_077_03',
-    from: undefined,
-    to: undefined
-  },
-  {
-    ID: 'HG_077_04',
-    name: <Trans i18nKey='HG_077_04_title'>Prestacions econòmiques d’especial urgència per al pagament de deutes del
-      lloguer</Trans>,
-    amountText: <Trans i18nKey='HG_077_04_import'>Fins a 3000 € /any</Trans>,
-    conditions: <Trans i18nKey='pagament_unic'>pagament únic</Trans>,
-    url: 'link_HG_077_04',
-    from: undefined,
-    to: undefined
-  },
-  {
-    ID: 'HG_077_04_01',
-    name: <Trans i18nKey='HG_077_04_01_title'>Ajut complementari a les prestacions econòmiques d’especial urgència per
-      al pagament de deutes del lloguer</Trans>,
-    amountText: <Trans i18nKey='HG_077_04_01_import'>Fins a 200 € /mes</Trans>,
-    conditions: <Trans i18nKey='maxim_12_mesos'>Màxim 12 mesos</Trans>,
-    url: 'link_HG_077_04',
-    from: undefined,
-    to: undefined
-  },
-  {
-    ID: 'HE_077_00',
-    name: <Trans i18nKey='HE_077_00_title'>Subvencions de pagament de lloguer</Trans>,
-    amountText: <Trans i18nKey='HE_077_00_import'>Fins a 200 € /mes</Trans>,
-    conditions: <Trans i18nKey='maxim_12_mesos'>Màxim 12 mesos</Trans>,
-    url: 'link_HE_077_00',
-    from: newDate(2021, 4, 27),
-    to: newDate(2021, 6, 11)
-  },
-  {
-   ID: 'HE_02_01_00',
-   name: <Trans i18nKey='HE_02_01_00_title'>Subvencions per al pagament del lloguer per a persones grans</Trans>,
-   url: 'link_HE_02_01_00',
-   amountText: <Trans i18nKey='HE_02_01_00_import'>Entre 20 i 200€/mes</Trans>,
-   from: undefined,
-   to: newDate(2021, 4, 30)
- },
-  {
-   ID: 'HG_02_00_00',
-   name: <Trans i18nKey='HG_02_00_00_title'>Prestacions econòmiques d’especial urgència, per afrontar el pagament de quotes de lloguer per COVID-19</Trans>,
-   url: 'link_HG_02_00_00',
-   amountText: <Trans i18nKey='HG_02_00_00_import'>Fins a 4500€</Trans>,
-   conditions: <Trans i18nKey='maxim_12_mesos'>Màxim 12 mesos</Trans>,
-   from: undefined,
-   to: undefined,
- }
-];
-
 const UnitatDeConvivenciaBenefits = (props: UnitatDeConvivenciaBenefitsProps) => {
+
+    const possibleBenefits = getBenefits('household');
 
   function hasAnyBenefit(unitatDeConvivencia, period) {
     return typeof unitatDeConvivencia === 'undefined'
