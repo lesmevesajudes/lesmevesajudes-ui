@@ -82,8 +82,7 @@ const possibleBenefits = [
  },
   {
    ID: 'HG_02_00_00',
-   name: <Trans i18nKey='HG_02_00_00_title'>Prestacions econòmiques d’especial urgència, per afrontar situacions d’emergència en
-l’àmbit de l’habitatge.</Trans>,
+   name: <Trans i18nKey='HG_02_00_00_title'>Prestacions econòmiques d’especial urgència, per afrontar el pagament de quotes de lloguer per COVID-19</Trans>,
    url: 'link_HG_02_00_00',
    amountText: <Trans i18nKey='HG_02_00_00_import'>Fins a 4500€</Trans>,
    conditions: <Trans i18nKey='maxim_12_mesos'>Màxim 12 mesos</Trans>,
