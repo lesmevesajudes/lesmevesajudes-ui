@@ -14,6 +14,8 @@ function getModalStyle() {
   return {
     top: `${top}%`,
     left: `${left}%`,
+    maxHeight: '100%',
+    overflowY: 'auto',
     transform: `translate(-${top}%, -${left}%)`,
   };
 }
