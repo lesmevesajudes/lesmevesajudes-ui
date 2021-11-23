@@ -291,7 +291,7 @@ const ResidenceForm = (props: Props) => {
                     </MenuItem>
                   </MultipleAnswerQuestion>}
 
-                  {existeixDeutePagamentLloguer &&
+                  {esLlogater &&
                   <YesNoQuestion
                     formname={formName}
                     name ='ha_pagat_almenys_3_quotes_del_lloguer'
