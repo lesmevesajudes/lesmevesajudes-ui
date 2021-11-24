@@ -32,7 +32,7 @@ const store = configureStore(preloadedState);
 class App extends Component {
 
   initialize_matomo = () => {
-		{/* Matomo */}
+		/* Matomo */
 		var _paq = window._paq || [];
         /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
         _paq.push(['trackPageView']);
@@ -51,7 +51,7 @@ class App extends Component {
             s.parentNode.insertBefore(g,s);
           })();
 
-    	{/* End Matomo Code */}
+    	/* End Matomo Code */
 	}
 
 	componentDidMount() {

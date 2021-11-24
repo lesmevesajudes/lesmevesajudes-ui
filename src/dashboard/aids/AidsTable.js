@@ -35,7 +35,7 @@ const AidsTable = (props: Props) => {
   if (props.aids) {
     allAids = props.aids.filter(aid => aid.active === (props.filter ? props.filter.active: true))
         .filter(aid => props.filter && props.filter.admin && props.filter.admin.length > 0 ? aid.ambit === props.filter.admin : true)
-        .filter(aid => !aid.data_inici || props.filter && aid.data_inici && aid.data_inici <= props.filter.date)
+        .filter(aid => !aid.data_inici || (props.filter && aid.data_inici && aid.data_inici <= props.filter.date))
     ;
     paginatedAids = allAids.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
   }
