@@ -1,5 +1,5 @@
 import axios from 'axios/index';
-import {AIDS_URL, DASHBOARD_URL, DASHBOARD_COUNT_EDITED, SIMULATION_STORE_AUTH_TOKEN} from '../config';
+import {DASHBOARD_URL, DASHBOARD_COUNT_EDITED, SIMULATION_STORE_AUTH_TOKEN} from '../config';
 import {SHOW_DASHBOARD_CHARTS, SHOW_DASHBOARD_AIDS, SHOW_DASHBOARD_EDITED_COUNT, SHOW_DASHBOARD_SIMULATIONS} from './DashboardReducer';
 import {FilterType} from './DashboardTypes';
 import {
@@ -22,6 +22,8 @@ import {
     prop,
     sortWith,
     values } from 'ramda';
+import {getBenefits} from "../shared/benefits";
+import i18n from '../i18n';
 
 export const RETRIEVE_DASHBOARD_ERROR = 'RETRIEVE_DASHBOARD_ERROR';
 export const TIMED_OUT_DASHBOARD = 'TIMED_OUT_DASHBOARD';
@@ -134,26 +136,24 @@ const collectRecalculatedSimulationsByMonth = (results: List) => compose(
                                                                   filter(isRecalculated),
                                                                   filter(isCurrentYearResult))(results)
 
-export const retrieveAids = () => dispatch => {
-  axios.get(AIDS_URL, {headers: {'Authentication-Token': SIMULATION_STORE_AUTH_TOKEN}}).then(response => {
-  		if (response.status === 210) {
-  			return dispatch({
-  				type: RETRIEVE_DASHBOARD_ERROR,
-  	      payload: TIMED_OUT_DASHBOARD,
-  			});
-  		}
-      return dispatch ({
-        type: SHOW_DASHBOARD_AIDS,
-        aids: response.data.aids,
-      });
 
-      }).catch(error => {
-        console.log(JSON.stringify(error, null, 2));
-      //dispatch({
-      //  type: RETRIEVE_SIMULATION_ERROR,
-      //  payload: RETRIEVE_SIMULATION_ERROR,
-      //});
-      });
+const transformAid = ({ ID, name, from, to, type, ...rest }) => ({
+    codi: ID,
+    descripcio: name,
+    data_inici: from,
+    data_fi: to,
+    tipus: i18n.t(type),
+    ambit: null,
+    active: isNil(to) || to > new Date(),
+    ...rest,
+});
+
+export const retrieveAids = () => dispatch => {
+    const aids = getBenefits();
+    return dispatch ({
+        type: SHOW_DASHBOARD_AIDS,
+        aids: map(transformAid, aids),
+    });
 }
 
 export const retrieveResults = (fromDate: Date, untilDate: Date) => async dispatch =>   {

@@ -12,8 +12,10 @@ export default function(
     case AIDS_DASHBOARD_FILTER:
       return {
         ...state,
-        filter : action.filter,
-        date: action.selectedDate
+        filter : {
+          ...action.filter,
+          date: action.selectedDate,
+        },
     }
   default:
     return state;

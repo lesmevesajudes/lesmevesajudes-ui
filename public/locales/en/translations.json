@@ -323,4 +323,6 @@
   "personForm.nom_": "__NOT_TRANSLATED__",
   "personForm.nom_second": "__NOT_TRANSLATED__",
   "result_error":"Simulation could not be done, try it later",
+  "personal": "Personal",
+  "housing": "Housing"
 }

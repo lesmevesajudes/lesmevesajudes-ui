@@ -386,7 +386,9 @@
     "link_TA_02_00_00": "https://www.tmb.cat/es/tarifas-metro-bus-barcelona/sencillos-e-integrados/t-usual-bonificada",
     "result_error":"No se ha podido realizar la simulación, pruebe más tarde",
     "nota_resultat":"Nota: Alguna de las ayudas publicadas en el simulador se pueden solicitar durante todo el año, pero otras se convocan en periodos limitados. Para conocer el detalle de las características, requisitos y para obtener más información sobre las ayudas y su tramitación, te recomendamos que consultes el <1>listado de ayudas</1> y que visites las webs donde se tramitan las mismas.",
-    "link_llistat_ajudes": "lesmevesajudes/es/listado-de-ayudas"
+    "link_llistat_ajudes": "lesmevesajudes/es/listado-de-ayudas",
     "simulation.true":"Positives",
-    "simulation.false":"Negatives"
+    "simulation.false":"Negatives",
+    "personal": "Personal",
+    "housing": "Vivienda"
 }

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Paper, Table, TableBody, TableFooter, TableCell, TableContainer, TableHead, TableRow, TablePagination } from '@material-ui/core';
-import {useTranslation} from 'react-i18next';
 import CheckCircleRoundedIcon from '@material-ui/icons/CheckCircleRounded';
 import CancelRounded from '@material-ui/icons/CancelRounded';
 import {FilterType} from './AidsDashboardTypes';
@@ -8,6 +7,7 @@ import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import Button from '@material-ui/core/Button';
 import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf';
+import {dateToString} from "../../shared/dateUtils";
 
 
 type Props = {
@@ -17,8 +17,6 @@ type Props = {
 }
 
 const AidsTable = (props: Props) => {
-
-  const {t} = useTranslation('dashboard');
 
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(20);
@@ -32,15 +30,13 @@ const AidsTable = (props: Props) => {
    setPage(0);
   };
 
-  const getAidTimeStamp = aid => parseInt(aid.data_inici.substring(0,4)) + parseInt(aid.data_inici.substring(5,7))
-  const getFilterTimeStamp = date => date.getFullYear() + date.getMonth() + 1
-
   var allAids = []
   var paginatedAids = [];
   if (props.aids) {
     allAids = props.aids.filter(aid => aid.active === (props.filter ? props.filter.active: true))
-                      .filter(aid => props.filter && props.filter.admin ? aid.ambit === props.filter.admin : true)
-                      .filter(aid => props.filter && !aid.data_fi && aid.data_inici && getFilterTimeStamp(props.date) >= getAidTimeStamp(aid));
+        .filter(aid => props.filter && props.filter.admin && props.filter.admin.length > 0 ? aid.ambit === props.filter.admin : true)
+        .filter(aid => !aid.data_inici || props.filter && aid.data_inici && aid.data_inici <= props.filter.date)
+    ;
     paginatedAids = allAids.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
   }
 
@@ -78,11 +74,11 @@ const AidsTable = (props: Props) => {
           <TableBody>
             {props.aids &&
               paginatedAids.map((aid) => (
-              <TableRow key={aid.code}>
+              <TableRow key={aid.codi}>
                 <TableCell component="th" scope="row">{aid.codi}</TableCell>
                 <TableCell component="th" scope="row">{aid.descripcio}</TableCell>
-                <TableCell component="th" scope="row">{aid.data_inici ? aid.data_inici : '-'}</TableCell>
-                <TableCell component="th" scope="row">{aid.data_fi ? aid.data_fi : '-'}</TableCell>
+                <TableCell component="th" scope="row">{aid.data_inici ? dateToString(aid.data_inici) : '-'}</TableCell>
+                <TableCell component="th" scope="row">{aid.data_fi ? dateToString(aid.data_fi) : '-'}</TableCell>
                 <TableCell component="th" scope="row">{aid.tipus}</TableCell>
                 <TableCell component="th" scope="row">{aid.ambit}</TableCell>
                 <TableCell component="th" scope="row">
@@ -90,14 +86,9 @@ const AidsTable = (props: Props) => {
                 </TableCell>
               </TableRow>
             ))}
-            {!props.aids &&
-              <TableRow>
-                <TableCell component="th" scope="row">{t('aids_empty')}</TableCell>
-              </TableRow>
-            }
           </TableBody>
           <TableFooter>
-            <TableRow footer>
+            <TableRow>
               <TableCell scope="row" size="small" align="center" colSpan={7}>
                 <Button color="primary" size="small" onClick={() => exportPdf()} startIcon={<PictureAsPdfIcon />}>
                   Descarregar
@@ -110,7 +101,7 @@ const AidsTable = (props: Props) => {
       <TablePagination
           rowsPerPageOptions={[20, 30, 50]}
           component="div"
-          count={props.aids.length}
+          count={allAids.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onChangePage={handleChangePage}
