@@ -14,7 +14,7 @@ type UnitatDeConvivenciaBenefitsProps = {
 
 const UnitatDeConvivenciaBenefits = (props: UnitatDeConvivenciaBenefitsProps) => {
 
-    const possibleBenefits = getBenefits('household');
+    const possibleBenefits = getBenefits('housing');
 
   function hasAnyBenefit(unitatDeConvivencia, period) {
     return typeof unitatDeConvivencia === 'undefined'

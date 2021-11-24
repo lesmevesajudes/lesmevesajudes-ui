@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react';
 import {connect} from 'react-redux';
+import {withTranslation} from "react-i18next";
 import {Grid, AppBar,Toolbar,IconButton,Typography} from '@material-ui/core';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import Grow from '@material-ui/core/Grow';
@@ -95,7 +96,7 @@ export const DashboardPage = (props :Props) => {
           <Typography variant="h6" color="inherit">Quadre de comandament</Typography>
         </Toolbar>
       </AppBar>
-    <Grid xs={12} container>
+    <Grid container>
       {componentPanel}
     </Grid>
   </Grid>);
@@ -108,4 +109,4 @@ function mapStateToProps(state) {
   return props;
 }
 
-export default connect(mapStateToProps)(DashboardPage);
+export default connect(mapStateToProps)(withTranslation()(DashboardPage));

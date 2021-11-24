@@ -9,7 +9,6 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import Switch from '@material-ui/core/Switch';
 import { DatePicker } from "@material-ui/pickers";
 import {makeStyles} from '@material-ui/core/styles';
-import {isNil} from 'ramda';
 import {AIDS_DASHBOARD_FILTER} from './AidsDashboardReducer';
 
 type Props = {
@@ -40,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
 
 const initialFilterState = {
   active: true,
+  admin: '',
   date: new Date()
 }
 
@@ -61,7 +61,7 @@ const FilterPanel = (props: Props) => {
       let adminValue = event.target.value;
       setFilter({
         ...filter,
-        admin: adminValue === ''? null: adminValue
+        admin: adminValue
       });
       break;
     default:
@@ -101,11 +101,11 @@ const FilterPanel = (props: Props) => {
         </Fragment>
 
         <FormLabel>Administració</FormLabel>
-        <RadioGroup className={classes.filterBlock} column value={filter.admin} onClick={handleFilter}>
+        <RadioGroup className={classes.filterBlock} value={filter.admin} onClick={handleFilter}>
           <FormControlLabel
             label='Totes'
             classes={{ label: classes.label }}
-            control={<Radio id='admin' value={null} checked={isNil(filter.admin)} color='primary' size='small'/>} />
+            control={<Radio id='admin' value='' color='primary' size='small'/>} />
           <FormControlLabel
             label='Estatal'
             classes={{ label: classes.label }}
