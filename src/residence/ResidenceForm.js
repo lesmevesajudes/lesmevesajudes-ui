@@ -1,6 +1,5 @@
 //@flow
 import {Grid, Hidden, MenuItem} from "@material-ui/core";
-import Icon from "@material-ui/core/Icon/Icon";
 import {Map} from "immutable";
 import React from "react";
 import {Trans, withTranslation} from "react-i18next";
