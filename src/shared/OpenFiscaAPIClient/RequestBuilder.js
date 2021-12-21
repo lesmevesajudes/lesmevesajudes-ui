@@ -150,6 +150,7 @@ const residenceDataToAPI = (residenceData: ResidenceData) => ({
   relacio_de_parentiu_amb_el_propietari: currentMonth(residenceData.relacio_de_parentiu_amb_el_propietari),
   tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit: currentMonth(residenceData.tinc_alguna_propietat_a_part_habitatge_habitual_i_disposo_dusdefruit),
   zona_de_lhabitatge: currentMonth(residenceData.zona_de_lhabitatge),
+  ates_pel_servei_de_mediacio_de_barcelona: currentMonth(residenceData.ates_pel_servei_de_mediacio_de_barcelona),
   HG_02_00_00: currentMonth(null),
   HA_077_01: currentMonth(null),
   HG_077_02: currentMonth(null),
@@ -158,6 +159,7 @@ const residenceDataToAPI = (residenceData: ResidenceData) => ({
   HG_077_04_01: currentMonth(null),
   HE_077_00: currentMonth(null),
   HE_02_01_00: currentMonth(null),
+  HC_01_00_00: currentMonth(null),
 });
 
 const createUnitatDeConvivencia = (persons, residenceData) => {

@@ -176,6 +176,15 @@ const benefits = [
         amountText: 'HG_02_00_00_import',
         conditions: 'maxim_12_mesos',
     }
+    ,{
+        type: 'housing',
+        ID: 'HC_01_00_00',
+        name: 'HC_01_00_00_title',
+        url: 'link_HC_01_00_00',
+        amountText: 'HC_01_00_00_import',
+        from: newDate(2021, 4, 26),
+        to: newDate(2021, 12, 3)
+    }
 ];
 
 const translate = ({ name, amountText, conditions, periode, ...rest }) => ({

@@ -153,6 +153,14 @@ const ResidenceForm = (props: Props) => {
                     </Trans>}
                   </MoneyQuestion>}
 
+                  {esLlogater && existeixDeutePagamentLloguer &&
+                    <YesNoQuestion
+                      formname={formName}
+                      name ='ates_pel_servei_de_mediacio_de_barcelona'
+                      validate={[required]}
+                      label='ates_pel_servei_de_mediacio_de_barcelona'
+                    />}
+
                   {existeixHipoteca &&
                   <YesNoQuestion
                     formname={formName}
