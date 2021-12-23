@@ -152,7 +152,6 @@ const residenceDataToAPI = (residenceData: ResidenceData) => ({
   zona_de_lhabitatge: currentMonth(residenceData.zona_de_lhabitatge),
   ates_pel_servei_de_mediacio_de_barcelona: currentMonth(residenceData.ates_pel_servei_de_mediacio_de_barcelona),
   HG_02_00_00: currentMonth(null),
-  HA_077_01: currentMonth(null),
   HG_077_02: currentMonth(null),
   HG_077_03: currentMonth(null),
   HG_077_04: currentMonth(null),

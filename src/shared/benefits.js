@@ -110,16 +110,6 @@ const benefits = [
     },
     {
         type: 'housing',
-        ID: 'HA_077_01',
-        name: 'HA_077_01_title',
-        url: 'link_HA_077_01',
-        amountText: 'HA_077_01_import',
-        conditions: 'maxim_12_mesos',
-        from: newDate(2019, 2, 20),
-        to: newDate(2019, 12, 5)
-    },
-    {
-        type: 'housing',
         ID: 'HG_077_02',
         name: 'HG_077_02_title',
         amountText: 'HG_077_02_import',

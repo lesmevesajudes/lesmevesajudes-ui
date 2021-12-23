@@ -944,12 +944,6 @@ describe('OpenFiscaAPIClient', () => {
               {
                 "ef49c48b-d2f0-4fc2-8a79-d84b3df10c3e":
                     {
-                      "HA_077_01":
-                          {
-                            "2017-01":
-                                0
-                          }
-                      ,
                       "HG_077_02":
                           {
                             "2017-01":
