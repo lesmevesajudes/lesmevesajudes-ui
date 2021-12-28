@@ -1,11 +1,18 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
+import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import { subMonths, subYears, startOfMonth, endOfMonth, startOfYear, min, max } from 'date-fns/fp';
+import { compose } from 'ramda';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
 import {DatePicker} from "@material-ui/pickers";
 import {makeStyles} from '@material-ui/core/styles';
+import Icon from '@material-ui/core/Icon';
 import {SIMULATIONS_DASHBOARD_FILTER} from './SimulationsDashboardReducer';
+import {retrieveResults} from "../DashboardAction";
+
 
 type Props = {
   allResults: [],
@@ -37,57 +44,94 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+const getMinDate = compose(startOfYear, (subYears(1)));
+const getDefaultFromDate = compose(startOfMonth, (subMonths(3)));
+const getMaxDate = endOfMonth;
+
 const FilterPanel = (props: Props) => {
 
   const classes = useStyles();
   //const {t} = useTranslation('dashboard');
-
-
-  var currentDate = new Date()
-  var currentYear = currentDate.getFullYear();
-
-  const [fromDate, handleFromDateChange] = useState(new Date(currentYear + "-01-01"));
-  const [untilDate, handleUntilDateChange] = useState(currentDate);
 
   useEffect(() => {
     props.dispatch({
       type: SIMULATIONS_DASHBOARD_FILTER,
       fromDate,
       untilDate,
-    })
-  })
+    });
+  }, []);
+  const currentDate = new Date();
+  const minDate = getMinDate(currentDate);
+  const maxDate = getMaxDate(currentDate);
+  const defaultFromDate = getDefaultFromDate(currentDate);
+
+  const [fromDate, handleFromDateChange] = useState(props.fromDate || defaultFromDate);
+  const [untilDate, handleUntilDateChange] = useState(props.untilDate || maxDate);
+
+  const applyFilter = () => {
+    props.dispatch({
+      type: SIMULATIONS_DASHBOARD_FILTER,
+      fromDate,
+      untilDate,
+    });
+    props.retrieveResults(fromDate, untilDate);
+  };
+
+  useEffect(() => {
+    console.log('AAA - effect');
+    applyFilter();
+  }, []);
 
   return (
     <Paper elevation={2}>
-      <FormControl className={classes.formControl}>
+      <FormControl className={classes.formControl} disabled={props.loading}>
         <FormLabel>Des de</FormLabel>
-        <Fragment>
-          <DatePicker
-            id='month'
-            className={classes.filterBlock}
-            views={["year", "month"]}
-            minDate={new Date(currentYear + "-01-01")}
-            maxDate={currentDate}
-            value={fromDate}
-            onChange={handleFromDateChange}
-          />
-        </Fragment>
+        <DatePicker
+          id='month'
+          className={classes.filterBlock}
+          views={["year", "month"]}
+          minDate={minDate}
+          maxDate={min([maxDate, untilDate])}
+          value={fromDate}
+          onChange={handleFromDateChange}
+        />
 
         <FormLabel>Fins a</FormLabel>
-        <Fragment>
-          <DatePicker
-            id='month'
-            className={classes.filterBlock}
-            views={["year", "month"]}
-            minDate={new Date(currentYear + "-01-01")}
-            maxDate={currentDate}
-            value={untilDate}
-            onChange={handleUntilDateChange}
-          />
-        </Fragment>
+        <DatePicker
+          id='month'
+          className={classes.filterBlock}
+          views={["year", "month"]}
+          minDate={max([minDate, fromDate])}
+          maxDate={maxDate}
+          value={untilDate}
+          onChange={handleUntilDateChange}
+        />
+        <Button variant="contained" onClick={applyFilter}>
+          {props.loading ? (
+            <>
+              <Icon>cached</Icon>
+              Calculant...
+            </>
+          ) : 'Aplica'}
+        </Button>
       </FormControl>
     </Paper>
     );
 }
 
-export default connect()(FilterPanel);
+const mapStateToProps = (state) => {
+  return {
+    fromDate: state.simulationsDashboard.fromDate,
+    untilDate: state.simulationsDashboard.untilDate,
+    loading: state.dashboard.loading,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    retrieveResults : bindActionCreators(retrieveResults, dispatch),
+    dispatch,
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FilterPanel);

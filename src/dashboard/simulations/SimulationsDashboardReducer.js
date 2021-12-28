@@ -1,14 +1,10 @@
-
 export const SIMULATIONS_DASHBOARD_FILTER = 'SIMULATIONS_DASHBOARD_FILTER';
-
-const initialUntilDate = new Date()
-const initialFromDate = new Date(initialUntilDate.getFullYear() + "-01-01")
 
 
 export default function(
   state = {
-    fromDate: initialFromDate,
-    untilDate: initialUntilDate,
+    fromDate: null,
+    untilDate: null,
   },
   action
 ) {

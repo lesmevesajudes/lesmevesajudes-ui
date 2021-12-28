@@ -38,16 +38,13 @@ const HorizontalBarChart = ({data, title, prefix, labels}) => {
   const options= {
     legend:false,
     maintainAspectRatio: true,
-    scales: {
-      yAxes: [{
-        barThickness: 15,
-      }]
-    }
-
+    dataset: {
+      barThickness: 15,
+    },
   };
 
   return <Grid align='center' item>
-          <Typography headlineMapping='h3' color='textPrimary'>{t(title)}</Typography>
+          <Typography variant='h3' color='textPrimary'>{t(title)}</Typography>
           <HorizontalBar data={vals} options={options}/>
          </Grid>
 }

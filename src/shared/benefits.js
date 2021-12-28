@@ -1,4 +1,4 @@
-import {compose, filter, map, propEq, reject, isNil, identity} from 'ramda';
+import {compose, filter, map, propEq, reject, isNil, identity, pluck} from 'ramda';
 import {newDate} from './dateUtils';
 import i18n from '../i18n';
 
@@ -190,3 +190,5 @@ export const getBenefits = (type) => compose(
     map(translate),
     type ? filter(propEq('type', type)) : identity,
 )(benefits);
+
+export const getBenefitIds = (type) => pluck('ID', getBenefits(type));
