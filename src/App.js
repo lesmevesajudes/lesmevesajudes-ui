@@ -55,7 +55,7 @@ class App extends Component {
 	}
 
 	componentDidMount() {
-		this.initialize_matomo();
+    if (process.env.NODE_ENV !== 'development') this.initialize_matomo();
 	}
 
   render() {

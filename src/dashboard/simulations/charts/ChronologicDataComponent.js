@@ -1,15 +1,20 @@
 import React from 'react';
 import {Bar} from 'react-chartjs-2';
 import {Grid,Typography} from '@material-ui/core';
-import {map, prop, propIs} from 'ramda';
+import {map, propOr, compose} from 'ramda';
 import {useTranslation} from 'react-i18next';
+import {eachMonthOfInterval, format} from 'date-fns/fp';
 
-const ChronologicDataChart = ({totalSimuationsByMonth, recalculatedSimulationsByMonth}) => {
+const monthRange = compose(
+  map(format('yy/MM')),
+  eachMonthOfInterval,
+);
+
+const ChronologicDataChart = ({from, until, totalSimuationsByMonth, recalculatedSimulationsByMonth}) => {
 
   const {t} = useTranslation('dashboard');
-
-  const months = ['Gener','Febrer','Març','Abril','Maig','Juny','Juliol','Agost','Setembre','Octubre','Novembre','Desembre']
-  const getValues = (data) =>  map(m => propIs(m) ? prop(m, data) : 0)(months)
+  const months = (from && until) ? monthRange({ start: from, end: until }) : [];
+  const getValues = (data) =>  map(m => propOr(0, m, data))(months)
 
   const vals = {
     labels: months,
@@ -32,7 +37,7 @@ const ChronologicDataChart = ({totalSimuationsByMonth, recalculatedSimulationsBy
   }
 
   return <Grid align='center' item>
-          <Typography headlineMapping='h3' color='textPrimary'>{t('simulation_resultats')}</Typography>
+          <Typography variant='h3' color='textPrimary'>{t('simulation_number')}</Typography>
           <Bar data={vals} />
          </Grid>
 }

@@ -17,7 +17,7 @@ const DonutChart = ({data, title}) => {
   };
 
   return <Grid align='center' item>
-          <Typography headlineMapping='h3' color='textPrimary'>{title}</Typography>
+          <Typography variant='h3' color='textPrimary'>{title}</Typography>
           <Doughnut data={vals} />
         </Grid>
 }

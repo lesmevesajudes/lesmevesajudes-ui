@@ -1,7 +1,7 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {connect} from 'react-redux';
 import {withTranslation} from "react-i18next";
-import {Grid, AppBar,Toolbar,IconButton,Typography} from '@material-ui/core';
+import {AppBar, Grid, IconButton, Toolbar, Typography} from '@material-ui/core';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import Grow from '@material-ui/core/Grow';
 import Paper from '@material-ui/core/Paper';
@@ -103,10 +103,9 @@ export const DashboardPage = (props :Props) => {
 }
 
 function mapStateToProps(state) {
-  var props = {
-	  allResults: state.dashboard.results
+  return {
+    allResults: state.dashboard.results
   };
-  return props;
 }
 
 export default connect(mapStateToProps)(withTranslation()(DashboardPage));
