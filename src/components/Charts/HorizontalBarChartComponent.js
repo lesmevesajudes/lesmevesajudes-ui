@@ -20,14 +20,14 @@ const getLabels = (data) => map(v => prop(0,values(v)))(data)
 const getValues = (data) => map(v => prop(1,values(v)))(data)
 
 
-const HorizontalBarChart = ({data, title, prefix, labels}) => {
+const HorizontalBarChart = ({data, title, prefix, labels, translate = true}) => {
 
   const {t} = useTranslation('dashboard');
 
   const sortedData = sortData(data);
 
   const vals = {
-    labels: labels ? labels : map(v => t(prefix + v))(getLabels(sortedData)),
+    labels: labels ? labels : map(v => translate ? t(prefix + v) : (prefix + v))(getLabels(sortedData)),
     datasets: [{
       data: getValues(sortedData),
       backgroundColor: '#eca1a6',

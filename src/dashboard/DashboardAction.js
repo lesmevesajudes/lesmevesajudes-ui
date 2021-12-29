@@ -1,39 +1,45 @@
 import axios from 'axios/index';
 import {DASHBOARD_COUNT_EDITED, DASHBOARD_URL, SIMULATION_STORE_AUTH_TOKEN, SIMULATION_STORE_URL} from '../config';
 import {
+  RESET_DASHBOARD_SIMULATIONS,
   SHOW_DASHBOARD_AIDS,
   SHOW_DASHBOARD_CHARTS,
   SHOW_DASHBOARD_EDITED_COUNT,
   SHOW_DASHBOARD_SIMULATIONS,
-  RESET_DASHBOARD_SIMULATIONS,
 } from './DashboardReducer';
 import {FilterType} from './DashboardTypes';
 import {
+  any,
+  complement,
   compose,
+  concat,
   countBy,
   equals,
   filter,
   flatten,
   forEach,
   has,
+  head,
+  identity,
   isNil,
+  keys,
   length,
   map,
   merge,
   not,
   path,
   pick,
+  pickAll,
+  pickBy,
   pluck,
   prop,
-  values,
-  head,
   reduce,
-  concat, any, complement,
+  values,
 } from 'ramda';
-import { format } from 'date-fns';
+import {format} from 'date-fns';
 import {getBenefitIds, getBenefits} from "../shared/benefits";
 import i18n from '../i18n';
-import {endOfMonthISOEncoded, startOfMonthISOEncoded, parseISOEncoded } from '../shared/dateUtils';
+import {endOfMonthISOEncoded, parseISOEncoded, startOfMonthISOEncoded} from '../shared/dateUtils';
 
 export const RETRIEVE_DASHBOARD_ERROR = 'RETRIEVE_DASHBOARD_ERROR';
 export const TIMED_OUT_DASHBOARD = 'TIMED_OUT_DASHBOARD';
@@ -73,10 +79,11 @@ const collectAidData = (results: List, filteredBy: FilterType) => {
 }
 
 const collectSexData = (results: List, filter: FilterType) => compose(
-  countBy(i => equals('dona', i) ? 'dona' : 'home'),
+  countBy(identity),
   flatten,
   map(pluck('sexe')),
-  map(r => values(r.persones)))(results)
+  map(r => values(r.persones))
+)(results)
 
 
 const yesNoCount = (attributeName, data) => compose(
@@ -97,14 +104,14 @@ const collectSchoolData = (results: List, resultFilter: FilterType) => compose(
 const collectViolenceData = (results: List, resultFilter: FilterType) => yesNoCount('violencia', results)
 const collectDisabledData = (results: List, resultFilter: FilterType) => yesNoCount('discapacitat', results)
 
-// TODO sort laboral data?
 const collectLaboralData = (results: List, resultFilter: FilterType) => compose(
-  countBy(forEach(v => v)),
+  countBy(identity),
   pluck('situacio_laboral'),
-  filter(has('situacio_laboral')),
+  filter(prop('situacio_laboral')),
   filter(noEsMenor),
   flatten,
-  map(r => values(r.persones)))(results)
+  map(r => values(r.persones)),
+)(results)
 
 const collectAgeData = (results: List, resultFilter: FilterType) => compose(
   countBy(compareAge),
@@ -164,7 +171,7 @@ export const retrieveAids = () => dispatch => {
 const computeHasAids = (type, results) => {
   const ids = getBenefitIds(type);
   const recipients = prop(type === 'personal' ? 'persones' : 'unitats_de_convivencia', results);
-  const hasAid = compose(
+  return compose(
     any(complement(equals(0))),
     map(compose(head, values)),
     reduce(concat, []),
@@ -172,7 +179,6 @@ const computeHasAids = (type, results) => {
     values,
     map(pick(ids)),
   )(recipients);
-  return hasAid;
 }
 
 const computeGlobalStatus = (result) => {
@@ -180,15 +186,72 @@ const computeGlobalStatus = (result) => {
   return hasBenefits ? 'Positiu' : 'Negatiu';
 }
 
-const parseResults = ({ created_at, id, id_parent, simulation, result: stringResult }) => {
+// ---- begin parser.js
+
+const getDateMark = compose(
+  head,
+  keys,
+  prop('edat'),
+  head,
+  values,
+  prop('persones'),
+);
+
+const getResumPersones = (result, dateMark, ajudesCodes) => {
+  return compose(map(p => getResumPersona(p,dateMark, ajudesCodes)),
+    values, prop('persones'))(result)
+}
+
+const getResumPersona = (persona, dateMark, ajudesCodes) => {
+  const resumPersona = {};
+  persona = pluck(dateMark, persona)
+  const ajudes = compose(keys,
+    pickBy(value => value > 0),
+    pickAll(ajudesCodes))(persona);
+  resumPersona.ajudes = ajudes;
+  resumPersona.sexe = persona.sexe;
+  resumPersona.edat = parseInt(persona.edat);
+  resumPersona.discapacitat = persona.grau_discapacitat ? true : false;
+  resumPersona.violencia = persona.victima_violencia_de_genere || persona.victima_violencia_domestica ? true : false;
+  resumPersona.escolaritzacio = persona.es_escolaritzat_entre_P3_i_4rt_ESO ? true : false;
+  resumPersona.situacio_laboral = persona.situacio_laboral;
+  return resumPersona;
+}
+
+const getResumHabitatge = (result, simulation, dateMark, ajudesCodes) => {
+  const resumHabitatge = {};
+  const ajudes = compose(
+    keys,
+    pickBy(value => value > 0),
+    pluck(dateMark),
+    pickAll(ajudesCodes),
+    head,
+    values)(result.unitats_de_convivencia);
+  resumHabitatge.ajudes = ajudes;
+  if (simulation.residence) {
+    resumHabitatge.relacio_habitatge = simulation.residence.relacio_habitatge;
+  }
+  return resumHabitatge;
+}
+
+// ---- end parser.js
+
+const parseResults = ({ created_at, id, id_parent, simulation: stringSimulation, result: stringResult }) => {
   const result = equals('null', stringResult) ? {} : JSON.parse(stringResult);
+  const simulation = equals('null', stringSimulation) ? {} : JSON.parse(stringSimulation);
+  const data = getDateMark(result);
+  const persones = getResumPersones(result, data, getBenefitIds('personal'));
+  const habitatge = getResumHabitatge(result, simulation, data, getBenefitIds('housing'));
   return ({
     created_at: parseISOEncoded(created_at),
     id,
     id_parent: equals('null', id_parent) ? null : id_parent,
-    simulation: equals('null', simulation) ? {} : JSON.parse(simulation),
+    simulation,
     result,
     globalStatus: computeGlobalStatus(result),
+    data,
+    persones,
+    habitatge,
   });
 }
 
@@ -209,13 +272,34 @@ export const retrieveResults = (fromDate: Date, untilDate: Date) => async dispat
     const recalculatedSimulationsByMonthData = collectRecalculatedSimulationsByMonth(results);
     const simulationsByPersonsData = collectByPersons(results);
 
-    return dispatch({
+    dispatch({
       type: SHOW_DASHBOARD_SIMULATIONS,
       results: results.dashboards,
       positiveNegativeData: positiveNegativeData,
       totalSimulationsByMonthData: totalSimulationsByMonthData,
       recalculatedSimulationsByMonthData: recalculatedSimulationsByMonthData,
       simulationsByPersonsData: simulationsByPersonsData
+    });
+
+    const collectedSexData = collectSexData(results);
+    const collectedSchoolData = collectSchoolData(results);
+    const collectedViolenceData = collectViolenceData(results);
+    const collectedDisabledData = collectDisabledData(results);
+    const collectedAidData = collectAidData(results);
+    const collectedLaboralData = collectLaboralData(results);
+    const collectedAgeData = collectAgeData(results);
+    const collectedHousingData = collectHousingData(results);
+
+    dispatch({
+      type: SHOW_DASHBOARD_CHARTS,
+      sexData: collectedSexData,
+      schoolData: collectedSchoolData,
+      violenceData: collectedViolenceData,
+      disabledData: collectedDisabledData,
+      aidData: collectedAidData,
+      laboralData: collectedLaboralData,
+      ageData: collectedAgeData,
+      housingData: collectedHousingData,
     });
 
   }).catch(error => {
