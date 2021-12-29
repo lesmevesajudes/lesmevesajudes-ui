@@ -78,7 +78,6 @@ const FilterPanel = (props: Props) => {
   };
 
   useEffect(() => {
-    console.log('AAA - effect');
     applyFilter();
   }, []);
 

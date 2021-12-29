@@ -64,7 +64,6 @@ export default function(
       ageData: action.ageData,
       aidData: action.aidData,
       housingData: action.housingData,
-      positiveNegativeData: action.positiveNegativeData,
   }
   case SHOW_DASHBOARD_EDITED_COUNT:
     return {

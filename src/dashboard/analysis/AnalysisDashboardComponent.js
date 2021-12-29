@@ -18,7 +18,6 @@ type Props = {
   helpData: Object,
   positiveNegativeData: Object,
   aids: List<AidType>,
-  helpData: Object,
   sexData: SexType,
   schoolData: YesNoType,
   violenceData: YesNoType,
@@ -37,7 +36,6 @@ var schoolData={};
 var disabledData={};
 var violenceData={};
 var housingData = {};
-var incomesData = {};
 
 const AnalysisSimulationsDashboard = (props :Props) => {
 
@@ -54,22 +52,20 @@ const AnalysisSimulationsDashboard = (props :Props) => {
     laboralData = props.laboralData;
     ageData = props.ageData;
     housingData = props.housingData;
-    //incomesData = props.incomesData;
-    incomesData = {'Baix':2000,'Mig':1500,'Alt':200};
   }
 
   return (
     <Grid container>
-      <Grid xs={3} container spacing={5} root>
+      <Grid xs={3} item>
         <FilterPanel aids={keys(aidData)} laborals={keys(laboralData)} />
       </Grid>
-      <Grid xs={9} container direction="column" item root>
+      <Grid xs={9} container direction="column" item>
         <Grid container direction="row" xs item>
           <Grid xs item>
             <Box m={1}>
               <Card>
                 <CardContent>
-                  <HorizontalBarChart data={aidData} title={'aids'} prefix={''}/>
+                  <HorizontalBarChart translate={false} data={aidData} title={'aids'} prefix={''}/>
                 </CardContent>
               </Card>
             </Box>
@@ -93,14 +89,14 @@ const AnalysisSimulationsDashboard = (props :Props) => {
               <Box m={1}>
                 <Card >
                   <CardContent>
-                    <DonutChart data={sexData} title={t('sexe')}/>
+                    <DonutChart prefix="sexe_" data={sexData} title={t('sexe')}/>
                   </CardContent>
                 </Card>
               </Box>
               <Box m={1}>
                 <Card >
                   <CardContent>
-                    <DonutChart data={ageData} title={t('edat')}/>
+                    <DonutChart prefix="edat_" data={ageData} title={t('edat')}/>
                   </CardContent>
                 </Card>
               </Box>
@@ -116,19 +112,12 @@ const AnalysisSimulationsDashboard = (props :Props) => {
               <Box m={1}>
                 <Card >
                   <CardContent>
-                    <DonutChart data={schoolData} title={t('escolarització')}/>
+                    <DonutChart data={schoolData} title={t('escolaritzacio')}/>
                   </CardContent>
                 </Card>
               </Box>
             </Grid>
             <Grid container direction="row" xs item>
-              <Box m={1}>
-                <Card >
-                  <CardContent>
-                    <DonutChart data={incomesData} title={t('ingressos')} />
-                  </CardContent>
-                </Card>
-              </Box>
               <Box m={1}>
                 <Card >
                   <CardContent m={1} bgcolor={'#bdcebe'}>
@@ -144,8 +133,8 @@ const AnalysisSimulationsDashboard = (props :Props) => {
   );
 }
 function mapStateToProps(state) {
-  var props = {
-	  allResults: state.dashboard.results,
+  return {
+    allResults: state.dashboard.results,
     aidData: state.dashboard.aidData,
     positiveNegativeData: state.dashboard.positiveNegativeData,
     sexData: state.dashboard.sexData,
@@ -156,10 +145,9 @@ function mapStateToProps(state) {
     ageData: state.dashboard.ageData,
     housingData: state.dashboard.housingData,
   };
-  return props;
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     retrieveDashboardProfilesData : bindActionCreators(retrieveDashboardProfilesData, dispatch),
     dispatch,

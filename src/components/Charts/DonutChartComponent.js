@@ -4,12 +4,12 @@ import {Grid,Typography} from '@material-ui/core';
 import {keys, map, values} from 'ramda';
 import {useTranslation} from 'react-i18next';
 
-const DonutChart = ({data, title}) => {
+const DonutChart = ({prefix = '', data, title}) => {
 
   const {t} = useTranslation('dashboard');
 
   const vals = {
-    labels: map(v => t(v))(keys(data)),
+    labels: map(v => t(prefix + v))(keys(data)),
     datasets: [{
       data: values(data),
       backgroundColor: ['#bdcebe','#eca1a6','#d6cbd3']
