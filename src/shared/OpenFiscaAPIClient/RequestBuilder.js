@@ -236,6 +236,10 @@ const personToOpenFiscaPerson = (person: Person) => ({
   victima_violencia_de_genere: currentMonth(person.victima_violencia_de_genere),
   victima_violencia_domestica: currentMonth(person.victima_violencia_domestica),
   sentirse_sol: currentMonth(person.sentirse_sol),
+  prove_de_centre_tutelat: currentMonth(person.prove_de_centre_tutelat),
+  vida_independent: currentMonth(person.vida_independent),
+  alta_ss_12_mesos: currentMonth(person.alta_ss_12_mesos),
+  valor_de_patrimoni: lastYear(person.valor_de_patrimoni),
   AE_230_mensual: currentMonth(null),
   AE_230_01_mensual: currentMonth(null),
   EG_233_mensual: currentMonth(null),
@@ -250,6 +254,7 @@ const personToOpenFiscaPerson = (person: Person) => ({
   GA_234_02: currentMonth(null),
   TA_01_00_00: currentMonth(null),
   TA_02_00_00: currentMonth(null),
+  RE_01_00_00: currentMonth(null),
 });
 
 export const buildRequest = (simulationData: SimulationData) => {

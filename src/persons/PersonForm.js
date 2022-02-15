@@ -53,6 +53,7 @@ type Props = {
   treballaPerCompteDAltriParcial: Boolean,
   updating: Boolean,
   tePrestacioContributivaOSubsidi: Boolean,
+  vida_independent: number,
 };
 
 const formName = 'PersonForm';
@@ -81,6 +82,7 @@ let PersonFormComponent = (props: Props) => {
     tipusDocumentIdentitat,
     treballaPerCompteDAltriParcial,
     tePrestacioContributivaOSubsidi,
+    vidaIndependent,
     updating,
   } = props;
   const buildTranslationContext = (items: Array<string>) => ({context: items.join('_')});
@@ -256,8 +258,11 @@ let PersonFormComponent = (props: Props) => {
                     <MenuItem value='altres'>
                       <Trans i18nKey='altres_municipis_catalans'>Altres municipis catalans</Trans>
                     </MenuItem>
-                    <MenuItem value='no_empadronat_a_cat'>
-                      <Trans i18nKey='no_empadronat_a_cat'>No estic empadronat a Catalunya</Trans>
+                    <MenuItem value='empadronat_a_esp'>
+                      <Trans i18nKey='empadronat_a_esp'>Altres municipis de l'estat espanyol</Trans>
+                    </MenuItem>
+                    <MenuItem value='no_empadronat_a_esp'>
+                      <Trans i18nKey='no_empadronat_a_esp'>No estic empadronat a l'estat espanyol</Trans>
                     </MenuItem>
                   </MultipleAnswerQuestion>
                   }
@@ -428,11 +433,55 @@ let PersonFormComponent = (props: Props) => {
                       validate={[required]}
                       label={i18nKey('percep_ajut_serveis_socials_municipals', personTranslationContext)}
                     />}
+
+                    {edat > 17 &&
+                      <MoneyQuestion
+                        formname={formName}
+                        name ='valor_de_patrimoni'
+                        validate={[required]}
+                        label='valor_de_patrimoni'
+                       />}
+
                   </Fragment>}
 
                   {esFamiliarOUsuari &&
                   <Fragment>
                     <FormSubTitle>Situació personal</FormSubTitle>
+
+                    {edat > 17 && edat < 23 &&
+                    <YesNoQuestion
+                      formname={formName}
+                      name ='prove_de_centre_tutelat'
+                      validate={[required]}
+                      label='prove_de_centre_tutelat'
+                     />}
+
+                     {edat > 17 &&
+                     <MultipleAnswerQuestion
+                       formname={formName}
+                       name ='vida_independent'
+                       validate={[required]}
+                       label='vida_independent'
+                      >
+                      <MenuItem value='1'>
+                        <Trans i18nKey='vida_independent_1'>Sí, des de fa més d’un any</Trans>
+                      </MenuItem>
+                      <MenuItem value='2'>
+                        <Trans i18nKey='vida_independent_2'>Sí, des de fa més de dos anys</Trans>
+                      </MenuItem>
+                      <MenuItem value='0'>
+                        <Trans i18nKey='vida_independent_no'>No</Trans>
+                      </MenuItem>
+                    </MultipleAnswerQuestion>}
+
+                    {edat < 30 && vidaIndependent > 0 &&
+                    <YesNoQuestion
+                      formname={formName}
+                      name ='alta_ss_12_mesos'
+                      validate={[required]}
+                      label='alta_ss_12_mesos'
+                     />}
+
                     <YesNoQuestion
                       formname={formName}
                       name ='te_algun_grau_de_discapacitat_reconegut'
@@ -590,6 +639,7 @@ const PersonForm = withTranslation('translations')(connect(state => {
   const tipusDocumentIdentitat = selector(state, 'tipus_document_identitat');
   const treballaPerCompteDAltriParcial = selector(state, 'situacio_laboral') === 'treball_compte_daltri_jornada_parcial';
   const tePrestacioContributivaOSubsidi = selector(state, 'gaudeix_de_prestacio_contributiva_o_subsidi_desocupacio');
+  const vidaIndependent = selector(state, 'vida_independent');
   const helpTopic = state.helpSystem.currentHelpTopic;
 
   return {
@@ -613,6 +663,7 @@ const PersonForm = withTranslation('translations')(connect(state => {
     teAlgunGrauDeDiscapacitatReconegut,
     teAlgunGrauDeDependenciaReconegut,
     tipusDocumentIdentitat,
+    vidaIndependent,
     treballaPerCompteDAltriParcial,
     tePrestacioContributivaOSubsidi
   };

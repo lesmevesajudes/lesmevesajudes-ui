@@ -109,6 +109,12 @@ const benefits = [
         amountText: 'GA_234_02_import',
     },
     {
+        type: 'personal',
+        ID: 'RE_01_00_00',
+        name: 'RE_01_00_00_title',
+        url: 'link_RE_01_00_00',
+    },
+    {
         type: 'housing',
         ID: 'HG_077_02',
         name: 'HG_077_02_title',

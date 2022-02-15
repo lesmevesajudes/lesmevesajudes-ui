@@ -307,6 +307,23 @@ const HelpTextMap = {
         o
         local) o la casa d'acollida, on s'indiqui que es rep assistència per aquesta circumstància.</p>
     </Trans>
+  },
+  "vida_independent": {
+    title: <Trans i18nKey='vida_independent_ajuda'>Què significa viure de manera independent?</Trans>,
+    body: <Trans i18nKey='vida_independent_text_llarg'>Cal acreditar que el domicili a Espanya ha estat diferent al dels progenitors, tutors o acollidors durant el període indicat, tret que s’hagi abandonat el domicili habitual per ser víctima de violència de gènere, s’hagin iniciat tràmits de separació o divorci o altres circumstàncies que es determinin.
+    </Trans>
+  },
+  "valor_de_patrimoni": {
+    title: <Trans i18nKey='valor_de_patrimoni_calcul'>Com calcular el valor del teu patrimoni?</Trans>,
+    body: <Trans i18nKey='valor_de_patrimoni_text_llarg'>Has de sumar la valoració actual dels actius que constitueixen el teu patrimoni, excepte l’habitatge habitual. Per exemple:
+    <ul>
+      <li>Immobles (habitatges, pàrquings, trasters, terrenys), d’acord amb el seu valor cadastral.</li>
+      <li>Comptes bancaris i dipòsits, pel seu valor a 31 de desembre.</li>
+      <li>Actius financers (fons d’inversió, accions...), pel seu valor a 31 de desembre.</li>
+      <li>Fons de pensions i similar, pel seu valor a 31 de desembre.</li>
+      <li>Valor de les participacions en societats en les que participi de forma directa o indirecta algun dels membres de la unitat de convivència, pel valor de la darrera declaració tributària i aplicant el percentatge corresponent.</li>
+  </ul>
+    </Trans>
   }
 };
 

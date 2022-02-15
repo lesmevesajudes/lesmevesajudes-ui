@@ -41,6 +41,10 @@ export type Person = {
   tipus_document_identitat: string;
   victima_violencia_de_genere: boolean;
   victima_violencia_domestica: boolean;
+  prove_de_centre_tutelat: boolean;
+  vida_independent: boolean;
+  alta_ss_12_mesos: boolean;
+  valor_de_patrimoni: string;
 }
 
 export class HowManyPersonsLiveTogetherType {
