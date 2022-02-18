@@ -26,4 +26,5 @@ export type ResidenceData = {
   titular_hipoteca_temps_empadronat: string,
   zona_de_lhabitatge: string,
   ates_pel_servei_de_mediacio_de_barcelona: boolean
+  valor_de_patrimoni: string;
 };

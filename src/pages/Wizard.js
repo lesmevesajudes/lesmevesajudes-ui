@@ -35,7 +35,7 @@ export const steps = [
   },
   {
     id: 'residence',
-    label: <Trans i18nKey='domicili_habitual'>Domicili Habitual</Trans>,
+    label: <Trans i18nKey='domicili_i_patrimoni'>Domicili i patrimoni</Trans>,
     optional: false,
     validateFormToEnableNext: 'ResidenceForm',
     component: <ResidenceForm form='ResidenceForm'/>,

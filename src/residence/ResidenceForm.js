@@ -8,6 +8,7 @@ import Sticky from "react-stickynode";
 import {formValueSelector, reduxForm} from "redux-form";
 import {AppForm, AppFormContainer, AppFormTitle} from '../components/AppForms';
 import DescriptionText from "../components/Common/DescriptionText";
+import FormSubTitle from '../components/FormComponents/FormSubTitle';
 import {MoneyQuestion} from "../components/FormComponents/MoneyQuestion";
 import MultipleAnswerQuestion from "../components/FormComponents/MultipleAnswerQuestion";
 import {Question} from "../components/FormComponents/Question";
@@ -85,13 +86,47 @@ const ResidenceForm = (props: Props) => {
   return (
       <AppFormContainer>
         <AppFormTitle iconName='domicili'>
-          <Trans i18nKey='informacio_domicili_habitual'>Afegeixi informació del seu domicili habitual</Trans>
+          <Trans i18nKey='informacio_patrimoni_i_domicili_habitual'>Afegeixi informació del seu patrimoni i domicili habitual</Trans>
         </AppFormTitle>
         <AppForm>
           <form name= {formName}>
             <Grid container direction='row' justify='space-around' alignItems='stretch' spacing={2}>
               <Grid item xs={11} md={6}>
-                <Grid container direction='column' alignItems='stretch' spacing={1}>
+                <Grid container direction='column' alignItems='stretch' spacing={2}>
+                  <FormSubTitle>
+                    <Trans i18nKey='informacio_patrimonial'>Informació patrimonial</Trans>
+                  </FormSubTitle>
+
+                   <MultipleAnswerQuestion
+                       formname={formName}
+                       name='valor_de_patrimoni'
+                       label='valor_de_patrimoni'
+                       validate={[required]}>
+                     <MenuItem value='1'>
+                       <Trans i18nKey='patrimoni_rang_1'>Menys de 17.697,66 €</Trans>
+                     </MenuItem>
+                     <MenuItem value='2'>
+                       <Trans i18nKey='patrimoni_rang_2'>Entre 17.697,67 € i 24.776,72 €</Trans>
+                     </MenuItem>
+                     <MenuItem value='3'>
+                       <Trans i18nKey='patrimoni_rang_3'>Entre 24.776,73 € i 31.855,79 €</Trans>
+                     </MenuItem>
+                     <MenuItem value='4'>
+                       <Trans i18nKey='patrimoni_rang_4'>Entre 31.855,80 € i 38.934,85 €</Trans>
+                     </MenuItem>
+                     <MenuItem value='5'>
+                       <Trans i18nKey='patrimoni_rang_5'> Entre 38.934,86 € i 46.013,92 €</Trans>
+                     </MenuItem>
+                     <MenuItem value='6'>
+                       <Trans i18nKey='patrimoni_rang_6'>Més de 46.013,92 €</Trans>
+                     </MenuItem>
+                   </MultipleAnswerQuestion>
+
+                </Grid>
+                <Grid container direction='column' alignItems='stretch' spacing={2}>
+                  <FormSubTitle>
+                    <Trans i18nKey='informacio_domicili_habitual'>Informació del domicili habitual</Trans>
+                  </FormSubTitle>
                   <MultipleAnswerQuestion
                     formname={formName}
                     name='relacio_habitatge'

@@ -434,14 +434,6 @@ let PersonFormComponent = (props: Props) => {
                       label={i18nKey('percep_ajut_serveis_socials_municipals', personTranslationContext)}
                     />}
 
-                    {edat > 17 &&
-                      <MoneyQuestion
-                        formname={formName}
-                        name ='valor_de_patrimoni'
-                        validate={[required]}
-                        label='valor_de_patrimoni'
-                       />}
-
                   </Fragment>}
 
                   {esFamiliarOUsuari &&

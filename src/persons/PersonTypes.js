@@ -44,7 +44,6 @@ export type Person = {
   prove_de_centre_tutelat: boolean;
   vida_independent: boolean;
   alta_ss_12_mesos: boolean;
-  valor_de_patrimoni: string;
 }
 
 export class HowManyPersonsLiveTogetherType {
