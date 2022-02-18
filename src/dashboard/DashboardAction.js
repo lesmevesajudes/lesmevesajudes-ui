@@ -1,11 +1,18 @@
 import axios from 'axios/index';
-import {DASHBOARD_COUNT_EDITED, DASHBOARD_URL, SIMULATION_STORE_AUTH_TOKEN, SIMULATION_STORE_URL} from '../config';
+import {
+  AUTHENTICATION_URL,
+  DASHBOARD_COUNT_EDITED,
+  DASHBOARD_URL,
+  SIMULATION_STORE_AUTH_TOKEN,
+  SIMULATION_STORE_URL
+} from '../config';
 import {
   RESET_DASHBOARD_SIMULATIONS,
   SHOW_DASHBOARD_AIDS,
   SHOW_DASHBOARD_CHARTS,
   SHOW_DASHBOARD_EDITED_COUNT,
   SHOW_DASHBOARD_SIMULATIONS,
+  DASHBOARD_ACCESS_VALID,
 } from './DashboardReducer';
 import {FilterType} from './DashboardTypes';
 import {
@@ -373,4 +380,21 @@ export const countEdited = () => async dispatch => {
     //  payload: RETRIEVE_SIMULATION_ERROR,
     //});
   });
+}
+
+export const validateAccessCode = (code) => async dispatch =>{
+  axios.post(
+    AUTHENTICATION_URL + '/dashboard-code',
+    { code },
+    {headers: {'Authentication-Token': SIMULATION_STORE_AUTH_TOKEN}}
+    )
+    .then(response => {
+      if (response.status === 200) {
+        return dispatch({
+          type: DASHBOARD_ACCESS_VALID,
+        })
+      }
+  }).catch(error => {
+    console.log(error);
+  })
 }

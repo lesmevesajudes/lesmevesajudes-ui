@@ -5,6 +5,7 @@ export const SHOW_DASHBOARD_AIDS = 'SHOW_DASHBOARD_AIDS_TABLE';
 export const SHOW_DASHBOARD_EDITED_COUNT = 'SHOW_DASHBOARD_EDITED_COUNT';
 export const SHOW_DASHBOARD_SIMULATIONS = 'SHOW_DASHBOARD_SIMULATIONS';
 export const RESET_DASHBOARD_SIMULATIONS = 'RESET_DASHBOARD_SIMULATIONS';
+export const DASHBOARD_ACCESS_VALID = 'DASHBOARD_ACCESS_VALID';
 
 export default function(
   state = {
@@ -21,7 +22,8 @@ export default function(
           ageData: Object,
           housingData: Object,
           positiveNegativeData: Object,
-          filtersVisible: false
+          filtersVisible: false,
+          loggedIn: false,
         },
   action
 ) {
@@ -69,6 +71,11 @@ export default function(
     return {
       ...state,
       editedCount: action.editedCount,
+    }
+  case DASHBOARD_ACCESS_VALID:
+    return {
+      ...state,
+      loggedIn: true,
     }
   default:
     return state;
