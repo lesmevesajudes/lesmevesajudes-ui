@@ -13,7 +13,7 @@ const Login = ({ handleSubmit }) => (
             Codi accés
           </Typography>
         </Box>
-        <Field component='input' name='accessCode' />
+        <Field component='input' type='password' name='accessCode' />
         <Button variant='text' color='default' type='submit' vertical-align="center">
           <Trans i18nKey='aceptar'>Acceptar</Trans>
         </Button>
