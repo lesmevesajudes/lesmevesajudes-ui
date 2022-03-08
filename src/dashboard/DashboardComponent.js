@@ -1,5 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import {withTranslation} from "react-i18next";
 import {AppBar, Grid, IconButton, Toolbar, Typography} from '@material-ui/core';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
@@ -12,11 +13,14 @@ import MenuList from '@material-ui/core/MenuList';
 import AidsDashboard from './aids/AidsDashboardComponent';
 import SimulationsDashboard from './simulations/SimulationsDashboardComponent';
 import AnalysisDashboard from './analysis/AnalysisDashboardComponent';
+import Login from './Login';
+import {validateAccessCode} from './DashboardAction';
 
 type Props = {
   allResults: any,
   dispatch: Function,
-  retrieveDashboard: any
+  retrieveDashboard: any,
+  loggedIn: boolean,
 };
 
 export const DashboardPage = (props :Props) => {
@@ -97,15 +101,27 @@ export const DashboardPage = (props :Props) => {
         </Toolbar>
       </AppBar>
     <Grid container>
-      {componentPanel}
+      {props.loggedIn ? componentPanel :
+        <Login onSubmit={({ accessCode }) => {
+          props.dispatch(validateAccessCode(accessCode));
+        }} />
+      }
     </Grid>
   </Grid>);
 }
 
 function mapStateToProps(state) {
   return {
+    loggedIn: state.dashboard.loggedIn,
     allResults: state.dashboard.results
   };
 }
 
-export default connect(mapStateToProps)(withTranslation()(DashboardPage));
+const mapDispatchToProps = (dispatch) => {
+  return {
+    validateAccessCode : bindActionCreators(validateAccessCode, dispatch),
+    dispatch,
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withTranslation()(DashboardPage));
